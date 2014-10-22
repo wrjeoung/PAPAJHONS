@@ -1,7 +1,7 @@
 <script type="text/javascript">
 	
 	snb(8,3);
-	head_title("JOIN-US");
+	head_title("JOIN-US"); 
 	$("#content_area").css({"width":"800px", "background":"#fff", "padding":"20px 10px", "margin":"0 auto"}); 
 	
 	
@@ -223,7 +223,7 @@
 	}
 </script>
 
-<div id="join_setp" style="background:url(/assets/img/forms/join_setp3.png) no-repeat; width:341px; height:53px; position:relative;left:-20px;"></div>
+<div id="join_setp" style="background:url(../assets/img/forms/join_setp3.png) no-repeat; width:341px; height:53px; position:relative;left:-20px;"></div>
 <!-- join_form_sectio -->
 <div id="join_form_section">
   	<!-- join_form -->
@@ -238,29 +238,29 @@
     	
     		<div class="form">
       			<p>
-        			<label class="tit" for="join_name"><img src="/assets/img/forms/label_name.gif" alt="이름" /></label>
-            		<input type="text" id="join_name" name="join_name" value="김주혁" class="base" readOnly />
+        			<label class="tit" for="join_name"><img src="../assets/img/forms/label_name.gif" alt="이름" /></label>
+            		<input type="text" id="join_name" name="join_name" value="홍길동" class="base" readOnly />
         		</p>
         		<p>
-        			<label class="tit" for="join_id"><img src="/assets/img/forms/login_id.gif" alt="아이디" /></label>
+        			<label class="tit" for="join_id"><img src="../assets/img/forms/login_id.gif" alt="아이디" /></label>
             		<input type="text" id="join_id" name="join_id" class="base" onkeydown="fnIdChk();" readOnly onclick='popup("#search_id"); $("#search_id").focus()'/>  
             		<span class="btn_h23 gray"><button type="button" onclick='popup("#search_id"); $("#search_id").focus()'>아이디 중복 체크</button></span> 
             		<span class="text_s11">*영문, 숫자만 가능, 4~20 글자 이내.</span>
             		<input type="hidden" id="join_id_chk" name="join_id_chk" value="N" />  
         		</p>
         		<p>
-        			<label class="tit" for="join_pass"><img src="/assets/img/forms/login_pw.gif" alt="비밀번호" /></label>
+        			<label class="tit" for="join_pass"><img src="../assets/img/forms/login_pw.gif" alt="비밀번호" /></label>
             		<input type="password" id="join_pass" name="join_pass" class="base" maxlength="20" /> <span class="text_s11">*영문, 숫자만 가능, 4~20 글자 이내.</span>
         		</p>
         		<p>
-        			<label class="tit" for="join_passConf"><img src="/assets/img/forms/label_passConf.gif" alt="비밀번호확인" /></label>
+        			<label class="tit" for="join_passConf"><img src="../assets/img/forms/label_passConf.gif" alt="비밀번호확인" /></label>
             		<input type="password" id="join_passConf" name="join_passConf" class="base" maxlength="20" />
         		</p>
         		<p>
-        			<label class="tit" for="join_birthday1"><img src="/assets/img/forms/label_birthday.gif" alt="생년월일" /></label>
-            		<select id="join_birthday1" name="join_birthday1" title="태어난 해 입력" ><option value='1985' selected='selected'>1985 년</option></select> 
-            		<select id="join_birthday2" name="join_birthday2" title="태어난 월 입력" ><option value='01' selected='selected'>01 월</option></select> 
-            		<select id="join_birthday3" name="join_birthday3" title="태어난 일 입력" ><option value='27' selected='selected'>27 일</option></select> 
+        			<label class="tit" for="join_birthday1"><img src="../assets/img/forms/label_birthday.gif" alt="생년월일" /></label>
+            		<select id="join_birthday1" name="join_birthday1" title="태어난 해 입력" ><option value='2000' selected='selected'>2000 년</option></select> 
+            		<select id="join_birthday2" name="join_birthday2" title="태어난 월 입력" ><option value='12' selected='selected'>12 월</option></select> 
+            		<select id="join_birthday3" name="join_birthday3" title="태어난 일 입력" ><option value='12' selected='selected'>12 일</option></select> 
             		(
             		<label for="sun">양력</label>
           			<input type="radio" id="sun" name="sun" onclick="fnRadioClick('sun', this.value)" value="Y" checked/>
@@ -275,13 +275,13 @@
             		</select>
         		</p>
         		<p>
-        			<label class="tit" for="join_phone1"><img src="/assets/img/forms/label_phone.gif" alt="전화번호" /></label>
+        			<label class="tit" for="join_phone1"><img src="../assets/img/forms/label_phone.gif" alt="전화번호" /></label>
             		<input type="text" id="join_phone1" name="join_phone1" class="w50" title="지역번호입력" maxlength="4"/> - 
             		<input type="text" id="join_phone2" name="join_phone2" class="w50" title="전화번호 앞자리 입력" maxlength="4"/> - 
             		<input type="text" id="join_phone3" name="join_phone3" class="w50" title="전화번호 뒷자리 입력" maxlength="4"/>
         		</p>
         		<p>
-        			<label class="tit" for="join_mobile1"><img src="/assets/img/forms/login_mobile.gif" alt="핸드폰번호" /></label>
+        			<label class="tit" for="join_mobile1"><img src="../assets/img/forms/login_mobile.gif" alt="핸드폰번호" /></label>
             		<input type="text" id="join_mobile1" name="join_mobile1" class="w50" title="지역번호입력" maxlength="3"/> - 
             		<input type="text" id="join_mobile2" name="join_mobile2" class="w50" title="전화번호 앞자리 입력" maxlength="4"/> - 
             		<input type="text" id="join_mobile3" name="join_mobile3" class="w50" title="전화번호 뒷자리 입력" maxlength="4"/>
@@ -296,11 +296,11 @@
             		<span class="text_s11">수신 동의하시면, 이벤트 및 할인쿠폰에 대한 파파존스 서비스를 받으실 수 있습니다.</span>
         		</p>
         		<p>
-        			<label class="tit" for="join_email"><img src="/assets/img/forms/label_email.gif" alt="이메일" /></label>
+        			<label class="tit" for="join_email"><img src="../assets/img/forms/label_email.gif" alt="이메일" /></label>
             		<input type="text" id="join_email" name="join_email" class="w200"/>
         		</p>
         		<p>
-        			<span class="tit"><img src="/assets/img/forms/label_sendMail.gif" alt="이메일수신여부" /></span>
+        			<span class="tit"><img src="../assets/img/forms/label_sendMail.gif" alt="이메일수신여부" /></span>
             		<span class="text_s11">파파존스 정기 메일을 받아보시겠습니까?</span>
             		<label for="join_sendMail_yes">예</label>
             		<input type="radio" id="sendMail" name="join_sendMail" value="Y" onclick="fnRadioClick('meil', this.value)" checked/>
@@ -308,7 +308,7 @@
             		<input type="radio" id="sendMail" name="join_sendMail" value="N" onclick="fnRadioClick('meil', this.value)" />
         		</p>
         		<p style="border-bottom:none">
-        			<span class="tit"><img src="/assets/img/forms/label_address.gif" alt="주소" /></span>
+        			<span class="tit"><img src="../assets/img/forms/label_address.gif" alt="주소" /></span>
             		<label for="zip1" class="hidden">우편번호</label>
             		<input type="text" id="zip1" name="zip1" class="w50" readonly="readonly"/> - 
             		<input type="text" id="zip2" name="zip2" class="w50" readonly="readonly"/>
@@ -338,8 +338,8 @@
   	<!--// join_form -->
   	
   	<div class="btn">
-  		<button type="submit" onclick="fnMember();"><img src="/assets/img/forms/join_btn_join.gif" alt="가입신청" /></button>
-    	<button type="cancel" onclick="fn_cancel();"><img src="/assets/img/forms/join_btn_cancle.gif" alt="취소" /></button>
+  		<button type="submit" onclick="fnMember();"><img src="../assets/img/forms/join_btn_join.gif" alt="가입신청" /></button>
+    	<button type="cancel" onclick="fn_cancel();"><img src="../assets/img/forms/join_btn_cancle.gif" alt="취소" /></button>
   	</div>
 </div>
 <!--// join_form_sectio -->
