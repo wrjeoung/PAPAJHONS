@@ -361,7 +361,7 @@
   		<h3 class="title" style="width:50%; float:left; padding:5px;"><img src="../assets/img/forms/title_searchAddr.gif" alt="주소검색" /></h3>
 		<span class="btn_h23 gray" style="float:right;"><button type="button" onclick="del_pop('search_addr',true, $(this))">취소</button></span> 
     	<div>
- 			<iframe src="/com/zipCode.jsp?flag=member" width="370px" height="198px;" frameborder="0">아이프레임이지원되는 브라우저에서 확인할수있습니다.</iframe>
+ 			<iframe src="../com/zipCode.jsp?flag=member" width="370px" height="198px;" frameborder="0">아이프레임이지원되는 브라우저에서 확인할수있습니다.</iframe>
     	</div>
 		</p>
 	</div>
