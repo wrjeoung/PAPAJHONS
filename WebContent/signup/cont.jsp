@@ -10,16 +10,16 @@
 	<meta http-equiv="Expires" content="0" />
 	<meta http-equiv="Description" content="Order Papa John's Pizza online for fast pizza delivery or pickup. Get Papa John's Special Offers or use Papa John's promo codes for online pizza orders." />
 	<meta http-equiv="Keywords" content="Papa john's, papa johns, papa johns pizza, papa johns online, pizza, papa johns menu, order papa johns, pizza delivery, order pizza online, pizza specials, papa johns coupons, papa johns promo codes, papa johns specials, pizza coupons, fast order, papa's picks, papas picks" />
-	<link rel="icon" href="assets/img/favicon.ico" />
-	<link type="text/css" rel="stylesheet" href="assets/css/import.css" />
-	<link type="text/css" rel="stylesheet" href="assets/css/sub.css" />
-	<link type="text/css" rel="stylesheet" href="assets/css/lib_style.css" />
+	<link rel="icon" href="../assets/img/favicon.ico" />
+	<link type="text/css" rel="stylesheet" href="../assets/css/import.css" />
+	<link type="text/css" rel="stylesheet" href="../assets/css/sub.css" />
+	<link type="text/css" rel="stylesheet" href="../assets/css/lib_style.css" />
 	<title>파파존스-Better Ingredients.Better Pizza.</title>
 	<style type="text/css"></style>
-	<script type="text/javascript" src="assets/js/jquery-1.8.2.min.js"></script>
+	<script type="text/javascript" src="../assets/js/jquery-1.8.2.min.js"></script>
 	<!-- <script type="text/javascript" src="assets/js/common.js"></script> -->
-	<script type="text/javascript" src="assets/js/common.min.js"></script>
-	<script type="text/javascript" src="assets/js/snb.js"></script> 
+	<script type="text/javascript" src="../assets/js/common.min.js"></script>
+	<script type="text/javascript" src="../assets/js/snb.js"></script> 
 </head>
 
 <body>
@@ -30,7 +30,7 @@
 	
   		<!-- header -->
   		<div id="header">
-  			<script type="text/javascript"> $("#header").load("include/header.jsp?menuGb=member&menuId=pj_0005"); </script>
+  			<script type="text/javascript"> $("#header").load("../include/header.jsp?menuGb=member&menuId=pj_0005"); </script>
   		</div>
   		<!-- // header --> 
   
@@ -45,7 +45,7 @@
 	  
     		<!-- content_area -->
     		<div id="content_area">
-  				<script type="text/javascript">$("#content_area").load('member/pj_0005.jsp?menuId=pj_0005&msg=&step='); </script>
+  				<script type="text/javascript">$("#content_area").load('../member/pj_0005.jsp?menuId=pj_0005&msg=&step='); </script>
   			</div>
     		<!--// content_area -->
     		
@@ -54,7 +54,7 @@
   
   		<!-- footer -->
   		<div id="footer">
-  			<script type="text/javascript">	$("#footer").load("include/foot.jsp"); </script>
+  			<script type="text/javascript">	$("#footer").load("../include/foot.jsp"); </script>
   		</div> 
   		<!-- // footer --> 
 
@@ -63,7 +63,7 @@
 
 	<!-- 로딩 이미지 -->
 	<div id="viewLoading">
-		<img src="/assets/img/viewLoading.gif" /> 
+		<img src="../assets/img/viewLoading.gif" /> 
  		<p>Loading....</p> 
 	</div>
 	
