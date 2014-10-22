@@ -1,0 +1,126 @@
+@charset "utf-8";
+/* CSS Document */
+/* 기본 버튼 스타일 */
+
+body{background:url(../img/common/bg.gif) repeat-x; font-family:dotum,"돋움","sans-serif"; font-size:12px; color:#414141;}
+a{color:#414141; text-decoration:none;}
+a:hover{color:#e11837; text-decoration:none;}
+a.active{color:#e11837;}
+
+textarea{padding:10px; color:#666;}
+.text_hidden{text-indent:-9999px; font-size:0px;}
+.text_s11{font-size:11px!important;}
+.text_s12{font-size:12px!important;}
+.bold{font-weight:bold!important;}
+.txt_normal{font-weight:normal!important; font-style:normal!important;}
+.txt_point{color:#e11837!important;}
+.txt_green{color:#06792B!important;}
+.txt_c6{color:#666!important;}
+.txt_c9{color:#999!important;}
+.txt_cent{text-align:center!important;}
+.txt_left{text-align:left!important}
+.txt_right{text-align:right!important}
+.tt_left{padding-left:10px!important; text-align:left!important}
+/* 2013/05/27 추가부분 시작 */
+.text{font-size:12px; line-height:1.8em; letter-spacing:-0.08em; text-align:left;}
+.text p{margin:10px; color:#666;}
+.text ul, .text ol{color:#666;}
+.txt_point_b{background:#eb8778; color:#fff; font-weight:bold;}
+.txt_point_bb{background:#e6435c; color:#fff; font-weight:bold; padding:1px 3px;}
+.txt_title{font-size:1.5em; font-weight:bold;}
+.txt_tit{font-size:1.2em; font-weight:bold;}
+/* 2013/05/27 추가부분 끝 */
+.bord_cs1_b{border-bottom:#ccc solid 1px}
+.line_h1{line-height:1.1em}
+/* 리스트 포지션*/
+.list_flot li{float:left;}
+.list_inline li{display:inline;}
+.absolute_right{position:absolute; top:0px; right:0px;}
+.icon_red{background:url(../img/icon/bu_red.gif) no-repeat 0 5px; line-height:20px; padding-left:6px;}
+
+.padd_t10{padding-top:10px;}
+.padd_b10{padding-bottom:10px;}
+.padd_r10{padding-right:10px;}
+.padd_l10{padding-left:10px;}
+.padd_rl10{padding:0 10px;}
+.padd_tb10{padding:10px 0;}
+.padd_trbl10{padding:10px;}
+
+.padd_t2{padding-top:2px;}
+
+.padd_t5{padding-top:5px;}
+.padd_b5{padding-bottom:5px;}
+.padd_r5{padding-right:5px;}
+.padd_l5{padding-left:5px;}
+.padd_rl5{padding:0 5px;}
+.padd_tb5{padding:5px 0;}
+.padd_trbl5{padding:5px;}
+
+.marg_r10{padding-right:10px;}
+.marg_l10{padding-left:10px;}
+.marg_rl10{margin:0 10px;}
+.marg_tb10{margin:10px 0;}
+.marg_trbl10{margin:10px;}
+/* 2013/05/27 추가부분 시작 */
+.marg_r5{padding-right:5px !important;}
+.marg_l5{padding-left:5px !important;}
+.marg_rl5{margin:0 5px !important;}
+.marg_tb5{margin:5px 0 !important;}
+.marg_trbl5{margin:5px !important;}
+/* 2013/05/27 추가부분 끝 */
+/* 라디오/체크박스 스타일*/
+.has-js .label_check,.label_radio { padding:0 0 0 25px; cursor:pointer}
+.has-js .label_radio { background: url(../img/forms/radio-off.png) no-repeat; }
+.has-js .label_check { background: url(../img/forms/check-off.png) no-repeat; }
+.has-js .label.c_on { background: url(../img/forms/check-on.png) no-repeat; }
+.has-js .label_radio.r_on { background: url(../img/forms/radio-on.png) no-repeat; }
+.has-js .label_check input,.label_radio input { position: absolute; left: -9999px; top:-9999px;}
+.has-js .label_radio{display:block; height:20px;}
+
+.label_check{background:url(../img/forms/check.gif) no-repeat !important;}
+.label_check.on{background:url(../img/forms/check_on.gif) no-repeat !important;}
+/* 0415 추가부분 시작 */
+.over_auto{overflow:auto!important;}
+.bord_none{border:none!important;}
+/* 0415 추가부분 끝 */
+
+/* header inner */
+.logo{float:left; padding-top:17px; cursor:pointer;}
+
+.utilityNav {float:right;}
+.utilityNav li{float:left; padding:10px 10px 10px 0;}
+
+#gnb{width:806px; background:url(../img/common/gnb_bg.gif) no-repeat 0 -4px; height:100px; float:right; position:relative;  padding-top:1px;}
+#gnb .sub li{ float:left; }
+#gnb .sub{position:absolute; width:500px;  top:70px; left:0px ; display:none}
+#gnb .navItem2 .sub{width:820px;}
+#gnb .navItem3 .sub{left:200px;}
+#gnb .navItem4 .sub{left:400px;}
+#gnb .navItem5 .sub{left:530px; width:300px;}
+#gnb .sub a{color:#FFF; padding:5px;}
+/*#gnb .sub a:after{content:'  |  ';}*/
+
+
+/* footer inner */
+.footerUtil{ width:440px; height:13px; position:relative; top:23px; }
+.footerUtil li{float:left; }
+.sns{width:75px; height:31px; position:relative; left:446px;}
+.sns li{float:left; padding-right:3px;}
+/* 0425 수정부분 : address{}*/
+address{width:430px; height:60px; background:url(../img/common/address.gif) no-repeat; text-indent:-9999px; font-size:0px; float:left; position:relative; top:30px; left:10px; clear:both }
+.phone{ float:left; position:relative; left:30px; top:25px;}
+.phone dt{display:none;}
+.phone dd{float:left; }
+
+
+/* 팝업창 박스(아이디검색, 주소검색) */ 
+.pop_box{width:287px; background:url(../img/common/pop_box_bg.png); position:relative;top:0px; left:0px; padding:10px;}
+.pop_box .top {width:307px; height:9px; background:url(../img/common/pop_box_top.png) no-repeat; position:absolute; top:-9px; left:0px;}
+.pop_box .bottom {width:307px; height:12px; background:url(../img/common/pop_box_bottom.png) no-repeat; position:absolute; bottom:-12px; left:0px;}
+
+/* 폼양식 주소찾기 모두 pop_box3로 클래스 변경 : 20130709수정  */
+.pop_box2{width:420px; height:380px; /* min-height:360px; */ background:#fff; border:#e11837 solid 5px; padding:20px; position:absolute; display:none; }
+.pop_box3{width:370px; height:210px; background:#fff; border:#e11837 solid 5px; padding:20px; position:absolute; display:none;}
+.pop_box4{width:287px; height:170px; background:#fff; border:#e11837 solid 5px; padding:20px; position:absolute; display:none;}
+.pop_box5{width:620px; height:420px; background:#fff; border:#e11837 solid 5px; padding:5px; position:absolute; display:none;}
+.pop_box6{width:370px; height:260px; background:#fff; border:#e11837 solid 5px; padding:20px; position:absolute; display:none;}
