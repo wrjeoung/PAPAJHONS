@@ -15,7 +15,8 @@
 <link rel="icon" href="../assets/img/favicon.ico" />
 <link type="text/css" rel="stylesheet" href="../assets/css/import.css" />
 <link type="text/css" rel="stylesheet" href="../assets/css/sub.css" />
-<link type="text/css" rel="stylesheet" href="../assets/css/lib_style.css" />
+<link type="text/css" rel="stylesheet"
+	href="../assets/css/lib_style.css" />
 <!-- 0404 추가부분(달력쿼리 스타일) 시작 -->
 <link type="text/css" rel="stylesheet" href="../assets/css/ui.all.css" />
 <!-- 0404 추가부분(달력쿼리 스타일)끝-->
@@ -129,35 +130,53 @@
 	<div id="skipNavi">
 		<a href="#gnb">메뉴 바로가기</a> <a href="#contents">본문바로가기</a>
 	</div>
-	
+
 	<!-- wrap -->
 	<div id="wrap">
+
 		<!-- header -->
 		<div id="header">
-			<script type="text/javascript">
-				$("#header").load("../include/header.jsp?menuGb=menu&menuId=pj_2003");
-			</script>
+			<script type="text/javascript">	$("#header").load("../include/header.jsp?menuGb=menu&menuId=pj_2003"); </script>
 		</div>
 		<!--// header -->
 
 		<!-- container -->
 		<div id="container">
+
 			<!-- con_header -->
 			<div class="con_header">
-				<p>
-					<!-- 타이틀 -->
+				<p style="background: url(http://www.pji.co.kr/assets/img/sub/conHeader_text_bg.png);">
+					Papa John's MENU
+					<span>
+						<img src="../assets/img/sub/conHeader_text_phone.gif" alt="온라인주문관련 상담번호">
+					</span>
 				</p>
 			</div>
 			<!--// con_header -->
 
 			<!-- con_container -->
 			<div id="con_container">
+
 				<!-- snb -->
 				<div class="snb">
-					<script type="text/javascript">
-						$("#con_container .snb")
-								.load("include/snb.jsp?menuGb=menu&menuId=pj_2003&tab=null");
-					</script>
+					<!--  1메뉴 서브 : menuGd=menu -->
+			  		<h2><img alt="메뉴" src="../assets/img/sub/snb_title_2.gif"></h2>
+			  		<dl class="sub" id="snb1">
+			    		<dt class="dep1 pj_2001"><a href="/sub.jsp?menuGb=menu&menuId=pj_2001"><img src="../assets/img/sub/sub_2_1.gif" alt="이 달의 프로모션"></a></dt>
+			    		<dt class="dep1 pj_2002"><a href="/sub.jsp?menuGb=menu&menuId=pj_2002"><img src="../assets/img/sub/sub_2_2.gif" alt="베스트 메뉴"></a></dt>
+			    		<dt class="dep1 pj_2003"><a href="/sub.jsp?menuGb=menu&menuId=pj_2003"><img src="../assets/img/sub/sub_2_3.gif" alt="오리지널"></a></dt>
+			    		<dt class="dep1 pj_2004"><a href="/sub.jsp?menuGb=menu&menuId=pj_2004"><img src="../assets/img/sub/sub_2_4.gif" alt="골드링"></a></dt>
+			    		<dt class="dep1 pj_2005"><a href="/sub.jsp?menuGb=menu&menuId=pj_2005"><img src="../assets/img/sub/sub_2_5.gif" alt="치즈롤"></a></dt>
+			    		<dt class="dep1 pj_2006"><a href="/sub.jsp?menuGb=menu&menuId=pj_2006"><img src="../assets/img/sub/sub_2_6.gif" alt="씬"></a></dt>
+			    		<dt class="dep1 pj_2008"><a href="/sub.jsp?menuGb=menu&menuId=pj_2008"><img src="../assets/img/sub/sub_2_8.gif" alt="골드링 씬"></a></dt>
+			    		<dt class="dep1 pj_2009"><a href="/sub.jsp?menuGb=menu&menuId=pj_2009"><img src="../assets/img/sub/sub_2_9.gif" alt="하트 씬"></a></dt>
+			    		<!-- 20140425 파파플래터 -->
+			    		<dt class="dep1 pj_2010"><a href="/sub.jsp?menuGb=menu&menuId=pj_2010"><img src="../assets/img/sub/sub_2_10.gif" alt="파파플래터"></a></dt>
+			    		<dt class="dep1 pj_2011"><a href="/sub.jsp?menuGb=menu&menuId=pj_2011"><img src="../assets/img/sub/sub_2_11.gif" alt="세트메뉴"></a></dt>
+			    		<dt class="dep1 pj_2012"><a href="/sub.jsp?menuGb=menu&menuId=pj_2012"><img src="../assets/img/sub/sub_2_12.gif" alt="사이드"></a></dt>
+			    		<dt class="dep1 pj_2013"><a href="/sub.jsp?menuGb=menu&menuId=pj_2013"><img src="../assets/img/sub/sub_2_13.gif" alt="음료"></a></dt>
+			    		<dt class="dep1 pj_2014"><a href="/sub.jsp?menuGb=menu&menuId=pj_2014"><img src="../assets/img/sub/sub_2_14.gif" alt="소스&피클"></a></dt>
+			  		</dl>
 				</div>
 				<!-- //snb -->
 
@@ -179,28 +198,26 @@
 						<!-- 						<div id="myEventBtn" style="display: none;"> -->
 						<!-- 							<button class="listBtn_blank red"  type="button" onclick="$('#worldCupEvent').show();">이벤트 응모 확인</button> -->
 						<!-- 						</div> -->
+
 					</div>
 					<!-- cont -->
 					<div class="cont" style="text-align: center">
 						<!-- include -->
-						<script type="text/javascript">
-							$("#contents .cont").load(
-									'menu/menu.jsp?menuId=pj_2003');
-						</script>
+						<script type="text/javascript"> $("#contents .cont").load('/menu.jsp?menuId=pj_2003'); </script>
 					</div>
 					<!--// cont -->
 				</div>
 				<!--// contents -->
+
 			</div>
 			<!--// con_container -->
+
 		</div>
 		<!--// container -->
 
 		<!-- footer -->
 		<div id="footer">
-			<script type="text/javascript">
-				$("#footer").load("../include/foot.jsp");
-			</script>
+			<script type="text/javascript"> $("#footer").load("../include/foot.jsp"); </script>
 		</div>
 		<!--// footer -->
 
@@ -208,28 +225,26 @@
 		<!-- 		<div id="worldCupEvent" style="display: none;"> -->
 		<!-- 			<script type="text/javascript">	$("#worldCupEvent").load("include/ev_worldcup.jsp?page=mypage"); </script> -->
 		<!-- 		</div> -->
+
 	</div>
 	<!--// wrap -->
-	
+
+
 	<!-- 로딩 이미지 -->
 	<div id="viewLoading">
-		<img src="/assets/img/viewLoading.gif" />
+		<img src="../assets/img/viewLoading.gif" />
 		<p>Loading....</p>
 	</div>
 
 	<!-- 페이스북 좋아요 버튼 스크립트 start-->
 	<div id="fb-root"></div>
-	<script>
-		(function(d, s, id) {
-			var js, fjs = d.getElementsByTagName(s)[0];
-			if (d.getElementById(id))
-				return;
-			js = d.createElement(s);
-			js.id = id;
-			js.src = "//connect.facebook.net/ko_KR/all.js#xfbml=1";
-			fjs.parentNode.insertBefore(js, fjs);
-		}(document, 'script', 'facebook-jssdk'));
-	</script>
+	<script>(function(d, s, id) {
+	  var js, fjs = d.getElementsByTagName(s)[0];
+	  if (d.getElementById(id)) return;
+	  js = d.createElement(s); js.id = id;
+	  js.src = "//connect.facebook.net/ko_KR/all.js#xfbml=1";
+	  fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));</script>
 	<!-- 페이스북 좋아요 버튼 스크립트 end-->
 </body>
 </html>
