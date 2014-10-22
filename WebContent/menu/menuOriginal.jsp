@@ -142,7 +142,6 @@
 
 		<!-- container -->
 		<div id="container">
-
 			<!-- con_header -->
 			<div class="con_header">
 				<p style="background: url(http://www.pji.co.kr/assets/img/sub/conHeader_text_bg.png);">
@@ -156,7 +155,6 @@
 
 			<!-- con_container -->
 			<div id="con_container">
-
 				<!-- snb -->
 				<div class="snb">
 					<!--  1메뉴 서브 : menuGd=menu -->
@@ -183,35 +181,18 @@
 				<!-- contents -->
 				<div id="contents">
 					<div class="top_title">
-						<h2>
-							<!--오리지널 씬-->
-						</h2>
-
-						<!-- 20140319  페이스북 좋아요 버튼 추가 -->
-						<div class="fb-like"
-							data-href="https://www.facebook.com/papajohnskorea"
-							data-layout="standard" data-action="like" data-show-faces="false"
-							data-share="false"></div>
-						<!-- 좋아요 버튼 끝 -->
-
-						<!-- 20140627 이벤트 버튼 숨김(한국 경기 종료 -->
-						<!-- 						<div id="myEventBtn" style="display: none;"> -->
-						<!-- 							<button class="listBtn_blank red"  type="button" onclick="$('#worldCupEvent').show();">이벤트 응모 확인</button> -->
-						<!-- 						</div> -->
-
+						<h2>오리지널 씬</h2>
 					</div>
 					<!-- cont -->
 					<div class="cont" style="text-align: center">
 						<!-- include -->
-						<script type="text/javascript"> $("#contents .cont").load('/menu.jsp?menuId=pj_2003'); </script>
+						<script type="text/javascript"> $("#contents .cont").load('../menu/menuContent.jsp?menuId=pj_2003'); </script>
 					</div>
 					<!--// cont -->
 				</div>
 				<!--// contents -->
-
 			</div>
 			<!--// con_container -->
-
 		</div>
 		<!--// container -->
 
@@ -220,15 +201,8 @@
 			<script type="text/javascript"> $("#footer").load("../include/foot.jsp"); </script>
 		</div>
 		<!--// footer -->
-
-		<!-- 20140520 월드컵 이벤트 마이페이지 화면 -->
-		<!-- 		<div id="worldCupEvent" style="display: none;"> -->
-		<!-- 			<script type="text/javascript">	$("#worldCupEvent").load("include/ev_worldcup.jsp?page=mypage"); </script> -->
-		<!-- 		</div> -->
-
 	</div>
 	<!--// wrap -->
-
 
 	<!-- 로딩 이미지 -->
 	<div id="viewLoading">
