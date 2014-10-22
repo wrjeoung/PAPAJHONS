@@ -118,11 +118,11 @@
     		</li>
     		<li class="navItem4"> <a href="/sub.jsp?menuGb=story&menuId=pj_4001">파파존스이야기</a>
       			<ul class="sub">
-        			<li><h2><a href="/sub.jsp?menuGb=story&menuId=pj_4001&subGb=A"><img src="/assets/img/common/m4_s1.gif" alt="회사소개" /></a></h2></li>
-        			<li><h2><a href="/sub.jsp?menuGb=story&menuId=pj_4002&subGb=0"><img src="/assets/img/common/m4_s2.gif" alt="피자이야기" /></a></h2></li>
-        			<li><h2><a href="/sub.jsp?menuGb=story&menuId=pj_4003&subGb=0"><img src="/assets/img/common/m4_s3.gif" alt="창립이야기" /></a></h2></li>
-        			<li><h2><a href="/sub.jsp?menuGb=story&menuId=pj_4004&subGb=B"><img src="/assets/img/common/m4_s4.gif" alt="홍보센터" /></a></h2></li>
-        			<li><h2><a href="/sub.jsp?menuGb=story&menuId=pj_4005&subGb=C"><img src="/assets/img/common/m4_s5.gif" alt="채용공고" /></a></h2></li>
+        			<li><h2><a href="/sub.jsp?menuGb=story&menuId=pj_4001&subGb=A"><img src="../assets/img/common/m4_s1.gif" alt="회사소개" /></a></h2></li>
+        			<li><h2><a href="/sub.jsp?menuGb=story&menuId=pj_4002&subGb=0"><img src="../assets/img/common/m4_s2.gif" alt="피자이야기" /></a></h2></li>
+        			<li><h2><a href="/sub.jsp?menuGb=story&menuId=pj_4003&subGb=0"><img src="../assets/img/common/m4_s3.gif" alt="창립이야기" /></a></h2></li>
+        			<li><h2><a href="/sub.jsp?menuGb=story&menuId=pj_4004&subGb=B"><img src="../assets/img/common/m4_s4.gif" alt="홍보센터" /></a></h2></li>
+        			<li><h2><a href="/sub.jsp?menuGb=story&menuId=pj_4005&subGb=C"><img src="../assets/img/common/m4_s5.gif" alt="채용공고" /></a></h2></li>
       			</ul>
     		</li>
     		<li class="navItem5"> <a href="/sub.jsp?menuGb=customer&menuId=pj_5001">고객센터</a>
