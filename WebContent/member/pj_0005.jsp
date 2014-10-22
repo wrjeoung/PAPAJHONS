@@ -348,7 +348,7 @@
 <!-- 팝업_아이디찾기&주소찾기 20130709 수정 -->
 <div id="search_id" class="pop_box4"> 
 	<p class="cont">
-  	<h3 class="title" style="width:50%; float:left; padding:10px;"><img src="/assets/img/forms/title_searchId.gif" alt="아이디검색" /></h3> 
+  	<h3 class="title" style="width:50%; float:left; padding:10px;"><img src="../assets/img/forms/title_searchId.gif" alt="아이디검색" /></h3> 
 	<span class="btn_h23 gray" style="float:right;"><button type="button" onclick="del_pop('search_id',true,$(this))">취소</button></span>
     <div>
     	<iframe src="/member/search_id.jsp" width="290px" height="150px;" frameborder="0">아이프레임이지원되는 브라우저에서 확인할수있습니다.</iframe>
@@ -358,7 +358,7 @@
 <!-- //////////// 주소검색 /////////////// -->
 	<div id="search_addr" class="pop_box3" style="position:absolute; top:0px; left:0px; display:none;"><p class="top"></p><p class="bottom"></p>
 		<p class="cont">
-  		<h3 class="title" style="width:50%; float:left; padding:5px;"><img src="assets/img/forms/title_searchAddr.gif" alt="주소검색" /></h3>
+  		<h3 class="title" style="width:50%; float:left; padding:5px;"><img src="../assets/img/forms/title_searchAddr.gif" alt="주소검색" /></h3>
 		<span class="btn_h23 gray" style="float:right;"><button type="button" onclick="del_pop('search_addr',true, $(this))">취소</button></span> 
     	<div>
  			<iframe src="/com/zipCode.jsp?flag=member" width="370px" height="198px;" frameborder="0">아이프레임이지원되는 브라우저에서 확인할수있습니다.</iframe>
