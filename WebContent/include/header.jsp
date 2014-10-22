@@ -81,7 +81,7 @@
 
   		<li><h2><a href="/sub.jsp?menuGb=customer&menuId=pj_5003"><img src="../assets/img/common/topUtil_02.gif" alt="제휴카드안내" /></a></h2></li>
      	<li><h2><a href="../signup/cont.jsp?menuGb=franch&menuId=pj_6001"><img src="../assets/img/common/topUtil_03.gif" alt="가맹점안내" /></a></h2></li>
-      	<li><h2><a href="../signup/sub.jsp?menuGb=customer&menuId=pj_5004"><img src="../assets/img/common/topUtil_04.gif" alt="매장안내" /></a></h2></li>
+      	<li><h2><a href="/sub.jsp?menuGb=customer&menuId=pj_5004"><img src="../assets/img/common/topUtil_04.gif" alt="매장안내" /></a></h2></li>
 		<li><h2><a href="../signup/cont.jsp?menuGb=member&menuId=pj_0001&step=step5&orderNumber="+"null"><img src="../assets/img/common/topUtil_05.gif" alt="온라인주문확인" /></a></h2></li>
     </ul>
     	
