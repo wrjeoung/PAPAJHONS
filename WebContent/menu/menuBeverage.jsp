@@ -127,7 +127,7 @@
       				<!-- cont -->
         			<div class="cont" style="text-align:center">
        					<!-- include -->
-						<script type="text/javascript"> $("#contents .cont").load('/menu.jsp?menuId=pj_2003'); </script>
+						<script type="text/javascript"> $("#contents .cont").load('./menu.jsp?menuId=pj_2003'); </script>
 	      			</div>
       				<!--// cont -->
 				</div>
