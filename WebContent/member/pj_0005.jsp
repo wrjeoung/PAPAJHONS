@@ -1,5 +1,3 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
 <script type="text/javascript">
 	
 	snb(8,3);
@@ -9,7 +7,7 @@
 	
 	$(document).ready(function(){$('#viewLoading').fadeOut(500);});
 	
-	//¹é½ºÆäÀÌ½º ¹öÆ°ÀÇ µÚ·Î°¡±â ±â´ÉÀ» ¸·´Â´Ù.
+	//ë°±ìŠ¤í˜ì´ìŠ¤ ë²„íŠ¼ì˜ ë’¤ë¡œê°€ê¸° ê¸°ëŠ¥ì„ ë§‰ëŠ”ë‹¤.
 	$(document).keydown(function(event)
 	{
 		var code;
@@ -23,19 +21,19 @@
 			var disabled   = event.target.disabled;
 			var type       = event.target.type;
 
- 		//typeÀÌ password³ª textÀÎ input¿Í textarea¸¦ Á¦¿ÜÇÑ ¸ğµç ¿¤¸®¸ÕÆ®¿¡¼­ ¹é½ºÆäÀÌ½º±â´ÉÀ» Á¦ÇÑÇÔ
+ 		//typeì´ passwordë‚˜ textì¸ inputì™€ textareaë¥¼ ì œì™¸í•œ ëª¨ë“  ì—˜ë¦¬ë¨¼íŠ¸ì—ì„œ ë°±ìŠ¤í˜ì´ìŠ¤ê¸°ëŠ¥ì„ ì œí•œí•¨
 			if( !( ((targetNode=="INPUT"&&(type=="text"||type=="password"))||targetNode=="TEXTAREA")&&(!readonly&&!disabled) ) )
 			{
     			if( event.preventDefault )
      				event.preventDefault();		//for i
     			else
-     				event.returnValue = false;		//for Ç¥ÁØ ºê¶ó¿ìÀú(IE9, ÆÄÀÌ¾îÆø½º, ¿ÀÆä¶ó, »çÆÄ¸®, Å©·Ò)
+     				event.returnValue = false;		//for í‘œì¤€ ë¸Œë¼ìš°ì €(IE9, íŒŒì´ì–´í­ìŠ¤, ì˜¤í˜ë¼, ì‚¬íŒŒë¦¬, í¬ë¡¬)
    			}
 		}
 	});
 
 	var alertFrame = $("#notice_0005");
-	// ÀÔ·ÂÇ×¸ñ Check	
+	// ì…ë ¥í•­ëª© Check	
 
 	
 	function fnAlert(msg)
@@ -51,56 +49,56 @@
 		
 		if( document.f1.join_id_chk.value == "N" )
 		{
-			fnAlert("<p>¾ÆÀÌµğ Áßº¹ Ã¼Å©¸¦ ÇØ ÁÖ¼¼¿ä.</p>");
+			fnAlert("<p>ì•„ì´ë”” ì¤‘ë³µ ì²´í¬ë¥¼ í•´ ì£¼ì„¸ìš”.</p>");
 			return;
 		}
 		
 		if( document.f1.join_id.value == "" )
 		{
-			fnAlert("<p>¾ÆÀÌµğ¸¦ ÀÔ·ÂÇØ ÁÖ¼¼¿ä.</p>"); 
+			fnAlert("<p>ì•„ì´ë””ë¥¼ ì…ë ¥í•´ ì£¼ì„¸ìš”.</p>"); 
 			document.f1.join_id.focus();
 			return;
 		}
 		
 		if( document.f1.join_pass.value == "" )
 		{
-			fnAlert("<p>ºñ¹Ğ¹øÈ£¸¦ ÀÔ·ÂÇØ ÁÖ¼¼¿ä.</p>"); 
+			fnAlert("<p>ë¹„ë°€ë²ˆí˜¸ë¥¼ ì…ë ¥í•´ ì£¼ì„¸ìš”.</p>"); 
 			document.f1.join_pass.focus();
 			return;
 		}
 		if( !isABCNum(document.f1.join_pass.value) )
 		{
-			fnAlert("<p>ºñ¹Ğ¹øÈ£´Â ¿µ¹® ¶Ç´Â ¼ıÀÚ¸¸ °¡´ÉÇÕ´Ï´Ù.</p>"); 
+			fnAlert("<p>ë¹„ë°€ë²ˆí˜¸ëŠ” ì˜ë¬¸ ë˜ëŠ” ìˆ«ìë§Œ ê°€ëŠ¥í•©ë‹ˆë‹¤.</p>"); 
 			document.f1.join_pass.focus();
 			return;
 		}
 		if( document.f1.join_pass.value.length < 4 || document.f1.join_pass.value.length > 20 )
 		{
-			fnAlert("<p>ºñ¹Ğ¹øÈ£´Â 4ÀÚ ÀÌ»ó, 20ÀÚ ÀÌ³»·Î ÀÔ·ÂÇÏ¼Å¾ß ÇÕ´Ï´Ù.</p>"); 
+			fnAlert("<p>ë¹„ë°€ë²ˆí˜¸ëŠ” 4ì ì´ìƒ, 20ì ì´ë‚´ë¡œ ì…ë ¥í•˜ì…”ì•¼ í•©ë‹ˆë‹¤.</p>"); 
 			document.f1.join_pass.focus();
 			return;
 		}
 		if( document.f1.join_passConf.value == "" )
 		{
-			fnAlert("<p>ºñ¹Ğ¹øÈ£ È®ÀÎ¶õÀ» ÀÔ·ÂÇØ ÁÖ¼¼¿ä.</p>"); 
+			fnAlert("<p>ë¹„ë°€ë²ˆí˜¸ í™•ì¸ë€ì„ ì…ë ¥í•´ ì£¼ì„¸ìš”.</p>"); 
 			document.f1.join_passConf.focus();
 			return;
 		}
 		if( !isABCNum(document.f1.join_passConf.value) )
 		{
-			fnAlert("<p>ºñ¹Ğ¹øÈ£´Â ¿µ¹® ¶Ç´Â ¼ıÀÚ¸¸ °¡´ÉÇÕ´Ï´Ù.</p>"); 
+			fnAlert("<p>ë¹„ë°€ë²ˆí˜¸ëŠ” ì˜ë¬¸ ë˜ëŠ” ìˆ«ìë§Œ ê°€ëŠ¥í•©ë‹ˆë‹¤.</p>"); 
 			document.f1.join_passConf.focus();
 			return;
 		}
 		if( document.f1.join_passConf.value.length < 4 || document.f1.join_passConf.value.length > 20 )
 		{
-			fnAlert("<p>ºñ¹Ğ¹øÈ£´Â 4ÀÚ ÀÌ»ó, 20ÀÚ ÀÌ³»·Î ÀÔ·ÂÇÏ¼Å¾ß ÇÕ´Ï´Ù.</p>"); 
+			fnAlert("<p>ë¹„ë°€ë²ˆí˜¸ëŠ” 4ì ì´ìƒ, 20ì ì´ë‚´ë¡œ ì…ë ¥í•˜ì…”ì•¼ í•©ë‹ˆë‹¤.</p>"); 
 			document.f1.join_passConf.focus();
 			return;
 		}
 		if( document.f1.join_pass.value != document.f1.join_passConf.value )
 		{
-			fnAlert("<p>ÀÔ·ÂÇÏ½Å ºñ¹Ğ¹øÈ£°¡ ÀÏÄ¡ÇÏÁö ¾Ê½À´Ï´Ù. <br>ºñ¹Ğ¹øÈ£¸¦ È®ÀÎÇØ ÁÖ¼¼¿ä.</p>"); 
+			fnAlert("<p>ì…ë ¥í•˜ì‹  ë¹„ë°€ë²ˆí˜¸ê°€ ì¼ì¹˜í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤. <br>ë¹„ë°€ë²ˆí˜¸ë¥¼ í™•ì¸í•´ ì£¼ì„¸ìš”.</p>"); 
 			document.f1.join_passConf.value = "";
 			document.f1.join_passConf.focus();
 			return;
@@ -108,38 +106,38 @@
 		
 		if( document.f1.join_sex.value == "" )
 		{
-			fnAlert("<p>°¡ÀÔÀÚºĞÀÇ ¼ºº°À» ¼±ÅÃÇØ ÁÖ¼¼¿ä.</p>"); 
+			fnAlert("<p>ê°€ì…ìë¶„ì˜ ì„±ë³„ì„ ì„ íƒí•´ ì£¼ì„¸ìš”.</p>"); 
 			document.f1.join_sex.focus();
 			return;
 		}
 		
 		if( document.f1.join_mobile1.value == "" )
 		{
-			fnAlert("<p>ÈŞ´ëÆù ¹øÈ£¸¦ ÀÔ·ÂÇØ ÁÖ¼¼¿ä.</p>"); 
+			fnAlert("<p>íœ´ëŒ€í° ë²ˆí˜¸ë¥¼ ì…ë ¥í•´ ì£¼ì„¸ìš”.</p>"); 
 			document.f1.join_mobile1.focus();
 			return;
 		}
 		
 		if( document.f1.join_mobile2.value == "" )
 		{
-			fnAlert("<p>ÈŞ´ëÆù ¹øÈ£¸¦ ÀÔ·ÂÇØ ÁÖ¼¼¿ä.</p>"); 
+			fnAlert("<p>íœ´ëŒ€í° ë²ˆí˜¸ë¥¼ ì…ë ¥í•´ ì£¼ì„¸ìš”.</p>"); 
 			document.f1.join_mobile2.focus();
 			return;
 		}
 		
 		if( document.f1.join_mobile3.value == "" )
 		{
-			fnAlert("<p>ÈŞ´ëÆù ¹øÈ£¸¦ ÀÔ·ÂÇØ ÁÖ¼¼¿ä.</p>"); 
+			fnAlert("<p>íœ´ëŒ€í° ë²ˆí˜¸ë¥¼ ì…ë ¥í•´ ì£¼ì„¸ìš”.</p>"); 
 			document.f1.join_mobile3.focus();
 			return;
 		}
 		
 		if( document.f1.addr1.value == "" )
 		{
-			fnAlert("<p>ÁÖ¼Ò¸¦ ÀÔ·ÂÇØ ÁÖ¼¼¿ä.</p>"); 
+			fnAlert("<p>ì£¼ì†Œë¥¼ ì…ë ¥í•´ ì£¼ì„¸ìš”.</p>"); 
 			return;
 		}
-		//ÀüÈ­¹øÈ£ ¼ıÀÚÀÔ·Â Ã¼Å©ÇÏ±â!!
+		//ì „í™”ë²ˆí˜¸ ìˆ«ìì…ë ¥ ì²´í¬í•˜ê¸°!!
 		
 //		$('#viewLoading').fadeIn(500);
 //		document.f1.action = "member/pj_0005_ok.jsp";
@@ -153,12 +151,12 @@
 			dataType : "html",
 			beforeSend: function() 
 			{              
-				//Åë½ÅÀ» ½ÃÀÛÇÒ¶§ Ã³¸®             
+				//í†µì‹ ì„ ì‹œì‘í• ë•Œ ì²˜ë¦¬             
 				$('#viewLoading').show().fadeIn('fast');          
 			},
 	   		complete: function() 
 			{             
-				//Åë½ÅÀÌ ¿Ï·áµÈ ÈÄ Ã³¸®              
+				//í†µì‹ ì´ ì™„ë£Œëœ í›„ ì²˜ë¦¬              
 				$('#viewLoading').fadeOut();  
 			},
 			success  : function(data)
@@ -167,7 +165,7 @@
 //				alert(msg);
 				if( msg == "no" )
 				{
-					alert("Àß¸øµÈ Á¤º¸·Î ÀÎÇØ ¹Ì°¡ÀÔ µÇ¾ú½À´Ï´Ù.\n´Ù½Ã °¡ÀÔÇØ ÁÖ¼¼¿ä."); 
+					alert("ì˜ëª»ëœ ì •ë³´ë¡œ ì¸í•´ ë¯¸ê°€ì… ë˜ì—ˆìŠµë‹ˆë‹¤.\në‹¤ì‹œ ê°€ì…í•´ ì£¼ì„¸ìš”."); 
 					url = '/cont.jsp?menuGb=member&menuId=pj_0005&msg='+msg;
 				}
 				else if( msg == "ok" )
@@ -177,7 +175,7 @@
 				}
 				else if( msg == "dup" )
 				{
-					alert("ÀÌ¹Ì È¸¿ø °¡ÀÔÀÌ µÇ¾î ÀÖ½À´Ï´Ù.");
+					alert("ì´ë¯¸ íšŒì› ê°€ì…ì´ ë˜ì–´ ìˆìŠµë‹ˆë‹¤.");
 					url = '/cont.jsp?menuGb=member&menuId=pj_0005&msg='+msg;	
 				}
 				
@@ -230,97 +228,97 @@
 <div id="join_form_section">
   	<!-- join_form -->
   	<div id="join_form">
-  		<h3 class="title text_hidden">È¸¿ø°¡ÀÔ¾ç½Ä</h3>
+  		<h3 class="title text_hidden">íšŒì›ê°€ì…ì–‘ì‹</h3>
     	<form name="f1" id="f1" method="post">
-    		<input type="hidden" id="calendar_type"  name="calendar_type"  value="Y">                <!-- ¾ç·ÂÀ½·Â±¸ºĞ -->
-    		<input type="hidden" id="join_sms"       name="join_sms"       value="Y">                <!-- SMS ¼ö½Å¿©ºÎ -->
-    		<input type="hidden" id="join_send_mail" name="join_send_mail" value="Y">                <!-- ¸ŞÀÏ¼ö½Å¿©ºÎ -->
-    		<input type="hidden" id="ci"             name="ci"             value="0SA+3KjmSrdvgXo3RO2bQ/uuSMh9ESraUKsepl0KTOa4tkqd0zeVItxod4a76y1qJq++BjE8O2OkzMWGei2c3Q=="/>  <!-- ÈŞ´ëÆùCI     -->
-    		<input type="hidden" id="di"             name="di"             value="MC0GCCqGSIb3DQIJAyEA6gNdv5BC+GOUjH7Wnc+FZ0QsZ9o2yvAog8cal0ywZcY=" />  <!-- ÈŞ´ëÆùDI     -->
+    		<input type="hidden" id="calendar_type"  name="calendar_type"  value="Y">                <!-- ì–‘ë ¥ìŒë ¥êµ¬ë¶„ -->
+    		<input type="hidden" id="join_sms"       name="join_sms"       value="Y">                <!-- SMS ìˆ˜ì‹ ì—¬ë¶€ -->
+    		<input type="hidden" id="join_send_mail" name="join_send_mail" value="Y">                <!-- ë©”ì¼ìˆ˜ì‹ ì—¬ë¶€ -->
+    		<input type="hidden" id="ci"             name="ci"             value="0SA+3KjmSrdvgXo3RO2bQ/uuSMh9ESraUKsepl0KTOa4tkqd0zeVItxod4a76y1qJq++BjE8O2OkzMWGei2c3Q=="/>  <!-- íœ´ëŒ€í°CI     -->
+    		<input type="hidden" id="di"             name="di"             value="MC0GCCqGSIb3DQIJAyEA6gNdv5BC+GOUjH7Wnc+FZ0QsZ9o2yvAog8cal0ywZcY=" />  <!-- íœ´ëŒ€í°DI     -->
     	
     		<div class="form">
       			<p>
-        			<label class="tit" for="join_name"><img src="/assets/img/forms/label_name.gif" alt="ÀÌ¸§" /></label>
-            		<input type="text" id="join_name" name="join_name" value="±èÁÖÇõ" class="base" readOnly />
+        			<label class="tit" for="join_name"><img src="/assets/img/forms/label_name.gif" alt="ì´ë¦„" /></label>
+            		<input type="text" id="join_name" name="join_name" value="ê¹€ì£¼í˜" class="base" readOnly />
         		</p>
         		<p>
-        			<label class="tit" for="join_id"><img src="/assets/img/forms/login_id.gif" alt="¾ÆÀÌµğ" /></label>
+        			<label class="tit" for="join_id"><img src="/assets/img/forms/login_id.gif" alt="ì•„ì´ë””" /></label>
             		<input type="text" id="join_id" name="join_id" class="base" onkeydown="fnIdChk();" readOnly onclick='popup("#search_id"); $("#search_id").focus()'/>  
-            		<span class="btn_h23 gray"><button type="button" onclick='popup("#search_id"); $("#search_id").focus()'>¾ÆÀÌµğ Áßº¹ Ã¼Å©</button></span> 
-            		<span class="text_s11">*¿µ¹®, ¼ıÀÚ¸¸ °¡´É, 4~20 ±ÛÀÚ ÀÌ³».</span>
+            		<span class="btn_h23 gray"><button type="button" onclick='popup("#search_id"); $("#search_id").focus()'>ì•„ì´ë”” ì¤‘ë³µ ì²´í¬</button></span> 
+            		<span class="text_s11">*ì˜ë¬¸, ìˆ«ìë§Œ ê°€ëŠ¥, 4~20 ê¸€ì ì´ë‚´.</span>
             		<input type="hidden" id="join_id_chk" name="join_id_chk" value="N" />  
         		</p>
         		<p>
-        			<label class="tit" for="join_pass"><img src="/assets/img/forms/login_pw.gif" alt="ºñ¹Ğ¹øÈ£" /></label>
-            		<input type="password" id="join_pass" name="join_pass" class="base" maxlength="20" /> <span class="text_s11">*¿µ¹®, ¼ıÀÚ¸¸ °¡´É, 4~20 ±ÛÀÚ ÀÌ³».</span>
+        			<label class="tit" for="join_pass"><img src="/assets/img/forms/login_pw.gif" alt="ë¹„ë°€ë²ˆí˜¸" /></label>
+            		<input type="password" id="join_pass" name="join_pass" class="base" maxlength="20" /> <span class="text_s11">*ì˜ë¬¸, ìˆ«ìë§Œ ê°€ëŠ¥, 4~20 ê¸€ì ì´ë‚´.</span>
         		</p>
         		<p>
-        			<label class="tit" for="join_passConf"><img src="/assets/img/forms/label_passConf.gif" alt="ºñ¹Ğ¹øÈ£È®ÀÎ" /></label>
+        			<label class="tit" for="join_passConf"><img src="/assets/img/forms/label_passConf.gif" alt="ë¹„ë°€ë²ˆí˜¸í™•ì¸" /></label>
             		<input type="password" id="join_passConf" name="join_passConf" class="base" maxlength="20" />
         		</p>
         		<p>
-        			<label class="tit" for="join_birthday1"><img src="/assets/img/forms/label_birthday.gif" alt="»ı³â¿ùÀÏ" /></label>
-            		<select id="join_birthday1" name="join_birthday1" title="ÅÂ¾î³­ ÇØ ÀÔ·Â" ><option value='1985' selected='selected'>1985 ³â</option></select> 
-            		<select id="join_birthday2" name="join_birthday2" title="ÅÂ¾î³­ ¿ù ÀÔ·Â" ><option value='01' selected='selected'>01 ¿ù</option></select> 
-            		<select id="join_birthday3" name="join_birthday3" title="ÅÂ¾î³­ ÀÏ ÀÔ·Â" ><option value='27' selected='selected'>27 ÀÏ</option></select> 
+        			<label class="tit" for="join_birthday1"><img src="/assets/img/forms/label_birthday.gif" alt="ìƒë…„ì›”ì¼" /></label>
+            		<select id="join_birthday1" name="join_birthday1" title="íƒœì–´ë‚œ í•´ ì…ë ¥" ><option value='1985' selected='selected'>1985 ë…„</option></select> 
+            		<select id="join_birthday2" name="join_birthday2" title="íƒœì–´ë‚œ ì›” ì…ë ¥" ><option value='01' selected='selected'>01 ì›”</option></select> 
+            		<select id="join_birthday3" name="join_birthday3" title="íƒœì–´ë‚œ ì¼ ì…ë ¥" ><option value='27' selected='selected'>27 ì¼</option></select> 
             		(
-            		<label for="sun">¾ç·Â</label>
+            		<label for="sun">ì–‘ë ¥</label>
           			<input type="radio" id="sun" name="sun" onclick="fnRadioClick('sun', this.value)" value="Y" checked/>
-            		<label for="lunar">À½·Â</label>
+            		<label for="lunar">ìŒë ¥</label>
             		<input type="radio" id="sun" name="sun" onclick="fnRadioClick('sun', this.value)" value="N"/>
             		)
             		&nbsp;
             		<select id="join_sex" name="join_sex" disabled>
-          				<option value="">¼ºº°</option>
-            			<option value="M" selected="selected" >³²ÀÚ</option>
-            			<option value="F" >¿©ÀÚ</option>
+          				<option value="">ì„±ë³„</option>
+            			<option value="M" selected="selected" >ë‚¨ì</option>
+            			<option value="F" >ì—¬ì</option>
             		</select>
         		</p>
         		<p>
-        			<label class="tit" for="join_phone1"><img src="/assets/img/forms/label_phone.gif" alt="ÀüÈ­¹øÈ£" /></label>
-            		<input type="text" id="join_phone1" name="join_phone1" class="w50" title="Áö¿ª¹øÈ£ÀÔ·Â" maxlength="4"/> - 
-            		<input type="text" id="join_phone2" name="join_phone2" class="w50" title="ÀüÈ­¹øÈ£ ¾ÕÀÚ¸® ÀÔ·Â" maxlength="4"/> - 
-            		<input type="text" id="join_phone3" name="join_phone3" class="w50" title="ÀüÈ­¹øÈ£ µŞÀÚ¸® ÀÔ·Â" maxlength="4"/>
+        			<label class="tit" for="join_phone1"><img src="/assets/img/forms/label_phone.gif" alt="ì „í™”ë²ˆí˜¸" /></label>
+            		<input type="text" id="join_phone1" name="join_phone1" class="w50" title="ì§€ì—­ë²ˆí˜¸ì…ë ¥" maxlength="4"/> - 
+            		<input type="text" id="join_phone2" name="join_phone2" class="w50" title="ì „í™”ë²ˆí˜¸ ì•ìë¦¬ ì…ë ¥" maxlength="4"/> - 
+            		<input type="text" id="join_phone3" name="join_phone3" class="w50" title="ì „í™”ë²ˆí˜¸ ë’·ìë¦¬ ì…ë ¥" maxlength="4"/>
         		</p>
         		<p>
-        			<label class="tit" for="join_mobile1"><img src="/assets/img/forms/login_mobile.gif" alt="ÇÚµåÆù¹øÈ£" /></label>
-            		<input type="text" id="join_mobile1" name="join_mobile1" class="w50" title="Áö¿ª¹øÈ£ÀÔ·Â" maxlength="3"/> - 
-            		<input type="text" id="join_mobile2" name="join_mobile2" class="w50" title="ÀüÈ­¹øÈ£ ¾ÕÀÚ¸® ÀÔ·Â" maxlength="4"/> - 
-            		<input type="text" id="join_mobile3" name="join_mobile3" class="w50" title="ÀüÈ­¹øÈ£ µŞÀÚ¸® ÀÔ·Â" maxlength="4"/>
+        			<label class="tit" for="join_mobile1"><img src="/assets/img/forms/login_mobile.gif" alt="í•¸ë“œí°ë²ˆí˜¸" /></label>
+            		<input type="text" id="join_mobile1" name="join_mobile1" class="w50" title="ì§€ì—­ë²ˆí˜¸ì…ë ¥" maxlength="3"/> - 
+            		<input type="text" id="join_mobile2" name="join_mobile2" class="w50" title="ì „í™”ë²ˆí˜¸ ì•ìë¦¬ ì…ë ¥" maxlength="4"/> - 
+            		<input type="text" id="join_mobile3" name="join_mobile3" class="w50" title="ì „í™”ë²ˆí˜¸ ë’·ìë¦¬ ì…ë ¥" maxlength="4"/>
         		</p>
         		<p style="padding:0 0 0 120px;">
-            		<span style="font-weight:bold; background:url(/assets/img/icon/icon_gray1.gif) no-repeat 0 2px; padding-left:10px;" >SMS¼ö½Åµ¿ÀÇ : </span>
-            		<label for="sms_yes" class="text_s11">¿¹</label>
+            		<span style="font-weight:bold; background:url(/assets/img/icon/icon_gray1.gif) no-repeat 0 2px; padding-left:10px;" >SMSìˆ˜ì‹ ë™ì˜ : </span>
+            		<label for="sms_yes" class="text_s11">ì˜ˆ</label>
             		<input type="radio" id="sms" name="sms" value="Y" onclick="fnRadioClick('sms', this.value)" checked/>
-            		<label for="sms_no" class="text_s11">¾Æ´Ï¿À</label>
+            		<label for="sms_no" class="text_s11">ì•„ë‹ˆì˜¤</label>
             		<input type="radio" id="sms" name="sms" value="N" onclick="fnRadioClick('sms', this.value)" />
             		<br>
-            		<span class="text_s11">¼ö½Å µ¿ÀÇÇÏ½Ã¸é, ÀÌº¥Æ® ¹× ÇÒÀÎÄíÆù¿¡ ´ëÇÑ ÆÄÆÄÁ¸½º ¼­ºñ½º¸¦ ¹ŞÀ¸½Ç ¼ö ÀÖ½À´Ï´Ù.</span>
+            		<span class="text_s11">ìˆ˜ì‹  ë™ì˜í•˜ì‹œë©´, ì´ë²¤íŠ¸ ë° í• ì¸ì¿ í°ì— ëŒ€í•œ íŒŒíŒŒì¡´ìŠ¤ ì„œë¹„ìŠ¤ë¥¼ ë°›ìœ¼ì‹¤ ìˆ˜ ìˆìŠµë‹ˆë‹¤.</span>
         		</p>
         		<p>
-        			<label class="tit" for="join_email"><img src="/assets/img/forms/label_email.gif" alt="ÀÌ¸ŞÀÏ" /></label>
+        			<label class="tit" for="join_email"><img src="/assets/img/forms/label_email.gif" alt="ì´ë©”ì¼" /></label>
             		<input type="text" id="join_email" name="join_email" class="w200"/>
         		</p>
         		<p>
-        			<span class="tit"><img src="/assets/img/forms/label_sendMail.gif" alt="ÀÌ¸ŞÀÏ¼ö½Å¿©ºÎ" /></span>
-            		<span class="text_s11">ÆÄÆÄÁ¸½º Á¤±â ¸ŞÀÏÀ» ¹Ş¾Æº¸½Ã°Ú½À´Ï±î?</span>
-            		<label for="join_sendMail_yes">¿¹</label>
+        			<span class="tit"><img src="/assets/img/forms/label_sendMail.gif" alt="ì´ë©”ì¼ìˆ˜ì‹ ì—¬ë¶€" /></span>
+            		<span class="text_s11">íŒŒíŒŒì¡´ìŠ¤ ì •ê¸° ë©”ì¼ì„ ë°›ì•„ë³´ì‹œê² ìŠµë‹ˆê¹Œ?</span>
+            		<label for="join_sendMail_yes">ì˜ˆ</label>
             		<input type="radio" id="sendMail" name="join_sendMail" value="Y" onclick="fnRadioClick('meil', this.value)" checked/>
-            		<label for="join_sendMail_no">¾Æ´Ï¿À</label>
+            		<label for="join_sendMail_no">ì•„ë‹ˆì˜¤</label>
             		<input type="radio" id="sendMail" name="join_sendMail" value="N" onclick="fnRadioClick('meil', this.value)" />
         		</p>
         		<p style="border-bottom:none">
-        			<span class="tit"><img src="/assets/img/forms/label_address.gif" alt="ÁÖ¼Ò" /></span>
-            		<label for="zip1" class="hidden">¿ìÆí¹øÈ£</label>
+        			<span class="tit"><img src="/assets/img/forms/label_address.gif" alt="ì£¼ì†Œ" /></span>
+            		<label for="zip1" class="hidden">ìš°í¸ë²ˆí˜¸</label>
             		<input type="text" id="zip1" name="zip1" class="w50" readonly="readonly"/> - 
             		<input type="text" id="zip2" name="zip2" class="w50" readonly="readonly"/>
             		<!-- 
-            		<span class="btn_h23 gray"><button type="button"  onclick='popup("#search_addr")'>¿ìÆí¹øÈ£°Ë»ö</button></span>
+            		<span class="btn_h23 gray"><button type="button"  onclick='popup("#search_addr")'>ìš°í¸ë²ˆí˜¸ê²€ìƒ‰</button></span>
             		-->
-            		<span class="btn_h23 gray"><button type="button"  onclick='popup("#search_addr"); $("#search_id").focus()'>ÁÖ¼Ò°Ë»ö</button></span>
+            		<span class="btn_h23 gray"><button type="button"  onclick='popup("#search_addr"); $("#search_id").focus()'>ì£¼ì†Œê²€ìƒ‰</button></span>
        			</p>
        			<p style="padding:0 0 10px 120px; border-bottom:none;">
-            		<label for="join_address1" class="hidden" >ÁÖ¼Ò</label>
+            		<label for="join_address1" class="hidden" >ì£¼ì†Œ</label>
             		<input type="text" id="addr1" name="addr1" class="w400" readonly="readonly"/>
    					<input type="hidden" id="addrZipCode"    name="addrZipCode"    value="" /> 
    					<input type="hidden" id="addrSiName"     name="addrSiName"     value="" /> 
@@ -331,7 +329,7 @@
    					<input type="hidden" id="addrSectorCode" name="addrSectorCode" value="" /> 
        			</p>
        			<p style="padding:0 0 10px 120px;">
-            		<label for="join_address2" class="hidden">»ó¼¼ÁÖ¼ÒÀÔ·Â</label>
+            		<label for="join_address2" class="hidden">ìƒì„¸ì£¼ì†Œì…ë ¥</label>
             		<input type="text" id="addr2" name="addr2" class="w400"/>
        			</p>
       		</div>
@@ -340,42 +338,42 @@
   	<!--// join_form -->
   	
   	<div class="btn">
-  		<button type="submit" onclick="fnMember();"><img src="/assets/img/forms/join_btn_join.gif" alt="°¡ÀÔ½ÅÃ»" /></button>
-    	<button type="cancel" onclick="fn_cancel();"><img src="/assets/img/forms/join_btn_cancle.gif" alt="Ãë¼Ò" /></button>
+  		<button type="submit" onclick="fnMember();"><img src="/assets/img/forms/join_btn_join.gif" alt="ê°€ì…ì‹ ì²­" /></button>
+    	<button type="cancel" onclick="fn_cancel();"><img src="/assets/img/forms/join_btn_cancle.gif" alt="ì·¨ì†Œ" /></button>
   	</div>
 </div>
 <!--// join_form_sectio -->
 
-<!--[ 2013/3/22 ] Ãß°¡ ºÎºĞ ½ÃÀÛ-->
-<!-- ÆË¾÷_¾ÆÀÌµğÃ£±â&ÁÖ¼ÒÃ£±â 20130709 ¼öÁ¤ -->
+<!--[ 2013/3/22 ] ì¶”ê°€ ë¶€ë¶„ ì‹œì‘-->
+<!-- íŒì—…_ì•„ì´ë””ì°¾ê¸°&ì£¼ì†Œì°¾ê¸° 20130709 ìˆ˜ì • -->
 <div id="search_id" class="pop_box4"> 
 	<p class="cont">
-  	<h3 class="title" style="width:50%; float:left; padding:10px;"><img src="/assets/img/forms/title_searchId.gif" alt="¾ÆÀÌµğ°Ë»ö" /></h3> 
-	<span class="btn_h23 gray" style="float:right;"><button type="button" onclick="del_pop('search_id',true,$(this))">Ãë¼Ò</button></span>
+  	<h3 class="title" style="width:50%; float:left; padding:10px;"><img src="/assets/img/forms/title_searchId.gif" alt="ì•„ì´ë””ê²€ìƒ‰" /></h3> 
+	<span class="btn_h23 gray" style="float:right;"><button type="button" onclick="del_pop('search_id',true,$(this))">ì·¨ì†Œ</button></span>
     <div>
-    	<iframe src="/member/search_id.jsp" width="290px" height="150px;" frameborder="0">¾ÆÀÌÇÁ·¹ÀÓÀÌÁö¿øµÇ´Â ºê¶ó¿ìÀú¿¡¼­ È®ÀÎÇÒ¼öÀÖ½À´Ï´Ù.</iframe>
+    	<iframe src="/member/search_id.jsp" width="290px" height="150px;" frameborder="0">ì•„ì´í”„ë ˆì„ì´ì§€ì›ë˜ëŠ” ë¸Œë¼ìš°ì €ì—ì„œ í™•ì¸í• ìˆ˜ìˆìŠµë‹ˆë‹¤.</iframe>
     </div>
 	</p>
 </div>
-<!-- //////////// ÁÖ¼Ò°Ë»ö /////////////// -->
+<!-- //////////// ì£¼ì†Œê²€ìƒ‰ /////////////// -->
 	<div id="search_addr" class="pop_box3" style="position:absolute; top:0px; left:0px; display:none;"><p class="top"></p><p class="bottom"></p>
 		<p class="cont">
-  		<h3 class="title" style="width:50%; float:left; padding:5px;"><img src="assets/img/forms/title_searchAddr.gif" alt="ÁÖ¼Ò°Ë»ö" /></h3>
-		<span class="btn_h23 gray" style="float:right;"><button type="button" onclick="del_pop('search_addr',true, $(this))">Ãë¼Ò</button></span> 
+  		<h3 class="title" style="width:50%; float:left; padding:5px;"><img src="assets/img/forms/title_searchAddr.gif" alt="ì£¼ì†Œê²€ìƒ‰" /></h3>
+		<span class="btn_h23 gray" style="float:right;"><button type="button" onclick="del_pop('search_addr',true, $(this))">ì·¨ì†Œ</button></span> 
     	<div>
- 			<iframe src="/com/zipCode.jsp?flag=member" width="370px" height="198px;" frameborder="0">¾ÆÀÌÇÁ·¹ÀÓÀÌÁö¿øµÇ´Â ºê¶ó¿ìÀú¿¡¼­ È®ÀÎÇÒ¼öÀÖ½À´Ï´Ù.</iframe>
+ 			<iframe src="/com/zipCode.jsp?flag=member" width="370px" height="198px;" frameborder="0">ì•„ì´í”„ë ˆì„ì´ì§€ì›ë˜ëŠ” ë¸Œë¼ìš°ì €ì—ì„œ í™•ì¸í• ìˆ˜ìˆìŠµë‹ˆë‹¤.</iframe>
     	</div>
 		</p>
 	</div>
-<!--[ 2013/3/22 ] Ãß°¡ ºÎºĞ ³¡-->
+<!--[ 2013/3/22 ] ì¶”ê°€ ë¶€ë¶„ ë-->
 
 
-<!--20131212  ¾Ë·µ º¯°æ-->
+<!--20131212  ì•ŒëŸ¿ ë³€ê²½-->
 <div class="notice" id="notice_0005" style="display:none; width:340px; height:auto; min-height:140px; padding:1px; position:absolute; top:0; left:0; z-index:1000;"> 
     <div class="header">
 	    <div class="left" style="float:left; width:6px;  background:url(../assets/img/usa/modal_header_left.png) top left no-repeat; "></div>
 	    <div class="center" style="float:left; width:328px; height:40px; background:url(../assets/img/usa/modal_header_center.png) top center repeat-x; ">
-	    	<h2>¾Ë¸²!!</h2> 
+	    	<h2>ì•Œë¦¼!!</h2> 
 	    </div>
 	    <div class="right" style="float:right; width:6px; height:40px; background:url(../assets/img/usa/modal_header_right.png) top right no-repeat; "></div>
 	</div>    
@@ -383,7 +381,7 @@
     	<br><p></p> 
     </div>  
   	<div class="footer" style="position: absolute; height:32px; background:#fff; " >
-		<div class="button" style="bottom:20px;"><button class="alertBtn gray" type="button" onclick="del_pop2('#notice_0005');">È® ÀÎ</button></div> 
+		<div class="button" style="bottom:20px;"><button class="alertBtn gray" type="button" onclick="del_pop2('#notice_0005');">í™• ì¸</button></div> 
 		<div class="left" style="float:left; width:6px; height:8px; background:url(../assets/img/usa/modal_footer_left.png) bottom left no-repeat; "></div>
     	<div class="center" style="float:left; width:328px; height:8px; background:url(../assets/img/usa/modal_footer_center.png) bottom center repeat-x; "></div>
     	<div class="right" style="float:right; width:6px; height:8px; background:url(../assets/img/usa/modal_footer_right.png) bottom right no-repeat; "></div>
