@@ -322,7 +322,7 @@
 
 	$btn.bind("mouseenter", fn_over);
 	function fn_over() {
-		$(this).find("img").attr("src", "assets/img/sub/btn_detail_on.gif");
+		$(this).find("img").attr("src", "../assets/img/sub/btn_detail_on.gif");
 	};
 
 	$btn.bind("mouseleave", fn_out);
@@ -334,12 +334,12 @@
 		$btn.each(function(i) {
 			if ($btn.eq(i).hasClass("active")) {
 				$btn.eq(i).find("img").attr("src",
-						"assets/img/sub/btn_detail_on.gif");
+						"../assets/img/sub/btn_detail_on.gif");
 				$btn.eq(i).unbind("mouseenter", fn_over);
 				$btn.eq(i).unbind("mouseleave", fn_out);
 			} else {
 				$btn.eq(i).find("img").attr("src",
-						"assets/img/sub/btn_detail.gif");
+						"../assets/img/sub/btn_detail.gif");
 				$btn.eq(i).bind("mouseenter", fn_over);
 				$btn.eq(i).bind("mouseleave", fn_out);
 			}

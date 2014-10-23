@@ -162,7 +162,7 @@
 			  		<dl class="sub" id="snb1">
 			    		<dt class="dep1 pj_2001"><a href="/sub.jsp?menuGb=menu&menuId=pj_2001"><img src="../assets/img/sub/sub_2_1.gif" alt="이 달의 프로모션"></a></dt>
 			    		<dt class="dep1 pj_2002"><a href="/sub.jsp?menuGb=menu&menuId=pj_2002"><img src="../assets/img/sub/sub_2_2.gif" alt="베스트 메뉴"></a></dt>
-			    		<dt class="dep1 pj_2003"><a href="/sub.jsp?menuGb=menu&menuId=pj_2003"><img src="../assets/img/sub/sub_2_3.gif" alt="오리지널"></a></dt>
+			    		<dt class="dep1 pj_2003"><a href="../menu/menuOriginal.jsp?menuGb=menu&menuId=pj_2003"><img src="../assets/img/sub/sub_2_3.gif" alt="오리지널"></a></dt>
 			    		<dt class="dep1 pj_2004"><a href="/sub.jsp?menuGb=menu&menuId=pj_2004"><img src="../assets/img/sub/sub_2_4.gif" alt="골드링"></a></dt>
 			    		<dt class="dep1 pj_2005"><a href="/sub.jsp?menuGb=menu&menuId=pj_2005"><img src="../assets/img/sub/sub_2_5.gif" alt="치즈롤"></a></dt>
 			    		<dt class="dep1 pj_2006"><a href="/sub.jsp?menuGb=menu&menuId=pj_2006"><img src="../assets/img/sub/sub_2_6.gif" alt="씬"></a></dt>
@@ -186,7 +186,7 @@
 					<!-- cont -->
 					<div class="cont" style="text-align: center">
 						<!-- include -->
-						<script type="text/javascript"> $("#contents .cont").load('../menu/menuContent.jsp?menuId=pj_2003'); </script>
+						<script type="text/javascript"> $("#contents .cont").load('../menu/content.jsp?menuId=pj_2003'); </script>
 					</div>
 					<!--// cont -->
 				</div>

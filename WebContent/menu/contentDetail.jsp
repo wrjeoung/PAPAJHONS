@@ -254,7 +254,7 @@ input, select, img {
 			<!--  0401 추가부분 시작  -->
 			<p class="close">
 				<button type="button">
-					<img src="/assets/img/sub/btn_detail_close.gif" alt="닫기" />
+					<img src="../assets/img/sub/btn_detail_close.gif" alt="닫기" />
 				</button>
 			</p>
 			<!-- 0401 추가부분 끝 -->
@@ -270,31 +270,31 @@ input, select, img {
 			<div class="detail_comm">
 				<dl>
 					<dt>
-						<img src="/assets/img/menu/detail_title_topping.gif" alt="토핑재료">
+						<img src="../assets/img/menu/detail_title_topping.gif" alt="토핑재료">
 					</dt>
 					<dd>토마토 소스, 모짜렐라 치즈</dd>
 					<dt>
-						<img src="/assets/img/menu/detail_title_size.gif" alt="사이즈별 가격">
+						<img src="../assets/img/menu/detail_title_size.gif" alt="사이즈별 가격">
 					</dt>
 					<dd>
 						<ul>
 							<li><span class="size_img"><img
-									src="/assets/img/menu/detail_size_R.gif" alt="9 인치사이즈" /></span> <span
+									src="../assets/img/menu/detail_size_R.gif" alt="9 인치사이즈" /></span> <span
 								class="가격">15900원</span></li>
 							<li><span class="size_img"><img
-									src="/assets/img/menu/detail_size_L.gif" alt="12 인치사이즈" /></span> <span
+									src="../assets/img/menu/detail_size_L.gif" alt="12 인치사이즈" /></span> <span
 								class="가격">21500원</span></li>
 							<li><span class="size_img"><img
-									src="/assets/img/menu/detail_size_F.gif" alt="14 인치사이즈" /></span> <span
+									src="../assets/img/menu/detail_size_F.gif" alt="14 인치사이즈" /></span> <span
 								class="가격">25900원</span></li>
 							<li><span class="size_img"><img
-									src="/assets/img/menu/detail_size_P.gif" alt="16 인치사이즈" /></span> <span
+									src="../assets/img/menu/detail_size_P.gif" alt="16 인치사이즈" /></span> <span
 								class="가격">34500원</span></li>
 						</ul>
 					</dd>
 
 					<dt>
-						<img src="/assets/img/menu/detail_title_alre.gif" alt="알레르기 음식표기">
+						<img src="../assets/img/menu/detail_title_alre.gif" alt="알레르기 음식표기">
 					</dt>
 					<dd>치즈(우유),대두,밀,돼지고기,토마토</dd>
 					<dt class="hidden">성분표시</dt>
@@ -328,7 +328,7 @@ input, select, img {
 
 					<div class="spcInstruction_btn">
 						<p class="btn">
-							<img src="/assets/img/order/btn_opt_off.gif" alt="옵션변경" />
+							<img src="../assets/img/order/btn_opt_off.gif" alt="옵션변경" />
 						</p>
 						<div class="spcInstruction_comment">
 							<p class="center">
@@ -433,11 +433,11 @@ input, select, img {
 
 					<button class="cart" type="button"
 						onclick="fnGetPizzaCnt('10','10','1018','4001','오리지널','addCart')">
-						<img src="/assets/img/menu/dtaile_btn_cart.gif" alt="장바구니 담기" />
+						<img src="../assets/img/menu/dtaile_btn_cart.gif" alt="장바구니 담기" />
 					</button>
 					<button class="order" type="button"
 						onclick="fnGetPizzaCnt('10','10','1018','4001','오리지널','addCartNgo')">
-						<img src="/assets/img/menu/dtaile_btn_order.gif" alt="바로 주문하기" />
+						<img src="../assets/img/menu/dtaile_btn_order.gif" alt="바로 주문하기" />
 					</button>
 				</div>
 			</form>
@@ -483,7 +483,7 @@ input, select, img {
 				box.css("display", "block");
 				old_sid = "";
 				$(this).find("img").attr("src",
-						root + "/assets/img/order/btn_opt_on.gif");
+						root + "../assets/img/order/btn_opt_on.gif");
 			} else {
 				box.find("span").each(function() {
 					$(this).text("▼");
@@ -491,7 +491,7 @@ input, select, img {
 				$(".option").slideUp(); //안에 펼처져있는 옵션들
 				box.stop().slideUp();
 				$(this).find("img").attr("src",
-						root + "/assets/img/order/btn_opt_off.gif");
+						root + "../assets/img/order/btn_opt_off.gif");
 			}
 		}
 
