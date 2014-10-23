@@ -6,7 +6,7 @@
 		<div class="menuBox">
 			<div class="menu" id="menu_0">
 				<p class="m_list">
-					<img class="img" src="/assets/img/menu/img/10/list_img_1018.png"
+					<img class="img" src="../assets/img/menu/img/list_img_1018.png"
 						alt="마가리타" title="마가리타" onerror="fnNoImages($(this))" />
 				</p>
 

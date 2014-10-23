@@ -89,7 +89,7 @@
   		<h3 class="hidden">글로벌 메뉴</h3>
   		<ul>
     		<li class="navItem1"> <a href="/order.jsp">온라인주문</a> </li>
-    		<li class="navItem2"> <a href="/sub.jsp?menuGb=menu&menuId=pj_2003">메뉴</a>
+    		<li class="navItem2"> <a href="../menu/sub.jsp?menuGb=menu&menuId=pj_2003">메뉴</a>
       			<ul class="sub">
         			<li><h2><a href="/sub.jsp?menuGb=menu&menuId=pj_2001"><img src="../assets/img/common/m2_s01.gif" alt="이달의 프로모션" /></a></h2></li>
         			<li><h2><a href="/sub.jsp?menuGb=menu&menuId=pj_2002"><img src="../assets/img/common/m2_s02.gif" alt="베스트메뉴" /></a></h2></li>

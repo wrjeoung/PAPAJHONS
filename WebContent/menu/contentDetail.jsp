@@ -246,7 +246,7 @@ input, select, img {
 			var $doughType = "오리지널";
 		</script>
 		<div class="db_img">
-			<img src="/assets/img/menu/img/10/detail_img_1018.png" alt="마가리타"
+			<img src="../assets/img/menu/img/detail_img_1018.png" alt="마가리타"
 				title="마가리타"
 				onerror="this.src='/assets/img/menu/img/detail_noImage.png'" />
 		</div>
