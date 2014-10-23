@@ -12,7 +12,7 @@
 
 				<p class="b_detail" style="cursor: pointer"
 					onclick="fnMenuInfo('마가리타,10,1018,4001,,0,,10 ',$(this));">
-					<img src="assets/img/sub/btn_detail.gif" alt="마가리타" />
+					<img src="../assets/img/sub/btn_detail.gif" alt="마가리타" />
 				</p>
 			</div>
 
@@ -24,7 +24,7 @@
 
 				<p class="b_detail" style="cursor: pointer"
 					onclick="fnMenuInfo('프리미엄직화불고기,10,1049,4001,,1,,10 ',$(this));">
-					<img src="assets/img/sub/btn_detail.gif" alt="프리미엄직화불고기" />
+					<img src="../assets/img/sub/btn_detail.gif" alt="프리미엄직화불고기" />
 				</p>
 			</div>
 
@@ -37,7 +37,7 @@
 
 				<p class="b_detail" style="cursor: pointer"
 					onclick="fnMenuInfo('수퍼 파파스,10,1019,4001,,2,,10 ',$(this));">
-					<img src="assets/img/sub/btn_detail.gif" alt="수퍼 파파스" />
+					<img src="../assets/img/sub/btn_detail.gif" alt="수퍼 파파스" />
 				</p>
 			</div>
 		</div>
@@ -390,7 +390,7 @@
 
 		// 20140429 베스트메뉴 구분값 추가
 		this.srcUrl = function() {
-			return "menu/detail.jsp?menuName=" + this.menuName
+			return "../menu/contentDetail.jsp?menuName=" + this.menuName
 					+ "&menuLagCode=" + this.menuLagCode + "&menuMidCode="
 					+ this.menuMidCode + "&menuSubCode=" + this.menuSubCode
 					+ "&menuDtlImage=" + this.menuDtlImage + "&menuSeq="
