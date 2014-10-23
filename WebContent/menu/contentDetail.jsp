@@ -14,9 +14,9 @@
 <meta http-equiv="Keywords"
 	content="Papa john's, papa johns, papa johns pizza, papa johns online, pizza, papa johns menu, order papa johns, pizza delivery, order pizza online, pizza specials, papa johns coupons, papa johns promo codes, papa johns specials, pizza coupons, fast order, papa's picks, papas picks" />
 <title>파파존스-Better Ingredients.Better Pizza.</title>
-<link type="text/css" rel="stylesheet" href="/assets/css/reset.css" />
-<link type="text/css" rel="stylesheet" href="/assets/css/sub.css" />
-<link type="text/css" rel="stylesheet" href="/assets/css/lib_style.css" />
+<link type="text/css" rel="stylesheet" href="../assets/css/reset.css" />
+<link type="text/css" rel="stylesheet" href="../assets/css/sub.css" />
+<link type="text/css" rel="stylesheet" href="../assets/css/lib_style.css" />
 
 <style type="text/css">
 #iframe_detail {
@@ -187,10 +187,8 @@ input, select, img {
 	padding: 3px 0px 1px 2px;
 }
 </style>
-
-<script type="text/javascript" src="/assets/js/jquery-1.8.2.min.js"></script>
-
-<script type="text/javascript" src="/assets/js/common.min.js"></script>
+<script type="text/javascript" src="../assets/js/jquery-1.8.2.min.js"></script>
+<script type="text/javascript" src="../assets/js/common.min.js"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
 		//페이지 시작 시로딩 이미지 숨기기
@@ -243,14 +241,10 @@ input, select, img {
 
 <body>
 	<div id="iframe_detail">
-
-
 		<script type="text/javascript">
 			var $mainType = "10";
 			var $doughType = "오리지널";
 		</script>
-
-
 		<div class="db_img">
 			<img src="/assets/img/menu/img/10/detail_img_1018.png" alt="마가리타"
 				title="마가리타"
@@ -275,7 +269,6 @@ input, select, img {
 
 			<div class="detail_comm">
 				<dl>
-
 					<dt>
 						<img src="/assets/img/menu/detail_title_topping.gif" alt="토핑재료">
 					</dt>
@@ -285,23 +278,18 @@ input, select, img {
 					</dt>
 					<dd>
 						<ul>
-
 							<li><span class="size_img"><img
 									src="/assets/img/menu/detail_size_R.gif" alt="9 인치사이즈" /></span> <span
 								class="가격">15900원</span></li>
-
 							<li><span class="size_img"><img
 									src="/assets/img/menu/detail_size_L.gif" alt="12 인치사이즈" /></span> <span
 								class="가격">21500원</span></li>
-
 							<li><span class="size_img"><img
 									src="/assets/img/menu/detail_size_F.gif" alt="14 인치사이즈" /></span> <span
 								class="가격">25900원</span></li>
-
 							<li><span class="size_img"><img
 									src="/assets/img/menu/detail_size_P.gif" alt="16 인치사이즈" /></span> <span
 								class="가격">34500원</span></li>
-
 						</ul>
 					</dd>
 
@@ -330,18 +318,12 @@ input, select, img {
 			<!-- //detail_comm -->
 			<form action="">
 				<div class="cart_order">
-
 					<label for="select_size" class="hidden">사이즈 선택</label> <select
 						id="select_size">
-
 						<option value="50330,10,3001">R-15900</option>
-
 						<option value="50332,10,3002">L-21500</option>
-
 						<option value="50329,10,3003">F-25900</option>
-
 						<option value="50322,10,3005">P-34500</option>
-
 					</select>
 
 					<div class="spcInstruction_btn">
@@ -359,7 +341,6 @@ input, select, img {
 					</div>
 
 					<!-- 20131004 소스&치즈&커팅&베이크 옵션주기 -->
-
 					<div id="option_box_0" class="option_box">
 						<!--  display: none; -->
 						<ul class="spcInstructions">
@@ -461,7 +442,6 @@ input, select, img {
 				</div>
 			</form>
 		</div>
-
 	</div>
 
 	<!--   0401 추가부분 시작  -->
