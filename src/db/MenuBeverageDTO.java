@@ -3,9 +3,9 @@ package db;
 public class MenuBeverageDTO {
 	private int no;
 	private String name;
-	private String lPrice;
-	private String rPice;
-	private String imagePath;
+	private String lprice;
+	private String rprice;
+	private String imagepath;
 	public int getNo() {
 		return no;
 	}
@@ -18,23 +18,25 @@ public class MenuBeverageDTO {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getlPrice() {
-		return lPrice;
+
+	public String getLprice() {
+		return lprice;
 	}
-	public void setlPrice(String lPrice) {
-		this.lPrice = lPrice;
+	public void setLprice(String lprice) {
+		this.lprice = lprice;
 	}
-	public String getrPice() {
-		return rPice;
+
+	public String getRprice() {
+		return rprice;
 	}
-	public void setrPice(String rPice) {
-		this.rPice = rPice;
+	public void setRprice(String rprice) {
+		this.rprice = rprice;
 	}
-	public String getImagePath() {
-		return imagePath;
+	public String getImagepath() {
+		return imagepath;
 	}
-	public void setImagePath(String imagePath) {
-		this.imagePath = imagePath;
+	public void setImagepath(String imagepath) {
+		this.imagepath = imagepath;
 	}
 
 }

@@ -1,0 +1,24 @@
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<!--  용량제한 100MB 설정. -->
+	<constant name="struts.multipart.maxSize" value="104857600"/>
+	
+	<package name="menu" extends="struts-default">
+		<interceptors>
+			<interceptor name="ibatis" class="menu.IbartisInterceptor"/>
+		</interceptors>
+		
+		<action name="subAction" class="menu.SubAction">
+			<interceptor-ref name="prepare"/>
+			<interceptor-ref name="modelDriven"/>
+			<interceptor-ref name="ibatis"/>
+			<interceptor-ref name="params"/>
+			<result>
+				/menu/sub.jsp
+			</result>
+		</action>
+	</package>
+</struts>
