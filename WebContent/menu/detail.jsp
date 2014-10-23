@@ -14,9 +14,9 @@
 <meta http-equiv="Keywords"
 	content="Papa john's, papa johns, papa johns pizza, papa johns online, pizza, papa johns menu, order papa johns, pizza delivery, order pizza online, pizza specials, papa johns coupons, papa johns promo codes, papa johns specials, pizza coupons, fast order, papa's picks, papas picks" />
 <title>파파존스-Better Ingredients.Better Pizza.</title>
-<link type="text/css" rel="stylesheet" href="/assets/css/reset.css" />
-<link type="text/css" rel="stylesheet" href="/assets/css/sub.css" />
-<link type="text/css" rel="stylesheet" href="/assets/css/lib_style.css" />
+<link type="text/css" rel="stylesheet" href="../assets/css/reset.css" />
+<link type="text/css" rel="stylesheet" href="../assets/css/sub.css" />
+<link type="text/css" rel="stylesheet" href="../assets/css/lib_style.css" />
 
 <style type="text/css">
 #iframe_detail {
@@ -188,9 +188,9 @@ input,select,img {
 }
 </style>
 
-<script type="text/javascript" src="/assets/js/jquery-1.8.2.min.js"></script>
+<script type="text/javascript" src="../assets/js/jquery-1.8.2.min.js"></script>
 
-<script type="text/javascript" src="/assets/js/common.min.js"></script>
+<script type="text/javascript" src="../assets/js/common.min.js"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
 		//페이지 시작 시로딩 이미지 숨기기
@@ -260,7 +260,7 @@ input,select,img {
 			<!--  0401 추가부분 시작  -->
 			<p class="close">
 				<button type="button">
-					<img src="/assets/img/sub/btn_detail_close.gif" alt="닫기" />
+					<img src="../assets/img/sub/btn_detail_close.gif" alt="닫기" />
 				</button>
 			</p>
 			<!-- 0401 추가부분 끝 -->
@@ -325,7 +325,7 @@ input,select,img {
 	</div>
 
 	<!--   0401 추가부분 시작  -->
-	<script type="text/javascript" src="/assets/js/cart.js"></script>
+	<script type="text/javascript" src="../assets/js/cart.js"></script>
 	<script type="text/javascript">
 		var root = "";
 		var setMenuInfo = '';

@@ -1,357 +1,49 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="EUC-KR"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <h1 class="hidden">메뉴 안내</h1>
 <form id="f1" name="f1">
 	<div id="menuBoxWrap">
-
 		<div class="menuBox">
-
-			<div class="menu" id="menu_0">
-				<p class="m_list">
-
-					<img class="img" src="/assets/img/menu/img/10/list_img_1018.png"
-						alt="마가리타" title="마가리타" onerror="fnNoImages($(this))" />
-
-				</p>
-
-				<p class="b_detail" style="cursor: pointer"
-					onclick="fnMenuInfo('마가리타,10,1018,4001,,0,,10 ',$(this));">
-					<img src="../assets/img/sub/btn_detail.gif" alt="마가리타" />
-				</p>
-
-			</div>
-
-
-			<div class="menu" id="menu_1">
-				<p class="m_list">
-
-					<img class="img" src="/assets/img/menu/img/10/list_img_1049.png"
-						alt="프리미엄직화불고기" title="프리미엄직화불고기" onerror="fnNoImages($(this))" />
-
-				</p>
-
-				<p class="b_detail" style="cursor: pointer"
-					onclick="fnMenuInfo('프리미엄직화불고기,10,1049,4001,,1,,10 ',$(this));">
-					<img src="assets/img/sub/btn_detail.gif" alt="프리미엄직화불고기" />
-				</p>
-
-			</div>
-
-
-			<div class="menu" id="menu_2">
-				<p class="m_list">
-
-					<img class="img" src="/assets/img/menu/img/10/list_img_1019.png"
-						alt="수퍼 파파스" title="수퍼 파파스" onerror="fnNoImages($(this))" />
-
-				</p>
-
-				<p class="b_detail" style="cursor: pointer"
-					onclick="fnMenuInfo('수퍼 파파스,10,1019,4001,,2,,10 ',$(this));">
-					<img src="assets/img/sub/btn_detail.gif" alt="수퍼 파파스" />
-				</p>
-
-			</div>
-
-
+			<c:if test="${ param.menuId eq 'pj_2013' }">
+				<div class="menu" id="menu_0">
+					<p class="m_list">
+						<img class="img" src="/assets/img/menu/img/10/list_img_1018.png"
+							alt="마가리타" title="마가리타" onerror="fnNoImages($(this))" />
+					</p>
+	
+					<p class="b_detail" style="cursor: pointer"
+						onclick="fnMenuInfo('마가리타,10,1018,4001,,0,,10 ',$(this));">
+						<img src="../assets/img/sub/btn_detail.gif" alt="마가리타" />
+					</p>
+				</div>
+	
+				<div class="menu" id="menu_1">
+					<p class="m_list">
+						<img class="img" src="/assets/img/menu/img/10/list_img_1049.png"
+							alt="프리미엄직화불고기" title="프리미엄직화불고기" onerror="fnNoImages($(this))" />
+					</p>
+	
+					<p class="b_detail" style="cursor: pointer"
+						onclick="fnMenuInfo('프리미엄직화불고기,10,1049,4001,,1,,10 ',$(this));">
+						<img src="assets/img/sub/btn_detail.gif" alt="프리미엄직화불고기" />
+					</p>
+				</div>
+	
+				<div class="menu" id="menu_2">
+					<p class="m_list">
+						<img class="img" src="/assets/img/menu/img/10/list_img_1019.png"
+							alt="수퍼 파파스" title="수퍼 파파스" onerror="fnNoImages($(this))" />
+					</p>
+	
+					<p class="b_detail" style="cursor: pointer"
+						onclick="fnMenuInfo('수퍼 파파스,10,1019,4001,,2,,10 ',$(this));">
+						<img src="assets/img/sub/btn_detail.gif" alt="수퍼 파파스" />
+					</p>	
+				</div>
+			</c:if>
 		</div>
-
-		<div class="menuBox">
-
-			<div class="menu" id="menu_3">
-				<p class="m_list">
-
-					<img class="img" src="/assets/img/menu/img/10/list_img_1035.png"
-						alt="아이리쉬 포테이토" title="아이리쉬 포테이토" onerror="fnNoImages($(this))" />
-
-				</p>
-
-				<p class="b_detail" style="cursor: pointer"
-					onclick="fnMenuInfo('아이리쉬 포테이토,10,1035,4001,,3,,10 ',$(this));">
-					<img src="assets/img/sub/btn_detail.gif" alt="아이리쉬 포테이토" />
-				</p>
-
-			</div>
-
-
-			<div class="menu" id="menu_4">
-				<p class="m_list">
-
-					<img class="img" src="/assets/img/menu/img/10/list_img_1016.png"
-						alt="존스 페이버릿 피자" title="존스 페이버릿 피자" onerror="fnNoImages($(this))" />
-
-				</p>
-
-				<p class="b_detail" style="cursor: pointer"
-					onclick="fnMenuInfo('존스 페이버릿 피자,10,1016,4001,,4,,10 ',$(this));">
-					<img src="assets/img/sub/btn_detail.gif" alt="존스 페이버릿 피자" />
-				</p>
-
-			</div>
-
-
-			<div class="menu" id="menu_5">
-				<p class="m_list">
-
-					<img class="img" src="/assets/img/menu/img/10/list_img_1033.png"
-						alt="스파이시 치킨 랜치" title="스파이시 치킨 랜치" onerror="fnNoImages($(this))" />
-
-				</p>
-
-				<p class="b_detail" style="cursor: pointer"
-					onclick="fnMenuInfo('스파이시 치킨 랜치,10,1033,4001,,5,,10 ',$(this));">
-					<img src="assets/img/sub/btn_detail.gif" alt="스파이시 치킨 랜치" />
-				</p>
-
-			</div>
-
-
-		</div>
-
-		<div class="menuBox">
-
-			<div class="menu" id="menu_6">
-				<p class="m_list">
-
-					<img class="img" src="/assets/img/menu/img/10/list_img_1028.png"
-						alt="식스 치즈 피자" title="식스 치즈 피자" onerror="fnNoImages($(this))" />
-
-				</p>
-
-				<p class="b_detail" style="cursor: pointer"
-					onclick="fnMenuInfo('식스 치즈 피자,10,1028,4001,,6,,10 ',$(this));">
-					<img src="assets/img/sub/btn_detail.gif" alt="식스 치즈 피자" />
-				</p>
-
-			</div>
-
-
-			<div class="menu" id="menu_7">
-				<p class="m_list">
-
-					<img class="img" src="/assets/img/menu/img/10/list_img_1031.png"
-						alt="치킨바베큐" title="치킨바베큐" onerror="fnNoImages($(this))" />
-
-				</p>
-
-				<p class="b_detail" style="cursor: pointer"
-					onclick="fnMenuInfo('치킨바베큐,10,1031,4001,,7,,10 ',$(this));">
-					<img src="assets/img/sub/btn_detail.gif" alt="치킨바베큐" />
-				</p>
-
-			</div>
-
-
-			<div class="menu" id="menu_8">
-				<p class="m_list">
-
-					<img class="img" src="/assets/img/menu/img/10/list_img_1013.png"
-						alt="올미트" title="올미트" onerror="fnNoImages($(this))" />
-
-				</p>
-
-				<p class="b_detail" style="cursor: pointer"
-					onclick="fnMenuInfo('올미트,10,1013,4001,,8,,10 ',$(this));">
-					<img src="assets/img/sub/btn_detail.gif" alt="올미트" />
-				</p>
-
-			</div>
-
-
-		</div>
-
-		<div class="menuBox">
-
-			<div class="menu" id="menu_9">
-				<p class="m_list">
-
-					<img class="img" src="/assets/img/menu/img/10/list_img_1006.png"
-						alt="페페로니" title="페페로니" onerror="fnNoImages($(this))" />
-
-				</p>
-
-				<p class="b_detail" style="cursor: pointer"
-					onclick="fnMenuInfo('페페로니,10,1006,4001,,9,,10 ',$(this));">
-					<img src="assets/img/sub/btn_detail.gif" alt="페페로니" />
-				</p>
-
-			</div>
-
-
-			<div class="menu" id="menu_10">
-				<p class="m_list">
-
-					<img class="img" src="/assets/img/menu/img/10/list_img_1022.png"
-						alt="하와이안" title="하와이안" onerror="fnNoImages($(this))" />
-
-				</p>
-
-				<p class="b_detail" style="cursor: pointer"
-					onclick="fnMenuInfo('하와이안,10,1022,4001,,10,,10 ',$(this));">
-					<img src="assets/img/sub/btn_detail.gif" alt="하와이안" />
-				</p>
-
-			</div>
-
-
-			<div class="menu" id="menu_11">
-				<p class="m_list">
-
-					<img class="img" src="/assets/img/menu/img/10/list_img_1020.png"
-						alt="가든 스페셜" title="가든 스페셜" onerror="fnNoImages($(this))" />
-
-				</p>
-
-				<p class="b_detail" style="cursor: pointer"
-					onclick="fnMenuInfo('가든 스페셜,10,1020,4001,,11,,10 ',$(this));">
-					<img src="assets/img/sub/btn_detail.gif" alt="가든 스페셜" />
-				</p>
-
-			</div>
-
-
-		</div>
-
-		<div class="menuBox">
-
-			<div class="menu" id="menu_12">
-				<p class="m_list">
-
-					<img class="img" src="/assets/img/menu/img/10/list_img_1037.png"
-						alt="치킨 수퍼파파스" title="치킨 수퍼파파스" onerror="fnNoImages($(this))" />
-
-				</p>
-
-				<p class="b_detail" style="cursor: pointer"
-					onclick="fnMenuInfo('치킨 수퍼파파스,10,1037,4001,,12,,10 ',$(this));">
-					<img src="assets/img/sub/btn_detail.gif" alt="치킨 수퍼파파스" />
-				</p>
-
-			</div>
-
-
-			<div class="menu" id="menu_13">
-				<p class="m_list">
-
-					<img class="img" src="/assets/img/menu/img/10/list_img_1042.png"
-						alt="멜로우 머쉬룸" title="멜로우 머쉬룸" onerror="fnNoImages($(this))" />
-
-				</p>
-
-				<p class="b_detail" style="cursor: pointer"
-					onclick="fnMenuInfo('멜로우 머쉬룸,10,1042,4001,,13,,10 ',$(this));">
-					<img src="assets/img/sub/btn_detail.gif" alt="멜로우 머쉬룸" />
-				</p>
-
-			</div>
-
-
-			<div class="menu" id="menu_14">
-				<p class="m_list">
-
-					<img class="img" src="/assets/img/menu/img/10/list_img_1021.png"
-						alt="핫앤스파이시 멕시칸" title="핫앤스파이시 멕시칸" onerror="fnNoImages($(this))" />
-
-				</p>
-
-				<p class="b_detail" style="cursor: pointer"
-					onclick="fnMenuInfo('핫앤스파이시 멕시칸,10,1021,4001,,14,,10 ',$(this));">
-					<img src="assets/img/sub/btn_detail.gif" alt="핫앤스파이시 멕시칸" />
-				</p>
-
-			</div>
-
-
-		</div>
-
-		<div class="menuBox">
-
-			<div class="menu" id="menu_15">
-				<p class="m_list">
-
-					<img class="img" src="/assets/img/menu/img/10/list_img_1041.png"
-						alt="트윈 크러스트 딜라이트" title="트윈 크러스트 딜라이트"
-						onerror="fnNoImages($(this))" />
-
-				</p>
-
-				<p class="b_detail" style="cursor: pointer"
-					onclick="fnMenuInfo('트윈 크러스트 딜라이트,10,1041,4001,,15,,10 ',$(this));">
-					<img src="assets/img/sub/btn_detail.gif" alt="트윈 크러스트 딜라이트" />
-				</p>
-
-			</div>
-
-
-			<div class="menu" id="menu_16">
-				<p class="m_list">
-
-					<img class="img" src="/assets/img/menu/img/10/list_img_1007.png"
-						alt="스파이시 이탈리안" title="스파이시 이탈리안" onerror="fnNoImages($(this))" />
-
-				</p>
-
-				<p class="b_detail" style="cursor: pointer"
-					onclick="fnMenuInfo('스파이시 이탈리안,10,1007,4001,,16,,10 ',$(this));">
-					<img src="assets/img/sub/btn_detail.gif" alt="스파이시 이탈리안" />
-				</p>
-
-			</div>
-
-
-			<div class="menu" id="menu_17">
-				<p class="m_list">
-
-					<img class="img" src="/assets/img/menu/img/10/list_img_1047.png"
-						alt="치킨 까르보나라" title="치킨 까르보나라" onerror="fnNoImages($(this))" />
-
-				</p>
-
-				<p class="b_detail" style="cursor: pointer"
-					onclick="fnMenuInfo('치킨 까르보나라,10,1047,4001,,17,,10 ',$(this));">
-					<img src="assets/img/sub/btn_detail.gif" alt="치킨 까르보나라" />
-				</p>
-
-			</div>
-
-
-		</div>
-
-		<div class="menuBox">
-
-			<div class="menu" id="menu_18">
-				<p class="m_list">
-
-					<img class="img" src="/assets/img/menu/img/10/list_img_1046.png"
-						alt="베이컨 치즈버거" title="베이컨 치즈버거" onerror="fnNoImages($(this))" />
-
-				</p>
-
-				<p class="b_detail" style="cursor: pointer"
-					onclick="fnMenuInfo('베이컨 치즈버거,10,1046,4001,,18,,10 ',$(this));">
-					<img src="assets/img/sub/btn_detail.gif" alt="베이컨 치즈버거" />
-				</p>
-
-			</div>
-
-
-			<div class="menu" id="menu_19">
-				<p class="m_list">
-
-					<img class="img" src="/assets/img/menu/img/10/list_img_1048.png"
-						alt="스파이시 삼바" title="스파이시 삼바" onerror="fnNoImages($(this))" />
-
-				</p>
-
-				<p class="b_detail" style="cursor: pointer"
-					onclick="fnMenuInfo('스파이시 삼바,10,1048,4001,,19,,10 ',$(this));">
-					<img src="assets/img/sub/btn_detail.gif" alt="스파이시 삼바" />
-				</p>
-
-			</div>
-
-
-		</div>
+	</div>
 </form>
 
 <!-- ///////////////////////////// 20131108 알림 팝업 적용 /////////////////////////////-->
@@ -478,7 +170,7 @@
 
 		// 20140429 베스트메뉴 구분값 추가
 		this.srcUrl = function() {
-			return "menu/detail.jsp?menuName=" + this.menuName
+			return "./detail.jsp?menuName=" + this.menuName
 					+ "&menuLagCode=" + this.menuLagCode + "&menuMidCode="
 					+ this.menuMidCode + "&menuSubCode=" + this.menuSubCode
 					+ "&menuDtlImage=" + this.menuDtlImage + "&menuSeq="

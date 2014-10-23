@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -79,7 +80,6 @@
     			<p >Papa John's MENU<span><img src="../assets/img/sub/conHeader_text_phone.gif" alt="온라인주문관련 상담번호"></span></p>
     		</div>
     		<!--// con_header -->
-	
 			<!-- con_container -->  
     		<div id="con_container">
     		
@@ -100,7 +100,7 @@
 			    		<dt class="dep1 pj_2010"><a href="/sub.jsp?menuGb=menu&menuId=pj_2010"><img src="../assets/img/sub/sub_2_10.gif" alt="파파플래터"></a></dt>
 			    		<dt class="dep1 pj_2011"><a href="/sub.jsp?menuGb=menu&menuId=pj_2011"><img src="../assets/img/sub/sub_2_11.gif" alt="세트메뉴"></a></dt>
 			    		<dt class="dep1 pj_2012"><a href="/sub.jsp?menuGb=menu&menuId=pj_2012"><img src="../assets/img/sub/sub_2_12.gif" alt="사이드"></a></dt>
-			    		<dt class="dep1 pj_2013"><a href="/sub.jsp?menuGb=menu&menuId=pj_2013"><img src="../assets/img/sub/sub_2_13.gif" alt="음료"></a></dt>
+			    		<dt class="dep1 pj_2013"><a href="./sub.jsp?menuId=pj_2013"><img src="../assets/img/sub/sub_2_13.gif" alt="음료"></a></dt>
 			    		<dt class="dep1 pj_2014"><a href="/sub.jsp?menuGb=menu&menuId=pj_2014"><img src="../assets/img/sub/sub_2_14.gif" alt="소스&피클"></a></dt>
 			  		</dl>
     				<%-- 
@@ -127,7 +127,7 @@
       				<!-- cont -->
         			<div class="cont" style="text-align:center">
        					<!-- include -->
-						<script type="text/javascript"> $("#contents .cont").load('./menu.jsp?menuId=pj_2003'); </script>
+       						<script type="text/javascript"> $("#contents .cont").load('./menu.jsp?menuId=${param.menuId}'); </script>
 	      			</div>
       				<!--// cont -->
 				</div>
