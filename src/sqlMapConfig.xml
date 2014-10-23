@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMapConfig PUBLIC "-//ibatis.apache.org//DTD SQL Map Config 2.0//EN"
+	"http://ibatis.apache.org/dtd/sql-map-config-2.dtd">
+<sqlMapConfig>
+	<properties resource="/dbconnect.properties" />
+	<settings cacheModelsEnabled="true" 
+	         enhancementEnabled="true"
+	         lazyLoadingEnabled="true" 
+	         maxRequests="32" 
+	         maxSessions="10" 
+	         maxTransactions="5" 
+	         useStatementNamespaces="false" />
+	         <!-- useStatementNamespaces="false"일경우에는 id가 모두 달라야 한다. 
+	        	여럿이서 작업시 id중복을 허용하게 할 경우 useStatementNamespaces="true"로 설정하고 <sqlMap namespace="test1"> 으로 nameSpace 구분자를 두어 사용할 수 있다. 
+	         -->
+
+	<transactionManager type="JDBC" commitRequired="false">
+		<dataSource type="SIMPLE">
+            			<property name="JDBC.Driver" value="${driver}" />
+            			<property name="JDBC.ConnectionURL" value="${url}" />
+            			<property name="JDBC.Username" value="${username}" />
+            			<property name="JDBC.Password" value="${password}" />
+		</dataSource>
+	</transactionManager>
+	
+	<sqlMap resource="/sql/berverageSQL.xml"/>
+	
+</sqlMapConfig>
+
