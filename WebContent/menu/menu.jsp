@@ -4,45 +4,20 @@
 <h1 class="hidden">메뉴 안내</h1>
 <form id="f1" name="f1">
 	<div id="menuBoxWrap">
-		<div class="menuBox">
-			<c:if test="${ param.menuId eq 'pj_2013' }">
-				<div class="menu" id="menu_0">
-					<p class="m_list">
-						<img class="img" src="/assets/img/menu/img/10/list_img_1018.png"
-							alt="마가리타" title="마가리타" onerror="fnNoImages($(this))" />
-					</p>
-	
-					<p class="b_detail" style="cursor: pointer"
-						onclick="fnMenuInfo('마가리타,10,1018,4001,,0,,10 ',$(this));">
-						<img src="../assets/img/sub/btn_detail.gif" alt="마가리타" />
-					</p>
-				</div>
-	
-				<div class="menu" id="menu_1">
-					<p class="m_list">
-						<img class="img" src="/assets/img/menu/img/10/list_img_1049.png"
-							alt="프리미엄직화불고기" title="프리미엄직화불고기" onerror="fnNoImages($(this))" />
-					</p>
-	
-					<p class="b_detail" style="cursor: pointer"
-						onclick="fnMenuInfo('프리미엄직화불고기,10,1049,4001,,1,,10 ',$(this));">
-						<img src="assets/img/sub/btn_detail.gif" alt="프리미엄직화불고기" />
-					</p>
-				</div>
-	
-				<div class="menu" id="menu_2">
-					<p class="m_list">
-						<img class="img" src="/assets/img/menu/img/10/list_img_1019.png"
-							alt="수퍼 파파스" title="수퍼 파파스" onerror="fnNoImages($(this))" />
-					</p>
-	
-					<p class="b_detail" style="cursor: pointer"
-						onclick="fnMenuInfo('수퍼 파파스,10,1019,4001,,2,,10 ',$(this));">
-						<img src="assets/img/sub/btn_detail.gif" alt="수퍼 파파스" />
-					</p>	
-				</div>
-			</c:if>
-		</div>
+		<c:if test="${ param.menuId eq 'pj_2013' }"> <!-- 음료 -->
+			<div class="menuBox">
+					<div class="menu" id="menu_0">
+						<p class="m_list">
+							<img class="img" src="/assets/img/menu/img/10/list_img_1018.png"
+								alt="마가리타" title="마가리타" onerror="fnNoImages($(this))" />
+						</p>
+						<p class="b_detail" style="cursor: pointer"
+							onclick="fnMenuInfo('마가리타,10,1018,4001,,0,,10 ',$(this));">
+							<img src="../assets/img/sub/btn_detail.gif" alt="마가리타" />
+						</p>
+					</div>
+			</div>
+		</c:if>
 	</div>
 </form>
 
