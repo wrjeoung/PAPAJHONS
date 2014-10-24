@@ -24,14 +24,6 @@
 				/menu/menu.jsp
 			</result>
 		</action>
-		
-		<action name="originalAction" class="menu.OriginalAction">
-			<interceptor-ref name="prepare"/>
-			<interceptor-ref name="modelDriven"/>
-			<interceptor-ref name="ibatis"/>
-			<interceptor-ref name="params"/>
-			<result>/menu/menuOriginal.jsp</result>
-		</action>
 	</package>
 	
 	<!-- 공지사항 -->
