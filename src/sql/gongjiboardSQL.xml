@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC '-//ibatis.apache.org//DTD Sql Map 2.0//EN' 'http://ibatis.apache.org/dtd/sql-map-2.dtd'>
+<sqlMap namespace="gongji">
+
+	<typeAlias alias="gongji" type="gongji.board.gongjiVO"/>
+		<resultMap id="gongjiRes" class="gongji">
+			<result property="num" column="num"/>
+			<result property="subject" column="subject"/>
+			<result property="reg_date" column="reg_date"/>
+			<result property="readhit" column="readhit"/>
+			<result property="content" column="content"/>
+			<result property="file_orgname" column="file_orgname"/>
+			<result property="file_savname" column="file_savname"/>
+		</resultMap>
+		
+		<select id="selectLastNo" resultClass="int" parameterClass="int">
+			SELECT max(num) as num FROM GONGJI
+		</select>
+		
+		<sql id="where-no">
+			WHERE num=#num#
+		</sql>
+		
+		<sql id="select-all">
+			SELECT * FROM GONGJI
+		</sql>
+		<!-- select 쿼리문 정의 -->
+		<select id="selectAll" resultMap="gongjiRes" parameterClass="int">
+			<include refid="select-all"/>	<!-- select * from gongji order by num desc -->
+			ORDER BY num DESC
+		</select>
+		
+	<!-- 글쓰기 -->
+	<insert id="insertGongji" parameterClass="gongji">
+		INSERT INTO GONGJI(NUM,SUBJECT,REG_DATE,CONTENT)
+		VALUES(GONGJI_NUM_SEQ.NEXTVAL,#subject#,#reg_date#,#content#)
+	</insert>
+	
+	<!-- 파일 -->
+	<update id="updateFile" parameterClass="gongji">
+		UPDATE GONGJI SET FILE_ORGNAME=#file_orgname#
+		,FILE_SAVNAME=#file_savname#
+		<include refid="where-no"/>
+	</update>
+	
+	<!-- 조회수 증가 -->
+	<update id="updateReadHit" parameterClass="gongji">	<!--UPDATE GONGJI SET READHIT=readHit+1 WHERE num=#num# -->
+		UPDATE GONGJI SET READHIT=readHit+1 WHERE num=#num#
+	</update>
+	
+	<!-- 상세보기 -->
+	<select id="selectOne" resultMap="gongjiRes" parameterClass="int"><!-- SELECT * FROM GONGJI WHERE num=#num# -->
+		SELECT * FROM GONGJI WHERE num=#num#
+	</select>
+	
+	<!-- 삭제하기 -->
+	<delete id="deleteBoard" parameterClass="gongji">
+		DELETE FROM GONGJI
+		<include refid="where-no"/>
+	</delete>
+	
+	<!-- 수정하기 -->
+	<update id="updateBoard" parameterClass="gongji">
+		UPDATE GONGJI SET SUBJECT=#subject#,
+							CONTENT=#content#
+		<include refid="where-no"/>
+	</update>
+	<!-- 검색기능 -->
+	<select id="subjectList" parameterClass="int" resultMap="gongjiRes">
+		SELECT * FROM GONGJI WHERE SUBJECT like '%' || #subject# || '%'
+	</select>
+	
+	<select id="contentList" parameterClass="int" resultMap="gongjiRes">
+		SELECT * FROM GONGJI WHERE CONTENT like '%' || #content# || '%'
+	</select>
+</sqlMap>

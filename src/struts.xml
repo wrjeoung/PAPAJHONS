@@ -21,4 +21,50 @@
 			</result>
 		</action>
 	</package>
+	
+	<!-- 공지사항 -->
+	<package name="gongji.board" extends="struts-default">
+		<!-- 리스트 -->
+		<action name="listAction" class="gongji.board.listAction">
+			<interceptor-ref name="params"/>
+			<result>/gongji/gongjiList.jsp</result>
+		</action>
+		
+		<!-- 글쓰기 -->
+		<action name="writeForm" class="gongji.board.writeAction" method="form">
+			<result>/gongji/gongjiWrite.jsp</result>
+		</action>
+		<action name="writeAction" class="gongji.board.writeAction">
+			<result type="redirect-action">
+			<param name="actionName">listAction</param>
+			</result>
+		</action>
+		
+		<!-- 글수정하기 -->
+		<action name="modifyForm" class="gongji.board.modifyAction" method="form">
+			<result>/gongji/gongjiModify.jsp</result>
+		</action>
+		<action name="modifyAction" class="gongji.board.modifyAction">
+			<result type="redirect-action">
+			<param name="actionName">listAction</param>
+			</result>
+		</action>
+		<!-- 상세보기 -->
+		<action name="viewAction" class="gongji.board.viewAction">
+			<result>/gongji/gongjiView.jsp</result>
+		</action>
+		
+		<!-- 삭제 -->
+		<action name="deleteAction" class="gongji.board.deleteAction">
+			<result type="redirect-action">
+				<param name="actionName">listAction</param>
+			</result>
+		</action>	
+		
+		<action name="getlistAction" class="gongji.board.getlistAction">
+			<result type="redirect-action">
+				<param name="actionName">listAction</param>
+			</result>
+		</action>
+	</package>
 </struts>
