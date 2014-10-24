@@ -63,7 +63,7 @@ public class AddressAction extends  ActionSupport implements IbatisAware{
 		{
 			String zip1 = addr.getZipcode().substring(0,3);
 			String zip2 = addr.getZipcode().substring(4);
-			String bunji = addr.getBunji() != null ? addr.getBunji() : "";
+			String bunji = addr.getBunji() != null ? " "+addr.getBunji() : "";
 		
 			String addrDisplay = addr.getSido()+" " + addr.getGugun()+" " + addr.getDong() + bunji;
 
