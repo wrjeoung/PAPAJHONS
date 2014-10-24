@@ -80,4 +80,34 @@
 			</result>
 		</action>
 	</package>
+	
+	<!-- 회원가입 -->
+	<package name="signup" extends="struts-default">
+		<interceptors>
+			<interceptor name="ibatis" class="papa.address.IbatisInterceptor" />
+		</interceptors>
+		<!-- 글로벌 예외 처리 화면 설정 
+		<global-results>
+			<result name="error">/board/pageError.jsp</result>
+		</global-results>
+		
+		<global-exception-mappings>
+			<exception-mapping result="error" exception="java.lang.Exception"/>
+		</global-exception-mappings>	
+	    -->
+	    
+		<action name="addressAction" class="papa.address.AddressAction" method="form">
+			<result>/com/zipCode.jsp</result>
+		</action>
+		
+		<action name="addrSearchAction" class="papa.address.AddressAction">
+			<interceptor-ref name="ibatis"></interceptor-ref>
+			<interceptor-ref name="params"></interceptor-ref>
+			<result>/com/zipCode.jsp</result>
+		</action>
+		
+		<action name="signUpAction" class="papa.address.AddressAction" method="form">
+			<result>/signup/cont.jsp</result>
+		</action>				
+	</package>	
 </struts>

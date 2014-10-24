@@ -26,5 +26,6 @@
 	<sqlMap resource="/sql/berverageSQL.xml"/>
 	<sqlMap resource="/sql/menuOriginalSQL.xml"/>
 	<sqlMap resource="/sql/gongjiboardSQL.xml"/>
+	<sqlMap resource="/sql/addressSQL.xml"/>
 </sqlMapConfig>
 

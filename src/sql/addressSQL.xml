@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC '-//ibatis.apache.org//DTD Sql Map 2.0//EN' 'http://ibatis.apache.org/dtd/sql-map-2.dtd'>
+<sqlMap namespace="addressSQL">
+
+	<typeAlias alias="address" type="papa.address.ZipAddress" />
+
+		<!-- 리절트 맵 정의 -->
+	  	<resultMap id="addressRes" class="address">
+		  	<result property="zipcode" column="zipcode"/>
+		  	<result property="sido" column="sido"/>
+		  	<result property="gugun" column="gugun"/>
+		  	<result property="dong" column="dong"/>
+		  	<result property="bunji" column="bunji"/>
+		  	<result property="seq" column="seq"/>
+		</resultMap>
+		
+		<!-- 공통으로 사용할 select 절 정의 -->
+		<sql id="select-all">
+			SELECT * FROM tblZipAddr 
+		</sql>
+		
+
+		<!-- select 쿼리문 정의 -->
+		<select id="selectAll" resultMap="addressRes">
+			<include refid="select-all" />
+			ORDER BY seq DESC
+		</select>
+		
+		<!-- 공통으로 사용할 where-no 절 정의 -->
+		<sql id="where-dong">
+			WHERE dong like #dong# || '%'
+		</sql>
+		
+		<select id="selectDong" resultMap="addressRes" parameterClass="String">
+			<include refid="select-all" />
+			<include refid="where-dong" />
+		</select>
+		
+</sqlMap>
+

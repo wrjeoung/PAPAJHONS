@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -37,7 +40,36 @@
  	//var alertFrame = $( parent.document.getElementById("notice_4005") );
       var alertFrame = $("#notice_zipcode");
 
-	// 주소검색 - 읍면동으로
+    function init()
+    {
+    	var count = ${totalCount};
+    	$("#addr_list").html("${addressHtml}");
+    }
+      
+    function search()
+    {
+		$("#addr_list").css("height","140px");
+ 		var dongName = document.frmAddr.s_addr.value;
+ 		
+ 		if( dongName == "" ) 
+ 		{
+			$("#notice_zipcode").find("#alertText p").remove();
+			$("#notice_zipcode").find("#alertText").append("<p>검색하실 '읍/면/동' 이름을 입력해 주세요</p>");
+			parent.popAlert($("#notice_zipcode"));
+			
+ 			document.frmAddr.s_addr.focus();
+ 			return;
+ 		}
+ 		
+		var list = "";
+		list += "<li>";
+		list += "</li>";
+		$("#addr_list").html(list);
+		
+     		
+     	document.frmAddr.action='addrSearchAction.action?dong='+dongName;
+     	document.frmAddr.submit();
+	}
 	function search_step1() 
 	{
 		$("#addr_list").css("height","140px");
@@ -135,7 +167,8 @@
 </script>
 </head>
 
-<body>
+<body onload="init()">
+
 <div  id="s_addr"> 
   		<div class="search" >
   			<form id="frmAddr" name="frmAddr" method="post">
@@ -151,8 +184,8 @@
     			<div id="input_addr">
    	 				<span id="info_text"> *읍,면,동을 입력하세요 </span><br/>
      				<label for="s_addr" class="hidden">주소</label>
-     				<input type="text" id="s_addr" name="s_addr" style="width:130px;" value=""/>
-     				<span class="btn_h23 gray"><button type="button" onclick="javascript:search_step1();">검색</button></span>
+     				<input type="text" id="s_addr" name="s_addr" style="width:130px;" value="${s_addr}"/>
+     				<span class="btn_h23 gray"><button type="button" onclick="javascript:search();">검색</button></span>
 				</div>
 				 
      			<!-- 20130509 modify -->

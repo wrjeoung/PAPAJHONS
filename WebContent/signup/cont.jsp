@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -14,7 +14,7 @@
 	<link type="text/css" rel="stylesheet" href="../assets/css/import.css" />
 	<link type="text/css" rel="stylesheet" href="../assets/css/sub.css" />
 	<link type="text/css" rel="stylesheet" href="../assets/css/lib_style.css" />
-	<title>ÆÄÆÄÁ¸½º-Better Ingredients.Better Pizza.</title>
+	<title>íŒŒíŒŒì¡´ìŠ¤-Better Ingredients.Better Pizza.</title>
 	<style type="text/css"></style>
 	<script type="text/javascript" src="../assets/js/jquery-1.8.2.min.js"></script>
 	<!-- <script type="text/javascript" src="assets/js/common.js"></script> -->
@@ -23,7 +23,7 @@
 </head>
 
 <body>
-	<div id="skipNavi"> <a href="#gnb">¸Þ´º ¹Ù·Î°¡±â</a> <a href="#contents">º»¹®¹Ù·Î°¡±â</a></div>
+	<div id="skipNavi"> <a href="#gnb">ë©”ë‰´ ë°”ë¡œê°€ê¸°</a> <a href="#contents">ë³¸ë¬¸ë°”ë¡œê°€ê¸°</a></div>
 	
 	<!-- wrap -->
 	<div id="wrap">
@@ -39,7 +39,7 @@
   		
     		<!-- con_header -->
     		<div class="con_header">
-      			<p><!-- Å¸ÀÌÆ² --></p>
+      			<p><!-- íƒ€ì´í‹€ --></p>
     		</div>
     		<!-- //con_header -->
 	  
@@ -61,7 +61,7 @@
 	</div>
 	<!-- //wrap -->
 
-	<!-- ·Îµù ÀÌ¹ÌÁö -->
+	<!-- ë¡œë”© ì´ë¯¸ì§€ -->
 	<div id="viewLoading">
 		<img src="../assets/img/viewLoading.gif" /> 
  		<p>Loading....</p> 
