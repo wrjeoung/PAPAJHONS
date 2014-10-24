@@ -17,7 +17,7 @@
 			</result>
 		</action>
 		
-		<action name="" class="menu.MenuAction">
+		<action name="menuAction" class="menu.MenuAction">
 			<interceptor-ref name="ibatis"/>
 			<interceptor-ref name="params"/>
 			<result>
