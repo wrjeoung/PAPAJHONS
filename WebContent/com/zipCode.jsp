@@ -217,20 +217,20 @@
 	<!--20131212  알럿 변경-->
 	<div class="notice" id="notice_zipcode" style="display:none; width:340px; height:auto; min-height:140px; padding:1px; position:absolute; top:0; left:0; z-index:1000;"> 
 	    <div class="header">
-		    <div class="left" style="float:left; width:6px;  background:url(/assets/img/usa/modal_header_left.png) top left no-repeat; "></div>
-		    <div class="center" style="float:left; width:328px; height:40px; background:url(/assets/img/usa/modal_header_center.png) top center repeat-x; ">
+		    <div class="left" style="float:left; width:6px;  background:url(../assets/img/usa/modal_header_left.png) top left no-repeat; "></div>
+		    <div class="center" style="float:left; width:328px; height:40px; background:url(../assets/img/usa/modal_header_center.png) top center repeat-x; ">
 		    	<h2>알림!!</h2> 
 		    </div>
-		    <div class="right" style="float:right; width:6px; height:40px; background:url(/assets/img/usa/modal_header_right.png) top right no-repeat; "></div>
+		    <div class="right" style="float:right; width:6px; height:40px; background:url(../assets/img/usa/modal_header_right.png) top right no-repeat; "></div>
 		</div>    
 	    <div id="alertText" class="text_body" style="width:340px; height:auto; min-height:90px; line-height: 30px; background:#fff; border: 0px none; padding:8px 0px;">  
 	    	<br><p></p> 
 	    </div>  
 	  	<div class="footer" style="position: absolute; height:32px; background:#fff; " >
 			<div class="button" style="bottom:20px;"><button class="alertBtn gray" type="button" onclick="del_pop2('#notice_zipcode');">확 인</button></div> 
-			<div class="left" style="float:left; width:6px; height:8px; background:url(/assets/img/usa/modal_footer_left.png) bottom left no-repeat; "></div>
-	    	<div class="center" style="float:left; width:328px; height:8px; background:url(/assets/img/usa/modal_footer_center.png) bottom center repeat-x; "></div>
-	    	<div class="right" style="float:right; width:6px; height:8px; background:url(/assets/img/usa/modal_footer_right.png) bottom right no-repeat; "></div>
+			<div class="left" style="float:left; width:6px; height:8px; background:url(../assets/img/usa/modal_footer_left.png) bottom left no-repeat; "></div>
+	    	<div class="center" style="float:left; width:328px; height:8px; background:url(../assets/img/usa/modal_footer_center.png) bottom center repeat-x; "></div>
+	    	<div class="right" style="float:right; width:6px; height:8px; background:url(../assets/img/usa/modal_footer_right.png) bottom right no-repeat; "></div>
 	  	</div>
 	</div>
 </body>
@@ -270,14 +270,8 @@
 	    var addrDongName     = document.frmAddr.addrDongName.value;      // 읍면동
 	    var addrBunJi        = document.frmAddr.addrBunJi.value;      // 번지
 	    
-	    //var addrRee          = document.frmAddr.addrRee.value;           // 리	     					
-	    //var addrBuilding     = document.frmAddr.addrBuilding.value;      // 건물명
-	    //var addrStartBeonGi  = document.frmAddr.addrStartBeonGi.value;   // 시작번지
-	    //var addrEndBeonGi    = document.frmAddr.addrEndBeonGi.value;     // 끝번지
-	    
 	    var addrFull = addrSiName+" "+addrGuName+" "+addrDongName;
-	    //addrFull     = addrRee      != "" ? addrFull + " " + addrRee      : addrFull;
-	    //addrFull     = addrBuilding != "" ? addrFull + " " + addrBuilding : addrFull;
+
 	    
 	    
 	    //번지
@@ -286,28 +280,7 @@
 	    	addrFull = addrFull + " " + addrBunJi;
 	    }
 	    
-	    //번지형태
-	    /*if(addrStartBeonGi != "")
-		{
-			if(addrEndBeonGi != "")
-			{
-				addrFull = addrFull + " " +  addrStartBeonGi + "-" + addrEndBeonGi;
-				beongi  =  " " +  addrStartBeonGi + "-" + addrEndBeonGi;
-			}
-			else
-			{
-				addrFull = addrFull + " " +  addrStartBeonGi;
-				beongi  = " " +  addrStartBeonGi;
-			}
-		}
-		else
-		{
-		    if(addrEndBeonGi != "")
-			{
-				addrFull = addrFull + " " +  addrEndBeonGi;
-				beongi  = + " " +  addrEndBeonGi;
-			}
-		}*/
+
 		
 	    
 	    //고객주소3형태
@@ -378,18 +351,6 @@
      	document.frmAddr.addrGuName.value       = $(this).find(".guName"      ).attr("value");  // 시군구
      	document.frmAddr.addrDongName.value     = $(this).find(".dongName"    ).attr("value");  // 읍면동
      	document.frmAddr.addrBunJi.value        = $(this).find(".bunJi"         ).attr("value");  // 리	     					
-     	//document.frmAddr.addrBuilding.value     = $(this).find(".building"    ).attr("value");  // 건물명
-     	//document.frmAddr.addrStartBeonGi.value  = $(this).find(".startBeonGi" ).attr("value");  // 시작번지
-     	//document.frmAddr.addrEndBeonGi.value    = $(this).find(".endBeonGi"   ).attr("value");  // 끝번지
-     	
-//      	console.log($("#addrZipCode").val());
-//      	console.log($("#addrSiName").val());
-//      	console.log($("#addrGuName").val());
-//      	console.log($("#addrDongName").val());
-//      	console.log($("#addrRee").val());
-//      	console.log($("#addrBuilding").val());
-//      	console.log($("#addrStartBeonGi").val());
-//      	console.log($("#addrEndBeonGi").val());
 		
 		//상세주소 입력 프레임
 		$("#seleced_addr2").text(addr1);
