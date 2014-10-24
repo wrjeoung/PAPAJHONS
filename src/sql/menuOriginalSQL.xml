@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC '-//ibatis.apache.org//DTD Sql Map 2.0//EN' 'http://ibatis.apache.org/dtd/sql-map-2.dtd'>
+<sqlMap namespace="original">
+	<!-- typeAlias 변수선언 태그. -->
+	<typeAlias alias="originalDTO" type="db.MenuOriginalDTO"/>
+		<!-- impoert,변수명  ,class(DTO)-->
+		<!-- 리절트 맵 정의 (select결과를 맵타입으로 정의. select할 때만 스임, lsit로 return해준다.
+		검색 결과가 하나 이상일 때 쓰이는 게 좋음.)-->
+		<resultMap id="originalRes" class="originalDTO">
+			<result property="no" column="no"/>
+			<result property="name" column="name"/>
+			<result property="topping" column="topping"/>
+			<result property="rprice" column="rprice"/>
+			<result property="lprice" column="lprice"/>
+			<result property="fprice" column="fprice"/>
+			<result property="pprice" column="pprice"/>
+			<result property="allergy" column="allergy"/>
+			<result property="calorie" column="calorie"/>
+			<result property="nuturition" column="nuturition"/>
+			<result property="imagepath" column="imagepath"/>
+		</resultMap>
+		
+		<!-- 공통으로 사용할 select 절 정의 -->
+		<sql id="select-all">
+			SELECT * FROM menuOriginal 
+		</sql>
+		
+		<!-- 공통으로 사용할 where-no 절 정의 -->
+		<sql id="where-no">
+			WHERE no = #no#
+		</sql>
+		
+		<!-- select 쿼리문 정의 -->
+		<select id="selectAll" resultMap="originalRes" >
+			<include refid="select-all" />
+			ORDER BY no DESC
+		</select>
+		
+		<select id="selectOne" resultMap="originalRes" parameterClass="int">
+			<include refid="select-all" />
+			<include refid="where-no" />
+		</select>
+		
+		<select id="selectLastNo" resultClass="originalDTO" parameterClass="int">
+			<!-- 결과값이 숫자 하나일경우 resultClass=""에 int or Interger or String으로 쓰면 된다. -->
+			SELECT max(no) as no FROM menuOriginal 
+		</select>
+		
+		<!-- insert 쿼리문 정의 -->
+		<!-- parameterClass="board" -> board를 입력받아서 ##채워 넣겠다는 의미. -->
+		<insert id="insertOriginal" parameterClass="originalDTO">
+      		INSERT INTO menuOriginal (NO,
+      							NAME,
+      							DESCRIPTION,
+      							TOPPING,
+      							RPRICE,
+                         		LPRICE,
+                         		FPRICE,
+                         		PPRICE,
+                         		ALLERGY,
+                         		CALORIE,
+                         		NUTURITION,
+                         		IMAGEPATH
+                         )
+                	 VALUES (menuBeverage_no_seq.NEXTVAL,
+                	 		#name#,
+                	 		#description#,
+                         	#topping#,
+                         	#rprice#,
+                         	#lprice#,
+                         	#fprice#,
+                         	#pprice#,
+                         	#allergy#,
+                         	#calorie#,
+                         	#nuturition#,
+                         	#imagepath#
+                         )
+		</insert>
+		
+		<!-- update 쿼리문 정의 -->
+		<update id="updateOriginal" parameterClass="originalDTO">
+    		UPDATE menuOriginal SET NAME = #name#,
+                     		     DESCRIPTION = #description#,
+                       		     TOPPING = #topping#,
+                       		     RPRICE = #rprice#,
+                       		     LPRICE = #lprice#,
+                       		     FPRICE = #fprice#,
+                       		     PPRICE = #pprice#,
+                       		     ALLERGY = #allergy#,
+                       		     CALORIE = #calorie#,
+                       		     NUTURITION = #nuturition#,
+                       		     IMAGEPATH = #imagepath#
+			<include refid="where-no" />
+   		</update>
+
+		<!-- delete 쿼리문 정의 -->
+  		<delete id="deleteOriginal" parameterClass="originalDTO">
+			DELETE FROM menuOriginal 
+			<include refid="where-no" />
+   		</delete>
+</sqlMap>
