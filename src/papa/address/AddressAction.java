@@ -21,7 +21,16 @@ public class AddressAction extends  ActionSupport implements IbatisAware{
 	private String addressHtml = "";
 	private String s_addr;
 	private String dong;
+	private String flag;
 	
+
+	public String getFlag() {
+		return flag;
+	}
+
+	public void setFlag(String flag) {
+		this.flag = flag;
+	}
 
 	public String getAddressHtml() {
 		return addressHtml;
@@ -54,8 +63,9 @@ public class AddressAction extends  ActionSupport implements IbatisAware{
 		{
 			String zip1 = addr.getZipcode().substring(0,3);
 			String zip2 = addr.getZipcode().substring(4);
+			String bunji = addr.getBunji() != null ? addr.getBunji() : "";
 		
-			String addrDisplay = addr.getSido()+" " + addr.getGugun()+" " + addr.getDong() + (addr.getBunji() != null ? " "+addr.getBunji() : "");
+			String addrDisplay = addr.getSido()+" " + addr.getGugun()+" " + addr.getDong() + bunji;
 
 			str.append("<li>");
 			str.append("<a href='javascript:void();'>");
@@ -64,7 +74,7 @@ public class AddressAction extends  ActionSupport implements IbatisAware{
 			str.append("<input type='hidden' name='siName'       class='siName'       value='"+ addr.getSido()   +"' />");
 			str.append("<input type='hidden' name='guName'       class='guName'       value='"+ addr.getGugun()  +"' />");
 			str.append("<input type='hidden' name='dongName'       class='dongName'       value='"+ addr.getDong()  +"' />");
-			str.append("<input type='hidden' name='bunJi'  class='bunJi'  value='"+ addr.getBunji()  +"' />");
+			str.append("<input type='hidden' name='bunJi'  class='bunJi'  value='"+ bunji +"' />");
 			str.append("</a></li>");
 		}
 		addressHtml = str.toString();

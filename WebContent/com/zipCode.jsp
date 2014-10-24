@@ -42,7 +42,6 @@
 
     function init()
     {
-    	var count = ${totalCount};
     	$("#addr_list").html("${addressHtml}");
     }
       
@@ -66,8 +65,7 @@
 		list += "</li>";
 		$("#addr_list").html(list);
 		
-     		
-     	document.frmAddr.action='addrSearchAction.action?dong='+dongName;
+     	document.frmAddr.action='addrSearchAction.action?dong='+dongName+'&flag='+"${flag}";
      	document.frmAddr.submit();
 	}
 	function search_step1() 
@@ -176,10 +174,10 @@
 	     		<input type='hidden' id='addrSiName'       name='addrSiName'      value="" />
 	     		<input type='hidden' id='addrGuName'       name='addrGuName'      value="" />
 	     		<input type='hidden' id='addrDongName'     name='addrDongName'    value="" />
-	     		<input type='hidden' id='addrRee'          name='addrRee'         value="" />	     					
-	     		<input type='hidden' id='addrBuilding'     name='addrBuilding'    value="" />
+	     		<input type='hidden' id='addrBunJi'        name='addrBunJi'       value="" />	     					
+	     		<!--  <input type='hidden' id='addrBuilding'     name='addrBuilding'    value="" />
 	     		<input type='hidden' id='addrStartBeonGi'  name='addrStartBeonGi' value="" />
-	     		<input type='hidden' id='addrEndBeonGi'    name='addrEndBeonGi'   value="" />
+	     		<input type='hidden' id='addrEndBeonGi'    name='addrEndBeonGi'   value="" />-->
   
     			<div id="input_addr">
    	 				<span id="info_text"> *읍,면,동을 입력하세요 </span><br/>
@@ -263,24 +261,33 @@
 		}
 		
 		
-		var flag = "";
+		var flag = "${flag}";
 		var beongi = ""; //번지
 	    
 	    var addrZipCode      = document.frmAddr.addrZipCode.value;       // 우편번호
 	    var addrSiName       = document.frmAddr.addrSiName.value;        // 시도
 	    var addrGuName       = document.frmAddr.addrGuName.value;        // 시군구
 	    var addrDongName     = document.frmAddr.addrDongName.value;      // 읍면동
-	    var addrRee          = document.frmAddr.addrRee.value;           // 리	     					
-	    var addrBuilding     = document.frmAddr.addrBuilding.value;      // 건물명
-	    var addrStartBeonGi  = document.frmAddr.addrStartBeonGi.value;   // 시작번지
-	    var addrEndBeonGi    = document.frmAddr.addrEndBeonGi.value;     // 끝번지
+	    var addrBunJi        = document.frmAddr.addrBunJi.value;      // 번지
+	    
+	    //var addrRee          = document.frmAddr.addrRee.value;           // 리	     					
+	    //var addrBuilding     = document.frmAddr.addrBuilding.value;      // 건물명
+	    //var addrStartBeonGi  = document.frmAddr.addrStartBeonGi.value;   // 시작번지
+	    //var addrEndBeonGi    = document.frmAddr.addrEndBeonGi.value;     // 끝번지
 	    
 	    var addrFull = addrSiName+" "+addrGuName+" "+addrDongName;
-	    addrFull     = addrRee      != "" ? addrFull + " " + addrRee      : addrFull;
-	    addrFull     = addrBuilding != "" ? addrFull + " " + addrBuilding : addrFull;
+	    //addrFull     = addrRee      != "" ? addrFull + " " + addrRee      : addrFull;
+	    //addrFull     = addrBuilding != "" ? addrFull + " " + addrBuilding : addrFull;
+	    
+	    
+	    //번지
+	    if(addrBunJi !="")
+	    {
+	    	addrFull = addrFull + " " + addrBunJi;
+	    }
 	    
 	    //번지형태
-	    if(addrStartBeonGi != "")
+	    /*if(addrStartBeonGi != "")
 		{
 			if(addrEndBeonGi != "")
 			{
@@ -300,12 +307,13 @@
 				addrFull = addrFull + " " +  addrEndBeonGi;
 				beongi  = + " " +  addrEndBeonGi;
 			}
-		}
+		}*/
+		
 	    
 	    //고객주소3형태
 	    var addr3 = addrDongName;
-	    addr3 = addrRee      != "" ? addr3 + " " + addrRee      : addr3;
-	    addr3 = addrBuilding != "" ? addr3 + " " + addrBuilding : addr3;
+	    //addr3 = addrRee      != "" ? addr3 + " " + addrRee      : addr3;
+	    //addr3 = addrBuilding != "" ? addr3 + " " + addrBuilding : addr3;
 	    
 	    if(flag == "mypage" ) 
 	    {
@@ -336,7 +344,7 @@
 		else if(flag == "member")
 		{
 			parent.document.f1.zip1.value  = addrZipCode.substring(0, 3);
-	    	parent.document.f1.zip2.value  = addrZipCode.substring(3, 6); 
+	    	parent.document.f1.zip2.value  = addrZipCode.substring(4); 
 	    	parent.document.f1.addr1.value = addrFull; 
 	    	parent.document.f1.addr2.value = $("#detail_input").attr("value");
 	    	
@@ -369,10 +377,10 @@
      	document.frmAddr.addrSiName.value       = $(this).find(".siName"      ).attr("value");  // 시도
      	document.frmAddr.addrGuName.value       = $(this).find(".guName"      ).attr("value");  // 시군구
      	document.frmAddr.addrDongName.value     = $(this).find(".dongName"    ).attr("value");  // 읍면동
-     	document.frmAddr.addrRee.value          = $(this).find(".ree"         ).attr("value");  // 리	     					
-     	document.frmAddr.addrBuilding.value     = $(this).find(".building"    ).attr("value");  // 건물명
-     	document.frmAddr.addrStartBeonGi.value  = $(this).find(".startBeonGi" ).attr("value");  // 시작번지
-     	document.frmAddr.addrEndBeonGi.value    = $(this).find(".endBeonGi"   ).attr("value");  // 끝번지
+     	document.frmAddr.addrBunJi.value        = $(this).find(".bunJi"         ).attr("value");  // 리	     					
+     	//document.frmAddr.addrBuilding.value     = $(this).find(".building"    ).attr("value");  // 건물명
+     	//document.frmAddr.addrStartBeonGi.value  = $(this).find(".startBeonGi" ).attr("value");  // 시작번지
+     	//document.frmAddr.addrEndBeonGi.value    = $(this).find(".endBeonGi"   ).attr("value");  // 끝번지
      	
 //      	console.log($("#addrZipCode").val());
 //      	console.log($("#addrSiName").val());
