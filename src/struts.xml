@@ -12,6 +12,7 @@
 		</interceptors>
 		
 		<action name="subAction" class="menu.SubAction">
+			<interceptor-ref name="params"/>
 			<result>
 				/menu/sub.jsp
 			</result>
@@ -22,6 +23,14 @@
 			<interceptor-ref name="params"/>
 			<result>
 				/menu/menu.jsp
+			</result>
+		</action>
+	</package>
+	
+	<package name="main" extends="struts-default">
+		<action name="mainAction" class="main.MainAction">
+			<result>
+				/main/index.jsp
 			</result>
 		</action>
 	</package>
