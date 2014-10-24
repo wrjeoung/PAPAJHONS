@@ -19,7 +19,7 @@ public class SubAction extends ActionSupport implements IbatisAware, Preparable,
 	
 	public String execute() throws Exception {
 	
-		list = sqlMapper.queryForList("selectAll");
+		list = sqlMapper.queryForList("menu_berverage.selectAll");
 		for(Object a : list)
 		{
 			System.out.println(((MenuBeverageDTO)a).getName());

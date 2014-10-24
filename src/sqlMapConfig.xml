@@ -9,7 +9,7 @@
 	         maxRequests="32" 
 	         maxSessions="10" 
 	         maxTransactions="5" 
-	         useStatementNamespaces="false" />
+	         useStatementNamespaces="true" />
 	         <!-- useStatementNamespaces="false"일경우에는 id가 모두 달라야 한다. 
 	        	여럿이서 작업시 id중복을 허용하게 할 경우 useStatementNamespaces="true"로 설정하고 <sqlMap namespace="test1"> 으로 nameSpace 구분자를 두어 사용할 수 있다. 
 	         -->
