@@ -12,7 +12,7 @@ public class MenuAction implements Action, IbatisAware {
 	private List<MenuDTO> list = new ArrayList<MenuDTO>();
 	private String memId;
 
-	public String execute() throws Exception {
+		public String execute() throws Exception {
 		/*
 		if(memId.equals("pj_2013")){
 			list = sqlMapper.queryForList("menu_berverage.selectAll");
