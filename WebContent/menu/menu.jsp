@@ -34,6 +34,7 @@
 						<img src="../assets/img/sub/btn_detail.gif" alt="마가리타" />
 					</p>
 				</div>
+			<c:if test="${status.count % 3 == 0 }"></div></c:if>
 		</c:forEach>
 	</div>
 </form>
