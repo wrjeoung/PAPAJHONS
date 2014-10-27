@@ -30,6 +30,13 @@
 		  	<result property="imagepath1" column="imagepath1"/>
 		  	<result property="imagepath2" column="imagepath2"/>
 		  	<result property="imagepath3" column="imagepath3"/>
+		  	<result property="menulagcode" column="menulagcode"/>
+		  	<result property="menulagcode" column="menuMidCode"/>
+		  	<result property="menusubcode" column="menusubcode"/>
+		  	<result property="menudtlimage" column="menudtlimage"/>
+		  	<result property="menuseq" column="menuseq"/>
+		  	<result property="menucode" column="menucode"/>
+		  	<result property="ongrpcode" column="ongrpcode"/>
 		</resultMap>
 		
 		<!-- 공통으로 사용할 select 절 정의 -->

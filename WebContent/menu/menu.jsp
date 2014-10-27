@@ -30,7 +30,7 @@
 							alt="${li.name}" title="${li.name}" onerror="fnNoImages($(this))" />
 					</p>
 					<p class="b_detail" style="cursor: pointer"
-						onclick="fnMenuInfo('마가리타,10,1018,4001,,0,,10 ',$(this));">
+						onclick="fnMenuInfo('${li.name},<c:if test="${li.name != null}">sfaf</c:if>,1018,4001,,0,,10 ',$(this));">
 						<img src="../assets/img/sub/btn_detail.gif" alt="마가리타" />
 					</p>
 				</div>
@@ -95,24 +95,24 @@
 
 	$btn.bind("mouseenter", fn_over);
 	function fn_over() {
-		$(this).find("img").attr("src", "assets/img/sub/btn_detail_on.gif");
+		$(this).find("img").attr("src", "../assets/img/sub/btn_detail_on.gif");
 	};
 
 	$btn.bind("mouseleave", fn_out);
 	function fn_out() {
-		$(this).find("img").attr("src", "assets/img/sub/btn_detail.gif");
+		$(this).find("img").attr("src", "../assets/img/sub/btn_detail.gif");
 	}
 
 	function menuLoad() {
 		$btn.each(function(i) {
 			if ($btn.eq(i).hasClass("active")) {
 				$btn.eq(i).find("img").attr("src",
-						"assets/img/sub/btn_detail_on.gif");
+						"../assets/img/sub/btn_detail_on.gif");
 				$btn.eq(i).unbind("mouseenter", fn_over);
 				$btn.eq(i).unbind("mouseleave", fn_out);
 			} else {
 				$btn.eq(i).find("img").attr("src",
-						"assets/img/sub/btn_detail.gif");
+						"../assets/img/sub/btn_detail.gif");
 				$btn.eq(i).bind("mouseenter", fn_over);
 				$btn.eq(i).bind("mouseleave", fn_out);
 			}
