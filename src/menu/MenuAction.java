@@ -13,6 +13,14 @@ public class MenuAction implements Action, IbatisAware {
 	private List<MenuBeverageDTO> list = new ArrayList<MenuBeverageDTO>();
 
 
+	public List<MenuBeverageDTO> getList() {
+		return list;
+	}
+
+	public void setList(List<MenuBeverageDTO> list) {
+		this.list = list;
+	}
+
 	public String execute() throws Exception {
 		list = sqlMapper.queryForList("menu_berverage.selectAll");
 		for(Object a : list)
