@@ -60,6 +60,11 @@
 			WHERE menuid = #menuid#
 		</select>
 		
+		<select id="selectMenuName" resultClass="dmenuDTO" parameterClass="String">
+			<include refid="select-all"/>
+			WHERE name = #name#
+		</select>
+		
 		<select id="selectOne" resultMap="menuRes" parameterClass="int">
 			<include refid="select-all" />
 			<include refid="where-no" />
