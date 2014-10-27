@@ -2,7 +2,7 @@ package db;
 
 public class MenuDTO {
 	private int no;
-	private String memid;
+	private String memuid;
 	private String name;
 	private String description;       //설명
 	private String topping;           //토핑재료
@@ -32,10 +32,10 @@ public class MenuDTO {
 		this.no = no;
 	}
 	public String getMemid() {
-		return memid;
+		return memuid;
 	}
-	public void setMemid(String memid) {
-		this.memid = memid;
+	public void setMemid(String memuid) {
+		this.memuid = memuid;
 	}
 	public String getName() {
 		return name;
