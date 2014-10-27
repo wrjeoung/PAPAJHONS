@@ -3,11 +3,12 @@ package menu;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.ibatis.sqlmap.client.SqlMapClient;
 import com.opensymphony.xwork2.Action;
 
 import db.MenuDTO;
 
-public class DetailAction implements Action {
+public class DetailAction implements Action , IbatisAware{
 	private String menuName; 
 	private String menuLagCode; // 메뉴대분류코드
 	private String menuMidCode; // 메뉴중분류코드
@@ -18,7 +19,8 @@ public class DetailAction implements Action {
 	private String onGrpCode; // 온라인 메뉴 그룹.
 	private String bestOnlineGroupCd;
 	
-	private List<MenuDTO> list = new ArrayList<MenuDTO>();
+	public static SqlMapClient sqlMapper;
+	private MenuDTO list = new MenuDTO();
 	
 	public String execute() throws Exception {
 //		System.out.println(menuName);
@@ -30,23 +32,29 @@ public class DetailAction implements Action {
 //		System.out.println(menuCode);
 //		System.out.println(onGrpCode);
 //		System.out.println(bestOnlineGroupCd);
+		System.out.println("DetailAction : " + menuName);
+		
+		list = (MenuDTO) sqlMapper.queryForObject("menuSQL.selectMenuName",menuName);
+		
 		return SUCCESS;
 	}
-	
-	public List<MenuDTO> getList() {
+
+	public MenuDTO getList() {
 		return list;
 	}
 
-	public void setList(List<MenuDTO> list) {
+	public void setList(MenuDTO list) {
 		this.list = list;
 	}
 
 	public String getMenuName() {
+		System.out.println("DetailAction  getMenuName : " + menuName);
 		return menuName;
 	}
 
 	public void setMenuName(String menuName) {
 		this.menuName = menuName;
+		System.out.println("DetailAction  setMenuName : " + menuName);
 	}
 
 	public String getMenuLagCode() {
@@ -111,6 +119,12 @@ public class DetailAction implements Action {
 
 	public void setBestOnlineGroupCd(String bestOnlineGroupCd) {
 		this.bestOnlineGroupCd = bestOnlineGroupCd;
+	}
+
+	@Override
+	public void setIbatis(SqlMapClient sqlMapper) {
+		// TODO Auto-generated method stub
+		this.sqlMapper = sqlMapper;
 	}
 
 }
