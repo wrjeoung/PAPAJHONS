@@ -56,7 +56,6 @@
 			<input type="submit" value="검색"/>
 
 </form>
-
 </body>
 <input type="button" value="글쓰기" onclick="document.location.href='writeForm.action?currentPage=${currentPage}'">
 </html>

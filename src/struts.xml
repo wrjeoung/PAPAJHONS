@@ -57,9 +57,12 @@
 			<result>/gongji/gongjiWrite.jsp</result>
 		</action>
 		<action name="writeAction" class="gongji.board.writeAction">
-			<result type="redirect-action">
+			<!-- <result type="redirect-action">
 			<param name="actionName">listAction</param>
-			</result>
+			</result> -->
+			<result type="redirectAction">
+			<param name="actionName">listAction</param>
+			</result> 
 		</action>
 		
 		<!-- 글수정하기 -->
@@ -87,6 +90,66 @@
 			<result type="redirect-action">
 				<param name="actionName">listAction</param>
 			</result>
+		</action>
+	</package>
+	
+	<!-- 진행중인 이벤트 -->
+	<package name="nowevent.board" extends="struts-default">
+		<!-- 리스트 -->
+		<action name="listAction2" class="nowevent.board.listAction">
+			<interceptor-ref name="params"/>
+			<result>/nowevent/nowList.jsp</result>
+		</action>
+		<!-- 이벤트 글쓰기 -->
+		<!-- 리다이렉트 -->
+		<action name="writeForm2" class="nowevent.board.writeAction" method="form">
+			<result>/nowevent/nowWrite.jsp</result>
+		</action> 
+		<action name="writeAction2" class="nowevent.board.writeAction">
+			<interceptor-ref name="fileUpload"/>
+			<interceptor-ref name="params"/>
+			<result type="redirect-action">
+			<param name="actionName">listAction2</param>
+			</result>
+		</action>
+		
+		<!-- 상세보기 -->
+		<action name="viewAction2" class="nowevent.board.viewAction">
+			<result>/nowevent/nowView.jsp</result>
+		</action>
+		
+		<!-- 삭제하기 -->
+		<action name="deleteAction2" class="nowevent.board.deleteAction">
+			<result type="redirect-action">
+				<param name="actionName">listAction2</param>
+			</result>
+		</action>
+		
+		<!-- 수정하기 -->
+		<action name="modifyForm2" class="nowevent.board.modifyAction" method="form">
+			<result>/nowevent/nowModify.jsp</result>
+		</action>
+		<action name="modifyAction2" class="nowevent.board.modifyAction">
+			<result type="redirect-action">
+			<param name="actionName">listAction2</param>
+			</result>
+		</action>
+		
+		<!-- 댓글쓰기 -->
+		<action name="RewriteForm" class="nowevent.board.rewriteAction" method="form">
+			<result>/nowevent/nowView.jsp</result>
+		</action> 
+		<action name="RewriteAction" class="nowevent.board.rewriteAction">
+			<interceptor-ref name="params"/>
+			<result type="redirect-action">
+			<param name="actionName">listAction2</param>
+			</result>
+		</action>
+		
+		<!-- 댓글보기 -->
+		<action name="relistAction" class="nowevent.board.relistAction">
+			<interceptor-ref name="params"/>
+			<result>/nowevent/nowView.jsp</result>
 		</action>
 	</package>
 	

@@ -13,7 +13,7 @@
 			<result property="file_savname" column="file_savname"/>
 		</resultMap>
 		
-		<select id="selectLastNo" resultClass="int" parameterClass="int">
+		<select id="selectLastNo" resultClass="gongji" parameterClass="int">
 			SELECT max(num) as num FROM GONGJI
 		</select>
 		

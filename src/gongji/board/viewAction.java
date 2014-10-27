@@ -30,7 +30,7 @@ public class viewAction extends ActionSupport{
 		//조회수 1 증가
 		sqlMapper.update("gongji.updateReadHit", vo);
 		
-		//해단번호의 글을 가져온다.
+		//해당번호의 글을 가져온다.
 		vo=(gongjiVO)sqlMapper.queryForObject("gongji.selectOne", getNum());
 		
 		

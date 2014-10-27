@@ -1,6 +1,5 @@
-package gongji.board;
+package nowevent.board;
 
-import java.io.File;
 import java.io.IOException;
 import java.io.Reader;
 
@@ -9,36 +8,28 @@ import com.ibatis.sqlmap.client.SqlMapClient;
 import com.ibatis.sqlmap.client.SqlMapClientBuilder;
 import com.opensymphony.xwork2.ActionSupport;
 
-public class deleteAction extends ActionSupport{
+public class viewAction extends ActionSupport{
 	public static Reader reader;
 	public static SqlMapClient sqlMapper;
 	
-	private gongjiVO vo;
+	private noweventVO vo=new noweventVO();
 	
 	private int currentPage;
-	private String fileUploadPath="D:\\workspace\\papa\\WebContent\\save\\";
-	
 	private int num;
+	private String file_savname;
 	
-	public deleteAction()throws IOException{
+	public viewAction() throws IOException{
 		reader=Resources.getResourceAsReader("sqlMapConfig.xml");
 		sqlMapper=SqlMapClientBuilder.buildSqlMapClient(reader);
 		reader.close();
 	}
 	public String execute() throws Exception{
-		
-		vo=new gongjiVO();
-		vo=(gongjiVO)sqlMapper.queryForObject("gongji.selectOne", getNum());
-		
-		//서버파일삭제
-		File deleteFile = new File(fileUploadPath + vo.getFile_savname());
-		deleteFile.delete();
-		
-		//삭제할 항목 설정
 		vo.setNum(getNum());
+		//조회수 1증가
+		sqlMapper.update("nowevent.updateReadHit",vo);
 		
-		//삭제 쿼리 수행
-		sqlMapper.update("gongji.deleteBoard", vo);
+		//해당 번호의 글을 가져온다.
+		vo=(noweventVO)sqlMapper.queryForObject("nowevent.selectOne", getNum());
 		
 		return SUCCESS;
 	}
@@ -46,18 +37,18 @@ public class deleteAction extends ActionSupport{
 		return reader;
 	}
 	public static void setReader(Reader reader) {
-		deleteAction.reader = reader;
+		viewAction.reader = reader;
 	}
 	public static SqlMapClient getSqlMapper() {
 		return sqlMapper;
 	}
 	public static void setSqlMapper(SqlMapClient sqlMapper) {
-		deleteAction.sqlMapper = sqlMapper;
+		viewAction.sqlMapper = sqlMapper;
 	}
-	public gongjiVO getVo() {
+	public noweventVO getVo() {
 		return vo;
 	}
-	public void setVo(gongjiVO vo) {
+	public void setVo(noweventVO vo) {
 		this.vo = vo;
 	}
 	public int getCurrentPage() {
@@ -66,18 +57,16 @@ public class deleteAction extends ActionSupport{
 	public void setCurrentPage(int currentPage) {
 		this.currentPage = currentPage;
 	}
-	public String getFileUploadPath() {
-		return fileUploadPath;
-	}
-	public void setFileUploadPath(String fileUploadPath) {
-		this.fileUploadPath = fileUploadPath;
-	}
 	public int getNum() {
 		return num;
 	}
 	public void setNum(int num) {
 		this.num = num;
 	}
-	
-	
+	public String getFile_savname() {
+		return file_savname;
+	}
+	public void setFile_savname(String file_savname) {
+		this.file_savname = file_savname;
+	}
 }

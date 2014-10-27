@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC '-//ibatis.apache.org//DTD Sql Map 2.0//EN' 'http://ibatis.apache.org/dtd/sql-map-2.dtd'>
+<sqlMap namespace="nowevent">
+
+	<typeAlias alias="nowevent" type="nowevent.board.noweventVO"/>
+		<resultMap id="noweventRes" class="nowevent">
+			<result property="num" column="num"/>
+			<result property="subject" column="subject"/>
+			<result property="reg_date" column="reg_date"/>
+			<result property="file_orgname" column="file_orgname"/>
+			<result property="file_savname" column="file_savname"/>
+			<result property="file_orgname2" column="file_orgname2"/>
+			<result property="file_savname2" column="file_savname2"/>
+		</resultMap>
+		
+		<sql id="select-all">
+			SELECT * FROM NOWEVENT
+		</sql>
+		
+		<sql id="where-no">
+			WHERE num=#num#
+		</sql>
+		
+		<!-- 글쓰기 -->
+		<insert id="insertNowevent" parameterClass="nowevent">
+			INSERT INTO NOWEVENT(NUM,SUBJECT,REG_DATE) VALUES(NOWEVENT_NUM_SEQ.NEXTVAL,#subject#,#reg_date#)
+		</insert>
+		
+		<select id="selectLastNo" resultClass="nowevent" parameterClass="int">
+			SELECT max(num) as num FROM NOWEVENT
+		</select>
+		
+		<select id="selectLastNo2" resultClass="nowevent" parameterClass="int">
+			SELECT max(num) as num FROM NOWEVENT
+		</select>
+		
+		<!-- 파일1 -->
+		<update id="updateFile" parameterClass="nowevent">
+			UPDATE NOWEVENT SET FILE_ORGNAME=#file_orgname#
+			,FILE_SAVNAME=#file_savname#
+			<include refid="where-no"/>
+		</update>
+		
+		<!-- 파일2 -->
+		<update id="updateFile2" parameterClass="nowevent">
+			UPDATE NOWEVENT SET FILE_ORGNAME2=#file_orgname2#
+			,FILE_SAVNAME2=#file_savname2#
+			<include refid="where-no"/>
+		</update>
+
+		<!-- select 쿼리문 정의 -->
+		<select id="selectAll" resultMap="noweventRes" parameterClass="int">
+			<include refid="select-all"/>
+			ORDER BY num DESC
+		</select>
+		
+		<!-- 조회수 증가 -->
+		<update id="updateReadHit" parameterClass="nowevent">
+			UPDATE NOWEVENT SET READHIT=readHit+1 WHERE num=#num#
+		</update>
+		
+		<!-- 상세보기 -->
+		<select id="selectOne" resultMap="noweventRes" parameterClass="int">
+			SELECT * FROM NOWEVENT WHERE num=#num#
+		</select>
+		<!-- 수정하기 -->
+		<update id="updateBoard" parameterClass="nowevent">
+			UPDATE NOWEVENT SET SUBJECT=#subject#
+			<include refid="where-no"/>
+		</update>
+		
+		
+		<!-- 삭제하기 -->
+		<delete id="deleteBoard" parameterClass="nowevent">
+			DELETE FROM NOWEVENT
+			<include refid="where-no"/>
+		</delete>
+</sqlMap>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC '-//ibatis.apache.org//DTD Sql Map 2.0//EN' 'http://ibatis.apache.org/dtd/sql-map-2.dtd'>
+<sqlMap namespace="reple">
+	
+	<typeAlias alias="reple" type="nowevent.board.reVO"/>
+		<resultMap id="repleRes" class="reple">
+			<result property="num" column="num"/>
+			<result property="content" column="content"/>
+			<result property="reg_date" column="reg_date"/>
+		</resultMap>
+	
+	
+	<sql id="select-all">
+		SELECT * FROM REPLE
+	</sql> 
+	<!-- 댓글 쓰기 -->
+	<insert id="insertReple" parameterClass="reple">
+		INSERT INTO REPLE(NUM,CONTENT,REG_DATE)
+		VALUES(REPlE_NUM_SEQ.NEXTVAL,#content#,#reg_date#)
+	</insert>
+	
+	<!-- 댓글 보기 -->
+	<select id="selectRe" resultMap="repleRes" parameterClass="int">
+		<include refid="select-all"/>
+		ORDER BY num DESC
+	</select>
+</sqlMap>

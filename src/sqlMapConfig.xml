@@ -27,5 +27,7 @@
 	<sqlMap resource="/sql/gongjiboardSQL.xml"/>
 	<sqlMap resource="/sql/addressSQL.xml"/>
 	<sqlMap resource="/sql/menuSQL.xml"/>
+	<sqlMap resource="/sql/noweventSQL.xml"/>
+	<sqlMap resource="/sql/repleSQL.xml"/>
 </sqlMapConfig>
 
