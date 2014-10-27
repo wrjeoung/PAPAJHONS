@@ -30,7 +30,7 @@
 							alt="${li.name}" title="${li.name}" onerror="fnNoImages($(this))" />
 					</p>
 					<p class="b_detail" style="cursor: pointer"
-						onclick="fnMenuInfo('${li.name},<c:if test="${li.name != null}">sfaf</c:if>,1018,4001,,0,,10 ',$(this));">
+						onclick="fnMenuInfo('${li.name},${li.menulagcode},${li.menumidcode},${li.menusubcode},${li.menudtlimage},${li.menuseq},${li.menucode},${li.ongrpcode}',$(this));">
 						<img src="../assets/img/sub/btn_detail.gif" alt="마가리타" />
 					</p>
 				</div>
