@@ -4,6 +4,7 @@
 <h1 class="hidden">메뉴 안내</h1>
 <form id="f1" name="f1">
 	<div id="menuBoxWrap">
+		<%-- 
 		<c:if test="${ param.menuId eq 'pj_2013' }"> <!-- 음료 -->
 			<c:forEach var="li" items="${list}" varStatus="status">
 				<c:if test="${status.count % 3 == 1 }"><div class="menuBox"></c:if>
@@ -20,6 +21,20 @@
 				<c:if test="${status.count % 3 == 0 }"></div></c:if>
 			</c:forEach>
 		</c:if>
+		--%>
+		<c:forEach var="li" items="${list}" varStatus="status">
+			<c:if test="${status.count % 3 == 1 }"><div class="menuBox"></c:if>
+				<div class="menu" id="menu_0">
+					<p class="m_list">
+						<img class="img" src="${li.imagepath1}"
+							alt="${li.name}" title="${li.name}" onerror="fnNoImages($(this))" />
+					</p>
+					<p class="b_detail" style="cursor: pointer"
+						onclick="fnMenuInfo('마가리타,10,1018,4001,,0,,10 ',$(this));">
+						<img src="../assets/img/sub/btn_detail.gif" alt="마가리타" />
+					</p>
+				</div>
+		</c:forEach>
 	</div>
 </form>
 
