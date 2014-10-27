@@ -14,14 +14,6 @@ public class MenuAction implements Action, IbatisAware {
 	private List<MenuBeverageDTO> list = new ArrayList<MenuBeverageDTO>();
 	private List<MenuOriginalDTO> originallist = new ArrayList<MenuOriginalDTO>();
 	private String memId;
-	public List<MenuBeverageDTO> getList() {
-		return list;
-	}
-
-	public void setList(List<MenuBeverageDTO> list) {
-		this.list = list;
-	}
-
 
 	public String execute() throws Exception {
 		/*
