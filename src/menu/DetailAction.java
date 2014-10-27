@@ -32,17 +32,11 @@ public class DetailAction implements Action , IbatisAware{
 //		System.out.println(menuCode);
 //		System.out.println(onGrpCode);
 //		System.out.println(bestOnlineGroupCd);
-<<<<<<< HEAD
-		for(MenuDTO li : list)
-		{
-			System.out.println(li.getName());
-		}
-		System.out.println("DetailAction name : "+menuName);
-=======
+
 		System.out.println("DetailAction : " + menuName);
 		
 		list = (MenuDTO) sqlMapper.queryForObject("menuSQL.selectMenuName",menuName);
->>>>>>> 93937a2c653a13d19fb671d4f10f677f3ee0a7bc
+
 		
 		return SUCCESS;
 	}

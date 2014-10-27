@@ -28,11 +28,8 @@
 		</action>
 		
 		<action name="detailAction" class="menu.DetailAction">
-<<<<<<< HEAD
-=======
 			<interceptor-ref name="ibatis"/>
 			<interceptor-ref name="params"/>
->>>>>>> 93937a2c653a13d19fb671d4f10f677f3ee0a7bc
 			<result>
 				/menu/detail.jsp
 			</result>
