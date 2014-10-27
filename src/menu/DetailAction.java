@@ -30,6 +30,12 @@ public class DetailAction implements Action {
 //		System.out.println(menuCode);
 //		System.out.println(onGrpCode);
 //		System.out.println(bestOnlineGroupCd);
+		for(MenuDTO li : list)
+		{
+			System.out.println(li.getName());
+		}
+		System.out.println("DetailAction name : "+menuName);
+		
 		return SUCCESS;
 	}
 	

@@ -30,7 +30,7 @@
 							alt="${li.name}" title="${li.name}" onerror="fnNoImages($(this))" />
 					</p>
 					<p class="b_detail" style="cursor: pointer"
-						onclick="fnMenuInfo('${li.name},${li.menulagcode},${li.menumidcode},${li.menusubcode},${li.menudtlimage},${li.menuseq},${li.menucode},${li.ongrpcode}',$(this));">
+						onclick="fnMenuInfo('${li.name},<c:if test="${li.name != null}">sfaf</c:if>,1018,4001,,0,,10 ',$(this));">
 						<img src="../assets/img/sub/btn_detail.gif" alt="마가리타" />
 					</p>
 				</div>
@@ -152,7 +152,7 @@
 		var recieveMenu = menu_info.split(",");
 		console.log(recieveMenu);
 		//		this.menuName     = recieveMenu[0];  // 메뉴명
-		this.menuName = ""; // 메뉴명
+		this.menuName = recieveMenu[0]; // 메뉴명
 		this.menuLagCode = recieveMenu[1]; // 메뉴대분류코드
 		this.menuMidCode = recieveMenu[2]; // 메뉴중분류코드
 		this.menuSubCode = recieveMenu[3]; // 메뉴세분류코드
@@ -169,7 +169,7 @@
 					+ "&menuDtlImage=" + this.menuDtlImage + "&menuSeq="
 					+ this.menuSeq + "&menuCode=" + this.menuCode
 					+ "&onGrpCode=" + this.onGrpCode + "&bestOnlineGroupCd="
-					+ 10 +"&list=" + ${list};
+					+ 10;
 		};
 	}
 

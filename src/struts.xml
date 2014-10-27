@@ -28,7 +28,6 @@
 		</action>
 		
 		<action name="detailAction" class="menu.DetailAction">
-			<interceptor-ref name="params"/>
 			<result>
 				/menu/detail.jsp
 			</result>
