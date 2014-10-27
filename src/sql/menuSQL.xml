@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC '-//ibatis.apache.org//DTD Sql Map 2.0//EN' 'http://ibatis.apache.org/dtd/sql-map-2.dtd'>
+<sqlMap namespace="menuSQL">
+	<!-- typeAlias 변수선언 태그. -->
+	<typeAlias alias="dmenuDTO" type="db.MenuDTO" />
+			<!-- impoert,변수명  ,class(DTO)-->
+		<!-- 리절트 맵 정의 (select결과를 맵타입으로 정의. select할 때만 스임, lsit로 return해준다.
+		검색 결과가 하나 이상일 때 쓰이는 게 좋음.)-->
+	  	<resultMap id="menuRes" class="dmenuDTO">
+		  	<result property="no" column="no"/>
+		  	<result property="memid" column="memid"/>
+		  	<result property="name" column="name"/>
+		  	<result property="description" column="description"/>
+		  	<result property="topping" column="topping"/>
+		  	<result property="rprice" column="rprice"/>
+		  	<result property="lprice" column="lprice"/>
+		  	<result property="fprice" column="fprice"/>
+		  	<result property="pprice" column="pprice"/>
+		  	<result property="boxprice" column="boxprice"/>
+		  	<result property="onesizeprice" column="onesizeprice"/>
+		  	<result property="onepackprice" column="onepackprice"/>
+		  	<result property="setprice" column="setprice"/>
+		  	<result property="allergy" column="allergy"/>
+		  	<result property="consist" column="consist"/>
+		  	<result property="material" column="material"/>
+		  	<result property="present" column="present"/>
+		  	<result property="presentsauce" column="presentsauce"/>
+		  	<result property="calorie" column="calorie"/>
+		  	<result property="nuturition" column="nuturition"/>		  	
+		  	<result property="imagepath1" column="imagepath1"/>
+		  	<result property="imagepath2" column="imagepath2"/>
+		  	<result property="imagepath3" column="imagepath3"/>
+		</resultMap>
+		
+		<!-- 공통으로 사용할 select 절 정의 -->
+		<sql id="select-all">
+			SELECT * FROM menuDb
+		</sql>
+		
+		<!-- 공통으로 사용할 where-no 절 정의 -->
+		<sql id="where-no">
+			WHERE no = #no#
+		</sql>
+	
+		<!-- select 쿼리문 정의 -->
+		<select id="selectAll" resultMap="menuRes" >
+			<include refid="select-all" />
+			ORDER BY no DESC
+		</select>
+		
+		<select id="selectOne" resultMap="menuRes" parameterClass="int">
+			<include refid="select-all" />
+			<include refid="where-no" />
+		</select>
+		
+		<select id="selectLastNo" resultClass="dmenuDTO" parameterClass="int">
+			<!-- 결과값이 숫자 하나일경우 resultClass=""에 int or Interger or String으로 쓰면 된다. -->
+			SELECT max(no) as no FROM menuDb 
+		</select>
+		
+		<!-- insert 쿼리문 정의 -->
+		<!-- parameterClass="board" -> board를 입력받아서 ##채워 넣겠다는 의미. -->
+		<insert id="insertMenu" parameterClass="dmenuDTO">
+      		INSERT INTO menuDb (NO,
+      							NAME,
+                         		LPRICE,
+                         		RPRICE,
+                         		IMAGEPATH1
+                         )
+                	 VALUES (menuDb_no_seq.NEXTVAL,
+                	 		#name#,
+                         	#lprice#,
+                         	#rprice#,
+                         	#imagepath1#
+                         )
+		</insert>
+		
+		
+		<!-- update 쿼리문 정의 -->
+		<update id="updateMenu" parameterClass="dmenuDTO">
+    		UPDATE menuDb SET name = #name#,
+                     		     lprice = #lprice#,
+                       		     rprice = #rprice#,
+                       		     imagepath1 = #imagepath1#
+			<include refid="where-no" />
+   		</update>
+
+		<!-- delete 쿼리문 정의 -->
+  		<delete id="deleteMenu" parameterClass="dmenuDTO">
+			DELETE FROM menuDb 
+			<include refid="where-no" />
+   		</delete>
+
+</sqlMap>
+

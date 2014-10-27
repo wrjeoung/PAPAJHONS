@@ -24,8 +24,8 @@
 	</transactionManager>
 	
 	<sqlMap resource="/sql/berverageSQL.xml"/>
-	<sqlMap resource="/sql/menuOriginalSQL.xml"/>
 	<sqlMap resource="/sql/gongjiboardSQL.xml"/>
 	<sqlMap resource="/sql/addressSQL.xml"/>
+	<sqlMap resource="/sql/menuSQL.xml"/>
 </sqlMapConfig>
 
