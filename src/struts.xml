@@ -6,6 +6,7 @@
 	<!--  용량제한 100MB 설정. -->
 	<constant name="struts.multipart.maxSize" value="104857600"/>
 	
+	<!-- 메뉴  -->
 	<package name="menu" extends="struts-default">
 		<interceptors>
 			<interceptor name="ibatis" class="menu.IbartisInterceptor"/>
@@ -23,6 +24,13 @@
 			<interceptor-ref name="params"/>
 			<result>
 				/menu/menu.jsp
+			</result>
+		</action>
+		
+		<action name="detailAction" class="menu.DetailAction">
+			<interceptor-ref name="params"/>
+			<result>
+				/menu/detail.jsp
 			</result>
 		</action>
 	</package>
