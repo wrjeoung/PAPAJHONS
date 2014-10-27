@@ -243,16 +243,74 @@ input,select,img {
 </head>
 
 <body>
-	
 	<div id="iframe_detail">
-
-	
 		<script type="text/javascript">
 			var $mainType = "40";
 			var $doughType = "";
 		</script>
-
-
+		<c:if test="${ list.name eq '음료' }">
+			<div class="db_img">
+			<img src="/assets/img/menu/img/80/detail_img_4010.png" alt="환타"
+				title="환타"
+				onerror="this.src='/assets/img/menu/img/detail_noImage.png'" />
+			</div>
+			<div class="comment">
+				<!--  0401 추가부분 시작  -->
+				<p class="close">
+					<button type="button">
+						<img src="../assets/img/sub/btn_detail_close.gif" alt="닫기" />
+					</button>
+				</p>
+				<!-- 0401 추가부분 끝 -->			
+				<h4>환타</h4>
+				<p class="comm">환타</p>
+				<div class="detail_comm">
+					<dl>
+						<dt>
+							<img src="/assets/img/menu/detail_title_size.gif" alt="사이즈별 가격">
+						</dt>
+						<dd>
+							<ul>
+								<li><span class="size_img"><img
+										src="/assets/img/menu/detail_size_600ML.gif" alt="600ml사이즈" /></span>
+									<span class="가격">1200원</span></li>
+			
+								<li><span class="size_img"><img
+										src="/assets/img/menu/detail_size_1.5L.gif" alt="1.5L사이즈" /></span> <span
+									class="가격">1900원</span></li>
+							</ul>
+						</dd>
+					</dl>
+				</div>
+				<!-- //detail_comm -->
+				<form action="">
+					<div class="cart_order">
+					<label for="select_size" class="hidden">사이즈 선택</label> <select
+						id="select_size">
+						<option value="50486,10,3012">600ml-1200</option>
+						<option value="50485,10,3014">1.5L-1900</option>
+					</select> <label for="select_count">수량</label> <select id="select_count">
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+						<option value="5">5</option>
+					</select>
+			
+					<button class="cart" type="button"
+						onclick="fnGetPizzaCnt('80','40','4010','','','addCart')">
+					<img src="../assets/img/menu/dtaile_btn_cart.gif" alt="장바구니 담기" />
+					</button>
+					<button class="order" type="button"
+						onclick="fnGetPizzaCnt('80','40','4010','','','addCartNgo')">
+							<img src="../assets/img/menu/dtaile_btn_order.gif" alt="바로 주문하기" />
+						</button>
+					</div>
+				</form>
+			</div>
+		</c:if>
+		
+		<%-- 
 		<div class="db_img">
 			<img src="/assets/img/menu/img/80/detail_img_4010.png" alt="환타"
 				title="환타"
@@ -272,13 +330,11 @@ input,select,img {
 
 			<div class="detail_comm">
 				<dl>
-
 					<dt>
 						<img src="/assets/img/menu/detail_title_size.gif" alt="사이즈별 가격">
 					</dt>
 					<dd>
 						<ul>
-
 							<li><span class="size_img"><img
 									src="/assets/img/menu/detail_size_600ML.gif" alt="600ml사이즈" /></span>
 								<span class="가격">1200원</span></li>
@@ -286,24 +342,17 @@ input,select,img {
 							<li><span class="size_img"><img
 									src="/assets/img/menu/detail_size_1.5L.gif" alt="1.5L사이즈" /></span> <span
 								class="가격">1900원</span></li>
-
 						</ul>
 					</dd>
-
 				</dl>
 			</div>
-
 			<!-- //detail_comm -->
 			<form action="">
 				<div class="cart_order">
-
 					<label for="select_size" class="hidden">사이즈 선택</label> <select
 						id="select_size">
-
 						<option value="50486,10,3012">600ml-1200</option>
-
 						<option value="50485,10,3014">1.5L-1900</option>
-
 					</select> <label for="select_count">수량</label> <select id="select_count">
 						<option value="1">1</option>
 						<option value="2">2</option>
@@ -314,18 +363,17 @@ input,select,img {
 
 					<button class="cart" type="button"
 						onclick="fnGetPizzaCnt('80','40','4010','','','addCart')">
-						<img src="/assets/img/menu/dtaile_btn_cart.gif" alt="장바구니 담기" />
+						<img src="../assets/img/menu/dtaile_btn_cart.gif" alt="장바구니 담기" />
 					</button>
 					<button class="order" type="button"
 						onclick="fnGetPizzaCnt('80','40','4010','','','addCartNgo')">
-						<img src="/assets/img/menu/dtaile_btn_order.gif" alt="바로 주문하기" />
+						<img src="../assets/img/menu/dtaile_btn_order.gif" alt="바로 주문하기" />
 					</button>
 				</div>
 			</form>
 		</div>
-
 	</div>
-
+    --%>
 	<!--   0401 추가부분 시작  -->
 	<script type="text/javascript" src="../assets/js/cart.js"></script>
 	<script type="text/javascript">
