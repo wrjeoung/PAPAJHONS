@@ -22,7 +22,7 @@ public class MenuAction implements Action, IbatisAware {
 		}
 		*/
 		System.out.println("MenuAction menuId : " + menuId);
-		list = sqlMapper.queryForList("menuSQL.selectAll");
+		list = sqlMapper.queryForList("menuSQL.selectMenuId",menuId);
 		
 		
 		for(Object a : list)
@@ -44,17 +44,13 @@ public class MenuAction implements Action, IbatisAware {
 	public void setIbatis(SqlMapClient sqlMapper) {
 		this.sqlMapper = sqlMapper;
 	}
-	
-	
+
 	public String getMenuId() {
-		System.out.println("MenuAction getMemId : " + menuId);
 		return menuId;
 	}
 
 	public void setMenuId(String menuId) {
-		System.out.println("MenuAction setMemId : " + menuId);
 		this.menuId = menuId;
 	}
 
-	
 }

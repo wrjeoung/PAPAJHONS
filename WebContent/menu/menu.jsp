@@ -6,7 +6,6 @@
 	<div id="menuBoxWrap">
 		<c:if test="${ param.menuId eq 'pj_2013' }"> <!-- À½·á -->
 			<c:forEach var="li" items="${list}" varStatus="status">
-				<c:out value="${list.name}" />
 				<c:if test="${status.count % 3 == 1 }"><div class="menuBox"></c:if>
 						<div class="menu" id="menu_0">
 							<p class="m_list">

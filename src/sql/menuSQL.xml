@@ -48,6 +48,11 @@
 			ORDER BY no DESC
 		</select>
 		
+		<select id="selectMenuId" resultMap="menuRes" parameterClass="String">
+			<include refid="select-all"/>
+			WHERE menuid = #menuid#
+		</select>
+		
 		<select id="selectOne" resultMap="menuRes" parameterClass="int">
 			<include refid="select-all" />
 			<include refid="where-no" />
