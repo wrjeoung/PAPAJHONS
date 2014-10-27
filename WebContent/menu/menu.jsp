@@ -163,7 +163,7 @@
 
 		// 20140429 베스트메뉴 구분값 추가
 		this.srcUrl = function() {
-			return "./detailAction.action?menuName=" + this.menuName
+			return "detailAction.action?menuName=" + this.menuName
 					+ "&menuLagCode=" + this.menuLagCode + "&menuMidCode="
 					+ this.menuMidCode + "&menuSubCode=" + this.menuSubCode
 					+ "&menuDtlImage=" + this.menuDtlImage + "&menuSeq="
