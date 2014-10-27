@@ -24,7 +24,14 @@ public class MenuDTO {
 	private String imagepath1;
 	private String imagepath2;
 	private String imagepath3;
-	
+	private String menulagcode;      // 메뉴대분류코드
+	private String menumidcode;      // 메뉴중분류코드
+	private String menusubcode;      // 메뉴세분류코드
+	private String menudtlimage;     // 온라인메뉴상세이미지파일
+	private String menuseq;          // 메뉴순번
+	private String menucode;         // 메뉴코드
+	private String ongrpcode;        // 온라인메뉴그룹코드
+		
 	public int getNo() {
 		return no;
 	}
@@ -162,5 +169,47 @@ public class MenuDTO {
 	}
 	public void setImagepath3(String imagepath3) {
 		this.imagepath3 = imagepath3;
+	}
+	public String getMenulagcode() {
+		return menulagcode;
+	}
+	public void setMenulagcode(String menulagcode) {
+		this.menulagcode = menulagcode;
+	}
+	public String getMenumidcode() {
+		return menumidcode;
+	}
+	public void setMenumidcode(String menumidcode) {
+		this.menumidcode = menumidcode;
+	}
+	public String getMenusubcode() {
+		return menusubcode;
+	}
+	public void setMenusubcode(String menusubcode) {
+		this.menusubcode = menusubcode;
+	}
+	public String getMenudtlimage() {
+		return menudtlimage;
+	}
+	public void setMenudtlimage(String menudtlimage) {
+		this.menudtlimage = menudtlimage;
+	}
+	public String getMenuseq() {
+		return menuseq;
+	}
+	public void setMenuseq(String menuseq) {
+		this.menuseq = menuseq;
+	}
+	public String getMenucode() {
+		return menucode;
+	}
+	public void setMenucode(String menucode) {
+		this.menucode = menucode;
+	}
+	public String getOngrpcode() {
+		return ongrpcode;
+	}
+	public void setOngrpcode(String ongrpcode) {
+		this.ongrpcode = ongrpcode;
 	}
 }
