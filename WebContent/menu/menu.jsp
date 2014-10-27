@@ -1,23 +1,82 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="EUC-KR"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <h1 class="hidden">메뉴 안내</h1>
 <form id="f1" name="f1">
 	<div id="menuBoxWrap">
 		<c:if test="${ param.menuId eq 'pj_2013' }"> <!-- 음료 -->
+			<%-- <c:out value="${fn:length(list)}" /> --%>
+			<c:forEach var="res" items="${list}" varStatus="status">
+				<%-- <c:out value="${status.index}" /> --%>
+				<c:if test="${status.count % 3 == '1'}">
+					<div class="menuBox">
+				</c:if>
+				<div class="menu" id="menu_${status.count -1}">
+					<p class="m_list">
+						<img class="img" src="/assets/img/menu/img/10/list_img_1018.png"
+							alt="마가리타" title="${res.name}" onerror="fnNoImages($(this))" />
+					</p>
+					<p class="b_detail" style="cursor: pointer"
+						onclick="fnMenuInfo('마가리타,10,1018,4001,,0,,10 ',$(this));">
+						<img src="../assets/img/sub/btn_detail.gif" alt="마가리타" />
+					</p>
+				</div>
+				<c:if test="${status.count % 3 == '0'}">
+					</div>
+				</c:if>
+			</c:forEach>
+		</c:if>
+		<%--
+			<table>
+			<c:forEach begin="1" end="4" varStatus="loop">
+				<tr>
+					<c:forEach begin="1" end="5" varStatus="loop2">
+						<td>${loop2.count + 1}*${loop.count}=${(loop2.count+1)*loop.count}</td>
+					</c:forEach>
+				</tr>
+				</c:forEach>
+			</table>
+		 --%>
+		<%--
+			<c:if test="${status.count % 3 == '1'}">
+					
+					
+				</c:if>
+		
 			<div class="menuBox">
-					<div class="menu" id="menu_0">
+					<div class="menu" id="menu_${status.count -1}">
 						<p class="m_list">
 							<img class="img" src="/assets/img/menu/img/10/list_img_1018.png"
-								alt="마가리타" title="마가리타" onerror="fnNoImages($(this))" />
+								alt="마가리타" title="${res.name}" onerror="fnNoImages($(this))" />
 						</p>
 						<p class="b_detail" style="cursor: pointer"
 							onclick="fnMenuInfo('마가리타,10,1018,4001,,0,,10 ',$(this));">
 							<img src="../assets/img/sub/btn_detail.gif" alt="마가리타" />
 						</p>
 					</div>
-			</div>
-		</c:if>
+					</div>
+		  
+		
+			<c:out value="${status.count}" />
+				<c:if test="${status.count % 3 == '0'}">
+					<c:out value="3의배수" />
+				</c:if>
+		
+		<s:if test="list.size() <= 0"> 
+			<div class="menuBox">
+					<div class="menu" id="menu_0">
+						<p class="m_list">
+							<img class="img" src="/assets/img/menu/img/10/list_img_1018.png"
+								alt="마가리타" title="${res.name}" onerror="fnNoImages($(this))" />
+						</p>
+						<p class="b_detail" style="cursor: pointer"
+							onclick="fnMenuInfo('마가리타,10,1018,4001,,0,,10 ',$(this));">
+							<img src="../assets/img/sub/btn_detail.gif" alt="마가리타" />
+						</p>
+					</div>
+				</div>
+		--%>
 	</div>
 </form>
 

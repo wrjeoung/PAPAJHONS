@@ -140,7 +140,7 @@
       				<!-- cont -->
         			<div class="cont" style="text-align:center">
        					<!-- include -->
-       						<script type="text/javascript"> $("#contents .cont").load('menuAction.action?menuId=${param.menuId}'); </script>
+       						<script type="text/javascript"> $("#contents .cont").load('menuAction.action?menuId=${menuId}'); </script>
 	      			</div>
       				<!--// cont -->
 				</div>
