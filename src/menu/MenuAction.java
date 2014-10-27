@@ -10,7 +10,8 @@ import db.MenuDTO;
 public class MenuAction implements Action, IbatisAware {
 	public static SqlMapClient sqlMapper;
 	private List<MenuDTO> list = new ArrayList<MenuDTO>();
-	private String memId;
+	private String menuId;
+	
 
 	public String execute() throws Exception {
 		/*
@@ -20,7 +21,9 @@ public class MenuAction implements Action, IbatisAware {
 			originallist = sqlMapper.queryForList("original.selectAll");
 		}
 		*/
+		System.out.println("MenuAction menuId : " + menuId);
 		list = sqlMapper.queryForList("menuSQL.selectAll");
+		
 		
 		for(Object a : list)
 		{
@@ -28,6 +31,10 @@ public class MenuAction implements Action, IbatisAware {
 		}
 		
 		return SUCCESS;
+	}
+
+	public List<MenuDTO> getList() {
+		return list;
 	}
 
 	public void setList(List<MenuDTO> list) {
@@ -38,11 +45,16 @@ public class MenuAction implements Action, IbatisAware {
 		this.sqlMapper = sqlMapper;
 	}
 	
-	public String getMemId() {
-		return memId;
+	
+	public String getMenuId() {
+		System.out.println("MenuAction getMemId : " + menuId);
+		return menuId;
 	}
 
-	public void setMemId(String memId) {
-		this.memId = memId;
+	public void setMenuId(String menuId) {
+		System.out.println("MenuAction setMemId : " + menuId);
+		this.menuId = menuId;
 	}
+
+	
 }
