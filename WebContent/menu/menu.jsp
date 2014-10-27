@@ -169,7 +169,7 @@
 					+ "&menuDtlImage=" + this.menuDtlImage + "&menuSeq="
 					+ this.menuSeq + "&menuCode=" + this.menuCode
 					+ "&onGrpCode=" + this.onGrpCode + "&bestOnlineGroupCd="
-					+ 10;
+					+ 10 +"&list=" + ${list};
 		};
 	}
 

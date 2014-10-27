@@ -1,6 +1,11 @@
 package menu;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.opensymphony.xwork2.Action;
+
+import db.MenuDTO;
 
 public class DetailAction implements Action {
 	private String menuName; 
@@ -13,6 +18,8 @@ public class DetailAction implements Action {
 	private String onGrpCode; // 온라인 메뉴 그룹.
 	private String bestOnlineGroupCd;
 	
+	private List<MenuDTO> list = new ArrayList<MenuDTO>();
+	
 	public String execute() throws Exception {
 //		System.out.println(menuName);
 //		System.out.println(menuLagCode);
@@ -24,6 +31,14 @@ public class DetailAction implements Action {
 //		System.out.println(onGrpCode);
 //		System.out.println(bestOnlineGroupCd);
 		return SUCCESS;
+	}
+	
+	public List<MenuDTO> getList() {
+		return list;
+	}
+
+	public void setList(List<MenuDTO> list) {
+		this.list = list;
 	}
 
 	public String getMenuName() {
