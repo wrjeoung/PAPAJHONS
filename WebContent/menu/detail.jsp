@@ -244,6 +244,85 @@ input,select,img {
 
 <body>
 	<div id="iframe_detail">
+		<c:if test="${ list.menuid eq 'pj_2012' }">
+		  
+			<script type="text/javascript">
+				var $mainType  = "20";
+				var $doughType = "";
+			</script>
+			<div class="db_img">
+				<img src="/assets/img/menu/img/70/detail_img_9001.png" alt="샘플러" title="샘플러" onerror="this.src='/assets/img/menu/img/detail_noImage.png'"/>
+			</div>
+	    		<div class="comment">
+	    		<!--  0401 추가부분 시작  -->
+	    		<p class="close"><button type="button"><img src="/assets/img/sub/btn_detail_close.gif" alt="닫기" /></button></p>
+	    		<!-- 0401 추가부분 끝 -->	
+    		
+	    		<h4>샘플러</h4>
+	    		<p class="comm"></p>
+
+		    		<div class="detail_comm"> 
+		      			<dl>
+
+							<dd></dd>
+		       				<dt><img src="/assets/img/menu/detail_title_size.gif" alt="사이즈별 가격"></dt>
+		       				<dd>
+		       					<ul>
+						
+							 	<li>
+									<span class="size_img"><img src="/assets/img/menu/detail_size_one.gif" alt="원 사이즈 사이즈"/></span>
+									<span class="가격">12900원</span>
+								</li>
+
+          				</ul>
+        			</dd>
+
+        			<dt><img src="/assets/img/menu/detail_title_alre.gif" alt="알레르기 음식표기"></dt>
+        			<dd>준비중</dd>
+        			<dt class="hidden">성분표시</dt>
+        			<dd>
+          				<table>
+            				<tr>
+              					<th scope="col">칼로리</th>
+              					<th scope="col">영양정보</th>
+            				</tr>
+            				<tr>
+              					<td>준비중</td>
+              					<td style="text-align:left">준비중</td>
+            				</tr>
+          				</table>
+        			</dd>
+
+      			</dl>
+    		</div>
+   
+    		<!-- //detail_comm -->
+    		<form action="">
+    			<div class="cart_order"> 
+	
+        			<label for="select_size" class="hidden">사이즈 선택</label>
+        			<select id="select_size">
+ 
+						<option value="51036,10,3006">one-12900</option>
+
+        			</select>
+
+        			<label for="select_count">수량</label>
+        			<select id="select_count">
+          				<option value="1">1</option>
+          				<option value="2">2</option>
+          				<option value="3">3</option>
+          				<option value="4">4</option>
+          				<option value="5">5</option>
+        			</select>
+
+      				<button class="cart"  type="button" onclick="fnGetPizzaCnt('70','20','9001','','','addCart')"    ><img src="/assets/img/menu/dtaile_btn_cart.gif"  alt="장바구니 담기" /></button>
+      				<button class="order" type="button" onclick="fnGetPizzaCnt('70','20','9001','','','addCartNgo')" ><img src="/assets/img/menu/dtaile_btn_order.gif" alt="바로 주문하기" /></button>
+    			</div>
+    		</form>
+  		</div>
+		</c:if>
+		
 		<c:if test="${ list.menuid eq 'pj_2013' }">
 			<script type="text/javascript">
 				var $mainType = "40";

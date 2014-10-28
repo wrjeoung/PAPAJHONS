@@ -111,7 +111,7 @@ public class DetailAction implements Action , IbatisAware{
 			mRSizeImgPath = "../assets/img/menu/detail_size_350ML.gif";
 			mlSizeImgPath = "../assets/img/menu/detail_size_1.25L.gif";
 			mSizeSelectOpt1 = "350ml-1600";
-			mSizeSelectOpt2 = "1.5L-3000";
+			mSizeSelectOpt2 = "1.25L-3000";
 			mRsizeName = "3500ml사이즈";
 			mLsizeName = "1.25L사이즈";
 		}
