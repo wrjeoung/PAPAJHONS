@@ -30,7 +30,8 @@
 	
   		<!-- header -->
   		<div id="header">
-  			<script type="text/javascript"> $("#header").load("../include/header.jsp?menuGb=member&menuId=pj_0005"); </script>
+  			<!--  <script type="text/javascript"> $("#header").load("../include/header.jsp?menuGb=member&menuId=pj_0005"); </script>-->
+  			<script type="text/javascript">$("#header").load('../include/header.jsp?menuGb='+'${menuGb}'+'menuId='+'${menuId}'); </script>
   		</div>
   		<!-- // header --> 
   
