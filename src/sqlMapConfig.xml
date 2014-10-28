@@ -29,5 +29,9 @@
 	<sqlMap resource="/sql/menuSQL.xml"/>
 	<sqlMap resource="/sql/noweventSQL.xml"/>
 	<sqlMap resource="/sql/repleSQL.xml"/>
+	
+	<sqlMap resource="/sql/storeeventSQL.xml"/>
+	
+	<sqlMap resource="/sql/pasteventSQL.xml"/>
 </sqlMapConfig>
 

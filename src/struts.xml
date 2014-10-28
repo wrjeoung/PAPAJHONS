@@ -181,5 +181,55 @@
 		<action name="signUpAction" class="papa.address.AddressAction" method="form">
 			<result>/signup/cont.jsp</result>
 		</action>				
-	</package>	
+	</package>
+	<!-- 매장별 이벤트 -->
+	<package name="storeevent.board" extends="struts-default">
+		<!-- 글쓰기 -->
+		<action name="storewriteForm" class="storeevent.board.writeAction" method="form">
+			<result>/storeevent/storeWrite.jsp</result>
+		</action>
+		<action name="storewriteAction" class="storeevent.board.writeAction">
+			<result type="redirectAction">
+			<param name="actionName">storelistAction</param>
+			</result> 
+		</action>
+		<!-- 리스트 -->
+		<action name="storelistAction" class="storeevent.board.listAction">
+			<interceptor-ref name="params"/>
+			<result>/storeevent/storeList.jsp</result>
+		</action>
+		<!-- 상세보기 -->
+		<action name="storeviewAction" class="storeevent.board.viewAction">
+			<result>/storeevent/storeView.jsp</result>
+		</action>
+		<!-- 삭제하기 -->
+		<action name="storedeleteAction" class="storeevent.board.deleteAction">
+			<result type="redirect-action">
+				<param name="actionName">storelistAction</param>
+			</result>
+		</action>
+		
+		<!-- 글수정하기 -->
+		<action name="storemodifyForm" class="storeevent.board.modifyAction" method="form">
+			<result>/storeevent/storeModify.jsp</result>
+		</action>
+		<action name="storemodifyAction" class="storeevent.board.modifyAction">
+			<result type="redirect-action">
+			<param name="actionName">storelistAction</param>
+			</result>
+		</action>
+	</package>
+	
+	<!-- 지난 이벤트 -->
+	<package name="pastevent.board" extends="struts-default">
+	<!-- 글쓰기 -->
+		<action name="pastwriteForm" class="pastevent.board.writeAction" method="form">
+			<result>/pastevent/pastWrite.jsp</result>
+		</action>
+		<action name="pastwriteAction" class="pastevent.board.writeAction">
+			<result type="redirectAction">
+			<param name="actionName">pastwriteForm</param>
+			</result> 
+		</action>
+	</package>
 </struts>

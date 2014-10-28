@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC '-//ibatis.apache.org//DTD Sql Map 2.0//EN' 'http://ibatis.apache.org/dtd/sql-map-2.dtd'>
+<sqlMap namespace="store">
+	<typeAlias alias="store" type="storeevent.board.storeeventVO"/>
+	<resultMap id="storeRes" class="store">
+		<result property="num" column="num"/>
+		<result property="store" column="store"/>
+		<result property="subject" column="subject"/>
+		<result property="content" column="content"/>
+		<result property="day" column="day"/>
+		<result property="reg_date" column="reg_date"/>
+		<result property="file_orgname" column="file_orgname"/>
+		<result property="file_savname" column="file_savname"/>
+	</resultMap>
+	
+	<!-- 글쓰기 -->
+	<insert id="insertStore" parameterClass="store">
+		INSERT INTO STOREEVENT(NUM,STORE,SUBJECT,CONTENT,DAY,REG_DATE)
+		VALUES(STOREEVENT_NUM_SEQ.NEXTVAL,#store#,#subject#,#content#,#day#,#reg_date#)
+	</insert>
+	
+	<select id="selectLastNo" resultClass="store" parameterClass="int">
+		SELECT max(num) as num FROM STOREEVENT
+	</select>
+	
+	<sql id="where-no">
+		WHERE num=#num#
+	</sql>
+	<!-- 파일 -->
+	<update id="updateFile" parameterClass="store">
+		UPDATE STOREEVENT SET FILE_ORGNAME=#file_orgname#
+		,FILE_SAVNAME=#file_savname#
+		<include refid="where-no"/>
+	</update>
+	
+	<sql id="select-all">
+		SELECT * FROM STOREEVENT
+	</sql>
+	<!-- select 쿼리문 정의 -->
+	<select id="selectAll" resultMap="storeRes" parameterClass="int">
+		<include refid="select-all"/>
+		ORDER BY num DESC
+	</select>
+	
+	<!-- 상세보기 -->
+	<select id="selectOne" resultMap="storeRes" parameterClass="int">
+		SELECT * FROM STOREEVENT WHERE num=#num#
+	</select>
+	
+	<!-- 조회수 증가 -->
+	<update id="updateReadHit" parameterClass="store">
+		UPDATE STOREEVENT SET READHIT=readHit+1 WHERE num=#num#
+	</update>
+	
+	<!-- 삭제하기 -->
+	<delete id="deleteBoard" parameterClass="store">
+		DELETE FROM STOREEVENT
+		<include refid="where-no"/>
+	</delete>
+	<!-- 수정하기 -->
+	<update id="updateBoard" parameterClass="store">
+		UPDATE STOREEVENT SET STORE=#store#,SUBJECT=#subject#,CONTENT=#content#,DAY=#day#
+		<include refid="where-no"/>
+	</update>
+</sqlMap>
