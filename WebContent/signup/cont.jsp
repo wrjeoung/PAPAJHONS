@@ -23,6 +23,10 @@
 </head>
 
 <body>
+	<input type="hidden" id="menuGb" name="menuGb" value="${menuGb}" />
+	<input type="hidden" id="menuId" name="menuId" value="${menuId}" />
+	<input type="hidden" id="login_result" name="login_result" value="${result}" />
+ 	
 	<div id="skipNavi"> <a href="#gnb">메뉴 바로가기</a> <a href="#contents">본문바로가기</a></div>
 	
 	<!-- wrap -->
@@ -43,7 +47,7 @@
       			<p><!-- 타이틀 --></p>
     		</div>
     		<!-- //con_header -->
-	  
+
     		<!-- content_area -->
     		<div id="content_area">
   				<!-- <script type="text/javascript">$("#content_area").load('../member/pj_0005.jsp?menuId=pj_0005&msg=&step='); </script> -->

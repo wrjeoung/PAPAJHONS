@@ -6,7 +6,7 @@
 	var menuId = "null";
 	var m_num;
 	var s_num;
-		
+
 	//온라인 주문 페이지
 	if( menuGb == "order" ) 
 	{ 
@@ -75,7 +75,7 @@
    	<h3 class="hidden">유틸리티 메뉴</h3>
    	<ul class="utilityNav">
 
-   		<li><h2><a href="signUpAction.action?menuGb=member&menuId=pj_0001"><img src="../assets/img/common/topUtil_01.gif" alt="로그인" /></a></h2></li>
+   		<li><h2><a href="loginAction.action?menuGb=member&menuId=pj_0001"><img src="../assets/img/common/topUtil_01.gif" alt="로그인" /></a></h2></li>
    		<li><h2><a href="signUpAction.action?menuGb=member&menuId=pj_0005"><img src="../assets/img/common/topUtil_08.gif" alt="회원가입" /></a></h2></li>
 
 

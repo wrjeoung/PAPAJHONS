@@ -39,6 +39,12 @@
 			<include refid="where-id" />
 		</select>
 		
+		<select id="loginCheck" resultMap="memberRes">
+			<include refid="select-all" />
+			<include refid="where-id" />
+			AND pw = #pw#
+		</select>		
+		
 		<!-- insert 쿼리문 정의 -->
 		<insert id="insertMember" parameterClass="member">
 		

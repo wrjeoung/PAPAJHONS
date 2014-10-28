@@ -188,6 +188,17 @@
 			<result>/com/zipCode.jsp</result>
 		</action>
 		
+		
+		<action name="loginAction" class="papa.member.LogInOutAction" method="form">
+			<result>/signup/cont.jsp</result>
+		</action>
+		
+		<action name="loginProAction" class="papa.member.LogInOutAction" method="loginPro">
+		    <interceptor-ref name="ibatis"></interceptor-ref>
+		    <interceptor-ref name="params"></interceptor-ref>
+			<result>/signup/cont.jsp</result>
+		</action>					
+		
 		<action name="signUpAction" class="papa.member.MemberAction" method="form">
 			<result>/signup/cont.jsp</result>
 		</action>

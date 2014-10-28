@@ -1,16 +1,59 @@
 <script type="text/javascript">
-	snb(8,1);
-	head_title("LOGIN");
+	function init()
+	{
+		snb(8,1);
+		head_title("LOGIN");
 
-	$(document).ready(function(){$('#viewLoading').hide();});
-	var alertFrame = $("#notice_caution");
-	if( "" == "no" )
-	{	
-		alertFrame.find("#alertText p").remove();
-		alertFrame.find("#alertText").append("<p>입력하신 정보가 맞지 않습니다.<br>다시 확인 하시고 로그인 해 주세요.</p>"); 
-		popAlert("#notice_caution");
+		$(document).ready(function(){$('#viewLoading').hide();});
 		
-		document.loginForm.mem_id.focus();
+		var alertFrame = $("#notice_caution");
+		var result = parent.document.getElementById("login_result").value;
+		
+		if( result == "no" )
+		{	
+			alertFrame.find("#alertText p").remove();
+			alertFrame.find("#alertText").append("<p>입력하신 정보가 맞지 않습니다.<br>다시 확인 하시고 로그인 해 주세요.</p>"); 
+			popAlert("#notice_caution");
+			
+			document.loginForm.mem_id.focus();
+		}
+		else if(result == "yes")
+		{
+			document.loginForm.action = "mainAction.action?msg=ok";
+			document.loginForm.submit();
+		}
+	}
+	
+	function Login()
+	{
+		if( document.loginForm.mem_id.value == "" )
+		{ 
+			alertFrame.find("#alertText p").remove();
+			alertFrame.find("#alertText").append("<p>아이디가 입력되지 않았습니다.<br>'아이디'를 입력해 주세요.</p>"); 
+			popAlert("#notice_caution");
+				
+			document.loginForm.mem_id.focus();
+			return;
+		}
+		
+		if( document.loginForm.mem_pw.value == "" )
+		{
+			alertFrame.find("#alertText p").remove();
+			alertFrame.find("#alertText").append("<p>비밀번호가 입력되지 않았습니다.<br>'비밀번호'를 입력해 주세요.</p>"); 
+			popAlert("#notice_caution");
+			
+			document.loginForm.mem_pw.focus();
+			return;
+		}
+
+		// 20140503 기존 가입자 중 한글ID 문제로 수정
+		document.loginForm.userID.value = encodeURIComponent(document.loginForm.mem_id.value);
+		
+		var menuGb = parent.document.getElementById("menuGb").value;
+		var menuId = parent.document.getElementById("menuId").value;
+
+		document.loginForm.action = 'loginProAction.action?menuGb='+menuGb+'&menuId='+menuId;
+		document.loginForm.submit();	
 	}
 	
 	//회원  - 로그인
@@ -112,6 +155,7 @@
 
 <script for=window event=onload>
 	document.loginForm.mem_id.focus();
+	init();
 </script>
 
 <div id="login_section">
@@ -130,7 +174,7 @@
 	            		<input type="password" id="mem_pw" name="mem_pw" />
 	          		</p>
 	          		<p class="login_btn">
-	            		<button type="button" onclick="fnLogin();"><img src="../assets/img/forms/btn_login.gif" alt="로그인" /></button>
+	            		<button type="button" onclick="Login();"><img src="../assets/img/forms/btn_login.gif" alt="로그인" /></button>
 	          		</p>
 	        	</div>
 			</fieldset>
