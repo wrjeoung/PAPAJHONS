@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC '-//ibatis.apache.org//DTD Sql Map 2.0//EN' 'http://ibatis.apache.org/dtd/sql-map-2.dtd'>
+<sqlMap namespace="memberSQL">
+
+	<typeAlias alias="member" type="papa.member.MemberData" />
+
+		<!-- 리절트 맵 정의 -->
+	  	<resultMap id="memberRes" class="member">
+		  	<result property="name" column="name"/>
+		  	<result property="id" column="id"/>
+		  	<result property="pw" column="pw"/>
+		  	<result property="phone" column="phone"/>
+		  	<result property="mobile" column="mobile"/>
+		  	<result property="sms" column="sms"/>
+		  	<result property="email" column="email"/>
+		  	<result property="sendmail" column="sendmail"/>
+			<result property="addr" column="addr"/>		  			  	
+		</resultMap>
+		
+		<!-- 공통으로 사용할 select 절 정의 -->
+		<sql id="select-all">
+			SELECT * FROM account 
+		</sql>
+		
+
+		<!-- select 쿼리문 정의 -->
+		<select id="selectAll" resultMap="memberRes">
+			<include refid="select-all" />
+			ORDER BY seq DESC
+		</select>
+		
+		<!-- 공통으로 사용할 where-no 절 정의 -->
+		<sql id="where-id">
+		    WHERE id = #id#
+		</sql>
+		
+		<select id="selectOne" resultMap="memberRes" parameterClass="String">
+			<include refid="select-all" />
+			<include refid="where-id" />
+		</select>
+		
+		<!-- insert 쿼리문 정의 -->
+		<insert id="insertMember" parameterClass="member">
+		
+      		INSERT INTO account (name,
+      							id,
+                         		pw,
+                         		phone,
+                         		mobile,
+                         		sms,
+                         		email,
+                         		sendmail,
+                         		addr
+                         )
+                	 VALUES (#name#,
+                	            #id#, 
+                         		#pw#,
+                         		#phone#,
+                         		#mobile#,
+                         		#sms#,
+                         		#email#,
+                         		#sendmail#,
+                         		#addr#
+                         )
+		</insert>		
+		
+</sqlMap>
+
