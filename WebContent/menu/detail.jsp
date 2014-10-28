@@ -244,6 +244,7 @@ input,select,img {
 
 <body>
 	<div id="iframe_detail">
+		<!-- 사이드 메뉴 -->
 		<c:if test="${ list.menuid eq 'pj_2012' }">
 		  
 			<script type="text/javascript">
@@ -251,34 +252,41 @@ input,select,img {
 				var $doughType = "";
 			</script>
 			<div class="db_img">
-				<img src="/assets/img/menu/img/70/detail_img_9001.png" alt="샘플러" title="샘플러" onerror="this.src='/assets/img/menu/img/detail_noImage.png'"/>
+				<img src="${list.imagepath2 }" alt="${list.name }" title="${list.name }" onerror="this.src='/assets/img/menu/img/detail_noImage.png'"/>
 			</div>
 	    		<div class="comment">
 	    		<!--  0401 추가부분 시작  -->
-	    		<p class="close"><button type="button"><img src="/assets/img/sub/btn_detail_close.gif" alt="닫기" /></button></p>
+	    		<p class="close"><button type="button"><img src="../assets/img/sub/btn_detail_close.gif" alt="닫기" /></button></p>
 	    		<!-- 0401 추가부분 끝 -->	
     		
-	    		<h4>샘플러</h4>
+	    		<h4><c:out value="${list.name }"/></h4>
 	    		<p class="comm"></p>
 
 		    		<div class="detail_comm"> 
 		      			<dl>
+		      				<c:if test="${list.name ne '샘플러' }">
+			      				<dd><b style = "color:#228a68;">재료</b><br/>
+								<c:out value="${list.topping }"/><br/>
+								<b style = "color:#228a68;">증정소스</b><br/>
+								<c:out value="${list.presentsauce }"/>
+								</dd>
+							</c:if>
 
 							<dd></dd>
-		       				<dt><img src="/assets/img/menu/detail_title_size.gif" alt="사이즈별 가격"></dt>
+		       				<dt><img src="../assets/img/menu/detail_title_size.gif" alt="사이즈별 가격"></dt>
 		       				<dd>
 		       					<ul>
 						
 							 	<li>
-									<span class="size_img"><img src="/assets/img/menu/detail_size_one.gif" alt="원 사이즈 사이즈"/></span>
-									<span class="가격">12900원</span>
+									<span class="size_img"><img src="../assets/img/menu/detail_size_one.gif" alt="원 사이즈 사이즈"/></span>
+									<span class="가격">${list.onesizeprice }</span>
 								</li>
 
           				</ul>
         			</dd>
 
-        			<dt><img src="/assets/img/menu/detail_title_alre.gif" alt="알레르기 음식표기"></dt>
-        			<dd>준비중</dd>
+        			<dt><img src="../assets/img/menu/detail_title_alre.gif" alt="알레르기 음식표기"></dt>
+        			<dd>${list.allergy }</dd>
         			<dt class="hidden">성분표시</dt>
         			<dd>
           				<table>
@@ -287,15 +295,14 @@ input,select,img {
               					<th scope="col">영양정보</th>
             				</tr>
             				<tr>
-              					<td>준비중</td>
-              					<td style="text-align:left">준비중</td>
+              					<td>${list.calorie }</td>
+              					<td style="text-align:left">${list.nuturition }</td>
             				</tr>
           				</table>
         			</dd>
 
       			</dl>
     		</div>
-   
     		<!-- //detail_comm -->
     		<form action="">
     			<div class="cart_order"> 
@@ -303,7 +310,7 @@ input,select,img {
         			<label for="select_size" class="hidden">사이즈 선택</label>
         			<select id="select_size">
  
-						<option value="51036,10,3006">one-12900</option>
+						<option value="51036,10,3006">one-${mOnePackPrice }</option>
 
         			</select>
 
@@ -316,13 +323,14 @@ input,select,img {
           				<option value="5">5</option>
         			</select>
 
-      				<button class="cart"  type="button" onclick="fnGetPizzaCnt('70','20','9001','','','addCart')"    ><img src="/assets/img/menu/dtaile_btn_cart.gif"  alt="장바구니 담기" /></button>
-      				<button class="order" type="button" onclick="fnGetPizzaCnt('70','20','9001','','','addCartNgo')" ><img src="/assets/img/menu/dtaile_btn_order.gif" alt="바로 주문하기" /></button>
+      				<button class="cart"  type="button" onclick="fnGetPizzaCnt('70','20','9001','','','addCart')"    ><img src="../assets/img/menu/dtaile_btn_cart.gif"  alt="장바구니 담기" /></button>
+      				<button class="order" type="button" onclick="fnGetPizzaCnt('70','20','9001','','','addCartNgo')" ><img src="../assets/img/menu/dtaile_btn_order.gif" alt="바로 주문하기" /></button>
     			</div>
     		</form>
   		</div>
 		</c:if>
 		
+		<!-- 음료 -->
 		<c:if test="${ list.menuid eq 'pj_2013' }">
 			<script type="text/javascript">
 				var $mainType = "40";
