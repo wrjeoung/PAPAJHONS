@@ -28,6 +28,14 @@ public class DetailAction implements Action , IbatisAware{
 	private String mLsizeName;
 	// view에 display되는 음료 정보. ]
 	
+	// view에 display되는 사이드 메뉴 정보 [
+	private String mOnePackPrice = null;
+	// view에 display되는 사이드 메뉴 정보 [
+	
+	// view에 display되는 파파플래터 정보 [
+	private String mBoxPrice=null;	
+	// view에 display되는 파파플래터 정보 ]
+	
 	public static SqlMapClient sqlMapper;
 	private MenuDTO list = new MenuDTO();
 	
@@ -74,46 +82,65 @@ public class DetailAction implements Action , IbatisAware{
 		return mLsizeName;
 	}
 
+	public String getmOnePackPrice() {
+		return mOnePackPrice;
+	}
+
+	public String getmBoxPrice() {
+		return mBoxPrice;
+	}
+
 	public void setDetailBerver() {
 		
-		if(list.getName().equals("스프라이트")
-		|| list.getName().equals("코카콜라 제로")
-				)
+		if(list != null)
 		{
-			mRSizeImgPath = "../assets/img/menu/detail_size_500ML.gif";
-			mlSizeImgPath = "../assets/img/menu/detail_size_1.5L.gif";
-			mSizeSelectOpt1 = "500ml-1200";
-			mSizeSelectOpt2 = "1.5L-1900";
-			mRsizeName = "500ml사이즈";
-			mLsizeName = "1.5L사이즈";
-		}
-		else if(list.getName().equals("코카콜라"))
-		{
-			mRSizeImgPath = "../assets/img/menu/detail_size_500ML.gif";
-			mlSizeImgPath = "../assets/img/menu/detail_size_1.25L.gif";
-			mSizeSelectOpt1 = "500ml-1100";
-			mSizeSelectOpt2 = "1.25L-1600";
-			mRsizeName = "500ml사이즈";
-			mLsizeName = "1.25L사이즈";
+			mOnePackPrice=list.getOnesizeprice();
+			if(mOnePackPrice != null)
+				mOnePackPrice.substring(0, mOnePackPrice.indexOf("원"));
 			
-		}
-		else if(list.getName().equals("환타"))
-		{
-			mRSizeImgPath = "../assets/img/menu/detail_size_600ML.gif";
-			mlSizeImgPath = "../assets/img/menu/detail_size_1.5L.gif";
-			mSizeSelectOpt1 = "600ml-1200";
-			mSizeSelectOpt2 = "1.5L-1900";
-			mRsizeName = "600ml사이즈";
-			mLsizeName = "1.5L사이즈";
-		}
-		else if(list.getName().equals("미닛 메이드 오렌지"))
-		{
-			mRSizeImgPath = "../assets/img/menu/detail_size_350ML.gif";
-			mlSizeImgPath = "../assets/img/menu/detail_size_1.25L.gif";
-			mSizeSelectOpt1 = "350ml-1600";
-			mSizeSelectOpt2 = "1.5L-3000";
-			mRsizeName = "3500ml사이즈";
-			mLsizeName = "1.25L사이즈";
+			mBoxPrice=list.getBoxprice();
+			if(mBoxPrice != null)
+				mBoxPrice.substring(0, mBoxPrice.indexOf("원"));
+		
+			if(list.getName().equals("스프라이트")
+			|| list.getName().equals("코카콜라 제로")
+					)
+			{
+				mRSizeImgPath = "../assets/img/menu/detail_size_500ML.gif";
+				mlSizeImgPath = "../assets/img/menu/detail_size_1.5L.gif";
+				mSizeSelectOpt1 = "500ml-1200";
+				mSizeSelectOpt2 = "1.5L-1900";
+				mRsizeName = "500ml사이즈";
+				mLsizeName = "1.5L사이즈";
+			}
+			else if(list.getName().equals("코카콜라"))
+			{
+				mRSizeImgPath = "../assets/img/menu/detail_size_500ML.gif";
+				mlSizeImgPath = "../assets/img/menu/detail_size_1.25L.gif";
+				mSizeSelectOpt1 = "500ml-1100";
+				mSizeSelectOpt2 = "1.25L-1600";
+				mRsizeName = "500ml사이즈";
+				mLsizeName = "1.25L사이즈";
+				
+			}
+			else if(list.getName().equals("환타"))
+			{
+				mRSizeImgPath = "../assets/img/menu/detail_size_600ML.gif";
+				mlSizeImgPath = "../assets/img/menu/detail_size_1.5L.gif";
+				mSizeSelectOpt1 = "600ml-1200";
+				mSizeSelectOpt2 = "1.5L-1900";
+				mRsizeName = "600ml사이즈";
+				mLsizeName = "1.5L사이즈";
+			}
+			else if(list.getName().equals("미닛 메이드 오렌지"))
+			{
+				mRSizeImgPath = "../assets/img/menu/detail_size_350ML.gif";
+				mlSizeImgPath = "../assets/img/menu/detail_size_1.25L.gif";
+				mSizeSelectOpt1 = "350ml-1600";
+				mSizeSelectOpt2 = "1.25L-3000";
+				mRsizeName = "3500ml사이즈";
+				mLsizeName = "1.25L사이즈";
+			}
 		}
 	}
 	

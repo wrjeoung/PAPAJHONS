@@ -69,7 +69,7 @@
 </script>
 <!--  0331 추가부분 끝 -->
 
-	<h1 class="logo png24" onclick="location.href='/index.jsp'">
+	<h1 class="logo png24" onclick="location.href='mainAction.action'">
 		<img src="../assets/img/common/logo.png" alt="파파존스 피자" title="papajohn's pizza"/>
 	</h1>
    	<h3 class="hidden">유틸리티 메뉴</h3>
@@ -81,7 +81,7 @@
 
   		<li><h2><a href="/sub.jsp?menuGb=customer&menuId=pj_5003"><img src="../assets/img/common/topUtil_02.gif" alt="제휴카드안내" /></a></h2></li>
      	<li><h2><a href="../signup/cont.jsp?menuGb=franch&menuId=pj_6001"><img src="../assets/img/common/topUtil_03.gif" alt="가맹점안내" /></a></h2></li>
-      	<li><h2><a href="/sub.jsp?menuGb=customer&menuId=pj_5004"><img src="../assets/img/common/topUtil_04.gif" alt="매장안내" /></a></h2></li>
+      	<li><h2><a href="storeAction.action"><img src="../assets/img/common/topUtil_04.gif" alt="매장안내" /></a></h2></li>
 		<li><h2><a href="../signup/cont.jsp?menuGb=member&menuId=pj_0001&step=step5&orderNumber="+"null"><img src="../assets/img/common/topUtil_05.gif" alt="온라인주문확인" /></a></h2></li>
     </ul>
     	

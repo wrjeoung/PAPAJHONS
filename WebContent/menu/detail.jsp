@@ -244,6 +244,153 @@ input,select,img {
 
 <body>
 	<div id="iframe_detail">
+	
+		<!-- 파파 플래터 & 세트 메뉴-->
+		<c:if test="${ list.menuid eq 'pj_2010' || list.menuid eq 'pj_2011'}">
+		
+			<script type="text/javascript">
+				var $mainType  = "10";
+				var $doughType = "오리지널";
+			</script>
+
+			<div class="db_img"><img src="${list.imagepath2}" alt="${list.name}" title="${list.name}" onerror="this.src='/assets/img/menu/img/detail_noImage.png'"/> </div>
+			  		<div class="comment">
+			  		<!--  0401 추가부분 시작  -->
+			<p class="close"><button type="button"><img src="../assets/img/sub/btn_detail_close.gif" alt="닫기" /></button></p>
+			<!-- 0401 추가부분 끝 -->	
+					 
+			<h4>${list.name }</h4>
+			<p class="comm"></p>
+			<div class="detail_comm"> 
+		   			<dl>
+					 	<dt><img src="../assets/img/menu/detail_title_setItems.gif" alt="메뉴 구성"></dt>
+				   				<dd class="items"> : <c:out value="${list.consist }"/></dd>
+				   		<c:if test="${ list.menuid eq 'pj_2010'}">
+							<dd><img src="../assets/img/order/ord_menuList_size_box.png" alt="세트가격"> ${list.boxprice }</dd>
+					     			<dd><img src="${list.imagepath3 }" alt="플래터 구성 이미지"></dd>
+				     	</c:if>
+				     	<c:if test="${ list.menuid eq 'pj_2011'}">
+							<dd><img src="../assets/img/order/ord_menuList_size_set.png" alt="세트가격"> ${list.boxprice }</dd>
+					     			<dd><img src="${list.imagepath3 }" alt="세트 구성 이미지"></dd>
+				     	</c:if>
+		  			</dl>
+			</div>
+			
+					<!-- //detail_comm -->
+			<form action="">
+				<div class="cart_order"> 
+						<c:if test="${ list.menuid eq 'pj_2010'}">
+				  			<label for="select_size" class="hidden">사이즈 선택</label>
+				  			<select id="select_size">
+				
+								<option value="50992,10,3023">BOX-${mBoxPrice }</option>
+				
+				  			</select>
+				  		</c:if>
+			
+			  			<label for="select_count">수량</label>
+			  			<select id="select_count">
+			    				<option value="1">1</option>
+			    				<option value="2">2</option>
+			    				<option value="3">3</option>
+			    				<option value="4">4</option>
+			    				<option value="5">5</option>
+			  			</select>
+			
+							<button class="cart"  type="button" onclick="fnGetPizzaCnt('11','10','1019','4001','오리지널','addCart')"    ><img src="../assets/img/menu/dtaile_btn_cart.gif"  alt="장바구니 담기" /></button>
+							<button class="order" type="button" onclick="fnGetPizzaCnt('11','10','1019','4001','오리지널','addCartNgo')" ><img src="../assets/img/menu/dtaile_btn_order.gif" alt="바로 주문하기" /></button>
+						</div>
+					</form>
+			</div>
+		</c:if>
+	
+		<!-- 사이드 메뉴 -->
+		<c:if test="${ list.menuid eq 'pj_2012' }">
+		  
+			<script type="text/javascript">
+				var $mainType  = "20";
+				var $doughType = "";
+			</script>
+			<div class="db_img">
+				<img src="${list.imagepath2 }" alt="${list.name }" title="${list.name }" onerror="this.src='/assets/img/menu/img/detail_noImage.png'"/>
+			</div>
+	    		<div class="comment">
+	    		<!--  0401 추가부분 시작  -->
+	    		<p class="close"><button type="button"><img src="../assets/img/sub/btn_detail_close.gif" alt="닫기" /></button></p>
+	    		<!-- 0401 추가부분 끝 -->	
+    		
+	    		<h4><c:out value="${list.name }"/></h4>
+	    		<p class="comm"></p>
+
+		    		<div class="detail_comm"> 
+		      			<dl>
+		      				<c:if test="${list.name ne '샘플러' }">
+			      				<dd><b style = "color:#228a68;">재료</b><br/>
+								<c:out value="${list.topping }"/><br/>
+								<b style = "color:#228a68;">증정소스</b><br/>
+								<c:out value="${list.presentsauce }"/>
+								</dd>
+							</c:if>
+
+							<dd></dd>
+		       				<dt><img src="../assets/img/menu/detail_title_size.gif" alt="사이즈별 가격"></dt>
+		       				<dd>
+		       					<ul>
+						
+							 	<li>
+									<span class="size_img"><img src="../assets/img/menu/detail_size_one.gif" alt="원 사이즈 사이즈"/></span>
+									<span class="가격">${list.onesizeprice }</span>
+								</li>
+
+          				</ul>
+        			</dd>
+
+        			<dt><img src="../assets/img/menu/detail_title_alre.gif" alt="알레르기 음식표기"></dt>
+        			<dd>${list.allergy }</dd>
+        			<dt class="hidden">성분표시</dt>
+        			<dd>
+          				<table>
+            				<tr>
+              					<th scope="col">칼로리</th>
+              					<th scope="col">영양정보</th>
+            				</tr>
+            				<tr>
+              					<td>${list.calorie }</td>
+              					<td style="text-align:left">${list.nuturition }</td>
+            				</tr>
+          				</table>
+        			</dd>
+
+      			</dl>
+    		</div>
+    		<!-- //detail_comm -->
+    		<form action="">
+    			<div class="cart_order"> 
+	
+        			<label for="select_size" class="hidden">사이즈 선택</label>
+        			<select id="select_size">
+ 
+						<option value="51036,10,3006">one-${mOnePackPrice }</option>
+
+        			</select>
+
+        			<label for="select_count">수량</label>
+        			<select id="select_count">
+          				<option value="1">1</option>
+          				<option value="2">2</option>
+          				<option value="3">3</option>
+          				<option value="4">4</option>
+          				<option value="5">5</option>
+        			</select>
+
+      				<button class="cart"  type="button" onclick="fnGetPizzaCnt('70','20','9001','','','addCart')"    ><img src="../assets/img/menu/dtaile_btn_cart.gif"  alt="장바구니 담기" /></button>
+      				<button class="order" type="button" onclick="fnGetPizzaCnt('70','20','9001','','','addCartNgo')" ><img src="../assets/img/menu/dtaile_btn_order.gif" alt="바로 주문하기" /></button>
+    			</div>
+    		</form>
+  		</div>
+		</c:if>
+		
+		<!-- 음료 -->
 		<c:if test="${ list.menuid eq 'pj_2013' }">
 			<script type="text/javascript">
 				var $mainType = "40";
@@ -312,7 +459,8 @@ input,select,img {
 		</c:if>
 		
 		<%-- 오리지널 --%>
-		<c:if test="${ list.menuid eq 'pj_2003' || list.menuid eq 'pj_2002'}">
+		<c:if test="${ list.menuid eq 'pj_2002' || list.menuid eq 'pj_2003' || list.menuid eq 'pj_2004' || list.menuid eq 'pj_2005' 
+			|| list.menuid eq 'pj_2006' || list.menuid eq 'pj_2008' || list.menuid eq 'pj_2009'}">
 			<script type="text/javascript">
 				var $mainType = "10";
 				var $doughType = "오리지널";
