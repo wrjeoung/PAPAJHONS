@@ -244,6 +244,66 @@ input,select,img {
 
 <body>
 	<div id="iframe_detail">
+	
+		<!-- 파파 플래터 & 세트 메뉴-->
+		<c:if test="${ list.menuid eq 'pj_2010' || list.menuid eq 'pj_2011'}">
+		
+			<script type="text/javascript">
+				var $mainType  = "10";
+				var $doughType = "오리지널";
+			</script>
+
+			<div class="db_img"><img src="${list.imagepath2}" alt="${list.name}" title="${list.name}" onerror="this.src='/assets/img/menu/img/detail_noImage.png'"/> </div>
+			  		<div class="comment">
+			  		<!--  0401 추가부분 시작  -->
+			<p class="close"><button type="button"><img src="../assets/img/sub/btn_detail_close.gif" alt="닫기" /></button></p>
+			<!-- 0401 추가부분 끝 -->	
+					 
+			<h4>${list.name }</h4>
+			<p class="comm"></p>
+			<div class="detail_comm"> 
+		   			<dl>
+					 	<dt><img src="../assets/img/menu/detail_title_setItems.gif" alt="메뉴 구성"></dt>
+				   				<dd class="items"> : <c:out value="${list.consist }"/></dd>
+				   		<c:if test="${ list.menuid eq 'pj_2010'}">
+							<dd><img src="../assets/img/order/ord_menuList_size_box.png" alt="세트가격"> ${list.boxprice }</dd>
+					     			<dd><img src="${list.imagepath3 }" alt="플래터 구성 이미지"></dd>
+				     	</c:if>
+				     	<c:if test="${ list.menuid eq 'pj_2011'}">
+							<dd><img src="../assets/img/order/ord_menuList_size_set.png" alt="세트가격"> ${list.boxprice }</dd>
+					     			<dd><img src="${list.imagepath3 }" alt="세트 구성 이미지"></dd>
+				     	</c:if>
+		  			</dl>
+			</div>
+			
+					<!-- //detail_comm -->
+			<form action="">
+				<div class="cart_order"> 
+						<c:if test="${ list.menuid eq 'pj_2010'}">
+				  			<label for="select_size" class="hidden">사이즈 선택</label>
+				  			<select id="select_size">
+				
+								<option value="50992,10,3023">BOX-${mBoxPrice }</option>
+				
+				  			</select>
+				  		</c:if>
+			
+			  			<label for="select_count">수량</label>
+			  			<select id="select_count">
+			    				<option value="1">1</option>
+			    				<option value="2">2</option>
+			    				<option value="3">3</option>
+			    				<option value="4">4</option>
+			    				<option value="5">5</option>
+			  			</select>
+			
+							<button class="cart"  type="button" onclick="fnGetPizzaCnt('11','10','1019','4001','오리지널','addCart')"    ><img src="../assets/img/menu/dtaile_btn_cart.gif"  alt="장바구니 담기" /></button>
+							<button class="order" type="button" onclick="fnGetPizzaCnt('11','10','1019','4001','오리지널','addCartNgo')" ><img src="../assets/img/menu/dtaile_btn_order.gif" alt="바로 주문하기" /></button>
+						</div>
+					</form>
+			</div>
+		</c:if>
+	
 		<!-- 사이드 메뉴 -->
 		<c:if test="${ list.menuid eq 'pj_2012' }">
 		  

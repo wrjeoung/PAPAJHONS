@@ -29,10 +29,12 @@ public class DetailAction implements Action , IbatisAware{
 	// view에 display되는 음료 정보. ]
 	
 	// view에 display되는 사이드 메뉴 정보 [
-	private String mOnePackPrice;
+	private String mOnePackPrice = null;
 	// view에 display되는 사이드 메뉴 정보 [
 	
-	
+	// view에 display되는 파파플래터 정보 [
+	private String mBoxPrice=null;	
+	// view에 display되는 파파플래터 정보 ]
 	
 	public static SqlMapClient sqlMapper;
 	private MenuDTO list = new MenuDTO();
@@ -84,12 +86,21 @@ public class DetailAction implements Action , IbatisAware{
 		return mOnePackPrice;
 	}
 
+	public String getmBoxPrice() {
+		return mBoxPrice;
+	}
+
 	public void setDetailBerver() {
 		
 		if(list != null)
 		{
 			mOnePackPrice=list.getOnesizeprice();
-			mOnePackPrice.substring(0, mOnePackPrice.indexOf("원"));		
+			if(mOnePackPrice != null)
+				mOnePackPrice.substring(0, mOnePackPrice.indexOf("원"));
+			
+			mBoxPrice=list.getBoxprice();
+			if(mBoxPrice != null)
+				mBoxPrice.substring(0, mBoxPrice.indexOf("원"));
 		
 			if(list.getName().equals("스프라이트")
 			|| list.getName().equals("코카콜라 제로")
