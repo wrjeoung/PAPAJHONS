@@ -69,7 +69,7 @@
 </script>
 <!--  0331 추가부분 끝 -->
 
-	<h1 class="logo png24" onclick="location.href='/index.jsp'">
+	<h1 class="logo png24" onclick="location.href='mainAction.action'">
 		<img src="../assets/img/common/logo.png" alt="파파존스 피자" title="papajohn's pizza"/>
 	</h1>
    	<h3 class="hidden">유틸리티 메뉴</h3>
