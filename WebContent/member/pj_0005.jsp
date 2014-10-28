@@ -42,93 +42,184 @@
 		alertFrame.find("#alertText").append(msg); 
 		popAlert(alertFrame); 		
 	}
-
 	
-	function fnMember()
+	function register()
 	{
-		
-		if( document.f1.join_id_chk.value == "N" )
+		if( document.f1.id_chk.value == "N" )
 		{
 			fnAlert("<p>아이디 중복 체크를 해 주세요.</p>");
 			return;
 		}
 		
-		if( document.f1.join_id.value == "" )
+		if( document.f1.id.value == "" )
 		{
 			fnAlert("<p>아이디를 입력해 주세요.</p>"); 
-			document.f1.join_id.focus();
+			document.f1.id.focus();
 			return;
 		}
 		
-		if( document.f1.join_pass.value == "" )
+		if( document.f1.pw.value == "" )
 		{
 			fnAlert("<p>비밀번호를 입력해 주세요.</p>"); 
-			document.f1.join_pass.focus();
+			document.f1.pw.focus();
 			return;
 		}
-		if( !isABCNum(document.f1.join_pass.value) )
+		if( !isABCNum(document.f1.pw.value) )
 		{
 			fnAlert("<p>비밀번호는 영문 또는 숫자만 가능합니다.</p>"); 
-			document.f1.join_pass.focus();
+			document.f1.pw.focus();
 			return;
 		}
-		if( document.f1.join_pass.value.length < 4 || document.f1.join_pass.value.length > 20 )
+		if( document.f1.pw.value.length < 4 || document.f1.pw.value.length > 20 )
 		{
 			fnAlert("<p>비밀번호는 4자 이상, 20자 이내로 입력하셔야 합니다.</p>"); 
-			document.f1.join_pass.focus();
+			document.f1.pw.focus();
 			return;
 		}
-		if( document.f1.join_passConf.value == "" )
+		if( document.f1.pw_conf.value == "" )
 		{
 			fnAlert("<p>비밀번호 확인란을 입력해 주세요.</p>"); 
-			document.f1.join_passConf.focus();
+			document.f1.pw_conf.focus();
 			return;
 		}
-		if( !isABCNum(document.f1.join_passConf.value) )
+		if( !isABCNum(document.f1.pw_conf.value) )
 		{
 			fnAlert("<p>비밀번호는 영문 또는 숫자만 가능합니다.</p>"); 
-			document.f1.join_passConf.focus();
+			document.f1.pw_conf.focus();
 			return;
 		}
-		if( document.f1.join_passConf.value.length < 4 || document.f1.join_passConf.value.length > 20 )
+		if( document.f1.pw_conf.value.length < 4 || document.f1.pw_conf.value.length > 20 )
 		{
 			fnAlert("<p>비밀번호는 4자 이상, 20자 이내로 입력하셔야 합니다.</p>"); 
-			document.f1.join_passConf.focus();
+			document.f1.pw_conf.focus();
 			return;
 		}
-		if( document.f1.join_pass.value != document.f1.join_passConf.value )
+		if( document.f1.pw.value != document.f1.pw_conf.value )
 		{
 			fnAlert("<p>입력하신 비밀번호가 일치하지 않습니다. <br>비밀번호를 확인해 주세요.</p>"); 
-			document.f1.join_passConf.value = "";
-			document.f1.join_passConf.focus();
+			document.f1.pw_conf.value = "";
+			document.f1.pw_conf.focus();
 			return;
 		}
 		
-		if( document.f1.join_sex.value == "" )
-		{
-			fnAlert("<p>가입자분의 성별을 선택해 주세요.</p>"); 
-			document.f1.join_sex.focus();
-			return;
-		}
-		
-		if( document.f1.join_mobile1.value == "" )
+		if( document.f1.mobile1.value == "" )
 		{
 			fnAlert("<p>휴대폰 번호를 입력해 주세요.</p>"); 
-			document.f1.join_mobile1.focus();
+			document.f1.mobile1.focus();
 			return;
 		}
 		
-		if( document.f1.join_mobile2.value == "" )
+		if( document.f1.mobile2.value == "" )
 		{
 			fnAlert("<p>휴대폰 번호를 입력해 주세요.</p>"); 
-			document.f1.join_mobile2.focus();
+			document.f1.mobile2.focus();
 			return;
 		}
 		
-		if( document.f1.join_mobile3.value == "" )
+		if( document.f1.mobile3.value == "" )
 		{
 			fnAlert("<p>휴대폰 번호를 입력해 주세요.</p>"); 
-			document.f1.join_mobile3.focus();
+			document.f1.mobile3.focus();
+			return;
+		}
+		
+		if( document.f1.addr1.value == "" )
+		{
+			fnAlert("<p>주소를 입력해 주세요.</p>"); 
+			return;
+		}	
+		
+		var phone = $("#phone1").attr("value")+'-'+$("#phone2").attr("value")+'-'+$("#phone3").attr("value")
+		var mobile = $("#mobile1").attr("value")+'-'+$("#mobile2").attr("value")+'-'+$("#mobile3").attr("value")
+		var addr = $("#addrZipCode").attr("value")+','+$("#addr1").attr("value")+','+$("#addr2").attr("value")
+		
+		$("#phone").val(phone);
+		$("#mobile").val(mobile);
+		$("#addr").val(addr);
+		
+		document.f1.action = "signUpProAction.action?menuId=pj_0006";
+		document.f1.submit();
+	}
+
+	
+	function fnMember()
+	{
+		
+		if( document.f1.id_chk.value == "N" )
+		{
+			fnAlert("<p>아이디 중복 체크를 해 주세요.</p>");
+			return;
+		}
+		
+		if( document.f1.id.value == "" )
+		{
+			fnAlert("<p>아이디를 입력해 주세요.</p>"); 
+			document.f1.id.focus();
+			return;
+		}
+		
+		if( document.f1.pw.value == "" )
+		{
+			fnAlert("<p>비밀번호를 입력해 주세요.</p>"); 
+			document.f1.pw.focus();
+			return;
+		}
+		if( !isABCNum(document.f1.pw.value) )
+		{
+			fnAlert("<p>비밀번호는 영문 또는 숫자만 가능합니다.</p>"); 
+			document.f1.pw.focus();
+			return;
+		}
+		if( document.f1.pw.value.length < 4 || document.f1.pw.value.length > 20 )
+		{
+			fnAlert("<p>비밀번호는 4자 이상, 20자 이내로 입력하셔야 합니다.</p>"); 
+			document.f1.pw.focus();
+			return;
+		}
+		if( document.f1.pw_conf.value == "" )
+		{
+			fnAlert("<p>비밀번호 확인란을 입력해 주세요.</p>"); 
+			document.f1.pw_conf.focus();
+			return;
+		}
+		if( !isABCNum(document.f1.pw_conf.value) )
+		{
+			fnAlert("<p>비밀번호는 영문 또는 숫자만 가능합니다.</p>"); 
+			document.f1.pw_conf.focus();
+			return;
+		}
+		if( document.f1.pw_conf.value.length < 4 || document.f1.pw_conf.value.length > 20 )
+		{
+			fnAlert("<p>비밀번호는 4자 이상, 20자 이내로 입력하셔야 합니다.</p>"); 
+			document.f1.pw_conf.focus();
+			return;
+		}
+		if( document.f1.pw.value != document.f1.pw_conf.value )
+		{
+			fnAlert("<p>입력하신 비밀번호가 일치하지 않습니다. <br>비밀번호를 확인해 주세요.</p>"); 
+			document.f1.pw_conf.value = "";
+			document.f1.pw_conf.focus();
+			return;
+		}
+		
+		if( document.f1.mobile1.value == "" )
+		{
+			fnAlert("<p>휴대폰 번호를 입력해 주세요.</p>"); 
+			document.f1.mobile1.focus();
+			return;
+		}
+		
+		if( document.f1.mobile2.value == "" )
+		{
+			fnAlert("<p>휴대폰 번호를 입력해 주세요.</p>"); 
+			document.f1.mobile2.focus();
+			return;
+		}
+		
+		if( document.f1.mobile3.value == "" )
+		{
+			fnAlert("<p>휴대폰 번호를 입력해 주세요.</p>"); 
+			document.f1.mobile3.focus();
 			return;
 		}
 		
@@ -196,7 +287,7 @@
 		
 		if( gb == "sms" )
 		{
-			document.all.join_sms.value = val;
+			document.all.sms.value = val;
 		}
 		else if( gb == "sun" ) 
 		{
@@ -204,7 +295,7 @@
 		}
 		else if( gb == "meil" ) 
 		{
-			document.all.join_send_mail.value = val;
+			document.all.send_mail.value = val;
 		}
 		
 	}
@@ -212,7 +303,7 @@
 	//
 	function fnIdChk()
 	{
-		document.f1.join_id_chk.value = "N";
+		document.f1.id_chk.value = "N";
 	}
 
 	//
@@ -235,57 +326,43 @@
     		<input type="hidden" id="join_send_mail" name="join_send_mail" value="Y">                <!-- 메일수신여부 -->
     		<input type="hidden" id="ci"             name="ci"             value="0SA+3KjmSrdvgXo3RO2bQ/uuSMh9ESraUKsepl0KTOa4tkqd0zeVItxod4a76y1qJq++BjE8O2OkzMWGei2c3Q=="/>  <!-- 휴대폰CI     -->
     		<input type="hidden" id="di"             name="di"             value="MC0GCCqGSIb3DQIJAyEA6gNdv5BC+GOUjH7Wnc+FZ0QsZ9o2yvAog8cal0ywZcY=" />  <!-- 휴대폰DI     -->
-    	
+    	    <input type="hidden" id="phone"  name="phone" value="">  
+			<input type="hidden" id="mobile"  name="mobile" value="">
+			<input type="hidden" id="addr"  name="addr" value="">
+			
     		<div class="form">
       			<p>
-        			<label class="tit" for="join_name"><img src="../assets/img/forms/label_name.gif" alt="이름" /></label>
-            		<input type="text" id="join_name" name="join_name" value="홍길동" class="base" readOnly />
+        			<label class="tit" for="name"><img src="../assets/img/forms/label_name.gif" alt="이름" /></label>
+            		<input type="text" id="name" name="name" value="" class="base" />
         		</p>
         		<p>
-        			<label class="tit" for="join_id"><img src="../assets/img/forms/login_id.gif" alt="아이디" /></label>
-            		<input type="text" id="join_id" name="join_id" class="base" onkeydown="fnIdChk();" readOnly onclick='popup("#search_id"); $("#search_id").focus()'/>  
+        			<label class="tit" for="id"><img src="../assets/img/forms/login_id.gif" alt="아이디" /></label>
+            		<input type="text" id="id" name="id" class="base" onkeydown="fnIdChk();" readOnly onclick='popup("#search_id"); $("#search_id").focus()'/>  
             		<span class="btn_h23 gray"><button type="button" onclick='popup("#search_id"); $("#search_id").focus()'>아이디 중복 체크</button></span> 
             		<span class="text_s11">*영문, 숫자만 가능, 4~20 글자 이내.</span>
-            		<input type="hidden" id="join_id_chk" name="join_id_chk" value="N" />  
+            		<input type="hidden" id="id_chk" name="id_chk" value="N" />  
         		</p>
         		<p>
-        			<label class="tit" for="join_pass"><img src="../assets/img/forms/login_pw.gif" alt="비밀번호" /></label>
-            		<input type="password" id="join_pass" name="join_pass" class="base" maxlength="20" /> <span class="text_s11">*영문, 숫자만 가능, 4~20 글자 이내.</span>
+        			<label class="tit" for="pw"><img src="../assets/img/forms/login_pw.gif" alt="비밀번호" /></label>
+            		<input type="password" id="pw" name="pw" class="base" maxlength="20" /> <span class="text_s11">*영문, 숫자만 가능, 4~20 글자 이내.</span>
         		</p>
         		<p>
-        			<label class="tit" for="join_passConf"><img src="../assets/img/forms/label_passConf.gif" alt="비밀번호확인" /></label>
-            		<input type="password" id="join_passConf" name="join_passConf" class="base" maxlength="20" />
+        			<label class="tit" for="pw_conf"><img src="../assets/img/forms/label_passConf.gif" alt="비밀번호확인" /></label>
+            		<input type="password" id="pw_conf" name="pw_conf" class="base" maxlength="20" />
+        		</p>
+
+        		<p>
+        			<label class="tit" for="phone1"><img src="../assets/img/forms/label_phone.gif" alt="전화번호" /></label>
+            		<input type="text" id="phone1" name="phone1" class="w50" title="지역번호입력" maxlength="4"/> - 
+            		<input type="text" id="phone2" name="phone2" class="w50" title="전화번호 앞자리 입력" maxlength="4"/> - 
+            		<input type="text" id="phone3" name="phone3" class="w50" title="전화번호 뒷자리 입력" maxlength="4"/>
         		</p>
         		<p>
-        			<label class="tit" for="join_birthday1"><img src="../assets/img/forms/label_birthday.gif" alt="생년월일" /></label>
-            		<select id="join_birthday1" name="join_birthday1" title="태어난 해 입력" ><option value='2000' selected='selected'>2000 년</option></select> 
-            		<select id="join_birthday2" name="join_birthday2" title="태어난 월 입력" ><option value='12' selected='selected'>12 월</option></select> 
-            		<select id="join_birthday3" name="join_birthday3" title="태어난 일 입력" ><option value='12' selected='selected'>12 일</option></select> 
-            		(
-            		<label for="sun">양력</label>
-          			<input type="radio" id="sun" name="sun" onclick="fnRadioClick('sun', this.value)" value="Y" checked/>
-            		<label for="lunar">음력</label>
-            		<input type="radio" id="sun" name="sun" onclick="fnRadioClick('sun', this.value)" value="N"/>
-            		)
-            		&nbsp;
-            		<select id="join_sex" name="join_sex" disabled>
-          				<option value="">성별</option>
-            			<option value="M" selected="selected" >남자</option>
-            			<option value="F" >여자</option>
-            		</select>
-        		</p>
-        		<p>
-        			<label class="tit" for="join_phone1"><img src="../assets/img/forms/label_phone.gif" alt="전화번호" /></label>
-            		<input type="text" id="join_phone1" name="join_phone1" class="w50" title="지역번호입력" maxlength="4"/> - 
-            		<input type="text" id="join_phone2" name="join_phone2" class="w50" title="전화번호 앞자리 입력" maxlength="4"/> - 
-            		<input type="text" id="join_phone3" name="join_phone3" class="w50" title="전화번호 뒷자리 입력" maxlength="4"/>
-        		</p>
-        		<p>
-        			<label class="tit" for="join_mobile1"><img src="../assets/img/forms/login_mobile.gif" alt="핸드폰번호" /></label>
-            		<input type="text" id="join_mobile1" name="join_mobile1" class="w50" title="지역번호입력" maxlength="3"/> - 
-            		<input type="text" id="join_mobile2" name="join_mobile2" class="w50" title="전화번호 앞자리 입력" maxlength="4"/> - 
-            		<input type="text" id="join_mobile3" name="join_mobile3" class="w50" title="전화번호 뒷자리 입력" maxlength="4"/>
-        		</p>
+        			<label class="tit" for="mobile1"><img src="../assets/img/forms/login_mobile.gif" alt="핸드폰번호" /></label>
+            		<input type="text" id="mobile1" name="mobile1" class="w50" title="지역번호입력" maxlength="3"/> - 
+            		<input type="text" id="mobile2" name="mobile2" class="w50" title="전화번호 앞자리 입력" maxlength="4"/> - 
+            		<input type="text" id="mobile3" name="mobile3" class="w50" title="전화번호 뒷자리 입력" maxlength="4"/>
+         		</p>
         		<p style="padding:0 0 0 120px;">
             		<span style="font-weight:bold; background:url(/assets/img/icon/icon_gray1.gif) no-repeat 0 2px; padding-left:10px;" >SMS수신동의 : </span>
             		<label for="sms_yes" class="text_s11">예</label>
@@ -296,16 +373,16 @@
             		<span class="text_s11">수신 동의하시면, 이벤트 및 할인쿠폰에 대한 파파존스 서비스를 받으실 수 있습니다.</span>
         		</p>
         		<p>
-        			<label class="tit" for="join_email"><img src="../assets/img/forms/label_email.gif" alt="이메일" /></label>
-            		<input type="text" id="join_email" name="join_email" class="w200"/>
+        			<label class="tit" for="email"><img src="../assets/img/forms/label_email.gif" alt="이메일" /></label>
+            		<input type="text" id="email" name="email" class="w200"/>
         		</p>
         		<p>
         			<span class="tit"><img src="../assets/img/forms/label_sendMail.gif" alt="이메일수신여부" /></span>
             		<span class="text_s11">파파존스 정기 메일을 받아보시겠습니까?</span>
             		<label for="join_sendMail_yes">예</label>
-            		<input type="radio" id="sendMail" name="join_sendMail" value="Y" onclick="fnRadioClick('meil', this.value)" checked/>
+            		<input type="radio" id="sendmail" name="sendmail" value="Y" onclick="fnRadioClick('meil', this.value)" checked/>
             		<label for="join_sendMail_no">아니오</label>
-            		<input type="radio" id="sendMail" name="join_sendMail" value="N" onclick="fnRadioClick('meil', this.value)" />
+            		<input type="radio" id="sendmail" name="sendmail" value="N" onclick="fnRadioClick('meil', this.value)" />
         		</p>
         		<p style="border-bottom:none">
         			<span class="tit"><img src="../assets/img/forms/label_address.gif" alt="주소" /></span>
@@ -326,7 +403,8 @@
    					<input type="hidden" id="addrDongName"   name="addrDongName"   value="" /> 
    					<input type="hidden" id="addrAddressId"  name="addrAddressId"  value="" /> 
    					<input type="hidden" id="addrStoreCode"  name="addrStoreCode"  value="" /> 
-   					<input type="hidden" id="addrSectorCode" name="addrSectorCode" value="" /> 
+   					<input type="hidden" id="addrSectorCode" name="addrSectorCode" value="" />
+   					 <input type="hidden" id="addrSectorCode" name="addrSectorCode" value="" />
        			</p>
        			<p style="padding:0 0 10px 120px;">
             		<label for="join_address2" class="hidden">상세주소입력</label>
@@ -338,7 +416,7 @@
   	<!--// join_form -->
   	
   	<div class="btn">
-  		<button type="submit" onclick="fnMember();"><img src="../assets/img/forms/join_btn_join.gif" alt="가입신청" /></button>
+  		<button type="submit" onclick="register();"><img src="../assets/img/forms/join_btn_join.gif" alt="가입신청" /></button>
     	<button type="cancel" onclick="fn_cancel();"><img src="../assets/img/forms/join_btn_cancle.gif" alt="취소" /></button>
   	</div>
 </div>
@@ -346,12 +424,12 @@
 
 <!--[ 2013/3/22 ] 추가 부분 시작-->
 <!-- 팝업_아이디찾기&주소찾기 20130709 수정 -->
-<div id="search_id" class="pop_box4"> 
+<div id="search_id" class="pop_box4">
 	<p class="cont">
   	<h3 class="title" style="width:50%; float:left; padding:10px;"><img src="../assets/img/forms/title_searchId.gif" alt="아이디검색" /></h3> 
 	<span class="btn_h23 gray" style="float:right;"><button type="button" onclick="del_pop('search_id',true,$(this))">취소</button></span>
     <div>
-    	<iframe src="/member/search_id.jsp" width="290px" height="150px;" frameborder="0">아이프레임이지원되는 브라우저에서 확인할수있습니다.</iframe>
+    	<iframe src="idSearchAction.action" width="290px" height="150px;" frameborder="0">아이프레임이지원되는 브라우저에서 확인할수있습니다.</iframe>
     </div>
 	</p>
 </div>

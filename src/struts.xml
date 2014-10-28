@@ -167,6 +167,16 @@
 			<exception-mapping result="error" exception="java.lang.Exception"/>
 		</global-exception-mappings>	
 	    -->
+
+		<action name="idSearchAction" class="papa.member.MemberAction" method="form">
+			<result>/member/search_id.jsp</result>
+		</action>
+		
+		<action name="idSearchProAction" class="papa.member.MemberAction" method="checkIdPro">
+			<interceptor-ref name="ibatis"></interceptor-ref>
+			<interceptor-ref name="params"></interceptor-ref>		
+			<result>/member/search_id.jsp</result>
+		</action>
 	    
 		<action name="addressAction" class="papa.address.AddressAction" method="form">
 			<result>/com/zipCode.jsp</result>
@@ -178,9 +188,31 @@
 			<result>/com/zipCode.jsp</result>
 		</action>
 		
-		<action name="signUpAction" class="papa.address.AddressAction" method="form">
+		<action name="loginAction" class="papa.member.LogInOutAction" method="form">
 			<result>/signup/cont.jsp</result>
-		</action>				
+		</action>	
+
+		
+					
+		
+		
+		<action name="loginProAction" class="papa.member.LogInOutAction" method="loginPro">
+		    <interceptor-ref name="ibatis"></interceptor-ref>
+		    <interceptor-ref name="params"></interceptor-ref>
+			<result>/signup/cont.jsp</result>
+		</action>					
+		
+		<action name="signUpAction" class="papa.member.MemberAction" method="form">
+			<result>/signup/cont.jsp</result>
+		</action>
+		
+		<action name="signUpProAction" class="papa.member.MemberAction" >
+		    <interceptor-ref name="prepare" />
+		    <interceptor-ref name="modelDriven" />
+		    <interceptor-ref name="ibatis"></interceptor-ref>
+		    <interceptor-ref name="params"></interceptor-ref>
+			<result>/signup/cont.jsp</result>
+		</action>						
 	</package>
 	<!-- 매장별 이벤트 -->
 	<package name="storeevent.board" extends="struts-default">
@@ -230,6 +262,17 @@
 			<result type="redirectAction">
 			<param name="actionName">pastwriteForm</param>
 			</result> 
+		</action>
+	</package>
+	
+	<!-- 매장안내 -->
+	<package name="store" extends="struts-default">
+		<action name="storeAction" class="store.StoreAction">
+			<result>/store/store.jsp</result>
+		</action>
+		
+		<action name="storeDetailAction" class="store.StoreDetailAction">
+			<result>/store/storeDetail.jsp</result>
 		</action>
 	</package>
 </struts>
