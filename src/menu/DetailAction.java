@@ -113,7 +113,7 @@ public class DetailAction implements Action , IbatisAware{
 			mSizeSelectOpt1 = "350ml-1600";
 			mSizeSelectOpt2 = "1.5L-3000";
 			mRsizeName = "3500ml사이즈";
-			mLsizeName = "1.5L사이즈";
+			mLsizeName = "1.25L사이즈";
 		}
 	}
 	
