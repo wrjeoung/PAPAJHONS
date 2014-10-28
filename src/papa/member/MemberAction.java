@@ -11,9 +11,18 @@ public class MemberAction extends ActionSupport implements IbatisAware, Preparab
 	public static SqlMapClient sqlMapper;	//SqlMapClient API를 사용하기 위한 sqlMapper 객체.
 	private String s_id;
 	private int check = -1;
-	private String menuId = "pj_0005";
+	private String menuId;
+	private String menuGb;
 	private MemberData dto;
 	
+	public String getMenuGb() {
+		return menuGb;
+	}
+
+	public void setMenuGb(String menuGb) {
+		this.menuGb = menuGb;
+	}
+
 	public Object getModel() {
 		return dto;
 	}

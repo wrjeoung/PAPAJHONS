@@ -399,7 +399,8 @@ input,select,img {
 		</c:if>
 		
 		<%-- 오리지널 --%>
-		<c:if test="${ list.menuid eq 'pj_2003' || list.menuid eq 'pj_2002'}">
+		<c:if test="${ list.menuid eq 'pj_2002' || list.menuid eq 'pj_2003' || list.menuid eq 'pj_2004' || list.menuid eq 'pj_2005' 
+			|| list.menuid eq 'pj_2006' || list.menuid eq 'pj_2008' || list.menuid eq 'pj_2009'}">
 			<script type="text/javascript">
 				var $mainType = "10";
 				var $doughType = "오리지널";
