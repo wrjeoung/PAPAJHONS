@@ -176,11 +176,44 @@
 					</div>
 					<!-- cont -->
 					<div class="cont" style="text-align: center">
-						<!-- include -->
-						<script type="text/javascript">
-							$("#contents .cont").load('storeDetailAction.action');
-							<%-- $("#contents .cont").load('customer/pj_5004_1.jsp?menuId=pj_5004&msg=null&tab=null&actionFlag=null&srch_region=null&srch_sigungu=null&srch_store=null&srch_word=null&inCurPage=1&inCurBlock=1&xMap=null&yMap=null&storecd=null'); --%>
-						</script>
+						<!-- 네이버 지도 View -->
+						<div id="store_section" >
+							<h4 class="title"><img src="../assets/img/customer/storeDetail_title.gif" alt="선택매장 상세정보" /></h4>
+							<!-- 선택매장 상세정보 -->
+							<div id="store_detail" >
+								<div class="store">
+									<form name="form1" method="post">
+										<input type="hidden" id="actionFlag"   name="actionFlag"   value="name">
+										<input type="hidden" id="srch_region"  name="srch_region"  value="null"><!-- 지역명 -->
+										<input type="hidden" id="srch_sigungu" name="srch_sigungu" value="null"><!-- 시군구명 -->
+						    			<input type="hidden" id="srch_store"   name="srch_store"   value="null">
+						    			<input type="hidden" id="srch_word"    name="srch_word"    value="">
+						    			<input type="hidden" id="tab"      	   name="tab"          value="1" >
+						    			<input type="hidden" id="inCurPage"    name="inCurPage"    value="1"><!-- 현재 페이지 -->
+										<input type="hidden" id="inCurBlock"   name="inCurBlock"   value="1"><!-- 현재 블럭 -->
+										<p class="photo"><img src="assets/img/customer/store_photo/str_img.jpg" alt="" width="130px" height="85px"/></p>
+										<ul class="info">
+											<li><span class="tit">매장명 : </span><span id="map_store_name"></span></li>
+						        			<li><span class="tit">전화번호 : </span><span id="map_store_phone"></span></li>
+						        			<li><span class="tit">매장주소 : </span><span id="map_store_address"></span></li>
+						        			<li><span class="tit">영업시간 : </span><span id="map_store_time"></span></li>
+						        			<li><span class="tit">매장타입 : </span><span id="map_store_type"></span></li>
+						        			<li><span class="tit">주차여부 : </span><span id="map_store_parking"></span></li>
+										</ul>
+									</form>
+								</div>
+								<p style="float:right;">
+						      		<span class="btn_h23 green"><button type="button" onclick='location.href="sub.jsp?menuGb=customer&menuId=pj_5004"'>매장찾기</button></span>
+						      		<span class="btn_h23 red"><button type="button" onclick="goList();">목록보기</button></span>
+   								</p>   
+							</div>
+							<div class="s_map" style=" margin:10px 0 0; text-align:left; border:1px #ccc solid; padding:5px; width:615px">
+					  		<div id="map_iframe_area" style="position:relative;left:10px;"></div>
+					  			<!-- <img src="assets/img/customer/store_photo/map.jpg" alt="" width="616px"/> -->
+					  			<!-- 네이버 지도 보이는 부분  -->
+					  			<h4> 네이버 지도 보여 지는 부분이다 !!!!!!!!!!!!!!!!!!!!!!!!!!</h4>
+					  		</div>
+						</div>
 					</div>
 					<!--// cont -->
 				</div>

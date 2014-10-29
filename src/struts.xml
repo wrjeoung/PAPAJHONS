@@ -281,5 +281,9 @@
 			<interceptor-ref name="params"/>
 			<result>/store/storeDetail.jsp</result>
 		</action>
+		
+		<action name="storeMapAction" class="store.StoreMapAction">
+			<result>/store/storeMap.jsp</result>
+		</action>
 	</package>
 </struts>
