@@ -32,5 +32,6 @@
 	<sqlMap resource="/sql/storeeventSQL.xml"/>
 	<sqlMap resource="/sql/pasteventSQL.xml"/>
 	<sqlMap resource="/sql/orderSQL.xml"/>
+	<sqlMap resource="/sql/storeSQL.xml"/>
 </sqlMapConfig>
 
