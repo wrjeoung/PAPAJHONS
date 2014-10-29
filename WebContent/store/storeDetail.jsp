@@ -1,96 +1,43 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <div id="store_section">
 	<h1 class="title"><img src="../assets/img/customer/openStore_title.gif" alt="신규오픈매장" /></h1>
 	<div id="openStore_section">
-		<p class="prev" style="">
-			<button type="button"><img src="../assets/img/btn/slideBtn_up.gif" alt="이전매장" /></button>
-		</p>
-		<p class="next">
-			<button type="button"><img src="../assets/img/btn/slideBtn_down.gif" alt="다음매장" /></button>
-		</p>
-		
+		<!-- 신규 오픈 매장 -->
+		<p class="prev" style=""><button type="button"><img src="../assets/img/btn/slideBtn_up.gif" alt="이전매장" /></button></p>
+		<p class="next"><button type="button"><img src="../assets/img/btn/slideBtn_down.gif" alt="다음매장" /></button></p>
 		<ul class="list_box">
-			<li class="item">
-				<div class="store">
-					<p class="photo">
-						<img src="assets/img/customer/store_photo/str_1114.jpg" alt="" width="130px" height="85px"
-							onerror="this.src='/assets/img/customer/store_photo/str_img.jpg'" />
-					</p>
-					<ul class="info">
-						<li>
-							<span class="tit">매장명 : </span>
-							<span id="new_list_storeNm">부산시청점</span>
-							<span class="btn_h23 green">
-								<button type="button" id="부산시청점a" name="부산시청점a" 	onclick="goMap(this.id);">지도보기</button>
-								<input type="hidden" id="storeCode" name="storeCode" value="1114">
-								<input type="hidden" id="StoreNm_X" name="StoreNm_X" value="129.0745495">
-								<input type="hidden" id="StoreNm_Y" name="StoreNm_Y" value="35.1767099">
-							</span>
-						</li>
-						<li><span class="tit">전화번호 : </span><span>051-866-8082</span></li>
-						<li><span class="tit">매장주소 : </span><span>부산광역시 부산진구 양정동 147-8</span></li>
-						<li><span class="tit">영업시간 : </span><span>오전 11:00 ~ 오후 10:30</span></li>
-						<li><span class="tit">매장타입 : </span><span>Delivery</span></li>
-						<li><span class="tit">주차여부 : </span><span>주차불가</span></li>
-					</ul>
-				</div>
-				<p class="new"><img src="../assets/img/customer/new.png" alt="new" /></p>
-			</li>
-
-			<li class="item">
-				<div class="store">
-					<p class="photo">
-						<img src="assets/img/customer/store_photo/str_1117.jpg" alt="" width="130px" height="85px"
-							onerror="this.src='/assets/img/customer/store_photo/str_img.jpg'" />
-					</p>
-					<ul class="info">
-						<li>
-							<span class="tit">매장명 : </span>
-							<span id="new_list_storeNm">원주단구점</span>
-							<span class="btn_h23 green">
-								<button type="button" id="원주단구점a" name="원주단구점a" onclick="goMap(this.id);">지도보기</button>
-								<input type="hidden" id="storeCode" name="storeCode" value="1117">
-								<input type="hidden" id="StoreNm_X" name="StoreNm_X" value="127.9595151">
-								<input type="hidden" id="StoreNm_Y" name="StoreNm_Y" value="37.3245189">
-							</span>
-						</li>
-						<li><span class="tit">전화번호 : </span><span>033-764-8050</span></li>
-						<li><span class="tit">매장주소 : </span><span>강원도 원주시 단구동 128-15</span></li>
-						<li><span class="tit">영업시간 : </span><span>오전 11:00 ~ 오후 10:30</span></li>
-						<li><span class="tit">매장타입 : </span><span>Delivery + Dine-in</span></li>
-						<li><span class="tit">주차여부 : </span><span>주차불가</span></li>
-					</ul>
-				</div>
-				<p class="new"><img src="../assets/img/customer/new.png" alt="new" /></p>
-			</li>
-
-			<li class="item">
-				<div class="store">
-					<p class="photo">
-						<img src="assets/img/customer/store_photo/str_1115.jpg" alt="" width="130px" height="85px"
-							onerror="this.src='/assets/img/customer/store_photo/str_img.jpg'" />
-					</p>
-					<ul class="info">
-						<li>
-							<span class="tit">매장명 : </span>
-							<span id="new_list_storeNm">망우점</span>
-							<span class="btn_h23 green">
-								<button type="button" id="망우점a" name="망우점a" onclick="goMap(this.id);">지도보기</button>
-								<input type="hidden" id="storeCode" name="storeCode" value="1115">
-								<input type="hidden" id="StoreNm_X" name="StoreNm_X" value="127.0931612">
-								<input type="hidden" id="StoreNm_Y" name="StoreNm_Y" value="37.5984870">
-							</span>
-						</li>
-						<li><span class="tit">전화번호 : </span><span>02-435-8045</span></li>
-						<li><span class="tit">매장주소 : </span><span>서울특별시 중랑구 상봉동 74-10</span></li>
-						<li><span class="tit">영업시간 : </span><span>오전 11:00 ~ 오후 10:30</span></li>
-						<li><span class="tit">매장타입 : </span><span>Delivery + Dine-in</span></li>
-						<li><span class="tit">주차여부 : </span><span>주차불가</span></li>
-					</ul>
-				</div>
-				<p class="new"><img src="../assets/img/customer/new.png" alt="new" /></p>
-			</li>
+			<c:forEach var="li" items="${list}" varStatus="status">
+				<c:if test="${li.newopen eq 'new'}">
+					<li class="item">
+						<div class="store">
+							<p class="photo">
+								<img src="${li.imagepath}" alt="" width="130px" height="85px"
+								onerror="this.src='/assets/img/customer/store_photo/str_img.jpg'" />
+							</p>
+							<ul class="info">
+								<li>
+									<span class="tit">매장명 : </span>
+									<span id="new_list_storeNm">${li.storename}</span>
+									<!-- 지도보기 버튼 -->
+									<span class="btn_h23 green">
+										<button type="button" id="부산시청점a" name="부산시청점a" 	onclick="goMap(this.id);">지도보기</button>
+										<input type="hidden" id="storeCode" name="storeCode" value="1114">
+										<input type="hidden" id="StoreNm_X" name="StoreNm_X" value="129.0745495">
+										<input type="hidden" id="StoreNm_Y" name="StoreNm_Y" value="35.1767099">		
+									</span>
+								</li>
+								<li><span class="tit">전화번호 : </span><span>${li.phone}</span></li>
+								<li><span class="tit">매장주소 : </span><span>${li.address}</span></li>
+								<li><span class="tit">영업시간 : </span><span>${li.businesshours}</span></li>
+								<li><span class="tit">매장타입 : </span><span>${li.storetype}</span></li>
+								<li><span class="tit">주차여부 : </span><span>${li.storeparking}</span></li>
+							</ul>
+						</div>
+						<p class="new"><img src="../assets/img/customer/new.png" alt="new" /></p>
+					</li>
+				</c:if>
+			</c:forEach>
 		</ul>
 	</div>
 
@@ -103,7 +50,7 @@
 			}
 		}
 	</script>
-
+	<%-- 
 	<!-- 매장 검색 -->
 	<h1 class="title"><img src="../assets/img/customer/storeSearch_title.gif" alt="매장검색" /></h1>
 	<div id="search_store">
@@ -126,27 +73,20 @@
 			<li><img src="../assets/img/map/m15.gif" alt="대구" usemap="#Map" /></li>
 			<li><img src="../assets/img/map/m16.gif" alt="제주도" usemap="#Map" /></li>
 		</ul>
+		
 		<map name="Map" id="Map">
-			<area shape="poly" coords="54,66,69,55,76,68,70,79,54,73,51,65" href="JavaScript:;" id="11" alt="서울"
-				onclick="search_Address_Map(this.id);" title="#m1" />
-			<area shape="poly"
-				coords="57,67,50,69,43,57,51,45,58,29,75,25,91,56,101,65,104,88,101,90,85,105,57,106,45,95,51,76,77,74,78,64,67,57,56,76"
+			<area shape="poly" coords="54,66,69,55,76,68,70,79,54,73,51,65" href="JavaScript:;" id="11" alt="서울" onclick="search_Address_Map(this.id);" title="#m1" />
+			<area shape="poly" coords="57,67,50,69,43,57,51,45,58,29,75,25,91,56,101,65,104,88,101,90,85,105,57,106,45,95,51,76,77,74,78,64,67,57,56,76"
 				href="JavaScript:;" id="41" alt="경기도" onclick="search_Address_Map(this.id);" title="#m2" />
 			<area shape="poly" coords="52,72,44,67,36,43,23,59,35,76,43,77" href="JavaScript:;" id="28" alt="인천" onclick="search_Address_Map(this.id);" title="#m3" />
 			<area shape="circle" coords="84,142,11" href="JavaScript:;" id="30" alt="대전" onclick="search_Address_Map(this.id);" title="#m4" />
-			<area shape="poly" coords="82,119,76,110,30,100,18,125,44,163,63,153,78,157,72,144"
-				href="JavaScript:;" id="44" alt="충청남도" onclick="search_Address_Map(this.id);" title="#m5" />
-			<area shape="poly" coords="83,124,83,108,110,89,132,90,144,98,129,112,108,123,116,153,99,163,98,138" href="JavaScript:;" id="43" alt="충청북도"
-				onclick="search_Address_Map(this.id);" title="#m6" />
+			<area shape="poly" coords="82,119,76,110,30,100,18,125,44,163,63,153,78,157,72,144" href="JavaScript:;" id="44" alt="충청남도" onclick="search_Address_Map(this.id);" title="#m5" />
+			<area shape="poly" coords="83,124,83,108,110,89,132,90,144,98,129,112,108,123,116,153,99,163,98,138" href="JavaScript:;" id="43" alt="충청북도" onclick="search_Address_Map(this.id);" title="#m6" />
 			<area shape="circle" coords="46,226,11" href="JavaScript:;" id="29" alt="광주" onclick="search_Address_Map(this.id);" title="#m9" />
-			<area shape="poly" coords="85,205,63,200,39,202,40,166,67,156,85,162,106,167,96,191,95,198" 
-				href="JavaScript:;" id="45" alt="전라북도" onclick="search_Address_Map(this.id);" title="#m7" />
-			<area shape="poly" coords="43,201,16,219,11,254,8,279,105,251,100,225,90,209,46,200" href="JavaScript:;" id="46" alt="전라남도"
-				onclick="search_Address_Map(this.id);" title="#m8" />
-			<area shape="poly" coords="112,244,96,199,107,173,141,186,166,202,137,226,144,235,143,252,129,238" 
-				href="JavaScript:;" id="48" alt="경상남도" onclick="search_Address_Map(this.id);" title="#m10" />
-			<area shape="poly" coords="113,164,124,146,112,123,133,113,182,92,190,152,190,179,164,179,154,157"
-				href="JavaScript:;" id="47" alt="경상북도" onclick="search_Address_Map(this.id);" title="#m11" />
+			<area shape="poly" coords="85,205,63,200,39,202,40,166,67,156,85,162,106,167,96,191,95,198"  href="JavaScript:;" id="45" alt="전라북도" onclick="search_Address_Map(this.id);" title="#m7" />
+			<area shape="poly" coords="43,201,16,219,11,254,8,279,105,251,100,225,90,209,46,200" href="JavaScript:;" id="46" alt="전라남도" onclick="search_Address_Map(this.id);" title="#m8" />
+			<area shape="poly" coords="112,244,96,199,107,173,141,186,166,202,137,226,144,235,143,252,129,238" href="JavaScript:;" id="48" alt="경상남도" onclick="search_Address_Map(this.id);" title="#m10" />
+			<area shape="poly" coords="113,164,124,146,112,123,133,113,182,92,190,152,190,179,164,179,154,157" href="JavaScript:;" id="47" alt="경상북도" onclick="search_Address_Map(this.id);" title="#m11" />
 			<area shape="circle" coords="180,193,12" href="JavaScript:;" id="31" alt="울산" onclick="search_Address_Map(this.id);" title="#m13" />
 			<area shape="poly" coords="141,227,170,203,181,208,162,226" href="JavaScript:;" id="26" alt="부산" onclick="search_Address_Map(this.id);" title="#m12" />
 			<area shape="circle" coords="146,175,15" href="JavaScript:;" id="27" alt="대구" onclick="search_Address_Map(this.id);" title="#m15" />
@@ -240,73 +180,40 @@
 	<script type="text/javascript">
 		searchMap(".search_map");
 	</script>
-
+	--%>
 	<!-- 매장 리스트 -->
 	<h4 class="title"><img src="../assets/img/customer/listStore_title.gif" alt="매장리스트" /></h4>
 	<div id="store_list">
 		<ul class="store">
-			<li class="list">
-				<p class="photo">
-					<img src="assets/img/customer/store_photo/str_1068.jpg" alt="강남CGV점 사진" width="100px" height="75px"
+			<c:forEach var="li" items="${list}" varStatus="status">
+				<li class="list">	
+					<p class="photo">
+					<img src="${li.imagepath}" alt="${li.storename}사진" width="100px" height="75px"
 						onerror="this.src=&quot;/assets/img/customer/store_photo/str_img.jpg&quot;">
-				</p>
-				<ul class="info">
-					<li><span class="tit">매장명 : </span><span>강남CGV점</span></li>
-					<li><span class="tit">전화번호 : </span><span>02-501-5245</span></li>
-					<li><span class="tit">매장주소 : </span><span>서울특별시 강남구 역삼동(역삼1동) 814-6</span></li>
-					<li><span class="tit">영업시간 : </span><span>오전 11:00 ~ 오후 10:30</span></li>
-					<li><span class="tit">매장타입 : </span><span>Full Dine-in</span></li>
-					<li><span class="tit">주차여부 : </span><span>주차불가</span></li>
-				</ul>
-				<p class="map">
-					<span class="btn_h23 green">
-					<button type="button" id="강남CGV점" name="강남CGV점" onclick="goMap(this.id);">지도보기</button>
-					<input type="hidden" id="StoreNm_X" name="StoreNm_X" value="127.026339"><input type="hidden" id="StoreNm_Y" name="StoreNm_Y" value="37.501709">
-					<input type="hidden" id="storeCode" name="storeCode" value="1068"></span>
-				</p>
-			</li>
-			
-			<li class="list">
-				<p class="photo">
-					<img src="assets/img/customer/store_photo/str_1113.jpg" alt="개봉점 사진" width="100px" height="75px" 
-						onerror="this.src=&quot;/assets/img/customer/store_photo/str_img.jpg&quot;">
-				</p>
-				<ul class="info">
-					<li><span class="tit">매장명 : </span><span>개봉점</span></li>
-					<li><span class="tit">전화번호 : </span><span>02-2614-0814</span></li>
-					<li><span class="tit">매장주소 : </span><span>서울특별시 구로구 개봉동 	146-5</span></li>
-					<li><span class="tit">영업시간 : </span><span>오전 11:00 ~ 오후 10:30</span></li>
-					<li><span class="tit">매장타입 : </span><span>Delivery + Dine-in</span></li>
-					<li><span class="tit">주차여부 : </span><span>주차불가</span></li>
-				</ul>
-				<p class="map">
-					<span class="btn_h23 green"><button type="button" id="개봉점" name="개봉점" onclick="goMap(this.id);">지도보기</button>
-						<input type="hidden" id="StoreNm_X" name="StoreNm_X" value="126.8552931">
-						<input type="hidden" id="StoreNm_Y" name="StoreNm_Y" value="37.4975539">
-						<input type="hidden" id="storeCode" name="storeCode" value="1113"></span>
-				</p>
-			</li>
-			
-			<li class="list"><p class="photo">
-					<img src="assets/img/customer/store_photo/str_1089.jpg" alt="개포점 사진" width="100px" height="75px"
-						onerror="this.src=&quot;/assets/img/customer/store_photo/str_img.jpg&quot;">
-				</p>
-				<ul class="info">
-					<li><span class="tit">매장명 : </span><span>개포점</span></li>
-					<li><span class="tit">전화번호 : </span><span>02-572-4894</span></li>
-					<li><span class="tit">매장주소 : </span><span>서울특별시 강남구 개포동(개포4동) 1229-12</span></li>
-					<li><span class="tit">영업시간 : </span><span>오전 11:00 ~ 오후 10:30</span></li>
-					<li><span class="tit">매장타입 : </span><span>Delivery + Dine-in</span></li>
-					<li><span class="tit">주차여부 : </span><span>주차불가</span></li>
-				</ul>
-				<p class="map">
-					<span class="btn_h23 green"><button type="button" id="개포점" name="개포점" onclick="goMap(this.id);">지도보기</button>
-						<input type="hidden" id="StoreNm_X" name="StoreNm_X" value="127.046425"><input type="hidden" id="StoreNm_Y"
-						name="StoreNm_Y" value="37.4763263"><input type="hidden" id="storeCode" name="storeCode" value="1089"></span>
-				</p>
-			</li>	
+					</p>
+					<ul class="info">
+						<li><span class="tit">매장명 : </span><span>${li.storename}</span></li>
+						<li><span class="tit">전화번호 : </span><span>${li.phone}</span></li>
+						<li><span class="tit">매장주소 : </span><span>${li.address}</span></li>
+						<li><span class="tit">영업시간 : </span><span>${li.businesshours}</span></li>
+						<li><span class="tit">매장타입 : </span><span>${li.storetype}</span></li>
+						<li><span class="tit">주차여부 : </span><span>${li.storeparking}</span></li>
+					</ul>
+					<p class="map">
+						<span class="btn_h23 green">
+							<button type="button" id="강남CGV점" name="강남CGV점" onclick="goMap(this.id);">지도보기</button>
+							<%-- 
+							<input type="hidden" id="StoreNm_X" name="StoreNm_X" value="127.026339">
+							<input type="hidden" id="StoreNm_Y" name="StoreNm_Y" value="37.501709">
+							<input type="hidden" id="storeCode" name="storeCode" value="1068">
+							--%>
+						</span>
+					</p>
+				</li>
+			</c:forEach>
 		</ul>
 		
+		<%-- 
 		<p class="page">
 			<img src="../assets/img/btn/btn_first.gif" alt="처음페이지">
 			<img src="../assets/img/btn/btn_prev.gif" alt="이전페이지">&nbsp;
@@ -318,6 +225,7 @@
 			<a href="JavaScript:goSearchPage('17','6','name');" onfocus="this.blur()">
 			<img src="../assets/img/btn/btn_last.gif" alt="마지막페이지"></a>
 		</p>
+		--%>
 	</div>
 </div>
 
