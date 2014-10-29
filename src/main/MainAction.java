@@ -1,23 +1,15 @@
 package main;
 
+import java.util.Map;
+
+import org.apache.struts2.interceptor.SessionAware;
+
 import com.opensymphony.xwork2.Action;
 
 public class MainAction implements Action{
-	private String msg="";
-	
-	
-	public String getMsg() {
-		return msg;
-	}
-
-
-	public void setMsg(String msg) {
-		this.msg = msg;
-	}
-
-
 	@Override
 	public String execute() throws Exception {
 		return SUCCESS;
 	}
+
 }

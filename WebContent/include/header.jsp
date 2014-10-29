@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
 <!--  0331 추가부분 시작 
 	index.jps, sub.jps, conf.jsp 에 load("header.jps")부분에 menuGb,menuId 파라미터값 보내기
 -->
@@ -68,14 +69,18 @@
 	gnb(m_num, s_num);
 </script>
 <!--  0331 추가부분 끝 -->
-
 	<h1 class="logo png24" onclick="location.href='mainAction.action'">
 		<img src="../assets/img/common/logo.png" alt="파파존스 피자" title="papajohn's pizza"/>
 	</h1>
    	<h3 class="hidden">유틸리티 메뉴</h3>
    	<ul class="utilityNav">
-
-   		<li><h2><a href="loginAction.action?menuGb=member&menuId=pj_0001"><img src="../assets/img/common/topUtil_01.gif" alt="로그인" /></a></h2></li>
+		<c:if test="${memId == null}"> 
+   			<li><h2><a href="loginAction.action?menuGb=member&menuId=pj_0001"><img src="../assets/img/common/topUtil_01.gif" alt="로그인" /></a></h2></li>
+   		</c:if>
+   		<c:if test="${memId != null}">
+   			<li><h2><a href="logoutAction.action"><img src="../assets/img/common/topUtil_06.gif" alt="로그아웃" /></a></h2></li>
+   		</c:if>
+   		
    		<li><h2><a href="signUpAction.action?menuGb=member&menuId=pj_0005"><img src="../assets/img/common/topUtil_08.gif" alt="회원가입" /></a></h2></li>
 
 

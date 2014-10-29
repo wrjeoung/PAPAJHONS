@@ -190,7 +190,7 @@
             		<p class="text">아직 회원이 아니시거나 비회원으로 주문 조회를 원하시면 '비회원 주문'을 선택해주세요</p>
           		</div> 
           		<div class="btn_join">
-            		<p><a href="/cont.jsp?menuGb=member&menuId=pj_0003"><img src="../assets/img/forms/login_btn_join.gif" alt="회원가입" /></a></p>
+            		<p><a href="signUpAction.action?menuGb=member&menuId=pj_0005"><img src="../assets/img/forms/login_btn_join.gif" alt="회원가입" /></a></p>
           			<!-- 
             		<p><a href="/cont.jsp?menuGb=member&menuId=pj_0004"><img src="</%=root%>/assets/img/forms/login_btn_join.gif" alt="회원가입" /></a></p>
           			-->

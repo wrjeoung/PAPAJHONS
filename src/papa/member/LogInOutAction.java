@@ -1,19 +1,23 @@
 package papa.member;
 
 import java.util.HashMap;
+import java.util.Map;
+
+import org.apache.struts2.interceptor.SessionAware;
 
 import papa.address.IbatisAware;
 
 import com.ibatis.sqlmap.client.SqlMapClient;
 import com.opensymphony.xwork2.ActionSupport;
 
-public class LogInOutAction extends ActionSupport implements IbatisAware {
+public class LogInOutAction extends ActionSupport implements IbatisAware, SessionAware {
 	public static SqlMapClient sqlMapper;	//SqlMapClient API를 사용하기 위한 sqlMapper 객체.
 	private String mem_id;
 	private String mem_pw;
 	private String menuId;
 	private String menuGb;
 	private String result = "";
+	Map sessionMap;
 	
 		
 	public String getResult() {
@@ -68,13 +72,32 @@ public class LogInOutAction extends ActionSupport implements IbatisAware {
 		params.put("pw", mem_pw);
 
 		data = (MemberData) sqlMapper.queryForObject("memberSQL.loginCheck",params);
-			
-		result = data != null ? "yes" : "no";
+		
+		if(data != null)
+		{
+			sessionMap.put("memId", mem_id);
+			result = "yes";
+		}
+		else
+		{
+			result = "no";
+		}
+		
 		return SUCCESS;
 	}		
+	
+	public String logout() throws Exception {
+		sessionMap.clear();
+		return SUCCESS;
+	}	
 	
 	public void setIbatis(SqlMapClient sqlMapper) {
 		// TODO Auto-generated method stub
 		this.sqlMapper = sqlMapper;
+	}
+
+	@Override
+	public void setSession(Map arg0) {
+		this.sessionMap = arg0;
 	}
 }

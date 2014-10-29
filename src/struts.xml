@@ -191,16 +191,17 @@
 		<action name="loginAction" class="papa.member.LogInOutAction" method="form">
 			<result>/signup/cont.jsp</result>
 		</action>	
-
-		
-					
-		
-		
+				
 		<action name="loginProAction" class="papa.member.LogInOutAction" method="loginPro">
 		    <interceptor-ref name="ibatis"></interceptor-ref>
 		    <interceptor-ref name="params"></interceptor-ref>
+		    <interceptor-ref name="servletConfig" />
 			<result>/signup/cont.jsp</result>
-		</action>					
+		</action>
+		
+		<action name="logoutAction" class="papa.member.LogInOutAction" method="logout">
+			<result>/member/logout.jsp</result>
+		</action>							
 		
 		<action name="signUpAction" class="papa.member.MemberAction" method="form">
 			<result>/signup/cont.jsp</result>
