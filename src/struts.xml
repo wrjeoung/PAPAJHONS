@@ -268,11 +268,17 @@
 	
 	<!-- 매장안내 -->
 	<package name="store" extends="struts-default">
+		<interceptors>
+			<interceptor name="ibatis" class="store.IbatisInterceptor"/>
+		</interceptors>
+		
 		<action name="storeAction" class="store.StoreAction">
 			<result>/store/store.jsp</result>
 		</action>
 		
 		<action name="storeDetailAction" class="store.StoreDetailAction">
+			<interceptor-ref name="ibatis"/>
+			<interceptor-ref name="params"/>
 			<result>/store/storeDetail.jsp</result>
 		</action>
 	</package>
