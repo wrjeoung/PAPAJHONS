@@ -23,7 +23,6 @@
 		</dataSource>
 	</transactionManager>
 	
-	<sqlMap resource="/sql/berverageSQL.xml"/>
 	<sqlMap resource="/sql/gongjiboardSQL.xml"/>
 	<sqlMap resource="/sql/addressSQL.xml"/>
 	<sqlMap resource="/sql/menuSQL.xml"/>
@@ -32,5 +31,6 @@
 	<sqlMap resource="/sql/memberSQL.xml"/>
 	<sqlMap resource="/sql/storeeventSQL.xml"/>
 	<sqlMap resource="/sql/pasteventSQL.xml"/>
+	<sqlMap resource="/sql/orderSQL.xml"/>
 </sqlMapConfig>
 
