@@ -84,6 +84,8 @@
  	</script>
  	<![endif]-->
 </head>
+
+
 <body>
 	<div id="skipNavi">
 		<a href="#gnb">메뉴 바로가기</a> <a href="#contents">본문바로가기</a>
