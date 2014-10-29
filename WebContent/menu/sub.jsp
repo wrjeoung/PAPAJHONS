@@ -101,7 +101,7 @@
 			    		<dt class="dep1 pj_2011"><a href="subAction.action?menuId=pj_2011"><img src="../assets/img/sub/sub_2_11.gif" alt="세트메뉴"></a></dt>
 			    		<dt class="dep1 pj_2012"><a href="subAction.action?menuId=pj_2012"><img src="../assets/img/sub/sub_2_12.gif" alt="사이드"></a></dt>
 			    		<dt class="dep1 pj_2013"><a href="subAction.action?menuId=pj_2013"><img src="../assets/img/sub/sub_2_13.gif" alt="음료"></a></dt>
-			    		<dt class="dep1 pj_2014"><a href="subAction.action?menuId=pj_2014"><img src="../assets/img/sub/sub_2_14.gif" alt="소스&피클"></a></dt>
+			    		<!--  <dt class="dep1 pj_2014"><a href="subAction.action?menuId=pj_2014"><img src="../assets/img/sub/sub_2_14.gif" alt="소스&피클"></a></dt>-->
 			  		</dl>
     				<%-- 
      				<script type="text/javascript">	$("#con_container .snb").load("../include/snb.jsp?menuGb=menu&menuId=pj_2003&tab=null"); </script>
