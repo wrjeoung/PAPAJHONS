@@ -7,7 +7,6 @@
 	var menuId = "null";
 	var m_num;
 	var s_num;
-
 	//온라인 주문 페이지
 	if( menuGb == "order" ) 
 	{ 
@@ -93,7 +92,7 @@
 	<div id="gnb">
   		<h3 class="hidden">글로벌 메뉴</h3>
   		<ul>
-    		<li class="navItem1"> <a href="/order.jsp">온라인주문</a> </li>
+    		<li class="navItem1"> <a href="orderAction.action">온라인주문</a> </li>
     		<li class="navItem2"> <a href="subAction.action?menuId=pj_2003">메뉴</a>
       			<ul class="sub">
         			<li><h2><a href="subAction.action?menuId=pj_2002"><img src="../assets/img/common/m2_s02.gif" alt="베스트메뉴" /></a></h2></li>
