@@ -21,7 +21,9 @@
 									<span id="new_list_storeNm">${li.storename}</span>
 									<!-- 지도보기 버튼 -->
 									<span class="btn_h23 green">
-										<button type="button" id="부산시청점a" name="부산시청점a" 	onclick="document.location.href='storeMapAction.action'">지도보기</button>
+										<button type="button" onclick="document.location.href
+										='storeMapAction.action?storename=${li.storename}&phone=${li.phone}&address=${li.address}&businesshours=${li.businesshours}&storetype=${li.storetype}&storeparking=${li.storeparking}&imagepath=${li.imagepath}&latitude=${li.latitude}&longitude=${li.longitude}'">
+										지도보기</button>
 										<%-- 
 										<input type="hidden" id="storeCode" name="storeCode" value="1114">
 										<input type="hidden" id="StoreNm_X" name="StoreNm_X" value="129.0745495">
@@ -203,7 +205,9 @@
 					</ul>
 					<p class="map">
 						<span class="btn_h23 green">
-							<button type="button" id="${li.storename}" name="${li.storename}" onclick="document.location.href='storeMapAction.action'">지도보기</button>
+							<button type="button" id="${li.storename}" name="${li.storename}" 
+							onclick="document.location.href='storeMapAction.action?storename=${li.storename}&phone=${li.phone}&address=${li.address}&businesshours=${li.businesshours}&storetype=${li.storetype}&storeparking=${li.storeparking}&imagepath=${li.imagepath}&latitude=${li.latitude}&longitude=${li.longitude}'">
+							지도보기</button>
 							<%-- 
 							<input type="hidden" id="StoreNm_X" name="StoreNm_X" value="127.026339">
 							<input type="hidden" id="StoreNm_Y" name="StoreNm_Y" value="37.501709">
