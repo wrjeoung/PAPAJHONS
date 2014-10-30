@@ -5,9 +5,9 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 	<meta content="MSHTML 6.00.3790.4357" name="GENERATOR">
 	
-	<link type="text/css" rel="stylesheet" href="/assets/css/import.css" />
-	<link type="text/css" rel="stylesheet" href="/assets/css/main.css" />
-	<link type="text/css" rel="stylesheet" href="/assets/css/lib_style.css" />
+	<link type="text/css" rel="stylesheet" href="../assets/css/import.css" />
+	<link type="text/css" rel="stylesheet" href="../assets/css/main.css" />
+	<link type="text/css" rel="stylesheet" href="../assets/css/lib_style.css" />
 	<style type="text/css">
 		body{overflow:hidden;padding:0;}
 		#alertLogout{display:none; width:336px; height:136px; min-height:140px;  padding:1px; z-index:2000;}
