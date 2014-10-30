@@ -207,13 +207,14 @@
 			<result>/signup/cont.jsp</result>
 		</action>
 		
-		<action name="signUpProAction" class="papa.member.MemberAction" >
-		    <interceptor-ref name="prepare" />
-		    <interceptor-ref name="modelDriven" />
-		    <interceptor-ref name="ibatis"></interceptor-ref>
-		    <interceptor-ref name="params"></interceptor-ref>
+		<action name="emailAuthAction" class="papa.member.EmailAuthAction" >
+			<result>/member/emailAuth.jsp</result>
+		</action>
+		
+		<action name="signUpAction" class="papa.member.MemberAction" method="form">
 			<result>/signup/cont.jsp</result>
-		</action>						
+		</action>
+										
 	</package>
 	<!-- 매장별 이벤트 -->
 	<package name="storeevent.board" extends="struts-default">
