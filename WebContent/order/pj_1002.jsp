@@ -2772,14 +2772,30 @@
           				<h3 class="hidden">피자</h3>
           				<ul class="pizza_list">
             				<!-- <li><a href="javascript:fnSelMenuGroup('0', '00' );">이달의 프로모션</a></li> -->
-            				<li><a href="javascript:fnSelMenuGroup('0', '99' );">베스트메뉴</a></li>
-            				<li><a href="javascript:fnSelMenuGroup('1', '10' );">오리지널</a></li>
-            				<li><a href="javascript:fnSelMenuGroup('2', '20' );">골드링</a></li>
-            				<li><a href="javascript:fnSelMenuGroup('3', '30' );">치즈롤</a></li>
-            				<li><a href="javascript:fnSelMenuGroup('4', '40' );">씬</a></li>
-            				<li style="display:none;"><a href="javascript:fnSelMenuGroup('5', '50' );">오리지널씬</a></li>
-            				<li><a href="javascript:fnSelMenuGroup('6', '100');">골드링씬</a></li>
-            				<li><a href="javascript:fnSelMenuGroup('7', '120');">하트씬</a></li>
+            				<li>
+            					<a href="javascript:fnSelMenuGroup('0', '99' );" style="background: url(../assets/img/order/ordMenu_pizza1.gif) no-repeat">베스트메뉴</a>
+            				</li>
+            				<li>
+            					<a href="javascript:fnSelMenuGroup('1', '10' );" style="background: url(../assets/img/order/ordMenu_pizza2.gif) no-repeat;">오리지널</a>
+            				</li>
+            				<li>
+            					<a href="javascript:fnSelMenuGroup('2', '20' );" style="background: url(../assets/img/order/ordMenu_pizza3.gif) no-repeat;">골드링</a>
+            				</li>
+            				<li>
+            					<a href="javascript:fnSelMenuGroup('3', '30' );" style="background: url(../assets/img/order/ordMenu_pizza4.gif) no-repeat;">치즈롤</a>
+            				</li>
+            				<li>
+            					<a href="javascript:fnSelMenuGroup('4', '40' );" style="background: url(../assets/img/order/ordMenu_pizza5.gif) no-repeat;">씬</a>
+            				</li>
+            				<li style="display:none;">
+            					<a href="javascript:fnSelMenuGroup('5', '50' );" style="background: url(../assets/img/order/ordMenu_pizza6.gif) no-repeat;">오리지널씬</a>
+            				</li>
+            				<li>
+            					<a href="javascript:fnSelMenuGroup('6', '100');" style="background: url(../assets/img/order/ordMenu_pizza7.gif) no-repeat;">골드링씬</a>
+            				</li>
+            				<li>
+            					<a href="javascript:fnSelMenuGroup('7', '120');" style="background: url(../assets/img/order/ordMenu_pizza8.gif) no-repeat;">하트씬</a>
+            				</li>
           				</ul>
         			</div>
         			<div class="side">
@@ -3870,9 +3886,9 @@
 		// 처음들어올때 활성화 되어있는 메뉴 active함수의 멤버변수로 보내줌
 		active($pizz_menu.eq(1));//피자 도우선택 구분값
 		// 메뉴별 이미지(link,on,over이미지) 배열 만들어 저장
-		linkURL[i] = "/assets/img/order/ordMenu_pizza"+(i+1)+".gif";
-		overURL[i] = "/assets/img/order/ordMenu_pizza"+(i+1)+"_over.gif";
-		onURL[i]   = "/assets/img/order/ordMenu_pizza"+(i+1)+"_on.gif";
+		linkURL[i] = "../assets/img/order/ordMenu_pizza"+(i+1)+".gif";
+		overURL[i] = "../assets/img/order/ordMenu_pizza"+(i+1)+"_over.gif";
+		onURL[i]   = "../assets/img/order/ordMenu_pizza"+(i+1)+"_on.gif";
 	
 		$(this).css("background","url("+linkURL[i]+") no-repeat"); 
 
