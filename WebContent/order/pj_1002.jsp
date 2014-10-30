@@ -2772,14 +2772,30 @@
           				<h3 class="hidden">피자</h3>
           				<ul class="pizza_list">
             				<!-- <li><a href="javascript:fnSelMenuGroup('0', '00' );">이달의 프로모션</a></li> -->
-            				<li><a href="javascript:fnSelMenuGroup('0', '99' );">베스트메뉴</a></li>
-            				<li><a href="javascript:fnSelMenuGroup('1', '10' );">오리지널</a></li>
-            				<li><a href="javascript:fnSelMenuGroup('2', '20' );">골드링</a></li>
-            				<li><a href="javascript:fnSelMenuGroup('3', '30' );">치즈롤</a></li>
-            				<li><a href="javascript:fnSelMenuGroup('4', '40' );">씬</a></li>
-            				<li style="display:none;"><a href="javascript:fnSelMenuGroup('5', '50' );">오리지널씬</a></li>
-            				<li><a href="javascript:fnSelMenuGroup('6', '100');">골드링씬</a></li>
-            				<li><a href="javascript:fnSelMenuGroup('7', '120');">하트씬</a></li>
+            				<li>
+            					<a href="javascript:fnSelMenuGroup('0', '99' );" style="background: url(../assets/img/order/ordMenu_pizza1.gif) no-repeat">베스트메뉴</a>
+            				</li>
+            				<li>
+            					<a href="javascript:fnSelMenuGroup('1', '10' );" style="background: url(../assets/img/order/ordMenu_pizza2.gif) no-repeat;">오리지널</a>
+            				</li>
+            				<li>
+            					<a href="javascript:fnSelMenuGroup('2', '20' );" style="background: url(../assets/img/order/ordMenu_pizza3.gif) no-repeat;">골드링</a>
+            				</li>
+            				<li>
+            					<a href="javascript:fnSelMenuGroup('3', '30' );" style="background: url(../assets/img/order/ordMenu_pizza4.gif) no-repeat;">치즈롤</a>
+            				</li>
+            				<li>
+            					<a href="javascript:fnSelMenuGroup('4', '40' );" style="background: url(../assets/img/order/ordMenu_pizza5.gif) no-repeat;">씬</a>
+            				</li>
+            				<li style="display:none;">
+            					<a href="javascript:fnSelMenuGroup('5', '50' );" style="background: url(../assets/img/order/ordMenu_pizza6.gif) no-repeat;">오리지널씬</a>
+            				</li>
+            				<li>
+            					<a href="javascript:fnSelMenuGroup('6', '100');" style="background: url(../assets/img/order/ordMenu_pizza7.gif) no-repeat;">골드링씬</a>
+            				</li>
+            				<li>
+            					<a href="javascript:fnSelMenuGroup('7', '120');" style="background: url(../assets/img/order/ordMenu_pizza8.gif) no-repeat;">하트씬</a>
+            				</li>
           				</ul>
         			</div>
         			<div class="side">
@@ -3396,7 +3412,7 @@
       
       		<!-- ord_title -->
       		<div id="ord_title">
-            	<h2><img src="/assets/img/order/tit_order.gif" alt="장바구니" /></h2>
+            	<h2><img src="../assets/img/order/tit_order.gif" alt="장바구니" /></h2>
         		<p class="ord_reset"> <span class="btn_h23 green"><button type="button" onclick="javascript:fnClearCart();">초기화</button></span></p>
       		</div>
       		<!--// ord_title -->
@@ -3407,7 +3423,7 @@
         		<p class="section_bottom"></p>
         		<!-- cart_list_section -->
         		<div id="cart_list_section">
-            		<h3 class="section_title"><img src="/assets/img/order/order_rboxTitle_ordList.gif" alt="주문목록" /></h3>
+            		<h3 class="section_title"><img src="../assets/img/order/order_rboxTitle_ordList.gif" alt="주문목록" /></h3>
           			<!-- section_con --> 
           			<div class="section_con"> 
             			<!-- 주문 리스트 :max-height:140px; -->
@@ -3470,10 +3486,11 @@
         
         		<!-- cart_opt_section--> 
         		<div id="cart_opt_section" >
-           			<h3 class="section_title"><img src="/assets/img/order/order_rboxTitle_ordway.gif" alt="주문방법선택" /></h3>
+        			<%-- <h3 class="section_title"><img src="../assets/img/order/order_rboxTitle_ordway.gif" alt="주문방법선택" /></h3>  --%>
           			<!-- section_con--> 
             		<div class="section_con" id="cart_opt_section">
             			<!-- 배달 / 방문포장  시작-->
+            			<%-- 
 	            		<div id="cart_btn_ordWay1">
 	              			<p style="height:40px" class="radio">
 	                			<a href="#ord_area">	<!-- 버튼 클릭 시 화면 상단으로 이동 : 슬라이드가 안보이게 스크롤 되어있는 경우-->
@@ -3486,8 +3503,7 @@
 	                			</a>
 	              			</p>
 	            		</div>
- 
- 
+	            		--%>
              			<!-- 배송지정보  시작-->
             			<div id="ord_optInfo_section" style="display:none" >
               				<h3 class="section_title"><img src="/assets/img/order/order_rboxTitle_addrInfo.gif" alt="배송지정보" /></h3>
@@ -3512,7 +3528,7 @@
  
       		<!-- 합계 -->
       		<div id="ord_total" >
-        		<p><img src="/assets/img/order/order_total_title.gif" alt="총주문금액"/><span class="price">0원</span></p>
+        		<p><img src="../assets/img/order/order_total_title.gif" alt="총주문금액"/><span class="price">0원</span></p>
       		</div>
       		<!-- //합계 --> 
       
@@ -3521,13 +3537,13 @@
 		  		<div id="banner_content">
 				<!-- 사이드에 들어갈 메뉴 데이터를 뿌려줌 :이미지이름과 메뉴 코드 동일하게 만들기 -->
 
-					<img id="50501" src="/assets/img/order/banner/bn_50501.png" alt="코카콜라 1.25L" title="코카콜라 1.25L"  onerror="fnNoImages($(this));"/>
+					<img id="50501" src="../assets/img/order/banner/bn_50501.png" alt="코카콜라 1.25L" title="코카콜라 1.25L"  onerror="fnNoImages($(this));"/>
 				  	<input type="hidden" id="bnMenuInfo" name="bnMenuInfo" value="50501,코카콜라 1.25L,10,40,4020,3013,,1600,1.25L,"/> 
 
-					<img id="50268" src="/assets/img/order/banner/bn_50268.png" alt="스프라이트1.5L" title="스프라이트1.5L"  onerror="fnNoImages($(this));"/>
+					<img id="50268" src="../assets/img/order/banner/bn_50268.png" alt="스프라이트1.5L" title="스프라이트1.5L"  onerror="fnNoImages($(this));"/>
 				  	<input type="hidden" id="bnMenuInfo" name="bnMenuInfo" value="50268,스프라이트1.5L,10,40,4009,3014,,1900,1.5L,"/> 
 
-					<img id="50485" src="/assets/img/order/banner/bn_50485.png" alt="환타1.5L" title="환타1.5L"  onerror="fnNoImages($(this));"/>
+					<img id="50485" src="../assets/img/order/banner/bn_50485.png" alt="환타1.5L" title="환타1.5L"  onerror="fnNoImages($(this));"/>
 				  	<input type="hidden" id="bnMenuInfo" name="bnMenuInfo" value="50485,환타1.5L,10,40,4010,3014,,1900,1.5L,"/> 
 
 				</div>
@@ -3538,7 +3554,7 @@
       
       		<!-- 주문하기 버튼 -->
       		<div id="comp_ord_btn" >
-        		<button class="clear" onclick="fnOrderInfoView();"><img src="/assets/img/btn/btn_order.png" alt="주문하기" /></button>
+        		<button class="clear" onclick="fnOrderInfoView();"><img src="../assets/img/btn/btn_order.png" alt="주문하기" /></button>
       		</div>
       		<!--// 주문하기 버튼 --> 
     	</div>
@@ -3870,9 +3886,9 @@
 		// 처음들어올때 활성화 되어있는 메뉴 active함수의 멤버변수로 보내줌
 		active($pizz_menu.eq(1));//피자 도우선택 구분값
 		// 메뉴별 이미지(link,on,over이미지) 배열 만들어 저장
-		linkURL[i] = "/assets/img/order/ordMenu_pizza"+(i+1)+".gif";
-		overURL[i] = "/assets/img/order/ordMenu_pizza"+(i+1)+"_over.gif";
-		onURL[i]   = "/assets/img/order/ordMenu_pizza"+(i+1)+"_on.gif";
+		linkURL[i] = "../assets/img/order/ordMenu_pizza"+(i+1)+".gif";
+		overURL[i] = "../assets/img/order/ordMenu_pizza"+(i+1)+"_over.gif";
+		onURL[i]   = "../assets/img/order/ordMenu_pizza"+(i+1)+"_on.gif";
 	
 		$(this).css("background","url("+linkURL[i]+") no-repeat"); 
 
