@@ -193,10 +193,10 @@
 
     // 온라인메뉴그룹별 메뉴그룹 검색
 	function fnSelMenuGroup(pizzaSelIdx, onlineGroupCd)
-    {
+    {	
     	document.frmOrder.onlineGroupCd.value = onlineGroupCd;  // 온라인메뉴그룹
     	document.frmOrder.pizzaSelIdx.value   = pizzaSelIdx;    // 선택피자그룹메뉴
-    	document.frmOrder.action              = "/order.jsp"; // ????????
+    	document.frmOrder.action              = "orderAction.action";
     	document.frmOrder.target              = "_self";
     	document.frmOrder.submit();
 	}      
