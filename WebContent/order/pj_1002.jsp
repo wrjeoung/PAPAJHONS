@@ -2792,9 +2792,9 @@
         			</div>
         			<div class="coupon">
           				<ul class="coupon_list">   				
-            				<li><a href="javascript:fnSelMenuGroup('9', '70');"><img src="/assets/img/order/ord_menu_side_btn.png" alt="사이드" /></a></li>
-            				<li><a href="javascript:fnViewDiv('plat');"><img src="/assets/img/order/ord_menu_plt_btn.png" alt="파파플래터" /></a></li>
-            				<li><a href="javascript:fnSelMenuGroup('9', '80');"><img src="/assets/img/order/ord_menu_drink_btn.png" alt="음료" /></a></li>
+            				<li><a href="javascript:fnSelMenuGroup('9', '70');"><img src="../assets/img/order/ord_menu_side_btn.png" alt="사이드" /></a></li>
+            				<li><a href="javascript:fnViewDiv('plat');"><img src="../assets/img/order/ord_menu_plt_btn.png" alt="파파플래터" /></a></li>
+            				<li><a href="javascript:fnSelMenuGroup('9', '80');"><img src="../assets/img/order/ord_menu_drink_btn.png" alt="음료" /></a></li>
             				
           				</ul>
         			</div>
@@ -2803,9 +2803,9 @@
       				<!-- 20140424 파파플래터, 반값 프로모션 버튼 추가 & 레이아웃 수정 -->
       				<div class="promotion">
       					<ul class="etc_list">
-            				<li><a href="javascript:fnViewDiv('half');"><img src="/assets/img/order/ord_menu_half_btn.png" alt="하프엔하프피자" /></a></li>
-            				<li><a href="javascript:fnSelMenuGroup('9', '90');"><img src="/assets/img/order/ord_menu_sauce_btn.png" alt="소스&피클" /></a></li>
-            				<li><a href="javascript:fnViewDiv('coupon');"><img src="/assets/img/order/ord_menu_ecu_btn.png" alt="e쿠폰메뉴" /></a></li>
+            				<li><a href="javascript:fnViewDiv('half');"><img src="../assets/img/order/ord_menu_half_btn.png" alt="하프엔하프피자" /></a></li>
+            				<li><a href="javascript:fnSelMenuGroup('9', '90');"><img src="../assets/img/order/ord_menu_sauce_btn.png" alt="소스&피클" /></a></li>
+            				<li><a href="javascript:fnViewDiv('coupon');"><img src="../assets/img/order/ord_menu_ecu_btn.png" alt="e쿠폰메뉴" /></a></li>
             				
             				</ul>
        				</div>
