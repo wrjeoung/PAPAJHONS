@@ -10,7 +10,21 @@ public class MemberData {
 	private String email;
 	private String sendmail;
 	private String addr;
+	private String activation_status;
+	private String activation_key;
 	
+	public String getActivation_status() {
+		return activation_status;
+	}
+	public void setActivation_status(String activation_status) {
+		this.activation_status = activation_status;
+	}
+	public String getActivation_key() {
+		return activation_key;
+	}
+	public void setActivation_key(String activation_key) {
+		this.activation_key = activation_key;
+	}
 	public String getSms() {
 		return sms;
 	}

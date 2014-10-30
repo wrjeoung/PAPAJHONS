@@ -77,17 +77,16 @@
 		document.f1.submit();
 			
 	}
-	function close()
-	{
-		parent
-	}
 
 	//
-	function i_close()
+	function pop_close()
 	{
-			
-		self.close();
-			
+		var activation_key = parent.document.getElementById("activation_key");
+		var value = "${activation_key}";
+		activation_key.value = value; 
+		
+		console.log("acti"+"${activation_key}");
+		del_pop('email_auth',true,$(this));
 	}
 </script>
 </head>
@@ -116,7 +115,7 @@
     	<div class="right"></div>
   	</div>
 
-  	<div class="button"><button class="alertBtn gray" type="button" onclick="del_pop('email_auth',true,$(this))">확인</button>
+  	<div class="button"><button class="alertBtn gray" type="button" onclick="pop_close()">확인</button>
 </div>	
 </form>
 </body>

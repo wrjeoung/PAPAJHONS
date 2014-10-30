@@ -344,6 +344,7 @@
     	    <input type="hidden" id="phone"  name="phone" value="">  
 			<input type="hidden" id="mobile"  name="mobile" value="">
 			<input type="hidden" id="addr"  name="addr" value="">
+			<input type="hidden" id="activation_key"  name="activation_key" value="">
 			
     		<div class="form">
       			<p>
