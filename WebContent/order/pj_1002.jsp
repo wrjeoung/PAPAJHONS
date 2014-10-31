@@ -2851,15 +2851,24 @@
 								<input type='hidden' name='pCode_1' value='50330,마가리타,R,15900,오리지널,10,1018,3001,4001,10' />
 								<p class='label_radio menu_size_radio' >
 									<input type='radio' name='pSize_1' value='15900' />
-									<img src='/assets/img/order/ord_menuList_size_R.png' alt='레귤러' title='Regular'/>
+									<img src='../assets/img/order/ord_menuList_size_R.png' alt='레귤러' title='Regular'/>
 									<span class='price' >15,900</span>
 								</p>
 								<input type='hidden' name='pCode_1' value='50332,마가리타,L,21500,오리지널,10,1018,3002,4001,10' />
 								<p class='label_radio menu_size_radio' >  	
 									<input type='radio' name='pSize_1' value='21500' />
-									<img src='/assets/img/order/ord_menuList_size_L.png' alt='라지' title='large'/>
-									<span class='price' >21,500</span>   </p>  <input type='hidden' name='pCode_1' value='50329,마가리타,F,25900,오리지널,10,1018,3003,4001,10' />  <p class='label_radio menu_size_radio' >  	<input type='radio' name='pSize_1' value='25900' />  	<img src='/assets/img/order/ord_menuList_size_F.png' alt='패밀리' title='family'/>   	<span class='price' >25,900</span>   </p>  <input type='hidden' name='pCode_1' value='50322,마가리타,P,34500,오리지널,10,1018,3005,4001,10' />  <p class='label_radio menu_size_radio' >  	<input type='radio' name='pSize_1' value='34500' />
-									<img src='/assets/img/order/ord_menuList_size_P.png' alt='파티' title='party'/>
+									<img src='../assets/img/order/ord_menuList_size_L.png' alt='라지' title='large'/>
+									<span class='price' >21,500</span>   
+								</p>
+								<input type='hidden' name='pCode_1' value='50329,마가리타,F,25900,오리지널,10,1018,3003,4001,10' />
+								<p class='label_radio menu_size_radio' >
+									<input type='radio' name='pSize_1' value='25900' />
+									<img src='../assets/img/order/ord_menuList_size_F.png' alt='패밀리' title='family'/>
+									<span class='price' >25,900</span>   
+								</p>
+								<input type='hidden' name='pCode_1' value='50322,마가리타,P,34500,오리지널,10,1018,3005,4001,10' />
+								<p class='label_radio menu_size_radio' >  	<input type='radio' name='pSize_1' value='34500' />
+									<img src='../assets/img/order/ord_menuList_size_P.png' alt='파티' title='party'/>
 									<span class='price' >34,500</span>   
 								</p>
 							</div>
@@ -2874,15 +2883,15 @@
 							<!--// size -->   	
 							<div class='spcInstruction'>  	
 								<p class='btn'>
-									<img src='/assets/img/order/btn_opt_off.gif' alt='변경' />
+									<img src='../assets/img/order/btn_opt_off.gif' alt='변경' />
 								</p>   
 								<!-- 옵션변경 말풍선 -->    
 								<div class='comment'>   
 									<p class='top'>
-										<img src='/assets/img/order/ord_menuList_detail_commBg_top.png' alt=''>
+										<img src='../assets/img/order/ord_menuList_detail_commBg_top.png' alt=''>
 									</p>   
 									<p class='bottom'>
-										<img src='/assets/img/order/ord_menuList_detail_commBg_bottom.png' alt=''>
+										<img src='../assets/img/order/ord_menuList_detail_commBg_bottom.png' alt=''>
 									</p>   
 									<p class='center'>
 										<span>special instructions :</span><br>
@@ -2895,15 +2904,15 @@
 							<!-- detail -->   	
 							<div class='detail'>   		
 								<p class='btn'>
-									<img src='/assets/img/order/btn_info.gif' alt='상세설명'/>
+									<img src='../assets/img/order/btn_info.gif' alt='상세설명'/>
 								</p>
 								<!-- 상세보기 말풍선 -->
 								<div class='comment'>
 									<p class='top'>
-										<img src='/assets/img/order/ord_menuList_detail_commBg_top.png' alt=''>
+										<img src='../assets/img/order/ord_menuList_detail_commBg_top.png' alt=''>
 									</p>
 									<p class='bottom'>
-										<img src='/assets/img/order/ord_menuList_detail_commBg_bottom.png' alt=''>
+										<img src='../assets/img/order/ord_menuList_detail_commBg_bottom.png' alt=''>
 									</p>
 									<dl>
 										<dt>Create your own Pizza:</dt>
