@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC '-//ibatis.apache.org//DTD Sql Map 2.0//EN' 'http://ibatis.apache.org/dtd/sql-map-2.dtd'>
+<sqlMap namespace="qna">
+	<typeAlias alias="qna" type="qna.board.qnaVO"/>
+		<resultMap id="qnaRes" class="qna">
+			<result property="num" column="num"/>
+			<result property="qmenu" column="qmenu"/>
+			<result property="qcontent" column="qcontent"/>
+			<result property="acontent" column="acontent"/>
+			<result property="readhit" column="readhit"/>
+			<result property="reg_date" column="reg_date"/>
+		</resultMap>
+		
+		<!-- 글쓰기 -->
+		<insert id="insertQna" parameterClass="qna">
+			INSERT INTO QNA(NUM,QMENU,QCONTENT,ACONTENT,REG_DATE)
+			VALUES(QNA_NUM_SEQ.NEXTVAL,#qmenu#,#qcontent#,#acontent#,#reg_date#)
+		</insert>
+</sqlMap>

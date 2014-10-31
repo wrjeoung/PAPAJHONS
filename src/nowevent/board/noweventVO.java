@@ -11,6 +11,16 @@ public class noweventVO {
 	private String file_savname;
 	private String file_orgname2;
 	private String file_savname2;
+	
+	private String day;
+	
+	
+	public String getDay() {
+		return day;
+	}
+	public void setDay(String day) {
+		this.day = day;
+	}
 	public int getNum() {
 		return num;
 	}

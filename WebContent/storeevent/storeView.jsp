@@ -10,15 +10,15 @@
 <center><b>매장별 이벤트</b>
 <br>
 <form>
-<table width="1000" border="1" cellpadding="0" cellspacing="0" align="center">
+<table width="600" border="1" cellpadding="0" cellspacing="0" align="center">
 	<tr height="30" align="center">
-		<td align="center" width="100">${vo.subject }</td>
+		<td align="center" width="100">${vo.subject }<br/><font style="margin-left: 150px">작성일:${vo.day}</font></td>
 	</tr>
-	<tr height="30" align="center">
-		<td align="right" width="100">기간 : ${vo.day }</td>
-	</tr>
+	<%-- <tr height="30" align="center">
+		<td align="center" width="100">기간 : ${vo.day }</td>
+	</tr> --%>
 	<tr height="500" align="center">
-		<td align="left" width="100" colspan="3"><pre>${vo.content }</pre>
+		<td align="center" width="100"><pre>${vo.content }</pre>
 		
 		<img src="../save3/${file_savname }"></td>
 	</tr>

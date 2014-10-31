@@ -19,6 +19,9 @@ public class writeAction extends ActionSupport{
 	
 	private int num;
 	private String subject;
+	
+	private String day;
+	
 	Calendar today=Calendar.getInstance();
 	
 	private String file_orgName;
@@ -50,7 +53,7 @@ public class writeAction extends ActionSupport{
 		vo=new noweventVO();
 		vo.setSubject(getSubject());
 		vo.setReg_date(today.getTime());
-		System.out.println(uploadFileName);
+		vo.setDay(getDay());
 		
 		sqlMapper.insert("nowevent.insertNowevent", vo);
 		
@@ -202,6 +205,12 @@ public class writeAction extends ActionSupport{
 	}
 	public void setUpload2FileName(String upload2FileName) {
 		this.upload2FileName = upload2FileName;
+	}
+	public String getDay() {
+		return day;
+	}
+	public void setDay(String day) {
+		this.day = day;
 	}
 	
 }

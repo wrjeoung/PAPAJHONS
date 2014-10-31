@@ -36,6 +36,15 @@
 		</action>
 	</package>
 	
+	<!-- 프로모션 -->
+	<package name="promotion" extends="struts-default">
+		<action name="PromotionAction" class="promotion.PromotionAction">
+		<interceptor-ref name="params"/>
+			<result>/promotion/promotion.jsp</result>
+		</action>
+	</package>
+	
+	
 	<package name="main" extends="struts-default">
 		<action name="mainAction" class="main.MainAction">
 			<result>
@@ -260,10 +269,40 @@
 		</action>
 		<action name="pastwriteAction" class="pastevent.board.writeAction">
 			<result type="redirectAction">
-			<param name="actionName">pastwriteForm</param>
+			<param name="actionName">pastlistAction</param>
 			</result> 
 		</action>
+	<!-- 리스트 -->
+	<action name="pastlistAction" class="pastevent.board.listAction">
+			<interceptor-ref name="params"/>
+			<result>/pastevent/pastList.jsp</result>
+	</action>
+	
+	<!-- 상세보기 -->
+		<action name="pastviewAction" class="pastevent.board.viewAction">
+			<result>/pastevent/pastView.jsp</result>
+		</action>
+		
+		<!-- 삭제하기 -->
+		<action name="pastdeleteAction" class="pastevent.board.deleteAction">
+			<result type="redirect-action">
+				<param name="actionName">pastlistAction</param>
+			</result>
+		</action>
+	
+	<!-- 수정하기 -->
+	
+	<action name="pastmodifyForm" class="pastevent.board.modifyAction" method="form">
+			<result>/pastevent/pastModify.jsp</result>
+		</action>
+		<action name="pastmodifyAction" class="pastevent.board.modifyAction">
+			<result type="redirect-action">
+			<param name="actionName">pastlistAction</param>
+			</result>
+		</action>
+		
 	</package>
+	
 	
 	<!-- 매장안내 -->
 	<package name="store" extends="struts-default">
@@ -275,4 +314,52 @@
 			<result>/store/storeDetail.jsp</result>
 		</action>
 	</package>
+	
+	<!-- 스페셜이벤트 -->
+	<package name="specialevent.board" extends="struts-default">
+		<!-- 글쓰기 -->
+		<action name="specialwriteForm" class="specialevent.board.writeAction" method="form">
+			<result>/specialevent/specialWrite.jsp</result>
+		</action>
+		<action name="specialwriteAction" class="specialevent.board.writeAction">
+			<result type="redirectAction">
+			<param name="actionName">speciallistAction</param>
+			</result> 
+		</action>
+		
+		<!-- 리스트 -->
+		<action name="speciallistAction" class="specialevent.board.listAction">
+			<result>/specialevent/specialList.jsp</result>
+		</action>
+		
+		<!-- 삭제 -->
+		<action name="specialdeleteAction" class="specialevent.board.deleteAction">
+			<result type="redirect-action">
+				<param name="actionName">speciallistAction</param>
+			</result>
+		</action>	
+		
+		<!-- 글수정하기 -->
+		<action name="specialmodifyForm" class="specialevent.board.modifyAction" method="form">
+			<result>/specialevent/specialModify.jsp</result>
+		</action>
+		<action name="specialmodifyAction" class="specialevent.board.modifyAction">
+			<result type="redirect-action">
+			<param name="actionName">speciallistAction</param>
+			</result>
+		</action>
+	</package>
+	
+	<package name="qna.board" extends="struts-default">
+		<!-- 글쓰기 -->
+		<action name="qnawriteForm" class="qna.board.writeAction" method="form">
+			<result>/QnA/qnaWrite.jsp</result>
+		</action>
+		<action name="qnawriteAction" class="qna.board.writeAction">
+			<result type="redirectAction">
+			<param name="actionName">qnawriteForm</param>
+			</result> 
+		</action>
+	</package>
+	
 </struts>

@@ -41,4 +41,23 @@
 			<include refid="select-all"/>
 			ORDER BY num DESC
 		</select>
+		<!-- 조회수 증가 -->
+		<update id="updateReadHit" parameterClass="past">
+			UPDATE PASTEVENT SET READHIT=readHit+1 WHERE num=#num#
+		</update>
+		<!-- 상세보기 -->
+		<select id="selectOne" resultMap="pastRes" parameterClass="int">
+			SELECT * FROM PASTEVENT WHERE num=#num#
+		</select>
+		<!-- 삭제하기 -->
+		<delete id="deleteBoard" parameterClass="past">
+			DELETE FROM PASTEVENT
+			<include refid="where-no"/>
+		</delete>
+		
+		<!-- 수정하기 -->
+		<update id="updateBoard" parameterClass="past">
+			UPDATE PASTEVENT SET SUBJECT=#subject#,CONTENT=#content#,DAY=#day#
+			<include refid="where-no"/>
+		</update>
 </sqlMap>

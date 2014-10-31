@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC '-//ibatis.apache.org//DTD Sql Map 2.0//EN' 'http://ibatis.apache.org/dtd/sql-map-2.dtd'>
+<sqlMap namespace="special">
+	<typeAlias alias="special" type="specialevent.board.specialeventVO"/>
+		<resultMap id="specialRes" class="special">
+			<result property="num" column="num"/>
+			<result property="reg_date" column="reg_date"/>
+			<result property="file_orgname" column="file_orgname"/>
+			<result property="file_savname" column="file_savname"/>
+		</resultMap>
+			
+		<!-- 글쓰기 -->
+		<insert id="insertSpecial" parameterClass="special">
+			INSERT INTO SPECIALEVENT(NUM,REG_DATE)
+			VALUES(SPECIALEVENT_NUM_SEQ.NEXTVAL,#reg_date#)
+		</insert>
+		
+		<select id="selectLastNo" resultClass="special" parameterClass="int">
+			SELECT max(num) as num FROM SPECIALEVENT
+		</select>
+		
+		<sql id="where-no">
+			WHERE num=#num#
+		</sql>
+		<!-- 파일 -->
+		<update id="updateFile" parameterClass="special">
+			UPDATE SPECIALEVENT SET FILE_ORGNAME=#file_orgname#,FILE_SAVNAME=#file_savname#
+			<include refid="where-no"/>
+		</update>
+		
+		<sql id="select-all">
+			SELECT * FROM SPECIALEVENT
+		</sql>
+		<!-- select 쿼리문 정의 -->
+		<select id="selectAll" resultMap="specialRes" parameterClass="int">
+			<include refid="select-all"/>
+			ORDER BY num DESC
+		</select>
+		
+		<!-- 상세보기 -->
+		<select id="selectOne" resultMap="specialRes" parameterClass="int">
+			SELECT * FROM SPECIALEVENT WHERE num=#num#
+		</select>
+		
+		<!-- 삭제하기 -->
+		<delete id="deleteBoard" parameterClass="special">
+			DELETE FROM SPECIALEVENT
+			<include refid="where-no"/>
+		</delete>
+		
+		
+</sqlMap>

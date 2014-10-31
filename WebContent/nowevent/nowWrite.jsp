@@ -10,21 +10,28 @@
 <center><b>진행중인 이벤트 글쓰기</b></center>
 <br/>
 <form method="post" name="nowWrite" action="writeAction2.action" enctype="multipart/form-data" onsubmit="return validation();">
-	<table width=800" border="1" cellspacing="0" cellpadding="0" align="center">
+	<table width=600" border="1" cellspacing="0" cellpadding="0" align="center">
 		<tr>
-			<td width="80" align="center">제목</td>
-			<td width="420">
+			<td width="70" align="center">기간</td>
+			<td width="530">
+				<input type="text" size="70" maxlength="50" name="day">
+			</td>
+		</tr>
+		
+		<tr>
+			<td width="70" align="center">제목</td>
+			<td width="530">
 			<input type="text" size="70" maxlength="50" name="subject">
 			</td>
 		</tr>
 		<tr>
-			<td width="80" align="center">첨부파일1</td>
-			<td width="420">
+			<td width="70" align="center">첨부파일1</td>
+			<td width="530">
 			<input type="file" name="upload"/></td>
 		</tr>
 		<tr>
-			<td width="80" align="center">첨부파일2</td>
-			<td width="420">
+			<td width="70" align="center">첨부파일2</td>
+			<td width="530">
 			<input type="file" name="upload2"/>
 			</td>
 		</tr>

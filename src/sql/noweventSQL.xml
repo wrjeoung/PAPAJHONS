@@ -11,6 +11,8 @@
 			<result property="file_savname" column="file_savname"/>
 			<result property="file_orgname2" column="file_orgname2"/>
 			<result property="file_savname2" column="file_savname2"/>
+			
+			<result property="day" column="day"/>
 		</resultMap>
 		
 		<sql id="select-all">
@@ -23,7 +25,7 @@
 		
 		<!-- 글쓰기 -->
 		<insert id="insertNowevent" parameterClass="nowevent">
-			INSERT INTO NOWEVENT(NUM,SUBJECT,REG_DATE) VALUES(NOWEVENT_NUM_SEQ.NEXTVAL,#subject#,#reg_date#)
+			INSERT INTO NOWEVENT(NUM,SUBJECT,REG_DATE,DAY) VALUES(NOWEVENT_NUM_SEQ.NEXTVAL,#subject#,#reg_date#,#day#)
 		</insert>
 		
 		<select id="selectLastNo" resultClass="nowevent" parameterClass="int">
@@ -65,7 +67,7 @@
 		</select>
 		<!-- 수정하기 -->
 		<update id="updateBoard" parameterClass="nowevent">
-			UPDATE NOWEVENT SET SUBJECT=#subject#
+			UPDATE NOWEVENT SET SUBJECT=#subject#,DAY=#day#
 			<include refid="where-no"/>
 		</update>
 		

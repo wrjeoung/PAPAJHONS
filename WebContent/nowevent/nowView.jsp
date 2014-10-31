@@ -16,7 +16,7 @@
 		<td align="center" width="100">${vo.subject }</td>
 	</tr>
 	<tr height="30" align="center">
-		<td align="right" width="100">${vo.reg_date }</td>
+		<td align="right" width="100">${vo.day }</td>
 	</tr>
 	<tr height="500" align="center">
 		<td align="left" width="100" colspan="3"><img src="../save2/${vo.file_savname2 }"></td>

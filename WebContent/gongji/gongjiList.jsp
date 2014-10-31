@@ -12,7 +12,7 @@
 <body>
 <center><b>공지사항</b>
 <c:if test="${totalCount==0 }">
-<table width="1000" border="1" cellpadding="0" cellspacing="0">
+<table width="600" border="1" cellpadding="0" cellspacing="0">
 	<tr>
 		<td align="center">
 		게시판에 저장된 글이 없습니다.
@@ -22,10 +22,10 @@
 </c:if>
 
 <c:if test="${totalCount>0 }">
-<table border="1" width="1000" cellpaddig="0" cellspacing="0" align="center">
-	<tr height="30">
+<table border="1" width="600" cellpaddig="0" cellspacing="0" align="center">
+	<tr height="40">
 		<td align="center" width="50">번호</td>
-		<td align="center" width="250">제목</td>
+		<td align="center" width="400">제목</td>
 		<td align="center" width="100">등록일</td>
 		<td align="center" width="50">조회수</td>
 	</tr>
@@ -35,14 +35,14 @@
 			<c:out value="${vo.num }"/>
 			<c:set var="num" value="${vo.num-1 }"/>
 			</td>
-			<td width="250">
+			<td width="400">
 		
 			<a href="viewAction.action?num=${vo.num }&currentPage=${currentPage}&file_savname=${vo.file_savname}">
 			${vo.subject }
 			</a>
 			</td>
-			<td align="center" width="150">${vo.reg_date }</td>
-			<td align="center" width="100">${vo.readhit }</td>
+			<td align="center" width="100">${vo.reg_date }</td>
+			<td align="center" width="50">${vo.readhit }</td>
 		</tr>
 	</c:forEach>
 	</table>

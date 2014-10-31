@@ -32,5 +32,9 @@
 	<sqlMap resource="/sql/memberSQL.xml"/>
 	<sqlMap resource="/sql/storeeventSQL.xml"/>
 	<sqlMap resource="/sql/pasteventSQL.xml"/>
+	
+	<sqlMap resource="/sql/specialeventSQL.xml"/>
+	
+	<sqlMap resource="/sql/qnaboardSQL.xml"/>
 </sqlMapConfig>
 

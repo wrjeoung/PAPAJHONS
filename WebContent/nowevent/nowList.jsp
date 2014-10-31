@@ -27,7 +27,7 @@
 			<td width="250">
 				<a href="viewAction2.action?num=${vo.num }&currentPage=${currentPage}&file_savname=${vo.file_savname}"><img src="../save2/${vo.file_savname }"></a>
 				이벤트 : ${vo.subject }<br/>
-				기간 : ${vo.reg_date }
+				기간 : ${vo.day }
 			</td>
 		</tr>
 		<br/>
