@@ -43,6 +43,21 @@
 		popAlert(alertFrame); 		
 	}
 	
+	function mailAuth()
+	{
+		if( document.f1.email.value == "" )
+		{
+			fnAlert("<p>이메일을 입력해 주세요.</p>"); 
+			document.f1.id.focus();
+			return;
+		}
+		var email_val = $("#email").attr("value");
+		
+		document.getElementById("authframe").src = "emailAuthAction.action?email="+email_val;
+		$("#viewLoading").show().fadeIn("fast"); 
+		popup("#email_auth");
+	}
+	
 	function register()
 	{
 		if( document.f1.id_chk.value == "N" )
@@ -329,6 +344,7 @@
     	    <input type="hidden" id="phone"  name="phone" value="">  
 			<input type="hidden" id="mobile"  name="mobile" value="">
 			<input type="hidden" id="addr"  name="addr" value="">
+			<input type="hidden" id="activation_key"  name="activation_key" value="">
 			
     		<div class="form">
       			<p>
@@ -375,6 +391,7 @@
         		<p>
         			<label class="tit" for="email"><img src="../assets/img/forms/label_email.gif" alt="이메일" /></label>
             		<input type="text" id="email" name="email" class="w200"/>
+            		<span class="btn_h23 gray"><button type="button" onclick='mailAuth();'>인증 메일 보내기</button></span>
         		</p>
         		<p>
         			<span class="tit"><img src="../assets/img/forms/label_sendMail.gif" alt="이메일수신여부" /></span>
@@ -444,7 +461,13 @@
 		</p>
 	</div>
 <!--[ 2013/3/22 ] 추가 부분 끝-->
-
+<div id="email_auth" style="display:none; width:340px; height:auto; min-height:140px; padding:1px; position:absolute; top:0; left:0; z-index:1000;">
+	<p class="cont">
+	<div>
+    	<iframe id="authframe" width="336px" height=auto; frameborder="0">아이프레임이지원되는 브라우저에서 확인할수있습니다.</iframe>
+    </div>
+	</p>
+</div>
 
 <!--20131212  알럿 변경-->
 <div class="notice" id="notice_0005" style="display:none; width:340px; height:auto; min-height:140px; padding:1px; position:absolute; top:0; left:0; z-index:1000;"> 

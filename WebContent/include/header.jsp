@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
 <!--  0331 추가부분 시작 
 	index.jps, sub.jps, conf.jsp 에 load("header.jps")부분에 menuGb,menuId 파라미터값 보내기
 -->
@@ -6,7 +7,6 @@
 	var menuId = "null";
 	var m_num;
 	var s_num;
-
 	//온라인 주문 페이지
 	if( menuGb == "order" ) 
 	{ 
@@ -68,14 +68,18 @@
 	gnb(m_num, s_num);
 </script>
 <!--  0331 추가부분 끝 -->
-
 	<h1 class="logo png24" onclick="location.href='mainAction.action'">
 		<img src="../assets/img/common/logo.png" alt="파파존스 피자" title="papajohn's pizza"/>
 	</h1>
    	<h3 class="hidden">유틸리티 메뉴</h3>
    	<ul class="utilityNav">
-
-   		<li><h2><a href="loginAction.action?menuGb=member&menuId=pj_0001"><img src="../assets/img/common/topUtil_01.gif" alt="로그인" /></a></h2></li>
+		<c:if test="${memId == null}"> 
+   			<li><h2><a href="loginAction.action?menuGb=member&menuId=pj_0001"><img src="../assets/img/common/topUtil_01.gif" alt="로그인" /></a></h2></li>
+   		</c:if>
+   		<c:if test="${memId != null}">
+   			<li><h2><a href="logoutAction.action"><img src="../assets/img/common/topUtil_06.gif" alt="로그아웃" /></a></h2></li>
+   		</c:if>
+   		
    		<li><h2><a href="signUpAction.action?menuGb=member&menuId=pj_0005"><img src="../assets/img/common/topUtil_08.gif" alt="회원가입" /></a></h2></li>
 
 
@@ -88,24 +92,22 @@
 	<div id="gnb">
   		<h3 class="hidden">글로벌 메뉴</h3>
   		<ul>
-    		<li class="navItem1"> <a href="/order.jsp">온라인주문</a> </li>
+    		<li class="navItem1"> <a href="orderAction.action">온라인주문</a> </li>
     		<li class="navItem2"> <a href="subAction.action?menuId=pj_2003">메뉴</a>
       			<ul class="sub">
-        			<li><h2><a href="/sub.jsp?menuGb=menu&menuId=pj_2001"><img src="../assets/img/common/m2_s01.gif" alt="이달의 프로모션" /></a></h2></li>
-        			<li><h2><a href="/sub.jsp?menuGb=menu&menuId=pj_2002"><img src="../assets/img/common/m2_s02.gif" alt="베스트메뉴" /></a></h2></li>
-        			<li><h2><a href="/sub.jsp?menuGb=menu&menuId=pj_2003"><img src="../assets/img/common/m2_s03.gif" alt="오리지널" /></a></h2></li>
-        			<li><h2><a href="/sub.jsp?menuGb=menu&menuId=pj_2004"><img src="../assets/img/common/m2_s04.gif" alt="골드링" /></a></h2></li>
-        			<li><h2><a href="/sub.jsp?menuGb=menu&menuId=pj_2005"><img src="../assets/img/common/m2_s05.gif" alt="치즈롤 크러스트" /></a></h2></li>
-        			<li><h2><a href="/sub.jsp?menuGb=menu&menuId=pj_2006"><img src="../assets/img/common/m2_s06.gif" alt="씬" /></a></h2></li>
-        			<li style="display:none;"><h2><a href="/sub.jsp?menuGb=menu&menuId=pj_2007"><img src="../assets/img/common/m2_s07.gif" alt="오리지널 씬" /></a></h2></li>
-        			<li><h2><a href="/sub.jsp?menuGb=menu&menuId=pj_2008"><img src="../assets/img/common/m2_s08.gif" alt="골드링 씬" /></a></h2></li>
-        			<li><h2><a href="/sub.jsp?menuGb=menu&menuId=pj_2009"><img src="../assets/img/common/m2_s09.gif" alt="하트 씬" /></a></h2></li>
+        			<li><h2><a href="subAction.action?menuId=pj_2002"><img src="../assets/img/common/m2_s02.gif" alt="베스트메뉴" /></a></h2></li>
+        			<li><h2><a href="subAction.action?menuId=pj_2003"><img src="../assets/img/common/m2_s03.gif" alt="오리지널" /></a></h2></li>
+        			<li><h2><a href="subAction.action?menuId=pj_2004"><img src="../assets/img/common/m2_s04.gif" alt="골드링" /></a></h2></li>
+        			<li><h2><a href="subAction.action?menuId=pj_2005"><img src="../assets/img/common/m2_s05.gif" alt="치즈롤 크러스트" /></a></h2></li>
+        			<li><h2><a href="subAction.action?menuId=pj_2006"><img src="../assets/img/common/m2_s06.gif" alt="씬" /></a></h2></li>
+        			<li style="display:none;"><h2><a href="subAction.action?menuId=pj_2007"><img src="../assets/img/common/m2_s07.gif" alt="오리지널 씬" /></a></h2></li>
+        			<li><h2><a href="subAction.action?menuId=pj_2008"><img src="../assets/img/common/m2_s08.gif" alt="골드링 씬" /></a></h2></li>
+        			<li><h2><a href="subAction.action?menuId=pj_2009"><img src="../assets/img/common/m2_s09.gif" alt="하트 씬" /></a></h2></li>
         			<!-- 20140425 파파플래터 -->
-        			<li><h2><a href="/sub.jsp?menuGb=menu&menuId=pj_2010"><img src="../assets/img/common/m2_s10.gif" alt="파파플래터" /></a></h2></li>
-        			<li><h2><a href="/sub.jsp?menuGb=menu&menuId=pj_2011"><img src="../assets/img/common/m2_s11.gif" alt="세트메뉴" /></a></h2></li>
-        			<li><h2><a href="/sub.jsp?menuGb=menu&menuId=pj_2012"><img src="../assets/img/common/m2_s12.gif" alt="사이드" /></a></h2></li>
-        			<li><h2><a href="/sub.jsp?menuGb=menu&menuId=pj_2013"><img src="../assets/img/common/m2_s13.gif" alt="음료" /></a></h2></li>
-        			<li><h2><a href="/sub.jsp?menuGb=menu&menuId=pj_2014"><img src="../assets/img/common/m2_s14.gif" alt="소스&피클" /></a></h2></li>
+        			<li><h2><a href="subAction.action?menuId=pj_2010"><img src="../assets/img/common/m2_s10.gif" alt="파파플래터" /></a></h2></li>
+        			<li><h2><a href="subAction.action?menuId=pj_2011"><img src="../assets/img/common/m2_s11.gif" alt="세트메뉴" /></a></h2></li>
+        			<li><h2><a href="subAction.action?menuId=pj_2012"><img src="../assets/img/common/m2_s12.gif" alt="사이드" /></a></h2></li>
+        			<li><h2><a href="subAction.action?menuId=pj_2013"><img src="../assets/img/common/m2_s13.gif" alt="음료" /></a></h2></li>
       			</ul>
     		</li>
     		<li class="navItem3"> <a href="/sub.jsp?menuGb=event&menuId=pj_3001">프로모션</a>

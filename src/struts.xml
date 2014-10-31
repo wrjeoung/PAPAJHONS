@@ -5,6 +5,15 @@
 <struts>
 	<!--  용량제한 100MB 설정. -->
 	<constant name="struts.multipart.maxSize" value="104857600"/>
+	<!-- 주문 -->
+	<package name="orderT" extends="struts-default">
+		
+		<action name="orderAction" class="order.OrderAction">
+			<result>
+				/order/order.jsp
+			</result>
+		</action>
+	</package>
 	
 	<!-- 메뉴  -->
 	<package name="menu" extends="struts-default">
@@ -200,16 +209,32 @@
 		<action name="loginAction" class="papa.member.LogInOutAction" method="form">
 			<result>/signup/cont.jsp</result>
 		</action>	
-
-		
-					
-		
-		
+				
 		<action name="loginProAction" class="papa.member.LogInOutAction" method="loginPro">
 		    <interceptor-ref name="ibatis"></interceptor-ref>
 		    <interceptor-ref name="params"></interceptor-ref>
+		    <interceptor-ref name="servletConfig" />
 			<result>/signup/cont.jsp</result>
-		</action>					
+		</action>
+		
+		<action name="logoutAction" class="papa.member.LogInOutAction" method="logout">
+			<result>/member/logout.jsp</result>
+		</action>							
+		
+		<action name="signUpAction" class="papa.member.MemberAction" method="form">
+			<result>/signup/cont.jsp</result>
+		</action>
+		
+		<action name="emailAuthAction" class="papa.member.EmailAuthAction" >
+		    <interceptor-ref name="ibatis"></interceptor-ref>
+	        <interceptor-ref name="params"/>
+	        <interceptor-ref name="servletConfig"/>
+			<result>/member/emailAuth.jsp</result>
+		</action>
+		
+		<action name="activationAction" class="papa.member.EmailAuthAction" method="activation">
+			<result>/member/activation.jsp</result>
+		</action>		
 		
 		<action name="signUpAction" class="papa.member.MemberAction" method="form">
 			<result>/signup/cont.jsp</result>
@@ -221,7 +246,8 @@
 		    <interceptor-ref name="ibatis"></interceptor-ref>
 		    <interceptor-ref name="params"></interceptor-ref>
 			<result>/signup/cont.jsp</result>
-		</action>						
+		</action>			
+										
 	</package>
 	<!-- 매장별 이벤트 -->
 	<package name="storeevent.board" extends="struts-default">
@@ -306,12 +332,22 @@
 	
 	<!-- 매장안내 -->
 	<package name="store" extends="struts-default">
+		<interceptors>
+			<interceptor name="ibatis" class="store.IbatisInterceptor"/>
+		</interceptors>
+		
 		<action name="storeAction" class="store.StoreAction">
 			<result>/store/store.jsp</result>
 		</action>
 		
 		<action name="storeDetailAction" class="store.StoreDetailAction">
+			<interceptor-ref name="ibatis"/>
+			<interceptor-ref name="params"/>
 			<result>/store/storeDetail.jsp</result>
+		</action>
+		
+		<action name="storeMapAction" class="store.StoreMapAction">
+			<result>/store/storeMap.jsp</result>
 		</action>
 	</package>
 	

@@ -24,6 +24,13 @@
 		}
 	}
 	
+	//20140219 검색버튼 enter key 이벤트 처리
+	function CheckEnt(val) {
+		if (event.keyCode == 13) {
+			Login();
+		}
+	}	
+	
 	function Login()
 	{
 		if( document.loginForm.mem_id.value == "" )
@@ -169,9 +176,9 @@
 	        	<div class="mem_form">
 	          		<p class="login_box">
 	            		<label for="mem_id"><img src="../assets/img/forms/login_id.gif" alt="아이디"/></label>
-	            		<input type="text" id="mem_id" name="mem_id" />
+	            		<input type="text" id="mem_id" name="mem_id" onkeydown="CheckEnt()" />
 	            		<label for="mem_pw"><img src="../assets/img/forms/login_pw.gif" alt="패스워드"/></label>
-	            		<input type="password" id="mem_pw" name="mem_pw" />
+	            		<input type="password" id="mem_pw" name="mem_pw" onkeydown="CheckEnt()" />
 	          		</p>
 	          		<p class="login_btn">
 	            		<button type="button" onclick="Login();"><img src="../assets/img/forms/btn_login.gif" alt="로그인" /></button>
@@ -190,7 +197,7 @@
             		<p class="text">아직 회원이 아니시거나 비회원으로 주문 조회를 원하시면 '비회원 주문'을 선택해주세요</p>
           		</div> 
           		<div class="btn_join">
-            		<p><a href="/cont.jsp?menuGb=member&menuId=pj_0003"><img src="../assets/img/forms/login_btn_join.gif" alt="회원가입" /></a></p>
+            		<p><a href="signUpAction.action?menuGb=member&menuId=pj_0005"><img src="../assets/img/forms/login_btn_join.gif" alt="회원가입" /></a></p>
           			<!-- 
             		<p><a href="/cont.jsp?menuGb=member&menuId=pj_0004"><img src="</%=root%>/assets/img/forms/login_btn_join.gif" alt="회원가입" /></a></p>
           			-->
@@ -229,7 +236,7 @@
             			<p class="text">아직회원이 아니시거나 비회원으로 주문조회를 원하시면 비회원주문을 선택해주세요</p>
           			</div>
           			<div class="btn_join">
-            			<p><a href="/cont.jsp?menuGb=member&menuId=pj_0003"><img src="../assets/img/forms/login_btn_join.gif" alt="회원가입" /></a></p>
+            			<p><a href="signUpAction.action?menuGb=member&menuId=pj_0005"><img src="../assets/img/forms/login_btn_join.gif" alt="회원가입" /></a></p>
             			<p class="text">회원가입을 하시면 보다 많은 혜택을 누릴수 있습니다.</p>
           			</div>
         		</div>
