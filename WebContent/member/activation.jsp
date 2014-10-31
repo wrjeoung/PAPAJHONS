@@ -1,6 +1,7 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <HEAD>
-	<TITLE>로그아웃</TITLE>
+	<TITLE>Activation</TITLE>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 	<meta content="MSHTML 6.00.3790.4357" name="GENERATOR">
@@ -55,8 +56,16 @@
 	    </div>
 	    <div class="right"></div>
 	</div>
-    <div id="alertText" class="text_body"> 
-    	<p>로그 아웃이 완료되었습니다.<br>이용해 주셔서 감사합니다.</p> 
+    <div id="alertText" class="text_body">
+    	<c:if test="${verityEmail == 0}">
+    		<p>이미 확인된 이메일입니다.</p>
+    	</c:if> 
+    	<c:if test="${verityEmail == 1}">
+    		<p>정상적으로 이메일 인증을 완료하였습니다.</p>
+    	</c:if>  
+    	<c:if test="${verityEmail == -1}">
+    		<p>확인할 수 없는 이메일입니다. <br> 다시 시도하시기 바랍니다.</p>
+    	</c:if>      	
     </div>  
   	<div class="footer">
 		<div class="left" ></div>

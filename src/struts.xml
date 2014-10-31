@@ -233,6 +233,8 @@
 		</action>
 		
 		<action name="activationAction" class="papa.member.EmailAuthAction" method="activation">
+		    <interceptor-ref name="ibatis"></interceptor-ref>
+		    <interceptor-ref name="params"></interceptor-ref>		
 			<result>/member/activation.jsp</result>
 		</action>		
 		
