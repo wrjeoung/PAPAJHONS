@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -13,34 +13,34 @@
 <form method="post" name="qnaWrite" action="qnawriteAction.action" onsubmit="return validation();">
 	<table width="600" border="1" cellspacing="0" cellpadding="0" align="center">
 		<tr>
-			<td width="70" align="center">Áú¹®¸Þ´º</td>
+			<td width="70" align="center">ì§ˆë¬¸ë©”ë‰´</td>
 			<td width="530">
 				<select name="qmenu">
-					<option value="deli">¹è´Þ°ü·Ã</option>
-					<option value="online">¿Â¶óÀÎÁÖ¹®°ü·Ã</option>
-					<option value="card">Á¦ÈÞÄ«µå°ü·Ã</option>
-					<option value="shop">°¡¸ÍÁ¡°ü·Ã</option>
-					<option value="home">È¨ÆäÀÌÁö°ü·Ã</option>
-					<option value="job">Ã¤¿ë°ü·Ã</option>
-					<option value="store">¸ÅÀå°ü·Ã</option>
+					<option value="deli">ë°°ë‹¬ê´€ë ¨</option>
+					<option value="online">ì˜¨ë¼ì¸ì£¼ë¬¸ê´€ë ¨</option>
+					<option value="card">ì œíœ´ì¹´ë“œê´€ë ¨</option>
+					<option value="shop">ê°€ë§¹ì ê´€ë ¨</option>
+					<option value="home">í™ˆíŽ˜ì´ì§€ê´€ë ¨</option>
+					<option value="job">ì±„ìš©ê´€ë ¨</option>
+					<option value="store">ë§¤ìž¥ê´€ë ¨</option>
 				</select>
 			</td>
 		</tr>
 		<tr>
-			<td width="70" align="center">Q³»¿ë</td>
+			<td width="70" align="center">Që‚´ìš©</td>
 			<td width="530">
 				<textarea name="qcontent" rows="13" cols="71"></textarea>
 			</td>
 		</tr>
 		<tr>
-			<td width="70" align="center">A³»¿ë</td>
+			<td width="70" align="center">Aë‚´ìš©</td>
 			<td width="530">
 				<textarea name="acontent" rows="13" cols="71"></textarea>
 			</td>
 		</tr>
 		<tr>
 			<td colspan="2" align="right">
-				<input type="submit" value="±Û¾²±â"> 
+				<input type="submit" value="ê¸€ì“°ê¸°"> 
 			</td>
 		</tr>
 	</table>
