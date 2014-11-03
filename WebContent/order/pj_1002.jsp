@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <script type="text/javascript" src="../assets/js/json2.js"></script>
@@ -2829,187 +2830,191 @@
       			
       			<!-- menuList_section -->
 				<div id="menuList_section"> 
-				<!-- item -->
-					<div id='menu_1' class='item'>
-						<!-- 왼쪽 이미지 영역 -->
-						<!-- item_left -->
-						<div class='item_left'>
-							<p class='photo'>
-								<img src='/assets/img/order/menu/10/1018_ord.png' alt='마가리타' title='마가리타' onerror="this.src='/assets/img/order/menu/noImage_ord.png'" />
-							</p> 
-							<p class='name' id='pName_1'>마가리타</p> 
-							<p>
-								<button type='button' id='basket_1' name='basket_1' onclick="makeSendData('1');fnReset_spcOption_up($(this));">장바구니에담기</button>
-							</p> 
-						</div>
-						<!--// item_left --> 
-						<!--// item_right -->
-						<div class='item_right'>
-							<!-- size --> 
-							<div class='size'> 
-								<input type='hidden' name='pCode_1' value='50330,마가리타,R,15900,오리지널,10,1018,3001,4001,10' />
-								<p class='label_radio menu_size_radio' >
-									<input type='radio' name='pSize_1' value='15900' />
-									<img src='../assets/img/order/ord_menuList_size_R.png' alt='레귤러' title='Regular'/>
-									<span class='price' >15,900</span>
-								</p>
-								<input type='hidden' name='pCode_1' value='50332,마가리타,L,21500,오리지널,10,1018,3002,4001,10' />
-								<p class='label_radio menu_size_radio' >  	
-									<input type='radio' name='pSize_1' value='21500' />
-									<img src='../assets/img/order/ord_menuList_size_L.png' alt='라지' title='large'/>
-									<span class='price' >21,500</span>   
-								</p>
-								<input type='hidden' name='pCode_1' value='50329,마가리타,F,25900,오리지널,10,1018,3003,4001,10' />
-								<p class='label_radio menu_size_radio' >
-									<input type='radio' name='pSize_1' value='25900' />
-									<img src='../assets/img/order/ord_menuList_size_F.png' alt='패밀리' title='family'/>
-									<span class='price' >25,900</span>   
-								</p>
-								<input type='hidden' name='pCode_1' value='50322,마가리타,P,34500,오리지널,10,1018,3005,4001,10' />
-								<p class='label_radio menu_size_radio' >  	<input type='radio' name='pSize_1' value='34500' />
-									<img src='../assets/img/order/ord_menuList_size_P.png' alt='파티' title='party'/>
-									<span class='price' >34,500</span>   
-								</p>
+				<c:forEach var="li" items="${list}" varStatus="status">
+					<!-- item -->
+					<c:if test="${ li.menuid eq 'pj_2003' }">
+						<div id='menu_${status.count}' class='item'>
+							<!-- 왼쪽 이미지 영역 -->
+							<!-- item_left -->
+							<div class='item_left'>
+								<p class='photo'>
+									<img src='/assets/img/order/menu/10/1018_ord.png' alt='마가리타' title='마가리타' onerror="this.src='/assets/img/order/menu/noImage_ord.png'" />
+								</p> 
+								<p class='name' id='pName_1'>마가리타</p> 
+								<p>
+									<button type='button' id='basket_1' name='basket_1' onclick="makeSendData('1');fnReset_spcOption_up($(this));">장바구니에담기</button>
+								</p> 
 							</div>
-	
-							<script type="text/javascript">
-								//20140304 라디오버튼 디폴트 위치를 라지사이즈로 변경
-								var firstSize = $("#menu_1 .size img").attr("title");
-								if(firstSize == "Regular"){ra_check($("#menu_1 .size .menu_size_radio").eq(1));}
-								else{ra_check($("#menu_1 .size .menu_size_radio").eq(0));}
-							</script>
-							<!--// size -->
-							<!--// size -->   	
-							<div class='spcInstruction'>  	
-								<p class='btn'>
-									<img src='../assets/img/order/btn_opt_off.gif' alt='변경' />
-								</p>   
-								<!-- 옵션변경 말풍선 -->    
-								<div class='comment'>   
-									<p class='top'>
-										<img src='../assets/img/order/ord_menuList_detail_commBg_top.png' alt=''>
-									</p>   
-									<p class='bottom'>
-										<img src='../assets/img/order/ord_menuList_detail_commBg_bottom.png' alt=''>
-									</p>   
-									<p class='center'>
-										<span>special instructions :</span><br>
-										버튼 클릭 시 sauce, cheese, bake, cut 상태를 조절하실 수 있습니다.<br>
-										장바구니에 담은 후 변경하시려면 메뉴를 장바구니에서 삭제후 다시 담으셔야 합니다!!
-									</p>    
-								</div>   
-								<!--// 옵션변경 말풍선 -->   	
-							</div>  	
-							<!-- detail -->   	
-							<div class='detail'>   		
-								<p class='btn'>
-									<img src='../assets/img/order/btn_info.gif' alt='상세설명'/>
-								</p>
-								<!-- 상세보기 말풍선 -->
-								<div class='comment'>
-									<p class='top'>
-										<img src='../assets/img/order/ord_menuList_detail_commBg_top.png' alt=''>
+							<!--// item_left --> 
+							<!--// item_right -->
+							<div class='item_right'>
+								<!-- size --> 
+								<div class='size'> 
+									<input type='hidden' name='pCode_1' value='50330,마가리타,R,15900,오리지널,10,1018,3001,4001,10' />
+									<p class='label_radio menu_size_radio' >
+										<input type='radio' name='pSize_1' value='15900' />
+										<img src='../assets/img/order/ord_menuList_size_R.png' alt='레귤러' title='Regular'/>
+										<span class='price' >15,900</span>
 									</p>
-									<p class='bottom'>
-										<img src='../assets/img/order/ord_menuList_detail_commBg_bottom.png' alt=''>
+									<input type='hidden' name='pCode_1' value='50332,마가리타,L,21500,오리지널,10,1018,3002,4001,10' />
+									<p class='label_radio menu_size_radio' >  	
+										<input type='radio' name='pSize_1' value='21500' />
+										<img src='../assets/img/order/ord_menuList_size_L.png' alt='라지' title='large'/>
+										<span class='price' >21,500</span>   
 									</p>
-									<dl>
-										<dt>Create your own Pizza:</dt>
-										<dd>마가리타 피자를 Base로 나만의 피자를 만들 수 있습니다.</dd>
-										<dt>토핑재료:</dt>
-		                  				<dd>토마토 소스, 모짜렐라 치즈</dd>
-		                			</dl>
-		              			</div>
-		              			<!--// 상세보기 말풍선 -->
-		            		</div>
-		            		<!--// detail -->
-		            		<p class="select_price">0</p>
-          				</div>
-						<!--// item_right -->  
-          
-          				<!-- 20130926 소스&치즈&커팅&베이크 옵션주기 -->
-          				<div id ="option_box_1" class="option_box"><!--  display: none; -->
-	          				<ul class="spcInstructions">
-	         					<li>
-	        						<p onclick="fnAdjustMenu('1_1',$(this));">소스 조절 <span class="imgsp">▼</span></p>
-	        						<div id="1_1" class="option">
-										<p class="menu_opt_radio" >
-											<input type="radio" id="1_regularSauce" name="1_sau_radio" value=""/>
-		          							<label for="1_regularSauce">소스 보통(Normal)</label>
-	          							</p>
-										<p class="menu_opt_radio" >
-											<input type="radio" id="1_lightSauce" name="1_sau_radio" value="20"/>
-		          							<label for="1_lightSauce">소스 조금(LS)</label>
-	          							</p>
-										<p class="menu_opt_radio" >
-											<input type="radio" id="1_extraSauce" name="1_sau_radio" value="30"/>
-		          							<label for="1_extraSauce">소스 많이(XS)</label>
-	          							</p>
-										<p class="menu_opt_radio" >
-											<input type="radio" id="1_noSauce" name="1_sau_radio" value="40"/>
-		          							<label for="1_noSauce">소스 제외(NS)</label>
-	          							</p>
-									</div>
-	       						</li>
-	       						<li style=" cursor:pointer;">
-	        						<p onclick="fnAdjustMenu('1_2',$(this));">치즈 조절 <span class="imgsp">▼</span></p>
-	        						<div id="1_2" class="option">
-										<p class="menu_opt_radio" >
-											<input type="radio" id="1_normalCheese" name="1_chee_radio" value="" />
-		          							<label for="1_normalCheese">치즈 보통(Normal)</label>
-	          							</p>
-										<p class="menu_opt_radio" >
-											<input type="radio" id="1_lightCheese" name="1_chee_radio" value="20"/>
-		          							<label for="1_lightCheese">치즈 조금(LC)</label>  
-	          							</p>
-										<p class="menu_opt_radio" >
-											<input type="radio" id="1_noCheese" name="1_chee_radio" value="30"/>
-		          							<label for="1_noCheese">치즈 제외(NC)</label>
-	          							</p>
-									</div>
-	       						</li>
-	       						<li>
-	        						<p onclick="fnAdjustMenu('1_3',$(this));">굽기 조절 <span class="imgsp">▼</span></p>
-	        						<div id="1_3" class="option">
-										<p class="menu_opt_radio" >
-											<input type="radio" id="1_normalBake" name="1_bake_radio" value=""/>
-		          							<label for="1_normalBake">기본 굽기(Normal)</label>
-	          							</p>
-										<p class="menu_opt_radio" >
-											<input type="radio" id="1_wellDone" name="1_bake_radio" value="20"/>
-		          							<label for="1_wellDone">바싹 굽기(WD)</label> 
-	          							</p>
-									</div>
-	       						</li>
-	       						<li>
-	        						<p onclick="fnAdjustMenu('1_4',$(this));">조각 컷팅 <span class="imgsp">▼</span></p>
-	        						<div id="1_4" class="option">
-										<p class="menu_opt_radio" >
-											<input type="radio" id="1_normalCut" name="1_cut_radio" value=""/>
-		          							<label for="1_normalCut">기본컷팅(Normal)</label>
-	          							</p>
-										<p class="menu_opt_radio" >
-											<input type="radio" id="1_squareCut" name="1_cut_radio" value="60"/>
-		          							<label for="1_squareCut">사각컷팅(SC)</label>
-	          							</p> 
-										<p class="menu_opt_radio" >
-											<input type="radio" id="1_sixCut" name="1_cut_radio" value="20"/>
-		          							<label for="1_sixCut">6조각컷팅(6C)</label>
-	          							</p> 
-										<p class="menu_opt_radio" >
-											<input type="radio" id="1_eightCut" name="1_cut_radio" value="30"/>
-		          							<label for="1_eightCut">8조각컷팅(8C)</label>
-	          							</p> 
-										<p class="menu_opt_radio" >
-											<input type="radio" id="1_tenCut" name="1_cut_radio" value="40"/>
-		          							<label for="1_tenCut">10조각컷팅(10C)</label>
-	          							</p> 
-									</div>
-	       						</li> 
-	          				</ul>
-		  				</div>
-        			</div>
+									<input type='hidden' name='pCode_1' value='50329,마가리타,F,25900,오리지널,10,1018,3003,4001,10' />
+									<p class='label_radio menu_size_radio' >
+										<input type='radio' name='pSize_1' value='25900' />
+										<img src='../assets/img/order/ord_menuList_size_F.png' alt='패밀리' title='family'/>
+										<span class='price' >25,900</span>   
+									</p>
+									<input type='hidden' name='pCode_1' value='50322,마가리타,P,34500,오리지널,10,1018,3005,4001,10' />
+									<p class='label_radio menu_size_radio' >  	<input type='radio' name='pSize_1' value='34500' />
+										<img src='../assets/img/order/ord_menuList_size_P.png' alt='파티' title='party'/>
+										<span class='price' >34,500</span>   
+									</p>
+								</div>
+		
+								<script type="text/javascript">
+									//20140304 라디오버튼 디폴트 위치를 라지사이즈로 변경
+									var firstSize = $("#menu_1 .size img").attr("title");
+									if(firstSize == "Regular"){ra_check($("#menu_1 .size .menu_size_radio").eq(1));}
+									else{ra_check($("#menu_1 .size .menu_size_radio").eq(0));}
+								</script>
+								<!--// size -->
+								<!--// size -->   	
+								<div class='spcInstruction'>  	
+									<p class='btn'>
+										<img src='../assets/img/order/btn_opt_off.gif' alt='변경' />
+									</p>   
+									<!-- 옵션변경 말풍선 -->    
+									<div class='comment'>   
+										<p class='top'>
+											<img src='../assets/img/order/ord_menuList_detail_commBg_top.png' alt=''>
+										</p>   
+										<p class='bottom'>
+											<img src='../assets/img/order/ord_menuList_detail_commBg_bottom.png' alt=''>
+										</p>   
+										<p class='center'>
+											<span>special instructions :</span><br>
+											버튼 클릭 시 sauce, cheese, bake, cut 상태를 조절하실 수 있습니다.<br>
+											장바구니에 담은 후 변경하시려면 메뉴를 장바구니에서 삭제후 다시 담으셔야 합니다!!
+										</p>    
+									</div>   
+									<!--// 옵션변경 말풍선 -->   	
+								</div>  	
+								<!-- detail -->   	
+								<div class='detail'>   		
+									<p class='btn'>
+										<img src='../assets/img/order/btn_info.gif' alt='상세설명'/>
+									</p>
+									<!-- 상세보기 말풍선 -->
+									<div class='comment'>
+										<p class='top'>
+											<img src='../assets/img/order/ord_menuList_detail_commBg_top.png' alt=''>
+										</p>
+										<p class='bottom'>
+											<img src='../assets/img/order/ord_menuList_detail_commBg_bottom.png' alt=''>
+										</p>
+										<dl>
+											<dt>Create your own Pizza:</dt>
+											<dd>마가리타 피자를 Base로 나만의 피자를 만들 수 있습니다.</dd>
+											<dt>토핑재료:</dt>
+			                  				<dd>토마토 소스, 모짜렐라 치즈</dd>
+			                			</dl>
+			              			</div>
+			              			<!--// 상세보기 말풍선 -->
+			            		</div>
+			            		<!--// detail -->
+			            		<p class="select_price">0</p>
+	          				</div>
+							<!--// item_right -->  
+	          
+	          				<!-- 20130926 소스&치즈&커팅&베이크 옵션주기 -->
+	          				<div id ="option_box_1" class="option_box"><!--  display: none; -->
+		          				<ul class="spcInstructions">
+		         					<li>
+		        						<p onclick="fnAdjustMenu('1_1',$(this));">소스 조절 <span class="imgsp">▼</span></p>
+		        						<div id="1_1" class="option">
+											<p class="menu_opt_radio" >
+												<input type="radio" id="1_regularSauce" name="1_sau_radio" value=""/>
+			          							<label for="1_regularSauce">소스 보통(Normal)</label>
+		          							</p>
+											<p class="menu_opt_radio" >
+												<input type="radio" id="1_lightSauce" name="1_sau_radio" value="20"/>
+			          							<label for="1_lightSauce">소스 조금(LS)</label>
+		          							</p>
+											<p class="menu_opt_radio" >
+												<input type="radio" id="1_extraSauce" name="1_sau_radio" value="30"/>
+			          							<label for="1_extraSauce">소스 많이(XS)</label>
+		          							</p>
+											<p class="menu_opt_radio" >
+												<input type="radio" id="1_noSauce" name="1_sau_radio" value="40"/>
+			          							<label for="1_noSauce">소스 제외(NS)</label>
+		          							</p>
+										</div>
+		       						</li>
+		       						<li style=" cursor:pointer;">
+		        						<p onclick="fnAdjustMenu('1_2',$(this));">치즈 조절 <span class="imgsp">▼</span></p>
+		        						<div id="1_2" class="option">
+											<p class="menu_opt_radio" >
+												<input type="radio" id="1_normalCheese" name="1_chee_radio" value="" />
+			          							<label for="1_normalCheese">치즈 보통(Normal)</label>
+		          							</p>
+											<p class="menu_opt_radio" >
+												<input type="radio" id="1_lightCheese" name="1_chee_radio" value="20"/>
+			          							<label for="1_lightCheese">치즈 조금(LC)</label>  
+		          							</p>
+											<p class="menu_opt_radio" >
+												<input type="radio" id="1_noCheese" name="1_chee_radio" value="30"/>
+			          							<label for="1_noCheese">치즈 제외(NC)</label>
+		          							</p>
+										</div>
+		       						</li>
+		       						<li>
+		        						<p onclick="fnAdjustMenu('1_3',$(this));">굽기 조절 <span class="imgsp">▼</span></p>
+		        						<div id="1_3" class="option">
+											<p class="menu_opt_radio" >
+												<input type="radio" id="1_normalBake" name="1_bake_radio" value=""/>
+			          							<label for="1_normalBake">기본 굽기(Normal)</label>
+		          							</p>
+											<p class="menu_opt_radio" >
+												<input type="radio" id="1_wellDone" name="1_bake_radio" value="20"/>
+			          							<label for="1_wellDone">바싹 굽기(WD)</label> 
+		          							</p>
+										</div>
+		       						</li>
+		       						<li>
+		        						<p onclick="fnAdjustMenu('1_4',$(this));">조각 컷팅 <span class="imgsp">▼</span></p>
+		        						<div id="1_4" class="option">
+											<p class="menu_opt_radio" >
+												<input type="radio" id="1_normalCut" name="1_cut_radio" value=""/>
+			          							<label for="1_normalCut">기본컷팅(Normal)</label>
+		          							</p>
+											<p class="menu_opt_radio" >
+												<input type="radio" id="1_squareCut" name="1_cut_radio" value="60"/>
+			          							<label for="1_squareCut">사각컷팅(SC)</label>
+		          							</p> 
+											<p class="menu_opt_radio" >
+												<input type="radio" id="1_sixCut" name="1_cut_radio" value="20"/>
+			          							<label for="1_sixCut">6조각컷팅(6C)</label>
+		          							</p> 
+											<p class="menu_opt_radio" >
+												<input type="radio" id="1_eightCut" name="1_cut_radio" value="30"/>
+			          							<label for="1_eightCut">8조각컷팅(8C)</label>
+		          							</p> 
+											<p class="menu_opt_radio" >
+												<input type="radio" id="1_tenCut" name="1_cut_radio" value="40"/>
+			          							<label for="1_tenCut">10조각컷팅(10C)</label>
+		          							</p> 
+										</div>
+		       						</li> 
+		          				</ul>
+			  				</div>
+	        			</div>
+        			</c:if>
 					<!-- //item -->
+				</c:forEach>
 				</div>
       			<!--// menuList_section -->
       			
