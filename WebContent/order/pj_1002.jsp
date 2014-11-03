@@ -3893,7 +3893,7 @@
 	$pizz_menu.each(function(i,el)
 	{
 		// 처음들어올때 활성화 되어있는 메뉴 active함수의 멤버변수로 보내줌
-		active($pizz_menu.eq(1));//피자 도우선택 구분값
+		active($pizz_menu.eq("${param.pizzaSelIdx}"));//피자 도우선택 구분값
 		// 메뉴별 이미지(link,on,over이미지) 배열 만들어 저장
 		linkURL[i] = "../assets/img/order/ordMenu_pizza"+(i+1)+".gif";
 		overURL[i] = "../assets/img/order/ordMenu_pizza"+(i+1)+"_over.gif";
@@ -3905,7 +3905,7 @@
 		{
 			$(this).css("background","url("+onURL[i]+") no-repeat");
 		}
-
+		
 		// 이벤트 선언
 		$(this).bind("mouseenter",overMenu);
 		$(this).bind("mouseleave",outMenu);
