@@ -31,6 +31,7 @@ public class MenuDTO {
 	private String menuseq;          // 메뉴순번
 	private String menucode;         // 메뉴코드
 	private String ongrpcode;        // 온라인메뉴그룹코드
+	private String imagepathorder;   // 주문하기 이미지 패스
 		
 	public int getNo() {
 		return no;
@@ -211,5 +212,11 @@ public class MenuDTO {
 	}
 	public void setOngrpcode(String ongrpcode) {
 		this.ongrpcode = ongrpcode;
+	}
+	public String getImagepathorder() {
+		return imagepathorder;
+	}
+	public void setImagepathorder(String imagepathorder) {
+		this.imagepathorder = imagepathorder;
 	}
 }

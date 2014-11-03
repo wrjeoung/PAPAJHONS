@@ -2832,13 +2832,14 @@
 				<div id="menuList_section"> 
 				<c:forEach var="li" items="${list}" varStatus="status">
 					<!-- item -->
+					<!-- 오리지널  -->
 					<c:if test="${ li.menuid eq 'pj_2003' }">
 						<div id='menu_${status.count}' class='item'>
 							<!-- 왼쪽 이미지 영역 -->
 							<!-- item_left -->
 							<div class='item_left'>
 								<p class='photo'>
-									<img src='/assets/img/order/menu/10/1018_ord.png' alt='마가리타' title='마가리타' onerror="this.src='/assets/img/order/menu/noImage_ord.png'" />
+									<img src='${li.imagepath1}' alt='마가리타' title='마가리타' onerror="this.src='/assets/img/order/menu/noImage_ord.png'" />
 								</p> 
 								<p class='name' id='pName_1'>마가리타</p> 
 								<p>
