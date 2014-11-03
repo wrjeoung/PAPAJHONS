@@ -2819,11 +2819,10 @@
       				<!-- 20140424 파파플래터, 반값 프로모션 버튼 추가 & 레이아웃 수정 -->
       				<div class="promotion">
       					<ul class="etc_list">
-            				<li><a href="javascript:fnViewDiv('half');"><img src="../assets/img/order/ord_menu_half_btn.png" alt="하프엔하프피자" /></a></li>
+            				<!--  <li><a href="javascript:fnViewDiv('half');"><img src="../assets/img/order/ord_menu_half_btn.png" alt="하프엔하프피자" /></a></li> -->
             				<li><a href="javascript:fnSelMenuGroup('9', '90');"><img src="../assets/img/order/ord_menu_sauce_btn.png" alt="소스&피클" /></a></li>
-            				<li><a href="javascript:fnViewDiv('coupon');"><img src="../assets/img/order/ord_menu_ecu_btn.png" alt="e쿠폰메뉴" /></a></li>
-            				
-            				</ul>
+            				<!--  <li><a href="javascript:fnViewDiv('coupon');"><img src="../assets/img/order/ord_menu_ecu_btn.png" alt="e쿠폰메뉴" /></a></li> -->
+           				</ul>
        				</div>
       			</div>
       			<!-- menuNavi_section end -->
