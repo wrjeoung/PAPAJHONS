@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <script type="text/javascript" src="../assets/js/json2.js"></script>
@@ -296,7 +297,7 @@
     	$.ajax(
     	{ 
 	   		type: 'post',
-	   		url: "/order/setMenu.jsp", // ?????????
+	   		url: "../order/setMenu.jsp", // ?????????
 			beforeSend: function() 
 			{              
 				//통신을 시작할때 처리             
@@ -2803,7 +2804,7 @@
           				<h3 class="hidden">세트/사이드/음료</h3>
           				<ul class="side_list">
             				<li><a href="javascript:fnViewDiv('prom');"><img src="../assets/img/order/ord_menu_prom_btn.png" alt="이달의 프로모션" /></a></li>
-            				<li><a href="javascript:fnViewDiv('set');"><img src="../assets/img/order/ord_menu_set_btn2.png" alt="세트메뉴" /></a></li>
+            				<li><a href="orderAction.action?menuId=pj_2011&pizzaSelIdx=${param.pizzaSelIdx }"><img src="../assets/img/order/ord_menu_set_btn2.png" alt="세트메뉴" /></a></li>
             				
             			</ul>
         			</div>
@@ -3014,6 +3015,46 @@
 			  				</div>
 	        			</div>
         			</c:if>
+				
+					<!-- //item -->
+					<!-- 세트 메뉴 -->
+					<c:if test="${ li.menuid eq 'pj_2011' }">
+						<div id="set_section" class="" style="display: block;">
+							<div class="set_items has-js" id="set_30348"> 
+								<p class="image">
+									<img src="../assets/img/order/menu/60/30348_ord.png" width="220" height="140" alt="50% 할인 수퍼파파스 베스트 세트 메뉴" title="50% 할인 수퍼파파스 베스트 세트 메뉴">
+								</p>
+								<p class="name" id="setNm"><c:out value="${li.name }"/><span class="size">(2-3인용)</span></p>
+								<p class="btn_cart" onclick="fnAddSet($(this),'30348','20','50','','3020','');">
+									<button type="button">장바구니에담기</button>
+								</p>
+								<p class="description">
+									<img src="../assets/img/order/ord_menuList_size_set.png" alt="라지세트" title="라지세트">상세 <br>
+									<span> : ${ li.consist} </span>
+								</p>
+								<div class="size_prc">
+									<input type="hidden" name=" " value=" ">
+									<c:set var="text" value="${li.setprice}"/>
+									<p class="set_price">${ fn:substring(text,0,fn:length(text)-1) } </p>
+									<p style="width:40px; position:absolute; top:10px; left:140px;">수량 : </p>
+									<p class="selcet_count">
+										<select id="cnt_opt" name="cnt_opt">
+											<option value="1">1</option>
+											<option value="2">2</option>
+											<option value="3">3</option>
+											<option value="4">4</option>
+											<option value="5">5</option>
+										</select>
+									</p>
+								</div>
+							</div>
+						</div>
+					</c:if>
+					
+					<!-- item -->
+					
+					
+					
 					<!-- //item -->
 				</c:forEach>
 				</div>
