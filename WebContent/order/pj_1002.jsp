@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <script type="text/javascript" src="../assets/js/json2.js"></script>
@@ -2774,28 +2775,28 @@
           				<ul class="pizza_list">
             				<!-- <li><a href="javascript:fnSelMenuGroup('0', '00' );">이달의 프로모션</a></li> -->
             				<li>
-            					<a href="javascript:fnSelMenuGroup('0', '99' );" style="background: url(../assets/img/order/ordMenu_pizza1.gif) no-repeat">베스트메뉴</a>
+            					<a href="orderAction.action?menuId=pj_2002&pizzaSelIdx=0" style="background: url(../assets/img/order/ordMenu_pizza1.gif) no-repeat">베스트메뉴</a>
             				</li>
             				<li>
-            					<a href="javascript:fnSelMenuGroup('1', '10' );" style="background: url(../assets/img/order/ordMenu_pizza2.gif) no-repeat;">오리지널</a>
+            					<a href="orderAction.action?menuId=pj_2003&pizzaSelIdx=1" style="background: url(../assets/img/order/ordMenu_pizza2.gif) no-repeat;">오리지널</a>
             				</li>
             				<li>
-            					<a href="javascript:fnSelMenuGroup('2', '20' );" style="background: url(../assets/img/order/ordMenu_pizza3.gif) no-repeat;">골드링</a>
+            					<a href="orderAction.action?menuId=pj_2004&pizzaSelIdx=2" style="background: url(../assets/img/order/ordMenu_pizza3.gif) no-repeat;">골드링</a>
             				</li>
             				<li>
-            					<a href="javascript:fnSelMenuGroup('3', '30' );" style="background: url(../assets/img/order/ordMenu_pizza4.gif) no-repeat;">치즈롤</a>
+            					<a href="orderAction.action?menuId=pj_2005&pizzaSelIdx=3" style="background: url(../assets/img/order/ordMenu_pizza4.gif) no-repeat;">치즈롤</a>
             				</li>
             				<li>
-            					<a href="javascript:fnSelMenuGroup('4', '40' );" style="background: url(../assets/img/order/ordMenu_pizza5.gif) no-repeat;">씬</a>
+            					<a href="orderAction.action?menuId=pj_2006&pizzaSelIdx=4" style="background: url(../assets/img/order/ordMenu_pizza5.gif) no-repeat;">씬</a>
             				</li>
             				<li style="display:none;">
             					<a href="javascript:fnSelMenuGroup('5', '50' );" style="background: url(../assets/img/order/ordMenu_pizza6.gif) no-repeat;">오리지널씬</a>
             				</li>
             				<li>
-            					<a href="javascript:fnSelMenuGroup('6', '100');" style="background: url(../assets/img/order/ordMenu_pizza7.gif) no-repeat;">골드링씬</a>
+            					<a href="orderAction.action?menuId=pj_2008&pizzaSelIdx=6" style="background: url(../assets/img/order/ordMenu_pizza7.gif) no-repeat;">골드링씬</a>
             				</li>
             				<li>
-            					<a href="javascript:fnSelMenuGroup('7', '120');" style="background: url(../assets/img/order/ordMenu_pizza8.gif) no-repeat;">하트씬</a>
+            					<a href="orderAction.action?menuId=pj_2009&pizzaSelIdx=7" style="background: url(../assets/img/order/ordMenu_pizza8.gif) no-repeat;">하트씬</a>
             				</li>
           				</ul>
         			</div>
@@ -2832,8 +2833,9 @@
 				<div id="menuList_section"> 
 				<c:forEach var="li" items="${list}" varStatus="status">
 					<!-- item -->
-					<!-- 오리지널  -->
-					<c:if test="${ li.menuid eq 'pj_2003' }">
+					<!-- 베스트메뉴(pj_2002), 오리지널(pj_2003), 골드링(pj_2004), 치즈롤(pj_2005), 씬(pj_2006), 골드링씬(pj_2008), 하트씬(pj_2009) -->
+					<c:if test="${ li.menuid eq 'pj_2002' || li.menuid eq 'pj_2003' || li.menuid eq 'pj_2004' || li.menuid eq 'pj_2005'
+									|| li.menuid eq 'pj_2006' || li.menuid eq 'pj_2008' || li.menuid eq 'pj_2009'}">
 						<div id='menu_${status.count}' class='item'>
 							<!-- 왼쪽 이미지 영역 -->
 							<!-- item_left -->
@@ -2842,9 +2844,7 @@
 									<img src='${li.imagepathorder}' alt='${li.name}' title='${li.name}' onerror="this.src='/assets/img/order/menu/noImage_ord.png'" />
 								</p> 
 								<p class='name' id='pName_1'>${li.name}</p> 
-								<p>
-									<button type='button' id='basket_1' name='basket_1' onclick="makeSendData('1');fnReset_spcOption_up($(this));">장바구니에담기</button>
-								</p> 
+								<p><button type='button' id='basket_1' name='basket_1' onclick="makeSendData('1');fnReset_spcOption_up($(this));">장바구니에담기</button></p> 
 							</div>
 							<!--// item_left --> 
 							<!--// item_right -->
@@ -2852,30 +2852,42 @@
 								<!-- size --> 
 								<div class='size'> 
 									<input type='hidden' name='pCode_1' value='50330,마가리타,R,15900,오리지널,10,1018,3001,4001,10' />
-									<p class='label_radio menu_size_radio' >
-										<input type='radio' name='pSize_1' value='15900' />
-										<img src='../assets/img/order/ord_menuList_size_R.png' alt='레귤러' title='Regular'/>
-										<span class='price' >15,900</span>
-									</p>
+									<c:if test="${ li.rprice != null}">
+										<p class='label_radio menu_size_radio' >
+											<c:set var="str" value="${li.rprice}"/>
+											<input type='radio' name='pSize_1' value='${fn:substring(str, 0, fn:length(str)-1)}' />
+											<img src='../assets/img/order/ord_menuList_size_R.png' alt='레귤러' title='Regular'/>
+											<span class='price' >${fn:substring(str, 0, fn:length(str)-1)}</span>
+										</p>
+									</c:if>
 									<input type='hidden' name='pCode_1' value='50332,마가리타,L,21500,오리지널,10,1018,3002,4001,10' />
-									<p class='label_radio menu_size_radio' >  	
-										<input type='radio' name='pSize_1' value='21500' />
-										<img src='../assets/img/order/ord_menuList_size_L.png' alt='라지' title='large'/>
-										<span class='price' >21,500</span>   
-									</p>
+									<c:if test="${ li.lprice != null}">
+										<p class='label_radio menu_size_radio' >
+											<c:set var="str" value="${li.lprice}"/>
+											<input type='radio' name='pSize_1' value='${fn:substring(str, 0, fn:length(str)-1)}' />
+											<img src='../assets/img/order/ord_menuList_size_L.png' alt='라지' title='large'/>
+											<span class='price' >${fn:substring(str, 0, fn:length(str)-1)}</span>   
+										</p>
+									</c:if>
 									<input type='hidden' name='pCode_1' value='50329,마가리타,F,25900,오리지널,10,1018,3003,4001,10' />
-									<p class='label_radio menu_size_radio' >
-										<input type='radio' name='pSize_1' value='25900' />
-										<img src='../assets/img/order/ord_menuList_size_F.png' alt='패밀리' title='family'/>
-										<span class='price' >25,900</span>   
-									</p>
+									<c:if test="${ li.fprice != null}">
+										<p class='label_radio menu_size_radio' >
+											<c:set var="str" value="${li.fprice}"/>
+											<input type='radio' name='pSize_1' value='${fn:substring(str, 0, fn:length(str)-1)}' />
+											<img src='../assets/img/order/ord_menuList_size_F.png' alt='패밀리' title='family'/>
+											<span class='price' >${fn:substring(str, 0, fn:length(str)-1)}</span>   
+										</p>
+									</c:if>
 									<input type='hidden' name='pCode_1' value='50322,마가리타,P,34500,오리지널,10,1018,3005,4001,10' />
-									<p class='label_radio menu_size_radio' >  	<input type='radio' name='pSize_1' value='34500' />
-										<img src='../assets/img/order/ord_menuList_size_P.png' alt='파티' title='party'/>
-										<span class='price' >34,500</span>   
-									</p>
-								</div>
-		
+									<c:if test="${ li.pprice != null}">
+										<p class='label_radio menu_size_radio' >
+											<c:set var="str" value="${li.pprice}"/>
+										  	<input type='radio' name='pSize_1' value='${fn:substring(str, 0, fn:length(str)-1)}' />
+											<img src='../assets/img/order/ord_menuList_size_P.png' alt='파티' title='party'/>
+											<span class='price' >${fn:substring(str, 0, fn:length(str)-1)}</span>   
+										</p>	
+									</c:if>
+								</div>		
 								<script type="text/javascript">
 									//20140304 라디오버튼 디폴트 위치를 라지사이즈로 변경
 									var firstSize = $("#menu_1 .size img").attr("title");
@@ -2911,17 +2923,11 @@
 									</p>
 									<!-- 상세보기 말풍선 -->
 									<div class='comment'>
-										<p class='top'>
-											<img src='../assets/img/order/ord_menuList_detail_commBg_top.png' alt=''>
-										</p>
-										<p class='bottom'>
-											<img src='../assets/img/order/ord_menuList_detail_commBg_bottom.png' alt=''>
-										</p>
+										<p class='top'><img src='../assets/img/order/ord_menuList_detail_commBg_top.png' alt=''></p>
+										<p class='bottom'><img src='../assets/img/order/ord_menuList_detail_commBg_bottom.png' alt=''></p>
 										<dl>
-											<dt>Create your own Pizza:</dt>
-											<dd>마가리타 피자를 Base로 나만의 피자를 만들 수 있습니다.</dd>
 											<dt>토핑재료:</dt>
-			                  				<dd>토마토 소스, 모짜렐라 치즈</dd>
+			                  				<dd>${li.topping}</dd>
 			                			</dl>
 			              			</div>
 			              			<!--// 상세보기 말풍선 -->
@@ -2930,7 +2936,6 @@
 			            		<p class="select_price">0</p>
 	          				</div>
 							<!--// item_right -->  
-	          
 	          				<!-- 20130926 소스&치즈&커팅&베이크 옵션주기 -->
 	          				<div id ="option_box_1" class="option_box"><!--  display: none; -->
 		          				<ul class="spcInstructions">
@@ -3017,8 +3022,7 @@
 					<!-- //item -->
 				</c:forEach>
 				</div>
-      			<!--// menuList_section -->
-      			
+      			<!--// menuList_section -->      			
        		<!-- 20140616 프로모션 메뉴 화면 생성 (샘플러 출시 기준) -->
 			<div id="prom_section" style="display: none;">
           		<div class="prom_section_coup">
