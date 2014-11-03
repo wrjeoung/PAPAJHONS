@@ -2839,9 +2839,9 @@
 							<!-- item_left -->
 							<div class='item_left'>
 								<p class='photo'>
-									<img src='${li.imagepath1}' alt='마가리타' title='마가리타' onerror="this.src='/assets/img/order/menu/noImage_ord.png'" />
+									<img src='${li.imagepathorder}' alt='${li.name}' title='${li.name}' onerror="this.src='/assets/img/order/menu/noImage_ord.png'" />
 								</p> 
-								<p class='name' id='pName_1'>마가리타</p> 
+								<p class='name' id='pName_1'>${li.name}</p> 
 								<p>
 									<button type='button' id='basket_1' name='basket_1' onclick="makeSendData('1');fnReset_spcOption_up($(this));">장바구니에담기</button>
 								</p> 
