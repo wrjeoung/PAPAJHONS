@@ -28,7 +28,6 @@ public class Pj_1002Action implements Action, IbatisAware {
 		return SUCCESS;
 	}
 	
-	
 	public List<MenuDTO> getList() {
 		return list;
 	}
