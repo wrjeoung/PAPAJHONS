@@ -7,11 +7,20 @@
 	<constant name="struts.multipart.maxSize" value="104857600"/>
 	<!-- 주문 -->
 	<package name="orderT" extends="struts-default">
+		<interceptors>
+			<interceptor name="ibatis" class="order.IbatisInterceptor"/>
+		</interceptors>
 		
 		<action name="orderAction" class="order.OrderAction">
 			<result>
 				/order/order.jsp
 			</result>
+		</action>
+		
+		<action name="pj_1002Action" class="order.Pj_1002Action">
+			<interceptor-ref name="ibatis"/>
+			<interceptor-ref name="params"/>
+			<result>/order/pj_1002.jsp</result>
 		</action>
 	</package>
 	
@@ -233,6 +242,8 @@
 		</action>
 		
 		<action name="activationAction" class="papa.member.EmailAuthAction" method="activation">
+		    <interceptor-ref name="ibatis"></interceptor-ref>
+		    <interceptor-ref name="params"></interceptor-ref>		
 			<result>/member/activation.jsp</result>
 		</action>		
 		

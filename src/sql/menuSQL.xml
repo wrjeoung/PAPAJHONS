@@ -37,6 +37,7 @@
 		  	<result property="menuseq" column="menuseq"/>
 		  	<result property="menucode" column="menucode"/>
 		  	<result property="ongrpcode" column="ongrpcode"/>
+		  	<result property="imagepathorder" column="imagepathorder"/>
 		</resultMap>
 		
 		<!-- 공통으로 사용할 select 절 정의 -->

@@ -20,7 +20,16 @@ public class EmailAuthAction extends ActionSupport implements ServletRequestAwar
 	private boolean result = true;
 	private HttpServletRequest request;
 	private String activation_key; 
+	private int verityEmail = -1;
 	
+	public int getVerityEmail() {
+		return verityEmail;
+	}
+
+	public void setVerityEmail(int verityEmail) {
+		this.verityEmail = verityEmail;
+	}
+
 	public String getActivation_key() {
 		return activation_key;
 	}
@@ -62,7 +71,15 @@ public class EmailAuthAction extends ActionSupport implements ServletRequestAwar
 		
 		if(data != null)
 		{
-			System.out.println("데이터 있음");
+			if(data.getActivation_status().equals("active"))
+			{
+				verityEmail = 0;
+			}
+			else
+			{
+				verityEmail = 1;
+				sqlMapper.update("memberSQL.updateActivationStatus", params);
+			}
 		}
 		
 		return SUCCESS;

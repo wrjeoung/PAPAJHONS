@@ -2,8 +2,8 @@ package db;
 
 public class OrderDTO {
 	private int no; 
-	private String type; // 세트메뉴, 사이드, 파파플래터, 음료
-	private String name;  // 메뉴 이름
+	private String type; 			// 세트메뉴, 사이드, 파파플래터, 음료
+	private String name;  			// 메뉴 이름
 	private String description; 	// 세트메뉴 설명
 	private String consist;			// 상세(메뉴구성)
 	private String imagepath;		// 이미지 경로.

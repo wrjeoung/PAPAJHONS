@@ -62,7 +62,7 @@
   				<!-- 페이지 로딩 시 이전화면 상태에서 불러오기 테스트 -->
   				<div class="testView" style="width:inherit; height:380px; background: #fff;"></div>
   				
-  				<script type="text/javascript"> $("#content_area").load("../order/pj_1002.jsp?onlineGroupCd=10&pizzaSelIdx=1"); </script>
+  				<script type="text/javascript"> $("#content_area").load('pj_1002Action.action?menuId=${menuId}&pizzaSelIdx=${param.pizzaSelIdx}'); </script>
   			</div>
   			<!-- //include -->
   		</div>

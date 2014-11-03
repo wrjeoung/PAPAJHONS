@@ -53,6 +53,12 @@
 			AND activation_key = #activation_key#
 		</select>				
 		
+    	<update id="updateActivationStatus">
+    		UPDATE account SET activation_status = 'active'
+			WHERE email = #email#
+			AND activation_key = #activation_key#
+   		</update>		
+		
 		<!-- insert 쿼리문 정의 -->
 		<insert id="insertMember" parameterClass="member">
 		
