@@ -3,8 +3,8 @@
 	index.jps, sub.jps, conf.jsp 에 load("header.jps")부분에 menuGb,menuId 파라미터값 보내기
 -->
 <script  type="text/javascript">
-	var menuGb = "null";
-	var menuId = "null";
+	var menuGb = "${param.menuGb}"
+	var menuId = "${param.menuId}"
 	var m_num;
 	var s_num;
 	//온라인 주문 페이지
@@ -75,13 +75,12 @@
    	<ul class="utilityNav">
 		<c:if test="${memId == null}"> 
    			<li><h2><a href="loginAction.action?menuGb=member&menuId=pj_0001"><img src="../assets/img/common/topUtil_01.gif" alt="로그인" /></a></h2></li>
+   			<li><h2><a href="signUpAction.action?menuGb=member&menuId=pj_0005"><img src="../assets/img/common/topUtil_08.gif" alt="회원가입" /></a></h2></li>
    		</c:if>
    		<c:if test="${memId != null}">
    			<li><h2><a href="logoutAction.action"><img src="../assets/img/common/topUtil_06.gif" alt="로그아웃" /></a></h2></li>
+   			<li><h2><a href="mypageAction.action?menuGb=mypage&menuId=pj_7001"><img src="../assets/img/common/topUtil_07.gif" alt="마이페이지" /></a></h2></li>
    		</c:if>
-   		
-   		<li><h2><a href="signUpAction.action?menuGb=member&menuId=pj_0005"><img src="../assets/img/common/topUtil_08.gif" alt="회원가입" /></a></h2></li>
-
 
   		<li><h2><a href="/sub.jsp?menuGb=customer&menuId=pj_5003"><img src="../assets/img/common/topUtil_02.gif" alt="제휴카드안내" /></a></h2></li>
      	<li><h2><a href="../signup/cont.jsp?menuGb=franch&menuId=pj_6001"><img src="../assets/img/common/topUtil_03.gif" alt="가맹점안내" /></a></h2></li>
