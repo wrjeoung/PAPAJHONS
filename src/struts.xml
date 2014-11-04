@@ -260,6 +260,13 @@
 		    <interceptor-ref name="params"></interceptor-ref>
 			<result>/signup/cont.jsp</result>
 		</action>			
+		<action name="mypageAction" class="papa.member.MemberAction" method="form" >
+			<result>/mypage/main.jsp</result>
+		</action>
+		
+		<action name="myorderListAction" class="papa.member.MemberAction" method="form" >
+			<result>/mypage/list.jsp</result>
+		</action>							
 										
 	</package>
 	<!-- 매장별 이벤트 -->

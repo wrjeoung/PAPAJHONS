@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <script type="text/javascript" src="../assets/js/json2.js"></script>
@@ -297,7 +297,7 @@
     	$.ajax(
     	{ 
 	   		type: 'post',
-	   		url: "/order/setMenu.jsp", // ?????????
+	   		url: "../order/setMenu.jsp", // ?????????
 			beforeSend: function() 
 			{              
 				//통신을 시작할때 처리             
@@ -2803,17 +2803,16 @@
         			<div class="side">
           				<h3 class="hidden">세트/사이드/음료</h3>
           				<ul class="side_list">
-            				<li><a href="javascript:fnViewDiv('prom');"><img src="../assets/img/order/ord_menu_prom_btn.png" alt="이달의 프로모션" /></a></li>
-            				<li><a href="javascript:fnViewDiv('set');"><img src="../assets/img/order/ord_menu_set_btn2.png" alt="세트메뉴" /></a></li>
-            				
+            				<!-- <li><a href="javascript:fnViewDiv('prom');"><img src="../assets/img/order/ord_menu_prom_btn.png" alt="이달의 프로모션" /></a></li> -->
+            				<li><a href="orderAction.action?menuId=pj_2011&pizzaSelIdx=${param.pizzaSelIdx }"><img src="../assets/img/order/ord_menu_set_btn2.png" alt="세트메뉴" /></a></li>
+            				<li><a href="orderAction.action?menuId=pj_2013&pizzaSelIdx=${param.pizzaSelIdx}"><img src="../assets/img/order/ord_menu_drink_btn.png" alt="음료" /></a></li>
             			</ul>
         			</div>
         			<div class="coupon">
           				<ul class="coupon_list">   				
-            				<li><a href="javascript:fnSelMenuGroup('9', '70');"><img src="../assets/img/order/ord_menu_side_btn.png" alt="사이드" /></a></li>
-            				<li><a href="javascript:fnViewDiv('plat');"><img src="../assets/img/order/ord_menu_plt_btn.png" alt="파파플래터" /></a></li>
-            				<li><a href="javascript:fnSelMenuGroup('9', '80');"><img src="../assets/img/order/ord_menu_drink_btn.png" alt="음료" /></a></li>
-            				
+            				<li><a href="orderAction.action?menuId=pj_2012&pizzaSelIdx=${param.pizzaSelIdx}"><img src="../assets/img/order/ord_menu_side_btn.png" alt="사이드" /></a></li>
+            				<li><a href="orderAction.action?menuId=pj_2010&pizzaSelIdx=${param.pizzaSelIdx}"><img src="../assets/img/order/ord_menu_plt_btn.png" alt="파파플래터" /></a></li>
+            			<!-- <li><a href="javascript:fnSelMenuGroup('9', '80');"><img src="../assets/img/order/ord_menu_drink_btn.png" alt="음료" /></a></li> -->
           				</ul>
         			</div>
         			
@@ -2822,7 +2821,10 @@
       				<div class="promotion">
       					<ul class="etc_list">
             				<!--  <li><a href="javascript:fnViewDiv('half');"><img src="../assets/img/order/ord_menu_half_btn.png" alt="하프엔하프피자" /></a></li> -->
-            				<li><a href="javascript:fnSelMenuGroup('9', '90');"><img src="../assets/img/order/ord_menu_sauce_btn.png" alt="소스&피클" /></a></li>
+            				<%-- 
+            				<li><a href="orderAction.action?menuId=pj_2013&pizzaSelIdx=${param.pizzaSelIdx}"><img src="../assets/img/order/ord_menu_drink_btn.png" alt="음료" /></a></li>
+            				<li><a href="orderAction.action?menuId=pj_2014&pizzaSelIdx=${param.pizzaSelIdx}"><img src="../assets/img/order/ord_menu_sauce_btn.png" alt="소스&피클" /></a></li>
+            				--%>
             				<!--  <li><a href="javascript:fnViewDiv('coupon');"><img src="../assets/img/order/ord_menu_ecu_btn.png" alt="e쿠폰메뉴" /></a></li> -->
            				</ul>
        				</div>
@@ -3019,6 +3021,257 @@
 			  				</div>
 	        			</div>
         			</c:if>
+					<!-- //item -->
+					
+					<!-- item -->
+					<!-- 세트 메뉴 -->
+					<c:if test="${ li.menuid eq 'pj_2011' }">
+						<div id="set_section" class="" style="display: block;">
+							<div class="set_items has-js" id="set_30348"> 
+								<p class="image">
+									<img src="../assets/img/order/menu/60/30348_ord.png" width="220" height="140" alt="50% 할인 수퍼파파스 베스트 세트 메뉴" title="50% 할인 수퍼파파스 베스트 세트 메뉴">
+								</p>
+								<p class="name" id="setNm"><c:out value="${li.name }"/><span class="size">(2-3인용)</span></p>
+								<p class="btn_cart" onclick="fnAddSet($(this),'30348','20','50','','3020','');">
+									<button type="button">장바구니에담기</button>
+								</p>
+								<p class="description">
+									<img src="../assets/img/order/ord_menuList_size_set.png" alt="라지세트" title="라지세트">상세 <br>
+									<span> : ${ li.consist} </span>
+								</p>
+								<div class="size_prc">
+									<input type="hidden" name=" " value=" ">
+									<c:set var="text" value="${li.setprice}"/>
+									<p class="set_price">${ fn:substring(text,0,fn:length(text)-1) } </p>
+									<p style="width:40px; position:absolute; top:10px; left:140px;">수량 : </p>
+									<p class="selcet_count">
+										<select id="cnt_opt" name="cnt_opt">
+											<option value="1">1</option>
+											<option value="2">2</option>
+											<option value="3">3</option>
+											<option value="4">4</option>
+											<option value="5">5</option>
+										</select>
+									</p>
+								</div>
+							</div>
+						</div>
+					</c:if>					
+					<!-- item -->
+					
+					<!-- item -->
+					<!-- 사이드 -->
+					<c:if test="${ li.menuid eq 'pj_2012' }">
+						<div id='menu_${status.count}' class='item'>
+							<!-- 왼쪽 이미지 영역 -->
+							<!-- item_left -->
+							<div class='item_left'>
+								<p class='photo'><img src='${li.imagepathorder}' alt='${li.name}' title='${li.name}' onerror="this.src='/assets/img/order/menu/noImage_ord.png'" /></p>
+								<p class='name' id='pName_1'>${li.name}</p>
+								<p><button type='button' id='basket_1' name='basket_1' onclick="makeSendData('1');fnReset_spcOption_up($(this));">장바구니에담기</button></p>
+							</div>
+							<!--// item_left -->
+							<!--// item_right -->
+							<div class='item_right'>
+								<!-- size -->
+								<div class='size'>
+									<input type='hidden' name='pCode_1' value='51036,샘플러,one,12900,,20,9001,3006,,10' />
+									<p class='label_radio menu_size_radio'>
+										<c:set var="str" value="${li.onesizeprice}"/>
+										<input type='radio' name='pSize_1' value='${fn:substring(str, 0, fn:length(str)-1)}' />
+										<img src='../assets/img/order/ord_menuList_size_one.png' alt='원사이즈' title='One Size' />
+										<span class='price'>${fn:substring(str, 0, fn:length(str)-1)}</span>
+									</p>
+								</div>
+								<script type="text/javascript">
+									//20140304 라디오버튼 디폴트 위치를 라지사이즈로 변경
+									var firstSize = $("#menu_1 .size img").attr("title");
+									if(firstSize == "Regular"){ra_check($("#menu_1 .size .menu_size_radio").eq(1));}
+									else{ra_check($("#menu_1 .size .menu_size_radio").eq(0));}
+								</script>
+								<!--// size -->
+								<div class='select_count'>
+									<select id='cnt_opt1' name='cnt_opt'>
+										<option value='1'>1</option>
+										<option value='2'>2</option>
+										<option value='3'>3</option>
+										<option value='4'>4</option>
+										<option value='5'>5</option>
+										<option value='6'>6</option>
+										<option value='7'>7</option>
+										<option value='8'>8</option>
+										<option value='9'>9</option>
+										<option value='10'>10</option>
+									</select>
+								</div>
+								<!-- detail -->
+								<div class='detail'>
+									<p class='btn'><img src='../assets/img/order/btn_info.gif' alt='상세설명' /></p>
+									<!-- 상세보기 말풍선 -->
+									<div class='comment'>
+										<p class='top'><img src='../assets/img/order/ord_menuList_detail_commBg_top.png' alt=''></p>
+										<p class='bottom'><img src='../assets/img/order/ord_menuList_detail_commBg_bottom.png' alt=''></p>
+										<dl>
+											<dd>
+												<c:if test="${ li.material != null }">
+													<b style = "color:#228a68;">재료</b><br/>
+													${li.material}<br/>
+												</c:if>
+												<c:if test="${li.presentsauce != null }">
+													<b style = "color:#228a68;">증정소스</b><br/>
+													${li.presentsauce}
+												</c:if>	
+											</dd>
+										</dl>
+									</div>
+									<!--// 상세보기 말풍선 -->
+								</div>
+								<!--// detail -->
+								<p class="select_price">0</p>
+							</div>
+							<!--// item_right -->
+						</div>
+					</c:if>
+					<!-- //item -->
+					
+					<!-- item -->
+					<!-- 파파플래터 -->
+					<c:if test="${ li.menuid eq 'pj_2010' }">
+						<div id="plat_section" class="" style="display: block;">
+							<div class="item has-js" id="menu_50992">
+								<p class="image"><img src="../assets/img/order/menu/11/1019_ord.png" width="220" height="140" alt="수퍼 파파스" title="수퍼 파파스"></p>
+								<p class="name" id="pName_50992">${li.name}<span class="size">(BOX)</span></p>
+								<p class="btn_cart" onclick="fnAddSet($(this), '50992,수퍼 파파스,파파플래터,25900,,10,1019,3023,4001,10', '', '', '', '', '');""="">
+									<button type="button">장바구니에담기</button>
+								</p>
+								<p class="description">
+									<img src="../assets/img/order/ord_menuList_size_box.png" alt="플래터세트">구성<br>
+									<span> :${li.consist}</span>
+								</p>
+								<div class="size_prc">
+									<c:set var="str" value="${li.boxprice}"/>
+									<p class="price">${fn:substring(str, 0, fn:length(str)-1)}</p>
+									<p style="width: 40px; position: absolute; top: 10px; left: 140px;">수량
+										:</p>
+									<p class="selcet_count">
+										<select id="cnt_opt" name="cnt_opt"><option value="1">1</option>
+											<option value="2">2</option>
+											<option value="3">3</option>
+											<option value="4">4</option>
+											<option value="5">5</option></select>
+									</p>
+								</div>
+							</div>
+						</div>
+					</c:if>					
+					<!-- //item -->
+					
+					<!-- item -->
+					<!-- 음료 -->
+					<c:if test="${li.menuid eq 'pj_2013' }">
+						<div id='menu_${status.count}' class='item'>
+							<!-- 왼쪽 이미지 영역 -->
+							<!-- item_left -->
+							<div class='item_left'>
+								<p class='photo'><img src='${li.imagepathorder}' alt='${li.name}' title='${li.name}' onerror="this.src='/assets/img/order/menu/noImage_ord.png'" /></p>
+								<p class='name' id='pName_1'>${li.name}</p>
+								<p><button type='button' id='basket_1' name='basket_1' onclick="makeSendData('1');fnReset_spcOption_up($(this));">장바구니에담기</button></p>
+							</div>
+							<!--// item_left -->
+							<!--// item_right -->
+							<div class='item_right'>
+								<!-- size -->
+								<div class='size'>
+									<!-- 350ML -->
+									<c:if test="${li.name eq '미닛 메이드 오렌지'}">
+										<p class='label_radio menu_size_radio' >
+											<input type='radio' name='pSize_9' value='${fn:substring(li.rprice, 0, fn:length(li.rprice)-1)}' />
+											<img src='../assets/img/order/ord_menuList_size_350ml.png' alt='350ml' title='350ml'/><span class='price' >${fn:substring(li.rprice, 0, fn:length(li.rprice)-1)}</span>
+										</p>	
+									</c:if>
+									<!-- 500ML -->
+									<c:if test="${li.name eq '코카콜라' || li.name eq '스프라이트' || li.name eq '코카콜라 제로' }">
+										<p class='label_radio menu_size_radio'>
+											<input type='radio' name='pSize_1' value='${fn:substring(li.rprice, 0, fn:length(li.rprice)-1)}' />
+											<img src='../assets/img/order/ord_menuList_size_500ml.png' alt='500ml' title='500ml' /><span class='price'>${fn:substring(li.rprice, 0, fn:length(li.rprice)-1)}</span>
+										</p>	
+									</c:if>
+									<!-- 600ML -->
+									<c:if test="${li.name eq '환타' }">
+										<p class='label_radio menu_size_radio' >
+											<input type='radio' name='pSize_7' value='${fn:substring(li.lprice, 0, fn:length(li.lprice)-1)}' />
+											<img src='../assets/img/order/ord_menuList_size_600ml.png' alt='600ml' title='600ml'/><span class='price' >${fn:substring(li.rprice, 0, fn:length(li.rprice)-1)}</span> 
+										</p>
+									</c:if>
+									<!-- 1.25L -->
+									<c:if test="${li.name eq '코카콜라'}">
+										<p class='label_radio menu_size_radio'>
+											<input type='radio' name='pSize_1' value='${fn:substring(li.lprice, 0, fn:length(li.lprice)-1)}' />
+											<img src='../assets/img/order/ord_menuList_size_1.25L.png' alt='1.25L' title='1.25L' /><span class='price'>${fn:substring(li.lprice, 0, fn:length(li.lprice)-1)}</span>
+										</p>
+									</c:if>
+									<!-- 1.25L -->
+									<c:if test="${li.name eq '스프라이트' || li.name eq '코카콜라 제로' || li.name eq '환타' || li.name eq '미닛 메이드 오렌지'}">
+										<p class='label_radio menu_size_radio' >
+											<input type='radio' name='pSize_9' value='${fn:substring(li.lprice, 0, fn:length(li.lprice)-1)}' />
+											<img src='../assets/img/order/ord_menuList_size_1.5L.png' alt='1.5L' title='1.5L'/><span class='price' >${fn:substring(li.lprice, 0, fn:length(li.lprice)-1)}</span>
+										</p>
+									</c:if>
+								</div>
+								<script type="text/javascript">
+									//20140304 라디오버튼 디폴트 위치를 라지사이즈로 변경
+									var firstSize = $("#menu_1 .size img").attr("title");
+									if(firstSize == "Regular"){ra_check($("#menu_1 .size .menu_size_radio").eq(1));}
+									else{ra_check($("#menu_1 .size .menu_size_radio").eq(0));}
+								</script>
+								<!--// size -->
+								<!--// size -->
+								<div class='select_count'>
+									<select id='cnt_opt1' name='cnt_opt'>
+										<option value='1'>1</option>
+										<option value='2'>2</option>
+										<option value='3'>3</option>
+										<option value='4'>4</option>
+										<option value='5'>5</option>
+										<option value='6'>6</option>
+										<option value='7'>7</option>
+										<option value='8'>8</option>
+										<option value='9'>9</option>
+										<option value='10'>10</option>
+									</select>
+								</div>
+								<!-- detail -->
+								<div class='detail'>
+									<p class='btn'><img src='../assets/img/order/btn_info.gif' alt='상세설명' /></p>
+									<!-- 상세보기 말풍선 -->
+									<div class='comment'>
+										<p class='top'><img src='../assets/img/order/ord_menuList_detail_commBg_top.png' alt=''></p>
+										<p class='bottom'><img src='../assets/img/order/ord_menuList_detail_commBg_bottom.png' alt=''></p>
+										<dl>
+											<dd>${li.name}</dd>
+										</dl>
+									</div>
+								</div>
+								<p class="select_price">0</p>								
+							</div>
+							<!--// item_right -->
+						</div>
+					</c:if>
+					<!-- //item -->
+					
+					<!-- item -->
+					<!-- 소스&피클 -->
+					<c:if test="${li.menuid eq 'pj_2014' }">
+						<div id="menu_${status.count}" class="item has-js">
+							<!-- 왼쪽 이미지 영역 -->
+							<!-- item_left -->
+							<div class="item_left">
+								<p class="photo"><img src="/assets/img/order/menu/90/3004_ord.png" alt="갈릭 소스" title="갈릭 소스" onerror="this.src='/assets/img/order/menu/noImage_ord.png'"></p>
+								<p class="name" id="pName_1">갈릭 소스</p>
+								<p><button type="button" id="basket_1" name="basket_1" onclick="makeSendData('1');fnReset_spcOption_up($(this));">장바구니에담기</button></p>
+							</div>
+						</div>
+					</c:if>
 					<!-- //item -->
 				</c:forEach>
 				</div>
