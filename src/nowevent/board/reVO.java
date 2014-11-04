@@ -3,14 +3,15 @@ package nowevent.board;
 import java.util.Date;
 
 public class reVO {
-	private int num;
+	private int num1;
 	private String content;
 	private Date reg_date;
-	public int getNum() {
-		return num;
+	private int num;
+	public int getNum1() {
+		return num1;
 	}
-	public void setNum(int num) {
-		this.num = num;
+	public void setNum1(int num1) {
+		this.num1 = num1;
 	}
 	public String getContent() {
 		return content;
@@ -24,4 +25,12 @@ public class reVO {
 	public void setReg_date(Date reg_date) {
 		this.reg_date = reg_date;
 	}
+	public int getNum() {
+		return num;
+	}
+	public void setNum(int num) {
+		this.num = num;
+	}
+	
+	
 }
