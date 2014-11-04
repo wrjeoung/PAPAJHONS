@@ -33,7 +33,7 @@ $(document).ready(function(){
 			<a href="shoplistAction.action"><img src="../assets/img/qna/faq_tab_title4.gif" alt="가맹점"/></a>
 			<a href="homelistAction.action"><img src="../assets/img/qna/faq_tab_title5.gif" alt="홈페이지"/></a>
 			<a href="joblistAction.action"><img src="../assets/img/qna/faq_tab_title6.gif" alt="채용관련"/></a>
-			<a href="storelistAction.action"><img src="../assets/img/qna/faq_tab_title7.gif" alt="매장관련"/></a>
+			<a href="stolistAction.action"><img src="../assets/img/qna/faq_tab_title7.gif" alt="매장관련"/></a>
 		</td>
 	</tr>
 </table>

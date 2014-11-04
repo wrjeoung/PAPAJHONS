@@ -495,9 +495,21 @@
 		<interceptor-ref name="params"/>
 			<result>/FAQ/jobFaQ.jsp</result>
 		</action>
-		<action name="storelistAction" class="qna.board.storelistAction">
+		<action name="stolistAction" class="qna.board.storelistAction">
 			<interceptor-ref name="params"/>
 			<result>/FAQ/storeFaQ.jsp</result>
+		</action>
+	</package>
+	
+	<package name="video.board" extends="struts-default">
+		<!-- 글쓰기 -->
+		<action name="videowriteForm" class="video.board.writeAction" method="form">
+			<result>/video/videoWrite.jsp</result>
+		</action>
+		<action name="videowriteAction" class="video.board.writeAction">
+			<result type="redirectAction">
+			<param name="actionName">videowriteForm</param>
+			</result> 
 		</action>
 	</package>
 </struts>
