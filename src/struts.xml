@@ -263,7 +263,15 @@
 		    <interceptor-ref name="ibatis"></interceptor-ref>
 		    <interceptor-ref name="params"></interceptor-ref>
 			<result>/signup/cont.jsp</result>
-		</action>			
+		</action>
+		
+		<action name="modifyAction" class="papa.member.ModifyAction" method="modify">
+		    <interceptor-ref name="ibatis"></interceptor-ref>
+		    <interceptor-ref name="params"></interceptor-ref>
+		    <interceptor-ref name="servletConfig"/>				
+			<result>/mypage/pj_7003.jsp</result>
+		</action>		
+					
 		<action name="mypageAction" class="papa.member.MemberAction" method="form" >
 			<result>/mypage/main.jsp</result>
 		</action>

@@ -130,7 +130,12 @@
       				<!-- cont -->
         			<div class="cont" style="text-align:center">
        					<!-- include -->
-						<script type="text/javascript"> $("#contents .cont").load("myorderListAction.action?menuId=pj_7001&inCurPage=1&inCurBlock=1&sdate=19000101&edate=99991231"); </script>
+       					<c:if test="${param.menuId == 'pj_7001'}">
+							<script type="text/javascript"> $("#contents .cont").load("myorderListAction.action?menuId=pj_7001&inCurPage=1&inCurBlock=1&sdate=19000101&edate=99991231"); </script>
+						</c:if>
+						<c:if test="${param.menuId == 'pj_7003'}">
+							<script type="text/javascript"> $("#contents .cont").load("modifyAction.action?menuId=pj_7003&msg=null&tab=null"); </script>
+						</c:if>
 	      			</div>
       				<!--// cont -->
 				</div>
