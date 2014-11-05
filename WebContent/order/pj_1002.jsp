@@ -218,6 +218,22 @@
     	document.frmOrder.target              = "_self";
     	document.frmOrder.submit();
 	}
+	
+	// 피자 장바구니 
+	function fnOrderPizza(menuid,imagepathorder,consist)
+    {
+		var price = $("input[name=pSize_1]:checked").val();
+		alert(menuid + '\n' + imagepathorder + '\n'+ price + '\n' + consist + '\n' ) ;
+		document.frmOrder.onlineGroupCd.value = onlineGroupCd;							// 온라인메뉴그룹
+    	document.frmOrder.pizzaSelIdx.value   = pizzaSelIdx;							// 선택피자그룹메뉴
+    	document.frmOrder._menuid.value = menuid; 										// 메뉴 id
+    	document.frmOrder._imagepathorder.value = imagepathorder; 						// 온라인주문 메뉴 이미지경로
+    	document.frmOrder._price.value = price; 										// 가격
+    	document.frmOrder._consist.value = consist; 									// 구성요소
+    	document.frmOrder.action              = "pj_1003Action.action";
+    	document.frmOrder.target              = "_self";
+    	document.frmOrder.submit();
+	}
     
     // 세트메뉴, 하프&하프, E쿠폰 화면표시 및 검색
     function fnViewDiv(val)
@@ -2868,14 +2884,14 @@
 									<img src='${li.imagepathorder}' alt='${li.name}' title='${li.name}' onerror="this.src='/assets/img/order/menu/noImage_ord.png'" />
 								</p> 
 								<p class='name' id='pName_1'>${li.name}</p> 
-								<p><button type='button' id='basket_1' name='basket_1' onclick="makeSendData('1');fnReset_spcOption_up($(this));">장바구니에담기</button></p> 
+								<p><button type='button' id='basket_1' name='basket_1' onclick="fnOrderPizza('${li.menuid}','${li.imagepathorder}','${ li.consist}');">장바구니에담기</button></p> 
 							</div>
 							<!--// item_left --> 
 							<!--// item_right -->
 							<div class='item_right'>
-								<!-- size --> 
-								<div class='size'> 
-									<input type='hidden' name='pCode_1' value='50330,마가리타,R,15900,오리지널,10,1018,3001,4001,10' />
+								<c:set var="price" value="" />	  
+								<!-- size -->
+								<div class='size'>
 									<c:if test="${ li.rprice != null}">
 										<p class='label_radio menu_size_radio' >
 											<c:set var="str" value="${li.rprice}"/>
@@ -2884,7 +2900,6 @@
 											<span class='price' >${fn:substring(str, 0, fn:length(str)-1)}</span>
 										</p>
 									</c:if>
-									<input type='hidden' name='pCode_1' value='50332,마가리타,L,21500,오리지널,10,1018,3002,4001,10' />
 									<c:if test="${ li.lprice != null}">
 										<p class='label_radio menu_size_radio' >
 											<c:set var="str" value="${li.lprice}"/>
@@ -2893,7 +2908,6 @@
 											<span class='price' >${fn:substring(str, 0, fn:length(str)-1)}</span>   
 										</p>
 									</c:if>
-									<input type='hidden' name='pCode_1' value='50329,마가리타,F,25900,오리지널,10,1018,3003,4001,10' />
 									<c:if test="${ li.fprice != null}">
 										<p class='label_radio menu_size_radio' >
 											<c:set var="str" value="${li.fprice}"/>
@@ -2902,7 +2916,6 @@
 											<span class='price' >${fn:substring(str, 0, fn:length(str)-1)}</span>   
 										</p>
 									</c:if>
-									<input type='hidden' name='pCode_1' value='50322,마가리타,P,34500,오리지널,10,1018,3005,4001,10' />
 									<c:if test="${ li.pprice != null}">
 										<p class='label_radio menu_size_radio' >
 											<c:set var="str" value="${li.pprice}"/>
@@ -2957,7 +2970,7 @@
 			              			<!--// 상세보기 말풍선 -->
 			            		</div>
 			            		<!--// detail -->
-			            		<p class="select_price">0</p>
+			            		<p class="select_price"></p>
 	          				</div>
 							<!--// item_right -->  
 	          				<!-- 20130926 소스&치즈&커팅&베이크 옵션주기 -->
