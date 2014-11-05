@@ -33,9 +33,7 @@
 	<sqlMap resource="/sql/pasteventSQL.xml"/>
 	<sqlMap resource="/sql/orderSQL.xml"/>
 	<sqlMap resource="/sql/storeSQL.xml"/>
-	<sqlMap resource="/sql/specialeventSQL.xml"/>
-	
+	<sqlMap resource="/sql/specialeventSQL.xml"/>	
 	<sqlMap resource="/sql/qnaboardSQL.xml"/>
-	<sqlMap resource="/sql/videoSQL.xml"/>
 </sqlMapConfig>
 
