@@ -90,17 +90,19 @@
 			  		<dl class="sub" id="snb5">
 			  			<c:if test="${param.menuId == 'pj_7001'}">
 				    		<dt class="dep1 pj_7001"><a href="mypageAction.action?menuGb=mypage&menuId=pj_7001"><img src="../assets/img/sub/sub_6_1_on.gif" alt="이전 주문 내역"></a></dt>
-				    		<dt class="dep1 pj_7002"><a href="mypageAction.action?menuGb=mypage&menuId=pj_7002"><img src="../assets/img/sub/sub_6_2.gif" alt="보유 쿠폰 확인 "></a></dt>
+				    		<!--  <dt class="dep1 pj_7002"><a href="mypageAction.action?menuGb=mypage&menuId=pj_7002"><img src="../assets/img/sub/sub_6_2.gif" alt="보유 쿠폰 확인 "></a></dt>-->
 				    		<dt class="dep1 pj_7003"><a href="mypageAction.action?menuGb=mypage&menuId=pj_7003"><img src="../assets/img/sub/sub_6_3.gif" alt="개인정보수정 "></a></dt>
 			    		</c:if>
+			    		<!--  
 			  			<c:if test="${param.menuId == 'pj_7002'}">
 				    		<dt class="dep1 pj_7001"><a href="mypageAction.action?menuGb=mypage&menuId=pj_7001"><img src="../assets/img/sub/sub_6_1.gif" alt="이전 주문 내역"></a></dt>
 				    		<dt class="dep1 pj_7002"><a href="mypageAction.action?menuGb=mypage&menuId=pj_7002"><img src="../assets/img/sub/sub_6_2_on.gif" alt="보유 쿠폰 확인 "></a></dt>
 				    		<dt class="dep1 pj_7003"><a href="mypageAction.action?menuGb=mypage&menuId=pj_7003"><img src="../assets/img/sub/sub_6_3.gif" alt="개인정보수정 "></a></dt>
-			    		</c:if>	
+			    		</c:if>
+			    		-->	
 			  			<c:if test="${param.menuId == 'pj_7003'}">
 				    		<dt class="dep1 pj_7001"><a href="mypageAction.action?menuGb=mypage&menuId=pj_7001"><img src="../assets/img/sub/sub_6_1.gif" alt="이전 주문 내역"></a></dt>
-				    		<dt class="dep1 pj_7002"><a href="mypageAction.action?menuGb=mypage&menuId=pj_7002"><img src="../assets/img/sub/sub_6_2.gif" alt="보유 쿠폰 확인 "></a></dt>
+				    		<!--  <dt class="dep1 pj_7002"><a href="mypageAction.action?menuGb=mypage&menuId=pj_7002"><img src="../assets/img/sub/sub_6_2.gif" alt="보유 쿠폰 확인 "></a></dt>-->
 				    		<dt class="dep1 pj_7003"><a href="mypageAction.action?menuGb=mypage&menuId=pj_7003"><img src="../assets/img/sub/sub_6_3_on.gif" alt="개인정보수정 "></a></dt>
 			    		</c:if>				    				    		
 			    	</dl>

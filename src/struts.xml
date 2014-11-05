@@ -262,9 +262,15 @@
 			<result>/mypage/main.jsp</result>
 		</action>
 		
-		<action name="myorderListAction" class="papa.member.MemberAction" method="form" >
+		<action name="myorderListAction" class="papa.member.MyOrderAction" method="form" >
 			<result>/mypage/list.jsp</result>
-		</action>							
+		</action>
+		
+		<action name="myorderListProAction" class="papa.member.MyOrderAction">
+		    <interceptor-ref name="ibatis"></interceptor-ref>
+		    <interceptor-ref name="params"></interceptor-ref>		
+			<result>/mypage/listPro.jsp</result>
+		</action>									
 										
 	</package>
 	<!-- 매장별 이벤트 -->
