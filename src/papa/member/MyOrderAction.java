@@ -57,7 +57,6 @@ public class MyOrderAction extends ActionSupport implements IbatisAware,SessionA
 		params.put("edate", edate);
 		params.put("memId", memId);
 		
-		System.out.println("memId="+memId);
 		list = sqlMapper.queryForList("myorderSQL.selectBydate",params);
 		
 		for(MyOrderData data : list)
