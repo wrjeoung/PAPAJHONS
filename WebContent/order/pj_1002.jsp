@@ -214,7 +214,7 @@
     	document.frmOrder._cnt_opt.value = document.getElementById("cnt_opt").value; 	// 수량
     	document.frmOrder._price.value = price; 										// 가격
     	document.frmOrder._consist.value = consist; 									// 구성요소
-    	document.frmOrder.action              = "orderBoxAction.action";
+    	document.frmOrder.action              = "pj_1003Action.action";
     	document.frmOrder.target              = "_self";
     	document.frmOrder.submit();
 	}

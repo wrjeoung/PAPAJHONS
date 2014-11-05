@@ -23,8 +23,8 @@
 			<result>/order/pj_1002.jsp</result>
 		</action>
 		
-		<action name="orderBoxAction" class="order.OrderBoxAction">
-			<result>/order/order_box_cookie.jsp</result>
+		<action name="pj_1003Action" class="order.Pj_1003Action">
+			<result>/order/pj_1003.jsp</result>
 		</action>
 	</package>
 	
