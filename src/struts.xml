@@ -22,6 +22,10 @@
 			<interceptor-ref name="params"/>
 			<result>/order/pj_1002.jsp</result>
 		</action>
+		
+		<action name="pj_1003Action" class="order.Pj_1003Action">
+			<result>/order/pj_1003.jsp</result>
+		</action>
 	</package>
 	
 	<!-- 메뉴  -->
@@ -141,9 +145,16 @@
 		</action>
 		
 		<!-- 상세보기 -->
+		<!-- <action name="viewAction2" class="nowevent.board.viewAction">
+			<result>/nowevent/nowView.jsp</result>
+		</action> -->
 		<action name="viewAction2" class="nowevent.board.viewAction">
+			<result type="chain">relistAction</result>
+		</action>
+		<action name="relistAction" class="nowevent.board.relistAction">
 			<result>/nowevent/nowView.jsp</result>
 		</action>
+		
 		
 		<!-- 삭제하기 -->
 		<action name="deleteAction2" class="nowevent.board.deleteAction">
@@ -173,11 +184,6 @@
 			</result>
 		</action>
 		
-		<!-- 댓글보기 -->
-		<action name="relistAction" class="nowevent.board.relistAction">
-			<interceptor-ref name="params"/>
-			<result>/nowevent/nowView.jsp</result>
-		</action>
 	</package>
 	
 	<!-- 회원가입 -->
@@ -328,8 +334,14 @@
 			<result>/pastevent/pastList.jsp</result>
 	</action>
 	
-	<!-- 상세보기 -->
+		<!-- 상세보기 -->
+		<!-- <action name="pastviewAction" class="pastevent.board.viewAction">
+			<result>/pastevent/pastView.jsp</result>
+		</action> -->
 		<action name="pastviewAction" class="pastevent.board.viewAction">
+			<result type="chain">pastrelistAction</result>
+		</action>
+		<action name="pastrelistAction" class="pastevent.board.relistAction">
 			<result>/pastevent/pastView.jsp</result>
 		</action>
 		
@@ -350,6 +362,17 @@
 			<param name="actionName">pastlistAction</param>
 			</result>
 		</action>
+		
+	<!-- 댓글쓰기 -->
+		<action name="pastRewriteForm" class="pastevent.board.rewriteAction" method="form">
+			<result>/pastevent/pastView.jsp</result>
+		</action> 
+		<action name="pastRewriteAction" class="pastevent.board.rewriteAction">
+			<interceptor-ref name="params"/>
+			<result type="redirect-action">
+			<param name="actionName">pastlistAction</param>
+			</result>
+		</action>	
 		
 	</package>
 	
@@ -412,14 +435,14 @@
 	
 	<package name="qna.board" extends="struts-default">
 		<!-- 글쓰기 -->
-		<action name="qnawriteForm" class="qna.board.writeAction" method="form">
+		<!-- <action name="qnawriteForm" class="qna.board.writeAction" method="form">
 			<result>/QnA/qnaWrite.jsp</result>
 		</action>
 		<action name="qnawriteAction" class="qna.board.writeAction">
 			<result type="redirectAction">
 			<param name="actionName">qnawriteForm</param>
 			</result>
-		</action>
+		</action> -->
 		
 		<!-- 리스트 -->
 		<!-- <action name="qnalistAction" class="qna.board.delilistAction">
@@ -430,7 +453,7 @@
 		<interceptor-ref name="params"/>
 			<result>/QnA/qna.jsp</result> 
 		</action> -->
-		<action name="qnalistAction" class="qna.board.delilistAction">
+		<!-- <action name="qnalistAction" class="qna.board.delilistAction">
 		<interceptor-ref name="params"/>
 			<result type="chain">onlinelistAction</result>
 		</action>
@@ -457,6 +480,34 @@
 		<action name="storelistAction" class="qna.board.storelistAction">
 			<interceptor-ref name="params"/>
 			<result>/QnA/qna.jsp</result>
+		</action> -->
+		<action name="qnalistAction" class="qna.board.delilistAction">
+		<interceptor-ref name="params"/>
+			<result>/FAQ/FaQ.jsp</result>
+		</action>
+		<action name="onlinelistAction" class="qna.board.onlinelistAction">
+		<interceptor-ref name="params"/>
+			<result>/FAQ/onFaQ.jsp</result> 
+		</action> 
+		<action name="cardlistAction" class="qna.board.cardlistAction">
+		<interceptor-ref name="params"/>	
+			<result>/FAQ/cardFaQ.jsp</result> 
+		</action>
+		<action name="shoplistAction" class="qna.board.shoplistAction">
+		<interceptor-ref name="params"/>
+			<result>/FAQ/shopFaQ.jsp</result>
+		</action>
+		<action name="homelistAction" class="qna.board.homelistAction">
+		<interceptor-ref name="params"/>
+			<result>/FAQ/homeFaQ.jsp</result>
+		</action>
+		<action name="joblistAction" class="qna.board.joblistAction">
+		<interceptor-ref name="params"/>
+			<result>/FAQ/jobFaQ.jsp</result>
+		</action>
+		<action name="stolistAction" class="qna.board.storelistAction">
+			<interceptor-ref name="params"/>
+			<result>/FAQ/storeFaQ.jsp</result>
 		</action>
 	</package>
 </struts>

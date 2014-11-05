@@ -22,7 +22,7 @@
 </c:if>
 
 <c:if test="${totalCount>0 }">
-<table border="1" width="600" cellpaddig="0" cellspacing="0" align="center">
+<table border="1" width="600" cellpadding="0" cellspacing="0" align="center">
 	<tr height="40">
 		<td align="center" width="50">번호</td>
 		<td align="center" width="400">제목</td>

@@ -34,9 +34,7 @@
 	<sqlMap resource="/sql/orderSQL.xml"/>
 	<sqlMap resource="/sql/myorderSQL.xml"/>
 	<sqlMap resource="/sql/storeSQL.xml"/>
-	<sqlMap resource="/sql/specialeventSQL.xml"/>
-	
+	<sqlMap resource="/sql/specialeventSQL.xml"/>	
 	<sqlMap resource="/sql/qnaboardSQL.xml"/>
-	
 </sqlMapConfig>
 

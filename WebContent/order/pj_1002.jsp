@@ -201,8 +201,23 @@
     	document.frmOrder.action              = "orderAction.action";
     	document.frmOrder.target              = "_self";
     	document.frmOrder.submit();
-	}      
+	}
     
+	// 장바구니
+	function fnOrderBox(menuid,imagepathorder,price,consist)
+    {
+		alert(menuid + '\n' + imagepathorder + '\n'+document.getElementById("cnt_opt").value +'\n'+price+'\n'+consist) ;		
+		document.frmOrder.onlineGroupCd.value = onlineGroupCd;							// 온라인메뉴그룹
+    	document.frmOrder.pizzaSelIdx.value   = pizzaSelIdx;							// 선택피자그룹메뉴
+    	document.frmOrder._menuid.value = menuid; 										// 메뉴 id
+    	document.frmOrder._imagepathorder.value = imagepathorder; 						// 온라인주문 메뉴 이미지경로
+    	document.frmOrder._cnt_opt.value = document.getElementById("cnt_opt").value; 	// 수량
+    	document.frmOrder._price.value = price; 										// 가격
+    	document.frmOrder._consist.value = consist; 									// 구성요소
+    	document.frmOrder.action              = "pj_1003Action.action";
+    	document.frmOrder.target              = "_self";
+    	document.frmOrder.submit();
+	}
     
     // 세트메뉴, 하프&하프, E쿠폰 화면표시 및 검색
     function fnViewDiv(val)
@@ -2758,7 +2773,14 @@
 	<input type="hidden" id="ecopMenuPrice"       name="ecopMenuPrice"       value="" />  <!-- E쿠폰메뉴단가              -->
 	<input type="hidden" id="ecopMenuDiscAmt"     name="ecopMenuDiscAmt"     value="" />  <!-- E쿠폰메뉴할인금액          -->
 	<input type="hidden" id="ecopMenuSaleAmt"     name="ecopMenuSaleAmt"     value="" />  <!-- E쿠폰메뉴판매금액          -->
-	<input type="hidden" id="ecopMenuSize"        name="ecopMenuSize"        value="" />  <!-- E쿠폰메뉴사이즈            -->
+	<input type="hidden" id="ecopMenuSize"        name="ecopMenuSize"        value="" />  <!-- E쿠폰메뉴사이즈            -->	
+	<!-- 주문  -->
+	<input type="hidden" id="_menuid"         name="_menuid"          value="" />  <!-- 메뉴 id				-->
+	<input type="hidden" id="_imagepathorder" name="_imagepathorder"  value="" />  <!-- 온라인주문 메뉴 이미지 경로	-->
+	<input type="hidden" id="_cnt_opt"        name="_cnt_opt"         value="" />  <!-- 수량					-->
+	<input type="hidden" id="_price"          name="_price"           value="" />  <!-- 금액					-->
+	<input type="hidden" id="_consist"        name="_consist"         value="" />  <!-- 메뉴 구성				-->
+	
 
 	<!-- 메뉴 -->
 	<!-- con_container -->
@@ -2803,17 +2825,16 @@
         			<div class="side">
           				<h3 class="hidden">세트/사이드/음료</h3>
           				<ul class="side_list">
-            				<li><a href="javascript:fnViewDiv('prom');"><img src="../assets/img/order/ord_menu_prom_btn.png" alt="이달의 프로모션" /></a></li>
+            				<!-- <li><a href="javascript:fnViewDiv('prom');"><img src="../assets/img/order/ord_menu_prom_btn.png" alt="이달의 프로모션" /></a></li> -->
             				<li><a href="orderAction.action?menuId=pj_2011&pizzaSelIdx=${param.pizzaSelIdx }"><img src="../assets/img/order/ord_menu_set_btn2.png" alt="세트메뉴" /></a></li>
-            				
+            				<li><a href="orderAction.action?menuId=pj_2013&pizzaSelIdx=${param.pizzaSelIdx}"><img src="../assets/img/order/ord_menu_drink_btn.png" alt="음료" /></a></li>
             			</ul>
         			</div>
         			<div class="coupon">
           				<ul class="coupon_list">   				
-            				<li><a href="javascript:fnSelMenuGroup('9', '70');"><img src="../assets/img/order/ord_menu_side_btn.png" alt="사이드" /></a></li>
-            				<li><a href="javascript:fnViewDiv('plat');"><img src="../assets/img/order/ord_menu_plt_btn.png" alt="파파플래터" /></a></li>
-            				<li><a href="javascript:fnSelMenuGroup('9', '80');"><img src="../assets/img/order/ord_menu_drink_btn.png" alt="음료" /></a></li>
-            				
+            				<li><a href="orderAction.action?menuId=pj_2012&pizzaSelIdx=${param.pizzaSelIdx}"><img src="../assets/img/order/ord_menu_side_btn.png" alt="사이드" /></a></li>
+            				<li><a href="orderAction.action?menuId=pj_2010&pizzaSelIdx=${param.pizzaSelIdx}"><img src="../assets/img/order/ord_menu_plt_btn.png" alt="파파플래터" /></a></li>
+            			<!-- <li><a href="javascript:fnSelMenuGroup('9', '80');"><img src="../assets/img/order/ord_menu_drink_btn.png" alt="음료" /></a></li> -->
           				</ul>
         			</div>
         			
@@ -2822,7 +2843,10 @@
       				<div class="promotion">
       					<ul class="etc_list">
             				<!--  <li><a href="javascript:fnViewDiv('half');"><img src="../assets/img/order/ord_menu_half_btn.png" alt="하프엔하프피자" /></a></li> -->
-            				<li><a href="javascript:fnSelMenuGroup('9', '90');"><img src="../assets/img/order/ord_menu_sauce_btn.png" alt="소스&피클" /></a></li>
+            				<%-- 
+            				<li><a href="orderAction.action?menuId=pj_2013&pizzaSelIdx=${param.pizzaSelIdx}"><img src="../assets/img/order/ord_menu_drink_btn.png" alt="음료" /></a></li>
+            				<li><a href="orderAction.action?menuId=pj_2014&pizzaSelIdx=${param.pizzaSelIdx}"><img src="../assets/img/order/ord_menu_sauce_btn.png" alt="소스&피클" /></a></li>
+            				--%>
             				<!--  <li><a href="javascript:fnViewDiv('coupon');"><img src="../assets/img/order/ord_menu_ecu_btn.png" alt="e쿠폰메뉴" /></a></li> -->
            				</ul>
        				</div>
@@ -3019,17 +3043,20 @@
 			  				</div>
 	        			</div>
         			</c:if>
-				
 					<!-- //item -->
+					
+					<!-- item -->
 					<!-- 세트 메뉴 -->
 					<c:if test="${ li.menuid eq 'pj_2011' }">
+						<c:set var="price" value="${li.setprice}"/>
+						<c:set var="price" value="${fn:substring(price,0,fn:length(price)-1) }"/>
 						<div id="set_section" class="" style="display: block;">
 							<div class="set_items has-js" id="set_30348"> 
 								<p class="image">
-									<img src="../assets/img/order/menu/60/30348_ord.png" width="220" height="140" alt="50% 할인 수퍼파파스 베스트 세트 메뉴" title="50% 할인 수퍼파파스 베스트 세트 메뉴">
+									<img src="${li.imagepathorder }" width="220" height="140" alt="${li.name }" title="${li.name }" id="orderimage">
 								</p>
-								<p class="name" id="setNm"><c:out value="${li.name }"/><span class="size">(2-3인용)</span></p>
-								<p class="btn_cart" onclick="fnAddSet($(this),'30348','20','50','','3020','');">
+								<p class="name" id="setNm"><c:out value="${li.name }" /><span class="size">(2-3인용)</span></p>
+								<p class="btn_cart" onclick="fnOrderBox('${li.menuid}','${li.imagepathorder}','${price}','${ li.consist}');">
 									<button type="button">장바구니에담기</button>
 								</p>
 								<p class="description">
@@ -3038,8 +3065,7 @@
 								</p>
 								<div class="size_prc">
 									<input type="hidden" name=" " value=" ">
-									<c:set var="text" value="${li.setprice}"/>
-									<p class="set_price">${ fn:substring(text,0,fn:length(text)-1) } </p>
+									<p class="set_price">${price } </p>
 									<p style="width:40px; position:absolute; top:10px; left:140px;">수량 : </p>
 									<p class="selcet_count">
 										<select id="cnt_opt" name="cnt_opt">
@@ -3053,12 +3079,222 @@
 								</div>
 							</div>
 						</div>
-					</c:if>
-					
+					</c:if>					
 					<!-- item -->
 					
+					<!-- item -->
+					<!-- 사이드 -->
+					<c:if test="${ li.menuid eq 'pj_2012' }">
+						<div id='menu_${status.count}' class='item'>
+							<!-- 왼쪽 이미지 영역 -->
+							<!-- item_left -->
+							<div class='item_left'>
+								<p class='photo'><img src='${li.imagepathorder}' alt='${li.name}' title='${li.name}' onerror="this.src='/assets/img/order/menu/noImage_ord.png'" /></p>
+								<p class='name' id='pName_1'>${li.name}</p>
+								<p><button type='button' id='basket_1' name='basket_1' onclick="makeSendData('1');fnReset_spcOption_up($(this));">장바구니에담기</button></p>
+							</div>
+							<!--// item_left -->
+							<!--// item_right -->
+							<div class='item_right'>
+								<!-- size -->
+								<div class='size'>
+									<input type='hidden' name='pCode_1' value='51036,샘플러,one,12900,,20,9001,3006,,10' />
+									<p class='label_radio menu_size_radio'>
+										<c:set var="str" value="${li.onesizeprice}"/>
+										<input type='radio' name='pSize_1' value='${fn:substring(str, 0, fn:length(str)-1)}' />
+										<img src='../assets/img/order/ord_menuList_size_one.png' alt='원사이즈' title='One Size' />
+										<span class='price'>${fn:substring(str, 0, fn:length(str)-1)}</span>
+									</p>
+								</div>
+								<script type="text/javascript">
+									//20140304 라디오버튼 디폴트 위치를 라지사이즈로 변경
+									var firstSize = $("#menu_1 .size img").attr("title");
+									if(firstSize == "Regular"){ra_check($("#menu_1 .size .menu_size_radio").eq(1));}
+									else{ra_check($("#menu_1 .size .menu_size_radio").eq(0));}
+								</script>
+								<!--// size -->
+								<div class='select_count'>
+									<select id='cnt_opt1' name='cnt_opt'>
+										<option value='1'>1</option>
+										<option value='2'>2</option>
+										<option value='3'>3</option>
+										<option value='4'>4</option>
+										<option value='5'>5</option>
+										<option value='6'>6</option>
+										<option value='7'>7</option>
+										<option value='8'>8</option>
+										<option value='9'>9</option>
+										<option value='10'>10</option>
+									</select>
+								</div>
+								<!-- detail -->
+								<div class='detail'>
+									<p class='btn'><img src='../assets/img/order/btn_info.gif' alt='상세설명' /></p>
+									<!-- 상세보기 말풍선 -->
+									<div class='comment'>
+										<p class='top'><img src='../assets/img/order/ord_menuList_detail_commBg_top.png' alt=''></p>
+										<p class='bottom'><img src='../assets/img/order/ord_menuList_detail_commBg_bottom.png' alt=''></p>
+										<dl>
+											<dd>
+												<c:if test="${ li.material != null }">
+													<b style = "color:#228a68;">재료</b><br/>
+													${li.material}<br/>
+												</c:if>
+												<c:if test="${li.presentsauce != null }">
+													<b style = "color:#228a68;">증정소스</b><br/>
+													${li.presentsauce}
+												</c:if>	
+											</dd>
+										</dl>
+									</div>
+									<!--// 상세보기 말풍선 -->
+								</div>
+								<!--// detail -->
+								<p class="select_price">0</p>
+							</div>
+							<!--// item_right -->
+						</div>
+					</c:if>
+					<!-- //item -->
 					
+					<!-- item -->
+					<!-- 파파플래터 -->
+					<c:if test="${ li.menuid eq 'pj_2010' }">
+						<div id="plat_section" class="" style="display: block;">
+							<div class="item has-js" id="menu_50992">
+								<p class="image"><img src="../assets/img/order/menu/11/1019_ord.png" width="220" height="140" alt="수퍼 파파스" title="수퍼 파파스"></p>
+								<p class="name" id="pName_50992">${li.name}<span class="size">(BOX)</span></p>
+								<p class="btn_cart" onclick="fnAddSet($(this), '50992,수퍼 파파스,파파플래터,25900,,10,1019,3023,4001,10', '', '', '', '', '');""="">
+									<button type="button">장바구니에담기</button>
+								</p>
+								<p class="description">
+									<img src="../assets/img/order/ord_menuList_size_box.png" alt="플래터세트">구성<br>
+									<span> :${li.consist}</span>
+								</p>
+								<div class="size_prc">
+									<c:set var="str" value="${li.boxprice}"/>
+									<p class="price">${fn:substring(str, 0, fn:length(str)-1)}</p>
+									<p style="width: 40px; position: absolute; top: 10px; left: 140px;">수량
+										:</p>
+									<p class="selcet_count">
+										<select id="cnt_opt" name="cnt_opt"><option value="1">1</option>
+											<option value="2">2</option>
+											<option value="3">3</option>
+											<option value="4">4</option>
+											<option value="5">5</option></select>
+									</p>
+								</div>
+							</div>
+						</div>
+					</c:if>					
+					<!-- //item -->
 					
+					<!-- item -->
+					<!-- 음료 -->
+					<c:if test="${li.menuid eq 'pj_2013' }">
+						<div id='menu_${status.count}' class='item'>
+							<!-- 왼쪽 이미지 영역 -->
+							<!-- item_left -->
+							<div class='item_left'>
+								<p class='photo'><img src='${li.imagepathorder}' alt='${li.name}' title='${li.name}' onerror="this.src='/assets/img/order/menu/noImage_ord.png'" /></p>
+								<p class='name' id='pName_1'>${li.name}</p>
+								<p><button type='button' id='basket_1' name='basket_1' onclick="makeSendData('1');fnReset_spcOption_up($(this));">장바구니에담기</button></p>
+							</div>
+							<!--// item_left -->
+							<!--// item_right -->
+							<div class='item_right'>
+								<!-- size -->
+								<div class='size'>
+									<!-- 350ML -->
+									<c:if test="${li.name eq '미닛 메이드 오렌지'}">
+										<p class='label_radio menu_size_radio' >
+											<input type='radio' name='pSize_9' value='${fn:substring(li.rprice, 0, fn:length(li.rprice)-1)}' />
+											<img src='../assets/img/order/ord_menuList_size_350ml.png' alt='350ml' title='350ml'/><span class='price' >${fn:substring(li.rprice, 0, fn:length(li.rprice)-1)}</span>
+										</p>	
+									</c:if>
+									<!-- 500ML -->
+									<c:if test="${li.name eq '코카콜라' || li.name eq '스프라이트' || li.name eq '코카콜라 제로' }">
+										<p class='label_radio menu_size_radio'>
+											<input type='radio' name='pSize_1' value='${fn:substring(li.rprice, 0, fn:length(li.rprice)-1)}' />
+											<img src='../assets/img/order/ord_menuList_size_500ml.png' alt='500ml' title='500ml' /><span class='price'>${fn:substring(li.rprice, 0, fn:length(li.rprice)-1)}</span>
+										</p>	
+									</c:if>
+									<!-- 600ML -->
+									<c:if test="${li.name eq '환타' }">
+										<p class='label_radio menu_size_radio' >
+											<input type='radio' name='pSize_7' value='${fn:substring(li.lprice, 0, fn:length(li.lprice)-1)}' />
+											<img src='../assets/img/order/ord_menuList_size_600ml.png' alt='600ml' title='600ml'/><span class='price' >${fn:substring(li.rprice, 0, fn:length(li.rprice)-1)}</span> 
+										</p>
+									</c:if>
+									<!-- 1.25L -->
+									<c:if test="${li.name eq '코카콜라'}">
+										<p class='label_radio menu_size_radio'>
+											<input type='radio' name='pSize_1' value='${fn:substring(li.lprice, 0, fn:length(li.lprice)-1)}' />
+											<img src='../assets/img/order/ord_menuList_size_1.25L.png' alt='1.25L' title='1.25L' /><span class='price'>${fn:substring(li.lprice, 0, fn:length(li.lprice)-1)}</span>
+										</p>
+									</c:if>
+									<!-- 1.25L -->
+									<c:if test="${li.name eq '스프라이트' || li.name eq '코카콜라 제로' || li.name eq '환타' || li.name eq '미닛 메이드 오렌지'}">
+										<p class='label_radio menu_size_radio' >
+											<input type='radio' name='pSize_9' value='${fn:substring(li.lprice, 0, fn:length(li.lprice)-1)}' />
+											<img src='../assets/img/order/ord_menuList_size_1.5L.png' alt='1.5L' title='1.5L'/><span class='price' >${fn:substring(li.lprice, 0, fn:length(li.lprice)-1)}</span>
+										</p>
+									</c:if>
+								</div>
+								<script type="text/javascript">
+									//20140304 라디오버튼 디폴트 위치를 라지사이즈로 변경
+									var firstSize = $("#menu_1 .size img").attr("title");
+									if(firstSize == "Regular"){ra_check($("#menu_1 .size .menu_size_radio").eq(1));}
+									else{ra_check($("#menu_1 .size .menu_size_radio").eq(0));}
+								</script>
+								<!--// size -->
+								<!--// size -->
+								<div class='select_count'>
+									<select id='cnt_opt1' name='cnt_opt'>
+										<option value='1'>1</option>
+										<option value='2'>2</option>
+										<option value='3'>3</option>
+										<option value='4'>4</option>
+										<option value='5'>5</option>
+										<option value='6'>6</option>
+										<option value='7'>7</option>
+										<option value='8'>8</option>
+										<option value='9'>9</option>
+										<option value='10'>10</option>
+									</select>
+								</div>
+								<!-- detail -->
+								<div class='detail'>
+									<p class='btn'><img src='../assets/img/order/btn_info.gif' alt='상세설명' /></p>
+									<!-- 상세보기 말풍선 -->
+									<div class='comment'>
+										<p class='top'><img src='../assets/img/order/ord_menuList_detail_commBg_top.png' alt=''></p>
+										<p class='bottom'><img src='../assets/img/order/ord_menuList_detail_commBg_bottom.png' alt=''></p>
+										<dl>
+											<dd>${li.name}</dd>
+										</dl>
+									</div>
+								</div>
+								<p class="select_price">0</p>								
+							</div>
+							<!--// item_right -->
+						</div>
+					</c:if>
+					<!-- //item -->
+					
+					<!-- item -->
+					<!-- 소스&피클 -->
+					<c:if test="${li.menuid eq 'pj_2014' }">
+						<div id="menu_${status.count}" class="item has-js">
+							<!-- 왼쪽 이미지 영역 -->
+							<!-- item_left -->
+							<div class="item_left">
+								<p class="photo"><img src="/assets/img/order/menu/90/3004_ord.png" alt="갈릭 소스" title="갈릭 소스" onerror="this.src='/assets/img/order/menu/noImage_ord.png'"></p>
+								<p class="name" id="pName_1">갈릭 소스</p>
+								<p><button type="button" id="basket_1" name="basket_1" onclick="makeSendData('1');fnReset_spcOption_up($(this));">장바구니에담기</button></p>
+							</div>
+						</div>
+					</c:if>
 					<!-- //item -->
 				</c:forEach>
 				</div>
@@ -3455,192 +3691,7 @@
 
 <!-- ///////////////////////////////////////////////////////////// 장바구니 구역 //////////////////////////////////////////////////////////////////// -->
 <!-- orderWrap --> 
-<div id="orderWrap">
-  	<!-- order_box --> 
-  	<div id="order_box">
-    	<p class="top"></p>
-    	<p class="bottom"></p>
-    	<!-- ord_area -->   
-    	<div id="ord_area" style="padding:5px 20px">
-      		<!-- ord_tracking_section -->
-      		<div id="ord_tracking_section">
-        		<p class="tracking"></p>
-      		</div>
-      		<!--// ord_tracking_section -->
-      
-      		<!-- ord_title -->
-      		<div id="ord_title">
-            	<h2><img src="../assets/img/order/tit_order.gif" alt="장바구니" /></h2>
-        		<p class="ord_reset"> <span class="btn_h23 green"><button type="button" onclick="javascript:fnClearCart();">초기화</button></span></p>
-      		</div>
-      		<!--// ord_title -->
-      
-      		<!-- ord_cart_section --> 
-      		<div id="ord_cart_section" class="section_box">
-        		<p class="section_top"></p>
-        		<p class="section_bottom"></p>
-        		<!-- cart_list_section -->
-        		<div id="cart_list_section">
-            		<h3 class="section_title"><img src="../assets/img/order/order_rboxTitle_ordList.gif" alt="주문목록" /></h3>
-          			<!-- section_con --> 
-          			<div class="section_con"> 
-            			<!-- 주문 리스트 :max-height:140px; -->
-						<ul id="ord_list" >
 
-						</ul>
-            			<!--// 주문 리스트 --> 
-          			</div>
-          			<!--// section_con --> 
-        		</div>
-        		<!-- cart_list_section -->
-        
-        	<script type="text/javascript">
-				document.frmOrder.cartOrdCustName.value     = "";      // 고객명
-				document.frmOrder.cartOrdCustPhone.value    = "";     // 전화번호
-				document.frmOrder.cartOrdDevide.value       = "";        // 주문구분(주문유형)
-				document.frmOrder.cartOrdReserve.value      = "";       // 예약주문여부
-				document.frmOrder.cartOrdResDate.value      = "";       // 예약일자
-				document.frmOrder.cartOrdResTime.value      = "";       // 예약시간
-				document.frmOrder.cartOrdDevAddr1.value     = "";      // 배달지주소1
-				document.frmOrder.cartOrdDevAddr2.value     = "";      // 배달지주소2
-				document.frmOrder.cartOrdDevAddr3.value     = "";      // 배달지주소3
-				document.frmOrder.cartOrdDevAddr4.value     = "";      // 배달지주소4
-				document.frmOrder.cartOrdAddressID.value    = "";     // ADDRESS_ID
-				document.frmOrder.cartOrdStoreCode.value    = "";     // 매장코드
-				document.frmOrder.cartOrdStoreName.value    = "";     // 매장명
-				document.frmOrder.cartOrdSectorCode.value   = "";    // 매장섹터코드
-				document.frmOrder.cartOrdSectorName.value   = "";    // 매장섹터명
-				document.frmOrder.cartOrdDeliveryTime.value = "";  // 섹터예상시간
-				document.frmOrder.cartOrdDeliveryYN.value   = "";    // 배달가능여부
-				document.frmOrder.cartOrdNewAddressYN.value = "";  // 배달지주소신규추가여부
-
-				$("#btn_addr").removeClass("active");
-				$("#btn_store").removeClass("active");
-				
-				var sector = "주소는 ";
-				var ordType = "배달";
-				var serviceable_time =  "" + "분~" + ( parseInt( "") +10 ) + "분"; 
-        		if( "" == "10" ) 
-        		{ 
-        			radio_btn($("#btn_addr"));      
-    				$("#ord_optInfo_section .store_title").text("배달매장");
-    				$("#ord_optInfo_section .addr_title").text("배달주소");
-//    				$("#ord_optInfo_section .time_title").text("배달시간");
-        		}
-        		if( "" == "20" ) 
-        		{ 
-        			radio_btn($("#btn_store"));     
-    				$("#ord_optInfo_section .store_title").text("방문매장");
-    				$("#ord_optInfo_section .addr_title").text("매장주소");
-// 	  				$("#ord_optInfo_section .time_title").text("방문시간");
-    				sector = "매장은 ";
-					ordType = "포장";
-					serviceable_time = ( parseInt( "") -15 ) + "분~" + ( parseInt( "") -10 ) + "분"; 
-        		} 
-
-				$sect_info.html("<br><span class='txt_green'>선택하신 "+sector +"주문이 완료된 후<br><span class='txt_point'>"+ serviceable_time +"</span>의 " +ordType+"시간이 소요됩니다. 예약 시간은 결제 화면에서 변경하실 수 있습니다.</span>");
-				//contents_resize();
-			</script>
-        
-        		<!-- cart_opt_section--> 
-        		<div id="cart_opt_section" >
-        			<%-- <h3 class="section_title"><img src="../assets/img/order/order_rboxTitle_ordway.gif" alt="주문방법선택" /></h3>  --%>
-          			<!-- section_con--> 
-            		<div class="section_con" id="cart_opt_section">
-            			<!-- 배달 / 방문포장  시작-->
-            			<%-- 
-	            		<div id="cart_btn_ordWay1">
-	              			<p style="height:40px" class="radio">
-	                			<a href="#ord_area">	<!-- 버튼 클릭 시 화면 상단으로 이동 : 슬라이드가 안보이게 스크롤 되어있는 경우-->
-	                				<button type="button" id="btn_addr"  class="btn_radio  btn_addr clear  " style="width:95px; display:block; float:left;" >
-	                					<img src="/assets/img/btn/btn_bigRed_delivery.png" alt="배달"/>
-	                				</button>
-	                				<button type="button" id="btn_store" class="btn_radio  btn_store clear " style="width:95px; display:block; float:left;"> 
-	                					<img src="/assets/img/btn/btn_bigRed_visit.png"    alt="방문포장"/>
-	                				</button>
-	                			</a>
-	              			</p>
-	            		</div>
-	            		--%>
-             			<!-- 배송지정보  시작-->
-            			<div id="ord_optInfo_section" style="display:none" >
-              				<h3 class="section_title"><img src="/assets/img/order/order_rboxTitle_addrInfo.gif" alt="배송지정보" /></h3>
-              				<div class="rBox_con">
-                				<p style="padding:2px 0 2px 5px"><span style="font-weight:bold">수령인</span> : <span class="mem_name"></span></p>
-                				<p style="padding:2px 0 2px 5px"><span style="font-weight:bold">연락처</span> : <span class="mem_phone"></span></p>
-                				<p style="padding:2px 0 2px 5px"><span style="font-weight:bold" class="store_title">방문매장</span> : <span class="store_name"></span></p>
-                				<p style="padding:2px 0 2px 5px"><span style="font-weight:bold" class="addr_title">매장주소</span> : <span class="addr"></span></p>
-                				
-                				<p style="padding:3px" class="sect_info bold"></p>
-              				</div>
-              				<p class="rBox_top"></p>
-              				<p class="rBox_bottom"></p>
-            			</div>
-            			<!-- 배송지정보 끝 --> 
-          			</div>
-          			<!--// section_con--> 
-        		</div>
-        		<!--// cart_opt_section--> 
-      		</div>
-      		<!--// ord_cart_section --> 
- 
-      		<!-- 합계 -->
-      		<div id="ord_total" >
-        		<p><img src="../assets/img/order/order_total_title.gif" alt="총주문금액"/><span class="price">0원</span></p>
-      		</div>
-      		<!-- //합계 --> 
-      
-		 	<!-- 장바구니 영역 사이드 추천메뉴 배너 추가 -->
-		 	<div id="side_banner" >
-		  		<div id="banner_content">
-				<!-- 사이드에 들어갈 메뉴 데이터를 뿌려줌 :이미지이름과 메뉴 코드 동일하게 만들기 -->
-
-					<img id="50501" src="../assets/img/order/banner/bn_50501.png" alt="코카콜라 1.25L" title="코카콜라 1.25L"  onerror="fnNoImages($(this));"/>
-				  	<input type="hidden" id="bnMenuInfo" name="bnMenuInfo" value="50501,코카콜라 1.25L,10,40,4020,3013,,1600,1.25L,"/> 
-
-					<img id="50268" src="../assets/img/order/banner/bn_50268.png" alt="스프라이트1.5L" title="스프라이트1.5L"  onerror="fnNoImages($(this));"/>
-				  	<input type="hidden" id="bnMenuInfo" name="bnMenuInfo" value="50268,스프라이트1.5L,10,40,4009,3014,,1900,1.5L,"/> 
-
-					<img id="50485" src="../assets/img/order/banner/bn_50485.png" alt="환타1.5L" title="환타1.5L"  onerror="fnNoImages($(this));"/>
-				  	<input type="hidden" id="bnMenuInfo" name="bnMenuInfo" value="50485,환타1.5L,10,40,4010,3014,,1900,1.5L,"/> 
-
-				</div>
-		  		<a href="#ord_cart_section"><button type="button" id="banner_btn">장바구니에담기</button></a> 
-				<div id="ban_name" style="display:none; font-weight:bold; font-size:14px; border:1px solid #fcc; z-index:99;"></div>
-			</div>
-			<!-- 사이드 배너 메뉴 -->
-      
-      		<!-- 주문하기 버튼 -->
-      		<div id="comp_ord_btn" >
-        		<button class="clear" onclick="fnOrderInfoView();"><img src="../assets/img/btn/btn_order.png" alt="주문하기" /></button>
-      		</div>
-      		<!--// 주문하기 버튼 --> 
-    	</div>
-    	<!--// ord_area -->   
-  	</div>
-  	<!--// order_box --> 
-  
-    <!--20130923 장바구니 위치로 화면위치 이동 추가(usa사이트 카피) --> 
-	<div>
-		<a href="#ord_cart_section" id="scrollTopBtn" class="btn_h23 red">0</a>
-	</div>
-	
-  <script type="text/javascript">contents_resize();</script>
-  
-  
-  	<!-- ////////////////////////////////////////////// 슬라이드 박스 시작////////////////////////////////////////////////////// -->
-  	<div id="ord_opt_area" class="side_con" >
-    	<p style="position:relative; left:8px;top:-5px;"> 
-    		<img src="/assets/img/btn/btn_close.gif" alt="슬라이드닫기" onclick="slide_con_close()"/>
-    	</p>
-    	<div class="con"> 
-      		<!--<p style="padding-bottom:10px;"><img src="assets/img/order/img1.png" alt="" onclick="comp_addr()" style="cursor:pointer"/></p>--> 
-    	</div>
-    	<p class="bg_bottom" style="background:url(/assets/img/order/side_bottomBg.png) no-repeat; width:365px; height:15px; position:absolute; bottom:-15px; left:0;"></p>
-  	</div>
-  	<!--// 슬라이드 박스 끝 --> 
-  
-</div>
 <!--// orderWrap --> 
 
 <!-- ///////////////////////////////////////////////////////// 오더옵션에 들어 갈 컨텐츠 모음///////////////////////////////////////////////////////////////////////// --> 

@@ -111,10 +111,10 @@
     		</li>
     		<li class="navItem3"> <a href="/sub.jsp?menuGb=event&menuId=pj_3001">프로모션</a>
       			<ul class="sub">
-        			<li><h2><a href="/sub.jsp?menuGb=event&menuId=pj_3001&subGb=0"><img src="../assets/img/common/m3_s1.gif" alt="진행중인 이벤트" /></a></h2></li>
-        			<li><h2><a href="/sub.jsp?menuGb=event&menuId=pj_3002&subGb=0"><img src="../assets/img/common/m3_s2.gif" alt="지난 이벤트" /></a></h2></li>
-        			<li><h2><a href="/sub.jsp?menuGb=event&menuId=pj_3003&subGb=0"><img src="../assets/img/common/m3_s3.gif" alt="매장별 이벤트" /></a></h2></li>
-        			<li><h2><a href="/sub.jsp?menuGb=event&menuId=pj_3004&subGb=0"><img src="../assets/img/common/m3_s4.gif" alt="스페셜할인 이벤트" /></a></h2></li>
+        			<li><h2><a href="listAction2.action"><img src="../assets/img/common/m3_s1.gif" alt="진행중인 이벤트" /></a></h2></li>
+        			<li><h2><a href="pastlistAction.action"><img src="../assets/img/common/m3_s2.gif" alt="지난 이벤트" /></a></h2></li>
+        			<li><h2><a href="storelistAction.action"><img src="../assets/img/common/m3_s3.gif" alt="매장별 이벤트" /></a></h2></li>
+        			<li><h2><a href="speciallistAction.action"><img src="../assets/img/common/m3_s4.gif" alt="스페셜할인 이벤트" /></a></h2></li>
       			</ul>
     		</li>
     		<li class="navItem4"> <a href="/sub.jsp?menuGb=story&menuId=pj_4001">파파존스이야기</a>
@@ -128,8 +128,9 @@
     		</li>
     		<li class="navItem5"> <a href="/sub.jsp?menuGb=customer&menuId=pj_5001">고객센터</a>
       			<ul class="sub">
-        			<li><h2><a href="/sub.jsp?menuGb=customer&menuId=pj_5001"><img src="../assets/img/common/m5_s1.gif" alt="공지사항" /></a></h2></li>
-        			<li><h2><a href="/sub.jsp?menuGb=customer&menuId=pj_5002"><img src="../assets/img/common/m5_s2.gif" alt="Q&A" /></a></h2></li>
+        			<!-- <li><h2><a href="/sub.jsp?menuGb=customer&menuId=pj_5001"><img src="../assets/img/common/m5_s1.gif" alt="공지사항" /></a></h2></li> -->
+        			<li><h2><a href="listAction.action"><img src="../assets/img/common/m5_s1.gif" alt="공지사항" /></a></h2></li>
+        			<li><h2><a href="qnalistAction.action"><img src="../assets/img/common/m5_s2.gif" alt="Q&A" /></a></h2></li>
         			<li><h2><a href="/sub.jsp?menuGb=customer&menuId=pj_5003"><img src="../assets/img/common/m5_s3.gif" alt="제휴카드안내" /></a></h2></li>
         			<li><h2><a href="/sub.jsp?menuGb=customer&menuId=pj_5004"><img src="../assets/img/common/m5_s4.gif" alt="매장안내" /></a></h2></li>
       			</ul>

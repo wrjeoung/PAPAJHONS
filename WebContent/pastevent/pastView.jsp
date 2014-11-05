@@ -15,9 +15,6 @@
 	<tr height="30" align="center">
 		<td align="center" width="100">${vo.subject }<br/><font style="margin-left: 150px">기간:${vo.day}</font></td>
 	</tr>
-	<%-- <tr height="30" align="center">
-		<td align="center" width="100">${vo.reg_date }</td>
-	</tr> --%>
 	<tr height="500" align="center"><pre>${vo.content }</pre>
 		<td align="center" width="100"><img src="../save4/${vo.file_savname }"></td>
 	</tr>
@@ -33,6 +30,23 @@
 		</td>
 	</tr>
 </table>
+</form>
+<br/>
+<table border="1" width="600" cellpadding="0" cellspacing="0" align="center">
+	<c:forEach var="vo2" items="${list3 }">
+		<tr height="30">
+			<td width="100">${vo2.reg_date }</td>
+		</tr>
+		<tr height="50">
+			<td width="100">${vo2.content }</td>
+		</tr>
+	</c:forEach>
+</table>
+
+<form action="pastRewriteAction.action" method="post">
+	<input type="hidden" name="num" value="${num }">
+	<textarea rows="5" cols="125" name="content"></textarea>
+	<input type="submit" value="댓글쓰기"/>
 </form>
 </body>
 </html>
