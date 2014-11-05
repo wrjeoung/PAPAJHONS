@@ -7,6 +7,7 @@
 <script type="text/javascript" src="../assets/js/json2.js"></script>
 <script type="text/javascript" src="../assets/js/cart.js"></script>
 <script type="text/javascript" src="../assets/js/topping.js"></script>
+<link type="text/css" rel="stylesheet" href="../assets/css/order.css" />
 <script type="text/javascript">
     var root = ""; 
 	var sessionOrdInfo = null;
@@ -223,7 +224,10 @@
 	function fnOrderPizza(menuid,imagepathorder,consist)
     {
 		var price = $("input[name=pSize_1]:checked").val();
-		alert(menuid + '\n' + imagepathorder + '\n'+ price + '\n' + consist + '\n' ) ;
+		var bt = $('input:radio[name=pSize_1]').attr("checked",true);
+		
+		
+		alert(menuid + '\n' + imagepathorder + '\n'+ price + '\n' + consist + '\n' + bt) ;
 		document.frmOrder.onlineGroupCd.value = onlineGroupCd;							// 온라인메뉴그룹
     	document.frmOrder.pizzaSelIdx.value   = pizzaSelIdx;							// 선택피자그룹메뉴
     	document.frmOrder._menuid.value = menuid; 										// 메뉴 id
@@ -2884,7 +2888,7 @@
 									<img src='${li.imagepathorder}' alt='${li.name}' title='${li.name}' onerror="this.src='/assets/img/order/menu/noImage_ord.png'" />
 								</p> 
 								<p class='name' id='pName_1'>${li.name}</p> 
-								<p><button type='button' id='basket_1' name='basket_1' onclick="fnOrderPizza('${li.menuid}','${li.imagepathorder}','${ li.consist}');">장바구니에담기</button></p> 
+								<p><button type='button' id='basket_1' name='basket_1' onclick="fnOrderPizza('${li.menuid}','${li.imagepathorder}','${ li.consist}');">주문하기</button></p> 
 							</div>
 							<!--// item_left --> 
 							<!--// item_right -->
