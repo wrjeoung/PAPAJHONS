@@ -38,9 +38,9 @@
 		
 		<select id="selectBydate" resultMap="myorderRes">
 			<include refid="select-all" />
-			WHERE reg_date > #sdate# OR reg_date = #sdate#
+			WHERE id = #memId#
 			AND #edate# > reg_date OR #edate# = reg_date
-			AND id = #memId# 
+			AND reg_date > #sdate# OR reg_date = #sdate#
 			ORDER BY no DESC
 		</select>		
 		

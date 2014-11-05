@@ -274,7 +274,8 @@
 		
 		<action name="myorderListProAction" class="papa.member.MyOrderAction">
 		    <interceptor-ref name="ibatis"></interceptor-ref>
-		    <interceptor-ref name="params"></interceptor-ref>		
+		    <interceptor-ref name="params"></interceptor-ref>
+		    <interceptor-ref name="servletConfig"/>		
 			<result>/mypage/listPro.jsp</result>
 		</action>									
 										
