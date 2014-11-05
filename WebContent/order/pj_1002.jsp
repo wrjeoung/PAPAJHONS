@@ -201,8 +201,23 @@
     	document.frmOrder.action              = "orderAction.action";
     	document.frmOrder.target              = "_self";
     	document.frmOrder.submit();
-	}      
+	}
     
+	// 장바구니
+	function fnOrderBox(menuid,imagepathorder,price,consist)
+    {
+		alert(menuid + '\n' + imagepathorder + '\n'+document.getElementById("cnt_opt").value +'\n'+price+'\n'+consist) ;		
+		document.frmOrder.onlineGroupCd.value = onlineGroupCd;							// 온라인메뉴그룹
+    	document.frmOrder.pizzaSelIdx.value   = pizzaSelIdx;							// 선택피자그룹메뉴
+    	document.frmOrder._menuid.value = menuid; 										// 메뉴 id
+    	document.frmOrder._imagepathorder.value = imagepathorder; 						// 온라인주문 메뉴 이미지경로
+    	document.frmOrder._cnt_opt.value = document.getElementById("cnt_opt").value; 	// 수량
+    	document.frmOrder._price.value = price; 										// 가격
+    	document.frmOrder._consist.value = consist; 									// 구성요소
+    	document.frmOrder.action              = "orderBoxAction.action";
+    	document.frmOrder.target              = "_self";
+    	document.frmOrder.submit();
+	}
     
     // 세트메뉴, 하프&하프, E쿠폰 화면표시 및 검색
     function fnViewDiv(val)
@@ -2758,7 +2773,14 @@
 	<input type="hidden" id="ecopMenuPrice"       name="ecopMenuPrice"       value="" />  <!-- E쿠폰메뉴단가              -->
 	<input type="hidden" id="ecopMenuDiscAmt"     name="ecopMenuDiscAmt"     value="" />  <!-- E쿠폰메뉴할인금액          -->
 	<input type="hidden" id="ecopMenuSaleAmt"     name="ecopMenuSaleAmt"     value="" />  <!-- E쿠폰메뉴판매금액          -->
-	<input type="hidden" id="ecopMenuSize"        name="ecopMenuSize"        value="" />  <!-- E쿠폰메뉴사이즈            -->
+	<input type="hidden" id="ecopMenuSize"        name="ecopMenuSize"        value="" />  <!-- E쿠폰메뉴사이즈            -->	
+	<!-- 주문  -->
+	<input type="hidden" id="_menuid"         name="_menuid"          value="" />  <!-- 메뉴 id				-->
+	<input type="hidden" id="_imagepathorder" name="_imagepathorder"  value="" />  <!-- 온라인주문 메뉴 이미지 경로	-->
+	<input type="hidden" id="_cnt_opt"        name="_cnt_opt"         value="" />  <!-- 수량					-->
+	<input type="hidden" id="_price"          name="_price"           value="" />  <!-- 금액					-->
+	<input type="hidden" id="_consist"        name="_consist"         value="" />  <!-- 메뉴 구성				-->
+	
 
 	<!-- 메뉴 -->
 	<!-- con_container -->
@@ -3023,13 +3045,15 @@
 					<!-- //item -->
 					<!-- 세트 메뉴 -->
 					<c:if test="${ li.menuid eq 'pj_2011' }">
+						<c:set var="price" value="${li.setprice}"/>
+						<c:set var="price" value="${fn:substring(price,0,fn:length(price)-1) }"/>
 						<div id="set_section" class="" style="display: block;">
 							<div class="set_items has-js" id="set_30348"> 
 								<p class="image">
-									<img src="../assets/img/order/menu/60/30348_ord.png" width="220" height="140" alt="50% 할인 수퍼파파스 베스트 세트 메뉴" title="50% 할인 수퍼파파스 베스트 세트 메뉴">
+									<img src="${li.imagepathorder }" width="220" height="140" alt="${li.name }" title="${li.name }" id="orderimage">
 								</p>
-								<p class="name" id="setNm"><c:out value="${li.name }"/><span class="size">(2-3인용)</span></p>
-								<p class="btn_cart" onclick="fnAddSet($(this),'30348','20','50','','3020','');">
+								<p class="name" id="setNm"><c:out value="${li.name }" /><span class="size">(2-3인용)</span></p>
+								<p class="btn_cart" onclick="fnOrderBox('${li.menuid}','${li.imagepathorder}','${price}','${ li.consist}');">
 									<button type="button">장바구니에담기</button>
 								</p>
 								<p class="description">
@@ -3038,8 +3062,7 @@
 								</p>
 								<div class="size_prc">
 									<input type="hidden" name=" " value=" ">
-									<c:set var="text" value="${li.setprice}"/>
-									<p class="set_price">${ fn:substring(text,0,fn:length(text)-1) } </p>
+									<p class="set_price">${price } </p>
 									<p style="width:40px; position:absolute; top:10px; left:140px;">수량 : </p>
 									<p class="selcet_count">
 										<select id="cnt_opt" name="cnt_opt">
@@ -3455,192 +3478,7 @@
 
 <!-- ///////////////////////////////////////////////////////////// 장바구니 구역 //////////////////////////////////////////////////////////////////// -->
 <!-- orderWrap --> 
-<div id="orderWrap">
-  	<!-- order_box --> 
-  	<div id="order_box">
-    	<p class="top"></p>
-    	<p class="bottom"></p>
-    	<!-- ord_area -->   
-    	<div id="ord_area" style="padding:5px 20px">
-      		<!-- ord_tracking_section -->
-      		<div id="ord_tracking_section">
-        		<p class="tracking"></p>
-      		</div>
-      		<!--// ord_tracking_section -->
-      
-      		<!-- ord_title -->
-      		<div id="ord_title">
-            	<h2><img src="../assets/img/order/tit_order.gif" alt="장바구니" /></h2>
-        		<p class="ord_reset"> <span class="btn_h23 green"><button type="button" onclick="javascript:fnClearCart();">초기화</button></span></p>
-      		</div>
-      		<!--// ord_title -->
-      
-      		<!-- ord_cart_section --> 
-      		<div id="ord_cart_section" class="section_box">
-        		<p class="section_top"></p>
-        		<p class="section_bottom"></p>
-        		<!-- cart_list_section -->
-        		<div id="cart_list_section">
-            		<h3 class="section_title"><img src="../assets/img/order/order_rboxTitle_ordList.gif" alt="주문목록" /></h3>
-          			<!-- section_con --> 
-          			<div class="section_con"> 
-            			<!-- 주문 리스트 :max-height:140px; -->
-						<ul id="ord_list" >
 
-						</ul>
-            			<!--// 주문 리스트 --> 
-          			</div>
-          			<!--// section_con --> 
-        		</div>
-        		<!-- cart_list_section -->
-        
-        	<script type="text/javascript">
-				document.frmOrder.cartOrdCustName.value     = "";      // 고객명
-				document.frmOrder.cartOrdCustPhone.value    = "";     // 전화번호
-				document.frmOrder.cartOrdDevide.value       = "";        // 주문구분(주문유형)
-				document.frmOrder.cartOrdReserve.value      = "";       // 예약주문여부
-				document.frmOrder.cartOrdResDate.value      = "";       // 예약일자
-				document.frmOrder.cartOrdResTime.value      = "";       // 예약시간
-				document.frmOrder.cartOrdDevAddr1.value     = "";      // 배달지주소1
-				document.frmOrder.cartOrdDevAddr2.value     = "";      // 배달지주소2
-				document.frmOrder.cartOrdDevAddr3.value     = "";      // 배달지주소3
-				document.frmOrder.cartOrdDevAddr4.value     = "";      // 배달지주소4
-				document.frmOrder.cartOrdAddressID.value    = "";     // ADDRESS_ID
-				document.frmOrder.cartOrdStoreCode.value    = "";     // 매장코드
-				document.frmOrder.cartOrdStoreName.value    = "";     // 매장명
-				document.frmOrder.cartOrdSectorCode.value   = "";    // 매장섹터코드
-				document.frmOrder.cartOrdSectorName.value   = "";    // 매장섹터명
-				document.frmOrder.cartOrdDeliveryTime.value = "";  // 섹터예상시간
-				document.frmOrder.cartOrdDeliveryYN.value   = "";    // 배달가능여부
-				document.frmOrder.cartOrdNewAddressYN.value = "";  // 배달지주소신규추가여부
-
-				$("#btn_addr").removeClass("active");
-				$("#btn_store").removeClass("active");
-				
-				var sector = "주소는 ";
-				var ordType = "배달";
-				var serviceable_time =  "" + "분~" + ( parseInt( "") +10 ) + "분"; 
-        		if( "" == "10" ) 
-        		{ 
-        			radio_btn($("#btn_addr"));      
-    				$("#ord_optInfo_section .store_title").text("배달매장");
-    				$("#ord_optInfo_section .addr_title").text("배달주소");
-//    				$("#ord_optInfo_section .time_title").text("배달시간");
-        		}
-        		if( "" == "20" ) 
-        		{ 
-        			radio_btn($("#btn_store"));     
-    				$("#ord_optInfo_section .store_title").text("방문매장");
-    				$("#ord_optInfo_section .addr_title").text("매장주소");
-// 	  				$("#ord_optInfo_section .time_title").text("방문시간");
-    				sector = "매장은 ";
-					ordType = "포장";
-					serviceable_time = ( parseInt( "") -15 ) + "분~" + ( parseInt( "") -10 ) + "분"; 
-        		} 
-
-				$sect_info.html("<br><span class='txt_green'>선택하신 "+sector +"주문이 완료된 후<br><span class='txt_point'>"+ serviceable_time +"</span>의 " +ordType+"시간이 소요됩니다. 예약 시간은 결제 화면에서 변경하실 수 있습니다.</span>");
-				//contents_resize();
-			</script>
-        
-        		<!-- cart_opt_section--> 
-        		<div id="cart_opt_section" >
-        			<%-- <h3 class="section_title"><img src="../assets/img/order/order_rboxTitle_ordway.gif" alt="주문방법선택" /></h3>  --%>
-          			<!-- section_con--> 
-            		<div class="section_con" id="cart_opt_section">
-            			<!-- 배달 / 방문포장  시작-->
-            			<%-- 
-	            		<div id="cart_btn_ordWay1">
-	              			<p style="height:40px" class="radio">
-	                			<a href="#ord_area">	<!-- 버튼 클릭 시 화면 상단으로 이동 : 슬라이드가 안보이게 스크롤 되어있는 경우-->
-	                				<button type="button" id="btn_addr"  class="btn_radio  btn_addr clear  " style="width:95px; display:block; float:left;" >
-	                					<img src="/assets/img/btn/btn_bigRed_delivery.png" alt="배달"/>
-	                				</button>
-	                				<button type="button" id="btn_store" class="btn_radio  btn_store clear " style="width:95px; display:block; float:left;"> 
-	                					<img src="/assets/img/btn/btn_bigRed_visit.png"    alt="방문포장"/>
-	                				</button>
-	                			</a>
-	              			</p>
-	            		</div>
-	            		--%>
-             			<!-- 배송지정보  시작-->
-            			<div id="ord_optInfo_section" style="display:none" >
-              				<h3 class="section_title"><img src="/assets/img/order/order_rboxTitle_addrInfo.gif" alt="배송지정보" /></h3>
-              				<div class="rBox_con">
-                				<p style="padding:2px 0 2px 5px"><span style="font-weight:bold">수령인</span> : <span class="mem_name"></span></p>
-                				<p style="padding:2px 0 2px 5px"><span style="font-weight:bold">연락처</span> : <span class="mem_phone"></span></p>
-                				<p style="padding:2px 0 2px 5px"><span style="font-weight:bold" class="store_title">방문매장</span> : <span class="store_name"></span></p>
-                				<p style="padding:2px 0 2px 5px"><span style="font-weight:bold" class="addr_title">매장주소</span> : <span class="addr"></span></p>
-                				
-                				<p style="padding:3px" class="sect_info bold"></p>
-              				</div>
-              				<p class="rBox_top"></p>
-              				<p class="rBox_bottom"></p>
-            			</div>
-            			<!-- 배송지정보 끝 --> 
-          			</div>
-          			<!--// section_con--> 
-        		</div>
-        		<!--// cart_opt_section--> 
-      		</div>
-      		<!--// ord_cart_section --> 
- 
-      		<!-- 합계 -->
-      		<div id="ord_total" >
-        		<p><img src="../assets/img/order/order_total_title.gif" alt="총주문금액"/><span class="price">0원</span></p>
-      		</div>
-      		<!-- //합계 --> 
-      
-		 	<!-- 장바구니 영역 사이드 추천메뉴 배너 추가 -->
-		 	<div id="side_banner" >
-		  		<div id="banner_content">
-				<!-- 사이드에 들어갈 메뉴 데이터를 뿌려줌 :이미지이름과 메뉴 코드 동일하게 만들기 -->
-
-					<img id="50501" src="../assets/img/order/banner/bn_50501.png" alt="코카콜라 1.25L" title="코카콜라 1.25L"  onerror="fnNoImages($(this));"/>
-				  	<input type="hidden" id="bnMenuInfo" name="bnMenuInfo" value="50501,코카콜라 1.25L,10,40,4020,3013,,1600,1.25L,"/> 
-
-					<img id="50268" src="../assets/img/order/banner/bn_50268.png" alt="스프라이트1.5L" title="스프라이트1.5L"  onerror="fnNoImages($(this));"/>
-				  	<input type="hidden" id="bnMenuInfo" name="bnMenuInfo" value="50268,스프라이트1.5L,10,40,4009,3014,,1900,1.5L,"/> 
-
-					<img id="50485" src="../assets/img/order/banner/bn_50485.png" alt="환타1.5L" title="환타1.5L"  onerror="fnNoImages($(this));"/>
-				  	<input type="hidden" id="bnMenuInfo" name="bnMenuInfo" value="50485,환타1.5L,10,40,4010,3014,,1900,1.5L,"/> 
-
-				</div>
-		  		<a href="#ord_cart_section"><button type="button" id="banner_btn">장바구니에담기</button></a> 
-				<div id="ban_name" style="display:none; font-weight:bold; font-size:14px; border:1px solid #fcc; z-index:99;"></div>
-			</div>
-			<!-- 사이드 배너 메뉴 -->
-      
-      		<!-- 주문하기 버튼 -->
-      		<div id="comp_ord_btn" >
-        		<button class="clear" onclick="fnOrderInfoView();"><img src="../assets/img/btn/btn_order.png" alt="주문하기" /></button>
-      		</div>
-      		<!--// 주문하기 버튼 --> 
-    	</div>
-    	<!--// ord_area -->   
-  	</div>
-  	<!--// order_box --> 
-  
-    <!--20130923 장바구니 위치로 화면위치 이동 추가(usa사이트 카피) --> 
-	<div>
-		<a href="#ord_cart_section" id="scrollTopBtn" class="btn_h23 red">0</a>
-	</div>
-	
-  <script type="text/javascript">contents_resize();</script>
-  
-  
-  	<!-- ////////////////////////////////////////////// 슬라이드 박스 시작////////////////////////////////////////////////////// -->
-  	<div id="ord_opt_area" class="side_con" >
-    	<p style="position:relative; left:8px;top:-5px;"> 
-    		<img src="/assets/img/btn/btn_close.gif" alt="슬라이드닫기" onclick="slide_con_close()"/>
-    	</p>
-    	<div class="con"> 
-      		<!--<p style="padding-bottom:10px;"><img src="assets/img/order/img1.png" alt="" onclick="comp_addr()" style="cursor:pointer"/></p>--> 
-    	</div>
-    	<p class="bg_bottom" style="background:url(/assets/img/order/side_bottomBg.png) no-repeat; width:365px; height:15px; position:absolute; bottom:-15px; left:0;"></p>
-  	</div>
-  	<!--// 슬라이드 박스 끝 --> 
-  
-</div>
 <!--// orderWrap --> 
 
 <!-- ///////////////////////////////////////////////////////// 오더옵션에 들어 갈 컨텐츠 모음///////////////////////////////////////////////////////////////////////// --> 

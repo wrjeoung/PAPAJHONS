@@ -22,6 +22,10 @@
 			<interceptor-ref name="params"/>
 			<result>/order/pj_1002.jsp</result>
 		</action>
+		
+		<action name="orderBoxAction" class="order.OrderBoxAction">
+			<result>/order/order_box_cookie.jsp</result>
+		</action>
 	</package>
 	
 	<!-- 메뉴  -->
