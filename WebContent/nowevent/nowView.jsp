@@ -11,15 +11,15 @@
 <center><b>진행중인 이벤트</b>
 <br>
 <form>
-<table width="1000" border="1" cellspacing="0" cellpadding="0" align="center">
+<table width="600" border="1" cellspacing="0" cellpadding="0" align="center">
 	<tr height="30" align="center">
-		<td align="center" width="100">${vo.subject }</td>
+		<td align="center" width="100">${vo.subject }<br/><font style="margin-left: 150px">기간:${vo.day}</font></td>
 	</tr>
-	<tr height="30" align="center">
+	<%-- <tr height="30" align="center">
 		<td align="right" width="100">${vo.day }</td>
-	</tr>
+	</tr> --%>
 	<tr height="500" align="center">
-		<td align="left" width="100" colspan="3"><img src="../save2/${vo.file_savname2 }"></td>
+		<td align="center" width="100"><img src="../save2/${vo.file_savname2 }"></td>
 	</tr>
 	<tr>
 		<td align="center" colspan="2">
@@ -35,17 +35,19 @@
 </table>
 </form>
 <br/>
-<c:if test="${totalCount==0 }">
-	<table width="900" border="1" cellpadding="0" cellspacing="0">
-		<tr>
-			<td align="center">
-				게시판에 저장된 글이 없습니다.
-			</td>
+<table border="1" width="600" cellpadding="0" cellspacing="0" align="center">
+	<c:forEach var="vo" items="${list2 }">
+		<tr height="30">
+			<td width="100">${vo.reg_date }</td>
 		</tr>
-	</table>
+		<tr height="50">
+			<td width="100">${vo.content }</td>
+		</tr>
+	</c:forEach>
+</table>
 
-</c:if>
 <form action="RewriteAction.action" method="post">
+	<input type="hidden" name="num" value="${num }">
 	<textarea rows="5" cols="125" name="content"></textarea>
 	<input type="submit" value="댓글쓰기"/>
 </form>

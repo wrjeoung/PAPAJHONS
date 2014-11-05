@@ -4,9 +4,10 @@
 	
 	<typeAlias alias="reple" type="nowevent.board.reVO"/>
 		<resultMap id="repleRes" class="reple">
-			<result property="num" column="num"/>
+			<result property="num1" column="num1"/>
 			<result property="content" column="content"/>
 			<result property="reg_date" column="reg_date"/>
+			<result property="num" column="num"/>
 		</resultMap>
 	
 	
@@ -15,13 +16,12 @@
 	</sql> 
 	<!-- 댓글 쓰기 -->
 	<insert id="insertReple" parameterClass="reple">
-		INSERT INTO REPLE(NUM,CONTENT,REG_DATE)
-		VALUES(REPlE_NUM_SEQ.NEXTVAL,#content#,#reg_date#)
+		INSERT INTO REPLE(NUM1,CONTENT,REG_DATE,NUM)
+		VALUES(REPLE_NUM1_SEQ.NEXTVAL,#content#,#reg_date#,#num#)
 	</insert>
 	
 	<!-- 댓글 보기 -->
 	<select id="selectRe" resultMap="repleRes" parameterClass="int">
-		<include refid="select-all"/>
-		ORDER BY num DESC
+		SELECT * FROM REPLE WHERE num=#num#
 	</select>
 </sqlMap>
