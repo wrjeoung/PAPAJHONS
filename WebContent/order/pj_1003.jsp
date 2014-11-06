@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -47,7 +47,7 @@
 	$(document).ready(function()
 	{	
  		$('#viewLoading').fadeOut();
- 		$('#viewLoading')	// ajax ½ÇÇà ¹× ¿Ï·á½Ã 'Loading ÀÌ¹ÌÁö'ÀÇ µ¿ÀÛ ÄÁÆ®·ÑÇÏ±â
+ 		$('#viewLoading')	// ajax ì‹¤í–‰ ë° ì™„ë£Œì‹œ 'Loading ì´ë¯¸ì§€'ì˜ ë™ì‘ ì»¨íŠ¸ë¡¤í•˜ê¸°
 		.ajaxStart(function()
 		{  
 			$(this).fadeIn(500);
@@ -57,21 +57,21 @@
 			$(this).fadeOut(500);
 		});
 
- 		//20140527 ¿­·ÁÀÖ´Â È­¸é »çÀÌÁî¿¡ µû¶ó ÀÀ¸ğ ÆË¾÷ À§Ä¡ º¯°æ
+ 		//20140527 ì—´ë ¤ìˆëŠ” í™”ë©´ ì‚¬ì´ì¦ˆì— ë”°ë¼ ì‘ëª¨ íŒì—… ìœ„ì¹˜ ë³€ê²½
 // 		var $ev_page = $("#worldCupEvent");
 // 		var top = ($(window).height()/2)-($ev_page.height()/2);
 // 		$ev_page.css("top",top+"px");
 	});
 </script>
 <script type="text/javascript">
-	//20140702 ÄÜ¼Ö·Î±× ie ¿À·ù ¸·±â
+	//20140702 ì½˜ì†”ë¡œê·¸ ie ì˜¤ë¥˜ ë§‰ê¸°
 	var console = window.console || {log:function(){}};
 </script>
-<title>ÆÄÆÄÁ¸½º-Better Ingredients.Better Pizza.</title>
+<title>íŒŒíŒŒì¡´ìŠ¤-Better Ingredients.Better Pizza.</title>
 </head>
 <body>
 	<div id="skipNavi">
-		<a href="#gnb">¸Ş´º ¹Ù·Î°¡±â</a> <a href="#contents">º»¹®¹Ù·Î°¡±â</a>
+		<a href="#gnb">ë©”ë‰´ ë°”ë¡œê°€ê¸°</a> <a href="#contents">ë³¸ë¬¸ë°”ë¡œê°€ê¸°</a>
 	</div>
 
 	<!-- wrap -->
@@ -87,7 +87,7 @@
 			<!-- con_header -->
 			<div class="con_header">
 				<p>
-					<!-- Å¸ÀÌÆ² -->
+					<!-- íƒ€ì´í‹€ -->
 				</p>
 			</div>
 			<!-- //con_header -->
@@ -96,54 +96,54 @@
 			<div id="content_area">
 				
 				<form name="frmOrderChk" id="frmOrderChk" method="post">
-					<!-- ½Å¿ëÄ«µå °áÁ¦¿ë -->
+					<!-- ì‹ ìš©ì¹´ë“œ ê²°ì œìš© -->
 					<input type="hidden" id="storeCode" name="storeCode" value="1038" />
-					<!-- ¸ÅÀåÄÚµå            -->
+					<!-- ë§¤ì¥ì½”ë“œ            -->
 					<input type="hidden" id="storeCardId" name="storeCardId"
 						value="120600810054" />
-					<!-- KG¸ğºô¸®¾ğ½º ¸ÅÀåID -->
+					<!-- KGëª¨ë¹Œë¦¬ì–¸ìŠ¤ ë§¤ì¥ID -->
 					<input type="hidden" id="paymentAmt" name="paymentAmt" value="" />
-					<!-- °áÁ¦±İ¾×            -->
-					<!-- Æ÷ÀÎÆ® °áÁ¦¿ë -->
+					<!-- ê²°ì œê¸ˆì•¡            -->
+					<!-- í¬ì¸íŠ¸ ê²°ì œìš© -->
 					<input type="hidden" id="pointCardCompany" name="pointCardCompany"
 						value="" />
-					<!-- Æ÷ÀÎÆ®Ä«µåÈ¸»ç      -->
+					<!-- í¬ì¸íŠ¸ì¹´ë“œíšŒì‚¬      -->
 					<input type="hidden" id="pointCardNumber" name="pointCardNumber"
 						value="" />
-					<!-- Æ÷ÀÎÆ®Ä«µå¹øÈ£      -->
+					<!-- í¬ì¸íŠ¸ì¹´ë“œë²ˆí˜¸      -->
 					<input type="hidden" id="pointApprNumber" name="pointApprNumber"
 						value="" />
-					<!-- Æ÷ÀÎÆ®½ÂÀÎ¹øÈ£      -->
+					<!-- í¬ì¸íŠ¸ìŠ¹ì¸ë²ˆí˜¸      -->
 					<input type="hidden" id="pointDiscAmount" name="pointDiscAmount"
 						value="0" />
-					<!-- ÇÒÀÎÆ÷ÀÎÆ®±İ¾×      -->
+					<!-- í• ì¸í¬ì¸íŠ¸ê¸ˆì•¡      -->
 					<input type="hidden" id="pointUseAmount" name="pointUseAmount"
 						value="0" />
-					<!-- »ç¿ëÆ÷ÀÎÆ®±İ¾×      -->
+					<!-- ì‚¬ìš©í¬ì¸íŠ¸ê¸ˆì•¡      -->
 					<input type="hidden" id="pointUseRate" name="pointUseRate" value="0" />
-					<!-- »ç¿ëÆ÷ÀÎÆ®À²        -->
+					<!-- ì‚¬ìš©í¬ì¸íŠ¸ìœ¨        -->
 					<input type="hidden" id="pointCustGrade" name="pointCustGrade" value="" />
-					<!-- Æ÷ÀÎÆ®°í°´µî±Ş      -->
+					<!-- í¬ì¸íŠ¸ê³ ê°ë“±ê¸‰      -->
 					<input type="hidden" id="pointCouponCode" name="pointCouponCode"
 						value="" />
-					<!-- Æ÷ÀÎÆ®ÄíÆùÄÚµå      -->
-					<!-- ÁÖ¹®Á¤º¸ -->
+					<!-- í¬ì¸íŠ¸ì¿ í°ì½”ë“œ      -->
+					<!-- ì£¼ë¬¸ì •ë³´ -->
 					<input type="hidden" id="beforeCardPay" name="beforeCardPay" value="" />
-					<!-- ¼±°áÁ¦Á¤º¸ÀúÀå      -->
+					<!-- ì„ ê²°ì œì •ë³´ì €ì¥      -->
 					<input type="hidden" id="orderNumber" name="orderNumber" value="" />
-					<!-- ÁÖ¹®¹øÈ£            -->
-					<!-- ÇÒÀÎ¼±ÅÃ±¸ºĞ -->
+					<!-- ì£¼ë¬¸ë²ˆí˜¸            -->
+					<!-- í• ì¸ì„ íƒêµ¬ë¶„ -->
 					<input type="hidden" id="discountChoice" name="discountChoice" value="" />
 					<input type="hidden" id="orderDiscountAmt" name="orderDiscountAmt"
 						value="0" />
-					<!-- ÇÒÀÎ±İ¾× °è»ê(ÇÁ·Î¸ğ¼Ç) -->
+					<!-- í• ì¸ê¸ˆì•¡ ê³„ì‚°(í”„ë¡œëª¨ì…˜) -->
 					<input type="hidden" id="promotionCouponDisAmt"
 						name="promotionCouponDisAmt" value="0" />
-					<!-- ÇÒÀÎ±İ¾× °è»ê(ÇÁ·Î¸ğ¼ÇÇÒÀÎ ÄíÆù ¼± ¼±ÅÃ) -->
-					<!-- ÄíÆùÀû¿ë±¸ºĞ -->
+					<!-- í• ì¸ê¸ˆì•¡ ê³„ì‚°(í”„ë¡œëª¨ì…˜í• ì¸ ì¿ í° ì„  ì„ íƒ) -->
+					<!-- ì¿ í°ì ìš©êµ¬ë¶„ -->
 					<input type="hidden" id="couponSelectedYn" name="couponSelectedYn"
 						value="N" />
-					<!-- ´õºíÄíÆù±¸ºĞ -->
+					<!-- ë”ë¸”ì¿ í°êµ¬ë¶„ -->
 					<input type="hidden" id="couponDoubleUsed" name="couponDoubleUsed"
 						value="N" />
 
@@ -152,19 +152,19 @@
 						<!-- conternts -->
 						<div id="contents" style="background: #fff">
 							<h2 class="hidden">
-								<!--¿À¸®Áö³Î ¾À-->
+								<!--ì˜¤ë¦¬ì§€ë„ ì”¬-->
 							</h2>
 							<!-- cont -->
 							<div class="cont" style="min-height: 290px">
 								<!-- conf_section -->
 								<div id="conf_section">
-									<!-- ÁÖ¹®³»¿ª¸®½ºÆ® ½ÃÀÛ(conf_ord_list)-->
+									<!-- ì£¼ë¬¸ë‚´ì—­ë¦¬ìŠ¤íŠ¸ ì‹œì‘(conf_ord_list)-->
 									<dl id="conf_ord_list" class="border">
 										<dt id="list_leader">
-											<span class="name"> Á¦Ç°¸í </span> <span class="size"> »çÀÌÁî </span> <span
-												class="count"> ¼ö·® </span> <span class="unit_price"> ±İ¾× </span> <span
-												class="discount"> ÇÒÀÎ±İ¾× </span> <span class="disc_comm">
-												ÇÒÀÎ³»¿ë </span>
+											<span class="name"> ì œí’ˆëª… </span> <span class="size"> ì‚¬ì´ì¦ˆ </span> <span
+												class="count"> ìˆ˜ëŸ‰ </span> <span class="unit_price"> ê¸ˆì•¡ </span> <span
+												class="discount"> í• ì¸ê¸ˆì•¡ </span> <span class="disc_comm">
+												í• ì¸ë‚´ìš© </span>
 										</dt>
 										<dd id="list_body">
 											<ul id="menu_list">
@@ -177,20 +177,20 @@
 													var cartPizzaOptionBake   = "";
 													var cartPizzaOptionCut    = "";
 													
-													//ÇÇÀÚ ¿É¼Ç °ª ¼¼ÆÃ
-													if( "" == "20" ) { cartPizzaOptionSauce = "¼Ò½ºÁ¶±İ"; }
-													else if( "" == "30" ) { cartPizzaOptionSauce = "¼Ò½º¸¹ÀÌ"; }
-													else if( "" == "40" ) { cartPizzaOptionSauce = "¼Ò½ºÁ¦¿Ü"; }
+													//í”¼ì ì˜µì…˜ ê°’ ì„¸íŒ…
+													if( "" == "20" ) { cartPizzaOptionSauce = "ì†ŒìŠ¤ì¡°ê¸ˆ"; }
+													else if( "" == "30" ) { cartPizzaOptionSauce = "ì†ŒìŠ¤ë§ì´"; }
+													else if( "" == "40" ) { cartPizzaOptionSauce = "ì†ŒìŠ¤ì œì™¸"; }
 													
-													if( "" == "20" ) { cartPizzaOptionCheese = "Ä¡ÁîÁ¶±İ"; }
-													else if( "" == "30" ) { cartPizzaOptionCheese = "Ä¡ÁîÁ¦¿Ü"; }
+													if( "" == "20" ) { cartPizzaOptionCheese = "ì¹˜ì¦ˆì¡°ê¸ˆ"; }
+													else if( "" == "30" ) { cartPizzaOptionCheese = "ì¹˜ì¦ˆì œì™¸"; }
 													
-													if( "" == "20" ) { cartPizzaOptionBake = "¹Ù½Ï±Á±â"; }
+													if( "" == "20" ) { cartPizzaOptionBake = "ë°”ì‹¹êµ½ê¸°"; }
 													
-													if( "" == "60" ) { cartPizzaOptionCut = "»ç°¢ÄÆÆÃ"; }
-													else if( "" == "20" ) { cartPizzaOptionCut = "6Á¶°¢ÄÆÆÃ"; }
-													else if( "" == "30" ) { cartPizzaOptionCut = "8Á¶°¢ÄÆÆÃ"; }
-													else if( "" == "40" ) { cartPizzaOptionCut = "10Á¶°¢ÄÆÆÃ"; }
+													if( "" == "60" ) { cartPizzaOptionCut = "ì‚¬ê°ì»·íŒ…"; }
+													else if( "" == "20" ) { cartPizzaOptionCut = "6ì¡°ê°ì»·íŒ…"; }
+													else if( "" == "30" ) { cartPizzaOptionCut = "8ì¡°ê°ì»·íŒ…"; }
+													else if( "" == "40" ) { cartPizzaOptionCut = "10ì¡°ê°ì»·íŒ…"; }
 													
 													var menuLi     = $("#conf_ord_list").find("#menu_list>li");
 												 	var optionText = "";
@@ -214,7 +214,7 @@
 															//if( optionText.trim() != "" )
 															if( optionText != "" )
 															{
-																$(this).find("ul .spc_inst").text("<¿É¼Çº¯°æ>"+optionText.replace(/\s/g,", "));	
+																$(this).find("ul .spc_inst").text("<ì˜µì…˜ë³€ê²½>"+optionText.replace(/\s/g,", "));	
 															}
 															else
 															{
@@ -224,63 +224,64 @@
 													});
 												</script>
 				
-												<li id="pizzaMenu_50332_1" class="item_li"><span
-													class="name product">¸¶°¡¸®Å¸ ¿À¸®Áö³Î</span> <span class="size">¶óÁö</span>
-													<span class="count">1</span> <span class="unit_price">21,500</span>
-												<!-- ÇÒÀÎ Àü --> <span class="discount"></span>
-												<!--  ÇÒÀÎ ±İ¾× --> <span class="disc_comm"></span> <!-- ÇÒÀÎµÈ ÀÌÀ¯ ¿¹) ÇÁ·Î¸ğ¼Ç ÇÒÀÎ -->
-				
+												<li id="pizzaMenu_50332_1" class="item_li">
+													<span class="name product">${param._name}</span>
+													<span class="size">${param._size }</span>
+													<span class="count">${param._cnt_opt}</span>
+													<span class="unit_price">${param._price}</span>
+													<!-- í• ì¸ ì „ -->
+													<span class="discount"></span>
+													<!--  í• ì¸ ê¸ˆì•¡ -->
+													<span class="disc_comm"></span>
+													<!-- í• ì¸ëœ ì´ìœ  ì˜ˆ) í”„ë¡œëª¨ì…˜ í• ì¸ -->
 													<span class="hidden_code" style="display: none;">50332_1</span>
-													<input type="hidden" id="menuSmlCode" name="menuSmlCode"
-													value="3002" /> <input type="hidden" id="menuCopCode"
-													name="menuCopCode" value="" /> <!-- 20140624 ÄíÆùÄÚµå --> <input
-													type="hidden" id="menuCopNumber" name="menuCopNumber" value="" />
-													<!-- 20140624 ÄíÆù¹øÈ£ --> <input type="hidden" id="menuCopComp"
-													name="menuCopComp" value="" /> <input type="hidden"
-													id="menuCopOID" name="menuCopOID" value="" />
-				
-													<ul>
-														<li><span class="spc_inst"></span></li>
-													</ul></li>
-													<!-- pizzaMenu ¸®½ºÆ® ³¡ -->
+													<input type="hidden" id="menuSmlCode" name="menuSmlCode" value="3002" /> 
+													<input type="hidden" id="menuCopCode" name="menuCopCode" value="" /> <!-- 20140624 ì¿ í°ì½”ë“œ -->
+													<input type="hidden" id="menuCopNumber" name="menuCopNumber" value="" />
+													<!-- 20140624 ì¿ í°ë²ˆí˜¸ -->
+													<input type="hidden" id="menuCopComp" name="menuCopComp" value="" />
+													<input type="hidden" id="menuCopOID" name="menuCopOID" value="" />
+													<ul><li><span class="spc_inst"></span></li></ul>
+												</li>
+													<!-- pizzaMenu ë¦¬ìŠ¤íŠ¸ ë -->
 													<script type="text/javascript">
 														fnToppingAppend("50332_1", "1", "typePizza") ; 
 													</script>
 					
 				
 													<script type="text/javascript"> 
-							             				$totalOrderAmount    = "21500";     // ÁÖ¹®±İ¾× ÇÕ°è
-							             				$totalDiscountAmount = "0";  // ÇÒÀÎ±İ¾× ÇÕ°è
-							             				$totalCouponPayment  = "0";   // ¼±°áÁ¦ÄíÆùÇÒÀÎ ÇÕ°è
-							             				$totalNetSaleAmount  = "21500";   // ¼ø¸ÅÃâ±İ¾× ÇÕ°è
-							             				$totalPaymentAmount  = "21500";   // °áÁ¦±İ¾× ÇÕ°è
-							             				$totalSetMenuAmount  = "0";   // ¼¼Æ®¸Ş´º±İ¾× ÇÕ°è
-							             				$totalECouponAmount  = "0";   // EÄíÆù±İ¾× ÇÕ°è
+							             				$totalOrderAmount    = "21500";     // ì£¼ë¬¸ê¸ˆì•¡ í•©ê³„
+							             				$totalDiscountAmount = "0";  // í• ì¸ê¸ˆì•¡ í•©ê³„
+							             				$totalCouponPayment  = "0";   // ì„ ê²°ì œì¿ í°í• ì¸ í•©ê³„
+							             				$totalNetSaleAmount  = "21500";   // ìˆœë§¤ì¶œê¸ˆì•¡ í•©ê³„
+							             				$totalPaymentAmount  = "21500";   // ê²°ì œê¸ˆì•¡ í•©ê³„
+							             				$totalSetMenuAmount  = "0";   // ì„¸íŠ¸ë©”ë‰´ê¸ˆì•¡ í•©ê³„
+							             				$totalECouponAmount  = "0";   // Eì¿ í°ê¸ˆì•¡ í•©ê³„
 							             				
 							             				//alert($totalCouponPayment + " / " + $totalECouponAmount);
 							             				
-							             				//20140623 °áÁ¦±İ¾× °è»ê
-							             				var totalPromotionAmount = "0"; // ÇÁ·Î¸ğ¼ÇÇÒÀÎÄíÆù ÇÒÀÎ ÇÕ°è
+							             				//20140623 ê²°ì œê¸ˆì•¡ ê³„ì‚°
+							             				var totalPromotionAmount = "0"; // í”„ë¡œëª¨ì…˜í• ì¸ì¿ í° í• ì¸ í•©ê³„
 							             				if(totalPromotionAmount !="" && totalPromotionAmount != null)
 							             				{
-							             					$totalPaymentAmount = parseInt($totalPaymentAmount, 10) - parseInt(totalPromotionAmount, 10); // °áÁ¦±İ¾× ÇÕ°è
-							             					$totalDiscountAmount = parseInt($totalDiscountAmount, 10) + parseInt(totalPromotionAmount, 10); // ÇÒÀÎ±İ¾× ÇÕ°è
+							             					$totalPaymentAmount = parseInt($totalPaymentAmount, 10) - parseInt(totalPromotionAmount, 10); // ê²°ì œê¸ˆì•¡ í•©ê³„
+							             					$totalDiscountAmount = parseInt($totalDiscountAmount, 10) + parseInt(totalPromotionAmount, 10); // í• ì¸ê¸ˆì•¡ í•©ê³„
 							             				}
 							             				
-							             				// 20140623 ÇÁ·Î¸ğ¼ÇÇÒÀÎ(1002 ÄíÆù¼±ÅÃ)
+							             				// 20140623 í”„ë¡œëª¨ì…˜í• ì¸(1002 ì¿ í°ì„ íƒ)
 							             				$("#promotionCouponDisAmt").val($totalDiscountAmount);
 							             				
 							             				
-							             				//20140519 ÇÃ·¡ÅÍ ¿©·¯°³ÀÎ °æ¿ì ÆË¾÷ °ãÄ§ ¼öÁ¤
-							             				//20140529 ÇÃ·¡ÅÍ ÇÁ·Î¸ğ¼Ç Á¾·á ½Ã À¯ÀÇ»çÇ× ÆË¾÷ ¾ÈÇÔ
+							             				//20140519 í”Œë˜í„° ì—¬ëŸ¬ê°œì¸ ê²½ìš° íŒì—… ê²¹ì¹¨ ìˆ˜ì •
+							             				//20140529 í”Œë˜í„° í”„ë¡œëª¨ì…˜ ì¢…ë£Œ ì‹œ ìœ ì˜ì‚¬í•­ íŒì—… ì•ˆí•¨
 							             				if("N" == "Y" && parseInt(20141105) < 20140601)
 							             				{
-							            					//20140519 ÇÃ·¡ÅÍ ¿©·¯°³ÀÎ °æ¿ì ÆË¾÷ °ãÄ§ ¼öÁ¤
+							            					//20140519 í”Œë˜í„° ì—¬ëŸ¬ê°œì¸ ê²½ìš° íŒì—… ê²¹ì¹¨ ìˆ˜ì •
 							            					popup("#pop_guide");
 							            					$("#pop_guide").find("button").focus();
 							             				}
 							             				
-							             				//20140304 ºñÈ¸¿ø SK ºñÈ°¼ºÈ­ Ã³¸®
+							             				//20140304 ë¹„íšŒì› SK ë¹„í™œì„±í™” ì²˜ë¦¬
 							             				if(loginStatus == "C")
 							             				{
 							             					$("#tel_card1" ).attr("disabled", "true");
@@ -297,9 +298,9 @@
 							           			   	   	{
 															$(this).parent().find('.pay_radio').removeAttr("disabled");
 															
-															// 20140430 ÁÖ¹®±İ¾×ÀÌ EÄíÆù ±İ¾×, ¼¼Æ®¸Ş´º±İ¾× °ú °°À» ¶§
-															// Àå¹Ù±¸´Ï¿¡ EÄíÆù, ¼¼Æ®¸Ş´º(ÇÃ·¡ÅÍÆ÷ÇÔ) ¸¸ ÀÖÀ» ¶§  
-															//20140613 ¼¼Æ®³ª ÇÃ·¡ÅÍ°¡ ÇÏ³ª¶óµµ Æ÷ÇÔµÇ¾î ÀÖÀ¸¸é ÀüÃ¼ÇÒÀÎ ¸·±â ÇÃ·¡±× Ãß°¡
+															// 20140430 ì£¼ë¬¸ê¸ˆì•¡ì´ Eì¿ í° ê¸ˆì•¡, ì„¸íŠ¸ë©”ë‰´ê¸ˆì•¡ ê³¼ ê°™ì„ ë•Œ
+															// ì¥ë°”êµ¬ë‹ˆì— Eì¿ í°, ì„¸íŠ¸ë©”ë‰´(í”Œë˜í„°í¬í•¨) ë§Œ ìˆì„ ë•Œ  
+															//20140613 ì„¸íŠ¸ë‚˜ í”Œë˜í„°ê°€ í•˜ë‚˜ë¼ë„ í¬í•¨ë˜ì–´ ìˆìœ¼ë©´ ì „ì²´í• ì¸ ë§‰ê¸° í”Œë˜ê·¸ ì¶”ê°€
 							                   				if( $totalECouponAmount == $totalNetSaleAmount || $totalSetMenuAmount == $totalPaymentAmount || "Y" =="N" )
 							                 				{
 							        							$("#tel_card1" ).attr("disabled", "true");
@@ -309,7 +310,7 @@
 							                       				if( $totalPaymentAmount == 0 )
 							                     				{
 																	$(this).parent().find('.pay_radio').attr("disabled", "true");
-																	//¹öÆ° ºñÈ°¼º Ç¥½Ã : »ö»ó º¯°æ
+																	//ë²„íŠ¼ ë¹„í™œì„± í‘œì‹œ : ìƒ‰ìƒ ë³€ê²½
 																	$(this).parent().find('.pay_radio span').css("color","#ccc")	;
 							                     				}
 							                 				}
@@ -323,7 +324,7 @@
 								              				$("#ord_account_section2").find("#amount .listAmt" ).text(setComma($totalNetSaleAmount ));
 								              				$("#ord_account_section2").find("#amount .dcAmt"   ).text(setComma($totalDiscountAmount));
 								              				
-								              				//20140304 ÀÌÄíÆù ¸Ş´º°¡ ÀÖ´Â °æ¿ì ±İ¾×¾²°í ¾øÀ¸¸é ¾Èº¸ÀÌ°Ô!!
+								              				//20140304 ì´ì¿ í° ë©”ë‰´ê°€ ìˆëŠ” ê²½ìš° ê¸ˆì•¡ì“°ê³  ì—†ìœ¼ë©´ ì•ˆë³´ì´ê²Œ!!
 								              				if($totalECouponAmount == 0)
 								              				{
 								              					$("#ord_account_section2").find("#amount .eCouponAmt").parent().hide();
@@ -335,7 +336,7 @@
 								              				
 								              				$("#ord_account_section2").find("#amount .totalAmt").text(setComma($totalPaymentAmount ));
 								              				
-								              				fnDiscountAmt(); // 20140623 ÇÒÀÎ¼±ÅÃ > ÄíÆùÇÒÀÎ±İ¾× °è»ê
+								              				fnDiscountAmt(); // 20140623 í• ì¸ì„ íƒ > ì¿ í°í• ì¸ê¸ˆì•¡ ê³„ì‚°
 							
 							                			}
 							             				
@@ -343,23 +344,23 @@
 											</ul>
 										</dd>
 									</dl>
-									<!-- //ÁÖ¹®³»¿ª¸®½ºÆ® ³¡(conf_ord_list) -->
+									<!-- //ì£¼ë¬¸ë‚´ì—­ë¦¬ìŠ¤íŠ¸ ë(conf_ord_list) -->
 								</div>
 								<!--// conf_section -->
 							</div>
 							<!--// cont -->
 						
-							<!-- ÁÖ¹®ÇÏ±â -->	
+							<!-- ì£¼ë¬¸í•˜ê¸° -->	
 							<dl id="conf_discription_section" class="border" style="margin: 10px 0">
-								<dt class="conf_title padd_rl10"><img src="../assets/img/order/conf_title2.gif" alt="Ãß°¡¿äÃ»»çÇ×" /></dt>
+								<dt class="conf_title padd_rl10"><img src="../assets/img/order/conf_title2.gif" alt="ì¶”ê°€ìš”ì²­ì‚¬í•­" /></dt>
 								<dd>
 									<p class="padd_trbl10">
 										<span>
 											<button type="button" onclick='fnOrderInfo($(this));'>
-												<img src="../assets/img/btn/btn_order.png" alt="ÁÖ¹®ÇÏ±â" />
+												<img src="../assets/img/btn/btn_order.png" alt="ì£¼ë¬¸í•˜ê¸°" />
 											</button>
 											<button type="button" onclick="javascript:history.back()">
-												<img src="../assets/img/btn/btn_pre.png" alt="ÀÌÀü´Ü°è" />
+												<img src="../assets/img/btn/btn_pre.png" alt="ì´ì „ë‹¨ê³„" />
 											</button>
 										</span>
 									</p>
@@ -385,12 +386,12 @@
 	</div>
 	<!-- //wrap -->
 
-	<!-- ·Îµù ÀÌ¹ÌÁö -->
+	<!-- ë¡œë”© ì´ë¯¸ì§€ -->
 	<div id="viewLoading">
 		<img src="../assets/img/viewLoading.gif" />
 		<p>Please wait...</p>
 	</div>
-	<!-- //·Îµù ÀÌ¹ÌÁö -->
+	<!-- //ë¡œë”© ì´ë¯¸ì§€ -->
 </body>
 </html>
 
