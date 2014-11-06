@@ -23,7 +23,7 @@ $(document).ready(function(){
 <title>Insert title here</title>
 </head>
 <body>
-<table align="center">
+<table align="left">
 	<tr>
 		<td>
 			<a href="qnalistAction.action"><img src="../assets/img/qna/faq_tab_title1.gif" alt="배송관련"/></a>
@@ -36,18 +36,20 @@ $(document).ready(function(){
 		</td>
 	</tr>
 </table>
-
+<br/>
+<br/>
 <c:forEach var="vo" items="${list5 }">
 	<div>
 		<ul>
 			<li class="q">
-			<a>${vo.qcontent }</a>
+			<a><font size="6">Q:</font>${vo.qcontent }</a>
 			<ul class="a">
-				<li>${vo.acontent }</li>
+				<li><font size="6">A:</font>${vo.acontent }</li>
 			</ul>
 			</li>
 		</ul>
 	</div>
 </c:forEach>
 </body>
+<input type="button" value="글쓰기" onclick="document.location.href='qnawriteForm.action'">
 </html>

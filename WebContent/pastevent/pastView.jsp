@@ -1,32 +1,33 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>Áö³­ ÀÌº¥Æ®</title>
+<title>ì§€ë‚œ ì´ë²¤íŠ¸</title>
 </head>
 <body>
-<center><b>Áö³­ ÀÌº¥Æ®</b>
+<center><b>ì§€ë‚œ ì´ë²¤íŠ¸</b>
 <br>
 <form>
-<table width="600" border="1" cellspacing="0" cellpadding="0" align="center">
+<table width="600" cellspacing="0" cellpadding="0" align="center">
 	<tr height="30" align="center">
-		<td align="center" width="100">${vo.subject }<br/><font style="margin-left: 150px">±â°£:${vo.day}</font></td>
+		<td align="center" width="100">${vo.subject }<br/><font style="margin-left: 150px"><img src="../boardimg/day.PNG">${vo.day}</font></td>
 	</tr>
-	<tr height="500" align="center"><pre>${vo.content }</pre>
-		<td align="center" width="100"><img src="../save4/${vo.file_savname }"></td>
+	<tr height="500" align="center">
+		<td align="center" width="100"><pre>${vo.content }</pre><img src="../save4/${vo.file_savname }"></td>
 	</tr>
 	<tr>
 		<td align="center" colspan="2">
-			<input type="button" value="¸ñ·Ï" onclick="document.location.href='pastlistAction.action?currentPage=${currentPage}'">
+		<a href="pastlistAction.action?currentPage=${currentPage}"><img src="../boardimg/main1.PNG"></a>
+			<%-- <input type="button" value="ëª©ë¡" onclick="document.location.href='pastlistAction.action?currentPage=${currentPage}'"> --%>
 		</td>
 	</tr>
 	<tr>
 		<td align="center" colspan="2">
-			<input type="button" value="±Û¼öÁ¤" onclick="document.location.href='pastmodifyForm.action?num=${vo.num}&currentPage=${currentPage }&file_savname=${file_savname }'">
-			<input type="button" value="±Û»èÁ¦" onclick="document.location.href='pastdeleteAction.action?num=${vo.num }&currentPage=${currentPage}'">
+			<input type="button" value="ê¸€ìˆ˜ì •" onclick="document.location.href='pastmodifyForm.action?num=${vo.num}&currentPage=${currentPage }&file_savname=${file_savname }'">
+			<input type="button" value="ê¸€ì‚­ì œ" onclick="document.location.href='pastdeleteAction.action?num=${vo.num }&currentPage=${currentPage}'">
 		</td>
 	</tr>
 </table>
@@ -46,7 +47,7 @@
 <form action="pastRewriteAction.action" method="post">
 	<input type="hidden" name="num" value="${num }">
 	<textarea rows="5" cols="125" name="content"></textarea>
-	<input type="submit" value="´ñ±Û¾²±â"/>
+	<input type="submit" value="ëŒ“ê¸€ì“°ê¸°"/>
 </form>
 </body>
 </html>

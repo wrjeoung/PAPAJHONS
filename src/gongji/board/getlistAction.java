@@ -30,14 +30,16 @@ public class getlistAction extends ActionSupport{
 	}
 	public String execute() throws Exception{
 		vo.setSubject(getSubject());
+		
 		vo.setContent(getContent());
+		
 		vo.setSearchCondition(getSearchCondition());
 		vo.setSearchKeyword(getSearchKeyword());
 		
-		
-		// DB 컨넥션을 이용하여, 쿼리를 준비(set)하고, Statment를 얻는다.
 		if ("subject".equals(searchCondition)) {
+			System.out.println("----------------2");
 			list=sqlMapper.queryForList("gongji.subjectList", getSubject());
+			
 		} else if("content".equals(searchCondition)) {
 			list=sqlMapper.queryForList("gongji.contentList", getContent());
 		}

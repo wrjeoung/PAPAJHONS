@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC '-//ibatis.apache.org//DTD Sql Map 2.0//EN' 'http://ibatis.apache.org/dtd/sql-map-2.dtd'>
+<sqlMap namespace="memcard">
+	<typeAlias alias="memcard" type="memcard.board.memcardVO"/>
+		<resultMap id="memcardRes" class="memcard">
+			<result property="num" column="num"/>
+			<result property="subject" column="subject"/>
+			<result property="content" column="content"/>
+			<result property="reg_date" column="reg_date"/>
+			<result property="file_orgname" column="file_orgname"/>
+			<result property="file_savname" column="file_savname"/>
+		</resultMap>
+		
+		<!-- 올리기 -->
+		<insert id="insertMem" parameterClass="memcard">
+			INSERT INTO CARD(NUM,SUBJECT,CONTENT,REG_DATE)
+			VALUES(CARD_NUM_SEQ.NEXTVAL,#subject#,#content#,#reg_date#)
+		</insert>
+		
+		<select id="selectLastNo" resultClass="memcard" parameterClass="int">
+			SELECT max(num) as num FROM CARD
+		</select>
+		
+		<sql id="where-no">
+			WHERE num=#num#
+		</sql>
+		
+		<!-- 파일 -->
+		<update id="updateFile" parameterClass="memcard">
+			UPDATE CARD SET FILE_ORGNAME=#file_orgname#,FILE_SAVNAME=#file_savname#
+			<include refid="where-no"/>
+		</update>
+		
+		<sql id="select-all">
+			SELECT * FROM CARD
+		</sql>
+		
+		<select id="selectAll" resultMap="memcardRes" parameterClass="int">
+			<include refid="select-all"/>
+			ORDER BY num DESC
+		</select>
+		<!-- 상세보기 -->
+		<select id="selectOne" resultMap="memcardRes" parameterClass="int">
+			SELECT * FROM CARD WHERE num=#num#
+		</select>
+		<!-- 삭제하기 -->
+		<delete id="deleteBoard" parameterClass="memcard">
+			DELETE FROM CARD
+			<include refid="where-no"/>
+		</delete>
+		<!-- 수정하기 -->
+		<update id="updateBoard" parameterClass="memcard">
+			UPDATE CARD SET SUBJECT=#subject#,CONTENT=#content#
+			<include refid="where-no"/>
+		</update>
+</sqlMap>

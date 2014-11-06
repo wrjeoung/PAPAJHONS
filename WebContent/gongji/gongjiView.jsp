@@ -13,13 +13,15 @@
 <form>
 <table width="600" border="1" cellspacing="0" cellpadding="0" align="center">
 	<tr height="30" align="center">
-		<td align="center" width="100">${vo.subject }<font style="margin-left: 150px">累己老:${vo.reg_date }</font></td>
+		<td align="center" width="100">${vo.subject }<br/><font style="margin-left: 150px">累己老:${vo.reg_date }</font></td>
 	</tr>
 	<tr height="500" align="center">
 		
-		<td align="center" width="100"><pre>${vo.content }</pre>
+		<td align="left" width="100"><pre>${vo.content }</pre>
 		
-		<img src="../save/${file_savname }"></td>
+		<img src="../save/${file_savname }">
+		
+		</td>
 		
 	</tr>
 	<%-- <tr>
@@ -27,7 +29,8 @@
 	</tr> --%>
 	<tr>
 		<td align="center" colspan="2">
-			<input type="button" value="格废" onClick="document.location.href='listAction.action?currentPage=${currentPage}'">
+			<a href="listAction.action?currentPage=${currentPage}"><img src="../boardimg/main1.PNG"></a>
+			<%-- <input type="button" value="格废" onClick="document.location.href='listAction.action?currentPage=${currentPage}'"> --%>
 		</td>
 	</tr>
 	<tr>

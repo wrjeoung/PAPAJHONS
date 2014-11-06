@@ -1,13 +1,13 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>ÁøÇàÁßÀÎ ÀÌº¥Æ®</title>
+<title>ì§„í–‰ì¤‘ì¸ ì´ë²¤íŠ¸</title>
 </head>
 <body>
-<center><b>ÁøÇàÁßÀÎ ÀÌº¥Æ® ±Û¾²±â</b></center>
+<center><b>ì§„í–‰ì¤‘ì¸ ì´ë²¤íŠ¸ ê¸€ì“°ê¸°</b></center>
 <br/>
 <form method="post" name="nowModify" action="modifyAction2.action" enctype="multipart/form-data" onsubmit="return validation()">
 	<input type="hidden" name="num" value="${vo.num}">
@@ -18,28 +18,28 @@
 	
 	<table width="600" border="1" cellspacing="0" cellpadding="0" align="center">
 		<tr>
-			<td width="70" align="center">±â°£</td>
+			<td width="70" align="center">ê¸°ê°„</td>
 			<td width="530">
 				<input type="text" size="70" maxlength="50" name="day" varlue="${vo.day }">
 			</td>
 		</tr>
 		
 		<tr>
-			<td width="70" align="center">Á¦¸ñ</td>
+			<td width="70" align="center">ì œëª©</td>
 			<td width="530">
 				<input type="text" size="70" maxlength="50" name="subject" value="${vo.subject }">
 			</td>
 		
 		</tr>
 		<tr>
-			<td width="70" align="center">Ã·ºÎÆÄÀÏ1</td>
+			<td width="70" align="center">ì²¨ë¶€íŒŒì¼1</td>
 			<td width="530">
 				<input type="file" name="upload"/>
 				${vo.file_orgname}
 			</td>
 		</tr>
 		<tr>
-			<td width="70" align="center">Ã·ºÎÆÄÀÏ2</td>
+			<td width="70" align="center">ì²¨ë¶€íŒŒì¼2</td>
 			<td width="530">
 				<input type="file" name="upload2"/>
 				${vo.file_orgname2 }
@@ -47,7 +47,7 @@
 		</tr>
 		<tr>
 			<td colspan="2" align="right">
-				<input type="submit" value="±Û¼öÁ¤">
+				<input type="submit" value="ê¸€ìˆ˜ì •">
 			</td>
 		</tr>
 	</table>
