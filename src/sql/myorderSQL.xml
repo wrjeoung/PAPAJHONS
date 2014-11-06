@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC '-//ibatis.apache.org//DTD Sql Map 2.0//EN' 'http://ibatis.apache.org/dtd/sql-map-2.dtd'>
+<sqlMap namespace="myorderSQL">
+
+	<typeAlias alias="myorder" type="papa.member.MyOrderData" />
+
+		<!-- 리절트 맵 정의 -->
+	  	<resultMap id="myorderRes" class="myorder">
+		  	<result property="id" column="id"/>
+		  	<result property="reg_date" column="reg_date"/>
+		  	<result property="no" column="no"/>
+		  	<result property="price" column="price"/>
+		  	<result property="store" column="store"/>
+		  	<result property="status" column="status"/>
+		</resultMap>
+		
+		<!-- 공통으로 사용할 select 절 정의 -->
+		<sql id="select-all">
+			SELECT * FROM myOrderList 
+		</sql>
+		
+
+		<!-- select 쿼리문 정의 -->
+		<select id="selectAll" resultMap="myorderRes">
+			<include refid="select-all" />
+			ORDER BY no DESC
+		</select>
+		
+		<!-- 공통으로 사용할 where-no 절 정의 -->
+		<sql id="where-no">
+		    WHERE no = #no#
+		</sql>
+		
+		<select id="selectOne" resultMap="myorderRes" parameterClass="int">
+			<include refid="select-all" />
+			<include refid="where-no" />
+		</select>
+		
+		<select id="selectBydate" resultMap="myorderRes">
+			<include refid="select-all" />
+			WHERE id = #memId#
+			AND reg_date > #sdate# OR reg_date = #sdate#
+			AND #edate# > reg_date OR #edate# = reg_date
+			ORDER BY no DESC
+		</select>		
+		
+		<!-- insert 쿼리문 정의 -->
+		<insert id="insertMyOrder" parameterClass="myorder">
+		
+      		INSERT INTO myOrderList (id,
+                         		no,
+                         		price,
+                         		store
+                         )
+                	 VALUES (#id#, 
+                         		#no#,
+                         		#price#,
+                         		#store#
+                         )
+		</insert>		
+		
+</sqlMap>
+

@@ -22,6 +22,10 @@
 			<interceptor-ref name="params"/>
 			<result>/order/pj_1002.jsp</result>
 		</action>
+		
+		<action name="pj_1003Action" class="order.Pj_1003Action">
+			<result>/order/pj_1003.jsp</result>
+		</action>
 	</package>
 	
 	<!-- 메뉴  -->
@@ -259,14 +263,52 @@
 		    <interceptor-ref name="ibatis"></interceptor-ref>
 		    <interceptor-ref name="params"></interceptor-ref>
 			<result>/signup/cont.jsp</result>
-		</action>			
+		</action>
+		
+		<action name="modifyAction" class="papa.member.ModifyAction" method="modify">
+		    <interceptor-ref name="ibatis"></interceptor-ref>
+		    <interceptor-ref name="params"></interceptor-ref>
+		    <interceptor-ref name="servletConfig"/>				
+			<result>/mypage/pj_7003.jsp</result>
+		</action>
+		
+		<action name="modifyProAction" class="papa.member.ModifyAction"> 
+		    <interceptor-ref name="prepare" />
+		    <interceptor-ref name="modelDriven" />		
+		    <interceptor-ref name="ibatis"></interceptor-ref>
+		    <interceptor-ref name="params"></interceptor-ref>
+		    <interceptor-ref name="servletConfig"/>				
+			<result>/mypage/modifyPro.jsp</result>
+		</action>
+
+		<action name="userOutAction" class="papa.member.ModifyAction" method="userOut"> 
+		    <interceptor-ref name="ibatis"></interceptor-ref>
+		    <interceptor-ref name="params"></interceptor-ref>
+		    <interceptor-ref name="servletConfig"/>			
+			<result>/mypage/userOutPro.jsp</result>
+		</action>					
+		
+		<action name="changePasswdProAction" class="papa.member.ModifyAction" method="changePasswdPro">
+		    <interceptor-ref name="ibatis"></interceptor-ref>
+		    <interceptor-ref name="params"></interceptor-ref>
+		    <interceptor-ref name="servletConfig"/>
+			<result>/mypage/changePasswdPro.jsp</result>
+		</action>				
+					
 		<action name="mypageAction" class="papa.member.MemberAction" method="form" >
 			<result>/mypage/main.jsp</result>
 		</action>
 		
-		<action name="myorderListAction" class="papa.member.MemberAction" method="form" >
+		<action name="myorderListAction" class="papa.member.MyOrderAction" method="form" >
 			<result>/mypage/list.jsp</result>
-		</action>							
+		</action>
+		
+		<action name="myorderListProAction" class="papa.member.MyOrderAction">
+		    <interceptor-ref name="ibatis"></interceptor-ref>
+		    <interceptor-ref name="params"></interceptor-ref>
+		    <interceptor-ref name="servletConfig"/>		
+			<result>/mypage/listPro.jsp</result>
+		</action>									
 										
 	</package>
 	<!-- 매장별 이벤트 -->
@@ -465,6 +507,11 @@
 		</action>
 	</package>
 	
+<<<<<<< .mine
+	
+=======
+
+>>>>>>> .theirs
 	<!-- 맴버쉽카드 -->
 	<package name="memcard.board" extends="struts-default">
 	<!-- 글쓰기 -->

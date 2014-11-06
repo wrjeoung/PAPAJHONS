@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -7,19 +7,20 @@
 <script type="text/javascript" src="../assets/js/json2.js"></script>
 <script type="text/javascript" src="../assets/js/cart.js"></script>
 <script type="text/javascript" src="../assets/js/topping.js"></script>
+<link type="text/css" rel="stylesheet" href="../assets/css/order.css" />
 <script type="text/javascript">
     var root = ""; 
 	var sessionOrdInfo = null;
-	var toPrc = 0;  //ÃÊ±â°ªa  //Àå¹Ù±¸´Ï ÃÖÁ¾ ±İ¾×
+	var toPrc = 0;  //ì´ˆê¸°ê°’a  //ì¥ë°”êµ¬ë‹ˆ ìµœì¢… ê¸ˆì•¡
 	
 	head_title("ORDER");
 	
- 	//ÆäÀÌÁö ½ÃÀÛ½Ã Ã³¸®
+ 	//í˜ì´ì§€ ì‹œì‘ì‹œ ì²˜ë¦¬
     $(document).ready(function()
     {
-	 	//ÆäÀÌÁö ½ÃÀÛ ½Ã·Îµù ÀÌ¹ÌÁö ¼û±â±â
+	 	//í˜ì´ì§€ ì‹œì‘ ì‹œë¡œë”© ì´ë¯¸ì§€ ìˆ¨ê¸°ê¸°
 	 	$('#viewLoading').hide();
-	 	/* $('#viewLoading')	// ajax ½ÇÇà ¹× ¿Ï·á½Ã 'Loading ÀÌ¹ÌÁö'ÀÇ µ¿ÀÛ ÄÁÆ®·ÑÇÏ±â
+	 	/* $('#viewLoading')	// ajax ì‹¤í–‰ ë° ì™„ë£Œì‹œ 'Loading ì´ë¯¸ì§€'ì˜ ë™ì‘ ì»¨íŠ¸ë¡¤í•˜ê¸°
 		.ajaxStart(function()
 		{
 			$(this).fadeIn(500);
@@ -29,8 +30,8 @@
 			$(this).fadeOut(500);
 		}); */
 	 
- 		// ¸Ş´º¸®½ºÆ® ¾ÆÀÌÅÛ »ó¼¼¼³¸í
- 		/* 20130926 ¿É¼Çº¯°æ ÄÚ¸àÆ® Ãß°¡ */
+ 		// ë©”ë‰´ë¦¬ìŠ¤íŠ¸ ì•„ì´í…œ ìƒì„¸ì„¤ëª…
+ 		/* 20130926 ì˜µì…˜ë³€ê²½ ì½”ë©˜íŠ¸ ì¶”ê°€ */
  		var $btn_detail=$("#menuList_section .item .detail .btn");
  		var $btn_instructions=$("#menuList_section .item .spcInstruction .btn");
  		var $btn_half_spcInstruction=$("#half_section .half_spcInstruction p");
@@ -87,15 +88,15 @@
 			}
  			else
  			{
-				$(".spcInstructions").find("span").each(function() { $(this).text("¡å"); }	);
-				$(".option").slideUp();	//¾È¿¡ ÆîÃ³Á®ÀÖ´Â ¿É¼Çµé
+				$(".spcInstructions").find("span").each(function() { $(this).text("â–¼"); }	);
+				$(".option").slideUp();	//ì•ˆì— í¼ì²˜ì ¸ìˆëŠ” ì˜µì…˜ë“¤
 				box.stop().slideUp(); 
  				$(this).find("img").attr("src",root+"../assets/img/order/btn_opt_off.gif"); 
 			}
  			
  		} 
 
- 		// ¶óµğ¿À/Ã¼Å©¹Ú½º ¹öÆ° ½ºÅ¸ÀÏ º¯°æ
+ 		// ë¼ë””ì˜¤/ì²´í¬ë°•ìŠ¤ ë²„íŠ¼ ìŠ¤íƒ€ì¼ ë³€ê²½
  		$('#menuList_section .item').addClass('has-js');
  		$('.menu_size_radio').click(function(){
 			$(this).parent().find('.menu_size_radio').removeClass("r_on");
@@ -104,7 +105,7 @@
  		$('.menu_opt_radio').click(function(){  
        		set_opt_radio($(this));
    		}); 
- 		//¶óµğ¿À ¹öÆ° ÃÊ±â°ª default ¼³Á¤
+ 		//ë¼ë””ì˜¤ ë²„íŠ¼ ì´ˆê¸°ê°’ default ì„¤ì •
  		//$(".option_box .spcInstructions .option").each(function(i){
 		
 		/* $(".spcInstructions .option").each(function(i){
@@ -116,15 +117,15 @@
  	}); 
  		
  		
-	// 20140702 ÀÌº¥Æ® È­¸é¿¡¼­ ¸µÅ©·Î ¿Â °æ¿ì ÇÁ·Î¸ğ¼Ç È­¸éÀ¸·Î ¹Ù·Î ÁøÀÔ
-	// ¸µÅ© url : "root/order.jsp?step=promotion"
-	//20140703 ÇÁ·Î¸ğ¼Ç ¸µÅ©·Î µé¾î¿À´Â °æ¿ì URL ÆÄ¶ó¹ÌÅÍ Ãß°¡ 
+	// 20140702 ì´ë²¤íŠ¸ í™”ë©´ì—ì„œ ë§í¬ë¡œ ì˜¨ ê²½ìš° í”„ë¡œëª¨ì…˜ í™”ë©´ìœ¼ë¡œ ë°”ë¡œ ì§„ì…
+	// ë§í¬ url : "root/order.jsp?step=promotion"
+	//20140703 í”„ë¡œëª¨ì…˜ ë§í¬ë¡œ ë“¤ì–´ì˜¤ëŠ” ê²½ìš° URL íŒŒë¼ë¯¸í„° ì¶”ê°€ 
 	if( 10== "00" ) 
 	{
 		fnViewDiv("prom");
 	}
  			
- 	//20140730 8¿ù Àü»ç ÇÁ·Î¸ğ¼Ç ¾Ë¸² Ãß°¡
+ 	//20140730 8ì›” ì „ì‚¬ í”„ë¡œëª¨ì…˜ ì•Œë¦¼ ì¶”ê°€
  	var sysDate = parseInt( "201410291437".substring(0, 8) );
  	if(sysDate >= "20140801" && sysDate <= "20140831")
  	{
@@ -133,7 +134,7 @@
  	}
  		
  	//////////////////////////////////////////////	
- 	//20140129 ¼öÁ¤
+ 	//20140129 ìˆ˜ì •
  	function fnReset_spcOption_up($this){
  		fnReset_spcOption();
  		//alert($this.parent().parent().next().attr("class"));
@@ -143,7 +144,7 @@
  			box = $this.parent().next();
  		}
  		
- 		// 20140619 ÇÁ·Î¸ğ¼Ç ÄíÆù¸Ş´º ¿É¼Ç Ãß°¡
+ 		// 20140619 í”„ë¡œëª¨ì…˜ ì¿ í°ë©”ë‰´ ì˜µì…˜ ì¶”ê°€
  		if( $this.parent().next().hasClass("prom_option_box") )
  		{
  			box = $this.parent().next();
@@ -151,23 +152,23 @@
  		
  		if( box.css("display") == 'block' )
 		{
-			$(".spcInstructions").find("span").each(function() { $(this).text("¡å"); }	);
-			$(".option").slideUp();	//¾È¿¡ ÆîÃ³Á®ÀÖ´Â ¿É¼Çµé
-			box.stop().slideUp(); //ÇØ´ç ¸Ş´ºÀÇ ¿É¼Ç¹Ú½º¸¸ : ÇÏÇÁ¼½¼Ç ¶Ç´Â ÇÇÀÚ¹Ú½º
+			$(".spcInstructions").find("span").each(function() { $(this).text("â–¼"); }	);
+			$(".option").slideUp();	//ì•ˆì— í¼ì²˜ì ¸ìˆëŠ” ì˜µì…˜ë“¤
+			box.stop().slideUp(); //í•´ë‹¹ ë©”ë‰´ì˜ ì˜µì…˜ë°•ìŠ¤ë§Œ : í•˜í”„ì„¹ì…˜ ë˜ëŠ” í”¼ìë°•ìŠ¤
 			
-			$(".option_box").slideUp();	//¸ğµç ¿É¼Ç¹Ú½º
-			$(".spcInstruction").find(".btn img").attr("src",root+"../assets/img/order/btn_opt_off.gif");	//ÇÇÀÚ¹Ú½º(´ÜÇ°)ÀÎ°æ¿ì¸¸ 
+			$(".option_box").slideUp();	//ëª¨ë“  ì˜µì…˜ë°•ìŠ¤
+			$(".spcInstruction").find(".btn img").attr("src",root+"../assets/img/order/btn_opt_off.gif");	//í”¼ìë°•ìŠ¤(ë‹¨í’ˆ)ì¸ê²½ìš°ë§Œ 
 		}
  	}
  	
- 	//spcInstructions ¸®¼ÂÇÏ±â!! (ÃÊ±âÈ­)
+ 	//spcInstructions ë¦¬ì…‹í•˜ê¸°!! (ì´ˆê¸°í™”)
     function fnReset_spcOption(){
 		$(".spcInstructions .option").each(function(i){
 		  	var $btn = $(this).find(".menu_opt_radio").eq(0);  
 		  	set_opt_radio($btn);	  
 	  	});
 	}	
-    //¿É¼Ç¶óµğ¿À ¹öÆ° Ã¼Å©°ª º¯°æ
+    //ì˜µì…˜ë¼ë””ì˜¤ ë²„íŠ¼ ì²´í¬ê°’ ë³€ê²½
 	function set_opt_radio(radio_btn)
     {
 		radio_btn.parent().find('.menu_opt_radio').removeClass("r_on");
@@ -175,7 +176,7 @@
 		radio_btn.addClass("r_on");
 		radio_btn.find("input").attr("checked","checked");
 	} 	
-    // ¿É¼Ç¿¡ µé¾î°¡´Â ÄÁÅÙÃ÷ ÃÊ±âÈ­
+    // ì˜µì…˜ì— ë“¤ì–´ê°€ëŠ” ì»¨í…ì¸  ì´ˆê¸°í™”
     function opt_cont_reset()
     {
     	$mem_info.hide();
@@ -188,37 +189,127 @@
     	}
     	$("#sele_reserv").hide();
     	
-    	//Àå¹Ù±¸´Ï ¿µ¿ª È­¸é ¸®»çÀÌÂ¡
+    	//ì¥ë°”êµ¬ë‹ˆ ì˜ì—­ í™”ë©´ ë¦¬ì‚¬ì´ì§•
     	contents_resize();
     }	
 
 
-    // ¿Â¶óÀÎ¸Ş´º±×·ìº° ¸Ş´º±×·ì °Ë»ö
+    // ì˜¨ë¼ì¸ë©”ë‰´ê·¸ë£¹ë³„ ë©”ë‰´ê·¸ë£¹ ê²€ìƒ‰
 	function fnSelMenuGroup(pizzaSelIdx, onlineGroupCd)
     {	
-    	document.frmOrder.onlineGroupCd.value = onlineGroupCd;  // ¿Â¶óÀÎ¸Ş´º±×·ì
-    	document.frmOrder.pizzaSelIdx.value   = pizzaSelIdx;    // ¼±ÅÃÇÇÀÚ±×·ì¸Ş´º
+    	document.frmOrder.onlineGroupCd.value = onlineGroupCd;  // ì˜¨ë¼ì¸ë©”ë‰´ê·¸ë£¹
+    	document.frmOrder.pizzaSelIdx.value   = pizzaSelIdx;    // ì„ íƒí”¼ìê·¸ë£¹ë©”ë‰´
     	document.frmOrder.action              = "orderAction.action";
     	document.frmOrder.target              = "_self";
     	document.frmOrder.submit();
-	}      
+	}
     
+	// ì„¸íŠ¸ë©”ë‰´, íŒŒíŒŒ í”Œë˜í„° ì¥ë°”êµ¬ë‹ˆ
+	function fnOrderSet_plater(menuid,imagepathorder,price,consist,name)
+    {
+		var size = $("input:hidden[id=_size]").val();
+				
+		document.frmOrder.onlineGroupCd.value = onlineGroupCd;							// ì˜¨ë¼ì¸ë©”ë‰´ê·¸ë£¹
+    	document.frmOrder.pizzaSelIdx.value   = pizzaSelIdx;							// ì„ íƒí”¼ìê·¸ë£¹ë©”ë‰´
+    	document.frmOrder._menuid.value = menuid; 										// ë©”ë‰´ id
+    	document.frmOrder._imagepathorder.value = imagepathorder; 						// ì˜¨ë¼ì¸ì£¼ë¬¸ ë©”ë‰´ ì´ë¯¸ì§€ê²½ë¡œ
+    	document.frmOrder._name.value = name;											// ì œí’ˆëª…
+    	if(menuid == 'pj_2010')
+    		document.frmOrder._size.value = "(BOX)";									// ì‚¬ì´ì¦ˆ
+    	else
+    		document.frmOrder._size.value = "(2-3ì¸ìš©)";									// ì‚¬ì´ì¦ˆ
+    	
+    	document.frmOrder._cnt_opt.value = document.getElementById("cnt_opt").value; 	// ìˆ˜ëŸ‰
+    	document.frmOrder._price.value = price; 										// ê°€ê²©
+    	document.frmOrder._consist.value = consist; 									// êµ¬ì„±ìš”ì†Œ
+    	document.frmOrder.action              = "pj_1003Action.action";
+    	document.frmOrder.target              = "_self";
+    	alert("name : "+name+"\nprice : "+price+"\ncont_opt : "+document.getElementById("cnt_opt").value+"\nsize : "+document.frmOrder._size.value) ;
+    	document.frmOrder.submit();
+	}
+	
+	// ì‚¬ì´ë“œ ì¥ë°”êµ¬ë‹ˆ
+	function fnOrderSide(menuid,imagepathorder,price,consist,name)
+    {
+		alert("name : "+name+"\nprice : "+price+"\ncont_opt : "+document.getElementById("cnt_opt1").value) ;		
+		document.frmOrder.onlineGroupCd.value = onlineGroupCd;							// ì˜¨ë¼ì¸ë©”ë‰´ê·¸ë£¹
+    	document.frmOrder.pizzaSelIdx.value   = pizzaSelIdx;							// ì„ íƒí”¼ìê·¸ë£¹ë©”ë‰´
+    	document.frmOrder._menuid.value = menuid; 										// ë©”ë‰´ id
+    	document.frmOrder._imagepathorder.value = imagepathorder; 						// ì˜¨ë¼ì¸ì£¼ë¬¸ ë©”ë‰´ ì´ë¯¸ì§€ê²½ë¡œ
+    	document.frmOrder._name.value = name;											// ì œí’ˆëª…
+    	document.frmOrder._size.value = "ì›ì‚¬ì´ì¦ˆ";										// ì‚¬ì´ì¦ˆ 
+    	document.frmOrder._cnt_opt.value = document.getElementById("cnt_opt1").value; 	// ìˆ˜ëŸ‰
+    	document.frmOrder._price.value = price; 										// ê°€ê²©
+    	document.frmOrder._consist.value = consist; 									// êµ¬ì„±ìš”ì†Œ
+    	document.frmOrder.action              = "pj_1003Action.action";
+    	document.frmOrder.target              = "_self";
+    	document.frmOrder.submit();
+	}
+	
+	// í”¼ì ì¥ë°”êµ¬ë‹ˆ 
+	function fnOrderPizza(menuid,imagepathorder,consist,name)
+    {
+		var price = $("input:radio[name=pSize_1]:checked").val();
+		var bt = $('input:radio[name=pSize_1]').attr("checked",true);
+		var size = $("input:hidden[id=_size]").val();		//alert("name : "+name+"\nprice : "+price+"\nsize : "+size ) ;
+		//alert(menuid + '\n' + imagepathorder + '\n'+ price + '\n' + consist + '\n' + bt) ;
+		document.frmOrder.onlineGroupCd.value = onlineGroupCd;							// ì˜¨ë¼ì¸ë©”ë‰´ê·¸ë£¹
+    	document.frmOrder.pizzaSelIdx.value   = pizzaSelIdx;							// ì„ íƒí”¼ìê·¸ë£¹ë©”ë‰´
+    	document.frmOrder._menuid.value = menuid; 										// ë©”ë‰´ id
+    	document.frmOrder._imagepathorder.value = imagepathorder; 						// ì˜¨ë¼ì¸ì£¼ë¬¸ ë©”ë‰´ ì´ë¯¸ì§€ê²½ë¡œ
+    	document.frmOrder._name.value = name;											// ì œí’ˆëª…
+    	document.frmOrder._cnt_opt.value = "1"; 										// ìˆ˜ëŸ‰
+    	document.frmOrder._price.value = price; 										// ê°€ê²©
+    	document.frmOrder._consist.value = consist; 									// êµ¬ì„±ìš”ì†Œ
+    	document.frmOrder.action              = "pj_1003Action.action";
+    	document.frmOrder.target              = "_self";
+    	alert("ì œí’ˆëª… : " + document.frmOrder._name.value + "  ì‚¬ì´ì¦ˆ : " + size + " ìˆ˜ëŸ‰ : " + document.frmOrder._cnt_opt.value + " ê¸ˆì•¡ : " + document.frmOrder._price.value );
+    	
+    	document.frmOrder.submit();
+	}
+	
+	// ìŒë£Œ ì¥ë°”êµ¬ë‹ˆ
+	function fnOrderBever(menuid,imagepathorder,consist,name)
+    {
+		var price = $("input:radio[name=pSize_1]:checked").val();
+		var size = $("input:hidden[id=_size]").val();
+		
+		//alert(menuid + '\n' + imagepathorder + '\n'+ price + '\n' + consist + '\n' + name) ;
+		document.frmOrder.onlineGroupCd.value = onlineGroupCd;							// ì˜¨ë¼ì¸ë©”ë‰´ê·¸ë£¹
+    	document.frmOrder.pizzaSelIdx.value   = pizzaSelIdx;							// ì„ íƒí”¼ìê·¸ë£¹ë©”ë‰´
+    	document.frmOrder._menuid.value = menuid; 										// ë©”ë‰´ id
+    	document.frmOrder._imagepathorder.value = imagepathorder; 						// ì˜¨ë¼ì¸ì£¼ë¬¸ ë©”ë‰´ ì´ë¯¸ì§€ê²½ë¡œ
+    	document.frmOrder._name.value = name;											// ì œí’ˆëª…
+    	//document.frmOrder._cnt_opt.value = document.getElementById("cnt_opt_bever").value;	// ìˆ˜ëŸ‰
+    	document.frmOrder._price.value = price; 										// ê°€ê²©
+    	document.frmOrder._consist.value = consist; 									// êµ¬ì„±ìš”ì†Œ
+    	document.frmOrder.action              = "pj_1003Action.action";
+    	document.frmOrder.target              = "_self";
+    	alert("name : "+name+"\nprice : "+price+"\nsize : "+size+"\ncnt_opt1 : "+document.frmOrder._cnt_opt.value ) ;
+    	document.frmOrder.submit();
+	}
+	
+	function setSelect(value)
+	{
+		// ì£¼ë¬¸ ìˆ˜ëŸ‰ ì €ì¥
+		document.frmOrder._cnt_opt.value = value;
+	}
     
-    // ¼¼Æ®¸Ş´º, ÇÏÇÁ&ÇÏÇÁ, EÄíÆù È­¸éÇ¥½Ã ¹× °Ë»ö
+    // ì„¸íŠ¸ë©”ë‰´, í•˜í”„&í•˜í”„, Eì¿ í° í™”ë©´í‘œì‹œ ë° ê²€ìƒ‰
     function fnViewDiv(val)
     {
-    	var listDiv   = document.getElementById("menuList_section");  // ¸Ş´º
-    	var setDiv    = document.getElementById("set_section");       // ¼¼Æ®¸Ş´º
-    	var halfDiv   = document.getElementById("half_section");      // ÇÏÇÁ&ÇÏÇÁ
-    	var couponDiv = document.getElementById("ecoup_section");     // EÄíÆù
-    	var platDiv   = document.getElementById("plat_section");      // ÆÄÆÄÇÃ·¡ÅÍ 
+    	var listDiv   = document.getElementById("menuList_section");  // ë©”ë‰´
+    	var setDiv    = document.getElementById("set_section");       // ì„¸íŠ¸ë©”ë‰´
+    	var halfDiv   = document.getElementById("half_section");      // í•˜í”„&í•˜í”„
+    	var couponDiv = document.getElementById("ecoup_section");     // Eì¿ í°
+    	var platDiv   = document.getElementById("plat_section");      // íŒŒíŒŒí”Œë˜í„° 
     	
-    	// 20140616 ÇÁ·Î¸ğ¼Ç ¸Ş´º È­¸é È£Ãâ
-    	var promDiv   = document.getElementById("prom_section");      // ÇÁ·Î¸ğ¼Ç ¸Ş´º 
+    	// 20140616 í”„ë¡œëª¨ì…˜ ë©”ë‰´ í™”ë©´ í˜¸ì¶œ
+    	var promDiv   = document.getElementById("prom_section");      // í”„ë¡œëª¨ì…˜ ë©”ë‰´ 
 
     	if( val == "set" )
     	{
-    		fnSelSetMenu();  // ¼¼Æ®¸Ş´º °Ë»ö
+    		fnSelSetMenu();  // ì„¸íŠ¸ë©”ë‰´ ê²€ìƒ‰
     		
     		listDiv.style.display   = "none";
     		setDiv.style.display    = "block"; 
@@ -229,7 +320,7 @@
     	} 
     	else if( val == "half" )
     	{
-    		fnSelHalfAndHalf();  // ÇÏÇÁ&ÇÏÇÁ °Ë»ö
+    		fnSelHalfAndHalf();  // í•˜í”„&í•˜í”„ ê²€ìƒ‰
     		
     		listDiv.style.display   = "none";
     		setDiv.style.display    = "none";
@@ -247,10 +338,10 @@
 			platDiv.style.display   = "none";
     		promDiv.style.display   = "none";
     	}
-    	else if( val == "plat" ) // 20140424 Å×½ºÆ® Áß ÆÄÆÄÇÃ·¡ÅÍ 
+    	else if( val == "plat" ) // 20140424 í…ŒìŠ¤íŠ¸ ì¤‘ íŒŒíŒŒí”Œë˜í„° 
     	{
     		
-    		fnPaPaPlat("11");  // 20140424 ÆÄÆÄÇÃ·¡ÅÍ	
+    		fnPaPaPlat("11");  // 20140424 íŒŒíŒŒí”Œë˜í„°	
     	
     		listDiv.style.display   = "none";
     		setDiv.style.display    = "none";
@@ -259,7 +350,7 @@
 			platDiv.style.display   = "block";
     		promDiv.style.display   = "none";
     	}
-    	// 20140616 ÇÁ·Î¸ğ¼Ç ¸Ş´º È­¸é È£Ãâ
+    	// 20140616 í”„ë¡œëª¨ì…˜ ë©”ë‰´ í™”ë©´ í˜¸ì¶œ
     	else if( val == "prom" ) 
     	{
     		
@@ -287,7 +378,7 @@
     }
     
     
- 	// ¼¼Æ®¸Ş´º °Ë»ö
+ 	// ì„¸íŠ¸ë©”ë‰´ ê²€ìƒ‰
     function fnSelSetMenu()
     {
     	
@@ -300,12 +391,12 @@
 	   		url: "../order/setMenu.jsp", // ?????????
 			beforeSend: function() 
 			{              
-				//Åë½ÅÀ» ½ÃÀÛÇÒ¶§ Ã³¸®             
+				//í†µì‹ ì„ ì‹œì‘í• ë•Œ ì²˜ë¦¬             
 				$('#viewLoading').show().fadeIn(500);          
 			},
 	   		complete: function() 
 			{             
-				//Åë½ÅÀÌ ¿Ï·áµÈ ÈÄ Ã³¸®              
+				//í†µì‹ ì´ ì™„ë£Œëœ í›„ ì²˜ë¦¬              
 				$('#viewLoading').fadeOut();  
 				contents_resize();
 			},
@@ -314,7 +405,7 @@
 	   			if( trim(data) != "" && trim(data) != null && trim(data) != "NO" && trim(data) != "]" )
 	   			{
 		   			var receiveData = trim(data);
-					//½ºÆ®¸µ µ¥ÀÌÅÍ¸¦ Á¦ÀÌ½¼ ¿ÀºêÁ§Æ®·Î º¯Çü
+					//ìŠ¤íŠ¸ë§ ë°ì´í„°ë¥¼ ì œì´ìŠ¨ ì˜¤ë¸Œì íŠ¸ë¡œ ë³€í˜•
 					var setMenuInfo = $.parseJSON(receiveData); 
 					
 					$menu_sect.contents().remove();
@@ -329,8 +420,8 @@
 							html += '<p class="image" >';
 							html += '<img src="../assets/img/order/menu/' + setMenuInfo[i].onlineGroupCd + '/' + setMenuInfo[i].menuCode + '_ord.png" width="220" height="140" alt="'+ setMenuInfo[i].menuName +'" title="'+ setMenuInfo[i].menuName +'" /></p>';
 							html += '<p class="name" id="setNm">'+ setMenuInfo[i].menuName +'<span class="size">('+ setMenuInfo[i].menuSize +')</span></p>';
-							html += '<p class="btn_cart" onclick="fnAddSet($(this),\''+setMenuInfo[i].menuCode+'\',\''+setMenuInfo[i].menuDivCode+'\',\''+setMenuInfo[i].menuLagCode+'\',\''+setMenuInfo[i].menuMidCode+'\',\''+setMenuInfo[i].menuSmlCode+'\',\''+setMenuInfo[i].menuSubCode+'\');"><button type="button">Àå¹Ù±¸´Ï¿¡´ã±â</button></p>';
-							html += '<p class="description"><img src="../assets/img/order/ord_menuList_size_set.png" alt="¶óÁö¼¼Æ®" title="¶óÁö¼¼Æ®"/>»ó¼¼ <br>';  
+							html += '<p class="btn_cart" onclick="fnAddSet($(this),\''+setMenuInfo[i].menuCode+'\',\''+setMenuInfo[i].menuDivCode+'\',\''+setMenuInfo[i].menuLagCode+'\',\''+setMenuInfo[i].menuMidCode+'\',\''+setMenuInfo[i].menuSmlCode+'\',\''+setMenuInfo[i].menuSubCode+'\');"><button type="button">ì¥ë°”êµ¬ë‹ˆì—ë‹´ê¸°</button></p>';
+							html += '<p class="description"><img src="../assets/img/order/ord_menuList_size_set.png" alt="ë¼ì§€ì„¸íŠ¸" title="ë¼ì§€ì„¸íŠ¸"/>ìƒì„¸ <br>';  
 							html += '<span> : ';
 							    
 							for( var m = 0; m < setMenuInfo[i].setMenuDetail.length; m++ )
@@ -360,7 +451,7 @@
 							html += '</span></p><div class="size_prc">'; 
 							html += '<input type="hidden" name=" " value=" " />';
 	                        html += '<p class="set_price">' + setComma(setMenuInfo[i].menuSaleAmt)+' </p>';
-							html += '<p style="width:40px; position:absolute; top:10px; left:140px;">¼ö·® : </p>';
+							html += '<p style="width:40px; position:absolute; top:10px; left:140px;">ìˆ˜ëŸ‰ : </p>';
 							html += '<p class="selcet_count"><select id="cnt_opt" name="cnt_opt">';
 							html += '<option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option>';
 							html += '</select></p>';
@@ -372,20 +463,20 @@
 					else
 					{
 						$menu_sect.contents().remove();
-			   			$menu_sect.append("ÁÖ¹® °¡´ÉÇÑ ¸Ş´º°¡ ¾ø½À´Ï´Ù.");
+			   			$menu_sect.append("ì£¼ë¬¸ ê°€ëŠ¥í•œ ë©”ë‰´ê°€ ì—†ìŠµë‹ˆë‹¤.");
 					}
 	   			}
 	   			else
 	   			{
 	   				$menu_sect.contents().remove();
-	   				$menu_sect.append("ÁÖ¹® °¡´ÉÇÑ ¸Ş´º°¡ ¾ø½À´Ï´Ù.");
+	   				$menu_sect.append("ì£¼ë¬¸ ê°€ëŠ¥í•œ ë©”ë‰´ê°€ ì—†ìŠµë‹ˆë‹¤.");
 	   			} 	 
    			}
    		});
     	
     }
  	
- 	// 20140424 ÆÄÆÄÇÃ·¡ÅÍ
+ 	// 20140424 íŒŒíŒŒí”Œë˜í„°
     function fnPaPaPlat(onlineGroupCd)
  	{
     	var $plat_sect = $("#plat_section");
@@ -397,12 +488,12 @@
 	   		url: "/order/platMenu.jsp?onlineGroupCd="+onlineGroupCd, // ????????
 			beforeSend: function() 
 			{              
-				//Åë½ÅÀ» ½ÃÀÛÇÒ¶§ Ã³¸®             
+				//í†µì‹ ì„ ì‹œì‘í• ë•Œ ì²˜ë¦¬             
 				$('#viewLoading').show().fadeIn(500);          
 			},
 	   		complete: function() 
 			{             
-				//Åë½ÅÀÌ ¿Ï·áµÈ ÈÄ Ã³¸®              
+				//í†µì‹ ì´ ì™„ë£Œëœ í›„ ì²˜ë¦¬              
 				$('#viewLoading').fadeOut();  
 				contents_resize();
 			},
@@ -412,7 +503,7 @@
 	   			{
 		   			var receiveData = trim(data);
 
-		   			//½ºÆ®¸µ µ¥ÀÌÅÍ¸¦ Á¦ÀÌ½¼ ¿ÀºêÁ§Æ®·Î º¯Çü
+		   			//ìŠ¤íŠ¸ë§ ë°ì´í„°ë¥¼ ì œì´ìŠ¨ ì˜¤ë¸Œì íŠ¸ë¡œ ë³€í˜•
 					var platMenuInfo = $.parseJSON(receiveData);
 					
 					$plat_sect.contents().remove();
@@ -423,7 +514,7 @@
 						{
 							var mIndex = i+1;
 							
-							// ´ÜÇ°»óÇ°Á¤º¸
+							// ë‹¨í’ˆìƒí’ˆì •ë³´
 							var platMenuHiddenVal = platMenuInfo[i].menuCode+","+platMenuInfo[i].menuName+","+platMenuInfo[i].menuSizeKor+","+platMenuInfo[i].menuSaleAmt+","+platMenuInfo[i].menuDough+","+platMenuInfo[i].menuLagCode+","+platMenuInfo[i].menuMidCode+","+platMenuInfo[i].menuSmlCode+","+platMenuInfo[i].menuSubCode+","+platMenuInfo[i].menuDivCode; 
 						
 //							console.log(platMenuInfo[i]);
@@ -431,17 +522,17 @@
 							var html = '';
 
 							//html  = '<div class="item has-js" id="menu_'+ mIndex +'"> ';
-							html  = '<div class="item has-js" id="menu_'+ platMenuInfo[i].menuCode +'"> '; // ¼ø¹ø¿¡¼­ ¸Ş´ºÄÚµå·Î ¼öÁ¤
+							html  = '<div class="item has-js" id="menu_'+ platMenuInfo[i].menuCode +'"> '; // ìˆœë²ˆì—ì„œ ë©”ë‰´ì½”ë“œë¡œ ìˆ˜ì •
 							html += '<p class="image" >';
 							html += '<img src="/assets/img/order/menu/' + platMenuInfo[i].menuGroupCd + '/' + platMenuInfo[i].menuMidCode + '_ord.png" width="220" height="140" alt="'+ platMenuInfo[i].menuName +'" title="'+ platMenuInfo[i].menuName +'" /></p>';
 							//html += '<p class="name" id="pName_'+ mIndex +'">'+platMenuInfo[i].menuName +" "+ platMenuInfo[i].menuSize +'<span class="size">(BOX)</span></p>';
 							html += '<p class="name" id="pName_'+ platMenuInfo[i].menuCode +'">'+platMenuInfo[i].menuName +" "+ platMenuInfo[i].menuSizeKor +'<span class="size">(BOX)</span></p>';
-							html += '<p class="btn_cart" onclick="fnAddSet($(this), \''+ platMenuHiddenVal +'\', \'\', \'\', \'\', \'\', \'\');""><button type="button">Àå¹Ù±¸´Ï¿¡´ã±â</button></p>';
-							html += '<p class="description"><img src="/assets/img/order/ord_menuList_size_box.png" alt="ÇÃ·¡ÅÍ¼¼Æ®"/>±¸¼º <br>';  
+							html += '<p class="btn_cart" onclick="fnAddSet($(this), \''+ platMenuHiddenVal +'\', \'\', \'\', \'\', \'\', \'\');""><button type="button">ì¥ë°”êµ¬ë‹ˆì—ë‹´ê¸°</button></p>';
+							html += '<p class="description"><img src="/assets/img/order/ord_menuList_size_box.png" alt="í”Œë˜í„°ì„¸íŠ¸"/>êµ¬ì„± <br>';  
 							html += '<span> :' + platMenuInfo[i].menuDesDtl ;
 							html += '</span></p><div class="size_prc">'; 
 	                        html += '<p class="price">' + setComma(platMenuInfo[i].menuSaleAmt)+' </p>';
-							html += '<p style="width:40px; position:absolute; top:10px; left:140px;">¼ö·® : </p>';
+							html += '<p style="width:40px; position:absolute; top:10px; left:140px;">ìˆ˜ëŸ‰ : </p>';
 							html += '<p class="selcet_count"><select id="cnt_opt" name="cnt_opt">';
 							html += '<option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option>';
 							html += '</select></p>';
@@ -453,20 +544,20 @@
 					else
 					{
 						$plat_sect.contents().remove();
-			   			$plat_sect.append("ÁÖ¹® °¡´ÉÇÑ ¸Ş´º°¡ ¾ø½À´Ï´Ù.");
+			   			$plat_sect.append("ì£¼ë¬¸ ê°€ëŠ¥í•œ ë©”ë‰´ê°€ ì—†ìŠµë‹ˆë‹¤.");
 					}
 	   			}
 	   			else
 	   			{
 	   				$plat_sect.contents().remove();
-	   				$plat_sect.append("ÁÖ¹® °¡´ÉÇÑ ¸Ş´º°¡ ¾ø½À´Ï´Ù.");
+	   				$plat_sect.append("ì£¼ë¬¸ ê°€ëŠ¥í•œ ë©”ë‰´ê°€ ì—†ìŠµë‹ˆë‹¤.");
 	   			} 	 
    			}
    		});
     }
  	
  	
- 	// ÇÏÇÁ&ÇÏÇÁ °Ë»ö _ ÇÏÇÁ&ÇÏÇÁ »çÀÌÁî ¼±ÅÃ Combo List »ı¼º 	
+ 	// í•˜í”„&í•˜í”„ ê²€ìƒ‰ _ í•˜í”„&í•˜í”„ ì‚¬ì´ì¦ˆ ì„ íƒ Combo List ìƒì„± 	
     function fnSelHalfAndHalf()
     {
     	
@@ -478,17 +569,17 @@
     		dataType   : "json",
 			beforeSend : function() 
 			{              
-				//Åë½ÅÀ» ½ÃÀÛÇÒ¶§ Ã³¸®             
+				//í†µì‹ ì„ ì‹œì‘í• ë•Œ ì²˜ë¦¬             
 				$('#viewLoading').show().fadeIn(500);          
 			}
     		,complete : function() 
     		{             
-				//Åë½ÅÀÌ ¿Ï·áµÈ ÈÄ Ã³¸®              
+				//í†µì‹ ì´ ì™„ë£Œëœ í›„ ì²˜ë¦¬              
 				$('#viewLoading').fadeOut();         
 			}
     		,success : function(data)
     		{
-    			var str = "<option value=''>ÇÇÀÚ »çÀÌÁî¸¦ ¼±ÅÃÇØÁÖ¼¼¿ä.</option>";			
+    			var str = "<option value=''>í”¼ì ì‚¬ì´ì¦ˆë¥¼ ì„ íƒí•´ì£¼ì„¸ìš”.</option>";			
     			for( var i = 0; i < data.half.length; i++ )
     			{
     				var d= data.half[i];
@@ -499,11 +590,11 @@
     	});
     	
     	$("#half1 option").remove();
-    	var str = "<option value=''>ÇÇÀÚ1 ¼±ÅÃÇØÁÖ¼¼¿ä.</option>";		
+    	var str = "<option value=''>í”¼ì1 ì„ íƒí•´ì£¼ì„¸ìš”.</option>";		
 		$("#half1").html(str);
 		
 		$("#half2 option").remove();
-    	var str = "<option value=''>ÇÇÀÚ2 ¼±ÅÃÇØÁÖ¼¼¿ä.</option>";		
+    	var str = "<option value=''>í”¼ì2 ì„ íƒí•´ì£¼ì„¸ìš”.</option>";		
 		$("#half2").html(str);
     	
 		fnClearHalfAndHalf(1);
@@ -512,19 +603,19 @@
     }
  	
 
- 	// ÇÏÇÁ&ÇÏÇÁ °Ë»ö _ ÇÏÇÁ&ÇÏÇÁ ¿ŞÂÊ ÇÇÀÚ¼±ÅÃ Combo List »ı¼º
+ 	// í•˜í”„&í•˜í”„ ê²€ìƒ‰ _ í•˜í”„&í•˜í”„ ì™¼ìª½ í”¼ìì„ íƒ Combo List ìƒì„±
     function fnSelLeftHalfAndHalf(val)
     {
     	
     	$("#half2 option").remove();
-    	var str = "<option value=''>ÇÇÀÚ2 ¼±ÅÃÇØÁÖ¼¼¿ä.</option>";		
+    	var str = "<option value=''>í”¼ì2 ì„ íƒí•´ì£¼ì„¸ìš”.</option>";		
 		$("#half2").html(str);
 		
     	$(".right").find(".select_price").text("");
     	
     	//fnClearHalfAndHalf(1);
 		//fnClearHalfAndHalf(2);
-		//2014.02.18. ÇÏÇÁ&ÇÏÇÁ »çÀÌÁî ¼±ÅÃ¶§ ¿ŞÂÊ ¿À¸¥ÂÊ ¸ñ·Ï ÃÊ±âÈ­ 
+		//2014.02.18. í•˜í”„&í•˜í”„ ì‚¬ì´ì¦ˆ ì„ íƒë•Œ ì™¼ìª½ ì˜¤ë¥¸ìª½ ëª©ë¡ ì´ˆê¸°í™” 
     	fnClearHalfAndHalfLeftRight(1);
     	fnClearHalfAndHalfLeftRight(2);
     	
@@ -538,17 +629,17 @@
 		   		dataType   : "json",
 				beforeSend : function() 
 				{              
-					//Åë½ÅÀ» ½ÃÀÛÇÒ¶§ Ã³¸®             
+					//í†µì‹ ì„ ì‹œì‘í• ë•Œ ì²˜ë¦¬             
 					$('#viewLoading').show().fadeIn(500);          
 				}
 		   		,complete : function() 
 		   		{             
-					//Åë½ÅÀÌ ¿Ï·áµÈ ÈÄ Ã³¸®              
+					//í†µì‹ ì´ ì™„ë£Œëœ í›„ ì²˜ë¦¬              
 					$('#viewLoading').fadeOut(); 
 				}
 		   		,success : function(data)
 		   		{
-		   			var str = "<option value=''>ÇÇÀÚ1 ¼±ÅÃÇØÁÖ¼¼¿ä.</option>";
+		   			var str = "<option value=''>í”¼ì1 ì„ íƒí•´ì£¼ì„¸ìš”.</option>";
 		   			for( var i = 0; i < data.left.length; i++ )
 		   			{
 		   				var d= data.left[i];
@@ -567,22 +658,22 @@
     }
     
     
- 	// ÇÏÇÁ&ÇÏÇÁ °Ë»ö _ ÇÏÇÁ&ÇÏÇÁ ¿ŞÂÊ ÇÇÀÚ¼±ÅÃ ¸ÅÀåÇ°Àı Ã¼Å©
+ 	// í•˜í”„&í•˜í”„ ê²€ìƒ‰ _ í•˜í”„&í•˜í”„ ì™¼ìª½ í”¼ìì„ íƒ ë§¤ì¥í’ˆì ˆ ì²´í¬
     function fnSelRightHalfAndHalf(val,num)
     {
     	
     	$(".right").find(".select_price").text("");
 		fnClearHalfAndHalf(2);
 
-    	var code = $("#pro_size").val();  // ¸Ş´º¼ÒºĞ·ùÄÚµå, ¸Ş´º¼¼ºĞ·ùÄÚµå
+    	var code = $("#pro_size").val();  // ë©”ë‰´ì†Œë¶„ë¥˜ì½”ë“œ, ë©”ë‰´ì„¸ë¶„ë¥˜ì½”ë“œ
     	
     	var array1 = new Array();
     	var array2 = new Array();
-    	array1 = code.split(",");  // ¸Ş´º¼ÒºĞ·ùÄÚµå, ¸Ş´º¼¼ºĞ·ùÄÚµå
-    	array2 = val.split(",");   // ¸Ş´ºÁßºĞ·ùÄÚµå
+    	array1 = code.split(",");  // ë©”ë‰´ì†Œë¶„ë¥˜ì½”ë“œ, ë©”ë‰´ì„¸ë¶„ë¥˜ì½”ë“œ
+    	array2 = val.split(",");   // ë©”ë‰´ì¤‘ë¶„ë¥˜ì½”ë“œ
     	
     	var $ord_info = $("#ord_optInfo_section");
-		var storeCode = document.frmOrder.cartOrdStoreCode.value;  // ¸ÅÀåÄÚµå
+		var storeCode = document.frmOrder.cartOrdStoreCode.value;  // ë§¤ì¥ì½”ë“œ
 		var storeName = $ord_info.find(".store_name");
 		var mCode     = array2[0];
 		var sCode     = array1[0];
@@ -604,7 +695,7 @@
 						if( "N" == trim(data) )
 						{
 							alertFrame.find("#alertText p").remove();
-							alertFrame.find("#alertText").append("<p>¼±ÅÃÇÏ½Å ¸Ş´º´Â<br>\"" + storeName.text() +"\"Á¡¿¡¼­ ÇöÀç ÁÖ¹®ÀÌ ºÒ°¡´ÉÇÕ´Ï´Ù.</p>").css("line-height","35px"); 
+							alertFrame.find("#alertText").append("<p>ì„ íƒí•˜ì‹  ë©”ë‰´ëŠ”<br>\"" + storeName.text() +"\"ì ì—ì„œ í˜„ì¬ ì£¼ë¬¸ì´ ë¶ˆê°€ëŠ¥í•©ë‹ˆë‹¤.</p>").css("line-height","35px"); 
 							popAlert(alertFrame);
 							alertFrame.find(".alertBtn").focus();
 							return;
@@ -632,8 +723,8 @@
     }
  	
  	
- 	// ÇÏÇÁ&ÇÏÇÁ °Ë»ö _ ÇÏÇÁ&ÇÏÇÁ ¿À¸¥ÂÊ ÇÇÀÚ¼±ÅÃ Combo List »ı¼º
- 	//                  ÇÏÇÁ&ÇÏÇÁ ¿ŞÂÊ ÇÇÀÚ¼±ÅÃ Image Ç¥½Ã
+ 	// í•˜í”„&í•˜í”„ ê²€ìƒ‰ _ í•˜í”„&í•˜í”„ ì˜¤ë¥¸ìª½ í”¼ìì„ íƒ Combo List ìƒì„±
+ 	//                  í•˜í”„&í•˜í”„ ì™¼ìª½ í”¼ìì„ íƒ Image í‘œì‹œ
     function fnSelRightHalfAndHalfComp(val,num)
     {
     	
@@ -642,12 +733,12 @@
 
     	var imgSrc = "";
     	var $img = $("#half1Img");
-    	var code = $("#pro_size").val();  // ¸Ş´º¼ÒºĞ·ùÄÚµå, ¸Ş´º¼¼ºĞ·ùÄÚµå
+    	var code = $("#pro_size").val();  // ë©”ë‰´ì†Œë¶„ë¥˜ì½”ë“œ, ë©”ë‰´ì„¸ë¶„ë¥˜ì½”ë“œ
     	
     	var array1 = new Array();
     	var array2 = new Array();
-    	array1 = code.split(",");  // ¸Ş´º¼ÒºĞ·ùÄÚµå, ¸Ş´º¼¼ºĞ·ùÄÚµå
-    	array2 = val.split(",");   // ¸Ş´ºÁßºĞ·ùÄÚµå
+    	array1 = code.split(",");  // ë©”ë‰´ì†Œë¶„ë¥˜ì½”ë“œ, ë©”ë‰´ì„¸ë¶„ë¥˜ì½”ë“œ
+    	array2 = val.split(",");   // ë©”ë‰´ì¤‘ë¶„ë¥˜ì½”ë“œ
     	
    		if( code != "" && val != "" )
     	{
@@ -657,9 +748,9 @@
         	imgSrc = "/assets/img/order/menu/55/"+ doughType + "/half_" + array2[0] + "_ord.png";
         	$img.html('<img src="'+ imgSrc + '" alt="' + array2[0] + '" onerror="this.src=\''+errorSrc+'\'"/>');
 	        	
-        	$(".plus").find("img").show();  // (+)±×¸²Ç¥½Ã
+        	$(".plus").find("img").show();  // (+)ê·¸ë¦¼í‘œì‹œ
 	    		
-        	//¿À¸¥ÂÊ Á¤º¸ ºÒ·¯¿À±â
+        	//ì˜¤ë¥¸ìª½ ì •ë³´ ë¶ˆëŸ¬ì˜¤ê¸°
 	     	$.ajax(
 	     	{ 
 	 	   		type       : 'post',
@@ -668,17 +759,17 @@
 		   		dataType   : "json",
 				beforeSend : function() 
 				{              
-					//Åë½ÅÀ» ½ÃÀÛÇÒ¶§ Ã³¸®             
+					//í†µì‹ ì„ ì‹œì‘í• ë•Œ ì²˜ë¦¬             
 					$('#viewLoading').show().fadeIn(500);          
 				}
 		   		,complete : function() 
 		   		{             
-					//Åë½ÅÀÌ ¿Ï·áµÈ ÈÄ Ã³¸®              
+					//í†µì‹ ì´ ì™„ë£Œëœ í›„ ì²˜ë¦¬              
 					$('#viewLoading').fadeOut(); 
 				}
 		   		,success : function(data)
 		   		{
-	 	   			var str = "<option value=''>ÇÇÀÚ2 ¼±ÅÃÇØÁÖ¼¼¿ä.</option>";			
+	 	   			var str = "<option value=''>í”¼ì2 ì„ íƒí•´ì£¼ì„¸ìš”.</option>";			
 	 	   			for( var i = 0; i < data.left.length; i++ )
 	 	   			{
 	 	   				var d= data.left[i];
@@ -686,7 +777,7 @@
 	 	   			}	
 	 	   			$("#half2").html(str);
 
-	 	   			fnSelMenuHalfAndHalf(val, num);  // ÇÏÇÁ&ÇÏÇÁ °Ë»ö _ ÇÏÇÁ&ÇÏÇÁ ÇÇÀÚ¼±ÅÃ ¸Ş´º °Ë»ö
+	 	   			fnSelMenuHalfAndHalf(val, num);  // í•˜í”„&í•˜í”„ ê²€ìƒ‰ _ í•˜í”„&í•˜í”„ í”¼ìì„ íƒ ë©”ë‰´ ê²€ìƒ‰
 	   		 	}
 	   		});
     	}
@@ -699,18 +790,18 @@
     }
  	
  	
- 	// ÇÏÇÁ&ÇÏÇÁ °Ë»ö _ ÇÏÇÁ&ÇÏÇÁ ¿À¸¥ÂÊ ÇÇÀÚ¼±ÅÃ Image Ç¥½Ã
+ 	// í•˜í”„&í•˜í”„ ê²€ìƒ‰ _ í•˜í”„&í•˜í”„ ì˜¤ë¥¸ìª½ í”¼ìì„ íƒ Image í‘œì‹œ
     function fnSelImageHalfandHalf(val, num)
     {
-		var code = $("#pro_size").val();  // ¸Ş´º¼ÒºĞ·ùÄÚµå, ¸Ş´º¼¼ºĞ·ùÄÚµå
+		var code = $("#pro_size").val();  // ë©”ë‰´ì†Œë¶„ë¥˜ì½”ë“œ, ë©”ë‰´ì„¸ë¶„ë¥˜ì½”ë“œ
 		
     	var array1 = new Array();
     	var array2 = new Array();
-    	array1 = code.split(",");  // ¸Ş´º¼ÒºĞ·ùÄÚµå, ¸Ş´º¼¼ºĞ·ùÄÚµå
-    	array2 = val.split(",");   // ¸Ş´ºÁßºĞ·ùÄÚµå
+    	array1 = code.split(",");  // ë©”ë‰´ì†Œë¶„ë¥˜ì½”ë“œ, ë©”ë‰´ì„¸ë¶„ë¥˜ì½”ë“œ
+    	array2 = val.split(",");   // ë©”ë‰´ì¤‘ë¶„ë¥˜ì½”ë“œ
     	
     	var $ord_info = $("#ord_optInfo_section");
-		var storeCode = document.frmOrder.cartOrdStoreCode.value;  // ¸ÅÀåÄÚµå
+		var storeCode = document.frmOrder.cartOrdStoreCode.value;  // ë§¤ì¥ì½”ë“œ
 		var storeName = $ord_info.find(".store_name");
 		var mCode     = array2[0];
 		var sCode     = array1[0];
@@ -732,7 +823,7 @@
 						if( "N" == trim(data) )
 						{
 							alertFrame.find("#alertText p").remove();
-							alertFrame.find("#alertText").append("<p>¼±ÅÃÇÏ½Å ¸Ş´º´Â<br>\"" + storeName.text() +"\"Á¡¿¡¼­ ÇöÀç ÁÖ¹®ÀÌ ºÒ°¡´ÉÇÕ´Ï´Ù.</p>").css("line-height","35px"); 
+							alertFrame.find("#alertText").append("<p>ì„ íƒí•˜ì‹  ë©”ë‰´ëŠ”<br>\"" + storeName.text() +"\"ì ì—ì„œ í˜„ì¬ ì£¼ë¬¸ì´ ë¶ˆê°€ëŠ¥í•©ë‹ˆë‹¤.</p>").css("line-height","35px"); 
 							popAlert(alertFrame);
 							return;
 						}
@@ -758,17 +849,17 @@
     }
  	
  	
- 	// ÇÏÇÁ&ÇÏÇÁ °Ë»ö _ ÇÏÇÁ&ÇÏÇÁ ¿À¸¥ÂÊ ÇÇÀÚ¼±ÅÃ Image Ç¥½Ã
+ 	// í•˜í”„&í•˜í”„ ê²€ìƒ‰ _ í•˜í”„&í•˜í”„ ì˜¤ë¥¸ìª½ í”¼ìì„ íƒ Image í‘œì‹œ
     function fnSelImageHalfandHalfComp(val, num)
     {
     	var imgSrc = "";
     	var $img = $("#half2Img");
-		var code   = $("#pro_size").val();  // ¸Ş´º¼ÒºĞ·ùÄÚµå, ¸Ş´º¼¼ºĞ·ùÄÚµå
+		var code   = $("#pro_size").val();  // ë©”ë‰´ì†Œë¶„ë¥˜ì½”ë“œ, ë©”ë‰´ì„¸ë¶„ë¥˜ì½”ë“œ
 		
     	var array1 = new Array();
     	var array2 = new Array();
-    	array1 = code.split(",");  // ¸Ş´º¼ÒºĞ·ùÄÚµå, ¸Ş´º¼¼ºĞ·ùÄÚµå
-    	array2 = val.split(",");   // ¸Ş´ºÁßºĞ·ùÄÚµå
+    	array1 = code.split(",");  // ë©”ë‰´ì†Œë¶„ë¥˜ì½”ë“œ, ë©”ë‰´ì„¸ë¶„ë¥˜ì½”ë“œ
+    	array2 = val.split(",");   // ë©”ë‰´ì¤‘ë¶„ë¥˜ì½”ë“œ
     	
     	if( $("#half1").val() != "" && $("#pro_size").val() != "" )
     	{
@@ -780,7 +871,7 @@
         		imgSrc = "/assets/img/order/menu/55/"+ doughType + "/half_" + array2[0] + "_ord.png";
         		$img.html('<img src="'+ imgSrc + '" alt="' + array2[0] + '" onerror="this.src=\''+errorSrc+'\'"/>');
 		    		
-    			fnSelMenuHalfAndHalf(val, num);  // ÇÏÇÁ&ÇÏÇÁ °Ë»ö _ ÇÏÇÁ&ÇÏÇÁ ÇÇÀÚ¼±ÅÃ ¸Ş´º °Ë»ö
+    			fnSelMenuHalfAndHalf(val, num);  // í•˜í”„&í•˜í”„ ê²€ìƒ‰ _ í•˜í”„&í•˜í”„ í”¼ìì„ íƒ ë©”ë‰´ ê²€ìƒ‰
     		}
     		else
     		{
@@ -795,12 +886,12 @@
     }
  	
  	
- 	// ÇÏÇÁ&ÇÏÇÁ °Ë»ö _ ÇÏÇÁ&ÇÏÇÁ ÇÇÀÚ¼±ÅÃ Combo List ÃÊ±âÈ­
+ 	// í•˜í”„&í•˜í”„ ê²€ìƒ‰ _ í•˜í”„&í•˜í”„ í”¼ìì„ íƒ Combo List ì´ˆê¸°í™”
     function fnClearHalfAndHalf(num)
     {
-    	var sel0 = $("#pro_size").val();  // »ó´Ü 
-    	var sel1 = $("#half1").val();     // ¿ŞÂÊ 
-    	var sel2 = $("#half2").val();     // ¿À¸¥ÂÊ
+    	var sel0 = $("#pro_size").val();  // ìƒë‹¨ 
+    	var sel1 = $("#half1").val();     // ì™¼ìª½ 
+    	var sel2 = $("#half2").val();     // ì˜¤ë¥¸ìª½
     	var $img = $("#half"+num+"Img");
     	
     	$img.html("");
@@ -813,23 +904,23 @@
     	if( sel0 == "" )
     	{
 			$("#half1 option").remove();
-	    	var str = "<option value=''>ÇÇÀÚ1 ¼±ÅÃÇØÁÖ¼¼¿ä.</option>";		
+	    	var str = "<option value=''>í”¼ì1 ì„ íƒí•´ì£¼ì„¸ìš”.</option>";		
 			$("#half1").html(str);
 			
 			$("#half2 option").remove();
-	    	var str = "<option value=''>ÇÇÀÚ2 ¼±ÅÃÇØÁÖ¼¼¿ä.</option>";		
+	    	var str = "<option value=''>í”¼ì2 ì„ íƒí•´ì£¼ì„¸ìš”.</option>";		
 			$("#half2").html(str);
     	}
     	else if( sel0 != "" && sel1 == "" )
     	{
     		$("#half2 option").remove();
-	    	var str = "<option value=''>ÇÇÀÚ2 ¼±ÅÃÇØÁÖ¼¼¿ä.</option>";		
+	    	var str = "<option value=''>í”¼ì2 ì„ íƒí•´ì£¼ì„¸ìš”.</option>";		
 			$("#half2").html(str);
     	}
     	
     }
  	
- 	// ÇÏÇÁ&ÇÏÇÁ »çÀÌÁî ¼±ÅÃ ¶§ ¿ŞÂÊ ¿À¸¥Á· Combo List ÃÊ±âÈ­
+ 	// í•˜í”„&í•˜í”„ ì‚¬ì´ì¦ˆ ì„ íƒ ë•Œ ì™¼ìª½ ì˜¤ë¥¸ì¡± Combo List ì´ˆê¸°í™”
  	function fnClearHalfAndHalfLeftRight(num)
  	{
     	var $img = $("#half"+num+"Img");
@@ -842,20 +933,20 @@
     	$(".right").find(".select_price").text("");
     	
     	$("#half1 option").remove();
-    	var str = "<option value=''>ÇÇÀÚ1 ¼±ÅÃÇØÁÖ¼¼¿ä.</option>";		
+    	var str = "<option value=''>í”¼ì1 ì„ íƒí•´ì£¼ì„¸ìš”.</option>";		
 		$("#half1").html(str);
 		
 		$("#half2 option").remove();
-    	var str = "<option value=''>ÇÇÀÚ2 ¼±ÅÃÇØÁÖ¼¼¿ä.</option>";		
+    	var str = "<option value=''>í”¼ì2 ì„ íƒí•´ì£¼ì„¸ìš”.</option>";		
 		$("#half2").html(str);
  	}
  	
  	
- 	// ÇÏÇÁ&ÇÏÇÁ °Ë»ö _ ÇÏÇÁ&ÇÏÇÁ ÇÇÀÚ¼±ÅÃ °Ë»ç (Ç°Àı¿©ºÎ, ÆÇ¸Å¿©ºÎ)
+ 	// í•˜í”„&í•˜í”„ ê²€ìƒ‰ _ í•˜í”„&í•˜í”„ í”¼ìì„ íƒ ê²€ì‚¬ (í’ˆì ˆì—¬ë¶€, íŒë§¤ì—¬ë¶€)
  	function fnChkStoreMenuHalfAndHalf(mCode, sCode, dCode)
   	{
     	var $ord_info = $("#ord_optInfo_section");
-		var storeCode = document.frmOrder.cartOrdStoreCode.value;  // ¸ÅÀåÄÚµå
+		var storeCode = document.frmOrder.cartOrdStoreCode.value;  // ë§¤ì¥ì½”ë“œ
 		var storeName = $ord_info.find(".store_name");
 		var rtnTxt    = "Y";
 	
@@ -874,7 +965,7 @@
 					if( "N" == trim(data) )
 					{
 						rtnTxt = "N";
-						alert("¼±ÅÃÇÏ½Å »óÇ°Àº ["+ storeName.text() +"]¿¡¼­ ÁÖ¹®ÇÏ½Ç ¼ö ¾ø½À´Ï´Ù.");
+						alert("ì„ íƒí•˜ì‹  ìƒí’ˆì€ ["+ storeName.text() +"]ì—ì„œ ì£¼ë¬¸í•˜ì‹¤ ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
 					}
 					else
 					{
@@ -898,14 +989,14 @@
  	}
 
  	
- 	// ÇÏÇÁ&ÇÏÇÁ °Ë»ö _ ÇÏÇÁ&ÇÏÇÁ ÇÇÀÚ¼±ÅÃ ¸Ş´º °Ë»ö
+ 	// í•˜í”„&í•˜í”„ ê²€ìƒ‰ _ í•˜í”„&í•˜í”„ í”¼ìì„ íƒ ë©”ë‰´ ê²€ìƒ‰
     function fnSelMenuHalfAndHalf(val, num)
     {
     	
-    	var code    = $("#pro_size").val();             // ¸Ş´º¼ÒºĞ·ùÄÚµå, ¸Ş´º¼¼ºĞ·ùÄÚµå
-    	var $menuNm = $(".half"+num).find(".name");     // ¸Ş´ºÀÌ¸§
-    	var $price  = $(".half"+num).find(".price");    // °¡°İ
-    	var $won    = $(".half"+num).find(".t_block");  // ´ÜÀ§Ç¥½Ã
+    	var code    = $("#pro_size").val();             // ë©”ë‰´ì†Œë¶„ë¥˜ì½”ë“œ, ë©”ë‰´ì„¸ë¶„ë¥˜ì½”ë“œ
+    	var $menuNm = $(".half"+num).find(".name");     // ë©”ë‰´ì´ë¦„
+    	var $price  = $(".half"+num).find(".price");    // ê°€ê²©
+    	var $won    = $(".half"+num).find(".t_block");  // ë‹¨ìœ„í‘œì‹œ
     	
         $.ajax(
         { 
@@ -915,34 +1006,34 @@
 		   	dataType   : "json",
 			beforeSend : function() 
 			{              
-				//Åë½ÅÀ» ½ÃÀÛÇÒ¶§ Ã³¸®             
+				//í†µì‹ ì„ ì‹œì‘í• ë•Œ ì²˜ë¦¬             
 				$('#viewLoading').show().fadeIn(500);          
 			},
 		   	complete : function() 
 		   	{             
-				//Åë½ÅÀÌ ¿Ï·áµÈ ÈÄ Ã³¸®              
+				//í†µì‹ ì´ ì™„ë£Œëœ í›„ ì²˜ë¦¬              
 				$('#viewLoading').fadeOut();
-				fnCompPriceHalfAndHalf();  // ÇÏÇÁ&ÇÏÇÁ °Ë»ö _ ÇÏÇÁ&ÇÏÇÁ ¼±ÅÃ¸Ş´º °¡°İÇÕ»ê Ç¥½Ã
+				fnCompPriceHalfAndHalf();  // í•˜í”„&í•˜í”„ ê²€ìƒ‰ _ í•˜í”„&í•˜í”„ ì„ íƒë©”ë‰´ ê°€ê²©í•©ì‚° í‘œì‹œ
 			},
 		   	success : function(data)
 		   	{
 	 	   		var d= data.halfMenu[0];
 	 	   		$menuNm.text(d.menuMidName);	
 	 	   		$price.text( won(d.menuSaleAmt));
-	 	   		$won.text("¿ø");
+	 	   		$won.text("ì›");
 	 	   					
-	 	   		//Àü¼Û¿ë °ª ¼³Á¤
-	 	   		$("#halfMenuCode"   +num).val(d.menuCode   );  // ÇÏÇÁ¸Ş´ºÄÚµå       : num = 1 -> (¿ŞÂÊ), num = 2 -> (¿À¸¥ÂÊ)
-	 	   		$("#halfMenuName"   +num).val(d.menuName   );  // ÇÏÇÁ¸Ş´º¸í         : num = 1 -> (¿ŞÂÊ), num = 2 -> (¿À¸¥ÂÊ)
-	 	   		$("#halfMenuLagCode"+num).val(d.menuLagCode);  // ÇÏÇÁ¸Ş´º´ëºĞ·ùÄÚµå : num = 1 -> (¿ŞÂÊ), num = 2 -> (¿À¸¥ÂÊ)
-	 	   		$("#halfMenuMidCode"+num).val(d.menuMidCode);  // ÇÏÇÁ¸Ş´ºÁßºĞ·ùÄÚµå : num = 1 -> (¿ŞÂÊ), num = 2 -> (¿À¸¥ÂÊ)
-	 	   		$("#halfMenuSmlCode"+num).val(d.menuSmlCode);  // ÇÏÇÁ¸Ş´º¼ÒºĞ·ùÄÚµå : num = 1 -> (¿ŞÂÊ), num = 2 -> (¿À¸¥ÂÊ)
-	 	   		$("#halfMenuSubCode"+num).val(d.menuSubCode);  // ÇÏÇÁ¸Ş´º¼¼ºĞ·ùÄÚµå : num = 1 -> (¿ŞÂÊ), num = 2 -> (¿À¸¥ÂÊ)
-	 	   		$("#halfMenuPrice"  +num).val(d.menuPrice  );  // ÇÏÇÁ¸Ş´º´Ü°¡       : num = 1 -> (¿ŞÂÊ), num = 2 -> (¿À¸¥ÂÊ)
-	 	   		$("#halfMenuQty"    +num).val("0.5"        );  // ÇÏÇÁ¸Ş´º¼ö·®       : num = 1 -> (¿ŞÂÊ), num = 2 -> (¿À¸¥ÂÊ)
-	 	   		$("#halfMenuAmt"    +num).val(d.menuSaleAmt);  // ÇÏÇÁ¸Ş´º±İ¾×       : num = 1 -> (¿ŞÂÊ), num = 2 -> (¿À¸¥ÂÊ)
-	 	   		$("#halfMenuSize"   +num).val(d.menuSize   );  // ÇÏÇÁ¸Ş´º»çÀÌÁî     : num = 1 -> (¿ŞÂÊ), num = 2 -> (¿À¸¥ÂÊ)
-	 	   		$("#halfMenuDough"  +num).val(d.menuDough  );  // ÇÏÇÁ¸Ş´ºµµ¿ìÁ¾·ù   : num = 1 -> (¿ŞÂÊ), num = 2 -> (¿À¸¥ÂÊ)
+	 	   		//ì „ì†¡ìš© ê°’ ì„¤ì •
+	 	   		$("#halfMenuCode"   +num).val(d.menuCode   );  // í•˜í”„ë©”ë‰´ì½”ë“œ       : num = 1 -> (ì™¼ìª½), num = 2 -> (ì˜¤ë¥¸ìª½)
+	 	   		$("#halfMenuName"   +num).val(d.menuName   );  // í•˜í”„ë©”ë‰´ëª…         : num = 1 -> (ì™¼ìª½), num = 2 -> (ì˜¤ë¥¸ìª½)
+	 	   		$("#halfMenuLagCode"+num).val(d.menuLagCode);  // í•˜í”„ë©”ë‰´ëŒ€ë¶„ë¥˜ì½”ë“œ : num = 1 -> (ì™¼ìª½), num = 2 -> (ì˜¤ë¥¸ìª½)
+	 	   		$("#halfMenuMidCode"+num).val(d.menuMidCode);  // í•˜í”„ë©”ë‰´ì¤‘ë¶„ë¥˜ì½”ë“œ : num = 1 -> (ì™¼ìª½), num = 2 -> (ì˜¤ë¥¸ìª½)
+	 	   		$("#halfMenuSmlCode"+num).val(d.menuSmlCode);  // í•˜í”„ë©”ë‰´ì†Œë¶„ë¥˜ì½”ë“œ : num = 1 -> (ì™¼ìª½), num = 2 -> (ì˜¤ë¥¸ìª½)
+	 	   		$("#halfMenuSubCode"+num).val(d.menuSubCode);  // í•˜í”„ë©”ë‰´ì„¸ë¶„ë¥˜ì½”ë“œ : num = 1 -> (ì™¼ìª½), num = 2 -> (ì˜¤ë¥¸ìª½)
+	 	   		$("#halfMenuPrice"  +num).val(d.menuPrice  );  // í•˜í”„ë©”ë‰´ë‹¨ê°€       : num = 1 -> (ì™¼ìª½), num = 2 -> (ì˜¤ë¥¸ìª½)
+	 	   		$("#halfMenuQty"    +num).val("0.5"        );  // í•˜í”„ë©”ë‰´ìˆ˜ëŸ‰       : num = 1 -> (ì™¼ìª½), num = 2 -> (ì˜¤ë¥¸ìª½)
+	 	   		$("#halfMenuAmt"    +num).val(d.menuSaleAmt);  // í•˜í”„ë©”ë‰´ê¸ˆì•¡       : num = 1 -> (ì™¼ìª½), num = 2 -> (ì˜¤ë¥¸ìª½)
+	 	   		$("#halfMenuSize"   +num).val(d.menuSize   );  // í•˜í”„ë©”ë‰´ì‚¬ì´ì¦ˆ     : num = 1 -> (ì™¼ìª½), num = 2 -> (ì˜¤ë¥¸ìª½)
+	 	   		$("#halfMenuDough"  +num).val(d.menuDough  );  // í•˜í”„ë©”ë‰´ë„ìš°ì¢…ë¥˜   : num = 1 -> (ì™¼ìª½), num = 2 -> (ì˜¤ë¥¸ìª½)
 			},
 			error:function(request,status,error)
 			{   
@@ -952,7 +1043,7 @@
    		
     }
     
- 	// ÇÏÇÁ&ÇÏÇÁ °Ë»ö _ ÇÏÇÁ&ÇÏÇÁ ¼±ÅÃ¸Ş´º °¡°İÇÕ»ê Ç¥½Ã
+ 	// í•˜í”„&í•˜í”„ ê²€ìƒ‰ _ í•˜í”„&í•˜í”„ ì„ íƒë©”ë‰´ ê°€ê²©í•©ì‚° í‘œì‹œ
     function fnCompPriceHalfAndHalf()
     {
     	
@@ -962,13 +1053,13 @@
 		if( $("#half1").val() != "" && $("#half2").val() != "" && $("#pro_size").val() != "" )
 		{
 			var completPrc = won( (parseInt(halfPrcVal1)+parseInt(halfPrcVal2)).toString() );
-			$(".right").find(".select_price").text( completPrc.replace("¿ø", ""));
+			$(".right").find(".select_price").text( completPrc.replace("ì›", ""));
 			$(".half_spcInstruction").css("display","block");
 		}
     }
  	
  	
- 	// EÄíÆù °Ë»ö
+ 	// Eì¿ í° ê²€ìƒ‰
     function fnSelECoupon(code)
     {
     	
@@ -976,18 +1067,18 @@
     	{
 			var alertFrame = $("#notice_1002");
 			alertFrame.find("#alertText p").remove();
-			alertFrame.find("#alertText").append("<p>±¸¸ÅÇÏ½Å ÄíÆù¹øÈ£¸¦ ¸ÕÀú ÀÔ·Â ÈÄ<br>Á¶È¸¹öÆ°À» ´­·¯ ÁÖ¼¼¿ä!</p>").css("line-height","35px"); 
+			alertFrame.find("#alertText").append("<p>êµ¬ë§¤í•˜ì‹  ì¿ í°ë²ˆí˜¸ë¥¼ ë¨¼ì € ì…ë ¥ í›„<br>ì¡°íšŒë²„íŠ¼ì„ ëˆŒëŸ¬ ì£¼ì„¸ìš”!</p>").css("line-height","35px"); 
 			popAlert(alertFrame);
     		
 			$("#coup_id").focus();
     		return;
     	}
 
-    	// È­¸é Clear
-		$("#eCouponCompany").val("");  // EÄíÆùÁ¦ÈŞ»ç
-		$("#eCouponCode"   ).val("");  // EÄíÆùÄÚµå
-		$("#eCouponName"   ).val("");  // EÄíÆù¸í
-	    $("#eCouponNumber" ).val("");  // EÄíÆù¹øÈ£
+    	// í™”ë©´ Clear
+		$("#eCouponCompany").val("");  // Eì¿ í°ì œíœ´ì‚¬
+		$("#eCouponCode"   ).val("");  // Eì¿ í°ì½”ë“œ
+		$("#eCouponName"   ).val("");  // Eì¿ í°ëª…
+	    $("#eCouponNumber" ).val("");  // Eì¿ í°ë²ˆí˜¸
 		var image      = $("#ecoup_section .right img");
 		var couponName = $("#ecoup_section .right .name");
     	image.attr("src", "/assets/img/order/menu/eCoupon_img_none.png");
@@ -1000,12 +1091,12 @@
   			dataType   : "html",
   			beforeSend : function() 
   			{              
-  				//Åë½ÅÀ» ½ÃÀÛÇÒ¶§ Ã³¸®             
+  				//í†µì‹ ì„ ì‹œì‘í• ë•Œ ì²˜ë¦¬             
   				$('#viewLoading').show().fadeIn(500);          
   			},
 			complete : function() 
 			{             
-  				//Åë½ÅÀÌ ¿Ï·áµÈ ÈÄ Ã³¸®              
+  				//í†µì‹ ì´ ì™„ë£Œëœ í›„ ì²˜ë¦¬              
   				$('#viewLoading').fadeOut();         
   			},
 			success : function(data)
@@ -1016,19 +1107,19 @@
   				}
   				else
   				{
-  			    	// ÄíÆù¹øÈ£ Ã³À½3ÀÚ¸®¸¦ Àß¶ó¼­ Ã¼Å©
+  			    	// ì¿ í°ë²ˆí˜¸ ì²˜ìŒ3ìë¦¬ë¥¼ ì˜ë¼ì„œ ì²´í¬
   			    	var couponNumber = $("#coup_id").val().substring(0, 3);
   					if( couponNumber == "800" )
   					{
-  						fnSelInterfaceCoopmarket();  //  EÄíÆù °Ë»ö ÄíÇÁ¸¶ÄÉÆÃ ÀÎÅÍÆäÀÌ½º Ã³¸®
+  						fnSelInterfaceCoopmarket();  //  Eì¿ í° ê²€ìƒ‰ ì¿ í”„ë§ˆì¼€íŒ… ì¸í„°í˜ì´ìŠ¤ ì²˜ë¦¬
   					}
   					else if( couponNumber == "900" )
   					{
-  						fnSelInterfaceGiftshow();  //  EÄíÆù °Ë»ö ±âÇÁÆ¼¼î ÀÎÅÍÆäÀÌ½º Ã³¸®
+  						fnSelInterfaceGiftshow();  //  Eì¿ í° ê²€ìƒ‰ ê¸°í”„í‹°ì‡¼ ì¸í„°í˜ì´ìŠ¤ ì²˜ë¦¬
   					}
   					else
   					{
-  						fnSelInterfacePapajohns();  //  EÄíÆù °Ë»ö ÆÄÆÄÁ¸½º ÀÎÅÍÆäÀÌ½º Ã³¸®
+  						fnSelInterfacePapajohns();  //  Eì¿ í° ê²€ìƒ‰ íŒŒíŒŒì¡´ìŠ¤ ì¸í„°í˜ì´ìŠ¤ ì²˜ë¦¬
   					}
   				}
   			}
@@ -1037,13 +1128,13 @@
     }
 
 
-	//  EÄíÆù °Ë»ö ÄíÇÁ¸¶ÄÉÆÃ ÀÎÅÍÆäÀÌ½º Ã³¸®
+	//  Eì¿ í° ê²€ìƒ‰ ì¿ í”„ë§ˆì¼€íŒ… ì¸í„°í˜ì´ìŠ¤ ì²˜ë¦¬
  	function fnSelInterfaceCoopmarket()
     {
     	
-    	var command    = "L0";                 // Ã³¸®¿äÃ»ÄÚµå L0 : ÄíÆùÁ¶È¸  L1 : ÄíÆùÀÎÁõ  L2 : ÄíÆùÀÎÁõÃë¼Ò
-    	var couponNo   = $("#coup_id").val();  // ÄíÆù¹øÈ£
-    	//var branchCode = "1234567890";         // ¸ÅÀåÄÚµå(¼±ÅÃ°ª)
+    	var command    = "L0";                 // ì²˜ë¦¬ìš”ì²­ì½”ë“œ L0 : ì¿ í°ì¡°íšŒ  L1 : ì¿ í°ì¸ì¦  L2 : ì¿ í°ì¸ì¦ì·¨ì†Œ
+    	var couponNo   = $("#coup_id").val();  // ì¿ í°ë²ˆí˜¸
+    	//var branchCode = "1234567890";         // ë§¤ì¥ì½”ë“œ(ì„ íƒê°’)
     	var branchCode = $("#cartOrdStoreCode").val();
     	
     	if(branchCode == "" || branchCode == null){
@@ -1058,7 +1149,7 @@
   			
 			complete : function() 
 			{             
-  				//Åë½ÅÀÌ ¿Ï·áµÈ ÈÄ Ã³¸®              
+  				//í†µì‹ ì´ ì™„ë£Œëœ í›„ ì²˜ë¦¬              
   				$('#viewLoading').fadeOut();         
   			},
   			success  : function(data)
@@ -1081,7 +1172,7 @@
 			    	couponName.text(returnValue.couponName);
 
 			    	var menuCode = returnValue.productCode;
-			        fnSelECouponMenu(menuCode);  // EÄíÆù ¸Ş´º °Ë»ö
+			        fnSelECouponMenu(menuCode);  // Eì¿ í° ë©”ë‰´ ê²€ìƒ‰
   				}
 				else if( returnValue.resultCode == "ER" )
 				{
@@ -1101,13 +1192,13 @@
     }
 
  	
- 	// EÄíÆù °Ë»ö ±âÇÁÆ¼¼î ÀÎÅÍÆäÀÌ½º Ã³¸®
+ 	// Eì¿ í° ê²€ìƒ‰ ê¸°í”„í‹°ì‡¼ ì¸í„°í˜ì´ìŠ¤ ì²˜ë¦¬
     function fnSelInterfaceGiftshow()
     {
     	
-    	var command    = "100";                         // ±â´ÉÄÚµå : 100=ÄíÆùÁ¶È¸, 101=ÄíÆù½ÂÀÎ¿äÃ», 102=ÄíÆùÃë¼Ò¿äÃ»
-    	var couponNo   = $("#coup_id").val();           // ÄíÆù¹øÈ£
-		var branchCode = $("#cartOrdStoreCode").val();  // ¸ÅÀåÄÚµå
+    	var command    = "100";                         // ê¸°ëŠ¥ì½”ë“œ : 100=ì¿ í°ì¡°íšŒ, 101=ì¿ í°ìŠ¹ì¸ìš”ì²­, 102=ì¿ í°ì·¨ì†Œìš”ì²­
+    	var couponNo   = $("#coup_id").val();           // ì¿ í°ë²ˆí˜¸
+		var branchCode = $("#cartOrdStoreCode").val();  // ë§¤ì¥ì½”ë“œ
     	
     	$.ajax(
     	{
@@ -1116,7 +1207,7 @@
   			type     : "post",
 			complete : function() 
 			{             
-  				//Åë½ÅÀÌ ¿Ï·áµÈ ÈÄ Ã³¸®              
+  				//í†µì‹ ì´ ì™„ë£Œëœ í›„ ì²˜ë¦¬              
   				$('#viewLoading').fadeOut();         
   			},
   			success  : function(data)
@@ -1131,7 +1222,7 @@
 			    	couponName.text($("#eCouponName").val());
 
 			    	var menuCode = returnValue.bodyProductID;
-			        fnSelECouponMenu(menuCode);  // EÄíÆù ¸Ş´º °Ë»ö
+			        fnSelECouponMenu(menuCode);  // Eì¿ í° ë©”ë‰´ ê²€ìƒ‰
   				}
 				else if( returnValue.headFailCode == "E0006" )
 				{
@@ -1155,10 +1246,10 @@
     }
  	
  	
-	//  EÄíÆù °Ë»ö ÆÄÆÄÁ¸½º ÀÎÅÍÆäÀÌ½º Ã³¸®
+	//  Eì¿ í° ê²€ìƒ‰ íŒŒíŒŒì¡´ìŠ¤ ì¸í„°í˜ì´ìŠ¤ ì²˜ë¦¬
     function fnSelInterfacePapajohns()
     {
-    	var couponNo = $("#coup_id").val();  // ÄíÆù¹øÈ£
+    	var couponNo = $("#coup_id").val();  // ì¿ í°ë²ˆí˜¸
     	
     	$.ajax(
     	{
@@ -1167,7 +1258,7 @@
     		type     : "post",
 			complete : function() 
 			{             
-  				//Åë½ÅÀÌ ¿Ï·áµÈ ÈÄ Ã³¸®              
+  				//í†µì‹ ì´ ì™„ë£Œëœ í›„ ì²˜ë¦¬              
   				$('#viewLoading').fadeOut();         
   			},
     		success  : function(data)
@@ -1176,24 +1267,24 @@
 				
   				if( returnValue.resultCode == "11" )
   				{
-					popAlert("#notice_eCopErr"); //¿¡·¯
+					popAlert("#notice_eCopErr"); //ì—ëŸ¬
   				}
 				else if( returnValue.resultCode == "22" )
 				{
-					popAlert("#notice_eCopUse"); //»ç¿ë
+					popAlert("#notice_eCopUse"); //ì‚¬ìš©
 				}
 				else if( returnValue.resultCode == "33" )
 				{
-					popAlert("#notice_eDate"); //±â°£Áö³²
+					popAlert("#notice_eDate"); //ê¸°ê°„ì§€ë‚¨
 				}
-				else if( returnValue.resultCode == "00" ) //°¡´É
+				else if( returnValue.resultCode == "00" ) //ê°€ëŠ¥
   				{
 					var image      = $("#ecoup_section .right img");
 			    	image.attr("src", "/assets/img/order/menu/eCoupon_img_default.png");
 
 			    	var menuCode = returnValue.menuCode;
 			    	
-			        fnSelECouponMenu(menuCode);  // EÄíÆù ¸Ş´º °Ë»ö
+			        fnSelECouponMenu(menuCode);  // Eì¿ í° ë©”ë‰´ ê²€ìƒ‰
   				}
   				else
   				{
@@ -1208,7 +1299,7 @@
     }
  	
  	
- 	// EÄíÆù ¸Ş´º °Ë»ö
+ 	// Eì¿ í° ë©”ë‰´ ê²€ìƒ‰
     function fnSelECouponMenu(menuCode)
     {
     	
@@ -1221,12 +1312,12 @@
 			url        : "/order/couponCheck.jsp?flag=selectMenu&menuCode="+menuCode,
 			beforeSend : function() 
 			{              
-				//Åë½ÅÀ» ½ÃÀÛÇÒ¶§ Ã³¸®             
+				//í†µì‹ ì„ ì‹œì‘í• ë•Œ ì²˜ë¦¬             
 				//$('#viewLoading').show().fadeIn(500);          
 			},
 	   		complete: function() 
 			{             
-				//Åë½ÅÀÌ ¿Ï·áµÈ ÈÄ Ã³¸®              
+				//í†µì‹ ì´ ì™„ë£Œëœ í›„ ì²˜ë¦¬              
 				$('#viewLoading').fadeOut();  
 			},
 	   		success:function(data)
@@ -1234,7 +1325,7 @@
 	   			if( trim(data) != "" && trim(data) != null && trim(data) != "NO" && trim(data) != "]" )
 	   			{
 		   			var receiveData = trim(data);
-					//½ºÆ®¸µ µ¥ÀÌÅÍ¸¦ Á¦ÀÌ½¼ ¿ÀºêÁ§Æ®·Î º¯Çü
+					//ìŠ¤íŠ¸ë§ ë°ì´í„°ë¥¼ ì œì´ìŠ¨ ì˜¤ë¸Œì íŠ¸ë¡œ ë³€í˜•
 					var setMenuInfo = $.parseJSON(receiveData); 
 					
 					$menu_sect.find(".eCouponDetail").remove();
@@ -1243,21 +1334,21 @@
 					{
 						for( var i = 0; i < setMenuInfo.length; i++ )
 						{
-		  	  				$("#ecopMenuCode"   ).val(setMenuInfo[i].menuCode   );  // EÄíÆù¸Ş´ºÄÚµå
-		  	  				$("#ecopMenuName"   ).val(setMenuInfo[i].menuName   );  // EÄíÆù¸Ş´º¸í
-		  	  				$("#ecopMenuDivCode").val(setMenuInfo[i].menuDivCode);  // EÄíÆù¸Ş´º±¸ºĞÄÚµå
-		  	  				$("#ecopMenuLagCode").val(setMenuInfo[i].menuLagCode);  // EÄíÆù¸Ş´º´ëºĞ·ùÄÚµå
-		  	  				$("#ecopMenuMidCode").val(setMenuInfo[i].menuMidCode);  // EÄíÆù¸Ş´ºÁßºĞ·ùÄÚµå
-		  	  				$("#ecopMenuSmlCode").val(setMenuInfo[i].menuSmlCode);  // EÄíÆù¸Ş´º¼ÒºĞ·ùÄÚµå
-		  	  				$("#ecopMenuSubCode").val(setMenuInfo[i].menuSubCode);  // EÄíÆù¸Ş´º¼¼ºĞ·ùÄÚµå
-		  	  				$("#ecopMenuPrice"  ).val(setMenuInfo[i].menuPrice  );  // EÄíÆù¸Ş´º´Ü°¡
-		  	  				$("#ecopMenuDiscAmt").val(setMenuInfo[i].menuDiscAmt);  // EÄíÆù¸Ş´ºÇÒÀÎ±İ¾×
-		  	  				$("#ecopMenuSaleAmt").val(setMenuInfo[i].menuSaleAmt);  // EÄíÆù¸Ş´ºÆÇ¸Å±İ¾×
-		  	  				$("#ecopMenuSize"   ).val(setMenuInfo[i].menuSize   );  // EÄíÆù¸Ş´º»çÀÌÁî
-							$("#eCouponCompany" ).val(setMenuInfo[i].couponComp );  // EÄíÆùÁ¦ÈŞ»ç
-							$("#eCouponCode"    ).val(setMenuInfo[i].couponCode );  // EÄíÆùÄÚµå
-							$("#eCouponName"    ).val(setMenuInfo[i].couponName );  // EÄíÆù¸í
-						    $("#eCouponNumber"  ).val($("#coup_id").val()       );  // EÄíÆù¹øÈ£
+		  	  				$("#ecopMenuCode"   ).val(setMenuInfo[i].menuCode   );  // Eì¿ í°ë©”ë‰´ì½”ë“œ
+		  	  				$("#ecopMenuName"   ).val(setMenuInfo[i].menuName   );  // Eì¿ í°ë©”ë‰´ëª…
+		  	  				$("#ecopMenuDivCode").val(setMenuInfo[i].menuDivCode);  // Eì¿ í°ë©”ë‰´êµ¬ë¶„ì½”ë“œ
+		  	  				$("#ecopMenuLagCode").val(setMenuInfo[i].menuLagCode);  // Eì¿ í°ë©”ë‰´ëŒ€ë¶„ë¥˜ì½”ë“œ
+		  	  				$("#ecopMenuMidCode").val(setMenuInfo[i].menuMidCode);  // Eì¿ í°ë©”ë‰´ì¤‘ë¶„ë¥˜ì½”ë“œ
+		  	  				$("#ecopMenuSmlCode").val(setMenuInfo[i].menuSmlCode);  // Eì¿ í°ë©”ë‰´ì†Œë¶„ë¥˜ì½”ë“œ
+		  	  				$("#ecopMenuSubCode").val(setMenuInfo[i].menuSubCode);  // Eì¿ í°ë©”ë‰´ì„¸ë¶„ë¥˜ì½”ë“œ
+		  	  				$("#ecopMenuPrice"  ).val(setMenuInfo[i].menuPrice  );  // Eì¿ í°ë©”ë‰´ë‹¨ê°€
+		  	  				$("#ecopMenuDiscAmt").val(setMenuInfo[i].menuDiscAmt);  // Eì¿ í°ë©”ë‰´í• ì¸ê¸ˆì•¡
+		  	  				$("#ecopMenuSaleAmt").val(setMenuInfo[i].menuSaleAmt);  // Eì¿ í°ë©”ë‰´íŒë§¤ê¸ˆì•¡
+		  	  				$("#ecopMenuSize"   ).val(setMenuInfo[i].menuSize   );  // Eì¿ í°ë©”ë‰´ì‚¬ì´ì¦ˆ
+							$("#eCouponCompany" ).val(setMenuInfo[i].couponComp );  // Eì¿ í°ì œíœ´ì‚¬
+							$("#eCouponCode"    ).val(setMenuInfo[i].couponCode );  // Eì¿ í°ì½”ë“œ
+							$("#eCouponName"    ).val(setMenuInfo[i].couponName );  // Eì¿ í°ëª…
+						    $("#eCouponNumber"  ).val($("#coup_id").val()       );  // Eì¿ í°ë²ˆí˜¸
 						    
 							var couponName = $("#ecoup_section .right .name");
 					    	couponName.text($("#eCouponName").val().split(")")[1]);
@@ -1294,47 +1385,47 @@
     }
  	
  	
-	/********************* Àå¹Ù±¸´Ï ÀúÀåÇÒ µ¥ÀÌÅÍ ¸¸µé±â *********************/  // Rjeong
-	// ÇÇÀÚ : pizzaMenu_9999 / ¼¼Æ® : setMenu_ /»çÀÌµå : sideMenu_9999 /À½·á : etcMenu_99999 /ÇÏÇÁ¾ØÇÏÇÁ : halfMenu_ /eÄíÆù : couponMenu_
-    //num : Ä«Å×°í¸®º° Á¦Ç° ÀÎµ¦½º
+	/********************* ì¥ë°”êµ¬ë‹ˆ ì €ì¥í•  ë°ì´í„° ë§Œë“¤ê¸° *********************/  // Rjeong
+	// í”¼ì : pizzaMenu_9999 / ì„¸íŠ¸ : setMenu_ /ì‚¬ì´ë“œ : sideMenu_9999 /ìŒë£Œ : etcMenu_99999 /í•˜í”„ì•¤í•˜í”„ : halfMenu_ /eì¿ í° : couponMenu_
+    //num : ì¹´í…Œê³ ë¦¬ë³„ ì œí’ˆ ì¸ë±ìŠ¤
     function makeSendData(menuIdx)
 	{ 
 
-    	document.frmOrder.cartAction.value         = "";  // Àå¹Ù±¸´ÏÃ³¸®
-    	document.frmOrder.cartMenuType.value       = "";  // ¸Ş´ºÅ¸ÀÔ
-    	document.frmOrder.cartMenuCode.value       = "";  // ¸Ş´ºÄÚµå
-    	document.frmOrder.cartMenuName.value       = "";  // ¸Ş´º¸í
-    	document.frmOrder.cartMenuOrdCode.value    = "";  // ¸Ş´ºÁÖ¹®±¸ºĞÄÚµå(10:Á¤»ó,20:ÇÒÀÎ,30:¼­ºñ½º(¹«·á))
-    	document.frmOrder.cartMenuDivCode.value    = "";  // ¸Ş´º±¸ºĞÄÚµå(10:´ÜÇ°,20:¼¼Æ®,30:ÇÏÇÁ&ÇÏÇÁ)
-    	document.frmOrder.cartMenuLagCode.value    = "";  // ¸Ş´º´ëºĞ·ùÄÚµå
-    	document.frmOrder.cartMenuMidCode.value    = "";  // ¸Ş´ºÁßºĞ·ùÄÚµå
-    	document.frmOrder.cartMenuSmlCode.value    = "";  // ¸Ş´º¼ÒºĞ·ùÄÚµå
-    	document.frmOrder.cartMenuSubCode.value    = "";  // ¸Ş´º¼¼ºĞ·ùÄÚµå
-    	document.frmOrder.cartMenuPrice.value      = "";  // ¸Ş´ºÁÖ¹®´Ü°¡
-    	document.frmOrder.cartMenuQty.value        = "";  // ¸Ş´ºÁÖ¹®¼ö·®
-    	document.frmOrder.cartMenuAmt.value        = "";  // ¸Ş´ºÁÖ¹®±İ¾×
-    	document.frmOrder.cartMenuDisRate.value    = "";  // ¸Ş´ºÇÒÀÎÀ²
-    	document.frmOrder.cartMenuDisAmt.value     = "";  // ¸Ş´ºÇÒÀÎ±İ¾×
-    	document.frmOrder.cartMenuCopDisAmt.value  = "";  // ¸Ş´º¼±°áÁ¦ÄíÆùÇÒÀÎ
-    	document.frmOrder.cartMenuNetSaleAmt.value = "";  // ¸Ş´º¼ø¸ÅÃâ±İ¾×
-    	document.frmOrder.cartMenuPayAmt.value     = "";  // ¸Ş´º°áÁ¦±İ¾×
-    	document.frmOrder.cartMenuBakeCode.value   = "";  // ¸Ş´ºº£ÀÌÅ©ÄÚµå
-    	document.frmOrder.cartMenuCutCode.value    = "";  // ¸Ş´ºÄÆÄÚµå
-    	document.frmOrder.cartMenuCheeseCode.value = "";  // ¸Ş´ºÄ¡ÁîÄÚµå
-    	document.frmOrder.cartMenuSauceCode.value  = "";  // ¸Ş´º¼Ò½ºÄÚµå
-    	document.frmOrder.cartMenuMessage.value    = "";  // ¸Ş´ºÀü´Ş¸Ş¼¼Áö
-    	document.frmOrder.cartMenuSize.value       = "";  // ¸Ş´º»çÀÌÁî
-    	document.frmOrder.cartMenuDough.value      = "";  // ¸Ş´ºµµ¿ìÁ¾·ù
-    	document.frmOrder.cartECouponCompany.value = "";  // EÄíÆùÁ¦ÈŞ»ç
-    	document.frmOrder.cartECouponCode.value    = "";  // EÄíÆùÄÚµå
-    	document.frmOrder.cartECouponNumber.value  = "";  // EÄíÆù¹øÈ£
+    	document.frmOrder.cartAction.value         = "";  // ì¥ë°”êµ¬ë‹ˆì²˜ë¦¬
+    	document.frmOrder.cartMenuType.value       = "";  // ë©”ë‰´íƒ€ì…
+    	document.frmOrder.cartMenuCode.value       = "";  // ë©”ë‰´ì½”ë“œ
+    	document.frmOrder.cartMenuName.value       = "";  // ë©”ë‰´ëª…
+    	document.frmOrder.cartMenuOrdCode.value    = "";  // ë©”ë‰´ì£¼ë¬¸êµ¬ë¶„ì½”ë“œ(10:ì •ìƒ,20:í• ì¸,30:ì„œë¹„ìŠ¤(ë¬´ë£Œ))
+    	document.frmOrder.cartMenuDivCode.value    = "";  // ë©”ë‰´êµ¬ë¶„ì½”ë“œ(10:ë‹¨í’ˆ,20:ì„¸íŠ¸,30:í•˜í”„&í•˜í”„)
+    	document.frmOrder.cartMenuLagCode.value    = "";  // ë©”ë‰´ëŒ€ë¶„ë¥˜ì½”ë“œ
+    	document.frmOrder.cartMenuMidCode.value    = "";  // ë©”ë‰´ì¤‘ë¶„ë¥˜ì½”ë“œ
+    	document.frmOrder.cartMenuSmlCode.value    = "";  // ë©”ë‰´ì†Œë¶„ë¥˜ì½”ë“œ
+    	document.frmOrder.cartMenuSubCode.value    = "";  // ë©”ë‰´ì„¸ë¶„ë¥˜ì½”ë“œ
+    	document.frmOrder.cartMenuPrice.value      = "";  // ë©”ë‰´ì£¼ë¬¸ë‹¨ê°€
+    	document.frmOrder.cartMenuQty.value        = "";  // ë©”ë‰´ì£¼ë¬¸ìˆ˜ëŸ‰
+    	document.frmOrder.cartMenuAmt.value        = "";  // ë©”ë‰´ì£¼ë¬¸ê¸ˆì•¡
+    	document.frmOrder.cartMenuDisRate.value    = "";  // ë©”ë‰´í• ì¸ìœ¨
+    	document.frmOrder.cartMenuDisAmt.value     = "";  // ë©”ë‰´í• ì¸ê¸ˆì•¡
+    	document.frmOrder.cartMenuCopDisAmt.value  = "";  // ë©”ë‰´ì„ ê²°ì œì¿ í°í• ì¸
+    	document.frmOrder.cartMenuNetSaleAmt.value = "";  // ë©”ë‰´ìˆœë§¤ì¶œê¸ˆì•¡
+    	document.frmOrder.cartMenuPayAmt.value     = "";  // ë©”ë‰´ê²°ì œê¸ˆì•¡
+    	document.frmOrder.cartMenuBakeCode.value   = "";  // ë©”ë‰´ë² ì´í¬ì½”ë“œ
+    	document.frmOrder.cartMenuCutCode.value    = "";  // ë©”ë‰´ì»·ì½”ë“œ
+    	document.frmOrder.cartMenuCheeseCode.value = "";  // ë©”ë‰´ì¹˜ì¦ˆì½”ë“œ
+    	document.frmOrder.cartMenuSauceCode.value  = "";  // ë©”ë‰´ì†ŒìŠ¤ì½”ë“œ
+    	document.frmOrder.cartMenuMessage.value    = "";  // ë©”ë‰´ì „ë‹¬ë©”ì„¸ì§€
+    	document.frmOrder.cartMenuSize.value       = "";  // ë©”ë‰´ì‚¬ì´ì¦ˆ
+    	document.frmOrder.cartMenuDough.value      = "";  // ë©”ë‰´ë„ìš°ì¢…ë¥˜
+    	document.frmOrder.cartECouponCompany.value = "";  // Eì¿ í°ì œíœ´ì‚¬
+    	document.frmOrder.cartECouponCode.value    = "";  // Eì¿ í°ì½”ë“œ
+    	document.frmOrder.cartECouponNumber.value  = "";  // Eì¿ í°ë²ˆí˜¸
 
-     	var cartSendDataInfo = null;                                            // Àå¹Ù±¸´Ï Àü¼Û ³»¿ª
-    	var checkMenuSize    = document.getElementsByName("pSize_" + menuIdx);  // ¼±ÅÃÇÑ ÇÇÀÚ »çÀÌÁî Ã¼Å©
-    	var selMenuValue     = document.getElementsByName("pCode_" + menuIdx);  // ¼±ÅÃÇÑ ÇÇÀÚ ¸Ş´º 
-    	var cartIndex        = setCartIndex();	                                 // Àå¹Ù±¸´Ï ¼ø¹ø
+     	var cartSendDataInfo = null;                                            // ì¥ë°”êµ¬ë‹ˆ ì „ì†¡ ë‚´ì—­
+    	var checkMenuSize    = document.getElementsByName("pSize_" + menuIdx);  // ì„ íƒí•œ í”¼ì ì‚¬ì´ì¦ˆ ì²´í¬
+    	var selMenuValue     = document.getElementsByName("pCode_" + menuIdx);  // ì„ íƒí•œ í”¼ì ë©”ë‰´ 
+    	var cartIndex        = setCartIndex();	                                 // ì¥ë°”êµ¬ë‹ˆ ìˆœë²ˆ
      	
-     	// ÇÇÀÚ¸Ş´º°¡ ¾Æ´Ñ °æ¿ì ÇØ´ç ¸Ş´º ¼ö·®
+     	// í”¼ìë©”ë‰´ê°€ ì•„ë‹Œ ê²½ìš° í•´ë‹¹ ë©”ë‰´ ìˆ˜ëŸ‰
      	var currMenuDiv = $("#menuList_section").find("#menu_" + menuIdx); 
       	var menuCntBox  = currMenuDiv.find(".item_right .select_count");
       	var selMenuQty  = menuCntBox.find("select option:selected").val();
@@ -1352,64 +1443,64 @@
      	}); 
      	var cartMenuOptions = selMenuOptions.join("/");
      	
-    	// ¸Ş´º »çÀÌÁî °¹¼ö¸¸Å­ Ã¼Å©ÇÑ´Ù.(ÇÇÀÚº°·Î »ı¼ºµÇ´Â »çÀÌÁî¼ö°¡ Æ²¸²)
+    	// ë©”ë‰´ ì‚¬ì´ì¦ˆ ê°¯ìˆ˜ë§Œí¼ ì²´í¬í•œë‹¤.(í”¼ìë³„ë¡œ ìƒì„±ë˜ëŠ” ì‚¬ì´ì¦ˆìˆ˜ê°€ í‹€ë¦¼)
     	for( var i = 0; i < checkMenuSize.length; i++ )
     	{
-    		//¶óµğ¿À ¹öÆ°ÀÌ Ã¼Å©»óÅÂÀÌ¸é ¸Ş´ºÁ¤º¸ ÀúÀå
+    		//ë¼ë””ì˜¤ ë²„íŠ¼ì´ ì²´í¬ìƒíƒœì´ë©´ ë©”ë‰´ì •ë³´ ì €ì¥
     		if( checkMenuSize[i].checked == true )
     		{
     			var menuList  = selMenuValue[i].value;
     			var menuValue = menuList.split(",");
     			
-    			document.frmOrder.cartAction.value         = "addMenu";                       // Àå¹Ù±¸´ÏÃ³¸®
-    	    	document.frmOrder.cartMenuType.value       = "";                              // ¸Ş´ºÅ¸ÀÔ
-    	    	document.frmOrder.cartMenuCode.value       = menuValue[0] + "_" + cartIndex;  // ¸Ş´ºÄÚµå
-    	    	document.frmOrder.cartMenuName.value       = menuValue[1];                    // ¸Ş´º¸í
-    	    	document.frmOrder.cartMenuOrdCode.value    = "10";                            // ¸Ş´ºÁÖ¹®±¸ºĞÄÚµå(10:Á¤»ó,20:ÇÒÀÎ,30:¼­ºñ½º(¹«·á))
-    	    	document.frmOrder.cartMenuDivCode.value    = menuValue[9];                    // ¸Ş´º±¸ºĞÄÚµå(10:´ÜÇ°,20:¼¼Æ®,30:ÇÏÇÁ&ÇÏÇÁ)
-    	    	document.frmOrder.cartMenuLagCode.value    = menuValue[5];                    // ¸Ş´º´ëºĞ·ùÄÚµå
-    	    	document.frmOrder.cartMenuMidCode.value    = menuValue[6];                    // ¸Ş´ºÁßºĞ·ùÄÚµå
-    	    	document.frmOrder.cartMenuSmlCode.value    = menuValue[7];                    // ¸Ş´º¼ÒºĞ·ùÄÚµå
-    	    	document.frmOrder.cartMenuSubCode.value    = menuValue[8];                    // ¸Ş´º¼¼ºĞ·ùÄÚµå
-    	    	document.frmOrder.cartMenuPrice.value      = menuValue[3];                    // ¸Ş´ºÁÖ¹®´Ü°¡
-    	    	document.frmOrder.cartMenuQty.value        = "0";                             // ¸Ş´ºÁÖ¹®¼ö·®
-    	    	document.frmOrder.cartMenuAmt.value        = menuValue[3];                    // ¸Ş´ºÁÖ¹®±İ¾×
-    	    	document.frmOrder.cartMenuDisRate.value    = "0";                             // ¸Ş´ºÇÒÀÎÀ²
-    	    	document.frmOrder.cartMenuDisAmt.value     = "0";                             // ¸Ş´ºÇÒÀÎ±İ¾×
-    	    	document.frmOrder.cartMenuCopDisAmt.value  = "0";                             // ¸Ş´º¼±°áÁ¦ÄíÆùÇÒÀÎ
-    	    	document.frmOrder.cartMenuNetSaleAmt.value = menuValue[3];                    // ¸Ş´º¼ø¸ÅÃâ±İ¾×
-    	    	document.frmOrder.cartMenuPayAmt.value     = menuValue[3];                    // ¸Ş´º°áÁ¦±İ¾×
-    	    	document.frmOrder.cartMenuMessage.value    = "";                              // ¸Ş´ºÀü´Ş¸Ş¼¼Áö
-    	    	document.frmOrder.cartMenuSize.value       = menuValue[2];                    // ¸Ş´º»çÀÌÁî
-    	    	document.frmOrder.cartMenuDough.value      = menuValue[4];                    // ¸Ş´ºµµ¿ìÁ¾·ù
+    			document.frmOrder.cartAction.value         = "addMenu";                       // ì¥ë°”êµ¬ë‹ˆì²˜ë¦¬
+    	    	document.frmOrder.cartMenuType.value       = "";                              // ë©”ë‰´íƒ€ì…
+    	    	document.frmOrder.cartMenuCode.value       = menuValue[0] + "_" + cartIndex;  // ë©”ë‰´ì½”ë“œ
+    	    	document.frmOrder.cartMenuName.value       = menuValue[1];                    // ë©”ë‰´ëª…
+    	    	document.frmOrder.cartMenuOrdCode.value    = "10";                            // ë©”ë‰´ì£¼ë¬¸êµ¬ë¶„ì½”ë“œ(10:ì •ìƒ,20:í• ì¸,30:ì„œë¹„ìŠ¤(ë¬´ë£Œ))
+    	    	document.frmOrder.cartMenuDivCode.value    = menuValue[9];                    // ë©”ë‰´êµ¬ë¶„ì½”ë“œ(10:ë‹¨í’ˆ,20:ì„¸íŠ¸,30:í•˜í”„&í•˜í”„)
+    	    	document.frmOrder.cartMenuLagCode.value    = menuValue[5];                    // ë©”ë‰´ëŒ€ë¶„ë¥˜ì½”ë“œ
+    	    	document.frmOrder.cartMenuMidCode.value    = menuValue[6];                    // ë©”ë‰´ì¤‘ë¶„ë¥˜ì½”ë“œ
+    	    	document.frmOrder.cartMenuSmlCode.value    = menuValue[7];                    // ë©”ë‰´ì†Œë¶„ë¥˜ì½”ë“œ
+    	    	document.frmOrder.cartMenuSubCode.value    = menuValue[8];                    // ë©”ë‰´ì„¸ë¶„ë¥˜ì½”ë“œ
+    	    	document.frmOrder.cartMenuPrice.value      = menuValue[3];                    // ë©”ë‰´ì£¼ë¬¸ë‹¨ê°€
+    	    	document.frmOrder.cartMenuQty.value        = "0";                             // ë©”ë‰´ì£¼ë¬¸ìˆ˜ëŸ‰
+    	    	document.frmOrder.cartMenuAmt.value        = menuValue[3];                    // ë©”ë‰´ì£¼ë¬¸ê¸ˆì•¡
+    	    	document.frmOrder.cartMenuDisRate.value    = "0";                             // ë©”ë‰´í• ì¸ìœ¨
+    	    	document.frmOrder.cartMenuDisAmt.value     = "0";                             // ë©”ë‰´í• ì¸ê¸ˆì•¡
+    	    	document.frmOrder.cartMenuCopDisAmt.value  = "0";                             // ë©”ë‰´ì„ ê²°ì œì¿ í°í• ì¸
+    	    	document.frmOrder.cartMenuNetSaleAmt.value = menuValue[3];                    // ë©”ë‰´ìˆœë§¤ì¶œê¸ˆì•¡
+    	    	document.frmOrder.cartMenuPayAmt.value     = menuValue[3];                    // ë©”ë‰´ê²°ì œê¸ˆì•¡
+    	    	document.frmOrder.cartMenuMessage.value    = "";                              // ë©”ë‰´ì „ë‹¬ë©”ì„¸ì§€
+    	    	document.frmOrder.cartMenuSize.value       = menuValue[2];                    // ë©”ë‰´ì‚¬ì´ì¦ˆ
+    	    	document.frmOrder.cartMenuDough.value      = menuValue[4];                    // ë©”ë‰´ë„ìš°ì¢…ë¥˜
     	    	
-    			//¸Ş´º´ëºĞ·ùÄÚµåº° ¸Ş´ºÅ¸ÀÔ ¹× ¸Ş´º¼ö·® ¼¼ÆÃ
-    			if( document.frmOrder.cartMenuLagCode.value == "10" )  // ÇÇÀÚ
+    			//ë©”ë‰´ëŒ€ë¶„ë¥˜ì½”ë“œë³„ ë©”ë‰´íƒ€ì… ë° ë©”ë‰´ìˆ˜ëŸ‰ ì„¸íŒ…
+    			if( document.frmOrder.cartMenuLagCode.value == "10" )  // í”¼ì
     			{
-        			document.frmOrder.cartMenuType.value = "typePizza";  // ¸Ş´º Å¸ÀÔ
-        			document.frmOrder.cartMenuQty.value  = "1";          // ¸Ş´º ¼ö·®
+        			document.frmOrder.cartMenuType.value = "typePizza";  // ë©”ë‰´ íƒ€ì…
+        			document.frmOrder.cartMenuQty.value  = "1";          // ë©”ë‰´ ìˆ˜ëŸ‰
     			}
-    			else if( document.frmOrder.cartMenuLagCode.value == "20" )  // »çÀÌµå
+    			else if( document.frmOrder.cartMenuLagCode.value == "20" )  // ì‚¬ì´ë“œ
     			{
-        			document.frmOrder.cartMenuType.value = "typeSide";   // ¸Ş´º Å¸ÀÔ
-        			document.frmOrder.cartMenuQty.value  = selMenuQty;   // ¸Ş´º ¼ö·®
+        			document.frmOrder.cartMenuType.value = "typeSide";   // ë©”ë‰´ íƒ€ì…
+        			document.frmOrder.cartMenuQty.value  = selMenuQty;   // ë©”ë‰´ ìˆ˜ëŸ‰
     			}
-    			else if( document.frmOrder.cartMenuLagCode.value == "30" )  // ¼Ò½º
+    			else if( document.frmOrder.cartMenuLagCode.value == "30" )  // ì†ŒìŠ¤
     			{
-        			document.frmOrder.cartMenuType.value = "typeSauce";  // ¸Ş´º Å¸ÀÔ
-        			document.frmOrder.cartMenuQty.value  = selMenuQty;   // ¸Ş´º ¼ö·®
+        			document.frmOrder.cartMenuType.value = "typeSauce";  // ë©”ë‰´ íƒ€ì…
+        			document.frmOrder.cartMenuQty.value  = selMenuQty;   // ë©”ë‰´ ìˆ˜ëŸ‰
     			}
-    			else if( document.frmOrder.cartMenuLagCode.value == "40" )  // À½·á
+    			else if( document.frmOrder.cartMenuLagCode.value == "40" )  // ìŒë£Œ
     			{
-        			document.frmOrder.cartMenuType.value = "typeBever";  // ¸Ş´º Å¸ÀÔ
-        			document.frmOrder.cartMenuQty.value  = selMenuQty;   // ¸Ş´º ¼ö·®
+        			document.frmOrder.cartMenuType.value = "typeBever";  // ë©”ë‰´ íƒ€ì…
+        			document.frmOrder.cartMenuQty.value  = selMenuQty;   // ë©”ë‰´ ìˆ˜ëŸ‰
     			}
 	    	}
     	}
     	
-    	// ¸Ş´º Ç°Àı¿©ºÎ Ã¼Å©
-		var storeCode     = document.frmOrder.cartOrdStoreCode.value;  // ¸ÅÀåÄÚµå
-    	var storeName     = document.frmOrder.cartOrdStoreName.value;  // ¸ÅÀå¸í
+    	// ë©”ë‰´ í’ˆì ˆì—¬ë¶€ ì²´í¬
+		var storeCode     = document.frmOrder.cartOrdStoreCode.value;  // ë§¤ì¥ì½”ë“œ
+    	var storeName     = document.frmOrder.cartOrdStoreName.value;  // ë§¤ì¥ëª…
     	var checkMenuCode = menuValue[0];
     	var flag          = "oneMenu";
 		
@@ -1430,7 +1521,7 @@
 					{
 						var alertFrame = $("#notice_1002");
 						alertFrame.find("#alertText p").remove();
-						alertFrame.find("#alertText").append("<p>¼±ÅÃÇÏ½Å ¸Ş´º´Â<br>\""+ storeName +"\" ¸ÅÀå¿¡¼­ ÇöÀç ÁÖ¹®ÀÌ ºÒ°¡´ÉÇÕ´Ï´Ù.</p>"); 
+						alertFrame.find("#alertText").append("<p>ì„ íƒí•˜ì‹  ë©”ë‰´ëŠ”<br>\""+ storeName +"\" ë§¤ì¥ì—ì„œ í˜„ì¬ ì£¼ë¬¸ì´ ë¶ˆê°€ëŠ¥í•©ë‹ˆë‹¤.</p>"); 
 						popAlert(alertFrame);
 						return;
 					}
@@ -1451,47 +1542,47 @@
 		}
 		
 		//20131213
-		//ajax Åë½ÅÇÏ´Â µ¿¾È ¾Æ·¡ ÇÔ¼ö°¡ ½ÇÇàµÇ¸é Ç°Àı»óÈ²ÀÌ Ã¼Å©µÇ±âÀü Àå¹Ù±¸´Ï¿¡ µé¾î°¨.
+		//ajax í†µì‹ í•˜ëŠ” ë™ì•ˆ ì•„ë˜ í•¨ìˆ˜ê°€ ì‹¤í–‰ë˜ë©´ í’ˆì ˆìƒí™©ì´ ì²´í¬ë˜ê¸°ì „ ì¥ë°”êµ¬ë‹ˆì— ë“¤ì–´ê°.
 		function innerCartData()
 		{
-			//ÇÇÀÚ ¼ö·®Àº 5°³±îÁö¸¸ ÁÖ¹® °¡´É -> ´ÜÇ° ÇÇÀÚ, ¼¼Æ®¿¡ Æ÷ÇÔµÈ ÇÇÀÚ, ÇÏÇÁÇÇÀÚ
+			//í”¼ì ìˆ˜ëŸ‰ì€ 5ê°œê¹Œì§€ë§Œ ì£¼ë¬¸ ê°€ëŠ¥ -> ë‹¨í’ˆ í”¼ì, ì„¸íŠ¸ì— í¬í•¨ëœ í”¼ì, í•˜í”„í”¼ì
 	    	if( document.frmOrder.cartMenuType.value == "typePizza" )
 	    	{ 
 		    	$.post(root+"/order/newCart.jsp?cartAction=getPizzaCount", function(pizzaCount)
 	   	    	{
-					var pizzaCount = trim(pizzaCount);  // Àå¹Ù±¸´Ï ÁÖ¹® ÇÇÀÚ ¼ö·®
+					var pizzaCount = trim(pizzaCount);  // ì¥ë°”êµ¬ë‹ˆ ì£¼ë¬¸ í”¼ì ìˆ˜ëŸ‰
 					if( parseInt(pizzaCount) < 5 )
 					{ 
 						cartSendDataInfo = {
-										    cartAction         : document.frmOrder.cartAction.value          // Àå¹Ù±¸´ÏÃ³¸®
-							    		   ,cartMenuType       : document.frmOrder.cartMenuType.value        // ¸Ş´ºÅ¸ÀÔ
-		    	    					   ,cartMenuCode       : document.frmOrder.cartMenuCode.value        // ¸Ş´ºÄÚµå
-		    	    					   ,cartMenuName       : document.frmOrder.cartMenuName.value        // ¸Ş´º¸í
-		    	    					   ,cartMenuOrdCode    : document.frmOrder.cartMenuOrdCode.value     // ¸Ş´ºÁÖ¹®±¸ºĞÄÚµå(10:Á¤»ó,20:ÇÒÀÎ,30:¼­ºñ½º(¹«·á))
-		    	    					   ,cartMenuDivCode    : document.frmOrder.cartMenuDivCode.value     // ¸Ş´º±¸ºĞÄÚµå(10:´ÜÇ°,20:¼¼Æ®,30:ÇÏÇÁ&ÇÏÇÁ)
-		    	    					   ,cartMenuLagCode    : document.frmOrder.cartMenuLagCode.value     // ¸Ş´º´ëºĞ·ùÄÚµå
-		    	    					   ,cartMenuMidCode    : document.frmOrder.cartMenuMidCode.value     // ¸Ş´ºÁßºĞ·ùÄÚµå
-		    	    					   ,cartMenuSmlCode    : document.frmOrder.cartMenuSmlCode.value     // ¸Ş´º¼ÒºĞ·ùÄÚµå
-		    	    					   ,cartMenuSubCode    : document.frmOrder.cartMenuSubCode.value     // ¸Ş´º¼¼ºĞ·ùÄÚµå
-		    	    					   ,cartMenuPrice      : document.frmOrder.cartMenuPrice.value       // ¸Ş´ºÁÖ¹®´Ü°¡
-		    	    					   ,cartMenuQty        : document.frmOrder.cartMenuQty.value         // ¸Ş´ºÁÖ¹®¼ö·®
-		    	    					   ,cartMenuAmt        : document.frmOrder.cartMenuAmt.value         // ¸Ş´ºÁÖ¹®±İ¾×
-		    	    					   ,cartMenuDisRate    : document.frmOrder.cartMenuDisRate.value     // ¸Ş´ºÇÒÀÎÀ²
-		    	    					   ,cartMenuDisAmt     : document.frmOrder.cartMenuDisAmt.value      // ¸Ş´ºÇÒÀÎ±İ¾×
-		    	    					   ,cartMenuCopDisAmt  : document.frmOrder.cartMenuCopDisAmt.value   // ¸Ş´º¼±°áÁ¦ÄíÆùÇÒÀÎ
-		    	    					   ,cartMenuNetSaleAmt : document.frmOrder.cartMenuNetSaleAmt.value  // ¸Ş´º¼ø¸ÅÃâ±İ¾×
-		    	    					   ,cartMenuPayAmt     : document.frmOrder.cartMenuPayAmt.value      // ¸Ş´º°áÁ¦±İ¾×
-		    	    					   ,cartMenuBakeCode   : document.frmOrder.cartMenuBakeCode.value    // ¸Ş´ºº£ÀÌÅ©ÄÚµå
-		    	    					   ,cartMenuCutCode    : document.frmOrder.cartMenuCutCode.value     // ¸Ş´ºÄÆÄÚµå
-		    	    					   ,cartMenuCheeseCode : document.frmOrder.cartMenuCheeseCode.value  // ¸Ş´ºÄ¡ÁîÄÚµå
-		    	    					   ,cartMenuSauceCode  : document.frmOrder.cartMenuSauceCode.value   // ¸Ş´º¼Ò½ºÄÚµå
-		    	    					   ,cartMenuMessage    : document.frmOrder.cartMenuMessage.value     // ¸Ş´ºÀü´Ş¸Ş¼¼Áö
-		    	    					   ,cartMenuSize       : document.frmOrder.cartMenuSize.value        // ¸Ş´º»çÀÌÁî
-		    	    					   ,cartMenuDough      : document.frmOrder.cartMenuDough.value       // ¸Ş´ºµµ¿ìÁ¾·ù
-										   ,cartMenuOption     : cartMenuOptions                             // ¸Ş´º¿É¼Ç
-										   ,cartECouponCompany : document.frmOrder.cartECouponCompany.value  // EÄíÆùÁ¦ÈŞ»ç
-										   ,cartECouponCode    : document.frmOrder.cartECouponCode.value     // EÄíÆùÄÚµå
-										   ,cartECouponNumber  : document.frmOrder.cartECouponNumber.value   // EÄíÆù¹øÈ£
+										    cartAction         : document.frmOrder.cartAction.value          // ì¥ë°”êµ¬ë‹ˆì²˜ë¦¬
+							    		   ,cartMenuType       : document.frmOrder.cartMenuType.value        // ë©”ë‰´íƒ€ì…
+		    	    					   ,cartMenuCode       : document.frmOrder.cartMenuCode.value        // ë©”ë‰´ì½”ë“œ
+		    	    					   ,cartMenuName       : document.frmOrder.cartMenuName.value        // ë©”ë‰´ëª…
+		    	    					   ,cartMenuOrdCode    : document.frmOrder.cartMenuOrdCode.value     // ë©”ë‰´ì£¼ë¬¸êµ¬ë¶„ì½”ë“œ(10:ì •ìƒ,20:í• ì¸,30:ì„œë¹„ìŠ¤(ë¬´ë£Œ))
+		    	    					   ,cartMenuDivCode    : document.frmOrder.cartMenuDivCode.value     // ë©”ë‰´êµ¬ë¶„ì½”ë“œ(10:ë‹¨í’ˆ,20:ì„¸íŠ¸,30:í•˜í”„&í•˜í”„)
+		    	    					   ,cartMenuLagCode    : document.frmOrder.cartMenuLagCode.value     // ë©”ë‰´ëŒ€ë¶„ë¥˜ì½”ë“œ
+		    	    					   ,cartMenuMidCode    : document.frmOrder.cartMenuMidCode.value     // ë©”ë‰´ì¤‘ë¶„ë¥˜ì½”ë“œ
+		    	    					   ,cartMenuSmlCode    : document.frmOrder.cartMenuSmlCode.value     // ë©”ë‰´ì†Œë¶„ë¥˜ì½”ë“œ
+		    	    					   ,cartMenuSubCode    : document.frmOrder.cartMenuSubCode.value     // ë©”ë‰´ì„¸ë¶„ë¥˜ì½”ë“œ
+		    	    					   ,cartMenuPrice      : document.frmOrder.cartMenuPrice.value       // ë©”ë‰´ì£¼ë¬¸ë‹¨ê°€
+		    	    					   ,cartMenuQty        : document.frmOrder.cartMenuQty.value         // ë©”ë‰´ì£¼ë¬¸ìˆ˜ëŸ‰
+		    	    					   ,cartMenuAmt        : document.frmOrder.cartMenuAmt.value         // ë©”ë‰´ì£¼ë¬¸ê¸ˆì•¡
+		    	    					   ,cartMenuDisRate    : document.frmOrder.cartMenuDisRate.value     // ë©”ë‰´í• ì¸ìœ¨
+		    	    					   ,cartMenuDisAmt     : document.frmOrder.cartMenuDisAmt.value      // ë©”ë‰´í• ì¸ê¸ˆì•¡
+		    	    					   ,cartMenuCopDisAmt  : document.frmOrder.cartMenuCopDisAmt.value   // ë©”ë‰´ì„ ê²°ì œì¿ í°í• ì¸
+		    	    					   ,cartMenuNetSaleAmt : document.frmOrder.cartMenuNetSaleAmt.value  // ë©”ë‰´ìˆœë§¤ì¶œê¸ˆì•¡
+		    	    					   ,cartMenuPayAmt     : document.frmOrder.cartMenuPayAmt.value      // ë©”ë‰´ê²°ì œê¸ˆì•¡
+		    	    					   ,cartMenuBakeCode   : document.frmOrder.cartMenuBakeCode.value    // ë©”ë‰´ë² ì´í¬ì½”ë“œ
+		    	    					   ,cartMenuCutCode    : document.frmOrder.cartMenuCutCode.value     // ë©”ë‰´ì»·ì½”ë“œ
+		    	    					   ,cartMenuCheeseCode : document.frmOrder.cartMenuCheeseCode.value  // ë©”ë‰´ì¹˜ì¦ˆì½”ë“œ
+		    	    					   ,cartMenuSauceCode  : document.frmOrder.cartMenuSauceCode.value   // ë©”ë‰´ì†ŒìŠ¤ì½”ë“œ
+		    	    					   ,cartMenuMessage    : document.frmOrder.cartMenuMessage.value     // ë©”ë‰´ì „ë‹¬ë©”ì„¸ì§€
+		    	    					   ,cartMenuSize       : document.frmOrder.cartMenuSize.value        // ë©”ë‰´ì‚¬ì´ì¦ˆ
+		    	    					   ,cartMenuDough      : document.frmOrder.cartMenuDough.value       // ë©”ë‰´ë„ìš°ì¢…ë¥˜
+										   ,cartMenuOption     : cartMenuOptions                             // ë©”ë‰´ì˜µì…˜
+										   ,cartECouponCompany : document.frmOrder.cartECouponCompany.value  // Eì¿ í°ì œíœ´ì‚¬
+										   ,cartECouponCode    : document.frmOrder.cartECouponCode.value     // Eì¿ í°ì½”ë“œ
+										   ,cartECouponNumber  : document.frmOrder.cartECouponNumber.value   // Eì¿ í°ë²ˆí˜¸
 			    			               }; 
 				    	fnSaveForCart(cartSendDataInfo); 
 					}
@@ -1506,35 +1597,35 @@
 	    	else
 	    	{
 	    		cartSendDataInfo = {
-					    			cartAction         : document.frmOrder.cartAction.value          // Àå¹Ù±¸´ÏÃ³¸®
-		    					   ,cartMenuType       : document.frmOrder.cartMenuType.value        // ¸Ş´ºÅ¸ÀÔ
-								   ,cartMenuCode       : document.frmOrder.cartMenuCode.value        // ¸Ş´ºÄÚµå
-								   ,cartMenuName       : document.frmOrder.cartMenuName.value        // ¸Ş´º¸í
-								   ,cartMenuOrdCode    : document.frmOrder.cartMenuOrdCode.value     // ¸Ş´ºÁÖ¹®±¸ºĞÄÚµå(10:Á¤»ó,20:ÇÒÀÎ,30:¼­ºñ½º(¹«·á))
-								   ,cartMenuDivCode    : document.frmOrder.cartMenuDivCode.value     // ¸Ş´º±¸ºĞÄÚµå(10:´ÜÇ°,20:¼¼Æ®,30:ÇÏÇÁ&ÇÏÇÁ)
-								   ,cartMenuLagCode    : document.frmOrder.cartMenuLagCode.value     // ¸Ş´º´ëºĞ·ùÄÚµå
-								   ,cartMenuMidCode    : document.frmOrder.cartMenuMidCode.value     // ¸Ş´ºÁßºĞ·ùÄÚµå
-								   ,cartMenuSmlCode    : document.frmOrder.cartMenuSmlCode.value     // ¸Ş´º¼ÒºĞ·ùÄÚµå
-								   ,cartMenuSubCode    : document.frmOrder.cartMenuSubCode.value     // ¸Ş´º¼¼ºĞ·ùÄÚµå
-								   ,cartMenuPrice      : document.frmOrder.cartMenuPrice.value       // ¸Ş´ºÁÖ¹®´Ü°¡
-								   ,cartMenuQty        : document.frmOrder.cartMenuQty.value         // ¸Ş´ºÁÖ¹®¼ö·®
-								   ,cartMenuAmt        : document.frmOrder.cartMenuAmt.value         // ¸Ş´ºÁÖ¹®±İ¾×
-								   ,cartMenuDisRate    : document.frmOrder.cartMenuDisRate.value     // ¸Ş´ºÇÒÀÎÀ²
-								   ,cartMenuDisAmt     : document.frmOrder.cartMenuDisAmt.value      // ¸Ş´ºÇÒÀÎ±İ¾×
-		    					   ,cartMenuCopDisAmt  : document.frmOrder.cartMenuCopDisAmt.value   // ¸Ş´º¼±°áÁ¦ÄíÆùÇÒÀÎ
-		    					   ,cartMenuNetSaleAmt : document.frmOrder.cartMenuNetSaleAmt.value  // ¸Ş´º¼ø¸ÅÃâ±İ¾×
-								   ,cartMenuPayAmt     : document.frmOrder.cartMenuPayAmt.value      // ¸Ş´º°áÁ¦±İ¾×
-		    					   ,cartMenuBakeCode   : document.frmOrder.cartMenuBakeCode.value    // ¸Ş´ºº£ÀÌÅ©ÄÚµå
-		    					   ,cartMenuCutCode    : document.frmOrder.cartMenuCutCode.value     // ¸Ş´ºÄÆÄÚµå
-		    					   ,cartMenuCheeseCode : document.frmOrder.cartMenuCheeseCode.value  // ¸Ş´ºÄ¡ÁîÄÚµå
-		    					   ,cartMenuSauceCode  : document.frmOrder.cartMenuSauceCode.value   // ¸Ş´º¼Ò½ºÄÚµå
-								   ,cartMenuMessage    : document.frmOrder.cartMenuMessage.value     // ¸Ş´ºÀü´Ş¸Ş¼¼Áö
-								   ,cartMenuSize       : document.frmOrder.cartMenuSize.value        // ¸Ş´º»çÀÌÁî
-								   ,cartMenuDough      : document.frmOrder.cartMenuDough.value       // ¸Ş´ºµµ¿ìÁ¾·ù
-								   ,cartMenuOption     : cartMenuOptions                             // ¸Ş´º¿É¼Ç
-								   ,cartECouponCompany : document.frmOrder.cartECouponCompany.value  // EÄíÆùÁ¦ÈŞ»ç
-								   ,cartECouponCode    : document.frmOrder.cartECouponCode.value     // EÄíÆùÄÚµå
-								   ,cartECouponNumber  : document.frmOrder.cartECouponNumber.value   // EÄíÆù¹øÈ£
+					    			cartAction         : document.frmOrder.cartAction.value          // ì¥ë°”êµ¬ë‹ˆì²˜ë¦¬
+		    					   ,cartMenuType       : document.frmOrder.cartMenuType.value        // ë©”ë‰´íƒ€ì…
+								   ,cartMenuCode       : document.frmOrder.cartMenuCode.value        // ë©”ë‰´ì½”ë“œ
+								   ,cartMenuName       : document.frmOrder.cartMenuName.value        // ë©”ë‰´ëª…
+								   ,cartMenuOrdCode    : document.frmOrder.cartMenuOrdCode.value     // ë©”ë‰´ì£¼ë¬¸êµ¬ë¶„ì½”ë“œ(10:ì •ìƒ,20:í• ì¸,30:ì„œë¹„ìŠ¤(ë¬´ë£Œ))
+								   ,cartMenuDivCode    : document.frmOrder.cartMenuDivCode.value     // ë©”ë‰´êµ¬ë¶„ì½”ë“œ(10:ë‹¨í’ˆ,20:ì„¸íŠ¸,30:í•˜í”„&í•˜í”„)
+								   ,cartMenuLagCode    : document.frmOrder.cartMenuLagCode.value     // ë©”ë‰´ëŒ€ë¶„ë¥˜ì½”ë“œ
+								   ,cartMenuMidCode    : document.frmOrder.cartMenuMidCode.value     // ë©”ë‰´ì¤‘ë¶„ë¥˜ì½”ë“œ
+								   ,cartMenuSmlCode    : document.frmOrder.cartMenuSmlCode.value     // ë©”ë‰´ì†Œë¶„ë¥˜ì½”ë“œ
+								   ,cartMenuSubCode    : document.frmOrder.cartMenuSubCode.value     // ë©”ë‰´ì„¸ë¶„ë¥˜ì½”ë“œ
+								   ,cartMenuPrice      : document.frmOrder.cartMenuPrice.value       // ë©”ë‰´ì£¼ë¬¸ë‹¨ê°€
+								   ,cartMenuQty        : document.frmOrder.cartMenuQty.value         // ë©”ë‰´ì£¼ë¬¸ìˆ˜ëŸ‰
+								   ,cartMenuAmt        : document.frmOrder.cartMenuAmt.value         // ë©”ë‰´ì£¼ë¬¸ê¸ˆì•¡
+								   ,cartMenuDisRate    : document.frmOrder.cartMenuDisRate.value     // ë©”ë‰´í• ì¸ìœ¨
+								   ,cartMenuDisAmt     : document.frmOrder.cartMenuDisAmt.value      // ë©”ë‰´í• ì¸ê¸ˆì•¡
+		    					   ,cartMenuCopDisAmt  : document.frmOrder.cartMenuCopDisAmt.value   // ë©”ë‰´ì„ ê²°ì œì¿ í°í• ì¸
+		    					   ,cartMenuNetSaleAmt : document.frmOrder.cartMenuNetSaleAmt.value  // ë©”ë‰´ìˆœë§¤ì¶œê¸ˆì•¡
+								   ,cartMenuPayAmt     : document.frmOrder.cartMenuPayAmt.value      // ë©”ë‰´ê²°ì œê¸ˆì•¡
+		    					   ,cartMenuBakeCode   : document.frmOrder.cartMenuBakeCode.value    // ë©”ë‰´ë² ì´í¬ì½”ë“œ
+		    					   ,cartMenuCutCode    : document.frmOrder.cartMenuCutCode.value     // ë©”ë‰´ì»·ì½”ë“œ
+		    					   ,cartMenuCheeseCode : document.frmOrder.cartMenuCheeseCode.value  // ë©”ë‰´ì¹˜ì¦ˆì½”ë“œ
+		    					   ,cartMenuSauceCode  : document.frmOrder.cartMenuSauceCode.value   // ë©”ë‰´ì†ŒìŠ¤ì½”ë“œ
+								   ,cartMenuMessage    : document.frmOrder.cartMenuMessage.value     // ë©”ë‰´ì „ë‹¬ë©”ì„¸ì§€
+								   ,cartMenuSize       : document.frmOrder.cartMenuSize.value        // ë©”ë‰´ì‚¬ì´ì¦ˆ
+								   ,cartMenuDough      : document.frmOrder.cartMenuDough.value       // ë©”ë‰´ë„ìš°ì¢…ë¥˜
+								   ,cartMenuOption     : cartMenuOptions                             // ë©”ë‰´ì˜µì…˜
+								   ,cartECouponCompany : document.frmOrder.cartECouponCompany.value  // Eì¿ í°ì œíœ´ì‚¬
+								   ,cartECouponCode    : document.frmOrder.cartECouponCode.value     // Eì¿ í°ì½”ë“œ
+								   ,cartECouponNumber  : document.frmOrder.cartECouponNumber.value   // Eì¿ í°ë²ˆí˜¸
 			           		       }; 
 				fnSaveForCart(cartSendDataInfo);	
 	    	}
@@ -1543,7 +1634,7 @@
 	/*************************************************************************/
 	
 	
-    // Àå¹Ù±¸´Ï ¸Ş´º »èÁ¦
+    // ì¥ë°”êµ¬ë‹ˆ ë©”ë‰´ ì‚­ì œ
     function fnRemoveBasket(val, type, price)
     {
 		var id = val.split("_");
@@ -1560,24 +1651,24 @@
 			dataType  : "html", 
 			beforeSend: function() 
 			{              
-				//Åë½ÅÀ» ½ÃÀÛÇÒ¶§ Ã³¸®             
+				//í†µì‹ ì„ ì‹œì‘í• ë•Œ ì²˜ë¦¬             
 				$('#viewLoading').show().fadeIn(500);
 			}, 
 			complete: function() 
 			{             
-				//Åë½ÅÀÌ ¿Ï·áµÈ ÈÄ Ã³¸®              
+				//í†µì‹ ì´ ì™„ë£Œëœ í›„ ì²˜ë¦¬              
 				$('#viewLoading').fadeOut();         
 			},
 			success : function(data)
 			{
-				//Á¤»óÀûÀ¸·Î ¼­¹öÅë½Å µÈ ÈÄ È­¸é¿¡¼­ »èÁ¦
+				//ì •ìƒì ìœ¼ë¡œ ì„œë²„í†µì‹  ëœ í›„ í™”ë©´ì—ì„œ ì‚­ì œ
 				if( trim(data) == "true" )
 				{
-					//ÇØ´ç ¸®½ºÆ® ¸Ş´º °¡°İ »©±â!!
+					//í•´ë‹¹ ë¦¬ìŠ¤íŠ¸ ë©”ë‰´ ê°€ê²© ë¹¼ê¸°!!
 					var prc = 0;
 					prc -= parseInt(price.replace(",", ""));
-					setTotalPrc((prc * count), 1);  // ÁÖ¹® ÇÕ°è ±İ¾× °è»ê
-					fnDeleteMenuTooping(val, type);  // ¸Ş´º ÅäÇÎ »èÁ¦(¸Ş´º »èÁ¦½Ã)
+					setTotalPrc((prc * count), 1);  // ì£¼ë¬¸ í•©ê³„ ê¸ˆì•¡ ê³„ì‚°
+					fnDeleteMenuTooping(val, type);  // ë©”ë‰´ í† í•‘ ì‚­ì œ(ë©”ë‰´ ì‚­ì œì‹œ)
 				}
 			}
 		});
@@ -1585,24 +1676,24 @@
     }
 	
 	
- 	/* ÃÖÁ¾ÁÖ¹®±İ¾× ¾²±â */
- 	// ÁÖ¹® ÇÕ°è ±İ¾× °è»ê
+ 	/* ìµœì¢…ì£¼ë¬¸ê¸ˆì•¡ ì“°ê¸° */
+ 	// ì£¼ë¬¸ í•©ê³„ ê¸ˆì•¡ ê³„ì‚°
  	function setTotalPrc(price, value)
  	{
-		//value : ÇÃ·¯½º ¶Ç´Â ¸¶ÀÌ³Ê½º ¶Ç´Â 0 ¹ë·ù Ç¥½Ã
+		//value : í”ŒëŸ¬ìŠ¤ ë˜ëŠ” ë§ˆì´ë„ˆìŠ¤ ë˜ëŠ” 0 ë°¸ë¥˜ í‘œì‹œ
  		toPrc += parseInt(price);
  		toPrc *= value;
 		var $totalPrcArea = $("#ord_total");
  		$totalPrcArea.find(".price").text(won(toPrc.toString())); 
 
  		//20130923 
- 		//Àå¹Ù±¸´Ï º¸±â ¹öÆ°ÀÇ ¼ö·® °»½Å 
+ 		//ì¥ë°”êµ¬ë‹ˆ ë³´ê¸° ë²„íŠ¼ì˜ ìˆ˜ëŸ‰ ê°±ì‹  
  		getCount();
  		
  	}
 
 	
- 	//20130923 Àå¹Ù±¸´Ï ¸ñ·Ï °³¼ö
+ 	//20130923 ì¥ë°”êµ¬ë‹ˆ ëª©ë¡ ê°œìˆ˜
  	function getCount()
  	{
  		
@@ -1615,7 +1706,7 @@
  	}
  	
 
- 	// ¸Ş´º ÅäÇÎ »èÁ¦(¸Ş´º »èÁ¦½Ã)
+ 	// ë©”ë‰´ í† í•‘ ì‚­ì œ(ë©”ë‰´ ì‚­ì œì‹œ)
 	function fnDeleteMenuTooping(val, type)
 	{
 		var cnt   = 0; 
@@ -1627,14 +1718,14 @@
 	 	$.post("/order/newCart.jsp?cartAction=deleteCartTooping&cartMenuCode="+ val.replace('pizzaMenu_', ''),
 		function(flag)
 		{  
-			//Á¤»óÀûÀ¸·Î ¼­¹öÅë½Å µÈ ÈÄ È­¸é¿¡¼­ »èÁ¦   
-		    //ÇØ´ç ¸Ş´º¿¡ Ãß°¡µÈ ÅäÇÎ ÀÖÀ¸¸é ÅäÇÎ°¡°İµµ °°ÀÌ »©ÁÖ±â!!   
+			//ì •ìƒì ìœ¼ë¡œ ì„œë²„í†µì‹  ëœ í›„ í™”ë©´ì—ì„œ ì‚­ì œ   
+		    //í•´ë‹¹ ë©”ë‰´ì— ì¶”ê°€ëœ í† í•‘ ìˆìœ¼ë©´ í† í•‘ê°€ê²©ë„ ê°™ì´ ë¹¼ì£¼ê¸°!!   
  		    $list.find("ul.topp_p").each(function(i,e)
  		    {
-		    	//ÅäÇÎ°¡°İ Àå¹Ù±¸´Ï ÃÑ¾×¼­ »©±â
+		    	//í† í•‘ê°€ê²© ì¥ë°”êµ¬ë‹ˆ ì´ì•¡ì„œ ë¹¼ê¸°
 		    	$(this).find("li").each(function(i,e)
 		    	{
-		    		var eaAmount = $(this).find(".toppEaAmt").val();	////1.ÅäÇÎ°³º° ÃÑ¾×
+		    		var eaAmount = $(this).find(".toppEaAmt").val();	////1.í† í•‘ê°œë³„ ì´ì•¡
 		    		toppTotalPrc += parseInt(eaAmount);
 		    	});
 		    	
@@ -1643,10 +1734,10 @@
 		    });  
 		}); 
 		
-		//20140620 ÇÁ·Î¸ğ¼Ç ¸Ş´º È­¸é »èÁ¦ °°ÀÌ ÇÏ±â
+		//20140620 í”„ë¡œëª¨ì…˜ ë©”ë‰´ í™”ë©´ ì‚­ì œ ê°™ì´ í•˜ê¸°
 		if(type == "typePromotion")
 		{
-			//Àû¿ë¸Ş´º¿Í ÇÒÀÎ¸Ş´º°¡ Àû¿ëµÈ ÄíÆù ÄÚµå·Î ¹­À½ Ã£±â 
+			//ì ìš©ë©”ë‰´ì™€ í• ì¸ë©”ë‰´ê°€ ì ìš©ëœ ì¿ í° ì½”ë“œë¡œ ë¬¶ìŒ ì°¾ê¸° 
 			var followMenuCode = $("#"+ val +" input#promCoupon").val();
 			$("#"+ val).parent().find("li.prom_menu").each(function(i){
 //				alert( $(this).attr("class") );
@@ -1661,42 +1752,42 @@
 	}
  	
  	
-    /* ÁÖ¹®Á¤º¸ È®ÀÎ->¹è¼ÛÁ¤º¸ ÀúÀå-> pj_1003ÀÌµ¿*/
+    /* ì£¼ë¬¸ì •ë³´ í™•ì¸->ë°°ì†¡ì •ë³´ ì €ì¥-> pj_1003ì´ë™*/
     function fnOrderInfoView()
     {
     	
-		// ¼±ÅÃ ¸Ş´º ¿©ºÎ ¹× ±İ¾× ÇÑµµ Check
+		// ì„ íƒ ë©”ë‰´ ì—¬ë¶€ ë° ê¸ˆì•¡ í•œë„ Check
 		var $cartList  = $("#ord_list>li");
 	 	var $totalPrc  = $("#ord_total").find(".price").text();
-		var cartAmount = parseInt($totalPrc.replace(",","").replace("¿ø","") );
-		var orderFlag  = false;  //Àå¹Ù±¸´Ï¿¡ ÇÇÀÚ¶Ç´Â »çÀÌµå ¸Ş´º¸¦ Æ÷ÇÔÇÏ´ÂÁö °Ë»ç
+		var cartAmount = parseInt($totalPrc.replace(",","").replace("ì›","") );
+		var orderFlag  = false;  //ì¥ë°”êµ¬ë‹ˆì— í”¼ìë˜ëŠ” ì‚¬ì´ë“œ ë©”ë‰´ë¥¼ í¬í•¨í•˜ëŠ”ì§€ ê²€ì‚¬
 		var alertFrame = $("#notice_1002");
 		
 		$cartList.each(function(e,i)
 		{
 			var menuType = $(this).attr("class");
-			//»çÀÌµå ¸Ş´º´Â Å¬·¡½º ÀÌ¸§ ¼öÁ¤ > side_menu(20130627)
+			//ì‚¬ì´ë“œ ë©”ë‰´ëŠ” í´ë˜ìŠ¤ ì´ë¦„ ìˆ˜ì • > side_menu(20130627)
 			//if( menuType == "pizza_menu product" || menuType == "set_menu product" || menuType == "set_menu eCoupon_menu product" || menuType == "half_menu product" || menuType == "side_menu product" ) { orderFlag = true; }
 			
-			//20140620 ÇÁ·Î¸ğ¼Ç ¸Ş´º±îÁö Æ÷ÇÔ Åë°ú~
+			//20140620 í”„ë¡œëª¨ì…˜ ë©”ë‰´ê¹Œì§€ í¬í•¨ í†µê³¼~
 			if( $(this).hasClass("pizza_menu") == true || $(this).hasClass("set_menu") == true  || $(this).hasClass("half_menu") == true || $(this).hasClass("side_menu") == true  ){orderFlag = true;}
 		});
 		
-		//Àå¹Ù±¸´Ï¿¡ ¸Ş´º°¡ ÀÖ°í ÃÑ¾×ÀÌ 10000¿øÀÌ»ó, ÇÇÀÚ¸Ş´º¸¦ Æ÷ÇÔÇÑ °æ¿ì¸¸ ÁÖ¹® ÁøÇà
+		//ì¥ë°”êµ¬ë‹ˆì— ë©”ë‰´ê°€ ìˆê³  ì´ì•¡ì´ 10000ì›ì´ìƒ, í”¼ìë©”ë‰´ë¥¼ í¬í•¨í•œ ê²½ìš°ë§Œ ì£¼ë¬¸ ì§„í–‰
 		if( $cartList.size() < 0 || cartAmount < 10000 || orderFlag == false )
 		{
 			alertFrame.find("#alertText p").remove();
-			alertFrame.find("#alertText").append("<p>ÇÇÀÚ ¶Ç´Â »çÀÌµå ¸Ş´º¸¦ Æ÷ÇÔÇÏ¿© <br/>ÃÑ  10,000¿ø ÀÌ»óÀÎ °æ¿ì¸¸ ÁÖ¹®ÀÌ °¡´ÉÇÕ´Ï´Ù.</p>").css("line-height","35px"); 
+			alertFrame.find("#alertText").append("<p>í”¼ì ë˜ëŠ” ì‚¬ì´ë“œ ë©”ë‰´ë¥¼ í¬í•¨í•˜ì—¬ <br/>ì´  10,000ì› ì´ìƒì¸ ê²½ìš°ë§Œ ì£¼ë¬¸ì´ ê°€ëŠ¥í•©ë‹ˆë‹¤.</p>").css("line-height","35px"); 
 			popAlert(alertFrame);
 			alertFrame.find(".alertBtn").focus();
 			return;
 		}
 		
-		// ¹è´ŞÁÖ¹®, Æ÷ÀåÁÖ¹® ÁÖ¹®¹æ¹ı ¼±ÅÃ Check
+		// ë°°ë‹¬ì£¼ë¬¸, í¬ì¥ì£¼ë¬¸ ì£¼ë¬¸ë°©ë²• ì„ íƒ Check
 		if( $("#btn_addr").hasClass("active") == false && $("#btn_store").hasClass("active") == false )
 		{
 			alertFrame.find("#alertText p").remove();
-			alertFrame.find("#alertText").append("<p>\"¹è´ŞÁÖ¹®\" ¶Ç´Â \"Æ÷ÀåÁÖ¹®\"À» ¼±ÅÃÇØ ÁÖ¼¼¿ä!</p>").css("line-height","45px"); 
+			alertFrame.find("#alertText").append("<p>\"ë°°ë‹¬ì£¼ë¬¸\" ë˜ëŠ” \"í¬ì¥ì£¼ë¬¸\"ì„ ì„ íƒí•´ ì£¼ì„¸ìš”!</p>").css("line-height","45px"); 
 			popAlert(alertFrame);
 			alertFrame.find(".alertBtn").focus();
 			return;
@@ -1706,77 +1797,77 @@
 		var mem_phone = $("#ord_optInfo_section .mem_phone").text();
 		var addr      = $("#ord_optInfo_section .addr").text();
 		
-    	// °í°´¸í(¼ö·ÉÀÎ), ¿¬¶ôÃ³(ÀüÈ­¹øÈ£), ¹è´ŞÁÖ¼Ò Check
+    	// ê³ ê°ëª…(ìˆ˜ë ¹ì¸), ì—°ë½ì²˜(ì „í™”ë²ˆí˜¸), ë°°ë‹¬ì£¼ì†Œ Check
      	if( mem_name.length <= 0 || mem_phone.length <= 0 || addr.length <= 0 )
      	{
 			alertFrame.find("#alertText p").remove();
-			alertFrame.find("#alertText").append("<p>\"¹è´Ş\" ¶Ç´Â \"Æ÷Àå\" ÁÖ¹®À» ¼±ÅÃÇÏ½Ã°í<br/>\"¼ö·ÉÀÎ Á¤º¸\" ¹× \"ÁÖ¼Ò\"¸¦ È®ÀÎÇØ ÁÖ¼¼¿ä!</p> ").css("line-height","35px"); 
+			alertFrame.find("#alertText").append("<p>\"ë°°ë‹¬\" ë˜ëŠ” \"í¬ì¥\" ì£¼ë¬¸ì„ ì„ íƒí•˜ì‹œê³ <br/>\"ìˆ˜ë ¹ì¸ ì •ë³´\" ë° \"ì£¼ì†Œ\"ë¥¼ í™•ì¸í•´ ì£¼ì„¸ìš”!</p> ").css("line-height","35px"); 
 			popAlert(alertFrame);
 			alertFrame.find(".alertBtn").focus();
      		return;
      	}
-		// ¹Ù·ÎÁÖ¹®, ¿¹¾àÁÖ¹® ÁÖ¹®¹æ¹ı ¼±ÅÃ Check
+		// ë°”ë¡œì£¼ë¬¸, ì˜ˆì•½ì£¼ë¬¸ ì£¼ë¬¸ë°©ë²• ì„ íƒ Check
 		//if( $("#btn_ordNow").hasClass("active") == false && $("#btn_ordReserv").hasClass("active") == false )
-		//Á¶°Ç¹® º¯°æ >> ¹öÆ° °ªÀ¸·Î ÇÏ´Â °æ¿ì ½Ã°£ÀÌ Á¦´ë·Î ¼±ÅÃµÇÁö ¾Ê¾Æµµ ³Ñ¾î°¡¹ö¸²
+		//ì¡°ê±´ë¬¸ ë³€ê²½ >> ë²„íŠ¼ ê°’ìœ¼ë¡œ í•˜ëŠ” ê²½ìš° ì‹œê°„ì´ ì œëŒ€ë¡œ ì„ íƒë˜ì§€ ì•Šì•„ë„ ë„˜ì–´ê°€ë²„ë¦¼
 /* 		if($ord_time.text() == "")
 		{
 			alertFrame.find("#alertText p").remove();
-			alertFrame.find("#alertText").append("<p>\"¹Ù·ÎÁÖ¹®\" ¶Ç´Â \"¿¹¾àÁÖ¹®\"À» ¼±ÅÃÇØÁÖ¼¼¿ä!<br/>¿¹¾à ½Ã°£Àº \"¹Ù·ÎÁÖ¹®\"½Ã°£ ÀÌÈÄºÎÅÍ °¡´ÉÇÕ´Ï´Ù.</p> ").css("line-height","35px"); 
+			alertFrame.find("#alertText").append("<p>\"ë°”ë¡œì£¼ë¬¸\" ë˜ëŠ” \"ì˜ˆì•½ì£¼ë¬¸\"ì„ ì„ íƒí•´ì£¼ì„¸ìš”!<br/>ì˜ˆì•½ ì‹œê°„ì€ \"ë°”ë¡œì£¼ë¬¸\"ì‹œê°„ ì´í›„ë¶€í„° ê°€ëŠ¥í•©ë‹ˆë‹¤.</p> ").css("line-height","35px"); 
 			popAlert(alertFrame);
 			return;
 		} */
 
     	//********************************************************************************
-    	// ÁÖ¹®±¸ºĞ(ÁÖ¹®À¯Çü)
-    	// 10 : ¹è´ŞÁÖ¹®
-    	// 20 : Æ÷ÀåÁÖ¹®
-    	// 30 : ´ÜÃ¼ÁÖ¹®
-    	// 40 : ¿¹¾àÁÖ¹®
-    	// 50 : È¯ºÒÁÖ¹®
-    	// 55 : ¼öÃëÁÖ¹®
-    	// 60 : A/SÁÖ¹®
-    	// 70 : Á¤º¸¼ºÁÖ¹®
+    	// ì£¼ë¬¸êµ¬ë¶„(ì£¼ë¬¸ìœ í˜•)
+    	// 10 : ë°°ë‹¬ì£¼ë¬¸
+    	// 20 : í¬ì¥ì£¼ë¬¸
+    	// 30 : ë‹¨ì²´ì£¼ë¬¸
+    	// 40 : ì˜ˆì•½ì£¼ë¬¸
+    	// 50 : í™˜ë¶ˆì£¼ë¬¸
+    	// 55 : ìˆ˜ì·¨ì£¼ë¬¸
+    	// 60 : A/Sì£¼ë¬¸
+    	// 70 : ì •ë³´ì„±ì£¼ë¬¸
     	//********************************************************************************
-    	document.frmOrder.cartOrdDivide.value    = "";  // ÁÖ¹®±¸ºĞ(ÁÖ¹®À¯Çü)
-    	document.frmOrder.cartOrdReserve.value   = "";  // ¿¹¾àÁÖ¹®¿©ºÎ
-		document.frmOrder.cartOrdCustName.value  = "";  // °í°´¸í
-		document.frmOrder.cartOrdCustPhone.value = "";  // ÀüÈ­¹øÈ£
+    	document.frmOrder.cartOrdDivide.value    = "";  // ì£¼ë¬¸êµ¬ë¶„(ì£¼ë¬¸ìœ í˜•)
+    	document.frmOrder.cartOrdReserve.value   = "";  // ì˜ˆì•½ì£¼ë¬¸ì—¬ë¶€
+		document.frmOrder.cartOrdCustName.value  = "";  // ê³ ê°ëª…
+		document.frmOrder.cartOrdCustPhone.value = "";  // ì „í™”ë²ˆí˜¸
 		
-		//¶óµğ¿À ¹öÆ° ¼¼ÆÃ
-    	if( $("#btn_addr").hasClass("active")      ) { document.frmOrder.cartOrdDivide.value  = "10"; }  // ¹è´ŞÁÖ¹®¹öÆ°
-    	if( $("#btn_store").hasClass("active")     ) { document.frmOrder.cartOrdDivide.value  = "20"; }  // Æ÷ÀåÁÖ¹®¹öÆ°
-/*     	if( $("#btn_ordNow").hasClass("active")    ) { document.frmOrder.cartOrdReserve.value = "N";  }  // ¹Ù·ÎÁÖ¹®¹öÆ°
-    	if( $("#btn_ordReserv").hasClass("active") ) { document.frmOrder.cartOrdReserve.value = "Y";  }  // ¿¹¾àÁÖ¹®¹öÆ°
+		//ë¼ë””ì˜¤ ë²„íŠ¼ ì„¸íŒ…
+    	if( $("#btn_addr").hasClass("active")      ) { document.frmOrder.cartOrdDivide.value  = "10"; }  // ë°°ë‹¬ì£¼ë¬¸ë²„íŠ¼
+    	if( $("#btn_store").hasClass("active")     ) { document.frmOrder.cartOrdDivide.value  = "20"; }  // í¬ì¥ì£¼ë¬¸ë²„íŠ¼
+/*     	if( $("#btn_ordNow").hasClass("active")    ) { document.frmOrder.cartOrdReserve.value = "N";  }  // ë°”ë¡œì£¼ë¬¸ë²„íŠ¼
+    	if( $("#btn_ordReserv").hasClass("active") ) { document.frmOrder.cartOrdReserve.value = "Y";  }  // ì˜ˆì•½ì£¼ë¬¸ë²„íŠ¼
     	 */
-		document.frmOrder.cartOrdCustName.value  = mem_name;                               // °í°´¸í
-		document.frmOrder.cartOrdCustPhone.value = mem_phone;                              // ÀüÈ­¹øÈ£
+		document.frmOrder.cartOrdCustName.value  = mem_name;                               // ê³ ê°ëª…
+		document.frmOrder.cartOrdCustPhone.value = mem_phone;                              // ì „í™”ë²ˆí˜¸
 
     	var cartOrderInfo = null;
     	
     	cartOrderInfo = {
-    	 				 cartOrdCustName     : document.frmOrder.cartOrdCustName.value,      // °í°´¸í
-    	 				 cartOrdCustPhone    : document.frmOrder.cartOrdCustPhone.value,     // ÀüÈ­¹øÈ£
-    			         cartOrdDivide       : document.frmOrder.cartOrdDevide.value,        // ÁÖ¹®±¸ºĞ(ÁÖ¹®À¯Çü)
-    			         cartOrdReserve      : document.frmOrder.cartOrdReserve.value,       // ¿¹¾àÁÖ¹®¿©ºÎ
-    			         cartOrdResDate      : document.frmOrder.cartOrdResDate.value,       // ¿¹¾àÀÏÀÚ
-    			         cartOrdResTime      : document.frmOrder.cartOrdResTime.value,       // ¿¹¾à½Ã°£
-    			         cartOrdDevAddr1     : document.frmOrder.cartOrdDevAddr1.value,      // ¹è´ŞÁöÁÖ¼Ò1
-    			         cartOrdDevAddr2     : document.frmOrder.cartOrdDevAddr2.value,      // ¹è´ŞÁöÁÖ¼Ò2
-    			         cartOrdDevAddr3     : document.frmOrder.cartOrdDevAddr3.value,      // ¹è´ŞÁöÁÖ¼Ò3
-    			         cartOrdDevAddr4     : document.frmOrder.cartOrdDevAddr4.value,      // ¹è´ŞÁöÁÖ¼Ò4
+    	 				 cartOrdCustName     : document.frmOrder.cartOrdCustName.value,      // ê³ ê°ëª…
+    	 				 cartOrdCustPhone    : document.frmOrder.cartOrdCustPhone.value,     // ì „í™”ë²ˆí˜¸
+    			         cartOrdDivide       : document.frmOrder.cartOrdDevide.value,        // ì£¼ë¬¸êµ¬ë¶„(ì£¼ë¬¸ìœ í˜•)
+    			         cartOrdReserve      : document.frmOrder.cartOrdReserve.value,       // ì˜ˆì•½ì£¼ë¬¸ì—¬ë¶€
+    			         cartOrdResDate      : document.frmOrder.cartOrdResDate.value,       // ì˜ˆì•½ì¼ì
+    			         cartOrdResTime      : document.frmOrder.cartOrdResTime.value,       // ì˜ˆì•½ì‹œê°„
+    			         cartOrdDevAddr1     : document.frmOrder.cartOrdDevAddr1.value,      // ë°°ë‹¬ì§€ì£¼ì†Œ1
+    			         cartOrdDevAddr2     : document.frmOrder.cartOrdDevAddr2.value,      // ë°°ë‹¬ì§€ì£¼ì†Œ2
+    			         cartOrdDevAddr3     : document.frmOrder.cartOrdDevAddr3.value,      // ë°°ë‹¬ì§€ì£¼ì†Œ3
+    			         cartOrdDevAddr4     : document.frmOrder.cartOrdDevAddr4.value,      // ë°°ë‹¬ì§€ì£¼ì†Œ4
     			         cartOrdAddressID    : document.frmOrder.cartOrdAddressID.value,     // ADDRESS_ID
-    			         cartOrdStoreCode    : document.frmOrder.cartOrdStoreCode.value,     // ¸ÅÀåÄÚµå
-    			         cartOrdStoreName    : document.frmOrder.cartOrdStoreName.value,     // ¸ÅÀå¸í
-    			         cartOrdSectorCode   : document.frmOrder.cartOrdSectorCode.value,    // ¸ÅÀå¼½ÅÍÄÚµå
-    			         cartOrdSectorName   : document.frmOrder.cartOrdSectorName.value,    // ¸ÅÀå¼½ÅÍ¸í
-    			         cartOrdDeliveryTime : document.frmOrder.cartOrdDeliveryTime.value,  // ¼½ÅÍ¿¹»ó½Ã°£
-    			         cartOrdDeliveryYN   : document.frmOrder.cartOrdDeliveryYN.value,    // ¹è´Ş°¡´É¿©ºÎ
-    			         cartOrdNewAddressYN : document.frmOrder.cartOrdNewAddressYN.value   // ¹è´ŞÁöÁÖ¼Ò½Å±ÔÃß°¡¿©ºÎ
+    			         cartOrdStoreCode    : document.frmOrder.cartOrdStoreCode.value,     // ë§¤ì¥ì½”ë“œ
+    			         cartOrdStoreName    : document.frmOrder.cartOrdStoreName.value,     // ë§¤ì¥ëª…
+    			         cartOrdSectorCode   : document.frmOrder.cartOrdSectorCode.value,    // ë§¤ì¥ì„¹í„°ì½”ë“œ
+    			         cartOrdSectorName   : document.frmOrder.cartOrdSectorName.value,    // ë§¤ì¥ì„¹í„°ëª…
+    			         cartOrdDeliveryTime : document.frmOrder.cartOrdDeliveryTime.value,  // ì„¹í„°ì˜ˆìƒì‹œê°„
+    			         cartOrdDeliveryYN   : document.frmOrder.cartOrdDeliveryYN.value,    // ë°°ë‹¬ê°€ëŠ¥ì—¬ë¶€
+    			         cartOrdNewAddressYN : document.frmOrder.cartOrdNewAddressYN.value   // ë°°ë‹¬ì§€ì£¼ì†Œì‹ ê·œì¶”ê°€ì—¬ë¶€
 	                    }; 
 
     	var jsonCartOrderInfo = JSON.stringify(cartOrderInfo);
     	 
-    	//Àå¹Ù±¸´Ï¿¡ ÀÖ´Â ¸ğµç¸Ş´º »óÅÂ °Ë»ç _ ¸ÅÀåÄÚµå·Î
+    	//ì¥ë°”êµ¬ë‹ˆì— ìˆëŠ” ëª¨ë“ ë©”ë‰´ ìƒíƒœ ê²€ì‚¬ _ ë§¤ì¥ì½”ë“œë¡œ
     	var storeCode = document.frmOrder.cartOrdStoreCode.value;
     	var storeName = document.frmOrder.cartOrdStoreName.value;
     	
@@ -1794,8 +1885,8 @@
    					alertFrame.find("#alertText").append("<p>" + trim(data).split("*")[0] + "<br>" + trim(data).split("*")[1] + "<br>" + trim(data).split("*")[1] +"</p>").css("line-height","35px"); 
    					popAlert(alertFrame);
 					alertFrame.find(".alertBtn").focus();
-   					//20131212 Ã¼Å©
-   					//ÁÖ¹®ºÒ°¡ ¾Ë¸² ÈÄ Àå¹Ù±¸´Ï¿¡¼­ »èÁ¦ ¿ä¸Á!!!
+   					//20131212 ì²´í¬
+   					//ì£¼ë¬¸ë¶ˆê°€ ì•Œë¦¼ í›„ ì¥ë°”êµ¬ë‹ˆì—ì„œ ì‚­ì œ ìš”ë§!!!
    				}
    				else
    				{
@@ -1807,7 +1898,7 @@
     }
     
     
-    /* ÁÖ¼ÒÀúÀå ÈÄ °áÁ¦ ÆäÀÌÁö ÀÌµ¿ */
+    /* ì£¼ì†Œì €ì¥ í›„ ê²°ì œ í˜ì´ì§€ ì´ë™ */
     function fnOrderNext(jsonCartOrderInfo)
     {
     	$.ajax(
@@ -1835,53 +1926,53 @@
     }
     
     
-    /* ÁÖ¹® ¹× ¹è´ŞÁö(ÁÖ¼Ò) session ÀúÀå */
+    /* ì£¼ë¬¸ ë° ë°°ë‹¬ì§€(ì£¼ì†Œ) session ì €ì¥ */
     function fnSaveCartOrderInfo()
     {
     	
     	//********************************************************************************
-    	// ÁÖ¹®±¸ºĞ(ÁÖ¹®À¯Çü)
-    	// 10 : ¹è´ŞÁÖ¹®
-    	// 20 : Æ÷ÀåÁÖ¹®
-    	// 30 : ´ÜÃ¼ÁÖ¹®
-    	// 40 : ¿¹¾àÁÖ¹®
-    	// 50 : È¯ºÒÁÖ¹®
-    	// 55 : ¼öÃëÁÖ¹®
-    	// 60 : A/SÁÖ¹®
-    	// 70 : Á¤º¸¼ºÁÖ¹®
+    	// ì£¼ë¬¸êµ¬ë¶„(ì£¼ë¬¸ìœ í˜•)
+    	// 10 : ë°°ë‹¬ì£¼ë¬¸
+    	// 20 : í¬ì¥ì£¼ë¬¸
+    	// 30 : ë‹¨ì²´ì£¼ë¬¸
+    	// 40 : ì˜ˆì•½ì£¼ë¬¸
+    	// 50 : í™˜ë¶ˆì£¼ë¬¸
+    	// 55 : ìˆ˜ì·¨ì£¼ë¬¸
+    	// 60 : A/Sì£¼ë¬¸
+    	// 70 : ì •ë³´ì„±ì£¼ë¬¸
     	//********************************************************************************
-    	document.frmOrder.cartOrdDivide.value  = "";  // ÁÖ¹®±¸ºĞ(ÁÖ¹®À¯Çü)
-    	document.frmOrder.cartOrdReserve.value = "";  // ¿¹¾àÁÖ¹®¿©ºÎ
-    	if( $("#btn_addr").hasClass("active")      ) { document.frmOrder.cartOrdDivide.value  = "10"; }  // ¹è´ŞÁÖ¹®¹öÆ°
-    	if( $("#btn_store").hasClass("active")     ) { document.frmOrder.cartOrdDivide.value  = "20"; }  // Æ÷ÀåÁÖ¹®¹öÆ°
+    	document.frmOrder.cartOrdDivide.value  = "";  // ì£¼ë¬¸êµ¬ë¶„(ì£¼ë¬¸ìœ í˜•)
+    	document.frmOrder.cartOrdReserve.value = "";  // ì˜ˆì•½ì£¼ë¬¸ì—¬ë¶€
+    	if( $("#btn_addr").hasClass("active")      ) { document.frmOrder.cartOrdDivide.value  = "10"; }  // ë°°ë‹¬ì£¼ë¬¸ë²„íŠ¼
+    	if( $("#btn_store").hasClass("active")     ) { document.frmOrder.cartOrdDivide.value  = "20"; }  // í¬ì¥ì£¼ë¬¸ë²„íŠ¼
  
-    	/*  20140121 pj_1003È­¸é¿¡¼­ ¸¶Áö¸· Àü¼ÛÀü ÀúÀå   */
-    	/* if( $("#btn_ordNow").hasClass("active")    ) { document.frmOrder.cartOrdReserve.value = "N";  }  // ¹Ù·ÎÁÖ¹®¹öÆ°
-    	if( $("#btn_ordReserv").hasClass("active") ) { document.frmOrder.cartOrdReserve.value = "Y";  }  // ¿¹¾àÁÖ¹®¹öÆ°
-    	document.frmOrder.cartOrdResDate.value = $("#s_date").val();                     // ¿¹¾àÀÏÀÚ
-    	document.frmOrder.cartOrdResTime.value = $("#s_hour").val()+$("#s_minu").val();  // ¿¹¾à½Ã°£ */
+    	/*  20140121 pj_1003í™”ë©´ì—ì„œ ë§ˆì§€ë§‰ ì „ì†¡ì „ ì €ì¥   */
+    	/* if( $("#btn_ordNow").hasClass("active")    ) { document.frmOrder.cartOrdReserve.value = "N";  }  // ë°”ë¡œì£¼ë¬¸ë²„íŠ¼
+    	if( $("#btn_ordReserv").hasClass("active") ) { document.frmOrder.cartOrdReserve.value = "Y";  }  // ì˜ˆì•½ì£¼ë¬¸ë²„íŠ¼
+    	document.frmOrder.cartOrdResDate.value = $("#s_date").val();                     // ì˜ˆì•½ì¼ì
+    	document.frmOrder.cartOrdResTime.value = $("#s_hour").val()+$("#s_minu").val();  // ì˜ˆì•½ì‹œê°„ */
     	
     	var cartOrderInfo = null;
     	
     	cartOrderInfo = {
-				 		 cartOrdCustName     : document.frmOrder.cartOrdCustName.value,      // °í°´¸í
- 				 		 cartOrdCustPhone    : document.frmOrder.cartOrdCustPhone.value,     // ÀüÈ­¹øÈ£
-    			         cartOrdDivide       : document.frmOrder.cartOrdDevide.value,        // ÁÖ¹®±¸ºĞ(ÁÖ¹®À¯Çü)
-    			         cartOrdReserve      : document.frmOrder.cartOrdReserve.value,       // ¿¹¾àÁÖ¹®¿©ºÎ
-    			         cartOrdResDate      : document.frmOrder.cartOrdResDate.value,       // ¿¹¾àÀÏÀÚ
-    			         cartOrdResTime      : document.frmOrder.cartOrdResTime.value,       // ¿¹¾à½Ã°£
-    			         cartOrdDevAddr1     : document.frmOrder.cartOrdDevAddr1.value,      // ¹è´ŞÁöÁÖ¼Ò1
-    			         cartOrdDevAddr2     : document.frmOrder.cartOrdDevAddr2.value,      // ¹è´ŞÁöÁÖ¼Ò2
-    			         cartOrdDevAddr3     : document.frmOrder.cartOrdDevAddr3.value,      // ¹è´ŞÁöÁÖ¼Ò3
-    			         cartOrdDevAddr4     : document.frmOrder.cartOrdDevAddr4.value,      // ¹è´ŞÁöÁÖ¼Ò4
+				 		 cartOrdCustName     : document.frmOrder.cartOrdCustName.value,      // ê³ ê°ëª…
+ 				 		 cartOrdCustPhone    : document.frmOrder.cartOrdCustPhone.value,     // ì „í™”ë²ˆí˜¸
+    			         cartOrdDivide       : document.frmOrder.cartOrdDevide.value,        // ì£¼ë¬¸êµ¬ë¶„(ì£¼ë¬¸ìœ í˜•)
+    			         cartOrdReserve      : document.frmOrder.cartOrdReserve.value,       // ì˜ˆì•½ì£¼ë¬¸ì—¬ë¶€
+    			         cartOrdResDate      : document.frmOrder.cartOrdResDate.value,       // ì˜ˆì•½ì¼ì
+    			         cartOrdResTime      : document.frmOrder.cartOrdResTime.value,       // ì˜ˆì•½ì‹œê°„
+    			         cartOrdDevAddr1     : document.frmOrder.cartOrdDevAddr1.value,      // ë°°ë‹¬ì§€ì£¼ì†Œ1
+    			         cartOrdDevAddr2     : document.frmOrder.cartOrdDevAddr2.value,      // ë°°ë‹¬ì§€ì£¼ì†Œ2
+    			         cartOrdDevAddr3     : document.frmOrder.cartOrdDevAddr3.value,      // ë°°ë‹¬ì§€ì£¼ì†Œ3
+    			         cartOrdDevAddr4     : document.frmOrder.cartOrdDevAddr4.value,      // ë°°ë‹¬ì§€ì£¼ì†Œ4
     			         cartOrdAddressID    : document.frmOrder.cartOrdAddressID.value,     // ADDRESS_ID
-    			         cartOrdStoreCode    : document.frmOrder.cartOrdStoreCode.value,     // ¸ÅÀåÄÚµå
-    			         cartOrdStoreName    : document.frmOrder.cartOrdStoreName.value,     // ¸ÅÀå¸í
-    			         cartOrdSectorCode   : document.frmOrder.cartOrdSectorCode.value,    // ¸ÅÀå¼½ÅÍÄÚµå
-    			         cartOrdSectorName   : document.frmOrder.cartOrdSectorName.value,    // ¸ÅÀå¼½ÅÍ¸í
-    			         cartOrdDeliveryTime : document.frmOrder.cartOrdDeliveryTime.value,  // ¼½ÅÍ¿¹»ó½Ã°£
-    			         cartOrdDeliveryYN   : document.frmOrder.cartOrdDeliveryYN.value,    // ¹è´Ş°¡´É¿©ºÎ
-    			         cartOrdNewAddressYN : document.frmOrder.cartOrdNewAddressYN.value   // ¹è´ŞÁöÁÖ¼Ò½Å±ÔÃß°¡¿©ºÎ
+    			         cartOrdStoreCode    : document.frmOrder.cartOrdStoreCode.value,     // ë§¤ì¥ì½”ë“œ
+    			         cartOrdStoreName    : document.frmOrder.cartOrdStoreName.value,     // ë§¤ì¥ëª…
+    			         cartOrdSectorCode   : document.frmOrder.cartOrdSectorCode.value,    // ë§¤ì¥ì„¹í„°ì½”ë“œ
+    			         cartOrdSectorName   : document.frmOrder.cartOrdSectorName.value,    // ë§¤ì¥ì„¹í„°ëª…
+    			         cartOrdDeliveryTime : document.frmOrder.cartOrdDeliveryTime.value,  // ì„¹í„°ì˜ˆìƒì‹œê°„
+    			         cartOrdDeliveryYN   : document.frmOrder.cartOrdDeliveryYN.value,    // ë°°ë‹¬ê°€ëŠ¥ì—¬ë¶€
+    			         cartOrdNewAddressYN : document.frmOrder.cartOrdNewAddressYN.value   // ë°°ë‹¬ì§€ì£¼ì†Œì‹ ê·œì¶”ê°€ì—¬ë¶€
 	                    }; 
     	
     	var jsonCartOrderInfo = JSON.stringify(cartOrderInfo);
@@ -1911,7 +2002,7 @@
     }
     
  
- 	//scrollTopBtn ½ºÅ©·Ñ¿¡ µû¶ó À§Ä¡ º¯°æ!!
+ 	//scrollTopBtn ìŠ¤í¬ë¡¤ì— ë”°ë¼ ìœ„ì¹˜ ë³€ê²½!!
  	function scrollPosition()
  	{
  		
@@ -1942,7 +2033,7 @@
 		 	{
 			 	$btn.css("position","fixed");
 			 	$btn.css("left","50%");
-			 	$btn.css("margin-left","278px"); /* ºê¶ó¿ìÀú Áß¾Ó¿¡¼­ ¿ìÃøÀ¸·Î ¶³¾îÁú °Å¸®  */
+			 	$btn.css("margin-left","278px"); /* ë¸Œë¼ìš°ì € ì¤‘ì•™ì—ì„œ ìš°ì¸¡ìœ¼ë¡œ ë–¨ì–´ì§ˆ ê±°ë¦¬  */
 		 	}
 		 	else
 		 	{ 
@@ -1958,10 +2049,10 @@
 	 	
  	}
  	
-	// 0.5ÃÊ(500)¸¶´Ù outmenu('scrollTopBtn')ÇÔ¼ö ¹İº¹½ÇÇà(setInterval)
+	// 0.5ì´ˆ(500)ë§ˆë‹¤ outmenu('scrollTopBtn')í•¨ìˆ˜ ë°˜ë³µì‹¤í–‰(setInterval)
 	setInterval("outmenu('scrollTopBtn')", 500); 
 
-	//¿É¼Ç¹Ú½º¾ÈÀÇ ¿É¼Ç°ª º¯°æ
+	//ì˜µì…˜ë°•ìŠ¤ì•ˆì˜ ì˜µì…˜ê°’ ë³€ê²½
 	var old_sid  = "";
 	var old_this = "";
 	$(".option").slideUp();
@@ -1970,41 +2061,41 @@
 	function swapimg(old_sid, $this) 
 	{ 
 		
-		var prevIndex = parseInt(old_sid.substr(old_sid.length-1, 1) ) -1;	  //ÀÌÀü¿¡ Å¬¸¯ÇÑ ¿É¼ÇÀÇ ÀÎµ¦½º ±¸ÇÏ±â
-	  	$this.parent().parent().find("li").eq(prevIndex).find("span").text("¡å");
+		var prevIndex = parseInt(old_sid.substr(old_sid.length-1, 1) ) -1;	  //ì´ì „ì— í´ë¦­í•œ ì˜µì…˜ì˜ ì¸ë±ìŠ¤ êµ¬í•˜ê¸°
+	  	$this.parent().parent().find("li").eq(prevIndex).find("span").text("â–¼");
 	  	
 	}
 	
 	function fnAdjustMenu(sid,$this)
 	{
 		
-		// ÀÌÀü ¼±ÅÃ ¿É¼ÇÀÌ Áö±İ ¼±ÅÃ¿É¼Ç°ú ´Ù¸£¸é
+		// ì´ì „ ì„ íƒ ì˜µì…˜ì´ ì§€ê¸ˆ ì„ íƒì˜µì…˜ê³¼ ë‹¤ë¥´ë©´
 	    if( old_sid != sid )
 	    {  
-	    	// Áö±İ ¼±ÅÃÇÑ ¿É¼ÇÀÌ Ã³À½ ¼±ÅÃÀÌ ¾Æ´Ï¸é
+	    	// ì§€ê¸ˆ ì„ íƒí•œ ì˜µì…˜ì´ ì²˜ìŒ ì„ íƒì´ ì•„ë‹ˆë©´
 	      	if( old_sid != "" )
 	      	{  
-	    	  	$this.parent().parent().find('#'+old_sid).stop().slideUp(); //ÀÌÀü ¿É¼ÇÀ» ¼û±â°í 
-	         	swapimg(old_sid, $this);   // swapimg ÇÔ¼ö¸¦ È£Ãâ. 
+	    	  	$this.parent().parent().find('#'+old_sid).stop().slideUp(); //ì´ì „ ì˜µì…˜ì„ ìˆ¨ê¸°ê³  
+	         	swapimg(old_sid, $this);   // swapimg í•¨ìˆ˜ë¥¼ í˜¸ì¶œ. 
 	      	}
 	    	
-	      	$this.parent().parent().find('#'+sid).stop().slideDown(); // ÇöÀç Å¬¸¯ÇÑ ¿É¼ÇÀ» º¸¿©ÁÜ 
-	      	old_sid = sid; // ¿¹Àü ¿É¼Ç º¯¼ö¿¡ ÇöÀç ¿É¼Ç ¹øÈ£¸¦ ÀúÀå  
-	      	$this.find("span").text("¡ã");
+	      	$this.parent().parent().find('#'+sid).stop().slideDown(); // í˜„ì¬ í´ë¦­í•œ ì˜µì…˜ì„ ë³´ì—¬ì¤Œ 
+	      	old_sid = sid; // ì˜ˆì „ ì˜µì…˜ ë³€ìˆ˜ì— í˜„ì¬ ì˜µì…˜ ë²ˆí˜¸ë¥¼ ì €ì¥  
+	      	$this.find("span").text("â–²");
 	   	}
-	 	// ÀÌÀü Å¬¸¯ÀÌ Áö±İ Å¬¸¯ÇÑ ¿É¼Ç°ú °°À¸¸é
+	 	// ì´ì „ í´ë¦­ì´ ì§€ê¸ˆ í´ë¦­í•œ ì˜µì…˜ê³¼ ê°™ìœ¼ë©´
 	    else
 	    { 
-		   	$this.parent().parent().find('#'+sid).stop().slideUp(); // ÇöÀç ¿É¼ÇÀ» ¼û±â°í 
+		   	$this.parent().parent().find('#'+sid).stop().slideUp(); // í˜„ì¬ ì˜µì…˜ì„ ìˆ¨ê¸°ê³  
 	      	old_sid = ""; 
-	      	$this.find("span").text("¡å"); 
+	      	$this.find("span").text("â–¼"); 
 	   	}  
 	}
 	
 	function fnCartAppend_plat(id, name, size, doughNm , price, type, count, setItems)
 	{
-		// 20140426 ¼¼Æ®Ã³·³ ºÙÀÌ±â¸¸ÇÔ 
-		// class, name, id ¼öÁ¤¾ÈÇÔ
+		// 20140426 ì„¸íŠ¸ì²˜ëŸ¼ ë¶™ì´ê¸°ë§Œí•¨ 
+		// class, name, id ìˆ˜ì •ì•ˆí•¨
 		
 		var $list    = $("#ord_list");
 		var add_list = '';
@@ -2014,12 +2105,12 @@
 		add_list += '<p class="opt"><span class="price">('+ size +') ' + won(price) + '</span>';
 		add_list += '<span class="count">'; 
 		add_list += '<span class= "minusBtn"><a href="javascript:fnSetCount(\'' +id +'\',  \''+type+'\', \''+price+'\', \'minus\');">';
-		add_list += '<img src="'+root+'/assets/img/order/btn_minus.png" alt="»©±â" ></a></span>';
+		add_list += '<img src="'+root+'/assets/img/order/btn_minus.png" alt="ë¹¼ê¸°" ></a></span>';
 		add_list += '<input type="text" id="count" name="count" class="item_count" value="'+ count +'" />';
 		add_list += '<span class= "plusBtn"><a href="javascript:fnSetCount(\'' +id +'\',  \''+type+'\', \''+price+'\', \'plus\');">';
-		add_list += '<img src="'+root+'/assets/img/order/btn_plus.png" alt="´õÇÏ±â" /></a></span>'; 
+		add_list += '<img src="'+root+'/assets/img/order/btn_plus.png" alt="ë”í•˜ê¸°" /></a></span>'; 
 		add_list += '<a href="javascript:fnRemoveBasket(\'' +id +'\', \''+type+'\', \''+ price+'\');" class="btn_menu_del">';
-		add_list += '<img src="'+root+'/assets/img/order/btn_item_del.png" alt="»èÁ¦" /></a>';
+		add_list += '<img src="'+root+'/assets/img/order/btn_item_del.png" alt="ì‚­ì œ" /></a>';
 		add_list += '</span></p>';
 		add_list += '</li>';
 	
@@ -2031,7 +2122,7 @@
 	}
 	
 	
-	// 20140616 ÇÁ·Î¸ğ¼ÇÄíÆù¸®½ºÆ® Á¶È¸ 	
+	// 20140616 í”„ë¡œëª¨ì…˜ì¿ í°ë¦¬ìŠ¤íŠ¸ ì¡°íšŒ 	
     function fnGetPromotionCouponList()
     {
     	$.ajax(
@@ -2042,32 +2133,32 @@
     		dataType   : "json",
 			beforeSend : function() 
 			{              
-				//Åë½ÅÀ» ½ÃÀÛÇÒ¶§ Ã³¸®             
+				//í†µì‹ ì„ ì‹œì‘í• ë•Œ ì²˜ë¦¬             
 				$('#viewLoading').show().fadeIn(500);          
 			}
     		,complete : function() 
     		{             
-				//Åë½ÅÀÌ ¿Ï·áµÈ ÈÄ Ã³¸®              
+				//í†µì‹ ì´ ì™„ë£Œëœ í›„ ì²˜ë¦¬              
 				$('#viewLoading').fadeOut();         
 			}
     		,success : function(data)
     		{    			
     			var promotionValue = "";
-     			var str = "<option value=''>ÇÁ·Î¸ğ¼Ç ÄíÆùÀ» ¼±ÅÃÇØÁÖ¼¼¿ä.</option>";
+     			var str = "<option value=''>í”„ë¡œëª¨ì…˜ ì¿ í°ì„ ì„ íƒí•´ì£¼ì„¸ìš”.</option>";
      			for( var i = 0; i < data.promotionCoupon.length; i++ )
      			{
      				var d= data.promotionCoupon[i];
      				if(d.promotioncouponCode != "" && d.promotionCouponCode != null)
      				{
      					
-     					// ÇÁ·Î¸ğ¼Ç ÄíÆù
-     					// ÄíÆùÄÚµå, 
-     					// ÇÒÀÎÀ¯ÇüÄÚµå(1.%ÇÒÀÎ 2.±İ¾×ÇÒÀÎ 3.¹«·áÁ¦°ø 4.±İ¾×ÇÒÀÎ¼ö±âµî·Ï 5.%ÇÒÀÎ¼ö±âµî·Ï(4/5 POS¿¡¼­ ÇÒÀÎÀ²ÀÓÀÇÆÇ´Ü) )
-     					// ÇÒÀÎÀ²
-     					// ÇÒÀÎ±İ¾×
-     					// ÇÒÀÎÀû¿ë¸Ş´º Y,N
-     					// ÇÒÀÎÀû¿ë»çÀÌÁî Y,N
-     					// ÇÒÀÎ±İ¾×Â÷°¨´ë»óÄÚµå
+     					// í”„ë¡œëª¨ì…˜ ì¿ í°
+     					// ì¿ í°ì½”ë“œ, 
+     					// í• ì¸ìœ í˜•ì½”ë“œ(1.%í• ì¸ 2.ê¸ˆì•¡í• ì¸ 3.ë¬´ë£Œì œê³µ 4.ê¸ˆì•¡í• ì¸ìˆ˜ê¸°ë“±ë¡ 5.%í• ì¸ìˆ˜ê¸°ë“±ë¡(4/5 POSì—ì„œ í• ì¸ìœ¨ì„ì˜íŒë‹¨) )
+     					// í• ì¸ìœ¨
+     					// í• ì¸ê¸ˆì•¡
+     					// í• ì¸ì ìš©ë©”ë‰´ Y,N
+     					// í• ì¸ì ìš©ì‚¬ì´ì¦ˆ Y,N
+     					// í• ì¸ê¸ˆì•¡ì°¨ê°ëŒ€ìƒì½”ë“œ
      					promotionValue =    d.promotionCouponCode            + "," + d.promotionCouponDiscountFlag    + ","
      					                  + d.promotionCouponDiscountPercent + "," + d.promotionCouponDiscountAmt     + ","
      					                  + d.promotionCouponApplicationMenu + "," + d.promotionCouponApplicationSize + ","
@@ -2081,12 +2172,12 @@
     		}
     	});
     	
-    	//20140618 È­¸é ÃÊ±âÈ­ Ãß°¡
+    	//20140618 í™”ë©´ ì´ˆê¸°í™” ì¶”ê°€
     	$(".prom_spcInstruction").hide();
-		$(".main_menu .price").text(won("0"));		//¸Ş´º°¡°İ
-		$(".main_menu #main_menu_img").html("<img src='"+root+"/assets/img/order/menu/00/def_img.png' alt='ÄíÆùÀû¿ë¸Ş´º' onerror=\"this.src='"+root+"/assets/img/order/menu/noImage_ord.png'\" />");		// $this.parent().parent().prev() : ¸Ş´º ÀÌ¹ÌÁö
+		$(".main_menu .price").text(won("0"));		//ë©”ë‰´ê°€ê²©
+		$(".main_menu #main_menu_img").html("<img src='"+root+"/assets/img/order/menu/00/def_img.png' alt='ì¿ í°ì ìš©ë©”ë‰´' onerror=\"this.src='"+root+"/assets/img/order/menu/noImage_ord.png'\" />");		// $this.parent().parent().prev() : ë©”ë‰´ ì´ë¯¸ì§€
      	$("#main_menu option").remove();
- 		$("#main_menu").html("<option value=''>¸Ş´º¸¦ ¼±ÅÃÇØÁÖ¼¼¿ä.</option>");
+ 		$("#main_menu").html("<option value=''>ë©”ë‰´ë¥¼ ì„ íƒí•´ì£¼ì„¸ìš”.</option>");
 
 		$("#option_box_prom").hide();
  		$(".sub_menu").hide();
@@ -2095,14 +2186,14 @@
 		$(".sub_description").show();
     }
 	
-	// 20140616 ÇÁ·Î¸ğ¼ÇÄíÆù ¿ŞÂÊ SELECTBOX »ı¼º - ¸ŞÀÎ¸Ş´º
+	// 20140616 í”„ë¡œëª¨ì…˜ì¿ í° ì™¼ìª½ SELECTBOX ìƒì„± - ë©”ì¸ë©”ë‰´
     function fnPromotionMainMenu(val)
     {
-		//20140619 ¸Ş´º ÀÌ¹ÌÁö, °¡°İ ÃÊ±âÈ­		
+		//20140619 ë©”ë‰´ ì´ë¯¸ì§€, ê°€ê²© ì´ˆê¸°í™”		
 		$(".prom_spcInstruction").hide();
 		$("#option_box_prom").hide();
-		$(".main_menu .price").text(won("0"));		//¸Ş´º°¡°İ
-		$(".main_menu #main_menu_img").html("<img src='"+root+"/assets/img/order/menu/00/def_img.png' alt='ÄíÆùÀû¿ë¸Ş´º' onerror=\"this.src='"+root+"/assets/img/order/menu/00/def_img.png'\" />");
+		$(".main_menu .price").text(won("0"));		//ë©”ë‰´ê°€ê²©
+		$(".main_menu #main_menu_img").html("<img src='"+root+"/assets/img/order/menu/00/def_img.png' alt='ì¿ í°ì ìš©ë©”ë‰´' onerror=\"this.src='"+root+"/assets/img/order/menu/00/def_img.png'\" />");
 		
 		if(val == "")
 		{
@@ -2111,20 +2202,20 @@
 			$("#prom_section .and").hide();
 			$(".sub_description").show();
 			
-			// 20140619 ¸ŞÀÎ¸Ş´º ÃÊ±âÈ­
+			// 20140619 ë©”ì¸ë©”ë‰´ ì´ˆê¸°í™”
 			$("#main_menu option").remove();
-	 		$("#main_menu").html("<option value=''>¸Ş´º¸¦ ¼±ÅÃÇØÁÖ¼¼¿ä.</option>");
+	 		$("#main_menu").html("<option value=''>ë©”ë‰´ë¥¼ ì„ íƒí•´ì£¼ì„¸ìš”.</option>");
 		}
 		else
        	{
        	
-       		var promotionCouponCode            = val.split(",")[0]; // ÇÁ·Î¸ğ¼Ç ÄíÆù
-       		var promotionCouponDiscountFlag    = val.split(",")[1]; // ÇÒÀÎÀ¯ÇüÄÚµå(1.%ÇÒÀÎ 2.±İ¾×ÇÒÀÎ 3.¹«·áÁ¦°ø 4.±İ¾×ÇÒÀÎ¼ö±âµî·Ï 5.%ÇÒÀÎ¼ö±âµî·Ï(4/5 POS¿¡¼­ ÇÒÀÎÀ²ÀÓÀÇÆÇ´Ü) )
-       		var promotionCouponDiscountPercent = val.split(",")[2]; // ÇÒÀÎÀ²
-       		var promotionCouponDiscountAmt     = val.split(",")[3]; // ÇÒÀÎ±İ¾×
-       		var promotionCouponApplicationMenu = val.split(",")[4]; // ÇÒÀÎÀû¿ë¸Ş´º Y,N
-       		var promotionCouponApplicationSize = val.split(",")[5]; // ÇÒÀÎÀû¿ë»çÀÌÁî Y,N
-       		var promotionCouponDiscountTarget  = val.split(",")[6]; // ÇÒÀÎ±İ¾×Â÷°¨´ë»óÄÚµå
+       		var promotionCouponCode            = val.split(",")[0]; // í”„ë¡œëª¨ì…˜ ì¿ í°
+       		var promotionCouponDiscountFlag    = val.split(",")[1]; // í• ì¸ìœ í˜•ì½”ë“œ(1.%í• ì¸ 2.ê¸ˆì•¡í• ì¸ 3.ë¬´ë£Œì œê³µ 4.ê¸ˆì•¡í• ì¸ìˆ˜ê¸°ë“±ë¡ 5.%í• ì¸ìˆ˜ê¸°ë“±ë¡(4/5 POSì—ì„œ í• ì¸ìœ¨ì„ì˜íŒë‹¨) )
+       		var promotionCouponDiscountPercent = val.split(",")[2]; // í• ì¸ìœ¨
+       		var promotionCouponDiscountAmt     = val.split(",")[3]; // í• ì¸ê¸ˆì•¡
+       		var promotionCouponApplicationMenu = val.split(",")[4]; // í• ì¸ì ìš©ë©”ë‰´ Y,N
+       		var promotionCouponApplicationSize = val.split(",")[5]; // í• ì¸ì ìš©ì‚¬ì´ì¦ˆ Y,N
+       		var promotionCouponDiscountTarget  = val.split(",")[6]; // í• ì¸ê¸ˆì•¡ì°¨ê°ëŒ€ìƒì½”ë“œ
        		
        	    $.ajax(
        	    { 
@@ -2134,35 +2225,35 @@
    		   		dataType   : "json",
    				beforeSend : function() 
    				{              
-   					//Åë½ÅÀ» ½ÃÀÛÇÒ¶§ Ã³¸®             
+   					//í†µì‹ ì„ ì‹œì‘í• ë•Œ ì²˜ë¦¬             
    					$('#viewLoading').show().fadeIn(500);          
    				}
    		   		,complete : function() 
    		   		{             
-   					//Åë½ÅÀÌ ¿Ï·áµÈ ÈÄ Ã³¸®              
+   					//í†µì‹ ì´ ì™„ë£Œëœ í›„ ì²˜ë¦¬              
    					$('#viewLoading').fadeOut(); 
    				}
    		   		,success : function(data)
    		   		{
-   		   			var str = "<option value=''>¸Ş´º¸¦ ¼±ÅÃÇØÁÖ¼¼¿ä.</option>";
+   		   			var str = "<option value=''>ë©”ë‰´ë¥¼ ì„ íƒí•´ì£¼ì„¸ìš”.</option>";
    		   			for( var i = 0; i < data.promMainMenu.length; i++ )
    		   			{
    		   				var d = data.promMainMenu[i];
-   		   				var code        = d.promotionCouponMenuCode;      // ¸Ş´ºÄÚµå
-   		   				var img         = d.promotionCouponMenuImg;       // ¸Ş´ºÀÌ¹ÌÁöÆÄÀÏ 
-   		   				var name        = d.promotionCouponMenuName;      // ¸Ş´º¸í(¸Ş´ºÁßºĞ·ù¸í)
+   		   				var code        = d.promotionCouponMenuCode;      // ë©”ë‰´ì½”ë“œ
+   		   				var img         = d.promotionCouponMenuImg;       // ë©”ë‰´ì´ë¯¸ì§€íŒŒì¼ 
+   		   				var name        = d.promotionCouponMenuName;      // ë©”ë‰´ëª…(ë©”ë‰´ì¤‘ë¶„ë¥˜ëª…)
    		   				
-   		   				var price       = d.promotionCouponMenuSaleAmt;   // ÆÇ¸Å±İ¾×
-   		   				var menuDough   = d.promotionCouponMenuDough;     // ¸Ş´ºµµ¿ìÁ¾·ù 
-   		   				var menuSizeKor = d.promotionCouponMenuSizeKor;   // ¸Ş´º»çÀÌÁîÇÑ±Û
-   		   				var menuSizeEng = d.promotionCouponMenuSizeEng;   // ¸Ş´º»çÀÌÁî¿µ¹®
-   		   				var menuSize    = d.promotionCouponMenuSize;      // ¸Ş´º»çÀÌÁî(L,P..)
-   		   				var menuLagCode = d.promotionCouponMenuLagCode;   // ¸Ş´º´ëºĞ·ùÄÚµå
-   		   				var menuMidCode = d.promotionCouponMenuMidCode;   // ¸Ş´ºÁßºĞ·ùÄÚµå
-   		   				var menuSmlCode = d.promotionCouponMenuSmlCode;   // ¸Ş´º¼ÒºĞ·ùÄÚµå
-   		   				var menuSubCode = d.promotionCouponMenuSubCode;   // ¸Ş´º¼¼ºĞ·ùÄÚµå
-   		   				var menuGroupCode = d.promotionCouponGroupCd;     // ¿Â¶óÀÎ¸Ş´º±×·ì
-   		   				var menuDivCode   = d.promotionCouponMenuDivCode; // ¸Ş´º±¸ºĞÄÚµå
+   		   				var price       = d.promotionCouponMenuSaleAmt;   // íŒë§¤ê¸ˆì•¡
+   		   				var menuDough   = d.promotionCouponMenuDough;     // ë©”ë‰´ë„ìš°ì¢…ë¥˜ 
+   		   				var menuSizeKor = d.promotionCouponMenuSizeKor;   // ë©”ë‰´ì‚¬ì´ì¦ˆí•œê¸€
+   		   				var menuSizeEng = d.promotionCouponMenuSizeEng;   // ë©”ë‰´ì‚¬ì´ì¦ˆì˜ë¬¸
+   		   				var menuSize    = d.promotionCouponMenuSize;      // ë©”ë‰´ì‚¬ì´ì¦ˆ(L,P..)
+   		   				var menuLagCode = d.promotionCouponMenuLagCode;   // ë©”ë‰´ëŒ€ë¶„ë¥˜ì½”ë“œ
+   		   				var menuMidCode = d.promotionCouponMenuMidCode;   // ë©”ë‰´ì¤‘ë¶„ë¥˜ì½”ë“œ
+   		   				var menuSmlCode = d.promotionCouponMenuSmlCode;   // ë©”ë‰´ì†Œë¶„ë¥˜ì½”ë“œ
+   		   				var menuSubCode = d.promotionCouponMenuSubCode;   // ë©”ë‰´ì„¸ë¶„ë¥˜ì½”ë“œ
+   		   				var menuGroupCode = d.promotionCouponGroupCd;     // ì˜¨ë¼ì¸ë©”ë‰´ê·¸ë£¹
+   		   				var menuDivCode   = d.promotionCouponMenuDivCode; // ë©”ë‰´êµ¬ë¶„ì½”ë“œ
    		   				
    		   				var mainMenuValue =  code +","+ name +","+menuMidCode +","+ price +","+ promotionCouponDiscountAmt + "," + menuSubCode+ "," + menuDough+ "," + menuSizeKor+ "," +menuLagCode+ "," 
    		   				                     + menuMidCode+ "," +menuSmlCode+ "," + menuGroupCode+ "," +menuDivCode+","+menuSizeEng+","+menuSize;  
@@ -2177,7 +2268,7 @@
        	}       
     }
 	
- 	// 20140617 ÇÁ·Î¸ğ¼ÇÄíÆù ¿À¸¥ÂÊ - ÇÒÀÎ¸Ş´º
+ 	// 20140617 í”„ë¡œëª¨ì…˜ì¿ í° ì˜¤ë¥¸ìª½ - í• ì¸ë©”ë‰´
     function fnPromotionSubMenu(val)
     { 
 		$("#first_sub").show();
@@ -2185,23 +2276,23 @@
 		
 		if(val == "")
 		{
-	    	//$(".sub_menu .price").text(won("0"));		//¸Ş´º°¡°İ
-	    	//$(".sub_menu .name").text("");		//¸Ş´º°¡°İ
-			//$(".sub_menu #sub_menu_img").html("<img src='"+root+"/assets/img/order/menu/00/def_img_sub.png' alt='ÄíÆùÇÒÀÎ¸Ş´º'  />");		// $this.parent().parent().prev() : ¸Ş´º ÀÌ¹ÌÁö
+	    	//$(".sub_menu .price").text(won("0"));		//ë©”ë‰´ê°€ê²©
+	    	//$(".sub_menu .name").text("");		//ë©”ë‰´ê°€ê²©
+			//$(".sub_menu #sub_menu_img").html("<img src='"+root+"/assets/img/order/menu/00/def_img_sub.png' alt='ì¿ í°í• ì¸ë©”ë‰´'  />");		// $this.parent().parent().prev() : ë©”ë‰´ ì´ë¯¸ì§€
 			$(".sub_menu").hide();
 			$("#prom_section .and").hide();
 		}
 		else
        	{
-       		var promotionCouponCode            = val.split(",")[0]; // ÇÁ·Î¸ğ¼Ç ÄíÆù
-       		var promotionCouponDiscountFlag    = val.split(",")[1]; // ÇÒÀÎÀ¯ÇüÄÚµå(1.±İ¾×ÇÒÀÎ 2.%ÇÒÀÎ 3.¹«·áÁ¦°ø 4.±İ¾×ÇÒÀÎ¼ö±âµî·Ï 5.%ÇÒÀÎ¼ö±âµî·Ï(4/5 POS¿¡¼­ ÇÒÀÎÀ²ÀÓÀÇÆÇ´Ü) )
-       		var promotionCouponDiscountPercent = val.split(",")[2]; // ÇÒÀÎÀ²
-       		var promotionCouponDiscountAmt     = val.split(",")[3]; // ÇÒÀÎ±İ¾×
-       		var promotionCouponApplicationMenu = val.split(",")[4]; // ÇÒÀÎÀû¿ë¸Ş´º Y,N
-       		var promotionCouponApplicationSize = val.split(",")[5]; // ÇÒÀÎÀû¿ë»çÀÌÁî Y,N
-       		var promotionCouponDiscountTarget  = val.split(",")[6]; // ÇÒÀÎ±İ¾×Â÷°¨´ë»óÄÚµå
+       		var promotionCouponCode            = val.split(",")[0]; // í”„ë¡œëª¨ì…˜ ì¿ í°
+       		var promotionCouponDiscountFlag    = val.split(",")[1]; // í• ì¸ìœ í˜•ì½”ë“œ(1.ê¸ˆì•¡í• ì¸ 2.%í• ì¸ 3.ë¬´ë£Œì œê³µ 4.ê¸ˆì•¡í• ì¸ìˆ˜ê¸°ë“±ë¡ 5.%í• ì¸ìˆ˜ê¸°ë“±ë¡(4/5 POSì—ì„œ í• ì¸ìœ¨ì„ì˜íŒë‹¨) )
+       		var promotionCouponDiscountPercent = val.split(",")[2]; // í• ì¸ìœ¨
+       		var promotionCouponDiscountAmt     = val.split(",")[3]; // í• ì¸ê¸ˆì•¡
+       		var promotionCouponApplicationMenu = val.split(",")[4]; // í• ì¸ì ìš©ë©”ë‰´ Y,N
+       		var promotionCouponApplicationSize = val.split(",")[5]; // í• ì¸ì ìš©ì‚¬ì´ì¦ˆ Y,N
+       		var promotionCouponDiscountTarget  = val.split(",")[6]; // í• ì¸ê¸ˆì•¡ì°¨ê°ëŒ€ìƒì½”ë“œ
        		var displayDiscount = 0;var displayPrice = 0;
-       		var disAmt = 0;             //ÇÒÀÎ±İ¾×
+       		var disAmt = 0;             //í• ì¸ê¸ˆì•¡
   				
        		//alert(promotionCouponDiscountFlag);
        		
@@ -2213,12 +2304,12 @@
    		   		dataType   : "json",
    				beforeSend : function() 
    				{              
-   					//Åë½ÅÀ» ½ÃÀÛÇÒ¶§ Ã³¸®             
+   					//í†µì‹ ì„ ì‹œì‘í• ë•Œ ì²˜ë¦¬             
    					$('#viewLoading').show().fadeIn(500);          
    				}
    		   		,complete : function() 
    		   		{             
-   					//Åë½ÅÀÌ ¿Ï·áµÈ ÈÄ Ã³¸®              
+   					//í†µì‹ ì´ ì™„ë£Œëœ í›„ ì²˜ë¦¬              
    					$('#viewLoading').fadeOut(); 
    				}
    		   		,success : function(data)
@@ -2240,24 +2331,24 @@
    		   			{
    		   				var d = data.promDisMenu[i];
    		   				
-   		   				var code        = d.promDisMenuCode;    // ¸Ş´ºÄÚµå
-   		   				var img         = d.promDisMenuImg;     // ÀÌ¹ÌÁöÆÄÀÏ
-   		   				var name        = d.promDisMenuName;    // ¸Ş´º¸í(ÁßºĞ·ù¸í)
-   		   				var price       = d.promDisMenuSaleAmt; // ÆÇ¸Å±İ¾×
-   		   				var menuLagCode = d.promDisMenuLagCode; // ¸Ş´º´ëºĞ·ùÄÚµå
-   		   				var menuMidCode = d.promDisMenuMidCode; // ¸Ş´ºÁßºĞ·ùÄÚµå
-   		   				var menuSmlCode = d.promDisMenuSmlCode; // ¸Ş´º¼ÒºĞ·ùÄÚµå
-   		   				var menuSubCode = d.promDisMenuSubCode; // ¸Ş´º¼¼ºĞ·ùÄÚµå
-   		   				var menuDough   = d.promDisMenuDough;   // ¸Ş´ºµµ¿ìÁ¾·ù
-   		   				var menuSizeKor = d.promDisMenuSizeKor; // ¸Ş´º»çÀÌÁîÇÑ±Û
-   		   				var menuSize    = d.promDisMenuSize;    // ¸Ş´º»çÀÌÁî(L,P..)
-   		   				var menuSizeEng = d.promDisMenuSizeEng; // ¸Ş´º»çÀÌÁî¿µ¹®
-   		   				var menuGroupCd = d.promDisGroupCd;     // ¿Â¶óÀÎ¸Ş´º±×·ì
-   		   				var menuDivcode = d.promDisMenuDivCode; // ¸Ş´º±¸ºĞÄÚµå
+   		   				var code        = d.promDisMenuCode;    // ë©”ë‰´ì½”ë“œ
+   		   				var img         = d.promDisMenuImg;     // ì´ë¯¸ì§€íŒŒì¼
+   		   				var name        = d.promDisMenuName;    // ë©”ë‰´ëª…(ì¤‘ë¶„ë¥˜ëª…)
+   		   				var price       = d.promDisMenuSaleAmt; // íŒë§¤ê¸ˆì•¡
+   		   				var menuLagCode = d.promDisMenuLagCode; // ë©”ë‰´ëŒ€ë¶„ë¥˜ì½”ë“œ
+   		   				var menuMidCode = d.promDisMenuMidCode; // ë©”ë‰´ì¤‘ë¶„ë¥˜ì½”ë“œ
+   		   				var menuSmlCode = d.promDisMenuSmlCode; // ë©”ë‰´ì†Œë¶„ë¥˜ì½”ë“œ
+   		   				var menuSubCode = d.promDisMenuSubCode; // ë©”ë‰´ì„¸ë¶„ë¥˜ì½”ë“œ
+   		   				var menuDough   = d.promDisMenuDough;   // ë©”ë‰´ë„ìš°ì¢…ë¥˜
+   		   				var menuSizeKor = d.promDisMenuSizeKor; // ë©”ë‰´ì‚¬ì´ì¦ˆí•œê¸€
+   		   				var menuSize    = d.promDisMenuSize;    // ë©”ë‰´ì‚¬ì´ì¦ˆ(L,P..)
+   		   				var menuSizeEng = d.promDisMenuSizeEng; // ë©”ë‰´ì‚¬ì´ì¦ˆì˜ë¬¸
+   		   				var menuGroupCd = d.promDisGroupCd;     // ì˜¨ë¼ì¸ë©”ë‰´ê·¸ë£¹
+   		   				var menuDivcode = d.promDisMenuDivCode; // ë©”ë‰´êµ¬ë¶„ì½”ë“œ
    		   				
    		  				//20140618 
-   		  				//»çÀÌµå 1°³ÀÎ °æ¿ì ÇÒÀÎ¶Ç´Â ¹«·á °¡´É, 2°³ÀÎ °æ¿ì ¹«·á¸¸ Ç¥½ÃµÊ..
-   		  				//±İ¾× ÇÒÀÎÀÌ¸é »çÀÌµå ¸Ş´º °¡°İ¿¡¼­ ÇÒÀÎ ±İ¾× »©°í, ¹«·áÁ¦°øÀÌ¸é 0¿øÀ¸·Î Ç¥½Ã
+   		  				//ì‚¬ì´ë“œ 1ê°œì¸ ê²½ìš° í• ì¸ë˜ëŠ” ë¬´ë£Œ ê°€ëŠ¥, 2ê°œì¸ ê²½ìš° ë¬´ë£Œë§Œ í‘œì‹œë¨..
+   		  				//ê¸ˆì•¡ í• ì¸ì´ë©´ ì‚¬ì´ë“œ ë©”ë‰´ ê°€ê²©ì—ì„œ í• ì¸ ê¸ˆì•¡ ë¹¼ê³ , ë¬´ë£Œì œê³µì´ë©´ 0ì›ìœ¼ë¡œ í‘œì‹œ
    		  				if(promotionCouponDiscountFlag == "1")
    		  				{
    		  					displayPrice = parseInt(price,10)- parseInt(promotionCouponDiscountAmt,10);
@@ -2266,45 +2357,45 @@
    		  				}
    		  				else if(promotionCouponDiscountFlag == "2")
    		  				{
-   		  					//%ÇÒÀÎ 
-   		  					//50% ÇÒÀÎÀÌ¸é *0.5 , ¸Ş´º°¡°İ - ÇÒÀÎ °¡°İ ¾²±â
-   		  					displayDiscount =  parseInt(price,10) * (parseInt(promotionCouponDiscountPercent,10)/100) ;		//»©¾ß ÇÒ  ÇÒÀÎ ±İ¾×
-   		  					displayPrice = parseInt(price,10) - ( parseInt(price,10) * (parseInt(promotionCouponDiscountPercent,10)/100) );		//È­¸é¿¡ Ç¥½ÃÇÒ ÇÒÀÎ ÈÄ ±İ¾×
+   		  					//%í• ì¸ 
+   		  					//50% í• ì¸ì´ë©´ *0.5 , ë©”ë‰´ê°€ê²© - í• ì¸ ê°€ê²© ì“°ê¸°
+   		  					displayDiscount =  parseInt(price,10) * (parseInt(promotionCouponDiscountPercent,10)/100) ;		//ë¹¼ì•¼ í•   í• ì¸ ê¸ˆì•¡
+   		  					displayPrice = parseInt(price,10) - ( parseInt(price,10) * (parseInt(promotionCouponDiscountPercent,10)/100) );		//í™”ë©´ì— í‘œì‹œí•  í• ì¸ í›„ ê¸ˆì•¡
    		  					disAmt =  displayDiscount;   		  					
    		  				}
    		  				else if(promotionCouponDiscountFlag == "3")
-   		  				{//¹«·áÁ¦°ø
+   		  				{//ë¬´ë£Œì œê³µ
    		  					disAmt = parseInt(price,10);	
    		  				}
    		   				
    		   				
    		   				
 	   		   			var imgLink = "<img src='"+root+"/assets/img/order/menu/00/sub/prom_" + menuMidCode +"_ord.png' alt='"+name+"' title='"+name+"' onerror=\"this.src='"+root+"/assets/img/order/menu/00/def_img_sub.png'\" />";
-						var priceStr ='<span class="org_block">&nbsp;'+ won(price) +'&nbsp;&nbsp;&nbsp;</span>    '+ setComma(displayPrice.toString()) +'<span class="t_block">¿ø</span></span>';
+						var priceStr ='<span class="org_block">&nbsp;'+ won(price) +'&nbsp;&nbsp;&nbsp;</span>    '+ setComma(displayPrice.toString()) +'<span class="t_block">ì›</span></span>';
    		   				
-   		   				//console.log("ÇÒÀÎ¸Ş´º" + i + ": " + code+"/"+img+"/"+name);
-   		   				//À½·á´Â »çÀÌÁîµµ °°ÀÌ Ç¥½Ã
+   		   				//console.log("í• ì¸ë©”ë‰´" + i + ": " + code+"/"+img+"/"+name);
+   		   				//ìŒë£ŒëŠ” ì‚¬ì´ì¦ˆë„ ê°™ì´ í‘œì‹œ
    		   				if(menuLagCode == "40")
    		   				{
    		   					name = name +" " +  menuSizeKor;
    		   				}
    		   				
-   		   				$(".sub_menu").eq(i).find(".name" ).text(name);		// ¸Ş´ºÀÌ¸§
-   		   				$(".sub_menu").eq(i).find(".img"  ).html(imgLink);    // ¸Ş´º ÀÌ¹ÌÁö
-   		   				$(".sub_menu").eq(i).find(".price").html(priceStr);	// ¸Ş´º°¡°İ
+   		   				$(".sub_menu").eq(i).find(".name" ).text(name);		// ë©”ë‰´ì´ë¦„
+   		   				$(".sub_menu").eq(i).find(".img"  ).html(imgLink);    // ë©”ë‰´ ì´ë¯¸ì§€
+   		   				$(".sub_menu").eq(i).find(".price").html(priceStr);	// ë©”ë‰´ê°€ê²©
    		   				
-   		   				$(".sub_menu").eq(i).find(".hideCode"    ).val(code);	      // ¸Ş´ºÄÚµå
-   			   			$(".sub_menu").eq(i).find(".hideName"    ).val(name);	      // ¸Ş´º¸í
-						$(".sub_menu").eq(i).find(".hidePrice"   ).val(price);	      // ¸Ş´º°¡°İ
-						$(".sub_menu").eq(i).find(".hideDiscountPrice"   ).val(disAmt);  // ÇÒÀÎ°¡°İ
+   		   				$(".sub_menu").eq(i).find(".hideCode"    ).val(code);	      // ë©”ë‰´ì½”ë“œ
+   			   			$(".sub_menu").eq(i).find(".hideName"    ).val(name);	      // ë©”ë‰´ëª…
+						$(".sub_menu").eq(i).find(".hidePrice"   ).val(price);	      // ë©”ë‰´ê°€ê²©
+						$(".sub_menu").eq(i).find(".hideDiscountPrice"   ).val(disAmt);  // í• ì¸ê°€ê²©
 						
-						$(".sub_menu").eq(i).find(".hideLageCode").val(menuLagCode);  // ¸Ş´º´ëºĞ·ùÄÚµå
-						$(".sub_menu").eq(i).find(".hideMidCode" ).val(menuMidCode);  // ¸Ş´ºÁßºĞ·ùÄÚµå
-						$(".sub_menu").eq(i).find(".hideSmlCode" ).val(menuSmlCode);  // ¸Ş´º¼ÒºĞ·ùÄÚµå
-						$(".sub_menu").eq(i).find(".hideSubCode" ).val(menuSubCode);  // ¸Ş´º¼¼ºĞ·ùÄÚµå
-						$(".sub_menu").eq(i).find(".hideDough"   ).val(menuDough);	  // ¸Ş´ºµµ¿ìÁ¾·ù
-						$(".sub_menu").eq(i).find(".hideSize"    ).val(menuSize);	  // ¸Ş´º»çÀÌÁî
-						$(".sub_menu").eq(i).find(".hideDivCode").val(menuDivcode);  // ¸Ş´º±¸ºĞÄÚµå
+						$(".sub_menu").eq(i).find(".hideLageCode").val(menuLagCode);  // ë©”ë‰´ëŒ€ë¶„ë¥˜ì½”ë“œ
+						$(".sub_menu").eq(i).find(".hideMidCode" ).val(menuMidCode);  // ë©”ë‰´ì¤‘ë¶„ë¥˜ì½”ë“œ
+						$(".sub_menu").eq(i).find(".hideSmlCode" ).val(menuSmlCode);  // ë©”ë‰´ì†Œë¶„ë¥˜ì½”ë“œ
+						$(".sub_menu").eq(i).find(".hideSubCode" ).val(menuSubCode);  // ë©”ë‰´ì„¸ë¶„ë¥˜ì½”ë“œ
+						$(".sub_menu").eq(i).find(".hideDough"   ).val(menuDough);	  // ë©”ë‰´ë„ìš°ì¢…ë¥˜
+						$(".sub_menu").eq(i).find(".hideSize"    ).val(menuSize);	  // ë©”ë‰´ì‚¬ì´ì¦ˆ
+						$(".sub_menu").eq(i).find(".hideDivCode").val(menuDivcode);  // ë©”ë‰´êµ¬ë¶„ì½”ë“œ
 						
    		   			}
    		   		}
@@ -2312,19 +2403,19 @@
        	}        
     }
 
-	// 20140617 ÇÁ·Î¸ğ¼ÇÄíÆù ¸Ş´º SELECTBOX ¼±ÅÃ - ¸ŞÀÎ¸Ş´º
+	// 20140617 í”„ë¡œëª¨ì…˜ì¿ í° ë©”ë‰´ SELECTBOX ì„ íƒ - ë©”ì¸ë©”ë‰´
     function fnPromotionMainMenuSelect($this)
 	{
 		//console.log($this.val());
 		var val               = $this.val();
 
-		//20140619 ¸Ş´º ÀÌ¹ÌÁö, °¡°İ ÃÊ±âÈ­
+		//20140619 ë©”ë‰´ ì´ë¯¸ì§€, ê°€ê²© ì´ˆê¸°í™”
 		if(val == "")
 		{
 			$(".prom_spcInstruction").hide();
 			$("#option_box_prom").hide();
-			$(".main_menu .price").text(won("0"));		//¸Ş´º°¡°İ
-			$(".main_menu #main_menu_img").html("<img src='"+root+"/assets/img/order/menu/00/def_img.png' alt='ÄíÆùÀû¿ë¸Ş´º' onerror=\"this.src='"+root+"/assets/img/order/menu/00/def_img.png'\" />");
+			$(".main_menu .price").text(won("0"));		//ë©”ë‰´ê°€ê²©
+			$(".main_menu #main_menu_img").html("<img src='"+root+"/assets/img/order/menu/00/def_img.png' alt='ì¿ í°ì ìš©ë©”ë‰´' onerror=\"this.src='"+root+"/assets/img/order/menu/00/def_img.png'\" />");
 		}
 		else
 		{
@@ -2333,58 +2424,58 @@
 			var menuMidCode       = val.split(",")[2];
 			var menuPrice         = val.split(",")[3];
 			var menuDiscountPrice = val.split(",")[4];
-			var menuSubCode       = val.split(",")[5];	//¼¼ºĞ·ù ÄÚµå : ÀÌ¹ÌÁö Æú´õ¸í
+			var menuSubCode       = val.split(",")[5];	//ì„¸ë¶„ë¥˜ ì½”ë“œ : ì´ë¯¸ì§€ í´ë”ëª…
 			
 			var imgLink = "<img src='"+root+"/assets/img/order/menu/00/" + menuSubCode +"/prom_" + menuMidCode +"_ord.png' alt='"+menuName+"' title='"+menuName+"' onerror=\"this.src='"+root+"/assets/img/order/menu/noImage_ord.png'\" />";
 
-			$this.parent().next().text(won(menuPrice));		// $this.parent().next() : ¸Ş´º°¡°İ
-			$this.parent().parent().prev().html(imgLink);		// $this.parent().parent().prev() : ¸Ş´º ÀÌ¹ÌÁö
+			$this.parent().next().text(won(menuPrice));		// $this.parent().next() : ë©”ë‰´ê°€ê²©
+			$this.parent().parent().prev().html(imgLink);		// $this.parent().parent().prev() : ë©”ë‰´ ì´ë¯¸ì§€
 			
 			$(".prom_spcInstruction").show();
 		}
 	} 
 	
-	// 20140618 Àå¹Ù±¸´Ï Ãß°¡
+	// 20140618 ì¥ë°”êµ¬ë‹ˆ ì¶”ê°€
 	function fnPromotionAddCart($this)
 	{	 
 		var $prompDiv      = $("#prom_section");
- 		var $mainMenu      = $("#main_menu");   // ÇÁ·Î¸ğ¼Ç Àû¿ë¸Ş´º select
- 		var $subMenu      = $(".sub_menu");	//ÇÁ·Î¸ğ¼Ç ÇÒÀÎ¸Ş´º °øÅë
- 		var $firstSubMenu  = $("#first_sub");   // ÇÁ·Î¸ğ¼Ç ÇÒÀÎ¸Ş´º1
- 		var $secondSubMenu = $("#second_sub");  // ÇÁ·Î¸ğ¼Ç ÇÒÀÎ¸Ş´º2
- 		var $promCoupon    = $("#prom_coupon"); // ÇÁ·Î¸ğ¼Ç ÄíÆù 
+ 		var $mainMenu      = $("#main_menu");   // í”„ë¡œëª¨ì…˜ ì ìš©ë©”ë‰´ select
+ 		var $subMenu      = $(".sub_menu");	//í”„ë¡œëª¨ì…˜ í• ì¸ë©”ë‰´ ê³µí†µ
+ 		var $firstSubMenu  = $("#first_sub");   // í”„ë¡œëª¨ì…˜ í• ì¸ë©”ë‰´1
+ 		var $secondSubMenu = $("#second_sub");  // í”„ë¡œëª¨ì…˜ í• ì¸ë©”ë‰´2
+ 		var $promCoupon    = $("#prom_coupon"); // í”„ë¡œëª¨ì…˜ ì¿ í° 
  		
- 		var promotionCouponCode = $promCoupon.val().split(",")[0]; // ÇÁ·Î¸ğ¼Ç ÄíÆùÄÚµå
-		var cartMenuOptions  = "";        // Àû¿ë¸Ş´º ÇÇÀÚ¿É¼Ç
-		var cartSendDataInfo = null;     // Àå¹Ù±¸´Ï Àü¼Û ³»¿ª
+ 		var promotionCouponCode = $promCoupon.val().split(",")[0]; // í”„ë¡œëª¨ì…˜ ì¿ í°ì½”ë“œ
+		var cartMenuOptions  = "";        // ì ìš©ë©”ë‰´ í”¼ìì˜µì…˜
+		var cartSendDataInfo = null;     // ì¥ë°”êµ¬ë‹ˆ ì „ì†¡ ë‚´ì—­
 		
-		var menuCode        = ""; // ¸Ş´ºÄÚµå
-		var menuName        = ""; // ¸Ş´º¸í
-		var menuMidCode     = ""; // ¸Ş´ºÁßºĞ·ùÄÚµå
-		var menuPrice       = ""; // ¸Ş´ºÆÇ¸Å±İ¾×
-		var menuDiscountAmt = ""; // ¸Ş´ºÇÒÀÎ±İ¾× 
-		var menuSubCode     = ""; // ¸Ş´º¼¼ºĞ·ùÄÚµå
-		var menuDough       = ""; // ¸Ş´ºµµ¿ì
-		var menuSize        = ""; // ¸Ş´º»çÀÌÁîÇÑ±Û
-		var menuLagCode     = ""; // ¸Ş´º´ëºĞ·ùÄÚµå
-		var menuMidCode     = ""; // ¸Ş´ºÁßºĞ·ùÄÚµå
-		var menuSmlCode     = ""; // ¸Ş´º¼ÒºĞ·ùÄÚµå
-		var menuGroupCode   = ""; // ¸Ş´º¿Â¶óÀÎ±×·ì
-		var menuDivCode     = ""; // ¸Ş´º±¸ºĞÄÚµå
-		var menuSizeEng     = ""; // ¸Ş´º»çÀÌÁî¿µ¹®
-		var menuSize        = ""; // ¸Ş´º»çÀÌÁî(L,P..)
+		var menuCode        = ""; // ë©”ë‰´ì½”ë“œ
+		var menuName        = ""; // ë©”ë‰´ëª…
+		var menuMidCode     = ""; // ë©”ë‰´ì¤‘ë¶„ë¥˜ì½”ë“œ
+		var menuPrice       = ""; // ë©”ë‰´íŒë§¤ê¸ˆì•¡
+		var menuDiscountAmt = ""; // ë©”ë‰´í• ì¸ê¸ˆì•¡ 
+		var menuSubCode     = ""; // ë©”ë‰´ì„¸ë¶„ë¥˜ì½”ë“œ
+		var menuDough       = ""; // ë©”ë‰´ë„ìš°
+		var menuSize        = ""; // ë©”ë‰´ì‚¬ì´ì¦ˆí•œê¸€
+		var menuLagCode     = ""; // ë©”ë‰´ëŒ€ë¶„ë¥˜ì½”ë“œ
+		var menuMidCode     = ""; // ë©”ë‰´ì¤‘ë¶„ë¥˜ì½”ë“œ
+		var menuSmlCode     = ""; // ë©”ë‰´ì†Œë¶„ë¥˜ì½”ë“œ
+		var menuGroupCode   = ""; // ë©”ë‰´ì˜¨ë¼ì¸ê·¸ë£¹
+		var menuDivCode     = ""; // ë©”ë‰´êµ¬ë¶„ì½”ë“œ
+		var menuSizeEng     = ""; // ë©”ë‰´ì‚¬ì´ì¦ˆì˜ë¬¸
+		var menuSize        = ""; // ë©”ë‰´ì‚¬ì´ì¦ˆ(L,P..)
 		
-		var promCouponIndex = setCartIndex(); // Àå¹Ù±¸´Ï ¼ø¹ø - ¸ŞÀÎ¸Ş´º,ÇÒÀÎ¸Ş´º ÄíÆù ¼ø¹ø¿ë
+		var promCouponIndex = setCartIndex(); // ì¥ë°”êµ¬ë‹ˆ ìˆœë²ˆ - ë©”ì¸ë©”ë‰´,í• ì¸ë©”ë‰´ ì¿ í° ìˆœë²ˆìš©
 		
-		// ÇÁ·Î¸ğ¼Ç Àû¿ë¸Ş´º ¾øÀ¸¸é Àå¹Ù±¸´Ï´ã±â ¸·À½ 
+		// í”„ë¡œëª¨ì…˜ ì ìš©ë©”ë‰´ ì—†ìœ¼ë©´ ì¥ë°”êµ¬ë‹ˆë‹´ê¸° ë§‰ìŒ 
 		if($mainMenu.val() == null || $mainMenu.val() == "")
 		{
-			alert("ÄíÆù Àû¿ë ¸Ş´º¸¦ ¸ÕÀú ¼±ÅÃÇØ ÁÖ¼¼¿ä!!");
+			alert("ì¿ í° ì ìš© ë©”ë‰´ë¥¼ ë¨¼ì € ì„ íƒí•´ ì£¼ì„¸ìš”!!");
 			return;
 		}
 		
-		 //20140619  Àå¹Ù±¸´Ï ÇÇÀÚ ¼ö·® Ã¼Å© ¼öÁ¤
-		//ÇÇÀÚ ¼ö·®Àº 5°³±îÁö¸¸ ÁÖ¹® °¡´É -> ´ÜÇ° ÇÇÀÚ, ¼¼Æ®¿¡ Æ÷ÇÔµÈ ÇÇÀÚ, ÇÏÇÁÇÇÀÚ
+		 //20140619  ì¥ë°”êµ¬ë‹ˆ í”¼ì ìˆ˜ëŸ‰ ì²´í¬ ìˆ˜ì •
+		//í”¼ì ìˆ˜ëŸ‰ì€ 5ê°œê¹Œì§€ë§Œ ì£¼ë¬¸ ê°€ëŠ¥ -> ë‹¨í’ˆ í”¼ì, ì„¸íŠ¸ì— í¬í•¨ëœ í”¼ì, í•˜í”„í”¼ì
 	 	$.post(root+"/order/newCart.jsp?cartAction=getPizzaCount", function(count)
 	    {
    			var pizzaCount = trim(count); 
@@ -2394,58 +2485,58 @@
 				{
 					//console.log("------------------------");
 					
-			 		document.frmOrder.cartAction.value            = "addMenu";  // Àå¹Ù±¸´ÏÃ³¸®
-					document.frmOrder.cartMenuType.value       = "";  // ¸Ş´ºÅ¸ÀÔ
-					document.frmOrder.cartMenuCode.value       = "";  // ¸Ş´ºÄÚµå
-					document.frmOrder.cartMenuName.value       = "";  // ¸Ş´º¸í
-					document.frmOrder.cartMenuOrdCode.value   = "";  // ¸Ş´ºÁÖ¹®±¸ºĞÄÚµå(10:Á¤»ó,20:ÇÒÀÎ,30:¼­ºñ½º(¹«·á))
-					document.frmOrder.cartMenuDivCode.value   = "";  // ¸Ş´º±¸ºĞÄÚµå(10:´ÜÇ°,20:¼¼Æ®,30:ÇÏÇÁ&ÇÏÇÁ)
-					document.frmOrder.cartMenuLagCode.value   = "";  // ¸Ş´º´ëºĞ·ùÄÚµå
-					document.frmOrder.cartMenuMidCode.value   = "";  // ¸Ş´ºÁßºĞ·ùÄÚµå
-					document.frmOrder.cartMenuSmlCode.value   = "";  // ¸Ş´º¼ÒºĞ·ùÄÚµå
-					document.frmOrder.cartMenuSubCode.value   = "";  // ¸Ş´º¼¼ºĞ·ùÄÚµå
-					document.frmOrder.cartMenuPrice.value        = "";  // ¸Ş´ºÁÖ¹®´Ü°¡
-					document.frmOrder.cartMenuQty.value          = "";  // ¸Ş´ºÁÖ¹®¼ö·®
-					document.frmOrder.cartMenuAmt.value          = "";  // ¸Ş´ºÁÖ¹®±İ¾×
-					document.frmOrder.cartMenuDisRate.value      = "";  // ¸Ş´ºÇÒÀÎÀ²
-					document.frmOrder.cartMenuDisAmt.value       = "";  // ¸Ş´ºÇÒÀÎ±İ¾×
-					document.frmOrder.cartMenuCopDisAmt.value  = "";  // ¸Ş´º¼±°áÁ¦ÄíÆùÇÒÀÎ
-					document.frmOrder.cartMenuNetSaleAmt.value = "";  // ¸Ş´º¼ø¸ÅÃâ±İ¾×
-					document.frmOrder.cartMenuPayAmt.value     = "";  // ¸Ş´º°áÁ¦±İ¾×
-					document.frmOrder.cartMenuBakeCode.value   = "";  // ¸Ş´ºº£ÀÌÅ©ÄÚµå
-					document.frmOrder.cartMenuCutCode.value    = "";  // ¸Ş´ºÄÆÄÚµå
-					document.frmOrder.cartMenuCheeseCode.value = "";  // ¸Ş´ºÄ¡ÁîÄÚµå
-					document.frmOrder.cartMenuSauceCode.value  = "";  // ¸Ş´º¼Ò½ºÄÚµå
-					document.frmOrder.cartMenuMessage.value    = "";  // ¸Ş´ºÀü´Ş¸Ş¼¼Áö
-					document.frmOrder.cartMenuSize.value          = "";  // ¸Ş´º»çÀÌÁî
-					document.frmOrder.cartMenuDough.value      = "";  // ¸Ş´ºµµ¿ìÁ¾·ù
-					document.frmOrder.cartECouponCompany.value = "";  // EÄíÆùÁ¦ÈŞ»ç
-					document.frmOrder.cartECouponCode.value    = "";  // EÄíÆùÄÚµå
-					document.frmOrder.cartECouponNumber.value  = "";  // EÄíÆù¹øÈ£
+			 		document.frmOrder.cartAction.value            = "addMenu";  // ì¥ë°”êµ¬ë‹ˆì²˜ë¦¬
+					document.frmOrder.cartMenuType.value       = "";  // ë©”ë‰´íƒ€ì…
+					document.frmOrder.cartMenuCode.value       = "";  // ë©”ë‰´ì½”ë“œ
+					document.frmOrder.cartMenuName.value       = "";  // ë©”ë‰´ëª…
+					document.frmOrder.cartMenuOrdCode.value   = "";  // ë©”ë‰´ì£¼ë¬¸êµ¬ë¶„ì½”ë“œ(10:ì •ìƒ,20:í• ì¸,30:ì„œë¹„ìŠ¤(ë¬´ë£Œ))
+					document.frmOrder.cartMenuDivCode.value   = "";  // ë©”ë‰´êµ¬ë¶„ì½”ë“œ(10:ë‹¨í’ˆ,20:ì„¸íŠ¸,30:í•˜í”„&í•˜í”„)
+					document.frmOrder.cartMenuLagCode.value   = "";  // ë©”ë‰´ëŒ€ë¶„ë¥˜ì½”ë“œ
+					document.frmOrder.cartMenuMidCode.value   = "";  // ë©”ë‰´ì¤‘ë¶„ë¥˜ì½”ë“œ
+					document.frmOrder.cartMenuSmlCode.value   = "";  // ë©”ë‰´ì†Œë¶„ë¥˜ì½”ë“œ
+					document.frmOrder.cartMenuSubCode.value   = "";  // ë©”ë‰´ì„¸ë¶„ë¥˜ì½”ë“œ
+					document.frmOrder.cartMenuPrice.value        = "";  // ë©”ë‰´ì£¼ë¬¸ë‹¨ê°€
+					document.frmOrder.cartMenuQty.value          = "";  // ë©”ë‰´ì£¼ë¬¸ìˆ˜ëŸ‰
+					document.frmOrder.cartMenuAmt.value          = "";  // ë©”ë‰´ì£¼ë¬¸ê¸ˆì•¡
+					document.frmOrder.cartMenuDisRate.value      = "";  // ë©”ë‰´í• ì¸ìœ¨
+					document.frmOrder.cartMenuDisAmt.value       = "";  // ë©”ë‰´í• ì¸ê¸ˆì•¡
+					document.frmOrder.cartMenuCopDisAmt.value  = "";  // ë©”ë‰´ì„ ê²°ì œì¿ í°í• ì¸
+					document.frmOrder.cartMenuNetSaleAmt.value = "";  // ë©”ë‰´ìˆœë§¤ì¶œê¸ˆì•¡
+					document.frmOrder.cartMenuPayAmt.value     = "";  // ë©”ë‰´ê²°ì œê¸ˆì•¡
+					document.frmOrder.cartMenuBakeCode.value   = "";  // ë©”ë‰´ë² ì´í¬ì½”ë“œ
+					document.frmOrder.cartMenuCutCode.value    = "";  // ë©”ë‰´ì»·ì½”ë“œ
+					document.frmOrder.cartMenuCheeseCode.value = "";  // ë©”ë‰´ì¹˜ì¦ˆì½”ë“œ
+					document.frmOrder.cartMenuSauceCode.value  = "";  // ë©”ë‰´ì†ŒìŠ¤ì½”ë“œ
+					document.frmOrder.cartMenuMessage.value    = "";  // ë©”ë‰´ì „ë‹¬ë©”ì„¸ì§€
+					document.frmOrder.cartMenuSize.value          = "";  // ë©”ë‰´ì‚¬ì´ì¦ˆ
+					document.frmOrder.cartMenuDough.value      = "";  // ë©”ë‰´ë„ìš°ì¢…ë¥˜
+					document.frmOrder.cartECouponCompany.value = "";  // Eì¿ í°ì œíœ´ì‚¬
+					document.frmOrder.cartECouponCode.value    = "";  // Eì¿ í°ì½”ë“œ
+					document.frmOrder.cartECouponNumber.value  = "";  // Eì¿ í°ë²ˆí˜¸
 					
-					//1. Àû¿ë ¸Ş´ºÀÎ °æ¿ì
+					//1. ì ìš© ë©”ë‰´ì¸ ê²½ìš°
 			 		if($(this).hasClass("main_menu") )
 					{
 			 			if($mainMenu.val() != null && $mainMenu.val() != "")
 						{
 							var list = $mainMenu.val().split(",");
-							menuCode        = list[0];  // ¸Ş´ºÄÚµå
-							menuName        = list[1];  // ¸Ş´º¸í
-							menuMidCode     = list[2];  // ¸Ş´ºÁßºĞ·ùÄÚµå
-							menuPrice       = list[3];  // ¸Ş´ºÆÇ¸Å±İ¾×
-							menuDiscountAmt = list[4];  // ¸Ş´ºÇÒÀÎ±İ¾× 
-							menuSubCode     = list[5];  // ¸Ş´º¼¼ºĞ·ùÄÚµå
-							menuDough       = list[6];  // ¸Ş´ºµµ¿ì
-							menuSize        = list[7];  // ¸Ş´º»çÀÌÁîÇÑ±Û
-							menuLagCode     = list[8];  // ¸Ş´º´ëºĞ·ùÄÚµå
-							menuMidCode     = list[9];  // ¸Ş´ºÁßºĞ·ùÄÚµå
-							menuSmlCode     = list[10]; // ¸Ş´º¼ÒºĞ·ùÄÚµå
-							menuGroupCode   = list[11]; // ¸Ş´º¿Â¶óÀÎ±×·ì
-							menuDivCode     = list[12]; // ¸Ş´º±¸ºĞÄÚµå
-							menuSizeEng     = list[13]; // ¸Ş´º»çÀÌÁî¿µ¹®
-							menuSize        = list[14]; // ¸Ş´º»çÀÌÁî(L,P..)
+							menuCode        = list[0];  // ë©”ë‰´ì½”ë“œ
+							menuName        = list[1];  // ë©”ë‰´ëª…
+							menuMidCode     = list[2];  // ë©”ë‰´ì¤‘ë¶„ë¥˜ì½”ë“œ
+							menuPrice       = list[3];  // ë©”ë‰´íŒë§¤ê¸ˆì•¡
+							menuDiscountAmt = list[4];  // ë©”ë‰´í• ì¸ê¸ˆì•¡ 
+							menuSubCode     = list[5];  // ë©”ë‰´ì„¸ë¶„ë¥˜ì½”ë“œ
+							menuDough       = list[6];  // ë©”ë‰´ë„ìš°
+							menuSize        = list[7];  // ë©”ë‰´ì‚¬ì´ì¦ˆí•œê¸€
+							menuLagCode     = list[8];  // ë©”ë‰´ëŒ€ë¶„ë¥˜ì½”ë“œ
+							menuMidCode     = list[9];  // ë©”ë‰´ì¤‘ë¶„ë¥˜ì½”ë“œ
+							menuSmlCode     = list[10]; // ë©”ë‰´ì†Œë¶„ë¥˜ì½”ë“œ
+							menuGroupCode   = list[11]; // ë©”ë‰´ì˜¨ë¼ì¸ê·¸ë£¹
+							menuDivCode     = list[12]; // ë©”ë‰´êµ¬ë¶„ì½”ë“œ
+							menuSizeEng     = list[13]; // ë©”ë‰´ì‚¬ì´ì¦ˆì˜ë¬¸
+							menuSize        = list[14]; // ë©”ë‰´ì‚¬ì´ì¦ˆ(L,P..)
 									
-							// Àû¿ë¸Ş´º ÇÇÀÚ ¿É¼Ç
+							// ì ìš©ë©”ë‰´ í”¼ì ì˜µì…˜
 							var currMenuOptions = $("#option_box_prom");
 		     				var findMenuOptions = currMenuOptions.find(".spcInstructions li");
 		     				var selMenuOptions  = [];
@@ -2463,191 +2554,191 @@
 //					     	console.log("main menu > opt  ["+ cartMenuOptions +"]");
 //							console.log("main menu >  ["+ list +"]");
 							
-							document.frmOrder.cartMenuCode.value       = menuCode+"_"+ (parseInt(promCouponIndex)+i);  // ¸Ş´ºÄÚµå
-							document.frmOrder.cartMenuName.value       = menuName;                // ¸Ş´º¸í
-							document.frmOrder.cartMenuOrdCode.value    = "10";                    // ¸Ş´ºÁÖ¹®±¸ºĞÄÚµå(10:Á¤»ó,20:ÇÒÀÎ,30:¼­ºñ½º(¹«·á))
-							document.frmOrder.cartMenuDivCode.value    = menuDivCode;             // ¸Ş´º±¸ºĞÄÚµå(10:´ÜÇ°,20:¼¼Æ®,30:ÇÏÇÁ&ÇÏÇÁ)
-							document.frmOrder.cartMenuLagCode.value    = menuLagCode;             // ¸Ş´º´ëºĞ·ùÄÚµå
-							document.frmOrder.cartMenuMidCode.value    = menuMidCode;             // ¸Ş´ºÁßºĞ·ùÄÚµå
-							document.frmOrder.cartMenuSmlCode.value    = menuSmlCode;             // ¸Ş´º¼ÒºĞ·ùÄÚµå
-							document.frmOrder.cartMenuSubCode.value    = menuSubCode;             // ¸Ş´º¼¼ºĞ·ùÄÚµå
-							document.frmOrder.cartMenuPrice.value      = menuPrice;               // ¸Ş´ºÁÖ¹®´Ü°¡
-							document.frmOrder.cartMenuAmt.value        = menuPrice;               // ¸Ş´ºÁÖ¹®±İ¾×
-							document.frmOrder.cartMenuDisRate.value    = "0";                     // ¸Ş´ºÇÒÀÎÀ²
-							document.frmOrder.cartMenuDisAmt.value     = "0";                     // ¸Ş´ºÇÒÀÎ±İ¾×
-							document.frmOrder.cartMenuCopDisAmt.value  = "0";                     // ¸Ş´º¼±°áÁ¦ÄíÆùÇÒÀÎ
-							document.frmOrder.cartMenuNetSaleAmt.value = menuPrice;               // ¸Ş´º¼ø¸ÅÃâ±İ¾×
-							document.frmOrder.cartMenuPayAmt.value     = menuPrice;               // ¸Ş´º°áÁ¦±İ¾×
-							document.frmOrder.cartMenuMessage.value    = "";                      // ¸Ş´ºÀü´Ş¸Ş¼¼Áö
-							document.frmOrder.cartMenuSize.value       = menuSize;                // ¸Ş´º»çÀÌÁî
-							document.frmOrder.cartMenuDough.value      = menuDough;               // ¸Ş´ºµµ¿ìÁ¾·ù
-							document.frmOrder.cartECouponCompany.value = "";                      // EÄíÆùÁ¦ÈŞ»ç
-							document.frmOrder.cartECouponCode.value    = promotionCouponCode+"_"+promCouponIndex;  // EÄíÆùÄÚµå
-							document.frmOrder.cartECouponNumber.value  = "MAIN";  // EÄíÆù¹øÈ£ - Àû¿ë¸Ş´º,ÇÒÀÎ¸Ş´º±¸ºĞ
+							document.frmOrder.cartMenuCode.value       = menuCode+"_"+ (parseInt(promCouponIndex)+i);  // ë©”ë‰´ì½”ë“œ
+							document.frmOrder.cartMenuName.value       = menuName;                // ë©”ë‰´ëª…
+							document.frmOrder.cartMenuOrdCode.value    = "10";                    // ë©”ë‰´ì£¼ë¬¸êµ¬ë¶„ì½”ë“œ(10:ì •ìƒ,20:í• ì¸,30:ì„œë¹„ìŠ¤(ë¬´ë£Œ))
+							document.frmOrder.cartMenuDivCode.value    = menuDivCode;             // ë©”ë‰´êµ¬ë¶„ì½”ë“œ(10:ë‹¨í’ˆ,20:ì„¸íŠ¸,30:í•˜í”„&í•˜í”„)
+							document.frmOrder.cartMenuLagCode.value    = menuLagCode;             // ë©”ë‰´ëŒ€ë¶„ë¥˜ì½”ë“œ
+							document.frmOrder.cartMenuMidCode.value    = menuMidCode;             // ë©”ë‰´ì¤‘ë¶„ë¥˜ì½”ë“œ
+							document.frmOrder.cartMenuSmlCode.value    = menuSmlCode;             // ë©”ë‰´ì†Œë¶„ë¥˜ì½”ë“œ
+							document.frmOrder.cartMenuSubCode.value    = menuSubCode;             // ë©”ë‰´ì„¸ë¶„ë¥˜ì½”ë“œ
+							document.frmOrder.cartMenuPrice.value      = menuPrice;               // ë©”ë‰´ì£¼ë¬¸ë‹¨ê°€
+							document.frmOrder.cartMenuAmt.value        = menuPrice;               // ë©”ë‰´ì£¼ë¬¸ê¸ˆì•¡
+							document.frmOrder.cartMenuDisRate.value    = "0";                     // ë©”ë‰´í• ì¸ìœ¨
+							document.frmOrder.cartMenuDisAmt.value     = "0";                     // ë©”ë‰´í• ì¸ê¸ˆì•¡
+							document.frmOrder.cartMenuCopDisAmt.value  = "0";                     // ë©”ë‰´ì„ ê²°ì œì¿ í°í• ì¸
+							document.frmOrder.cartMenuNetSaleAmt.value = menuPrice;               // ë©”ë‰´ìˆœë§¤ì¶œê¸ˆì•¡
+							document.frmOrder.cartMenuPayAmt.value     = menuPrice;               // ë©”ë‰´ê²°ì œê¸ˆì•¡
+							document.frmOrder.cartMenuMessage.value    = "";                      // ë©”ë‰´ì „ë‹¬ë©”ì„¸ì§€
+							document.frmOrder.cartMenuSize.value       = menuSize;                // ë©”ë‰´ì‚¬ì´ì¦ˆ
+							document.frmOrder.cartMenuDough.value      = menuDough;               // ë©”ë‰´ë„ìš°ì¢…ë¥˜
+							document.frmOrder.cartECouponCompany.value = "";                      // Eì¿ í°ì œíœ´ì‚¬
+							document.frmOrder.cartECouponCode.value    = promotionCouponCode+"_"+promCouponIndex;  // Eì¿ í°ì½”ë“œ
+							document.frmOrder.cartECouponNumber.value  = "MAIN";  // Eì¿ í°ë²ˆí˜¸ - ì ìš©ë©”ë‰´,í• ì¸ë©”ë‰´êµ¬ë¶„
 							 
 							fnReset_spcOption_up($this);
 //							console.log("1. in main_menu");
 						}
 			 			else
 			 			{
-			 				//20140619 Àå¹Ù±¸´Ï ¹öÆ° Å¬¸¯ ½Ã ÄíÆù Àû¿ë¸Ş´º ¼±ÅÃ °Ë»ç
-			 				alert("ÄíÆù Àû¿ë ¸Ş´º¸¦ ¸ÕÀú ¼±ÅÃÇØ ÁÖ¼¼¿ä!!");
+			 				//20140619 ì¥ë°”êµ¬ë‹ˆ ë²„íŠ¼ í´ë¦­ ì‹œ ì¿ í° ì ìš©ë©”ë‰´ ì„ íƒ ê²€ì‚¬
+			 				alert("ì¿ í° ì ìš© ë©”ë‰´ë¥¼ ë¨¼ì € ì„ íƒí•´ ì£¼ì„¸ìš”!!");
 			 				return;
 			 			}
 					}
-			 		//2. ÇÒÀÎ ¸Ş´ºÀÎ °æ¿ì
+			 		//2. í• ì¸ ë©”ë‰´ì¸ ê²½ìš°
 			 		else if($(this).hasClass("sub_menu") )	
 			 		{
-			 			// none¶Ç´Â value°¡ ¾øÀ¸¸é ÇÒÀÎ¸Ş´º°¡ ¾ø´Â °Í!!
+			 			// noneë˜ëŠ” valueê°€ ì—†ìœ¼ë©´ í• ì¸ë©”ë‰´ê°€ ì—†ëŠ” ê²ƒ!!
 			 			if($(this).css("display") == "block" && $(this).find(".hideCode").val() != null && $(this).find(".hideCode").val() != "" )
 			 			{
-							menuCode      = $(this).find(".hideCode").val();  // ¸Ş´ºÄÚµå
-							menuName     = $(this).find(".hideName").val();  // ¸Ş´º¸í
-							menuMidCode = $(this).find(".hideMidCode").val();  // ¸Ş´ºÁßºĞ·ùÄÚµå
-							menuPrice      = $(this).find(".hidePrice").val();  // ¸Ş´ºÆÇ¸Å±İ¾×
-							menuDiscountPrice = $(this).find(".hideDiscountPrice").val();  // ¸Ş´ºÇÒÀÎ±İ¾×
-							menuSubCode = $(this).find(".hideSubCode").val();  // ¸Ş´º¼¼ºĞ·ùÄÚµå
-							menuDough    = $(this).find(".hideDough").val();  // ¸Ş´ºµµ¿ì
-							menuSize       = $(this).find(".hideSize").val();  // ¸Ş´º»çÀÌÁîÇÑ±Û
-							menuLagCode = $(this).find(".hideLageCode").val();  // ¸Ş´º´ëºĞ·ùÄÚµå
-							menuMidCode = $(this).find(".hideMidCode").val();  // ¸Ş´ºÁßºĞ·ùÄÚµå
-							menuSmlCode = $(this).find(".hideSmlCode").val(); // ¸Ş´º¼ÒºĞ·ùÄÚµå
-							menuDivCode = $(this).find(".hideDiveCode").val(); // ¸Ş´º±¸ºĞÄÚµå
-							menuSize      = $(this).find(".hideSize").val(); // ¸Ş´º»çÀÌÁî(L,P..)
+							menuCode      = $(this).find(".hideCode").val();  // ë©”ë‰´ì½”ë“œ
+							menuName     = $(this).find(".hideName").val();  // ë©”ë‰´ëª…
+							menuMidCode = $(this).find(".hideMidCode").val();  // ë©”ë‰´ì¤‘ë¶„ë¥˜ì½”ë“œ
+							menuPrice      = $(this).find(".hidePrice").val();  // ë©”ë‰´íŒë§¤ê¸ˆì•¡
+							menuDiscountPrice = $(this).find(".hideDiscountPrice").val();  // ë©”ë‰´í• ì¸ê¸ˆì•¡
+							menuSubCode = $(this).find(".hideSubCode").val();  // ë©”ë‰´ì„¸ë¶„ë¥˜ì½”ë“œ
+							menuDough    = $(this).find(".hideDough").val();  // ë©”ë‰´ë„ìš°
+							menuSize       = $(this).find(".hideSize").val();  // ë©”ë‰´ì‚¬ì´ì¦ˆí•œê¸€
+							menuLagCode = $(this).find(".hideLageCode").val();  // ë©”ë‰´ëŒ€ë¶„ë¥˜ì½”ë“œ
+							menuMidCode = $(this).find(".hideMidCode").val();  // ë©”ë‰´ì¤‘ë¶„ë¥˜ì½”ë“œ
+							menuSmlCode = $(this).find(".hideSmlCode").val(); // ë©”ë‰´ì†Œë¶„ë¥˜ì½”ë“œ
+							menuDivCode = $(this).find(".hideDiveCode").val(); // ë©”ë‰´êµ¬ë¶„ì½”ë“œ
+							menuSize      = $(this).find(".hideSize").val(); // ë©”ë‰´ì‚¬ì´ì¦ˆ(L,P..)
 							
-//							console.log($(this).attr("id") + " ÇÒÀÎ¸Ş´º "+ i + ">  [" + menuCode + " , " + menuName + " , " + menuPrice + " , " + menuLagCode + ", " + menuDivCode + ", " + menuSize + "]");
+//							console.log($(this).attr("id") + " í• ì¸ë©”ë‰´ "+ i + ">  [" + menuCode + " , " + menuName + " , " + menuPrice + " , " + menuLagCode + ", " + menuDivCode + ", " + menuSize + "]");
 							
-							//¼­ºê¸Ş´º1,2 > ¸ŞÀÎ¸Ş´º°¡ ÀÖ°í ¸Ş´º°¡ ÀÖ´Â°Í
-							document.frmOrder.cartMenuCode.value         = menuCode+"_"+(parseInt(promCouponIndex)+i);  // ¸Ş´ºÄÚµå
-							document.frmOrder.cartMenuName.value        = menuName;  // ¸Ş´º¸í
-							document.frmOrder.cartMenuOrdCode.value    = "20";  // ¸Ş´ºÁÖ¹®±¸ºĞÄÚµå(10:Á¤»ó,20:ÇÒÀÎ,30:¼­ºñ½º(¹«·á))
-							//document.frmOrder.cartMenuDivCode.value     = menuDivCode;  // ¸Ş´º±¸ºĞÄÚµå(10:´ÜÇ°,20:¼¼Æ®,30:ÇÏÇÁ&ÇÏÇÁ)
-							document.frmOrder.cartMenuDivCode.value     = "10";  // ¸Ş´º±¸ºĞÄÚµå(10:´ÜÇ°,20:¼¼Æ®,30:ÇÏÇÁ&ÇÏÇÁ)
-							document.frmOrder.cartMenuLagCode.value    = menuLagCode;  // ¸Ş´º´ëºĞ·ùÄÚµå
-							document.frmOrder.cartMenuMidCode.value    = menuMidCode;  // ¸Ş´ºÁßºĞ·ùÄÚµå
-							document.frmOrder.cartMenuSmlCode.value    = menuSmlCode;  // ¸Ş´º¼ÒºĞ·ùÄÚµå
-							document.frmOrder.cartMenuSubCode.value    = menuSubCode;  // ¸Ş´º¼¼ºĞ·ùÄÚµå
-							document.frmOrder.cartMenuPrice.value         = menuPrice;  // ¸Ş´ºÁÖ¹®´Ü°¡
-							document.frmOrder.cartMenuAmt.value          = menuPrice;  // ¸Ş´ºÁÖ¹®±İ¾×
-							document.frmOrder.cartMenuDisRate.value      = "0";  // ¸Ş´ºÇÒÀÎÀ²
-							document.frmOrder.cartMenuDisAmt.value       = menuDiscountPrice;  // ¸Ş´ºÇÒÀÎ±İ¾× 
-							document.frmOrder.cartMenuCopDisAmt.value  = "0";  // ¸Ş´º¼±°áÁ¦ÄíÆùÇÒÀÎ
-							document.frmOrder.cartMenuNetSaleAmt.value = menuPrice;  // ¸Ş´º¼ø¸ÅÃâ±İ¾×
-							document.frmOrder.cartMenuPayAmt.value      = menuPrice;  // ¸Ş´º°áÁ¦±İ¾×
-							document.frmOrder.cartMenuMessage.value    = "";  // ¸Ş´ºÀü´Ş¸Ş¼¼Áö
-							document.frmOrder.cartMenuSize.value          = menuSize;  // ¸Ş´º»çÀÌÁî
-							document.frmOrder.cartMenuDough.value         = menuDough;  // ¸Ş´ºµµ¿ìÁ¾·ù
-							document.frmOrder.cartECouponCompany.value = "";  // EÄíÆùÁ¦ÈŞ»ç
-							document.frmOrder.cartECouponCode.value      = promotionCouponCode+"_"+promCouponIndex;  // EÄíÆùÄÚµå
-							document.frmOrder.cartECouponNumber.value  = "SUB";  // EÄíÆù¹øÈ£ - Àû¿ë¸Ş´º,ÇÒÀÎ¸Ş´º±¸ºĞ
+							//ì„œë¸Œë©”ë‰´1,2 > ë©”ì¸ë©”ë‰´ê°€ ìˆê³  ë©”ë‰´ê°€ ìˆëŠ”ê²ƒ
+							document.frmOrder.cartMenuCode.value         = menuCode+"_"+(parseInt(promCouponIndex)+i);  // ë©”ë‰´ì½”ë“œ
+							document.frmOrder.cartMenuName.value        = menuName;  // ë©”ë‰´ëª…
+							document.frmOrder.cartMenuOrdCode.value    = "20";  // ë©”ë‰´ì£¼ë¬¸êµ¬ë¶„ì½”ë“œ(10:ì •ìƒ,20:í• ì¸,30:ì„œë¹„ìŠ¤(ë¬´ë£Œ))
+							//document.frmOrder.cartMenuDivCode.value     = menuDivCode;  // ë©”ë‰´êµ¬ë¶„ì½”ë“œ(10:ë‹¨í’ˆ,20:ì„¸íŠ¸,30:í•˜í”„&í•˜í”„)
+							document.frmOrder.cartMenuDivCode.value     = "10";  // ë©”ë‰´êµ¬ë¶„ì½”ë“œ(10:ë‹¨í’ˆ,20:ì„¸íŠ¸,30:í•˜í”„&í•˜í”„)
+							document.frmOrder.cartMenuLagCode.value    = menuLagCode;  // ë©”ë‰´ëŒ€ë¶„ë¥˜ì½”ë“œ
+							document.frmOrder.cartMenuMidCode.value    = menuMidCode;  // ë©”ë‰´ì¤‘ë¶„ë¥˜ì½”ë“œ
+							document.frmOrder.cartMenuSmlCode.value    = menuSmlCode;  // ë©”ë‰´ì†Œë¶„ë¥˜ì½”ë“œ
+							document.frmOrder.cartMenuSubCode.value    = menuSubCode;  // ë©”ë‰´ì„¸ë¶„ë¥˜ì½”ë“œ
+							document.frmOrder.cartMenuPrice.value         = menuPrice;  // ë©”ë‰´ì£¼ë¬¸ë‹¨ê°€
+							document.frmOrder.cartMenuAmt.value          = menuPrice;  // ë©”ë‰´ì£¼ë¬¸ê¸ˆì•¡
+							document.frmOrder.cartMenuDisRate.value      = "0";  // ë©”ë‰´í• ì¸ìœ¨
+							document.frmOrder.cartMenuDisAmt.value       = menuDiscountPrice;  // ë©”ë‰´í• ì¸ê¸ˆì•¡ 
+							document.frmOrder.cartMenuCopDisAmt.value  = "0";  // ë©”ë‰´ì„ ê²°ì œì¿ í°í• ì¸
+							document.frmOrder.cartMenuNetSaleAmt.value = menuPrice;  // ë©”ë‰´ìˆœë§¤ì¶œê¸ˆì•¡
+							document.frmOrder.cartMenuPayAmt.value      = menuPrice;  // ë©”ë‰´ê²°ì œê¸ˆì•¡
+							document.frmOrder.cartMenuMessage.value    = "";  // ë©”ë‰´ì „ë‹¬ë©”ì„¸ì§€
+							document.frmOrder.cartMenuSize.value          = menuSize;  // ë©”ë‰´ì‚¬ì´ì¦ˆ
+							document.frmOrder.cartMenuDough.value         = menuDough;  // ë©”ë‰´ë„ìš°ì¢…ë¥˜
+							document.frmOrder.cartECouponCompany.value = "";  // Eì¿ í°ì œíœ´ì‚¬
+							document.frmOrder.cartECouponCode.value      = promotionCouponCode+"_"+promCouponIndex;  // Eì¿ í°ì½”ë“œ
+							document.frmOrder.cartECouponNumber.value  = "SUB";  // Eì¿ í°ë²ˆí˜¸ - ì ìš©ë©”ë‰´,í• ì¸ë©”ë‰´êµ¬ë¶„
 
 //				 			console.log("1. in sub_menu ");
 			 			}
 			 		} 
 			 		
-			 		/* //¸Ş´º´ëºĞ·ùÄÚµåº° ¸Ş´ºÅ¸ÀÔ ¹× ¸Ş´º¼ö·® ¼¼ÆÃ
-					if( document.frmOrder.cartMenuLagCode.value == "10" )  // ÇÇÀÚ
+			 		/* //ë©”ë‰´ëŒ€ë¶„ë¥˜ì½”ë“œë³„ ë©”ë‰´íƒ€ì… ë° ë©”ë‰´ìˆ˜ëŸ‰ ì„¸íŒ…
+					if( document.frmOrder.cartMenuLagCode.value == "10" )  // í”¼ì
 					{
-						document.frmOrder.cartMenuType.value = "typePizza";  // ¸Ş´º Å¸ÀÔ
-						document.frmOrder.cartMenuQty.value  = "1";          // ¸Ş´º ¼ö·®
+						document.frmOrder.cartMenuType.value = "typePizza";  // ë©”ë‰´ íƒ€ì…
+						document.frmOrder.cartMenuQty.value  = "1";          // ë©”ë‰´ ìˆ˜ëŸ‰
 					}
-					else if( document.frmOrder.cartMenuLagCode.value == "20" )  // »çÀÌµå
+					else if( document.frmOrder.cartMenuLagCode.value == "20" )  // ì‚¬ì´ë“œ
 					{
-						document.frmOrder.cartMenuType.value = "typeSide";   // ¸Ş´º Å¸ÀÔ
-						document.frmOrder.cartMenuQty.value  = "1";   // ¸Ş´º ¼ö·®
+						document.frmOrder.cartMenuType.value = "typeSide";   // ë©”ë‰´ íƒ€ì…
+						document.frmOrder.cartMenuQty.value  = "1";   // ë©”ë‰´ ìˆ˜ëŸ‰
 					}
-					else if( document.frmOrder.cartMenuLagCode.value == "30" )  // ¼Ò½º
+					else if( document.frmOrder.cartMenuLagCode.value == "30" )  // ì†ŒìŠ¤
 					{
-						document.frmOrder.cartMenuType.value = "typeSauce";  // ¸Ş´º Å¸ÀÔ
-						document.frmOrder.cartMenuQty.value  = "1";   // ¸Ş´º ¼ö·®
+						document.frmOrder.cartMenuType.value = "typeSauce";  // ë©”ë‰´ íƒ€ì…
+						document.frmOrder.cartMenuQty.value  = "1";   // ë©”ë‰´ ìˆ˜ëŸ‰
 					}
-					else if( document.frmOrder.cartMenuLagCode.value == "40" )  // À½·á
+					else if( document.frmOrder.cartMenuLagCode.value == "40" )  // ìŒë£Œ
 					{
-						document.frmOrder.cartMenuType.value = "typeBever";  // ¸Ş´º Å¸ÀÔ
-						document.frmOrder.cartMenuQty.value  = "1";   // ¸Ş´º ¼ö·®
+						document.frmOrder.cartMenuType.value = "typeBever";  // ë©”ë‰´ íƒ€ì…
+						document.frmOrder.cartMenuQty.value  = "1";   // ë©”ë‰´ ìˆ˜ëŸ‰
 					} */
 					
 					
-					//20140619 ¸Ş´º Å¸ÀÔ ÅëÀÏ
+					//20140619 ë©”ë‰´ íƒ€ì… í†µì¼
 			 		document.frmOrder.cartMenuType.value = "typePromotion";  
 					document.frmOrder.cartMenuQty.value  = "1"; 
 			 		
-//			 		console.log("2. in ÀúÀåÁØºñ " + document.frmOrder.cartMenuType.value);
+//			 		console.log("2. in ì €ì¥ì¤€ë¹„ " + document.frmOrder.cartMenuType.value);
 				
 			    	//if( document.frmOrder.cartMenuType.value == "typePizza" )
-			    	if($("#cartMenuCode").val() != "" && $("#cartMenuCode").val() != null) // 20140620 eachµ¹¸é¼­ °ªÀÌ ¾ø¾îµµ ÁøÇà¸·À½
+			    	if($("#cartMenuCode").val() != "" && $("#cartMenuCode").val() != null) // 20140620 eachëŒë©´ì„œ ê°’ì´ ì—†ì–´ë„ ì§„í–‰ë§‰ìŒ
 			    	{	
-			    		if( document.frmOrder.cartMenuLagCode.value == "10" )		//´ëºĞ·ù ÄÚµå·Î ÇÇÀÚ ±¸ºĞ
+			    		if( document.frmOrder.cartMenuLagCode.value == "10" )		//ëŒ€ë¶„ë¥˜ ì½”ë“œë¡œ í”¼ì êµ¬ë¶„
 				    	{
 							cartSendDataInfo = {
-									    cartAction         : document.frmOrder.cartAction.value          // Àå¹Ù±¸´ÏÃ³¸®
-						    		   ,cartMenuType       : document.frmOrder.cartMenuType.value        // ¸Ş´ºÅ¸ÀÔ
-	    	    					   ,cartMenuCode       : document.frmOrder.cartMenuCode.value        // ¸Ş´ºÄÚµå
-	    	    					   ,cartMenuName       : document.frmOrder.cartMenuName.value        // ¸Ş´º¸í
-	    	    					   ,cartMenuOrdCode    : document.frmOrder.cartMenuOrdCode.value     // ¸Ş´ºÁÖ¹®±¸ºĞÄÚµå(10:Á¤»ó,20:ÇÒÀÎ,30:¼­ºñ½º(¹«·á))
-	    	    					   ,cartMenuDivCode    : document.frmOrder.cartMenuDivCode.value     // ¸Ş´º±¸ºĞÄÚµå(10:´ÜÇ°,20:¼¼Æ®,30:ÇÏÇÁ&ÇÏÇÁ)
-	    	    					   ,cartMenuLagCode    : document.frmOrder.cartMenuLagCode.value     // ¸Ş´º´ëºĞ·ùÄÚµå
-	    	    					   ,cartMenuMidCode    : document.frmOrder.cartMenuMidCode.value     // ¸Ş´ºÁßºĞ·ùÄÚµå
-	    	    					   ,cartMenuSmlCode    : document.frmOrder.cartMenuSmlCode.value     // ¸Ş´º¼ÒºĞ·ùÄÚµå
-	    	    					   ,cartMenuSubCode    : document.frmOrder.cartMenuSubCode.value     // ¸Ş´º¼¼ºĞ·ùÄÚµå
-	    	    					   ,cartMenuPrice      : document.frmOrder.cartMenuPrice.value       // ¸Ş´ºÁÖ¹®´Ü°¡
-	    	    					   ,cartMenuQty        : document.frmOrder.cartMenuQty.value         // ¸Ş´ºÁÖ¹®¼ö·®
-	    	    					   ,cartMenuAmt        : document.frmOrder.cartMenuAmt.value         // ¸Ş´ºÁÖ¹®±İ¾×
-	    	    					   ,cartMenuDisRate    : document.frmOrder.cartMenuDisRate.value     // ¸Ş´ºÇÒÀÎÀ²
-	    	    					   ,cartMenuDisAmt     : document.frmOrder.cartMenuDisAmt.value      // ¸Ş´ºÇÒÀÎ±İ¾×
-	    	    					   ,cartMenuCopDisAmt  : document.frmOrder.cartMenuCopDisAmt.value   // ¸Ş´º¼±°áÁ¦ÄíÆùÇÒÀÎ
-	    	    					   ,cartMenuNetSaleAmt : document.frmOrder.cartMenuNetSaleAmt.value  // ¸Ş´º¼ø¸ÅÃâ±İ¾×
-	    	    					   ,cartMenuPayAmt     : document.frmOrder.cartMenuPayAmt.value      // ¸Ş´º°áÁ¦±İ¾×
-	    	    					   ,cartMenuBakeCode   : document.frmOrder.cartMenuBakeCode.value    // ¸Ş´ºº£ÀÌÅ©ÄÚµå
-	    	    					   ,cartMenuCutCode    : document.frmOrder.cartMenuCutCode.value     // ¸Ş´ºÄÆÄÚµå
-	    	    					   ,cartMenuCheeseCode : document.frmOrder.cartMenuCheeseCode.value  // ¸Ş´ºÄ¡ÁîÄÚµå
-	    	    					   ,cartMenuSauceCode  : document.frmOrder.cartMenuSauceCode.value   // ¸Ş´º¼Ò½ºÄÚµå
-	    	    					   ,cartMenuMessage    : document.frmOrder.cartMenuMessage.value     // ¸Ş´ºÀü´Ş¸Ş¼¼Áö
-	    	    					   ,cartMenuSize       : document.frmOrder.cartMenuSize.value        // ¸Ş´º»çÀÌÁî
-	    	    					   ,cartMenuDough      : document.frmOrder.cartMenuDough.value       // ¸Ş´ºµµ¿ìÁ¾·ù
-									   ,cartMenuOption     : cartMenuOptions                             // ¸Ş´º¿É¼Ç
-									   ,cartECouponCompany : document.frmOrder.cartECouponCompany.value  // EÄíÆùÁ¦ÈŞ»ç
-									   ,cartECouponCode    : document.frmOrder.cartECouponCode.value     // EÄíÆùÄÚµå
-									   ,cartECouponNumber  : document.frmOrder.cartECouponNumber.value   // EÄíÆù¹øÈ£
+									    cartAction         : document.frmOrder.cartAction.value          // ì¥ë°”êµ¬ë‹ˆì²˜ë¦¬
+						    		   ,cartMenuType       : document.frmOrder.cartMenuType.value        // ë©”ë‰´íƒ€ì…
+	    	    					   ,cartMenuCode       : document.frmOrder.cartMenuCode.value        // ë©”ë‰´ì½”ë“œ
+	    	    					   ,cartMenuName       : document.frmOrder.cartMenuName.value        // ë©”ë‰´ëª…
+	    	    					   ,cartMenuOrdCode    : document.frmOrder.cartMenuOrdCode.value     // ë©”ë‰´ì£¼ë¬¸êµ¬ë¶„ì½”ë“œ(10:ì •ìƒ,20:í• ì¸,30:ì„œë¹„ìŠ¤(ë¬´ë£Œ))
+	    	    					   ,cartMenuDivCode    : document.frmOrder.cartMenuDivCode.value     // ë©”ë‰´êµ¬ë¶„ì½”ë“œ(10:ë‹¨í’ˆ,20:ì„¸íŠ¸,30:í•˜í”„&í•˜í”„)
+	    	    					   ,cartMenuLagCode    : document.frmOrder.cartMenuLagCode.value     // ë©”ë‰´ëŒ€ë¶„ë¥˜ì½”ë“œ
+	    	    					   ,cartMenuMidCode    : document.frmOrder.cartMenuMidCode.value     // ë©”ë‰´ì¤‘ë¶„ë¥˜ì½”ë“œ
+	    	    					   ,cartMenuSmlCode    : document.frmOrder.cartMenuSmlCode.value     // ë©”ë‰´ì†Œë¶„ë¥˜ì½”ë“œ
+	    	    					   ,cartMenuSubCode    : document.frmOrder.cartMenuSubCode.value     // ë©”ë‰´ì„¸ë¶„ë¥˜ì½”ë“œ
+	    	    					   ,cartMenuPrice      : document.frmOrder.cartMenuPrice.value       // ë©”ë‰´ì£¼ë¬¸ë‹¨ê°€
+	    	    					   ,cartMenuQty        : document.frmOrder.cartMenuQty.value         // ë©”ë‰´ì£¼ë¬¸ìˆ˜ëŸ‰
+	    	    					   ,cartMenuAmt        : document.frmOrder.cartMenuAmt.value         // ë©”ë‰´ì£¼ë¬¸ê¸ˆì•¡
+	    	    					   ,cartMenuDisRate    : document.frmOrder.cartMenuDisRate.value     // ë©”ë‰´í• ì¸ìœ¨
+	    	    					   ,cartMenuDisAmt     : document.frmOrder.cartMenuDisAmt.value      // ë©”ë‰´í• ì¸ê¸ˆì•¡
+	    	    					   ,cartMenuCopDisAmt  : document.frmOrder.cartMenuCopDisAmt.value   // ë©”ë‰´ì„ ê²°ì œì¿ í°í• ì¸
+	    	    					   ,cartMenuNetSaleAmt : document.frmOrder.cartMenuNetSaleAmt.value  // ë©”ë‰´ìˆœë§¤ì¶œê¸ˆì•¡
+	    	    					   ,cartMenuPayAmt     : document.frmOrder.cartMenuPayAmt.value      // ë©”ë‰´ê²°ì œê¸ˆì•¡
+	    	    					   ,cartMenuBakeCode   : document.frmOrder.cartMenuBakeCode.value    // ë©”ë‰´ë² ì´í¬ì½”ë“œ
+	    	    					   ,cartMenuCutCode    : document.frmOrder.cartMenuCutCode.value     // ë©”ë‰´ì»·ì½”ë“œ
+	    	    					   ,cartMenuCheeseCode : document.frmOrder.cartMenuCheeseCode.value  // ë©”ë‰´ì¹˜ì¦ˆì½”ë“œ
+	    	    					   ,cartMenuSauceCode  : document.frmOrder.cartMenuSauceCode.value   // ë©”ë‰´ì†ŒìŠ¤ì½”ë“œ
+	    	    					   ,cartMenuMessage    : document.frmOrder.cartMenuMessage.value     // ë©”ë‰´ì „ë‹¬ë©”ì„¸ì§€
+	    	    					   ,cartMenuSize       : document.frmOrder.cartMenuSize.value        // ë©”ë‰´ì‚¬ì´ì¦ˆ
+	    	    					   ,cartMenuDough      : document.frmOrder.cartMenuDough.value       // ë©”ë‰´ë„ìš°ì¢…ë¥˜
+									   ,cartMenuOption     : cartMenuOptions                             // ë©”ë‰´ì˜µì…˜
+									   ,cartECouponCompany : document.frmOrder.cartECouponCompany.value  // Eì¿ í°ì œíœ´ì‚¬
+									   ,cartECouponCode    : document.frmOrder.cartECouponCode.value     // Eì¿ í°ì½”ë“œ
+									   ,cartECouponNumber  : document.frmOrder.cartECouponNumber.value   // Eì¿ í°ë²ˆí˜¸
 	   			               }; 
 					    	fnSaveForCart(cartSendDataInfo);  
-				 			//console.log("3. in Àû¿ë¸Ş´º ÀúÀå " + document.frmOrder.cartMenuName.value );
+				 			//console.log("3. in ì ìš©ë©”ë‰´ ì €ì¥ " + document.frmOrder.cartMenuName.value );
 				    	}
-				    	else		//´ëºĞ·ù 10ÀÌ ¾Æ´Ñ ¸Ş´º (»çÀÌµå, À½·á, ¼Ò½º)
+				    	else		//ëŒ€ë¶„ë¥˜ 10ì´ ì•„ë‹Œ ë©”ë‰´ (ì‚¬ì´ë“œ, ìŒë£Œ, ì†ŒìŠ¤)
 				    	{
 				    		cartSendDataInfo = {
-							    			cartAction         : document.frmOrder.cartAction.value          // Àå¹Ù±¸´ÏÃ³¸®
-				    					   ,cartMenuType       : document.frmOrder.cartMenuType.value        // ¸Ş´ºÅ¸ÀÔ
-										   ,cartMenuCode       : document.frmOrder.cartMenuCode.value        // ¸Ş´ºÄÚµå
-										   ,cartMenuName       : document.frmOrder.cartMenuName.value        // ¸Ş´º¸í
-										   ,cartMenuOrdCode    : document.frmOrder.cartMenuOrdCode.value     // ¸Ş´ºÁÖ¹®±¸ºĞÄÚµå(10:Á¤»ó,20:ÇÒÀÎ,30:¼­ºñ½º(¹«·á))
-										   ,cartMenuDivCode    : document.frmOrder.cartMenuDivCode.value     // ¸Ş´º±¸ºĞÄÚµå(10:´ÜÇ°,20:¼¼Æ®,30:ÇÏÇÁ&ÇÏÇÁ)
-										   ,cartMenuLagCode    : document.frmOrder.cartMenuLagCode.value     // ¸Ş´º´ëºĞ·ùÄÚµå
-										   ,cartMenuMidCode    : document.frmOrder.cartMenuMidCode.value     // ¸Ş´ºÁßºĞ·ùÄÚµå
-										   ,cartMenuSmlCode    : document.frmOrder.cartMenuSmlCode.value     // ¸Ş´º¼ÒºĞ·ùÄÚµå
-										   ,cartMenuSubCode    : document.frmOrder.cartMenuSubCode.value     // ¸Ş´º¼¼ºĞ·ùÄÚµå
-										   ,cartMenuPrice      : document.frmOrder.cartMenuPrice.value       // ¸Ş´ºÁÖ¹®´Ü°¡
-										   ,cartMenuQty        : document.frmOrder.cartMenuQty.value         // ¸Ş´ºÁÖ¹®¼ö·®
-										   ,cartMenuAmt        : document.frmOrder.cartMenuAmt.value         // ¸Ş´ºÁÖ¹®±İ¾×
-										   ,cartMenuDisRate    : document.frmOrder.cartMenuDisRate.value     // ¸Ş´ºÇÒÀÎÀ²
-										   ,cartMenuDisAmt     : document.frmOrder.cartMenuDisAmt.value      // ¸Ş´ºÇÒÀÎ±İ¾× 
-				    					   ,cartMenuCopDisAmt  : document.frmOrder.cartMenuCopDisAmt.value   // ¸Ş´º¼±°áÁ¦ÄíÆùÇÒÀÎ
-				    					   ,cartMenuNetSaleAmt : document.frmOrder.cartMenuNetSaleAmt.value  // ¸Ş´º¼ø¸ÅÃâ±İ¾×
-										   ,cartMenuPayAmt     : document.frmOrder.cartMenuPayAmt.value      // ¸Ş´º°áÁ¦±İ¾×
-				    					   ,cartMenuBakeCode   : document.frmOrder.cartMenuBakeCode.value    // ¸Ş´ºº£ÀÌÅ©ÄÚµå
-				    					   ,cartMenuCutCode    : document.frmOrder.cartMenuCutCode.value     // ¸Ş´ºÄÆÄÚµå
-				    					   ,cartMenuCheeseCode : document.frmOrder.cartMenuCheeseCode.value  // ¸Ş´ºÄ¡ÁîÄÚµå
-				    					   ,cartMenuSauceCode  : document.frmOrder.cartMenuSauceCode.value   // ¸Ş´º¼Ò½ºÄÚµå
-										   ,cartMenuMessage    : document.frmOrder.cartMenuMessage.value     // ¸Ş´ºÀü´Ş¸Ş¼¼Áö
-										   ,cartMenuSize       : document.frmOrder.cartMenuSize.value        // ¸Ş´º»çÀÌÁî
-										   ,cartMenuDough      : document.frmOrder.cartMenuDough.value       // ¸Ş´ºµµ¿ìÁ¾·ù
-										   ,cartMenuOption     : cartMenuOptions                             // ¸Ş´º¿É¼Ç
-										   ,cartECouponCompany : document.frmOrder.cartECouponCompany.value  // EÄíÆùÁ¦ÈŞ»ç
-										   ,cartECouponCode    : document.frmOrder.cartECouponCode.value     // EÄíÆùÄÚµå
-										   ,cartECouponNumber  : document.frmOrder.cartECouponNumber.value   // EÄíÆù¹øÈ£
+							    			cartAction         : document.frmOrder.cartAction.value          // ì¥ë°”êµ¬ë‹ˆì²˜ë¦¬
+				    					   ,cartMenuType       : document.frmOrder.cartMenuType.value        // ë©”ë‰´íƒ€ì…
+										   ,cartMenuCode       : document.frmOrder.cartMenuCode.value        // ë©”ë‰´ì½”ë“œ
+										   ,cartMenuName       : document.frmOrder.cartMenuName.value        // ë©”ë‰´ëª…
+										   ,cartMenuOrdCode    : document.frmOrder.cartMenuOrdCode.value     // ë©”ë‰´ì£¼ë¬¸êµ¬ë¶„ì½”ë“œ(10:ì •ìƒ,20:í• ì¸,30:ì„œë¹„ìŠ¤(ë¬´ë£Œ))
+										   ,cartMenuDivCode    : document.frmOrder.cartMenuDivCode.value     // ë©”ë‰´êµ¬ë¶„ì½”ë“œ(10:ë‹¨í’ˆ,20:ì„¸íŠ¸,30:í•˜í”„&í•˜í”„)
+										   ,cartMenuLagCode    : document.frmOrder.cartMenuLagCode.value     // ë©”ë‰´ëŒ€ë¶„ë¥˜ì½”ë“œ
+										   ,cartMenuMidCode    : document.frmOrder.cartMenuMidCode.value     // ë©”ë‰´ì¤‘ë¶„ë¥˜ì½”ë“œ
+										   ,cartMenuSmlCode    : document.frmOrder.cartMenuSmlCode.value     // ë©”ë‰´ì†Œë¶„ë¥˜ì½”ë“œ
+										   ,cartMenuSubCode    : document.frmOrder.cartMenuSubCode.value     // ë©”ë‰´ì„¸ë¶„ë¥˜ì½”ë“œ
+										   ,cartMenuPrice      : document.frmOrder.cartMenuPrice.value       // ë©”ë‰´ì£¼ë¬¸ë‹¨ê°€
+										   ,cartMenuQty        : document.frmOrder.cartMenuQty.value         // ë©”ë‰´ì£¼ë¬¸ìˆ˜ëŸ‰
+										   ,cartMenuAmt        : document.frmOrder.cartMenuAmt.value         // ë©”ë‰´ì£¼ë¬¸ê¸ˆì•¡
+										   ,cartMenuDisRate    : document.frmOrder.cartMenuDisRate.value     // ë©”ë‰´í• ì¸ìœ¨
+										   ,cartMenuDisAmt     : document.frmOrder.cartMenuDisAmt.value      // ë©”ë‰´í• ì¸ê¸ˆì•¡ 
+				    					   ,cartMenuCopDisAmt  : document.frmOrder.cartMenuCopDisAmt.value   // ë©”ë‰´ì„ ê²°ì œì¿ í°í• ì¸
+				    					   ,cartMenuNetSaleAmt : document.frmOrder.cartMenuNetSaleAmt.value  // ë©”ë‰´ìˆœë§¤ì¶œê¸ˆì•¡
+										   ,cartMenuPayAmt     : document.frmOrder.cartMenuPayAmt.value      // ë©”ë‰´ê²°ì œê¸ˆì•¡
+				    					   ,cartMenuBakeCode   : document.frmOrder.cartMenuBakeCode.value    // ë©”ë‰´ë² ì´í¬ì½”ë“œ
+				    					   ,cartMenuCutCode    : document.frmOrder.cartMenuCutCode.value     // ë©”ë‰´ì»·ì½”ë“œ
+				    					   ,cartMenuCheeseCode : document.frmOrder.cartMenuCheeseCode.value  // ë©”ë‰´ì¹˜ì¦ˆì½”ë“œ
+				    					   ,cartMenuSauceCode  : document.frmOrder.cartMenuSauceCode.value   // ë©”ë‰´ì†ŒìŠ¤ì½”ë“œ
+										   ,cartMenuMessage    : document.frmOrder.cartMenuMessage.value     // ë©”ë‰´ì „ë‹¬ë©”ì„¸ì§€
+										   ,cartMenuSize       : document.frmOrder.cartMenuSize.value        // ë©”ë‰´ì‚¬ì´ì¦ˆ
+										   ,cartMenuDough      : document.frmOrder.cartMenuDough.value       // ë©”ë‰´ë„ìš°ì¢…ë¥˜
+										   ,cartMenuOption     : cartMenuOptions                             // ë©”ë‰´ì˜µì…˜
+										   ,cartECouponCompany : document.frmOrder.cartECouponCompany.value  // Eì¿ í°ì œíœ´ì‚¬
+										   ,cartECouponCode    : document.frmOrder.cartECouponCode.value     // Eì¿ í°ì½”ë“œ
+										   ,cartECouponNumber  : document.frmOrder.cartECouponNumber.value   // Eì¿ í°ë²ˆí˜¸
 			           		       }; 
 							fnSaveForCart(cartSendDataInfo);
-				 			//console.log("3. in ÇÒÀÎ¸Ş´º ÀúÀå " + document.frmOrder.cartMenuName.value );
+				 			//console.log("3. in í• ì¸ë©”ë‰´ ì €ì¥ " + document.frmOrder.cartMenuName.value );
 				    	}
 			    	}
 				});/* end -- (".menuArea .p_menu").each */
@@ -2659,173 +2750,182 @@
 				$("#notice_limit").find(".alertBtn").focus();
 			}
     		
-	   	});/* end -- ÇÇÀÚ ¼ö·® Ã¼Å© */
+	   	});/* end -- í”¼ì ìˆ˜ëŸ‰ ì²´í¬ */
 	   	
 	}/* end -- fnPromotionAddCart */
 	
 </script>
 
 <form id="frmOrder" name="frmOrder" method="post" onsubmit="return false;">
-	<!-- °øÅë -->
-	<input type="hidden" id="onlineGroupCd"       name="onlineGroupCd"       value="" />  <!-- ¿Â¶óÀÎ ¸Ş´º±×·ìÄÚµå        -->
-	<input type="hidden" id="pizzaSelIdx"         name="pizzaSelIdx"         value="" />  <!-- ÇÇÀÚ ±×·ì¸Ş´º              --> 
-	<input type="hidden" id="menuSoldOutYn"       name="menuSoldOutYn"       value="" />  <!-- ¸Ş´º Ç°Àı ¿©ºÎ             -->
-	<!-- Àå¹Ù±¸´Ï (°øÅë) -->
-	<input type="hidden" id="cartAction"          name="cartAction"          value="" />  <!-- Àå¹Ù±¸´Ï Ã³¸®              -->
-	<!-- Àå¹Ù±¸´Ï (ÁÖ¹®) -->
-	<input type="hidden" id="cartOrdCustName"     name="cartOrdCustName"     value="" />  <!-- °í°´¸í                     -->
-	<input type="hidden" id="cartOrdCustPhone"    name="cartOrdCustPhone"    value="" />  <!-- ÀüÈ­¹øÈ£                   -->
-	<input type="hidden" id="cartOrdDivide"       name="cartOrdDevide"       value="" />  <!-- ÁÖ¹®±¸ºĞ(ÁÖ¹®À¯Çü)         -->
-	<input type="hidden" id="cartOrdReserve"      name="cartOrdReserve"      value="" />  <!-- ¿¹¾àÁÖ¹®¿©ºÎ               -->
-	<input type="hidden" id="cartOrdResDate"      name="cartOrdResDate"      value="" />  <!-- ¿¹¾àÀÏÀÚ                   -->
-	<input type="hidden" id="cartOrdResTime"      name="cartOrdResTime"      value="" />  <!-- ¿¹¾à½Ã°£                   -->
-	<input type="hidden" id="cartOrdDevAddr1"     name="cartOrdDevAddr1"     value="" />  <!-- ¹è´ŞÁöÁÖ¼Ò1                -->
-	<input type="hidden" id="cartOrdDevAddr2"     name="cartOrdDevAddr2"     value="" />  <!-- ¹è´ŞÁöÁÖ¼Ò2                -->
-	<input type="hidden" id="cartOrdDevAddr3"     name="cartOrdDevAddr3"     value="" />  <!-- ¹è´ŞÁöÁÖ¼Ò3                -->
-	<input type="hidden" id="cartOrdDevAddr4"     name="cartOrdDevAddr4"     value="" />  <!-- ¹è´ŞÁöÁÖ¼Ò4                -->
+	<!-- ê³µí†µ -->
+	<input type="hidden" id="onlineGroupCd"       name="onlineGroupCd"       value="" />  <!-- ì˜¨ë¼ì¸ ë©”ë‰´ê·¸ë£¹ì½”ë“œ        -->
+	<input type="hidden" id="pizzaSelIdx"         name="pizzaSelIdx"         value="" />  <!-- í”¼ì ê·¸ë£¹ë©”ë‰´              --> 
+	<input type="hidden" id="menuSoldOutYn"       name="menuSoldOutYn"       value="" />  <!-- ë©”ë‰´ í’ˆì ˆ ì—¬ë¶€             -->
+	<!-- ì¥ë°”êµ¬ë‹ˆ (ê³µí†µ) -->
+	<input type="hidden" id="cartAction"          name="cartAction"          value="" />  <!-- ì¥ë°”êµ¬ë‹ˆ ì²˜ë¦¬              -->
+	<!-- ì¥ë°”êµ¬ë‹ˆ (ì£¼ë¬¸) -->
+	<input type="hidden" id="cartOrdCustName"     name="cartOrdCustName"     value="" />  <!-- ê³ ê°ëª…                     -->
+	<input type="hidden" id="cartOrdCustPhone"    name="cartOrdCustPhone"    value="" />  <!-- ì „í™”ë²ˆí˜¸                   -->
+	<input type="hidden" id="cartOrdDivide"       name="cartOrdDevide"       value="" />  <!-- ì£¼ë¬¸êµ¬ë¶„(ì£¼ë¬¸ìœ í˜•)         -->
+	<input type="hidden" id="cartOrdReserve"      name="cartOrdReserve"      value="" />  <!-- ì˜ˆì•½ì£¼ë¬¸ì—¬ë¶€               -->
+	<input type="hidden" id="cartOrdResDate"      name="cartOrdResDate"      value="" />  <!-- ì˜ˆì•½ì¼ì                   -->
+	<input type="hidden" id="cartOrdResTime"      name="cartOrdResTime"      value="" />  <!-- ì˜ˆì•½ì‹œê°„                   -->
+	<input type="hidden" id="cartOrdDevAddr1"     name="cartOrdDevAddr1"     value="" />  <!-- ë°°ë‹¬ì§€ì£¼ì†Œ1                -->
+	<input type="hidden" id="cartOrdDevAddr2"     name="cartOrdDevAddr2"     value="" />  <!-- ë°°ë‹¬ì§€ì£¼ì†Œ2                -->
+	<input type="hidden" id="cartOrdDevAddr3"     name="cartOrdDevAddr3"     value="" />  <!-- ë°°ë‹¬ì§€ì£¼ì†Œ3                -->
+	<input type="hidden" id="cartOrdDevAddr4"     name="cartOrdDevAddr4"     value="" />  <!-- ë°°ë‹¬ì§€ì£¼ì†Œ4                -->
 	<input type="hidden" id="cartOrdAddressID"    name="cartOrdAddressID"    value="" />  <!-- ADDRESS_ID                 -->
-	<input type="hidden" id="cartOrdStoreCode"    name="cartOrdStoreCode"    value="" />  <!-- ¸ÅÀåÄÚµå                   -->
-	<input type="hidden" id="cartOrdStoreName"    name="cartOrdStoreName"    value="" />  <!-- ¸ÅÀå¸í                     -->
-	<input type="hidden" id="cartOrdSectorCode"   name="cartOrdSectorCode"   value="" />  <!-- ¸ÅÀå¼½ÅÍÄÚµå               -->
-	<input type="hidden" id="cartOrdSectorName"   name="cartOrdSectorName"   value="" />  <!-- ¸ÅÀå¼½ÅÍ¸í                 -->
-	<input type="hidden" id="cartOrdDeliveryTime" name="cartOrdDeliveryTime" value="" />  <!-- ¼½ÅÍ¿¹»ó½Ã°£               -->
-	<input type="hidden" id="cartOrdDeliveryYN"   name="cartOrdDeliveryYN"   value="" />  <!-- ¹è´Ş°¡´É¿©ºÎ               -->
-	<input type="hidden" id="cartOrdNewAddressYN" name="cartOrdNewAddressYN" value="" />  <!-- ¹è´ŞÁöÁÖ¼Ò½Å±ÔÃß°¡¿©ºÎ     -->
-	<!-- Àå¹Ù±¸´Ï (ÁÖ¹®»ó¼¼ : ¸Ş´º) -->
-	<input type="hidden" id="cartMenuType"        name="cartMenuType"        value="" />  <!-- ¸Ş´ºÅ¸ÀÔ                   -->
-	<input type="hidden" id="cartMenuCode"        name="cartMenuCode"        value="" />  <!-- ¸Ş´ºÄÚµå                   -->
-	<input type="hidden" id="cartMenuName"        name="cartMenuName"        value="" />  <!-- ¸Ş´º¸í                     -->
-	<input type="hidden" id="cartMenuOrdCode"     name="cartMenuOrdCode"     value="" />  <!-- ¸Ş´ºÁÖ¹®±¸ºĞÄÚµå           --> <!-- 10:Á¤»ó,20:ÇÒÀÎ,30:¼­ºñ½º(¹«·á) -->
-	<input type="hidden" id="cartMenuDivCode"     name="cartMenuDivCode"     value="" />  <!-- ¸Ş´º±¸ºĞÄÚµå               --> <!-- 10:´ÜÇ°,20:¼¼Æ®,30:ÇÏÇÁ&ÇÏÇÁ -->
-	<input type="hidden" id="cartMenuLagCode"     name="cartMenuLagCode"     value="" />  <!-- ¸Ş´º´ëºĞ·ùÄÚµå             -->
-	<input type="hidden" id="cartMenuMidCode"     name="cartMenuMidCode"     value="" />  <!-- ¸Ş´ºÁßºĞ·ùÄÚµå             -->
-	<input type="hidden" id="cartMenuSmlCode"     name="cartMenuSmlCode"     value="" />  <!-- ¸Ş´º¼ÒºĞ·ùÄÚµå             -->
-	<input type="hidden" id="cartMenuSubCode"     name="cartMenuSubCode"     value="" />  <!-- ¸Ş´º¼¼ºĞ·ùÄÚµå             -->
-	<input type="hidden" id="cartMenuPrice"       name="cartMenuPrice"       value="" />  <!-- ¸Ş´ºÁÖ¹®´Ü°¡               -->
-	<input type="hidden" id="cartMenuQty"         name="cartMenuQty"         value="" />  <!-- ¸Ş´ºÁÖ¹®¼ö·®               -->
-	<input type="hidden" id="cartMenuAmt"         name="cartMenuAmt"         value="" />  <!-- ¸Ş´ºÁÖ¹®±İ¾×               -->
-	<input type="hidden" id="cartMenuDisRate"     name="cartMenuDisRate"     value="" />  <!-- ¸Ş´ºÇÒÀÎÀ²                 -->
-	<input type="hidden" id="cartMenuDisAmt"      name="cartMenuDisAmt"      value="" />  <!-- ¸Ş´ºÇÒÀÎ±İ¾×               -->
-	<input type="hidden" id="cartMenuCopDisAmt"   name="cartMenuCopDisAmt"   value="" />  <!-- ¸Ş´º¼±°áÁ¦ÄíÆùÇÒÀÎ         -->
-	<input type="hidden" id="cartMenuNetSaleAmt"  name="cartMenuNetSaleAmt"  value="" />  <!-- ¸Ş´º¼ø¸ÅÃâ±İ¾×             -->
-	<input type="hidden" id="cartMenuPayAmt"      name="cartMenuPayAmt"      value="" />  <!-- ¸Ş´º°áÁ¦±İ¾×               -->
-	<input type="hidden" id="cartMenuBakeCode"    name="cartMenuBakeCode"    value="" />  <!-- ¸Ş´ºº£ÀÌÅ©ÄÚµå             -->
-	<input type="hidden" id="cartMenuCutCode"     name="cartMenuCutCode"     value="" />  <!-- ¸Ş´ºÄÆÄÚµå                 -->
-	<input type="hidden" id="cartMenuCheeseCode"  name="cartMenuCheeseCode"  value="" />  <!-- ¸Ş´ºÄ¡ÁîÄÚµå               -->
-	<input type="hidden" id="cartMenuSauceCode"   name="cartMenuSauceCode"   value="" />  <!-- ¸Ş´º¼Ò½ºÄÚµå               -->
-	<input type="hidden" id="cartMenuMessage"     name="cartMenuMessage"     value="" />  <!-- ¸Ş´ºÀü´Ş¸Ş¼¼Áö             -->
-	<input type="hidden" id="cartMenuSize"        name="cartMenuSize"        value="" />  <!-- ¸Ş´º»çÀÌÁî                 -->
-	<input type="hidden" id="cartMenuDough"       name="cartMenuDough"       value="" />  <!-- ¸Ş´ºµµ¿ìÁ¾·ù               -->
-	<input type="hidden" id="cartECouponCompany"  name="cartECouponCompany"  value="" />  <!-- EÄíÆùÁ¦ÈŞ»ç                -->
-	<input type="hidden" id="cartECouponCode"     name="cartECouponCode"     value="" />  <!-- EÄíÆùÄÚµå                  -->
-	<input type="hidden" id="cartECouponNumber"   name="cartECouponNumber"   value="" />  <!-- EÄíÆù¹øÈ£                  -->
-	<!-- È­¸é : ÇÏÇÁ&ÇÏÇÁ -->
-	<input type="hidden" id="halfMenuCode1"       name="halfMenuCode1"       value="" />  <!-- (¿ŞÂÊ)ÇÏÇÁ¸Ş´ºÄÚµå         -->
-	<input type="hidden" id="halfMenuName1"       name="halfMenuName1"       value="" />  <!-- (¿ŞÂÊ)ÇÏÇÁ¸Ş´º¸í           -->
-	<input type="hidden" id="halfMenuLagCode1"    name="halfMenuLagCode1"    value="" />  <!-- (¿ŞÂÊ)ÇÏÇÁ¸Ş´º´ëºĞ·ùÄÚµå   -->
-	<input type="hidden" id="halfMenuMidCode1"    name="halfMenuMidCode1"    value="" />  <!-- (¿ŞÂÊ)ÇÏÇÁ¸Ş´ºÁßºĞ·ùÄÚµå   -->
-	<input type="hidden" id="halfMenuSmlCode1"    name="halfMenuSmlCode1"    value="" />  <!-- (¿ŞÂÊ)ÇÏÇÁ¸Ş´º¼ÒºĞ·ùÄÚµå   -->
-	<input type="hidden" id="halfMenuSubCode1"    name="halfMenuSubCode1"    value="" />  <!-- (¿ŞÂÊ)ÇÏÇÁ¸Ş´º¼¼ºĞ·ùÄÚµå   -->
-	<input type="hidden" id="halfMenuPrice1"      name="halfMenuPrice1"      value="" />  <!-- (¿ŞÂÊ)ÇÏÇÁ¸Ş´º´Ü°¡         -->
-	<input type="hidden" id="halfMenuQty1"        name="halfMenuQty1"        value="" />  <!-- (¿ŞÂÊ)ÇÏÇÁ¸Ş´º¼ö·®         -->
-	<input type="hidden" id="halfMenuAmt1"        name="halfMenuAmt1"        value="" />  <!-- (¿ŞÂÊ)ÇÏÇÁ¸Ş´º±İ¾×         -->
-	<input type="hidden" id="halfMenuSize1"       name="halfMenuSize1"       value="" />  <!-- (¿ŞÂÊ)ÇÏÇÁ¸Ş´º»çÀÌÁî       -->
-	<input type="hidden" id="halfMenuDough1"      name="halfMenuDough1"      value="" />  <!-- (¿ŞÂÊ)ÇÏÇÁ¸Ş´ºµµ¿ìÁ¾·ù     -->
-	<input type="hidden" id="halfMenuCode2"       name="halfMenuCode2"       value="" />  <!-- (¿À¸¥ÂÊ)ÇÏÇÁ¸Ş´ºÄÚµå       -->
-	<input type="hidden" id="halfMenuName2"       name="halfMenuName2"       value="" />  <!-- (¿À¸¥ÂÊ)ÇÏÇÁ¸Ş´º¸í         -->
-	<input type="hidden" id="halfMenuLagCode2"    name="halfMenuLagCode2"    value="" />  <!-- (¿À¸¥ÂÊ)ÇÏÇÁ¸Ş´º´ëºĞ·ùÄÚµå -->
-	<input type="hidden" id="halfMenuMidCode2"    name="halfMenuMidCode2"    value="" />  <!-- (¿À¸¥ÂÊ)ÇÏÇÁ¸Ş´ºÁßºĞ·ùÄÚµå -->
-	<input type="hidden" id="halfMenuSmlCode2"    name="halfMenuSmlCode2"    value="" />  <!-- (¿À¸¥ÂÊ)ÇÏÇÁ¸Ş´º¼ÒºĞ·ùÄÚµå -->
-	<input type="hidden" id="halfMenuSubCode2"    name="halfMenuSubCode2"    value="" />  <!-- (¿À¸¥ÂÊ)ÇÏÇÁ¸Ş´º¼¼ºĞ·ùÄÚµå -->
-	<input type="hidden" id="halfMenuPrice2"      name="halfMenuPrice2"      value="" />  <!-- (¿À¸¥ÂÊ)ÇÏÇÁ¸Ş´º´Ü°¡       -->
-	<input type="hidden" id="halfMenuQty2"        name="halfMenuQty2"        value="" />  <!-- (¿À¸¥ÂÊ)ÇÏÇÁ¸Ş´º¼ö·®       -->
-	<input type="hidden" id="halfMenuAmt2"        name="halfMenuAmt2"        value="" />  <!-- (¿À¸¥ÂÊ)ÇÏÇÁ¸Ş´º±İ¾×       -->
-	<input type="hidden" id="halfMenuSize2"       name="halfMenuSize2"       value="" />  <!-- (¿À¸¥ÂÊ)ÇÏÇÁ¸Ş´º»çÀÌÁî     -->
-	<input type="hidden" id="halfMenuDough2"      name="halfMenuDough2"      value="" />  <!-- (¿À¸¥ÂÊ)ÇÏÇÁ¸Ş´ºµµ¿ìÁ¾·ù   -->
-	<!-- È­¸é : EÄíÆù -->
-	<input type="hidden" id="eCouponCompany"      name="eCouponCompany"      value="" />  <!-- EÄíÆùÁ¦ÈŞ»ç                -->
-	<input type="hidden" id="eCouponCode"         name="eCouponCode"         value="" />  <!-- EÄíÆùÄÚµå                  -->
-	<input type="hidden" id="eCouponName"         name="eCouponName"         value="" />  <!-- EÄíÆù¸í                    -->
-	<input type="hidden" id="eCouponNumber"       name="eCouponNumber"       value="" />  <!-- EÄíÆù¹øÈ£                  -->
-	<!-- È­¸é : EÄíÆù¸Ş´º -->
-	<input type="hidden" id="ecopMenuCode"        name="ecopMenuCode"        value="" />  <!-- EÄíÆù¸Ş´ºÄÚµå              -->
-	<input type="hidden" id="ecopMenuName"        name="ecopMenuName"        value="" />  <!-- EÄíÆù¸Ş´º¸í                -->
-	<input type="hidden" id="ecopMenuDivCode"     name="ecopMenuDivCode"     value="" />  <!-- EÄíÆù¸Ş´º±¸ºĞÄÚµå          -->
-	<input type="hidden" id="ecopMenuLagCode"     name="ecopMenuLagCode"     value="" />  <!-- EÄíÆù¸Ş´º´ëºĞ·ùÄÚµå        -->
-	<input type="hidden" id="ecopMenuMidCode"     name="ecopMenuMidCode"     value="" />  <!-- EÄíÆù¸Ş´ºÁßºĞ·ùÄÚµå        -->
-	<input type="hidden" id="ecopMenuSmlCode"     name="ecopMenuSmlCode"     value="" />  <!-- EÄíÆù¸Ş´º¼ÒºĞ·ùÄÚµå        -->
-	<input type="hidden" id="ecopMenuSubCode"     name="ecopMenuSubCode"     value="" />  <!-- EÄíÆù¸Ş´º¼¼ºĞ·ùÄÚµå        -->
-	<input type="hidden" id="ecopMenuPrice"       name="ecopMenuPrice"       value="" />  <!-- EÄíÆù¸Ş´º´Ü°¡              -->
-	<input type="hidden" id="ecopMenuDiscAmt"     name="ecopMenuDiscAmt"     value="" />  <!-- EÄíÆù¸Ş´ºÇÒÀÎ±İ¾×          -->
-	<input type="hidden" id="ecopMenuSaleAmt"     name="ecopMenuSaleAmt"     value="" />  <!-- EÄíÆù¸Ş´ºÆÇ¸Å±İ¾×          -->
-	<input type="hidden" id="ecopMenuSize"        name="ecopMenuSize"        value="" />  <!-- EÄíÆù¸Ş´º»çÀÌÁî            -->
+	<input type="hidden" id="cartOrdStoreCode"    name="cartOrdStoreCode"    value="" />  <!-- ë§¤ì¥ì½”ë“œ                   -->
+	<input type="hidden" id="cartOrdStoreName"    name="cartOrdStoreName"    value="" />  <!-- ë§¤ì¥ëª…                     -->
+	<input type="hidden" id="cartOrdSectorCode"   name="cartOrdSectorCode"   value="" />  <!-- ë§¤ì¥ì„¹í„°ì½”ë“œ               -->
+	<input type="hidden" id="cartOrdSectorName"   name="cartOrdSectorName"   value="" />  <!-- ë§¤ì¥ì„¹í„°ëª…                 -->
+	<input type="hidden" id="cartOrdDeliveryTime" name="cartOrdDeliveryTime" value="" />  <!-- ì„¹í„°ì˜ˆìƒì‹œê°„               -->
+	<input type="hidden" id="cartOrdDeliveryYN"   name="cartOrdDeliveryYN"   value="" />  <!-- ë°°ë‹¬ê°€ëŠ¥ì—¬ë¶€               -->
+	<input type="hidden" id="cartOrdNewAddressYN" name="cartOrdNewAddressYN" value="" />  <!-- ë°°ë‹¬ì§€ì£¼ì†Œì‹ ê·œì¶”ê°€ì—¬ë¶€     -->
+	<!-- ì¥ë°”êµ¬ë‹ˆ (ì£¼ë¬¸ìƒì„¸ : ë©”ë‰´) -->
+	<input type="hidden" id="cartMenuType"        name="cartMenuType"        value="" />  <!-- ë©”ë‰´íƒ€ì…                   -->
+	<input type="hidden" id="cartMenuCode"        name="cartMenuCode"        value="" />  <!-- ë©”ë‰´ì½”ë“œ                   -->
+	<input type="hidden" id="cartMenuName"        name="cartMenuName"        value="" />  <!-- ë©”ë‰´ëª…                     -->
+	<input type="hidden" id="cartMenuOrdCode"     name="cartMenuOrdCode"     value="" />  <!-- ë©”ë‰´ì£¼ë¬¸êµ¬ë¶„ì½”ë“œ           --> <!-- 10:ì •ìƒ,20:í• ì¸,30:ì„œë¹„ìŠ¤(ë¬´ë£Œ) -->
+	<input type="hidden" id="cartMenuDivCode"     name="cartMenuDivCode"     value="" />  <!-- ë©”ë‰´êµ¬ë¶„ì½”ë“œ               --> <!-- 10:ë‹¨í’ˆ,20:ì„¸íŠ¸,30:í•˜í”„&í•˜í”„ -->
+	<input type="hidden" id="cartMenuLagCode"     name="cartMenuLagCode"     value="" />  <!-- ë©”ë‰´ëŒ€ë¶„ë¥˜ì½”ë“œ             -->
+	<input type="hidden" id="cartMenuMidCode"     name="cartMenuMidCode"     value="" />  <!-- ë©”ë‰´ì¤‘ë¶„ë¥˜ì½”ë“œ             -->
+	<input type="hidden" id="cartMenuSmlCode"     name="cartMenuSmlCode"     value="" />  <!-- ë©”ë‰´ì†Œë¶„ë¥˜ì½”ë“œ             -->
+	<input type="hidden" id="cartMenuSubCode"     name="cartMenuSubCode"     value="" />  <!-- ë©”ë‰´ì„¸ë¶„ë¥˜ì½”ë“œ             -->
+	<input type="hidden" id="cartMenuPrice"       name="cartMenuPrice"       value="" />  <!-- ë©”ë‰´ì£¼ë¬¸ë‹¨ê°€               -->
+	<input type="hidden" id="cartMenuQty"         name="cartMenuQty"         value="" />  <!-- ë©”ë‰´ì£¼ë¬¸ìˆ˜ëŸ‰               -->
+	<input type="hidden" id="cartMenuAmt"         name="cartMenuAmt"         value="" />  <!-- ë©”ë‰´ì£¼ë¬¸ê¸ˆì•¡               -->
+	<input type="hidden" id="cartMenuDisRate"     name="cartMenuDisRate"     value="" />  <!-- ë©”ë‰´í• ì¸ìœ¨                 -->
+	<input type="hidden" id="cartMenuDisAmt"      name="cartMenuDisAmt"      value="" />  <!-- ë©”ë‰´í• ì¸ê¸ˆì•¡               -->
+	<input type="hidden" id="cartMenuCopDisAmt"   name="cartMenuCopDisAmt"   value="" />  <!-- ë©”ë‰´ì„ ê²°ì œì¿ í°í• ì¸         -->
+	<input type="hidden" id="cartMenuNetSaleAmt"  name="cartMenuNetSaleAmt"  value="" />  <!-- ë©”ë‰´ìˆœë§¤ì¶œê¸ˆì•¡             -->
+	<input type="hidden" id="cartMenuPayAmt"      name="cartMenuPayAmt"      value="" />  <!-- ë©”ë‰´ê²°ì œê¸ˆì•¡               -->
+	<input type="hidden" id="cartMenuBakeCode"    name="cartMenuBakeCode"    value="" />  <!-- ë©”ë‰´ë² ì´í¬ì½”ë“œ             -->
+	<input type="hidden" id="cartMenuCutCode"     name="cartMenuCutCode"     value="" />  <!-- ë©”ë‰´ì»·ì½”ë“œ                 -->
+	<input type="hidden" id="cartMenuCheeseCode"  name="cartMenuCheeseCode"  value="" />  <!-- ë©”ë‰´ì¹˜ì¦ˆì½”ë“œ               -->
+	<input type="hidden" id="cartMenuSauceCode"   name="cartMenuSauceCode"   value="" />  <!-- ë©”ë‰´ì†ŒìŠ¤ì½”ë“œ               -->
+	<input type="hidden" id="cartMenuMessage"     name="cartMenuMessage"     value="" />  <!-- ë©”ë‰´ì „ë‹¬ë©”ì„¸ì§€             -->
+	<input type="hidden" id="cartMenuSize"        name="cartMenuSize"        value="" />  <!-- ë©”ë‰´ì‚¬ì´ì¦ˆ                 -->
+	<input type="hidden" id="cartMenuDough"       name="cartMenuDough"       value="" />  <!-- ë©”ë‰´ë„ìš°ì¢…ë¥˜               -->
+	<input type="hidden" id="cartECouponCompany"  name="cartECouponCompany"  value="" />  <!-- Eì¿ í°ì œíœ´ì‚¬                -->
+	<input type="hidden" id="cartECouponCode"     name="cartECouponCode"     value="" />  <!-- Eì¿ í°ì½”ë“œ                  -->
+	<input type="hidden" id="cartECouponNumber"   name="cartECouponNumber"   value="" />  <!-- Eì¿ í°ë²ˆí˜¸                  -->
+	<!-- í™”ë©´ : í•˜í”„&í•˜í”„ -->
+	<input type="hidden" id="halfMenuCode1"       name="halfMenuCode1"       value="" />  <!-- (ì™¼ìª½)í•˜í”„ë©”ë‰´ì½”ë“œ         -->
+	<input type="hidden" id="halfMenuName1"       name="halfMenuName1"       value="" />  <!-- (ì™¼ìª½)í•˜í”„ë©”ë‰´ëª…           -->
+	<input type="hidden" id="halfMenuLagCode1"    name="halfMenuLagCode1"    value="" />  <!-- (ì™¼ìª½)í•˜í”„ë©”ë‰´ëŒ€ë¶„ë¥˜ì½”ë“œ   -->
+	<input type="hidden" id="halfMenuMidCode1"    name="halfMenuMidCode1"    value="" />  <!-- (ì™¼ìª½)í•˜í”„ë©”ë‰´ì¤‘ë¶„ë¥˜ì½”ë“œ   -->
+	<input type="hidden" id="halfMenuSmlCode1"    name="halfMenuSmlCode1"    value="" />  <!-- (ì™¼ìª½)í•˜í”„ë©”ë‰´ì†Œë¶„ë¥˜ì½”ë“œ   -->
+	<input type="hidden" id="halfMenuSubCode1"    name="halfMenuSubCode1"    value="" />  <!-- (ì™¼ìª½)í•˜í”„ë©”ë‰´ì„¸ë¶„ë¥˜ì½”ë“œ   -->
+	<input type="hidden" id="halfMenuPrice1"      name="halfMenuPrice1"      value="" />  <!-- (ì™¼ìª½)í•˜í”„ë©”ë‰´ë‹¨ê°€         -->
+	<input type="hidden" id="halfMenuQty1"        name="halfMenuQty1"        value="" />  <!-- (ì™¼ìª½)í•˜í”„ë©”ë‰´ìˆ˜ëŸ‰         -->
+	<input type="hidden" id="halfMenuAmt1"        name="halfMenuAmt1"        value="" />  <!-- (ì™¼ìª½)í•˜í”„ë©”ë‰´ê¸ˆì•¡         -->
+	<input type="hidden" id="halfMenuSize1"       name="halfMenuSize1"       value="" />  <!-- (ì™¼ìª½)í•˜í”„ë©”ë‰´ì‚¬ì´ì¦ˆ       -->
+	<input type="hidden" id="halfMenuDough1"      name="halfMenuDough1"      value="" />  <!-- (ì™¼ìª½)í•˜í”„ë©”ë‰´ë„ìš°ì¢…ë¥˜     -->
+	<input type="hidden" id="halfMenuCode2"       name="halfMenuCode2"       value="" />  <!-- (ì˜¤ë¥¸ìª½)í•˜í”„ë©”ë‰´ì½”ë“œ       -->
+	<input type="hidden" id="halfMenuName2"       name="halfMenuName2"       value="" />  <!-- (ì˜¤ë¥¸ìª½)í•˜í”„ë©”ë‰´ëª…         -->
+	<input type="hidden" id="halfMenuLagCode2"    name="halfMenuLagCode2"    value="" />  <!-- (ì˜¤ë¥¸ìª½)í•˜í”„ë©”ë‰´ëŒ€ë¶„ë¥˜ì½”ë“œ -->
+	<input type="hidden" id="halfMenuMidCode2"    name="halfMenuMidCode2"    value="" />  <!-- (ì˜¤ë¥¸ìª½)í•˜í”„ë©”ë‰´ì¤‘ë¶„ë¥˜ì½”ë“œ -->
+	<input type="hidden" id="halfMenuSmlCode2"    name="halfMenuSmlCode2"    value="" />  <!-- (ì˜¤ë¥¸ìª½)í•˜í”„ë©”ë‰´ì†Œë¶„ë¥˜ì½”ë“œ -->
+	<input type="hidden" id="halfMenuSubCode2"    name="halfMenuSubCode2"    value="" />  <!-- (ì˜¤ë¥¸ìª½)í•˜í”„ë©”ë‰´ì„¸ë¶„ë¥˜ì½”ë“œ -->
+	<input type="hidden" id="halfMenuPrice2"      name="halfMenuPrice2"      value="" />  <!-- (ì˜¤ë¥¸ìª½)í•˜í”„ë©”ë‰´ë‹¨ê°€       -->
+	<input type="hidden" id="halfMenuQty2"        name="halfMenuQty2"        value="" />  <!-- (ì˜¤ë¥¸ìª½)í•˜í”„ë©”ë‰´ìˆ˜ëŸ‰       -->
+	<input type="hidden" id="halfMenuAmt2"        name="halfMenuAmt2"        value="" />  <!-- (ì˜¤ë¥¸ìª½)í•˜í”„ë©”ë‰´ê¸ˆì•¡       -->
+	<input type="hidden" id="halfMenuSize2"       name="halfMenuSize2"       value="" />  <!-- (ì˜¤ë¥¸ìª½)í•˜í”„ë©”ë‰´ì‚¬ì´ì¦ˆ     -->
+	<input type="hidden" id="halfMenuDough2"      name="halfMenuDough2"      value="" />  <!-- (ì˜¤ë¥¸ìª½)í•˜í”„ë©”ë‰´ë„ìš°ì¢…ë¥˜   -->
+	<!-- í™”ë©´ : Eì¿ í° -->
+	<input type="hidden" id="eCouponCompany"      name="eCouponCompany"      value="" />  <!-- Eì¿ í°ì œíœ´ì‚¬                -->
+	<input type="hidden" id="eCouponCode"         name="eCouponCode"         value="" />  <!-- Eì¿ í°ì½”ë“œ                  -->
+	<input type="hidden" id="eCouponName"         name="eCouponName"         value="" />  <!-- Eì¿ í°ëª…                    -->
+	<input type="hidden" id="eCouponNumber"       name="eCouponNumber"       value="" />  <!-- Eì¿ í°ë²ˆí˜¸                  -->
+	<!-- í™”ë©´ : Eì¿ í°ë©”ë‰´ -->
+	<input type="hidden" id="ecopMenuCode"        name="ecopMenuCode"        value="" />  <!-- Eì¿ í°ë©”ë‰´ì½”ë“œ              -->
+	<input type="hidden" id="ecopMenuName"        name="ecopMenuName"        value="" />  <!-- Eì¿ í°ë©”ë‰´ëª…                -->
+	<input type="hidden" id="ecopMenuDivCode"     name="ecopMenuDivCode"     value="" />  <!-- Eì¿ í°ë©”ë‰´êµ¬ë¶„ì½”ë“œ          -->
+	<input type="hidden" id="ecopMenuLagCode"     name="ecopMenuLagCode"     value="" />  <!-- Eì¿ í°ë©”ë‰´ëŒ€ë¶„ë¥˜ì½”ë“œ        -->
+	<input type="hidden" id="ecopMenuMidCode"     name="ecopMenuMidCode"     value="" />  <!-- Eì¿ í°ë©”ë‰´ì¤‘ë¶„ë¥˜ì½”ë“œ        -->
+	<input type="hidden" id="ecopMenuSmlCode"     name="ecopMenuSmlCode"     value="" />  <!-- Eì¿ í°ë©”ë‰´ì†Œë¶„ë¥˜ì½”ë“œ        -->
+	<input type="hidden" id="ecopMenuSubCode"     name="ecopMenuSubCode"     value="" />  <!-- Eì¿ í°ë©”ë‰´ì„¸ë¶„ë¥˜ì½”ë“œ        -->
+	<input type="hidden" id="ecopMenuPrice"       name="ecopMenuPrice"       value="" />  <!-- Eì¿ í°ë©”ë‰´ë‹¨ê°€              -->
+	<input type="hidden" id="ecopMenuDiscAmt"     name="ecopMenuDiscAmt"     value="" />  <!-- Eì¿ í°ë©”ë‰´í• ì¸ê¸ˆì•¡          -->
+	<input type="hidden" id="ecopMenuSaleAmt"     name="ecopMenuSaleAmt"     value="" />  <!-- Eì¿ í°ë©”ë‰´íŒë§¤ê¸ˆì•¡          -->
+	<input type="hidden" id="ecopMenuSize"        name="ecopMenuSize"        value="" />  <!-- Eì¿ í°ë©”ë‰´ì‚¬ì´ì¦ˆ            -->	
+	<!-- ì£¼ë¬¸  -->
+	<input type="hidden" id="_menuid"         name="_menuid"          value="" />  <!-- ë©”ë‰´ id				-->
+	<input type="hidden" id="_imagepathorder" name="_imagepathorder"  value="" />  <!-- ì˜¨ë¼ì¸ì£¼ë¬¸ ë©”ë‰´ ì´ë¯¸ì§€ ê²½ë¡œ	-->
+	<input type="hidden" id="_name" name="_name"  value="" />  					   <!-- ì œí’ˆëª…	-->
+	<input type="hidden" id="_size" name="_size"  value="" />  				       <!-- ì‚¬ì´ì¦ˆ	-->
+	<input type="hidden" id="_cnt_opt"        name="_cnt_opt"         value="" />  <!-- ìˆ˜ëŸ‰					-->
+	<input type="hidden" id="_price"          name="_price"           value="" />  <!-- ê¸ˆì•¡					-->
+	<input type="hidden" id="_consist"        name="_consist"         value="" />  <!-- ë©”ë‰´ êµ¬ì„±				-->
+	
 
-	<!-- ¸Ş´º -->
+	<!-- ë©”ë‰´ -->
 	<!-- con_container -->
 	<div id="con_container">
   		<!-- conternts --> 
   		<div id="contents">
-    		<h2 class="hidden"><!--¿À¸®Áö³Î ¾À--></h2>
+    		<h2 class="hidden"><!--ì˜¤ë¦¬ì§€ë„ ì”¬--></h2>
     		<!-- cont --> 
     		<div class="cont">
       			<!-- menuNavi_section -->
       			<div id="menuNavi_section">
         			<div class="pizza">
-          				<h3 class="hidden">ÇÇÀÚ</h3>
+          				<h3 class="hidden">í”¼ì</h3>
           				<ul class="pizza_list">
-            				<!-- <li><a href="javascript:fnSelMenuGroup('0', '00' );">ÀÌ´ŞÀÇ ÇÁ·Î¸ğ¼Ç</a></li> -->
+            				<!-- <li><a href="javascript:fnSelMenuGroup('0', '00' );">ì´ë‹¬ì˜ í”„ë¡œëª¨ì…˜</a></li> -->
             				<li>
-            					<a href="orderAction.action?menuId=pj_2002&pizzaSelIdx=0" style="background: url(../assets/img/order/ordMenu_pizza1.gif) no-repeat">º£½ºÆ®¸Ş´º</a>
+            					<a href="orderAction.action?menuId=pj_2002&pizzaSelIdx=0" style="background: url(../assets/img/order/ordMenu_pizza1.gif) no-repeat">ë² ìŠ¤íŠ¸ë©”ë‰´</a>
             				</li>
             				<li>
-            					<a href="orderAction.action?menuId=pj_2003&pizzaSelIdx=1" style="background: url(../assets/img/order/ordMenu_pizza2.gif) no-repeat;">¿À¸®Áö³Î</a>
+            					<a href="orderAction.action?menuId=pj_2003&pizzaSelIdx=1" style="background: url(../assets/img/order/ordMenu_pizza2.gif) no-repeat;">ì˜¤ë¦¬ì§€ë„</a>
             				</li>
             				<li>
-            					<a href="orderAction.action?menuId=pj_2004&pizzaSelIdx=2" style="background: url(../assets/img/order/ordMenu_pizza3.gif) no-repeat;">°ñµå¸µ</a>
+            					<a href="orderAction.action?menuId=pj_2004&pizzaSelIdx=2" style="background: url(../assets/img/order/ordMenu_pizza3.gif) no-repeat;">ê³¨ë“œë§</a>
             				</li>
             				<li>
-            					<a href="orderAction.action?menuId=pj_2005&pizzaSelIdx=3" style="background: url(../assets/img/order/ordMenu_pizza4.gif) no-repeat;">Ä¡Áî·Ñ</a>
+            					<a href="orderAction.action?menuId=pj_2005&pizzaSelIdx=3" style="background: url(../assets/img/order/ordMenu_pizza4.gif) no-repeat;">ì¹˜ì¦ˆë¡¤</a>
             				</li>
             				<li>
-            					<a href="orderAction.action?menuId=pj_2006&pizzaSelIdx=4" style="background: url(../assets/img/order/ordMenu_pizza5.gif) no-repeat;">¾À</a>
+            					<a href="orderAction.action?menuId=pj_2006&pizzaSelIdx=4" style="background: url(../assets/img/order/ordMenu_pizza5.gif) no-repeat;">ì”¬</a>
             				</li>
             				<li style="display:none;">
-            					<a href="javascript:fnSelMenuGroup('5', '50' );" style="background: url(../assets/img/order/ordMenu_pizza6.gif) no-repeat;">¿À¸®Áö³Î¾À</a>
+            					<a href="javascript:fnSelMenuGroup('5', '50' );" style="background: url(../assets/img/order/ordMenu_pizza6.gif) no-repeat;">ì˜¤ë¦¬ì§€ë„ì”¬</a>
             				</li>
             				<li>
-            					<a href="orderAction.action?menuId=pj_2008&pizzaSelIdx=6" style="background: url(../assets/img/order/ordMenu_pizza7.gif) no-repeat;">°ñµå¸µ¾À</a>
+            					<a href="orderAction.action?menuId=pj_2008&pizzaSelIdx=6" style="background: url(../assets/img/order/ordMenu_pizza7.gif) no-repeat;">ê³¨ë“œë§ì”¬</a>
             				</li>
             				<li>
-            					<a href="orderAction.action?menuId=pj_2009&pizzaSelIdx=7" style="background: url(../assets/img/order/ordMenu_pizza8.gif) no-repeat;">ÇÏÆ®¾À</a>
+            					<a href="orderAction.action?menuId=pj_2009&pizzaSelIdx=7" style="background: url(../assets/img/order/ordMenu_pizza8.gif) no-repeat;">í•˜íŠ¸ì”¬</a>
             				</li>
           				</ul>
         			</div>
         			<div class="side">
-          				<h3 class="hidden">¼¼Æ®/»çÀÌµå/À½·á</h3>
+          				<h3 class="hidden">ì„¸íŠ¸/ì‚¬ì´ë“œ/ìŒë£Œ</h3>
           				<ul class="side_list">
-            				<!-- <li><a href="javascript:fnViewDiv('prom');"><img src="../assets/img/order/ord_menu_prom_btn.png" alt="ÀÌ´ŞÀÇ ÇÁ·Î¸ğ¼Ç" /></a></li> -->
-            				<li><a href="orderAction.action?menuId=pj_2011&pizzaSelIdx=${param.pizzaSelIdx }"><img src="../assets/img/order/ord_menu_set_btn2.png" alt="¼¼Æ®¸Ş´º" /></a></li>
-            				<li><a href="orderAction.action?menuId=pj_2013&pizzaSelIdx=${param.pizzaSelIdx}"><img src="../assets/img/order/ord_menu_drink_btn.png" alt="À½·á" /></a></li>
+            				<!-- <li><a href="javascript:fnViewDiv('prom');"><img src="../assets/img/order/ord_menu_prom_btn.png" alt="ì´ë‹¬ì˜ í”„ë¡œëª¨ì…˜" /></a></li> -->
+            				<li><a href="orderAction.action?menuId=pj_2011&pizzaSelIdx=${param.pizzaSelIdx }"><img src="../assets/img/order/ord_menu_set_btn2.png" alt="ì„¸íŠ¸ë©”ë‰´" /></a></li>
+            				<li><a href="orderAction.action?menuId=pj_2013&pizzaSelIdx=${param.pizzaSelIdx}"><img src="../assets/img/order/ord_menu_drink_btn.png" alt="ìŒë£Œ" /></a></li>
             			</ul>
         			</div>
         			<div class="coupon">
           				<ul class="coupon_list">   				
-            				<li><a href="orderAction.action?menuId=pj_2012&pizzaSelIdx=${param.pizzaSelIdx}"><img src="../assets/img/order/ord_menu_side_btn.png" alt="»çÀÌµå" /></a></li>
-            				<li><a href="orderAction.action?menuId=pj_2010&pizzaSelIdx=${param.pizzaSelIdx}"><img src="../assets/img/order/ord_menu_plt_btn.png" alt="ÆÄÆÄÇÃ·¡ÅÍ" /></a></li>
-            			<!-- <li><a href="javascript:fnSelMenuGroup('9', '80');"><img src="../assets/img/order/ord_menu_drink_btn.png" alt="À½·á" /></a></li> -->
+            				<li><a href="orderAction.action?menuId=pj_2012&pizzaSelIdx=${param.pizzaSelIdx}"><img src="../assets/img/order/ord_menu_side_btn.png" alt="ì‚¬ì´ë“œ" /></a></li>
+            				<li><a href="orderAction.action?menuId=pj_2010&pizzaSelIdx=${param.pizzaSelIdx}"><img src="../assets/img/order/ord_menu_plt_btn.png" alt="íŒŒíŒŒí”Œë˜í„°" /></a></li>
+            			<!-- <li><a href="javascript:fnSelMenuGroup('9', '80');"><img src="../assets/img/order/ord_menu_drink_btn.png" alt="ìŒë£Œ" /></a></li> -->
           				</ul>
         			</div>
         			
-        			<!-- 20140210 ÀÌ´ŞÀÇ ÇÁ·Î¸ğ¼Ç ¹öÆ°À¸·Î ºĞ¸® -->
-      				<!-- 20140424 ÆÄÆÄÇÃ·¡ÅÍ, ¹İ°ª ÇÁ·Î¸ğ¼Ç ¹öÆ° Ãß°¡ & ·¹ÀÌ¾Æ¿ô ¼öÁ¤ -->
+        			<!-- 20140210 ì´ë‹¬ì˜ í”„ë¡œëª¨ì…˜ ë²„íŠ¼ìœ¼ë¡œ ë¶„ë¦¬ -->
+      				<!-- 20140424 íŒŒíŒŒí”Œë˜í„°, ë°˜ê°’ í”„ë¡œëª¨ì…˜ ë²„íŠ¼ ì¶”ê°€ & ë ˆì´ì•„ì›ƒ ìˆ˜ì • -->
       				<div class="promotion">
       					<ul class="etc_list">
-            				<!--  <li><a href="javascript:fnViewDiv('half');"><img src="../assets/img/order/ord_menu_half_btn.png" alt="ÇÏÇÁ¿£ÇÏÇÁÇÇÀÚ" /></a></li> -->
+            				<!--  <li><a href="javascript:fnViewDiv('half');"><img src="../assets/img/order/ord_menu_half_btn.png" alt="í•˜í”„ì—”í•˜í”„í”¼ì" /></a></li> -->
             				<%-- 
-            				<li><a href="orderAction.action?menuId=pj_2013&pizzaSelIdx=${param.pizzaSelIdx}"><img src="../assets/img/order/ord_menu_drink_btn.png" alt="À½·á" /></a></li>
-            				<li><a href="orderAction.action?menuId=pj_2014&pizzaSelIdx=${param.pizzaSelIdx}"><img src="../assets/img/order/ord_menu_sauce_btn.png" alt="¼Ò½º&ÇÇÅ¬" /></a></li>
+            				<li><a href="orderAction.action?menuId=pj_2013&pizzaSelIdx=${param.pizzaSelIdx}"><img src="../assets/img/order/ord_menu_drink_btn.png" alt="ìŒë£Œ" /></a></li>
+            				<li><a href="orderAction.action?menuId=pj_2014&pizzaSelIdx=${param.pizzaSelIdx}"><img src="../assets/img/order/ord_menu_sauce_btn.png" alt="ì†ŒìŠ¤&í”¼í´" /></a></li>
             				--%>
-            				<!--  <li><a href="javascript:fnViewDiv('coupon');"><img src="../assets/img/order/ord_menu_ecu_btn.png" alt="eÄíÆù¸Ş´º" /></a></li> -->
+            				<!--  <li><a href="javascript:fnViewDiv('coupon');"><img src="../assets/img/order/ord_menu_ecu_btn.png" alt="eì¿ í°ë©”ë‰´" /></a></li> -->
            				</ul>
        				</div>
       			</div>
@@ -2835,63 +2935,61 @@
 				<div id="menuList_section"> 
 				<c:forEach var="li" items="${list}" varStatus="status">
 					<!-- item -->
-					<!-- º£½ºÆ®¸Ş´º(pj_2002), ¿À¸®Áö³Î(pj_2003), °ñµå¸µ(pj_2004), Ä¡Áî·Ñ(pj_2005), ¾À(pj_2006), °ñµå¸µ¾À(pj_2008), ÇÏÆ®¾À(pj_2009) -->
+					<!-- ë² ìŠ¤íŠ¸ë©”ë‰´(pj_2002), ì˜¤ë¦¬ì§€ë„(pj_2003), ê³¨ë“œë§(pj_2004), ì¹˜ì¦ˆë¡¤(pj_2005), ì”¬(pj_2006), ê³¨ë“œë§ì”¬(pj_2008), í•˜íŠ¸ì”¬(pj_2009) -->
 					<c:if test="${ li.menuid eq 'pj_2002' || li.menuid eq 'pj_2003' || li.menuid eq 'pj_2004' || li.menuid eq 'pj_2005'
 									|| li.menuid eq 'pj_2006' || li.menuid eq 'pj_2008' || li.menuid eq 'pj_2009'}">
 						<div id='menu_${status.count}' class='item'>
-							<!-- ¿ŞÂÊ ÀÌ¹ÌÁö ¿µ¿ª -->
+							<!-- ì™¼ìª½ ì´ë¯¸ì§€ ì˜ì—­ -->
 							<!-- item_left -->
 							<div class='item_left'>
 								<p class='photo'>
 									<img src='${li.imagepathorder}' alt='${li.name}' title='${li.name}' onerror="this.src='/assets/img/order/menu/noImage_ord.png'" />
 								</p> 
 								<p class='name' id='pName_1'>${li.name}</p> 
-								<p><button type='button' id='basket_1' name='basket_1' onclick="makeSendData('1');fnReset_spcOption_up($(this));">Àå¹Ù±¸´Ï¿¡´ã±â</button></p> 
+								<p><button type='button' id='basket_1' name='basket_1' onclick="fnOrderPizza('${li.menuid}','${li.imagepathorder}','${ li.consist}','${li.name }');">ì¥ë°”êµ¬ë‹ˆì—ë‹´ê¸°</button></p> 
 							</div>
 							<!--// item_left --> 
 							<!--// item_right -->
 							<div class='item_right'>
-								<!-- size --> 
-								<div class='size'> 
-									<input type='hidden' name='pCode_1' value='50330,¸¶°¡¸®Å¸,R,15900,¿À¸®Áö³Î,10,1018,3001,4001,10' />
+								<c:set var="price" value="" />	  
+								<!-- size -->
+								<input type='hidden' id="_size" value="" />
+								<div class='size'>
 									<c:if test="${ li.rprice != null}">
 										<p class='label_radio menu_size_radio' >
 											<c:set var="str" value="${li.rprice}"/>
-											<input type='radio' name='pSize_1' value='${fn:substring(str, 0, fn:length(str)-1)}' />
-											<img src='../assets/img/order/ord_menuList_size_R.png' alt='·¹±Ö·¯' title='Regular'/>
+											<input type='radio' name='pSize_1' value='${fn:substring(str, 0, fn:length(str)-1)}'/>
+											<img src='../assets/img/order/ord_menuList_size_R.png' alt='ë ˆê·¤ëŸ¬' title='Regular' name="ë ˆê·¤ëŸ¬" />
 											<span class='price' >${fn:substring(str, 0, fn:length(str)-1)}</span>
 										</p>
 									</c:if>
-									<input type='hidden' name='pCode_1' value='50332,¸¶°¡¸®Å¸,L,21500,¿À¸®Áö³Î,10,1018,3002,4001,10' />
 									<c:if test="${ li.lprice != null}">
 										<p class='label_radio menu_size_radio' >
 											<c:set var="str" value="${li.lprice}"/>
-											<input type='radio' name='pSize_1' value='${fn:substring(str, 0, fn:length(str)-1)}' />
-											<img src='../assets/img/order/ord_menuList_size_L.png' alt='¶óÁö' title='large'/>
+											<input type='radio' name='pSize_1' value='${fn:substring(str, 0, fn:length(str)-1)}'/>
+											<img src='../assets/img/order/ord_menuList_size_L.png' alt='ë¼ì§€' title='large' name="ë¼ì§€" />
 											<span class='price' >${fn:substring(str, 0, fn:length(str)-1)}</span>   
 										</p>
 									</c:if>
-									<input type='hidden' name='pCode_1' value='50329,¸¶°¡¸®Å¸,F,25900,¿À¸®Áö³Î,10,1018,3003,4001,10' />
 									<c:if test="${ li.fprice != null}">
 										<p class='label_radio menu_size_radio' >
 											<c:set var="str" value="${li.fprice}"/>
-											<input type='radio' name='pSize_1' value='${fn:substring(str, 0, fn:length(str)-1)}' />
-											<img src='../assets/img/order/ord_menuList_size_F.png' alt='ÆĞ¹Ğ¸®' title='family'/>
+											<input type='radio' name='pSize_1' value='${fn:substring(str, 0, fn:length(str)-1)}'/>
+											<img src='../assets/img/order/ord_menuList_size_F.png' alt='íŒ¨ë°€ë¦¬' title='family'/>
 											<span class='price' >${fn:substring(str, 0, fn:length(str)-1)}</span>   
 										</p>
 									</c:if>
-									<input type='hidden' name='pCode_1' value='50322,¸¶°¡¸®Å¸,P,34500,¿À¸®Áö³Î,10,1018,3005,4001,10' />
 									<c:if test="${ li.pprice != null}">
 										<p class='label_radio menu_size_radio' >
 											<c:set var="str" value="${li.pprice}"/>
-										  	<input type='radio' name='pSize_1' value='${fn:substring(str, 0, fn:length(str)-1)}' />
-											<img src='../assets/img/order/ord_menuList_size_P.png' alt='ÆÄÆ¼' title='party'/>
+										  	<input type='radio' name='pSize_1' value='${fn:substring(str, 0, fn:length(str)-1)}'"/>
+											<img src='../assets/img/order/ord_menuList_size_P.png' alt='íŒŒí‹°' title='party'/>
 											<span class='price' >${fn:substring(str, 0, fn:length(str)-1)}</span>   
 										</p>	
 									</c:if>
 								</div>		
 								<script type="text/javascript">
-									//20140304 ¶óµğ¿À¹öÆ° µğÆúÆ® À§Ä¡¸¦ ¶óÁö»çÀÌÁî·Î º¯°æ
+									//20140304 ë¼ë””ì˜¤ë²„íŠ¼ ë””í´íŠ¸ ìœ„ì¹˜ë¥¼ ë¼ì§€ì‚¬ì´ì¦ˆë¡œ ë³€ê²½
 									var firstSize = $("#menu_1 .size img").attr("title");
 									if(firstSize == "Regular"){ra_check($("#menu_1 .size .menu_size_radio").eq(1));}
 									else{ra_check($("#menu_1 .size .menu_size_radio").eq(0));}
@@ -2900,9 +2998,9 @@
 								<!--// size -->   	
 								<div class='spcInstruction'>  	
 									<p class='btn'>
-										<img src='../assets/img/order/btn_opt_off.gif' alt='º¯°æ' />
+										<img src='../assets/img/order/btn_opt_off.gif' alt='ë³€ê²½' />
 									</p>   
-									<!-- ¿É¼Çº¯°æ ¸»Ç³¼± -->    
+									<!-- ì˜µì…˜ë³€ê²½ ë§í’ì„  -->    
 									<div class='comment'>   
 										<p class='top'>
 											<img src='../assets/img/order/ord_menuList_detail_commBg_top.png' alt=''>
@@ -2912,108 +3010,108 @@
 										</p>   
 										<p class='center'>
 											<span>special instructions :</span><br>
-											¹öÆ° Å¬¸¯ ½Ã sauce, cheese, bake, cut »óÅÂ¸¦ Á¶ÀıÇÏ½Ç ¼ö ÀÖ½À´Ï´Ù.<br>
-											Àå¹Ù±¸´Ï¿¡ ´ãÀº ÈÄ º¯°æÇÏ½Ã·Á¸é ¸Ş´º¸¦ Àå¹Ù±¸´Ï¿¡¼­ »èÁ¦ÈÄ ´Ù½Ã ´ãÀ¸¼Å¾ß ÇÕ´Ï´Ù!!
+											ë²„íŠ¼ í´ë¦­ ì‹œ sauce, cheese, bake, cut ìƒíƒœë¥¼ ì¡°ì ˆí•˜ì‹¤ ìˆ˜ ìˆìŠµë‹ˆë‹¤.<br>
+											ì¥ë°”êµ¬ë‹ˆì— ë‹´ì€ í›„ ë³€ê²½í•˜ì‹œë ¤ë©´ ë©”ë‰´ë¥¼ ì¥ë°”êµ¬ë‹ˆì—ì„œ ì‚­ì œí›„ ë‹¤ì‹œ ë‹´ìœ¼ì…”ì•¼ í•©ë‹ˆë‹¤!!
 										</p>    
 									</div>   
-									<!--// ¿É¼Çº¯°æ ¸»Ç³¼± -->   	
+									<!--// ì˜µì…˜ë³€ê²½ ë§í’ì„  -->   	
 								</div>  	
 								<!-- detail -->   	
 								<div class='detail'>   		
 									<p class='btn'>
-										<img src='../assets/img/order/btn_info.gif' alt='»ó¼¼¼³¸í'/>
+										<img src='../assets/img/order/btn_info.gif' alt='ìƒì„¸ì„¤ëª…'/>
 									</p>
-									<!-- »ó¼¼º¸±â ¸»Ç³¼± -->
+									<!-- ìƒì„¸ë³´ê¸° ë§í’ì„  -->
 									<div class='comment'>
 										<p class='top'><img src='../assets/img/order/ord_menuList_detail_commBg_top.png' alt=''></p>
 										<p class='bottom'><img src='../assets/img/order/ord_menuList_detail_commBg_bottom.png' alt=''></p>
 										<dl>
-											<dt>ÅäÇÎÀç·á:</dt>
+											<dt>í† í•‘ì¬ë£Œ:</dt>
 			                  				<dd>${li.topping}</dd>
 			                			</dl>
 			              			</div>
-			              			<!--// »ó¼¼º¸±â ¸»Ç³¼± -->
+			              			<!--// ìƒì„¸ë³´ê¸° ë§í’ì„  -->
 			            		</div>
 			            		<!--// detail -->
-			            		<p class="select_price">0</p>
+			            		<p class="select_price"></p>
 	          				</div>
 							<!--// item_right -->  
-	          				<!-- 20130926 ¼Ò½º&Ä¡Áî&Ä¿ÆÃ&º£ÀÌÅ© ¿É¼ÇÁÖ±â -->
+	          				<!-- 20130926 ì†ŒìŠ¤&ì¹˜ì¦ˆ&ì»¤íŒ…&ë² ì´í¬ ì˜µì…˜ì£¼ê¸° -->
 	          				<div id ="option_box_1" class="option_box"><!--  display: none; -->
 		          				<ul class="spcInstructions">
 		         					<li>
-		        						<p onclick="fnAdjustMenu('1_1',$(this));">¼Ò½º Á¶Àı <span class="imgsp">¡å</span></p>
+		        						<p onclick="fnAdjustMenu('1_1',$(this));">ì†ŒìŠ¤ ì¡°ì ˆ <span class="imgsp">â–¼</span></p>
 		        						<div id="1_1" class="option">
 											<p class="menu_opt_radio" >
 												<input type="radio" id="1_regularSauce" name="1_sau_radio" value=""/>
-			          							<label for="1_regularSauce">¼Ò½º º¸Åë(Normal)</label>
+			          							<label for="1_regularSauce">ì†ŒìŠ¤ ë³´í†µ(Normal)</label>
 		          							</p>
 											<p class="menu_opt_radio" >
 												<input type="radio" id="1_lightSauce" name="1_sau_radio" value="20"/>
-			          							<label for="1_lightSauce">¼Ò½º Á¶±İ(LS)</label>
+			          							<label for="1_lightSauce">ì†ŒìŠ¤ ì¡°ê¸ˆ(LS)</label>
 		          							</p>
 											<p class="menu_opt_radio" >
 												<input type="radio" id="1_extraSauce" name="1_sau_radio" value="30"/>
-			          							<label for="1_extraSauce">¼Ò½º ¸¹ÀÌ(XS)</label>
+			          							<label for="1_extraSauce">ì†ŒìŠ¤ ë§ì´(XS)</label>
 		          							</p>
 											<p class="menu_opt_radio" >
 												<input type="radio" id="1_noSauce" name="1_sau_radio" value="40"/>
-			          							<label for="1_noSauce">¼Ò½º Á¦¿Ü(NS)</label>
+			          							<label for="1_noSauce">ì†ŒìŠ¤ ì œì™¸(NS)</label>
 		          							</p>
 										</div>
 		       						</li>
 		       						<li style=" cursor:pointer;">
-		        						<p onclick="fnAdjustMenu('1_2',$(this));">Ä¡Áî Á¶Àı <span class="imgsp">¡å</span></p>
+		        						<p onclick="fnAdjustMenu('1_2',$(this));">ì¹˜ì¦ˆ ì¡°ì ˆ <span class="imgsp">â–¼</span></p>
 		        						<div id="1_2" class="option">
 											<p class="menu_opt_radio" >
 												<input type="radio" id="1_normalCheese" name="1_chee_radio" value="" />
-			          							<label for="1_normalCheese">Ä¡Áî º¸Åë(Normal)</label>
+			          							<label for="1_normalCheese">ì¹˜ì¦ˆ ë³´í†µ(Normal)</label>
 		          							</p>
 											<p class="menu_opt_radio" >
 												<input type="radio" id="1_lightCheese" name="1_chee_radio" value="20"/>
-			          							<label for="1_lightCheese">Ä¡Áî Á¶±İ(LC)</label>  
+			          							<label for="1_lightCheese">ì¹˜ì¦ˆ ì¡°ê¸ˆ(LC)</label>  
 		          							</p>
 											<p class="menu_opt_radio" >
 												<input type="radio" id="1_noCheese" name="1_chee_radio" value="30"/>
-			          							<label for="1_noCheese">Ä¡Áî Á¦¿Ü(NC)</label>
+			          							<label for="1_noCheese">ì¹˜ì¦ˆ ì œì™¸(NC)</label>
 		          							</p>
 										</div>
 		       						</li>
 		       						<li>
-		        						<p onclick="fnAdjustMenu('1_3',$(this));">±Á±â Á¶Àı <span class="imgsp">¡å</span></p>
+		        						<p onclick="fnAdjustMenu('1_3',$(this));">êµ½ê¸° ì¡°ì ˆ <span class="imgsp">â–¼</span></p>
 		        						<div id="1_3" class="option">
 											<p class="menu_opt_radio" >
 												<input type="radio" id="1_normalBake" name="1_bake_radio" value=""/>
-			          							<label for="1_normalBake">±âº» ±Á±â(Normal)</label>
+			          							<label for="1_normalBake">ê¸°ë³¸ êµ½ê¸°(Normal)</label>
 		          							</p>
 											<p class="menu_opt_radio" >
 												<input type="radio" id="1_wellDone" name="1_bake_radio" value="20"/>
-			          							<label for="1_wellDone">¹Ù½Ï ±Á±â(WD)</label> 
+			          							<label for="1_wellDone">ë°”ì‹¹ êµ½ê¸°(WD)</label> 
 		          							</p>
 										</div>
 		       						</li>
 		       						<li>
-		        						<p onclick="fnAdjustMenu('1_4',$(this));">Á¶°¢ ÄÆÆÃ <span class="imgsp">¡å</span></p>
+		        						<p onclick="fnAdjustMenu('1_4',$(this));">ì¡°ê° ì»·íŒ… <span class="imgsp">â–¼</span></p>
 		        						<div id="1_4" class="option">
 											<p class="menu_opt_radio" >
 												<input type="radio" id="1_normalCut" name="1_cut_radio" value=""/>
-			          							<label for="1_normalCut">±âº»ÄÆÆÃ(Normal)</label>
+			          							<label for="1_normalCut">ê¸°ë³¸ì»·íŒ…(Normal)</label>
 		          							</p>
 											<p class="menu_opt_radio" >
 												<input type="radio" id="1_squareCut" name="1_cut_radio" value="60"/>
-			          							<label for="1_squareCut">»ç°¢ÄÆÆÃ(SC)</label>
+			          							<label for="1_squareCut">ì‚¬ê°ì»·íŒ…(SC)</label>
 		          							</p> 
 											<p class="menu_opt_radio" >
 												<input type="radio" id="1_sixCut" name="1_cut_radio" value="20"/>
-			          							<label for="1_sixCut">6Á¶°¢ÄÆÆÃ(6C)</label>
+			          							<label for="1_sixCut">6ì¡°ê°ì»·íŒ…(6C)</label>
 		          							</p> 
 											<p class="menu_opt_radio" >
 												<input type="radio" id="1_eightCut" name="1_cut_radio" value="30"/>
-			          							<label for="1_eightCut">8Á¶°¢ÄÆÆÃ(8C)</label>
+			          							<label for="1_eightCut">8ì¡°ê°ì»·íŒ…(8C)</label>
 		          							</p> 
 											<p class="menu_opt_radio" >
 												<input type="radio" id="1_tenCut" name="1_cut_radio" value="40"/>
-			          							<label for="1_tenCut">10Á¶°¢ÄÆÆÃ(10C)</label>
+			          							<label for="1_tenCut">10ì¡°ê°ì»·íŒ…(10C)</label>
 		          							</p> 
 										</div>
 		       						</li> 
@@ -3024,28 +3122,29 @@
 					<!-- //item -->
 					
 					<!-- item -->
-					<!-- ¼¼Æ® ¸Ş´º -->
+					<!-- ì„¸íŠ¸ ë©”ë‰´ -->
 					<c:if test="${ li.menuid eq 'pj_2011' }">
+						<c:set var="price" value="${li.setprice}"/>
+						<c:set var="price" value="${fn:substring(price,0,fn:length(price)-1) }"/>
 						<div id="set_section" class="" style="display: block;">
 							<div class="set_items has-js" id="set_30348"> 
 								<p class="image">
-									<img src="../assets/img/order/menu/60/30348_ord.png" width="220" height="140" alt="50% ÇÒÀÎ ¼öÆÛÆÄÆÄ½º º£½ºÆ® ¼¼Æ® ¸Ş´º" title="50% ÇÒÀÎ ¼öÆÛÆÄÆÄ½º º£½ºÆ® ¼¼Æ® ¸Ş´º">
+									<img src="${li.imagepathorder }" width="220" height="140" alt="${li.name }" title="${li.name }" id="orderimage">
 								</p>
-								<p class="name" id="setNm"><c:out value="${li.name }"/><span class="size">(2-3ÀÎ¿ë)</span></p>
-								<p class="btn_cart" onclick="fnAddSet($(this),'30348','20','50','','3020','');">
-									<button type="button">Àå¹Ù±¸´Ï¿¡´ã±â</button>
+								<p class="name" id="setNm"><c:out value="${li.name }" /><span class="size">(2-3ì¸ìš©)</span></p>
+								<p class="btn_cart" onclick="fnOrderSet_plater('${li.menuid}','${li.imagepathorder}','${price}','${ li.consist}','${li.name }');">
+									<button type="button">ì¥ë°”êµ¬ë‹ˆì—ë‹´ê¸°</button>
 								</p>
 								<p class="description">
-									<img src="../assets/img/order/ord_menuList_size_set.png" alt="¶óÁö¼¼Æ®" title="¶óÁö¼¼Æ®">»ó¼¼ <br>
+									<img src="../assets/img/order/ord_menuList_size_set.png" alt="ë¼ì§€ì„¸íŠ¸" title="ë¼ì§€ì„¸íŠ¸">ìƒì„¸ <br>
 									<span> : ${ li.consist} </span>
 								</p>
 								<div class="size_prc">
 									<input type="hidden" name=" " value=" ">
-									<c:set var="text" value="${li.setprice}"/>
-									<p class="set_price">${ fn:substring(text,0,fn:length(text)-1) } </p>
-									<p style="width:40px; position:absolute; top:10px; left:140px;">¼ö·® : </p>
+									<p class="set_price">${price } </p>
+									<p style="width:40px; position:absolute; top:10px; left:140px;">ìˆ˜ëŸ‰ : </p>
 									<p class="selcet_count">
-										<select id="cnt_opt" name="cnt_opt">
+										<select id="cnt_opt" name="cnt_opt" onchange="setSelect(this.value)">
 											<option value="1">1</option>
 											<option value="2">2</option>
 											<option value="3">3</option>
@@ -3060,38 +3159,40 @@
 					<!-- item -->
 					
 					<!-- item -->
-					<!-- »çÀÌµå -->
+					<!-- ì‚¬ì´ë“œ -->
 					<c:if test="${ li.menuid eq 'pj_2012' }">
+						<c:set var="price" value="${li.onesizeprice}"/>
+						<c:set var="price" value="${fn:substring(price,0,fn:length(price)-1) }"/>
 						<div id='menu_${status.count}' class='item'>
-							<!-- ¿ŞÂÊ ÀÌ¹ÌÁö ¿µ¿ª -->
+							<!-- ì™¼ìª½ ì´ë¯¸ì§€ ì˜ì—­ -->
 							<!-- item_left -->
 							<div class='item_left'>
 								<p class='photo'><img src='${li.imagepathorder}' alt='${li.name}' title='${li.name}' onerror="this.src='/assets/img/order/menu/noImage_ord.png'" /></p>
 								<p class='name' id='pName_1'>${li.name}</p>
-								<p><button type='button' id='basket_1' name='basket_1' onclick="makeSendData('1');fnReset_spcOption_up($(this));">Àå¹Ù±¸´Ï¿¡´ã±â</button></p>
+								<p><button type='button' id='basket_1' name='basket_1' onclick="fnOrderSide('${li.menuid}','${li.imagepathorder}','${price}','${ li.consist}','${li.name }');">ì¥ë°”êµ¬ë‹ˆì—ë‹´ê¸°</button></p>
 							</div>
 							<!--// item_left -->
 							<!--// item_right -->
 							<div class='item_right'>
 								<!-- size -->
 								<div class='size'>
-									<input type='hidden' name='pCode_1' value='51036,»ùÇÃ·¯,one,12900,,20,9001,3006,,10' />
+									<input type='hidden' name='pCode_1' value='51036,ìƒ˜í”ŒëŸ¬,one,12900,,20,9001,3006,,10' />
 									<p class='label_radio menu_size_radio'>
 										<c:set var="str" value="${li.onesizeprice}"/>
 										<input type='radio' name='pSize_1' value='${fn:substring(str, 0, fn:length(str)-1)}' />
-										<img src='../assets/img/order/ord_menuList_size_one.png' alt='¿ø»çÀÌÁî' title='One Size' />
+										<img src='../assets/img/order/ord_menuList_size_one.png' alt='ì›ì‚¬ì´ì¦ˆ' title='One Size' />
 										<span class='price'>${fn:substring(str, 0, fn:length(str)-1)}</span>
 									</p>
 								</div>
 								<script type="text/javascript">
-									//20140304 ¶óµğ¿À¹öÆ° µğÆúÆ® À§Ä¡¸¦ ¶óÁö»çÀÌÁî·Î º¯°æ
+									//20140304 ë¼ë””ì˜¤ë²„íŠ¼ ë””í´íŠ¸ ìœ„ì¹˜ë¥¼ ë¼ì§€ì‚¬ì´ì¦ˆë¡œ ë³€ê²½
 									var firstSize = $("#menu_1 .size img").attr("title");
 									if(firstSize == "Regular"){ra_check($("#menu_1 .size .menu_size_radio").eq(1));}
 									else{ra_check($("#menu_1 .size .menu_size_radio").eq(0));}
 								</script>
 								<!--// size -->
 								<div class='select_count'>
-									<select id='cnt_opt1' name='cnt_opt'>
+									<select id='cnt_opt1' name='cnt_opt' onchange="setSelect(this.value)">
 										<option value='1'>1</option>
 										<option value='2'>2</option>
 										<option value='3'>3</option>
@@ -3106,25 +3207,25 @@
 								</div>
 								<!-- detail -->
 								<div class='detail'>
-									<p class='btn'><img src='../assets/img/order/btn_info.gif' alt='»ó¼¼¼³¸í' /></p>
-									<!-- »ó¼¼º¸±â ¸»Ç³¼± -->
+									<p class='btn'><img src='../assets/img/order/btn_info.gif' alt='ìƒì„¸ì„¤ëª…' /></p>
+									<!-- ìƒì„¸ë³´ê¸° ë§í’ì„  -->
 									<div class='comment'>
 										<p class='top'><img src='../assets/img/order/ord_menuList_detail_commBg_top.png' alt=''></p>
 										<p class='bottom'><img src='../assets/img/order/ord_menuList_detail_commBg_bottom.png' alt=''></p>
 										<dl>
 											<dd>
 												<c:if test="${ li.material != null }">
-													<b style = "color:#228a68;">Àç·á</b><br/>
+													<b style = "color:#228a68;">ì¬ë£Œ</b><br/>
 													${li.material}<br/>
 												</c:if>
 												<c:if test="${li.presentsauce != null }">
-													<b style = "color:#228a68;">ÁõÁ¤¼Ò½º</b><br/>
+													<b style = "color:#228a68;">ì¦ì •ì†ŒìŠ¤</b><br/>
 													${li.presentsauce}
 												</c:if>	
 											</dd>
 										</dl>
 									</div>
-									<!--// »ó¼¼º¸±â ¸»Ç³¼± -->
+									<!--// ìƒì„¸ë³´ê¸° ë§í’ì„  -->
 								</div>
 								<!--// detail -->
 								<p class="select_price">0</p>
@@ -3135,30 +3236,34 @@
 					<!-- //item -->
 					
 					<!-- item -->
-					<!-- ÆÄÆÄÇÃ·¡ÅÍ -->
+					<!-- íŒŒíŒŒí”Œë˜í„° -->
 					<c:if test="${ li.menuid eq 'pj_2010' }">
+						<c:set var="price" value="${li.boxprice}"/>
+						<c:set var="price" value="${fn:substring(price,0,fn:length(price)-1) }"/>
 						<div id="plat_section" class="" style="display: block;">
 							<div class="item has-js" id="menu_50992">
-								<p class="image"><img src="../assets/img/order/menu/11/1019_ord.png" width="220" height="140" alt="¼öÆÛ ÆÄÆÄ½º" title="¼öÆÛ ÆÄÆÄ½º"></p>
+								<p class="image"><img src="../assets/img/order/menu/11/1019_ord.png" width="220" height="140" alt="ìˆ˜í¼ íŒŒíŒŒìŠ¤" title="ìˆ˜í¼ íŒŒíŒŒìŠ¤"></p>
 								<p class="name" id="pName_50992">${li.name}<span class="size">(BOX)</span></p>
-								<p class="btn_cart" onclick="fnAddSet($(this), '50992,¼öÆÛ ÆÄÆÄ½º,ÆÄÆÄÇÃ·¡ÅÍ,25900,,10,1019,3023,4001,10', '', '', '', '', '');""="">
-									<button type="button">Àå¹Ù±¸´Ï¿¡´ã±â</button>
+								<p class="btn_cart" onclick="fnOrderSet_plater('${li.menuid}','${li.imagepathorder}','${price}','${ li.consist}','${li.name }');">
+									<button type="button">ì¥ë°”êµ¬ë‹ˆì—ë‹´ê¸°</button>
 								</p>
 								<p class="description">
-									<img src="../assets/img/order/ord_menuList_size_box.png" alt="ÇÃ·¡ÅÍ¼¼Æ®">±¸¼º<br>
+									<img src="../assets/img/order/ord_menuList_size_box.png" alt="í”Œë˜í„°ì„¸íŠ¸">êµ¬ì„±<br>
 									<span> :${li.consist}</span>
 								</p>
 								<div class="size_prc">
 									<c:set var="str" value="${li.boxprice}"/>
 									<p class="price">${fn:substring(str, 0, fn:length(str)-1)}</p>
-									<p style="width: 40px; position: absolute; top: 10px; left: 140px;">¼ö·®
+									<p style="width: 40px; position: absolute; top: 10px; left: 140px;">ìˆ˜ëŸ‰
 										:</p>
 									<p class="selcet_count">
-										<select id="cnt_opt" name="cnt_opt"><option value="1">1</option>
+										<select id="cnt_opt" name="cnt_opt" onchange="setSelect(this.value)">
+											<option value="1">1</option>
 											<option value="2">2</option>
 											<option value="3">3</option>
 											<option value="4">4</option>
-											<option value="5">5</option></select>
+											<option value="5">5</option>
+										</select>
 									</p>
 								</div>
 							</div>
@@ -3167,15 +3272,15 @@
 					<!-- //item -->
 					
 					<!-- item -->
-					<!-- À½·á -->
+					<!-- ìŒë£Œ -->
 					<c:if test="${li.menuid eq 'pj_2013' }">
 						<div id='menu_${status.count}' class='item'>
-							<!-- ¿ŞÂÊ ÀÌ¹ÌÁö ¿µ¿ª -->
+							<!-- ì™¼ìª½ ì´ë¯¸ì§€ ì˜ì—­ -->
 							<!-- item_left -->
 							<div class='item_left'>
 								<p class='photo'><img src='${li.imagepathorder}' alt='${li.name}' title='${li.name}' onerror="this.src='/assets/img/order/menu/noImage_ord.png'" /></p>
 								<p class='name' id='pName_1'>${li.name}</p>
-								<p><button type='button' id='basket_1' name='basket_1' onclick="makeSendData('1');fnReset_spcOption_up($(this));">Àå¹Ù±¸´Ï¿¡´ã±â</button></p>
+								<p><button type='button' id='basket_1' name='basket_1' onclick="fnOrderBever('${li.menuid}','${li.imagepathorder}','${ li.consist}','${li.name }');">ì¥ë°”êµ¬ë‹ˆì—ë‹´ê¸°</button></p>
 							</div>
 							<!--// item_left -->
 							<!--// item_right -->
@@ -3183,43 +3288,43 @@
 								<!-- size -->
 								<div class='size'>
 									<!-- 350ML -->
-									<c:if test="${li.name eq '¹Ì´Ö ¸ŞÀÌµå ¿À·»Áö'}">
+									<c:if test="${li.name eq 'ë¯¸ë‹› ë©”ì´ë“œ ì˜¤ë Œì§€'}">
 										<p class='label_radio menu_size_radio' >
-											<input type='radio' name='pSize_9' value='${fn:substring(li.rprice, 0, fn:length(li.rprice)-1)}' />
+											<input type='radio' name='pSize_1' value='${fn:substring(li.rprice, 0, fn:length(li.rprice)-1)}' />
 											<img src='../assets/img/order/ord_menuList_size_350ml.png' alt='350ml' title='350ml'/><span class='price' >${fn:substring(li.rprice, 0, fn:length(li.rprice)-1)}</span>
 										</p>	
 									</c:if>
 									<!-- 500ML -->
-									<c:if test="${li.name eq 'ÄÚÄ«Äİ¶ó' || li.name eq '½ºÇÁ¶óÀÌÆ®' || li.name eq 'ÄÚÄ«Äİ¶ó Á¦·Î' }">
+									<c:if test="${li.name eq 'ì½”ì¹´ì½œë¼' || li.name eq 'ìŠ¤í”„ë¼ì´íŠ¸' || li.name eq 'ì½”ì¹´ì½œë¼ ì œë¡œ' }">
 										<p class='label_radio menu_size_radio'>
 											<input type='radio' name='pSize_1' value='${fn:substring(li.rprice, 0, fn:length(li.rprice)-1)}' />
 											<img src='../assets/img/order/ord_menuList_size_500ml.png' alt='500ml' title='500ml' /><span class='price'>${fn:substring(li.rprice, 0, fn:length(li.rprice)-1)}</span>
 										</p>	
 									</c:if>
 									<!-- 600ML -->
-									<c:if test="${li.name eq 'È¯Å¸' }">
+									<c:if test="${li.name eq 'í™˜íƒ€' }">
 										<p class='label_radio menu_size_radio' >
-											<input type='radio' name='pSize_7' value='${fn:substring(li.lprice, 0, fn:length(li.lprice)-1)}' />
+											<input type='radio' name='pSize_1' value='${fn:substring(li.lprice, 0, fn:length(li.lprice)-1)}' />
 											<img src='../assets/img/order/ord_menuList_size_600ml.png' alt='600ml' title='600ml'/><span class='price' >${fn:substring(li.rprice, 0, fn:length(li.rprice)-1)}</span> 
 										</p>
 									</c:if>
 									<!-- 1.25L -->
-									<c:if test="${li.name eq 'ÄÚÄ«Äİ¶ó'}">
+									<c:if test="${li.name eq 'ì½”ì¹´ì½œë¼'}">
 										<p class='label_radio menu_size_radio'>
 											<input type='radio' name='pSize_1' value='${fn:substring(li.lprice, 0, fn:length(li.lprice)-1)}' />
 											<img src='../assets/img/order/ord_menuList_size_1.25L.png' alt='1.25L' title='1.25L' /><span class='price'>${fn:substring(li.lprice, 0, fn:length(li.lprice)-1)}</span>
 										</p>
 									</c:if>
 									<!-- 1.25L -->
-									<c:if test="${li.name eq '½ºÇÁ¶óÀÌÆ®' || li.name eq 'ÄÚÄ«Äİ¶ó Á¦·Î' || li.name eq 'È¯Å¸' || li.name eq '¹Ì´Ö ¸ŞÀÌµå ¿À·»Áö'}">
+									<c:if test="${li.name eq 'ìŠ¤í”„ë¼ì´íŠ¸' || li.name eq 'ì½”ì¹´ì½œë¼ ì œë¡œ' || li.name eq 'í™˜íƒ€' || li.name eq 'ë¯¸ë‹› ë©”ì´ë“œ ì˜¤ë Œì§€'}">
 										<p class='label_radio menu_size_radio' >
-											<input type='radio' name='pSize_9' value='${fn:substring(li.lprice, 0, fn:length(li.lprice)-1)}' />
+											<input type='radio' name='pSize_1' value='${fn:substring(li.lprice, 0, fn:length(li.lprice)-1)}' />
 											<img src='../assets/img/order/ord_menuList_size_1.5L.png' alt='1.5L' title='1.5L'/><span class='price' >${fn:substring(li.lprice, 0, fn:length(li.lprice)-1)}</span>
 										</p>
 									</c:if>
 								</div>
 								<script type="text/javascript">
-									//20140304 ¶óµğ¿À¹öÆ° µğÆúÆ® À§Ä¡¸¦ ¶óÁö»çÀÌÁî·Î º¯°æ
+									//20140304 ë¼ë””ì˜¤ë²„íŠ¼ ë””í´íŠ¸ ìœ„ì¹˜ë¥¼ ë¼ì§€ì‚¬ì´ì¦ˆë¡œ ë³€ê²½
 									var firstSize = $("#menu_1 .size img").attr("title");
 									if(firstSize == "Regular"){ra_check($("#menu_1 .size .menu_size_radio").eq(1));}
 									else{ra_check($("#menu_1 .size .menu_size_radio").eq(0));}
@@ -3227,8 +3332,8 @@
 								<!--// size -->
 								<!--// size -->
 								<div class='select_count'>
-									<select id='cnt_opt1' name='cnt_opt'>
-										<option value='1'>1</option>
+									<select id='cnt_opt_bever' name='cnt_opt_drink' onchange="setSelect(this.value)">
+										<option value='1' selected="selected">1</option>
 										<option value='2'>2</option>
 										<option value='3'>3</option>
 										<option value='4'>4</option>
@@ -3242,8 +3347,8 @@
 								</div>
 								<!-- detail -->
 								<div class='detail'>
-									<p class='btn'><img src='../assets/img/order/btn_info.gif' alt='»ó¼¼¼³¸í' /></p>
-									<!-- »ó¼¼º¸±â ¸»Ç³¼± -->
+									<p class='btn'><img src='../assets/img/order/btn_info.gif' alt='ìƒì„¸ì„¤ëª…' /></p>
+									<!-- ìƒì„¸ë³´ê¸° ë§í’ì„  -->
 									<div class='comment'>
 										<p class='top'><img src='../assets/img/order/ord_menuList_detail_commBg_top.png' alt=''></p>
 										<p class='bottom'><img src='../assets/img/order/ord_menuList_detail_commBg_bottom.png' alt=''></p>
@@ -3260,15 +3365,15 @@
 					<!-- //item -->
 					
 					<!-- item -->
-					<!-- ¼Ò½º&ÇÇÅ¬ -->
+					<!-- ì†ŒìŠ¤&í”¼í´ -->
 					<c:if test="${li.menuid eq 'pj_2014' }">
 						<div id="menu_${status.count}" class="item has-js">
-							<!-- ¿ŞÂÊ ÀÌ¹ÌÁö ¿µ¿ª -->
+							<!-- ì™¼ìª½ ì´ë¯¸ì§€ ì˜ì—­ -->
 							<!-- item_left -->
 							<div class="item_left">
-								<p class="photo"><img src="/assets/img/order/menu/90/3004_ord.png" alt="°¥¸¯ ¼Ò½º" title="°¥¸¯ ¼Ò½º" onerror="this.src='/assets/img/order/menu/noImage_ord.png'"></p>
-								<p class="name" id="pName_1">°¥¸¯ ¼Ò½º</p>
-								<p><button type="button" id="basket_1" name="basket_1" onclick="makeSendData('1');fnReset_spcOption_up($(this));">Àå¹Ù±¸´Ï¿¡´ã±â</button></p>
+								<p class="photo"><img src="/assets/img/order/menu/90/3004_ord.png" alt="ê°ˆë¦­ ì†ŒìŠ¤" title="ê°ˆë¦­ ì†ŒìŠ¤" onerror="this.src='/assets/img/order/menu/noImage_ord.png'"></p>
+								<p class="name" id="pName_1">ê°ˆë¦­ ì†ŒìŠ¤</p>
+								<p><button type="button" id="basket_1" name="basket_1" onclick="makeSendData('1');fnReset_spcOption_up($(this));">ì¥ë°”êµ¬ë‹ˆì—ë‹´ê¸°</button></p>
 							</div>
 						</div>
 					</c:if>
@@ -3276,50 +3381,50 @@
 				</c:forEach>
 				</div>
       			<!--// menuList_section -->      			
-       		<!-- 20140616 ÇÁ·Î¸ğ¼Ç ¸Ş´º È­¸é »ı¼º (»ùÇÃ·¯ Ãâ½Ã ±âÁØ) -->
+       		<!-- 20140616 í”„ë¡œëª¨ì…˜ ë©”ë‰´ í™”ë©´ ìƒì„± (ìƒ˜í”ŒëŸ¬ ì¶œì‹œ ê¸°ì¤€) -->
 			<div id="prom_section" style="display: none;">
           		<div class="prom_section_coup">
             				
-       				<label for="prom_coupon" class="hidden">ÄíÆù</label>
+       				<label for="prom_coupon" class="hidden">ì¿ í°</label>
        				<select id="prom_coupon" name="prom_coupon" class="s_coup" onchange="fnPromotionMainMenu(this.value); fnPromotionSubMenu(this.value);">
-         				<option value="">ÇÁ·Î¸ğ¼Ç ÄíÆùÀ» ¼±ÅÃÇØÁÖ¼¼¿ä</option>
-         				<!-- <option value="">¶óÁö ÀÌ»ó ÇÇÀÚ(°ñµå¸µ, Ä¡Áî·Ñ Á¦¿Ü)¿Í ÇÔ²² ±¸¸Å ½Ã ÆÄÆÄ»ùÇÃ·¯ 4,000¿ø</option> -->
+         				<option value="">í”„ë¡œëª¨ì…˜ ì¿ í°ì„ ì„ íƒí•´ì£¼ì„¸ìš”</option>
+         				<!-- <option value="">ë¼ì§€ ì´ìƒ í”¼ì(ê³¨ë“œë§, ì¹˜ì¦ˆë¡¤ ì œì™¸)ì™€ í•¨ê»˜ êµ¬ë§¤ ì‹œ íŒŒíŒŒìƒ˜í”ŒëŸ¬ 4,000ì›</option> -->
        				</select>
-          			<p class="txt_point padd_t5 bold"> [Á¦ÈŞ ¹× ±âÅ¸ ÇÒÀÎ Áßº¹ Àû¿ë ºÒ°¡]</p>
+          			<p class="txt_point padd_t5 bold"> [ì œíœ´ ë° ê¸°íƒ€ í• ì¸ ì¤‘ë³µ ì ìš© ë¶ˆê°€]</p>
      			</div>	
           	
           			<!-- menuArea-->
           			<div class="menuArea">
             			<div class="main_menu p_menu">
-            				<p class="tit"><img src="/assets/img/order/prom1.gif" alt="Àû¿ë¸Ş´º" /></p>
+            				<p class="tit"><img src="/assets/img/order/prom1.gif" alt="ì ìš©ë©”ë‰´" /></p>
               				<p class="img" style="text-align:left" id="main_menu_img">
-              					<img src="/assets/img/order/menu/00/def_img.png" alt="ÄíÆù Àû¿ë ¸Ş´º"/>
+              					<img src="/assets/img/order/menu/00/def_img.png" alt="ì¿ í° ì ìš© ë©”ë‰´"/>
               				</p>
               				<p class="select_price s15 prom_menu_name"> 
-              					<span class="name"><label for="main_menu" class="hidden">Àû¿ë ¸Ş´º ¼±ÅÃ</label>
+              					<span class="name"><label for="main_menu" class="hidden">ì ìš© ë©”ë‰´ ì„ íƒ</label>
               						<select id="main_menu" name="main_menu" class="prom_menu" onchange="fnPromotionMainMenuSelect($(this));">
-               							<!-- <option>¸¶°¡¸®Å¸ ¿À¸®Áö³Î ¶óÁö</option> -->
+               							<!-- <option>ë§ˆê°€ë¦¬íƒ€ ì˜¤ë¦¬ì§€ë„ ë¼ì§€</option> -->
 	              					</select>
 	              				</span>
-              					<span class="price">0<span class="t_block">¿ø</span></span> 
+              					<span class="price">0<span class="t_block">ì›</span></span> 
               				</p>
             			</div>
             			
-            			<!-- ÇÒÀÎ¸Ş´º 1 -->
+            			<!-- í• ì¸ë©”ë‰´ 1 -->
             			<div class="sub_menu p_menu" id="first_sub">
-            				<p class="tit"><img src="/assets/img/order/prom2.gif" alt="ÇÒÀÎ¸Ş´º" /></p>
+            				<p class="tit"><img src="/assets/img/order/prom2.gif" alt="í• ì¸ë©”ë‰´" /></p>
               				
               				<p class="img" style="text-align:right" id="sub_menu_img">
-              					<img src="/assets/img/order/menu/00/def_img_sub.png" alt="ÇÒÀÎ¸Ş´º1"/>
+              					<img src="/assets/img/order/menu/00/def_img_sub.png" alt="í• ì¸ë©”ë‰´1"/>
               				</p>
               				<p class="select_price s15 prom_menu_name"> 
               					<span class="name"></span>
               					<span class="price">
-	              					<!-- 20140616 ÇÒÀÎµÇ´Â ¸Ş´º´Â org_blockÅ¬·¡½º¿¡ ¿ø·¡ ´Ü°¡ Ç¥½Ã -->
-	              					<!-- <span class="org_block">&nbsp;100,000¿ø&nbsp;&nbsp;&nbsp;</span>X<span class="t_block">¿ø</span> -->
+	              					<!-- 20140616 í• ì¸ë˜ëŠ” ë©”ë‰´ëŠ” org_blockí´ë˜ìŠ¤ì— ì›ë˜ ë‹¨ê°€ í‘œì‹œ -->
+	              					<!-- <span class="org_block">&nbsp;100,000ì›&nbsp;&nbsp;&nbsp;</span>X<span class="t_block">ì›</span> -->
               					</span>
               					<span class="promHiddenVal">
-              					<!-- 20140619 Àå¹Ù±¸´Ï ÀúÀå¿ë Ãß°¡ -->
+              					<!-- 20140619 ì¥ë°”êµ¬ë‹ˆ ì €ì¥ìš© ì¶”ê°€ -->
 	              					<input type="hidden" class="hideCode"     value="" />
 	              					<input type="hidden" class="hideName"     value="" />
 	              					<input type="hidden" class="hidePrice"    value="" />
@@ -3334,21 +3439,21 @@
               					</span>
               				</p>
             			</div>
-            			<!-- ÇÒÀÎ¸Ş´º 2 -->
+            			<!-- í• ì¸ë©”ë‰´ 2 -->
             			<div class="sub_menu p_menu" id="second_sub" style="display: none">
-            				<p class="tit"><img src="/assets/img/order/prom3.gif" alt="ÇÒÀÎ¸Ş´º" /></p>
+            				<p class="tit"><img src="/assets/img/order/prom3.gif" alt="í• ì¸ë©”ë‰´" /></p>
               				
               				<p class="img" style="text-align:right" id="sub_menu_img">
-              					<img src="/assets/img/order/menu/00/def_img_sub.png" alt="ÇÒÀÎ¸Ş´º2"/>
+              					<img src="/assets/img/order/menu/00/def_img_sub.png" alt="í• ì¸ë©”ë‰´2"/>
               				</p>
               				<p class="select_price s15 prom_menu_name"> 
               					<span class="name"></span>
               					<span class="price">
-	              					<!-- 20140616 ÇÒÀÎµÇ´Â ¸Ş´º´Â org_blockÅ¬·¡½º¿¡ ¿ø·¡ ´Ü°¡ Ç¥½Ã -->
-	              					<!-- <span class="org_block">&nbsp;100,000¿ø&nbsp;&nbsp;&nbsp;</span>X<span class="t_block">¿ø</span> -->
+	              					<!-- 20140616 í• ì¸ë˜ëŠ” ë©”ë‰´ëŠ” org_blockí´ë˜ìŠ¤ì— ì›ë˜ ë‹¨ê°€ í‘œì‹œ -->
+	              					<!-- <span class="org_block">&nbsp;100,000ì›&nbsp;&nbsp;&nbsp;</span>X<span class="t_block">ì›</span> -->
               					 </span>
               					 <span class="promHiddenVal">
-              					<!-- 20140619 Àå¹Ù±¸´Ï ÀúÀå¿ë Ãß°¡ -->
+              					<!-- 20140619 ì¥ë°”êµ¬ë‹ˆ ì €ì¥ìš© ì¶”ê°€ -->
 	              					<input type="hidden" class="hideCode"     value="" />
 	              					<input type="hidden" class="hideName"     value="" />
 	              					<input type="hidden" class="hidePrice"    value="" />
@@ -3366,110 +3471,110 @@
             			
             			<div class="sub_description">
             				<p class="padd_t5">
-            					ÇÁ·Î¸ğ¼Ç ÄíÆùÀÌ ¾Æ´Ñ ±âÅ¸ ÇÒÀÎ Àû¿ëÀ» ¿øÇÏ½Ã´Â °æ¿ì ÇÇÀÚ ´ÜÇ°À» ¼±ÅÃÇÏ½Å ÈÄ °áÁ¦ ´Ü°è¿¡¼­ ÄíÆù Àû¿ëÀ» ¹ŞÀ¸½Ç ¼ö ÀÖ½À´Ï´Ù.
+            					í”„ë¡œëª¨ì…˜ ì¿ í°ì´ ì•„ë‹Œ ê¸°íƒ€ í• ì¸ ì ìš©ì„ ì›í•˜ì‹œëŠ” ê²½ìš° í”¼ì ë‹¨í’ˆì„ ì„ íƒí•˜ì‹  í›„ ê²°ì œ ë‹¨ê³„ì—ì„œ ì¿ í° ì ìš©ì„ ë°›ìœ¼ì‹¤ ìˆ˜ ìˆìŠµë‹ˆë‹¤.
             					<br><br>
-            					Àå¹Ù±¸´Ï¿¡¼­ ÇÁ·Î¸ğ¼Ç ¸Ş´ºÀÇ ¼ö·® º¯°æ ¶Ç´Â ÇÁ·Î¸ğ¼Ç ¸Ş´º »èÁ¦ ½Ã ÇÒÀÎ ¸Ş´º¿¡ µ¿½Ã Àû¿ëµË´Ï´Ù. 
+            					ì¥ë°”êµ¬ë‹ˆì—ì„œ í”„ë¡œëª¨ì…˜ ë©”ë‰´ì˜ ìˆ˜ëŸ‰ ë³€ê²½ ë˜ëŠ” í”„ë¡œëª¨ì…˜ ë©”ë‰´ ì‚­ì œ ì‹œ í• ì¸ ë©”ë‰´ì— ë™ì‹œ ì ìš©ë©ë‹ˆë‹¤. 
             				</p>
      					</div>
           			</div> 
           			<!--// menuArea-->
 					
 	          		<div id="prom_info">
-	          			<!-- ¿É¼Çº¯°æ ¹öÆ° --> 
+	          			<!-- ì˜µì…˜ë³€ê²½ ë²„íŠ¼ --> 
             			<div class="prom_spcInstruction">
-							<p class="btn_h23 red"><button type="button">ÇÇÀÚ¿É¼Ç</button></p>
+							<p class="btn_h23 red"><button type="button">í”¼ìì˜µì…˜</button></p>
               				
               				<div class="comment">
                 				<p class="top"><img src="/assets/img/order/ord_menuList_detail_commBg_top.png" alt=""></p>
                 				<p class="bottom"><img src="/assets/img/order/ord_menuList_detail_commBg_bottom.png" alt=""></p>
             					<p class="center"><span>special instructions :</span>
-	            		 			<br>¹öÆ° Å¬¸¯ ½Ã sauce, cheese, bake, cut »óÅÂ¸¦ Á¶ÀıÇÏ½Ç ¼ö ÀÖ½À´Ï´Ù.
-	            		 			<br>Àå¹Ù±¸´Ï¿¡ ´ãÀº ÈÄ º¯°æÇÏ½Ã·Á¸é ¸Ş´º¸¦ Àå¹Ù±¸´Ï¿¡¼­ »èÁ¦ÈÄ ´Ù½Ã ´ãÀ¸¼Å¾ß ÇÕ´Ï´Ù!!</p> 
+	            		 			<br>ë²„íŠ¼ í´ë¦­ ì‹œ sauce, cheese, bake, cut ìƒíƒœë¥¼ ì¡°ì ˆí•˜ì‹¤ ìˆ˜ ìˆìŠµë‹ˆë‹¤.
+	            		 			<br>ì¥ë°”êµ¬ë‹ˆì— ë‹´ì€ í›„ ë³€ê²½í•˜ì‹œë ¤ë©´ ë©”ë‰´ë¥¼ ì¥ë°”êµ¬ë‹ˆì—ì„œ ì‚­ì œí›„ ë‹¤ì‹œ ë‹´ìœ¼ì…”ì•¼ í•©ë‹ˆë‹¤!!</p> 
               				</div> 
 						</div>
-						<!-- Àå¹Ù±¸´Ï ¹öÆ° -->
+						<!-- ì¥ë°”êµ¬ë‹ˆ ë²„íŠ¼ -->
             			<p class="btn_cart" onclick="fnPromotionAddCart($(this));">
-              				<button type="button" >Àå¹Ù±¸´Ï¿¡´ã±â</button>
-            				<!-- Àå¹Ù±¸´Ï ´ã±â ÈÄ ÇÇÀÚ ¿É¼Ç ¸ğµÎ ÃÊ±âÈ­ÇÏ±â -->
+              				<button type="button" >ì¥ë°”êµ¬ë‹ˆì—ë‹´ê¸°</button>
+            				<!-- ì¥ë°”êµ¬ë‹ˆ ë‹´ê¸° í›„ í”¼ì ì˜µì…˜ ëª¨ë‘ ì´ˆê¸°í™”í•˜ê¸° -->
             			</p>
 	          		</div>
 	          			
-          			<!-- ÇÁ·Î¸ğ¼Ç ¸Ş´º ÇÇÀÚ ¿É¼Ç º¯°æ -->
+          			<!-- í”„ë¡œëª¨ì…˜ ë©”ë‰´ í”¼ì ì˜µì…˜ ë³€ê²½ -->
           			<div id ="option_box_prom" class="prom_option_box"><!--  display: none; -->
 	          				<ul class="spcInstructions">
 	         					<li>
-	        						<p onclick="fnAdjustMenu('prom_1',$(this));">¼Ò½º Á¶Àı <span class="imgsp">¡å</span></p>
+	        						<p onclick="fnAdjustMenu('prom_1',$(this));">ì†ŒìŠ¤ ì¡°ì ˆ <span class="imgsp">â–¼</span></p>
 	        						<div id="prom_1" class="option">
 										<p class="menu_opt_radio" >
 											<input type="radio" id="prom_regularSauce" name="prom_sau_radio" value=""/>
-		          							<label for="prom_regularSauce">¼Ò½º º¸Åë(Normal)</label>
+		          							<label for="prom_regularSauce">ì†ŒìŠ¤ ë³´í†µ(Normal)</label>
 	          							</p>
 										<p class="menu_opt_radio" >
 											<input type="radio" id="prom_lightSauce" name="prom_sau_radio" value="20"/>
-		          							<label for="prom_lightSauce">¼Ò½º Á¶±İ(LS)</label>
+		          							<label for="prom_lightSauce">ì†ŒìŠ¤ ì¡°ê¸ˆ(LS)</label>
 	          							</p>
 										<p class="menu_opt_radio" >
 											<input type="radio" id="prom_extraSauce" name="prom_sau_radio" value="30"/>
-		          							<label for="prom_extraSauce">¼Ò½º ¸¹ÀÌ(XS)</label>
+		          							<label for="prom_extraSauce">ì†ŒìŠ¤ ë§ì´(XS)</label>
 	          							</p>
 										<p class="menu_opt_radio" >
 											<input type="radio" id="prom_noSauce" name="prom_sau_radio" value="40"/>
-		          							<label for="prom_noSauce">¼Ò½º Á¦¿Ü(NS)</label>
+		          							<label for="prom_noSauce">ì†ŒìŠ¤ ì œì™¸(NS)</label>
 	          							</p>
 									</div>
 	       						</li>
 	       						<li style=" cursor:pointer;">
-	        						<p onclick="fnAdjustMenu('prom_2',$(this));">Ä¡Áî Á¶Àı <span class="imgsp">¡å</span></p>
+	        						<p onclick="fnAdjustMenu('prom_2',$(this));">ì¹˜ì¦ˆ ì¡°ì ˆ <span class="imgsp">â–¼</span></p>
 	        						<div id="prom_2" class="option">
 										<p class="menu_opt_radio" >
 											<input type="radio" id="prom_normalCheese" name="prom_chee_radio" value="" />
-		          							<label for="prom_normalCheese">Ä¡Áî º¸Åë(Normal)</label>
+		          							<label for="prom_normalCheese">ì¹˜ì¦ˆ ë³´í†µ(Normal)</label>
 	          							</p>
 										<p class="menu_opt_radio" >
 											<input type="radio" id="prom_lightCheese" name="prom_chee_radio" value="20"/>
-		          							<label for="prom_lightCheese">Ä¡Áî Á¶±İ(LC)</label>  
+		          							<label for="prom_lightCheese">ì¹˜ì¦ˆ ì¡°ê¸ˆ(LC)</label>  
 	          							</p>
 										<p class="menu_opt_radio" >
 											<input type="radio" id="prom_noCheese" name="prom_chee_radio" value="30"/>
-		          							<label for="prom_noCheese">Ä¡Áî Á¦¿Ü(NC)</label>
+		          							<label for="prom_noCheese">ì¹˜ì¦ˆ ì œì™¸(NC)</label>
 	          							</p>
 									</div>
 	       						</li>
 	       						<li>
-	        						<p onclick="fnAdjustMenu('prom_3',$(this));">±Á±â Á¶Àı <span class="imgsp">¡å</span></p>
+	        						<p onclick="fnAdjustMenu('prom_3',$(this));">êµ½ê¸° ì¡°ì ˆ <span class="imgsp">â–¼</span></p>
 	        						<div id="prom_3" class="option">
 										<p class="menu_opt_radio" >
 											<input type="radio" id="prom_normalBake" name="prom_bake_radio" value=""/>
-		          							<label for="prom_normalBake">±âº» ±Á±â(Normal)</label>
+		          							<label for="prom_normalBake">ê¸°ë³¸ êµ½ê¸°(Normal)</label>
 	          							</p>
 										<p class="menu_opt_radio" >
 											<input type="radio" id="prom_wellDone" name="prom_bake_radio" value="20"/>
-		          							<label for="prom_wellDone">¹Ù½Ï ±Á±â(WD)</label> 
+		          							<label for="prom_wellDone">ë°”ì‹¹ êµ½ê¸°(WD)</label> 
 	          							</p>
 									</div>
 	       						</li>
 	       						<li>
-	        						<p onclick="fnAdjustMenu('prom_4',$(this));">Á¶°¢ ÄÆÆÃ <span class="imgsp">¡å</span></p>
+	        						<p onclick="fnAdjustMenu('prom_4',$(this));">ì¡°ê° ì»·íŒ… <span class="imgsp">â–¼</span></p>
 	        						<div id="prom_4" class="option">
 										<p class="menu_opt_radio" >
 											<input type="radio" id="prom_normalCut" name="prom_cut_radio" value=""/>
-		          							<label for="prom_normalCut">±âº»ÄÆÆÃ(Normal)</label>
+		          							<label for="prom_normalCut">ê¸°ë³¸ì»·íŒ…(Normal)</label>
 	          							</p>
 										<p class="menu_opt_radio" >
 											<input type="radio" id="prom_squareCut" name="prom_cut_radio" value="60"/>
-		          							<label for="prom_squareCut">»ç°¢ÄÆÆÃ(SC)</label>
+		          							<label for="prom_squareCut">ì‚¬ê°ì»·íŒ…(SC)</label>
 	          							</p> 
 										<p class="menu_opt_radio" >
 											<input type="radio" id="prom_sixCut" name="prom_cut_radio" value="20"/>
-		          							<label for="prom_sixCut">6Á¶°¢ÄÆÆÃ(6C)</label>
+		          							<label for="prom_sixCut">6ì¡°ê°ì»·íŒ…(6C)</label>
 	          							</p> 
 										<p class="menu_opt_radio" >
 											<input type="radio" id="prom_eightCut" name="prom_cut_radio" value="30"/>
-		          							<label for="prom_eightCut">8Á¶°¢ÄÆÆÃ(8C)</label>
+		          							<label for="prom_eightCut">8ì¡°ê°ì»·íŒ…(8C)</label>
 	          							</p> 
 										<p class="menu_opt_radio" >
 											<input type="radio" id="prom_tenCut" name="prom_cut_radio" value="40"/>
-		          							<label for="prom_tenCut">10Á¶°¢ÄÆÆÃ(10C)</label>
+		          							<label for="prom_tenCut">10ì¡°ê°ì»·íŒ…(10C)</label>
 	          							</p> 
 									</div>
 	       						</li> 
@@ -3481,43 +3586,43 @@
 				<!-- prom_section end-->		
 
 
-      			<!-- ¼¼Æ®¸Ş´º ¼½¼Ç --> 
+      			<!-- ì„¸íŠ¸ë©”ë‰´ ì„¹ì…˜ --> 
       			<div id="set_section" class="" style="display: none;">
       			</div>
-      			<!-- ¼¼Æ®¸Ş´º ¼½¼Ç ³¡-->
+      			<!-- ì„¸íŠ¸ë©”ë‰´ ì„¹ì…˜ ë-->
       			
-      			<!-- 20140425 ÆÄÆÄÇÃ·¡ÅÍ --> 
+      			<!-- 20140425 íŒŒíŒŒí”Œë˜í„° --> 
       			<div id="plat_section" class="" style="display: none;">
       			</div>
-      			<!-- ¼¼Æ®¸Ş´º ¼½¼Ç ³¡-->
+      			<!-- ì„¸íŠ¸ë©”ë‰´ ì„¹ì…˜ ë-->
       
-      			<!-- ÇÏÇÁ¾ØÇÏÇÁ ¼½¼Ç -->
+      			<!-- í•˜í”„ì•¤í•˜í”„ ì„¹ì…˜ -->
       			<!-- half_section --> 
       			<div id="half_section" style="display: none;">
           			<!-- left-->
           			<div class="left">
             			<div class="size">
-              				<label for="pro_size" class="hidden">»çÀÌÁî</label>
+              				<label for="pro_size" class="hidden">ì‚¬ì´ì¦ˆ</label>
               				<select id="pro_size" name="pro_size" class="s_size" onchange="fnSelLeftHalfAndHalf(this.value);">
-                				<option value="">ÇÇÀÚ »çÀÌÁî¸¦ ¼±ÅÃÇØÁÖ¼¼¿ä</option>
+                				<option value="">í”¼ì ì‚¬ì´ì¦ˆë¥¼ ì„ íƒí•´ì£¼ì„¸ìš”</option>
               				</select>
             			</div>
             			
             			<div class="half1">
-            				<p class="tit"><img src="/assets/img/order/hp1.gif" alt="ÇÏÇÁ1ÇÇÀÚ" /></p>
-              				<label for="half1" class="hidden">ÇÏÇÁÇÇÀÚ1 ¼±ÅÃ</label>
+            				<p class="tit"><img src="/assets/img/order/hp1.gif" alt="í•˜í”„1í”¼ì" /></p>
+              				<label for="half1" class="hidden">í•˜í”„í”¼ì1 ì„ íƒ</label>
               				<select id="half1" name="half1" class="half" onchange="fnSelRightHalfAndHalf(this.value, 1)">
-               					<option>ÇÇÀÚ1 ¼±ÅÃÇØÁÖ¼¼¿ä</option>
+               					<option>í”¼ì1 ì„ íƒí•´ì£¼ì„¸ìš”</option>
               				</select>
               				<p class="img" style="text-align:left" id="half1Img"><img src="" alt=""/></p>
               				<p class="select_price s15 half_name" style="width:100%;"> <span class="name"></span><span class="price"><span class="t_block"></span></span> </p>
             			</div>
             			
             			<div class="half2">
-            				<p class="tit"><img src="/assets/img/order/hp2.gif" alt="ÇÏÇÁ2ÇÇÀÚ" /></p>
-              				<label for="half2" class="hidden">ÇÏÇÁÇÇÀÚ2 ¼±ÅÃ</label>
+            				<p class="tit"><img src="/assets/img/order/hp2.gif" alt="í•˜í”„2í”¼ì" /></p>
+              				<label for="half2" class="hidden">í•˜í”„í”¼ì2 ì„ íƒ</label>
               				<select id="half2" name="half2" class="half" onchange="fnSelImageHalfandHalf(this.value, 2);">
-                				<option>ÇÇÀÚ2 ¼±ÅÃÇØÁÖ¼¼¿ä</option>
+                				<option>í”¼ì2 ì„ íƒí•´ì£¼ì„¸ìš”</option>
               				</select>
               				<p class="img" style="text-align:right" id="half2Img"> <img src="" alt=""/></p>
               				<p class="select_price s15 half_name"> <span class="name"></span><span class="price"><span class="t_block"></span></span></p>
@@ -3528,100 +3633,100 @@
           			<!-- right -->
           			<div class="right">
             			<div class="half_spcInstruction">
-							<p class="btn_h23 red"><button type="button">¿É¼Çº¯°æ</button></p>
-              				<!-- ¿É¼Çº¯°æ ¸»Ç³¼± --> 
+							<p class="btn_h23 red"><button type="button">ì˜µì…˜ë³€ê²½</button></p>
+              				<!-- ì˜µì…˜ë³€ê²½ ë§í’ì„  --> 
               				<div class="comment">
                 				<p class="top"><img src="/assets/img/order/ord_menuList_detail_commBg_top.png" alt=""></p>
                 				<p class="bottom"><img src="/assets/img/order/ord_menuList_detail_commBg_bottom.png" alt=""></p>
             					<p class="center"><span>special instructions :</span>
-	            		 			<br>¹öÆ° Å¬¸¯ ½Ã sauce, cheese, bake, cut »óÅÂ¸¦ Á¶ÀıÇÏ½Ç ¼ö ÀÖ½À´Ï´Ù.
-	            		 			<br>Àå¹Ù±¸´Ï¿¡ ´ãÀº ÈÄ º¯°æÇÏ½Ã·Á¸é ¸Ş´º¸¦ Àå¹Ù±¸´Ï¿¡¼­ »èÁ¦ÈÄ ´Ù½Ã ´ãÀ¸¼Å¾ß ÇÕ´Ï´Ù!!</p> 
+	            		 			<br>ë²„íŠ¼ í´ë¦­ ì‹œ sauce, cheese, bake, cut ìƒíƒœë¥¼ ì¡°ì ˆí•˜ì‹¤ ìˆ˜ ìˆìŠµë‹ˆë‹¤.
+	            		 			<br>ì¥ë°”êµ¬ë‹ˆì— ë‹´ì€ í›„ ë³€ê²½í•˜ì‹œë ¤ë©´ ë©”ë‰´ë¥¼ ì¥ë°”êµ¬ë‹ˆì—ì„œ ì‚­ì œí›„ ë‹¤ì‹œ ë‹´ìœ¼ì…”ì•¼ í•©ë‹ˆë‹¤!!</p> 
               				</div>
-              				<!--// ¿É¼Çº¯°æ ¸»Ç³¼± --> 
+              				<!--// ì˜µì…˜ë³€ê²½ ë§í’ì„  --> 
 							</div>
 							
             			<p class="select_price"></p>
             			<p></p>
             			<p class="btn_cart" onclick="fnAddSet($(this), '59999','30', '55', '', '', '');fnReset_spcOption_up($(this))">
-              				<button type="button" >Àå¹Ù±¸´Ï¿¡´ã±â</button>
+              				<button type="button" >ì¥ë°”êµ¬ë‹ˆì—ë‹´ê¸°</button>
             			</p>
           			</div>
           			<!--// right -->
         			<div id ="option_box_59999" class="half_option_box"><!--  display: none; -->
 	          				<ul class="spcInstructions">
 	         					<li>
-	        						<p onclick="fnAdjustMenu('59999_1',$(this));">¼Ò½º Á¶Àı <span class="imgsp">¡å</span></p>
+	        						<p onclick="fnAdjustMenu('59999_1',$(this));">ì†ŒìŠ¤ ì¡°ì ˆ <span class="imgsp">â–¼</span></p>
 	        						<div id="59999_1" class="option">
 										<p class="menu_opt_radio" >
 											<input type="radio" id="59999_regularSauce" name="59999_sau_radio" value=""/>
-		          							<label for="59999_regularSauce">¼Ò½º º¸Åë(Normal)</label>
+		          							<label for="59999_regularSauce">ì†ŒìŠ¤ ë³´í†µ(Normal)</label>
 	          							</p>
 										<p class="menu_opt_radio" >
 											<input type="radio" id="59999_lightSauce" name="59999_sau_radio" value="20"/>
-		          							<label for="59999_lightSauce">¼Ò½º Á¶±İ(LS)</label>
+		          							<label for="59999_lightSauce">ì†ŒìŠ¤ ì¡°ê¸ˆ(LS)</label>
 	          							</p>
 										<p class="menu_opt_radio" >
 											<input type="radio" id="59999_extraSauce" name="59999_sau_radio" value="30"/>
-		          							<label for="59999_extraSauce">¼Ò½º ¸¹ÀÌ(XS)</label>
+		          							<label for="59999_extraSauce">ì†ŒìŠ¤ ë§ì´(XS)</label>
 	          							</p>
 										<p class="menu_opt_radio" >
 											<input type="radio" id="59999_noSauce" name="59999_sau_radio" value="40"/>
-		          							<label for="59999_noSauce">¼Ò½º Á¦¿Ü(NS)</label>
+		          							<label for="59999_noSauce">ì†ŒìŠ¤ ì œì™¸(NS)</label>
 	          							</p>
 									</div>
 	       						</li>
 	       						<li style=" cursor:pointer;">
-	        						<p onclick="fnAdjustMenu('59999_2',$(this));">Ä¡Áî Á¶Àı <span class="imgsp">¡å</span></p>
+	        						<p onclick="fnAdjustMenu('59999_2',$(this));">ì¹˜ì¦ˆ ì¡°ì ˆ <span class="imgsp">â–¼</span></p>
 	        						<div id="59999_2" class="option">
 										<p class="menu_opt_radio" >
 											<input type="radio" id="59999_normalCheese" name="59999_chee_radio" value="" />
-		          							<label for="59999_normalCheese">Ä¡Áî º¸Åë(Normal)</label>
+		          							<label for="59999_normalCheese">ì¹˜ì¦ˆ ë³´í†µ(Normal)</label>
 	          							</p>
 										<p class="menu_opt_radio" >
 											<input type="radio" id="59999_lightCheese" name="59999_chee_radio" value="20"/>
-		          							<label for="59999_lightCheese">Ä¡Áî Á¶±İ(LC)</label>  
+		          							<label for="59999_lightCheese">ì¹˜ì¦ˆ ì¡°ê¸ˆ(LC)</label>  
 	          							</p>
 										<p class="menu_opt_radio" >
 											<input type="radio" id="59999_noCheese" name="59999_chee_radio" value="30"/>
-		          							<label for="59999_noCheese">Ä¡Áî Á¦¿Ü(NC)</label>
+		          							<label for="59999_noCheese">ì¹˜ì¦ˆ ì œì™¸(NC)</label>
 	          							</p>
 									</div>
 	       						</li>
 	       						<li>
-	        						<p onclick="fnAdjustMenu('59999_3',$(this));">±Á±â Á¶Àı <span class="imgsp">¡å</span></p>
+	        						<p onclick="fnAdjustMenu('59999_3',$(this));">êµ½ê¸° ì¡°ì ˆ <span class="imgsp">â–¼</span></p>
 	        						<div id="59999_3" class="option">
 										<p class="menu_opt_radio" >
 											<input type="radio" id="59999_normalBake" name="59999_bake_radio" value=""/>
-		          							<label for="59999_normalBake">±âº» ±Á±â(Normal)</label>
+		          							<label for="59999_normalBake">ê¸°ë³¸ êµ½ê¸°(Normal)</label>
 	          							</p>
 										<p class="menu_opt_radio" >
 											<input type="radio" id="59999_wellDone" name="59999_bake_radio" value="20"/>
-		          							<label for="59999_wellDone">¹Ù½Ï ±Á±â(WD)</label> 
+		          							<label for="59999_wellDone">ë°”ì‹¹ êµ½ê¸°(WD)</label> 
 	          							</p>
 									</div>
 	       						</li>
 	       						<li>
-	        						<p onclick="fnAdjustMenu('59999_4',$(this));">Á¶°¢ ÄÆÆÃ <span class="imgsp">¡å</span></p>
+	        						<p onclick="fnAdjustMenu('59999_4',$(this));">ì¡°ê° ì»·íŒ… <span class="imgsp">â–¼</span></p>
 	        						<div id="59999_4" class="option">
 										<p class="menu_opt_radio" >
 											<input type="radio" id="59999_normalCut" name="59999_cut_radio" value=""/>
-		          							<label for="59999_normalCut">±âº»ÄÆÆÃ(Normal)</label>
+		          							<label for="59999_normalCut">ê¸°ë³¸ì»·íŒ…(Normal)</label>
 	          							</p>
 										<p class="menu_opt_radio" >
 											<input type="radio" id="59999_squareCut" name="59999_cut_radio" value="60"/>
-		          							<label for="59999_squareCut">»ç°¢ÄÆÆÃ(SC)</label>
+		          							<label for="59999_squareCut">ì‚¬ê°ì»·íŒ…(SC)</label>
 	          							</p> 
 										<p class="menu_opt_radio" >
 											<input type="radio" id="59999_sixCut" name="59999_cut_radio" value="20"/>
-		          							<label for="59999_sixCut">6Á¶°¢ÄÆÆÃ(6C)</label>
+		          							<label for="59999_sixCut">6ì¡°ê°ì»·íŒ…(6C)</label>
 	          							</p> 
 										<p class="menu_opt_radio" >
 											<input type="radio" id="59999_eightCut" name="59999_cut_radio" value="30"/>
-		          							<label for="59999_eightCut">8Á¶°¢ÄÆÆÃ(8C)</label>
+		          							<label for="59999_eightCut">8ì¡°ê°ì»·íŒ…(8C)</label>
 	          							</p> 
 										<p class="menu_opt_radio" >
 											<input type="radio" id="59999_tenCut" name="59999_cut_radio" value="40"/>
-		          							<label for="59999_tenCut">10Á¶°¢ÄÆÆÃ(10C)</label>
+		          							<label for="59999_tenCut">10ì¡°ê°ì»·íŒ…(10C)</label>
 	          							</p> 
 									</div>
 	       						</li> 
@@ -3630,19 +3735,19 @@
 		  				<p class="plus"><img src="/assets/img/order/plus.png" alt="plus" style="display: none;"/></p>
       			</div>
       			<!--// half_section --> 
-      			<!-- ÇÏÇÁ¾ØÇÏÇÁ ¼½¼Ç ³¡ --> 
+      			<!-- í•˜í”„ì•¤í•˜í”„ ì„¹ì…˜ ë --> 
       
-      			<!-- EÄíÆù ¼½¼Ç -->
+      			<!-- Eì¿ í° ì„¹ì…˜ -->
       			<div id="ecoup_section" style="display: none;">
           			<!-- left-->
         			<div class="left">
           				<div class="inquiry">
           					<p>
-          						* EÄíÆù ¹øÈ£¸¦ ÀÔ·ÂÇÏ½Å ÈÄ Á¶È¸ ¹öÆ°À» ´­·¯ÁÖ¼¼¿ä!!
+          						* Eì¿ í° ë²ˆí˜¸ë¥¼ ì…ë ¥í•˜ì‹  í›„ ì¡°íšŒ ë²„íŠ¼ì„ ëˆŒëŸ¬ì£¼ì„¸ìš”!!
           					</p>
-            				<label for="coup_id">EÄíÆù ¹øÈ£</label>
+            				<label for="coup_id">Eì¿ í° ë²ˆí˜¸</label>
             				<input type="text" id="coup_id" style="width:200px"/>
-             				<span class="btn_h23 gray" onclick="$('#coup_id').val( $('#coup_id').val().toUpperCase() ); fnSelECoupon($('#coup_id').val());"><button type="button">Á¶È¸</button></span>
+             				<span class="btn_h23 gray" onclick="$('#coup_id').val( $('#coup_id').val().toUpperCase() ); fnSelECoupon($('#coup_id').val());"><button type="button">ì¡°íšŒ</button></span>
           				</div>
         			</div>
           			<!--// left-->
@@ -3651,11 +3756,11 @@
         			<div class="right"> 
           				<p><img src="/assets/img/order/menu/eCoupon_img_none.png" alt="e_Coupon" title="couponNm"/></p>
             			<p class="name" id="coupNm"></p>
-            			<p class="btn_cart" onclick="fnAddSet($(this), '','', '', '', '', '')"><button type="button">Àå¹Ù±¸´Ï¿¡´ã±â</button></p> 
+            			<p class="btn_cart" onclick="fnAddSet($(this), '','', '', '', '', '')"><button type="button">ì¥ë°”êµ¬ë‹ˆì—ë‹´ê¸°</button></p> 
         			</div>
           			<!--// right -->
       			</div>
-      			<!-- eÄíÆù ¼½¼Ç ³¡ --> 
+      			<!-- eì¿ í° ì„¹ì…˜ ë --> 
       
     		</div>
     		<!--// cont --> 
@@ -3666,224 +3771,39 @@
 </form>
  
 
-<!-- ///////////////////////////////////////////////////////////// Àå¹Ù±¸´Ï ±¸¿ª //////////////////////////////////////////////////////////////////// -->
+<!-- ///////////////////////////////////////////////////////////// ì¥ë°”êµ¬ë‹ˆ êµ¬ì—­ //////////////////////////////////////////////////////////////////// -->
 <!-- orderWrap --> 
-<div id="orderWrap">
-  	<!-- order_box --> 
-  	<div id="order_box">
-    	<p class="top"></p>
-    	<p class="bottom"></p>
-    	<!-- ord_area -->   
-    	<div id="ord_area" style="padding:5px 20px">
-      		<!-- ord_tracking_section -->
-      		<div id="ord_tracking_section">
-        		<p class="tracking"></p>
-      		</div>
-      		<!--// ord_tracking_section -->
-      
-      		<!-- ord_title -->
-      		<div id="ord_title">
-            	<h2><img src="../assets/img/order/tit_order.gif" alt="Àå¹Ù±¸´Ï" /></h2>
-        		<p class="ord_reset"> <span class="btn_h23 green"><button type="button" onclick="javascript:fnClearCart();">ÃÊ±âÈ­</button></span></p>
-      		</div>
-      		<!--// ord_title -->
-      
-      		<!-- ord_cart_section --> 
-      		<div id="ord_cart_section" class="section_box">
-        		<p class="section_top"></p>
-        		<p class="section_bottom"></p>
-        		<!-- cart_list_section -->
-        		<div id="cart_list_section">
-            		<h3 class="section_title"><img src="../assets/img/order/order_rboxTitle_ordList.gif" alt="ÁÖ¹®¸ñ·Ï" /></h3>
-          			<!-- section_con --> 
-          			<div class="section_con"> 
-            			<!-- ÁÖ¹® ¸®½ºÆ® :max-height:140px; -->
-						<ul id="ord_list" >
 
-						</ul>
-            			<!--// ÁÖ¹® ¸®½ºÆ® --> 
-          			</div>
-          			<!--// section_con --> 
-        		</div>
-        		<!-- cart_list_section -->
-        
-        	<script type="text/javascript">
-				document.frmOrder.cartOrdCustName.value     = "";      // °í°´¸í
-				document.frmOrder.cartOrdCustPhone.value    = "";     // ÀüÈ­¹øÈ£
-				document.frmOrder.cartOrdDevide.value       = "";        // ÁÖ¹®±¸ºĞ(ÁÖ¹®À¯Çü)
-				document.frmOrder.cartOrdReserve.value      = "";       // ¿¹¾àÁÖ¹®¿©ºÎ
-				document.frmOrder.cartOrdResDate.value      = "";       // ¿¹¾àÀÏÀÚ
-				document.frmOrder.cartOrdResTime.value      = "";       // ¿¹¾à½Ã°£
-				document.frmOrder.cartOrdDevAddr1.value     = "";      // ¹è´ŞÁöÁÖ¼Ò1
-				document.frmOrder.cartOrdDevAddr2.value     = "";      // ¹è´ŞÁöÁÖ¼Ò2
-				document.frmOrder.cartOrdDevAddr3.value     = "";      // ¹è´ŞÁöÁÖ¼Ò3
-				document.frmOrder.cartOrdDevAddr4.value     = "";      // ¹è´ŞÁöÁÖ¼Ò4
-				document.frmOrder.cartOrdAddressID.value    = "";     // ADDRESS_ID
-				document.frmOrder.cartOrdStoreCode.value    = "";     // ¸ÅÀåÄÚµå
-				document.frmOrder.cartOrdStoreName.value    = "";     // ¸ÅÀå¸í
-				document.frmOrder.cartOrdSectorCode.value   = "";    // ¸ÅÀå¼½ÅÍÄÚµå
-				document.frmOrder.cartOrdSectorName.value   = "";    // ¸ÅÀå¼½ÅÍ¸í
-				document.frmOrder.cartOrdDeliveryTime.value = "";  // ¼½ÅÍ¿¹»ó½Ã°£
-				document.frmOrder.cartOrdDeliveryYN.value   = "";    // ¹è´Ş°¡´É¿©ºÎ
-				document.frmOrder.cartOrdNewAddressYN.value = "";  // ¹è´ŞÁöÁÖ¼Ò½Å±ÔÃß°¡¿©ºÎ
-
-				$("#btn_addr").removeClass("active");
-				$("#btn_store").removeClass("active");
-				
-				var sector = "ÁÖ¼Ò´Â ";
-				var ordType = "¹è´Ş";
-				var serviceable_time =  "" + "ºĞ~" + ( parseInt( "") +10 ) + "ºĞ"; 
-        		if( "" == "10" ) 
-        		{ 
-        			radio_btn($("#btn_addr"));      
-    				$("#ord_optInfo_section .store_title").text("¹è´Ş¸ÅÀå");
-    				$("#ord_optInfo_section .addr_title").text("¹è´ŞÁÖ¼Ò");
-//    				$("#ord_optInfo_section .time_title").text("¹è´Ş½Ã°£");
-        		}
-        		if( "" == "20" ) 
-        		{ 
-        			radio_btn($("#btn_store"));     
-    				$("#ord_optInfo_section .store_title").text("¹æ¹®¸ÅÀå");
-    				$("#ord_optInfo_section .addr_title").text("¸ÅÀåÁÖ¼Ò");
-// 	  				$("#ord_optInfo_section .time_title").text("¹æ¹®½Ã°£");
-    				sector = "¸ÅÀåÀº ";
-					ordType = "Æ÷Àå";
-					serviceable_time = ( parseInt( "") -15 ) + "ºĞ~" + ( parseInt( "") -10 ) + "ºĞ"; 
-        		} 
-
-				$sect_info.html("<br><span class='txt_green'>¼±ÅÃÇÏ½Å "+sector +"ÁÖ¹®ÀÌ ¿Ï·áµÈ ÈÄ<br><span class='txt_point'>"+ serviceable_time +"</span>ÀÇ " +ordType+"½Ã°£ÀÌ ¼Ò¿äµË´Ï´Ù. ¿¹¾à ½Ã°£Àº °áÁ¦ È­¸é¿¡¼­ º¯°æÇÏ½Ç ¼ö ÀÖ½À´Ï´Ù.</span>");
-				//contents_resize();
-			</script>
-        
-        		<!-- cart_opt_section--> 
-        		<div id="cart_opt_section" >
-        			<%-- <h3 class="section_title"><img src="../assets/img/order/order_rboxTitle_ordway.gif" alt="ÁÖ¹®¹æ¹ı¼±ÅÃ" /></h3>  --%>
-          			<!-- section_con--> 
-            		<div class="section_con" id="cart_opt_section">
-            			<!-- ¹è´Ş / ¹æ¹®Æ÷Àå  ½ÃÀÛ-->
-            			<%-- 
-	            		<div id="cart_btn_ordWay1">
-	              			<p style="height:40px" class="radio">
-	                			<a href="#ord_area">	<!-- ¹öÆ° Å¬¸¯ ½Ã È­¸é »ó´ÜÀ¸·Î ÀÌµ¿ : ½½¶óÀÌµå°¡ ¾Èº¸ÀÌ°Ô ½ºÅ©·Ñ µÇ¾îÀÖ´Â °æ¿ì-->
-	                				<button type="button" id="btn_addr"  class="btn_radio  btn_addr clear  " style="width:95px; display:block; float:left;" >
-	                					<img src="/assets/img/btn/btn_bigRed_delivery.png" alt="¹è´Ş"/>
-	                				</button>
-	                				<button type="button" id="btn_store" class="btn_radio  btn_store clear " style="width:95px; display:block; float:left;"> 
-	                					<img src="/assets/img/btn/btn_bigRed_visit.png"    alt="¹æ¹®Æ÷Àå"/>
-	                				</button>
-	                			</a>
-	              			</p>
-	            		</div>
-	            		--%>
-             			<!-- ¹è¼ÛÁöÁ¤º¸  ½ÃÀÛ-->
-            			<div id="ord_optInfo_section" style="display:none" >
-              				<h3 class="section_title"><img src="/assets/img/order/order_rboxTitle_addrInfo.gif" alt="¹è¼ÛÁöÁ¤º¸" /></h3>
-              				<div class="rBox_con">
-                				<p style="padding:2px 0 2px 5px"><span style="font-weight:bold">¼ö·ÉÀÎ</span> : <span class="mem_name"></span></p>
-                				<p style="padding:2px 0 2px 5px"><span style="font-weight:bold">¿¬¶ôÃ³</span> : <span class="mem_phone"></span></p>
-                				<p style="padding:2px 0 2px 5px"><span style="font-weight:bold" class="store_title">¹æ¹®¸ÅÀå</span> : <span class="store_name"></span></p>
-                				<p style="padding:2px 0 2px 5px"><span style="font-weight:bold" class="addr_title">¸ÅÀåÁÖ¼Ò</span> : <span class="addr"></span></p>
-                				
-                				<p style="padding:3px" class="sect_info bold"></p>
-              				</div>
-              				<p class="rBox_top"></p>
-              				<p class="rBox_bottom"></p>
-            			</div>
-            			<!-- ¹è¼ÛÁöÁ¤º¸ ³¡ --> 
-          			</div>
-          			<!--// section_con--> 
-        		</div>
-        		<!--// cart_opt_section--> 
-      		</div>
-      		<!--// ord_cart_section --> 
- 
-      		<!-- ÇÕ°è -->
-      		<div id="ord_total" >
-        		<p><img src="../assets/img/order/order_total_title.gif" alt="ÃÑÁÖ¹®±İ¾×"/><span class="price">0¿ø</span></p>
-      		</div>
-      		<!-- //ÇÕ°è --> 
-      
-		 	<!-- Àå¹Ù±¸´Ï ¿µ¿ª »çÀÌµå ÃßÃµ¸Ş´º ¹è³Ê Ãß°¡ -->
-		 	<div id="side_banner" >
-		  		<div id="banner_content">
-				<!-- »çÀÌµå¿¡ µé¾î°¥ ¸Ş´º µ¥ÀÌÅÍ¸¦ »Ñ·ÁÁÜ :ÀÌ¹ÌÁöÀÌ¸§°ú ¸Ş´º ÄÚµå µ¿ÀÏÇÏ°Ô ¸¸µé±â -->
-
-					<img id="50501" src="../assets/img/order/banner/bn_50501.png" alt="ÄÚÄ«Äİ¶ó 1.25L" title="ÄÚÄ«Äİ¶ó 1.25L"  onerror="fnNoImages($(this));"/>
-				  	<input type="hidden" id="bnMenuInfo" name="bnMenuInfo" value="50501,ÄÚÄ«Äİ¶ó 1.25L,10,40,4020,3013,,1600,1.25L,"/> 
-
-					<img id="50268" src="../assets/img/order/banner/bn_50268.png" alt="½ºÇÁ¶óÀÌÆ®1.5L" title="½ºÇÁ¶óÀÌÆ®1.5L"  onerror="fnNoImages($(this));"/>
-				  	<input type="hidden" id="bnMenuInfo" name="bnMenuInfo" value="50268,½ºÇÁ¶óÀÌÆ®1.5L,10,40,4009,3014,,1900,1.5L,"/> 
-
-					<img id="50485" src="../assets/img/order/banner/bn_50485.png" alt="È¯Å¸1.5L" title="È¯Å¸1.5L"  onerror="fnNoImages($(this));"/>
-				  	<input type="hidden" id="bnMenuInfo" name="bnMenuInfo" value="50485,È¯Å¸1.5L,10,40,4010,3014,,1900,1.5L,"/> 
-
-				</div>
-		  		<a href="#ord_cart_section"><button type="button" id="banner_btn">Àå¹Ù±¸´Ï¿¡´ã±â</button></a> 
-				<div id="ban_name" style="display:none; font-weight:bold; font-size:14px; border:1px solid #fcc; z-index:99;"></div>
-			</div>
-			<!-- »çÀÌµå ¹è³Ê ¸Ş´º -->
-      
-      		<!-- ÁÖ¹®ÇÏ±â ¹öÆ° -->
-      		<div id="comp_ord_btn" >
-        		<button class="clear" onclick="fnOrderInfoView();"><img src="../assets/img/btn/btn_order.png" alt="ÁÖ¹®ÇÏ±â" /></button>
-      		</div>
-      		<!--// ÁÖ¹®ÇÏ±â ¹öÆ° --> 
-    	</div>
-    	<!--// ord_area -->   
-  	</div>
-  	<!--// order_box --> 
-  
-    <!--20130923 Àå¹Ù±¸´Ï À§Ä¡·Î È­¸éÀ§Ä¡ ÀÌµ¿ Ãß°¡(usa»çÀÌÆ® Ä«ÇÇ) --> 
-	<div>
-		<a href="#ord_cart_section" id="scrollTopBtn" class="btn_h23 red">0</a>
-	</div>
-	
-  <script type="text/javascript">contents_resize();</script>
-  
-  
-  	<!-- ////////////////////////////////////////////// ½½¶óÀÌµå ¹Ú½º ½ÃÀÛ////////////////////////////////////////////////////// -->
-  	<div id="ord_opt_area" class="side_con" >
-    	<p style="position:relative; left:8px;top:-5px;"> 
-    		<img src="/assets/img/btn/btn_close.gif" alt="½½¶óÀÌµå´İ±â" onclick="slide_con_close()"/>
-    	</p>
-    	<div class="con"> 
-      		<!--<p style="padding-bottom:10px;"><img src="assets/img/order/img1.png" alt="" onclick="comp_addr()" style="cursor:pointer"/></p>--> 
-    	</div>
-    	<p class="bg_bottom" style="background:url(/assets/img/order/side_bottomBg.png) no-repeat; width:365px; height:15px; position:absolute; bottom:-15px; left:0;"></p>
-  	</div>
-  	<!--// ½½¶óÀÌµå ¹Ú½º ³¡ --> 
-  
-</div>
 <!--// orderWrap --> 
 
-<!-- ///////////////////////////////////////////////////////// ¿À´õ¿É¼Ç¿¡ µé¾î °¥ ÄÁÅÙÃ÷ ¸ğÀ½///////////////////////////////////////////////////////////////////////// --> 
-<!-- È¸¿øÁ¤º¸ (jsp : È¸¿ø Á¤º¸ Ãâ·Â) -->
+<!-- ///////////////////////////////////////////////////////// ì˜¤ë”ì˜µì…˜ì— ë“¤ì–´ ê°ˆ ì»¨í…ì¸  ëª¨ìŒ///////////////////////////////////////////////////////////////////////// --> 
+<!-- íšŒì›ì •ë³´ (jsp : íšŒì› ì •ë³´ ì¶œë ¥) -->
 <div id="mem_info" class="opt_box">
   	<p class="top"></p>
   	<p class="bottom"></p>
   	<div>
-    	<h3 class="title line_btn"><img src="/assets/img/order/order_rboxTitle_memInfo.gif" alt="¼ö·ÉÀÎ Á¤º¸" /><span class="btn_h23 gray right" ><button type="button" class="mem_modify">º¯°æ</button></span></h3>
+    	<h3 class="title line_btn"><img src="/assets/img/order/order_rboxTitle_memInfo.gif" alt="ìˆ˜ë ¹ì¸ ì •ë³´" /><span class="btn_h23 gray right" ><button type="button" class="mem_modify">ë³€ê²½</button></span></h3>
     	<div class="opt_whBox">
       		<p class="top"></p>
       		<p class="bottom"></p>
-      		<p class="line"><span class="tit">ÀÌ¸§ : </span> <span class="text m_name" >Á¤¿ì¶÷</span></p>
-      		<p style="padding : 4px 0 0;"><span class="tit">¿¬¶ôÃ³ : </span> <span class="text m_phone" >01038085247</span></p>
-      		<!-- jsp ÀÌºÎºĞÀÌ È¸¿ø Á¤º¸ Ãâ·Â ºÎºĞ ³¡ --> 
+      		<p class="line"><span class="tit">ì´ë¦„ : </span> <span class="text m_name" >ì •ìš°ëŒ</span></p>
+      		<p style="padding : 4px 0 0;"><span class="tit">ì—°ë½ì²˜ : </span> <span class="text m_phone" >01038085247</span></p>
+      		<!-- jsp ì´ë¶€ë¶„ì´ íšŒì› ì •ë³´ ì¶œë ¥ ë¶€ë¶„ ë --> 
     	</div>
   	</div>
 </div>
 
-<!-- È¸¿ø ÁÖ¼ÒÁ¤º¸/ ¼±ÅÃ (jsp : È¸¿ø ÁÖ¼Ò Á¤º¸ Ãâ·Â) -->
+<!-- íšŒì› ì£¼ì†Œì •ë³´/ ì„ íƒ (jsp : íšŒì› ì£¼ì†Œ ì •ë³´ ì¶œë ¥) -->
 <div id="select_addr" class="opt_box">
   	<p class="top"></p>
   	<p class="bottom"></p>
   	<div>
     	<h3 class="title line_btn">
-	    	<img src="/assets/img/order/order_rboxTitle_addrSelect.gif" alt="¹è´ŞÁö¼±ÅÃ" /> 
-	    	<!-- <a href="#frame"><span class="btn_h23 gray right" ><button type="button" id="btn_newAddr_reg">»õÁÖ¼Ò ÀÔ·Â</button></span></a> -->
-	    	<!-- ¹®¼­¸ğµå ie7, ie8 ¹İÀÀ ¼öÁ¤-->
+	    	<img src="/assets/img/order/order_rboxTitle_addrSelect.gif" alt="ë°°ë‹¬ì§€ì„ íƒ" /> 
+	    	<!-- <a href="#frame"><span class="btn_h23 gray right" ><button type="button" id="btn_newAddr_reg">ìƒˆì£¼ì†Œ ì…ë ¥</button></span></a> -->
+	    	<!-- ë¬¸ì„œëª¨ë“œ ie7, ie8 ë°˜ì‘ ìˆ˜ì •-->
 	    	<a href="javascript:;" onclick="parent.window.scrollTo(0, $('#frame').offset().top);">
-	    		<span class="btn_h23 gray right" ><button type="button" id="btn_newAddr_reg">»õÁÖ¼Ò ÀÔ·Â</button></span>
+	    		<span class="btn_h23 gray right" ><button type="button" id="btn_newAddr_reg">ìƒˆì£¼ì†Œ ì…ë ¥</button></span>
 	    	</a>
     	</h3>
     	<div id="addr_list" class="mem_addr opt_whBox">
@@ -3891,47 +3811,47 @@
 			<p class="bottom"></p>
 
 	  		<p class="line line_height15 line_btn">
-	  			<span>Á¶È¸ Á¤º¸°¡ ¾ø½À´Ï´Ù.</span>
+	  			<span>ì¡°íšŒ ì •ë³´ê°€ ì—†ìŠµë‹ˆë‹¤.</span>
       		<p/>
 
     	</div>
   	</div>
 </div>
 
-<!-- ÇÁ·¹ÀÓ(¸ÅÀåÃ£±â:)(ÁÖ¼ÒÃ£±â:)(ÅäÇÎ:) -->
+<!-- í”„ë ˆì„(ë§¤ì¥ì°¾ê¸°:)(ì£¼ì†Œì°¾ê¸°:)(í† í•‘:) -->
 <div id="frame" class="opt_box" >
   	<p class="top"></p>
   	<p class="bottom"></p>
   	<div>
-    	<h3 class="title"><!--<img src="assets/img/order/order_rboxTitle_selectStore.gif" alt="¹æ¹®¸ÅÀå¼±ÅÃ" />--></h3>
+    	<h3 class="title"><!--<img src="assets/img/order/order_rboxTitle_selectStore.gif" alt="ë°©ë¬¸ë§¤ì¥ì„ íƒ" />--></h3>
     	<div id="addr_list" class="mem_addr opt_whBox" style="padding:0;">
-      		<iframe name="" frameborder="0" width="280px" height="200px" src="" id="ifrm">¾ÆÀÌÇÁ·¹ÀÓÀÌ Áö¿øµÇ´Â ºê¶ó¿ìÀú¿¡¼­ È®ÀÎ°¡´ÉÇÕ´Ï´Ù.</iframe>
+      		<iframe name="" frameborder="0" width="280px" height="200px" src="" id="ifrm">ì•„ì´í”„ë ˆì„ì´ ì§€ì›ë˜ëŠ” ë¸Œë¼ìš°ì €ì—ì„œ í™•ì¸ê°€ëŠ¥í•©ë‹ˆë‹¤.</iframe>
     	</div>
   	</div>
 </div>
  
-<!-- ////////////////////////////////////  alert ¹× °øÅë ÆË¾÷  ////////////////////////////////////-->
-<!-- 20140730 8¿ù ÇÁ·Î¸ğ¼Ç ÁÖ¹® ½Ã ÄíÆù À¯ÀÇ »çÇ× ¾Ë¸² Ãß°¡  -->
+<!-- ////////////////////////////////////  alert ë° ê³µí†µ íŒì—…  ////////////////////////////////////-->
+<!-- 20140730 8ì›” í”„ë¡œëª¨ì…˜ ì£¼ë¬¸ ì‹œ ì¿ í° ìœ ì˜ ì‚¬í•­ ì•Œë¦¼ ì¶”ê°€  -->
 <div class="pop_box6" id="pop_guide_coupon">
    	<p class="padd_t5"> 
-   		<span class="txt_point txt_tit padd_tb5"> 8¿ù Àü»ç ÇÁ·Î¸ğ¼Ç ÁÖ¹® ½Ã À¯ÀÇ »çÇ×</span>
-		<span class="btn_h23 gray" style="position: absolute; right:25px; top:20px"><button type="button" onclick='del_pop("#pop_guide_coupon")'>È®ÀÎ</button></span>
+   		<span class="txt_point txt_tit padd_tb5"> 8ì›” ì „ì‚¬ í”„ë¡œëª¨ì…˜ ì£¼ë¬¸ ì‹œ ìœ ì˜ ì‚¬í•­</span>
+		<span class="btn_h23 gray" style="position: absolute; right:25px; top:20px"><button type="button" onclick='del_pop("#pop_guide_coupon")'>í™•ì¸</button></span>
 	</p>
 	<br>
 	<p class="padd_b5">
-	* 8¿ù Àü»ç ÇÁ·Î¸ğ¼Ç<span class="bold"> 'Double Upgrade(°ñµå¸µ/Ä¡Áî·Ñ Å©·¯½ºÆ® ÆĞ¹Ğ¸® »çÀÌÁî ¼öÆÛÆÄÆÄ½º/½ºÆÄÀÌ½ÃÄ¡Å²·£Ä¡/Á¸½ºÆäÀÌ¹ö¸´)'</span> Àû¿ë ¹× ÁÖ¹®À» ¿øÇÏ½Ã´Â °í°´´ÔµéÀº 
- 		<span class="bold">°ñµå¸µ/Ä¡Áî·Ñ Å©·¯½ºÆ® ÆĞ¹Ğ¸®»çÀÌÁî ¼öÆÛÆÄÆÄ½º/½ºÆÄÀÌ½ÃÄ¡Å²·£Ä¡/Á¸½ºÆäÀÌ¹ö¸´</span> ÇÇÀÚ¸¦ Àå¹Ù±¸´Ï¿¡ ´ãÀ¸½Å ÈÄ, ÄíÆùÀ» ¼±ÅÃÇÏ¼Å¾ß Àû¿ëÀÌ °¡´ÉÇÕ´Ï´Ù.<br><br>
-	* <span class="bold padd_b10">8¿ù Àü»ç ÇÁ·Î¸ğ¼Ç 'Double Upgrade' ÁÖ¹® ¹æ¹ı </span><br>
-	¨ç ¿Â¶óÀÎ ÁÖ¹® ½ÃÀÛ &#8594; ¨è °ñµå¸µ ¶Ç´Â Ä¡Áî·Ñ Å©·¯½ºÆ® ¼±ÅÃ &#8594; ¨é ¼öÆÛ ÆÄÆÄ½º/½ºÆÄÀÌ½Ã Ä¡Å²·£Ä¡/Á¸½º ÆäÀÌ¹ö¸´ ÆĞ¹Ğ¸® »çÀÌÁî ¼±ÅÃ &#8594; ¨ê Àå¹Ù±¸´Ï ´ã±â &#8594; ¨ë °áÁ¦ È­¸éÀÇ ¡®ÄíÆùÁ¶È¸/Àû¿ë ¹öÆ°¡¯ Å¬¸¯ ÈÄ ÇØ´ç ÄíÆù Àû¿ë &#8594; ¨ì ÁÖ¹® ¿Ï·á!!<br>
+	* 8ì›” ì „ì‚¬ í”„ë¡œëª¨ì…˜<span class="bold"> 'Double Upgrade(ê³¨ë“œë§/ì¹˜ì¦ˆë¡¤ í¬ëŸ¬ìŠ¤íŠ¸ íŒ¨ë°€ë¦¬ ì‚¬ì´ì¦ˆ ìˆ˜í¼íŒŒíŒŒìŠ¤/ìŠ¤íŒŒì´ì‹œì¹˜í‚¨ëœì¹˜/ì¡´ìŠ¤í˜ì´ë²„ë¦¿)'</span> ì ìš© ë° ì£¼ë¬¸ì„ ì›í•˜ì‹œëŠ” ê³ ê°ë‹˜ë“¤ì€ 
+ 		<span class="bold">ê³¨ë“œë§/ì¹˜ì¦ˆë¡¤ í¬ëŸ¬ìŠ¤íŠ¸ íŒ¨ë°€ë¦¬ì‚¬ì´ì¦ˆ ìˆ˜í¼íŒŒíŒŒìŠ¤/ìŠ¤íŒŒì´ì‹œì¹˜í‚¨ëœì¹˜/ì¡´ìŠ¤í˜ì´ë²„ë¦¿</span> í”¼ìë¥¼ ì¥ë°”êµ¬ë‹ˆì— ë‹´ìœ¼ì‹  í›„, ì¿ í°ì„ ì„ íƒí•˜ì…”ì•¼ ì ìš©ì´ ê°€ëŠ¥í•©ë‹ˆë‹¤.<br><br>
+	* <span class="bold padd_b10">8ì›” ì „ì‚¬ í”„ë¡œëª¨ì…˜ 'Double Upgrade' ì£¼ë¬¸ ë°©ë²• </span><br>
+	â‘  ì˜¨ë¼ì¸ ì£¼ë¬¸ ì‹œì‘ &#8594; â‘¡ ê³¨ë“œë§ ë˜ëŠ” ì¹˜ì¦ˆë¡¤ í¬ëŸ¬ìŠ¤íŠ¸ ì„ íƒ &#8594; â‘¢ ìˆ˜í¼ íŒŒíŒŒìŠ¤/ìŠ¤íŒŒì´ì‹œ ì¹˜í‚¨ëœì¹˜/ì¡´ìŠ¤ í˜ì´ë²„ë¦¿ íŒ¨ë°€ë¦¬ ì‚¬ì´ì¦ˆ ì„ íƒ &#8594; â‘£ ì¥ë°”êµ¬ë‹ˆ ë‹´ê¸° &#8594; â‘¤ ê²°ì œ í™”ë©´ì˜ â€˜ì¿ í°ì¡°íšŒ/ì ìš© ë²„íŠ¼â€™ í´ë¦­ í›„ í•´ë‹¹ ì¿ í° ì ìš© &#8594; â‘¥ ì£¼ë¬¸ ì™„ë£Œ!!<br>
 	</p>
 </div>
 
-<!--Àå¹Ù±¸´Ï ºó°æ¿ì, EÄíÆù ÄíÆù¹øÈ£ ¹Ìµî·Ï ¿À·ù, ÁÖ¹®Å¸ÀÔ ¼±ÅÃ ¾Ë¸², ÁÖ¼Ò¼±ÅÃ¾Ë¸², ½Ã°£¼±ÅÃ ¾Ë¸² -->
+<!--ì¥ë°”êµ¬ë‹ˆ ë¹ˆê²½ìš°, Eì¿ í° ì¿ í°ë²ˆí˜¸ ë¯¸ë“±ë¡ ì˜¤ë¥˜, ì£¼ë¬¸íƒ€ì… ì„ íƒ ì•Œë¦¼, ì£¼ì†Œì„ íƒì•Œë¦¼, ì‹œê°„ì„ íƒ ì•Œë¦¼ -->
 <div class="notice" id="notice_1002" style="display:none; width:320px; height:144px; padding:1px; position:absolute; top:0; left:0; z-index:1000;"> 
     <div class="header" >
 	    <div class="left" style="float:left; width:6px;  background:url(/assets/img/usa/modal_header_left.png) top left no-repeat; "></div>
 	    <div class="center" style="float:left; width:308px; height:40px; background:url(/assets/img/usa/modal_header_center.png) top center repeat-x; ">
-	    	<h2>¾Ë¸²!!</h2>
+	    	<h2>ì•Œë¦¼!!</h2>
 	    	<!-- <a id="closex" class="close" href="#">Close</a> -->
 	    </div>
 	    <div class="right" style="float:right; width:6px; height:40px; background:url(/assets/img/usa/modal_header_right.png) top right no-repeat; "></div>
@@ -3941,30 +3861,30 @@
     </div> 
  	<!-- //comm_list --> 
   	<div class="footer" style="position: absolute; height:30px; background:#fff; " >
-		<div class="button" style=" bottom:15px;"><button class="alertBtn gray" type="button" onclick="del_pop2('#notice_1002');">È® ÀÎ</button></div> 
+		<div class="button" style=" bottom:15px;"><button class="alertBtn gray" type="button" onclick="del_pop2('#notice_1002');">í™• ì¸</button></div> 
 		<div class="left" style="float:left; width:6px; height:8px; background:url(/assets/img/usa/modal_footer_left.png) bottom left no-repeat; "></div>
     	<div class="center" style="float:left; width:308px; height:8px; background:url(/assets/img/usa/modal_footer_center.png) bottom center repeat-x; "></div>
     	<div class="right" style="float:right; width:6px; height:8px; background:url(/assets/img/usa/modal_footer_right.png) bottom right no-repeat; "></div>
   	</div>
 </div>
  
-<!-- ///////////////////////////// ÇÇÀÚ ¼ö·® Á¦ÇÑ alert  /////////////////////////////-->
+<!-- ///////////////////////////// í”¼ì ìˆ˜ëŸ‰ ì œí•œ alert  /////////////////////////////-->
 <div class="notice" id="notice_limit" style="display:none; width:320px; height:144px; padding:1px; position:absolute; top:0; left:0; z-index:1000;"> 
     <div class="header" >
 	    <div class="left" style="float:left; width:6px;  background:url(/assets/img/usa/modal_header_left.png) top left no-repeat; "></div>
 	    <div class="center" style="float:left; width:308px; height:40px; background:url(/assets/img/usa/modal_header_center.png) top center repeat-x; ">
-	    	<h2>¾Ë¸²!!</h2>
+	    	<h2>ì•Œë¦¼!!</h2>
 	    	<!-- <a id="closex" class="close" href="#">Close</a> -->
 	    </div>
 	    <div class="right" style="float:right; width:6px; height:40px; background:url(/assets/img/usa/modal_header_right.png) top right no-repeat; "></div>
 	</div>    
     <div class="text_body" style="width:320px; height:90px; line-height: 30px; background:#fff; border: 0px none; padding: 10px 0px;"> 
-    	<p>¿Â¶óÀÎ ÁÖ¹®Àº ÇÇÀÚ 5ÆÇ±îÁö¸¸ °¡´ÉÇÕ´Ï´Ù. <br/>
-    		Àå¹Ù±¸´Ï¸¦ È®ÀÎÇÏ¼¼¿ä</p> 
+    	<p>ì˜¨ë¼ì¸ ì£¼ë¬¸ì€ í”¼ì 5íŒê¹Œì§€ë§Œ ê°€ëŠ¥í•©ë‹ˆë‹¤. <br/>
+    		ì¥ë°”êµ¬ë‹ˆë¥¼ í™•ì¸í•˜ì„¸ìš”</p> 
     </div> 
  	<!-- //comm_list --> 
   	<div class="footer" style="position: absolute; height:30px; background:#fff; " >
-		<div class="button" style=" bottom:15px;"><button class="alertBtn gray" type="button" onclick="del_pop2('#notice_limit');">È® ÀÎ</button></div> 
+		<div class="button" style=" bottom:15px;"><button class="alertBtn gray" type="button" onclick="del_pop2('#notice_limit');">í™• ì¸</button></div> 
 		<div class="left" style="float:left; width:6px; height:8px; background:url(/assets/img/usa/modal_footer_left.png) bottom left no-repeat; "></div>
     	<div class="center" style="float:left; width:308px; height:8px; background:url(/assets/img/usa/modal_footer_center.png) bottom center repeat-x; "></div>
     	<div class="right" style="float:right; width:6px; height:8px; background:url(/assets/img/usa/modal_footer_right.png) bottom right no-repeat; "></div>
@@ -3972,23 +3892,23 @@
 </div>
 
  
-<!-- ///////////////////////////// EÄíÆù Á¶È¸ Åë½Å¿À·ù alert  /////////////////////////////-->
+<!-- ///////////////////////////// Eì¿ í° ì¡°íšŒ í†µì‹ ì˜¤ë¥˜ alert  /////////////////////////////-->
 <div class="notice" id="notice_eCopErr_NW" style="display:none; width:320px; height:144px; padding:1px; position:absolute; top:0; left:0; z-index:1000;"> 
     <div class="header" >
 	    <div class="left" style="float:left; width:6px;  background:url(/assets/img/usa/modal_header_left.png) top left no-repeat; "></div>
 	    <div class="center" style="float:left; width:308px; height:40px; background:url(/assets/img/usa/modal_header_center.png) top center repeat-x; ">
-	    	<h2>¾Ë¸²!!</h2>
+	    	<h2>ì•Œë¦¼!!</h2>
 	    	<!-- <a id="closex" class="close" href="#">Close</a> -->
 	    </div>
 	    <div class="right" style="float:right; width:6px; height:40px; background:url(/assets/img/usa/modal_header_right.png) top right no-repeat; "></div>
 	</div>    
     <div class="text_body" style="width:320px; height:90px; line-height: 30px; background:#fff; border: 0px none; padding: 10px 0px;"> 
-    	<p>Á¶È¸ Áß ¿¡·¯°¡ ¹ß»ıÇß½À´Ï´Ù.!<br/>
-    		Àá½Ã ÈÄ ´Ù½Ã Á¶È¸ÇØ ÁÖ½Ê½Ã¿ä.</p> 
+    	<p>ì¡°íšŒ ì¤‘ ì—ëŸ¬ê°€ ë°œìƒí–ˆìŠµë‹ˆë‹¤.!<br/>
+    		ì ì‹œ í›„ ë‹¤ì‹œ ì¡°íšŒí•´ ì£¼ì‹­ì‹œìš”.</p> 
     </div> 
  	<!-- //comm_list --> 
   	<div class="footer" style="position: absolute; height:30px; background:#fff; " >
-		<div class="button" style=" bottom:15px;"><button class="alertBtn gray" type="button" onclick="del_pop2('#notice_eCopErr_NW');">È® ÀÎ</button></div> 
+		<div class="button" style=" bottom:15px;"><button class="alertBtn gray" type="button" onclick="del_pop2('#notice_eCopErr_NW');">í™• ì¸</button></div> 
 		<div class="left" style="float:left; width:6px; height:8px; background:url(/assets/img/usa/modal_footer_left.png) bottom left no-repeat; "></div>
     	<div class="center" style="float:left; width:308px; height:8px; background:url(/assets/img/usa/modal_footer_center.png) bottom center repeat-x; "></div>
     	<div class="right" style="float:right; width:6px; height:8px; background:url(/assets/img/usa/modal_footer_right.png) bottom right no-repeat; "></div>
@@ -3999,106 +3919,106 @@
 
 
  
-<!-- ///////////////////////////// EÄíÆù ÄíÆù¹øÈ£ ¿À·ù alert  /////////////////////////////-->
+<!-- ///////////////////////////// Eì¿ í° ì¿ í°ë²ˆí˜¸ ì˜¤ë¥˜ alert  /////////////////////////////-->
 <div class="notice" id="notice_eCopErr" style="display:none; width:320px; height:144px; padding:1px; position:absolute; top:0; left:0; z-index:1000;"> 
     <div class="header" >
 	    <div class="left" style="float:left; width:6px;  background:url(/assets/img/usa/modal_header_left.png) top left no-repeat; "></div>
 	    <div class="center" style="float:left; width:308px; height:40px; background:url(/assets/img/usa/modal_header_center.png) top center repeat-x; ">
-	    	<h2>¾Ë¸²!!</h2>
+	    	<h2>ì•Œë¦¼!!</h2>
 	    	<!-- <a id="closex" class="close" href="#">Close</a> -->
 	    </div>
 	    <div class="right" style="float:right; width:6px; height:40px; background:url(/assets/img/usa/modal_header_right.png) top right no-repeat; "></div>
 	</div>    
     <div class="text_body" style="width:320px; height:90px; line-height: 30px; background:#fff; border: 0px none; padding: 10px 0px;"> 
-    	<p>»ç¿ëÇÒ ¼ö ¾ø´Â ÄíÆù¹øÈ£ÀÔ´Ï´Ù.!<br/>
-    		ÄíÆù¹øÈ£¸¦ È®ÀÎÈÄ ´Ù½Ã ÀÔ·ÂÇÏ¿© ÁÖ½Ê½Ã¿ä.</p> 
+    	<p>ì‚¬ìš©í•  ìˆ˜ ì—†ëŠ” ì¿ í°ë²ˆí˜¸ì…ë‹ˆë‹¤.!<br/>
+    		ì¿ í°ë²ˆí˜¸ë¥¼ í™•ì¸í›„ ë‹¤ì‹œ ì…ë ¥í•˜ì—¬ ì£¼ì‹­ì‹œìš”.</p> 
     </div> 
  	<!-- //comm_list --> 
   	<div class="footer" style="position: absolute; height:30px; background:#fff; " >
-		<div class="button" style=" bottom:15px;"><button class="alertBtn gray" type="button" onclick="del_pop2('#notice_eCopErr');">È® ÀÎ</button></div> 
+		<div class="button" style=" bottom:15px;"><button class="alertBtn gray" type="button" onclick="del_pop2('#notice_eCopErr');">í™• ì¸</button></div> 
 		<div class="left" style="float:left; width:6px; height:8px; background:url(/assets/img/usa/modal_footer_left.png) bottom left no-repeat; "></div>
     	<div class="center" style="float:left; width:308px; height:8px; background:url(/assets/img/usa/modal_footer_center.png) bottom center repeat-x; "></div>
     	<div class="right" style="float:right; width:6px; height:8px; background:url(/assets/img/usa/modal_footer_right.png) bottom right no-repeat; "></div>
   	</div>
 </div>
 
-<!-- ///////////////////////////// EÄíÆù ÄíÆù¹øÈ£ »ç¿ë alert  /////////////////////////////-->
+<!-- ///////////////////////////// Eì¿ í° ì¿ í°ë²ˆí˜¸ ì‚¬ìš© alert  /////////////////////////////-->
 <div class="notice" id="notice_eCopCart" style="display:none; width:320px; height:144px; padding:1px; position:absolute; top:0; left:0; z-index:1000;"> 
     <div class="header" >
 	    <div class="left" style="float:left; width:6px;  background:url(/assets/img/usa/modal_header_left.png) top left no-repeat; "></div>
 	    <div class="center" style="float:left; width:308px; height:40px; background:url(/assets/img/usa/modal_header_center.png) top center repeat-x; ">
-	    	<h2>¾Ë¸²!!</h2>
+	    	<h2>ì•Œë¦¼!!</h2>
 	    	<!-- <a id="closex" class="close" href="#">Close</a> -->
 	    </div>
 	    <div class="right" style="float:right; width:6px; height:40px; background:url(/assets/img/usa/modal_header_right.png) top right no-repeat; "></div>
 	</div>    
     <div class="text_body" style="width:320px; height:90px; line-height: 30px; background:#fff; border: 0px none; padding: 10px 0px;"> 
-    	<p>Á¶È¸ÇÏ½Å ÄíÆù »óÇ°Àº ÀÌ¹Ì Àå¹Ù±¸´Ï¿¡ µî·ÏµÇ¾î ÀÖ½À´Ï´Ù.<br/>
-    		ÄíÆù 1Àå´ç 1È¸¸¸ »ç¿ë °¡´ÉÇÕ´Ï´Ù.</p> 
+    	<p>ì¡°íšŒí•˜ì‹  ì¿ í° ìƒí’ˆì€ ì´ë¯¸ ì¥ë°”êµ¬ë‹ˆì— ë“±ë¡ë˜ì–´ ìˆìŠµë‹ˆë‹¤.<br/>
+    		ì¿ í° 1ì¥ë‹¹ 1íšŒë§Œ ì‚¬ìš© ê°€ëŠ¥í•©ë‹ˆë‹¤.</p> 
     </div> 
  	<!-- //comm_list --> 
   	<div class="footer" style="position: absolute; height:30px; background:#fff; " >
-		<div class="button" style=" bottom:15px;"><button class="alertBtn gray" type="button" onclick="del_pop2('#notice_eCopCart');">È® ÀÎ</button></div> 
+		<div class="button" style=" bottom:15px;"><button class="alertBtn gray" type="button" onclick="del_pop2('#notice_eCopCart');">í™• ì¸</button></div> 
 		<div class="left" style="float:left; width:6px; height:8px; background:url(/assets/img/usa/modal_footer_left.png) bottom left no-repeat; "></div>
     	<div class="center" style="float:left; width:308px; height:8px; background:url(/assets/img/usa/modal_footer_center.png) bottom center repeat-x; "></div>
     	<div class="right" style="float:right; width:6px; height:8px; background:url(/assets/img/usa/modal_footer_right.png) bottom right no-repeat; "></div>
   	</div>
 </div> 
  
-<!-- ///////////////////////////// EÄíÆù ÄíÆù¹øÈ£ »ç¿ë alert  /////////////////////////////-->
+<!-- ///////////////////////////// Eì¿ í° ì¿ í°ë²ˆí˜¸ ì‚¬ìš© alert  /////////////////////////////-->
 <div class="notice" id="notice_eCopUse" style="display:none; width:320px; height:144px; padding:1px; position:absolute; top:0; left:0; z-index:1000;"> 
     <div class="header" >
 	    <div class="left" style="float:left; width:6px;  background:url(/assets/img/usa/modal_header_left.png) top left no-repeat; "></div>
 	    <div class="center" style="float:left; width:308px; height:40px; background:url(/assets/img/usa/modal_header_center.png) top center repeat-x; ">
-	    	<h2>¾Ë¸²!!</h2>
+	    	<h2>ì•Œë¦¼!!</h2>
 	    	<!-- <a id="closex" class="close" href="#">Close</a> -->
 	    </div>
 	    <div class="right" style="float:right; width:6px; height:40px; background:url(/assets/img/usa/modal_header_right.png) top right no-repeat; "></div>
 	</div>    
     <div class="text_body" style="width:320px; height:90px; line-height: 30px; background:#fff; border: 0px none; padding: 10px 0px;"> 
-    	<p>ÀÔ·ÂÇÏ½Å ¹øÈ£´Â ÀÌ¹Ì »ç¿ëµÈ ÄíÆù¹øÈ£ÀÔ´Ï´Ù.!<br/>
-    		ÄíÆù¹øÈ£¸¦ È®ÀÎÈÄ ´Ù½Ã ÀÔ·ÂÇÏ¿© ÁÖ½Ê½Ã¿À.</p> 
+    	<p>ì…ë ¥í•˜ì‹  ë²ˆí˜¸ëŠ” ì´ë¯¸ ì‚¬ìš©ëœ ì¿ í°ë²ˆí˜¸ì…ë‹ˆë‹¤.!<br/>
+    		ì¿ í°ë²ˆí˜¸ë¥¼ í™•ì¸í›„ ë‹¤ì‹œ ì…ë ¥í•˜ì—¬ ì£¼ì‹­ì‹œì˜¤.</p> 
     </div> 
  	<!-- //comm_list --> 
   	<div class="footer" style="position: absolute; height:30px; background:#fff; " >
-		<div class="button" style=" bottom:15px;"><button class="alertBtn gray" type="button" onclick="del_pop2('#notice_eCopUse');">È® ÀÎ</button></div> 
+		<div class="button" style=" bottom:15px;"><button class="alertBtn gray" type="button" onclick="del_pop2('#notice_eCopUse');">í™• ì¸</button></div> 
 		<div class="left" style="float:left; width:6px; height:8px; background:url(/assets/img/usa/modal_footer_left.png) bottom left no-repeat; "></div>
     	<div class="center" style="float:left; width:308px; height:8px; background:url(/assets/img/usa/modal_footer_center.png) bottom center repeat-x; "></div>
     	<div class="right" style="float:right; width:6px; height:8px; background:url(/assets/img/usa/modal_footer_right.png) bottom right no-repeat; "></div>
   	</div>
 </div> 
-<!-- ///////////////////////////// ¾Ë¸² ÆË¾÷  /////////////////////////////-->
+<!-- ///////////////////////////// ì•Œë¦¼ íŒì—…  /////////////////////////////-->
 
-<!-- ///////////////////////////// EÄíÆù ÄíÆù¹øÈ£ »ç¿ë alert  /////////////////////////////-->
+<!-- ///////////////////////////// Eì¿ í° ì¿ í°ë²ˆí˜¸ ì‚¬ìš© alert  /////////////////////////////-->
 <div class="notice" id="notice_eDate" style="display:none; width:320px; height:144px; padding:1px; position:absolute; top:0; left:0; z-index:1000;"> 
     <div class="header" >
 	    <div class="left" style="float:left; width:6px;  background:url(/assets/img/usa/modal_header_left.png) top left no-repeat; "></div>
 	    <div class="center" style="float:left; width:308px; height:40px; background:url(/assets/img/usa/modal_header_center.png) top center repeat-x; ">
-	    	<h2>¾Ë¸²!!</h2>
+	    	<h2>ì•Œë¦¼!!</h2>
 	    	<!-- <a id="closex" class="close" href="#">Close</a> -->
 	    </div>
 	    <div class="right" style="float:right; width:6px; height:40px; background:url(/assets/img/usa/modal_header_right.png) top right no-repeat; "></div>
 	</div>    
     <div class="text_body" style="width:320px; height:90px; line-height: 30px; background:#fff; border: 0px none; padding: 10px 0px;"> 
-    	<p>ÇØ´ç ÄíÆù¹øÈ£´Â »ç¿ë±â°£ÀÌ ¸¸·áµÇ¾ú½À´Ï´Ù.<br/>
-    	   À¯È¿±â°£À» È®ÀÎÇÏ¿© ÁÖ½Ê½Ã¿À.</p> 
+    	<p>í•´ë‹¹ ì¿ í°ë²ˆí˜¸ëŠ” ì‚¬ìš©ê¸°ê°„ì´ ë§Œë£Œë˜ì—ˆìŠµë‹ˆë‹¤.<br/>
+    	   ìœ íš¨ê¸°ê°„ì„ í™•ì¸í•˜ì—¬ ì£¼ì‹­ì‹œì˜¤.</p> 
     </div> 
  	<!-- //comm_list --> 
   	<div class="footer" style="position: absolute; height:30px; background:#fff; " >
-		<div class="button" style=" bottom:15px;"><button class="alertBtn gray" type="button" onclick="del_pop2('#notice_eDate');">È® ÀÎ</button></div> 
+		<div class="button" style=" bottom:15px;"><button class="alertBtn gray" type="button" onclick="del_pop2('#notice_eDate');">í™• ì¸</button></div> 
 		<div class="left" style="float:left; width:6px; height:8px; background:url(/assets/img/usa/modal_footer_left.png) bottom left no-repeat; "></div>
     	<div class="center" style="float:left; width:308px; height:8px; background:url(/assets/img/usa/modal_footer_center.png) bottom center repeat-x; "></div>
     	<div class="right" style="float:right; width:6px; height:8px; background:url(/assets/img/usa/modal_footer_right.png) bottom right no-repeat; "></div>
   	</div>
 </div> 
-<!-- ///////////////////////////// ¾Ë¸² ÆË¾÷  /////////////////////////////-->
+<!-- ///////////////////////////// ì•Œë¦¼ íŒì—…  /////////////////////////////-->
 
-<!-- ///////////  20131108 ÅäÇÎÈ­¸é ¾Ë·µ ÆË¾÷ Ãß°¡!!  //////////// -->
+<!-- ///////////  20131108 í† í•‘í™”ë©´ ì•ŒëŸ¿ íŒì—… ì¶”ê°€!!  //////////// -->
 <div class="notice" id="notice_topping" style="display:none; width:340px; height:auto; min-height:140px; padding:1px; position:absolute; top:0; left:0; z-index:1000;"> 
     <div class="header">
 	    <div class="left" style="float:left; width:6px;  background:url(/assets/img/usa/modal_header_left.png) top left no-repeat; "></div>
 	    <div class="center" style="float:left; width:328px; height:40px; background:url(/assets/img/usa/modal_header_center.png) top center repeat-x; ">
-	    	<h2>¾Ë¸²!!</h2> 
+	    	<h2>ì•Œë¦¼!!</h2> 
 	    </div>
 	    <div class="right" style="float:right; width:6px; height:40px; background:url(/assets/img/usa/modal_header_right.png) top right no-repeat; "></div>
 	</div>    
@@ -4106,26 +4026,26 @@
     </div> 
   	<!-- //comm_list --> 
   	<div class="footer" style="position: absolute; height:32px; background:#fff; " >
-		<div class="button" style="bottom:20px;"><button class="alertBtn gray" type="button" onclick="del_pop2('#notice_topping');">È® ÀÎ</button></div> 
+		<div class="button" style="bottom:20px;"><button class="alertBtn gray" type="button" onclick="del_pop2('#notice_topping');">í™• ì¸</button></div> 
 		<div class="left" style="float:left; width:6px; height:8px; background:url(/assets/img/usa/modal_footer_left.png) bottom left no-repeat; "></div>
     	<div class="center" style="float:left; width:328px; height:8px; background:url(/assets/img/usa/modal_footer_center.png) bottom center repeat-x; "></div>
     	<div class="right" style="float:right; width:6px; height:8px; background:url(/assets/img/usa/modal_footer_right.png) bottom right no-repeat; "></div>
   	</div>
 </div> 
 
-<!-- ///////////////////////////// ÁÖ¼Ò »èÁ¦ È®ÀÎ alert  /////////////////////////////-->
+<!-- ///////////////////////////// ì£¼ì†Œ ì‚­ì œ í™•ì¸ alert  /////////////////////////////-->
 <div class="notice" id="notice_del_addr" style="display:none; width:320px; height:144px; padding:1px; position:absolute; top:0; left:0; z-index:1000;"> 
     <div class="header" >
 	    <div class="left" style="float:left; width:6px;  background:url(/assets/img/usa/modal_header_left.png) top left no-repeat; "></div>
 	    <div class="center" style="float:left; width:308px; height:40px; background:url(/assets/img/usa/modal_header_center.png) top center repeat-x; ">
-	    	<h2>¾Ë¸²!!</h2>
+	    	<h2>ì•Œë¦¼!!</h2>
 	    	<!-- <a id="closex" class="close" href="#">Close</a> -->
 	    </div>
 	    <div class="right" style="float:right; width:6px; height:40px; background:url(/assets/img/usa/modal_header_right.png) top right no-repeat; "></div>
 	</div>    
     <div class="text_body" style="width:320px; height:90px; line-height: 30px; background:#fff; border: 0px none; padding: 10px 0px;"> 
-    	<p>Á¤¸» »èÁ¦ÇÏ½Ã°Ú½À´Ï±î?<br/>
-    		 '¿¹'¸¦ ¼±ÅÃÇÏ½Ã¸é ¼±ÅÃÇÏ½Å ÁÖ¼Ò°¡ ¿µ±¸ »èÁ¦µË´Ï´Ù.</p> 
+    	<p>ì •ë§ ì‚­ì œí•˜ì‹œê² ìŠµë‹ˆê¹Œ?<br/>
+    		 'ì˜ˆ'ë¥¼ ì„ íƒí•˜ì‹œë©´ ì„ íƒí•˜ì‹  ì£¼ì†Œê°€ ì˜êµ¬ ì‚­ì œë©ë‹ˆë‹¤.</p> 
     </div> 
  	<!-- //comm_list --> 
   	<div class="footer" style="position: absolute; height:30px; background:#fff; " >
@@ -4134,8 +4054,8 @@
 			<input id="del_addressID"  type="hidden" name="del_addressID"  value="999">
 			<input id="del_addrDetail" type="hidden" name="del_addrDetail" value="">
 			<input id="del_addrListId" type="hidden" name="del_addrListId" value="0">
-			<button class="alertBtn red" type="button" onclick="delete_addr($(this));">¿¹</button>
-			<button class="alertBtn gray" type="button" onclick="del_pop2('#notice_del_addr');">¾Æ´Ï¿À</button>
+			<button class="alertBtn red" type="button" onclick="delete_addr($(this));">ì˜ˆ</button>
+			<button class="alertBtn gray" type="button" onclick="del_pop2('#notice_del_addr');">ì•„ë‹ˆì˜¤</button>
 		</div> 
 		<div class="left" style="float:left; width:6px; height:8px; background:url(/assets/img/usa/modal_footer_left.png) bottom left no-repeat; "></div>
     	<div class="center" style="float:left; width:308px; height:8px; background:url(/assets/img/usa/modal_footer_center.png) bottom center repeat-x; "></div>
@@ -4144,7 +4064,7 @@
 </div>
 
 <script type="text/javascript">	   
-/*  /////////////////////////////////// ÇÇÀÚ¸Ş´ººÎºĞ Navi ///////////////////////////////////////////////////////// */
+/*  /////////////////////////////////// í”¼ìë©”ë‰´ë¶€ë¶„ Navi ///////////////////////////////////////////////////////// */
 	
 	var $pizz_menu = $(".pizza_list li a");
 	var linkURL    = new Array();
@@ -4154,9 +4074,9 @@
 	
 	$pizz_menu.each(function(i,el)
 	{
-		// Ã³À½µé¾î¿Ã¶§ È°¼ºÈ­ µÇ¾îÀÖ´Â ¸Ş´º activeÇÔ¼öÀÇ ¸â¹öº¯¼ö·Î º¸³»ÁÜ
-		active($pizz_menu.eq("${param.pizzaSelIdx}"));//ÇÇÀÚ µµ¿ì¼±ÅÃ ±¸ºĞ°ª
-		// ¸Ş´ºº° ÀÌ¹ÌÁö(link,on,overÀÌ¹ÌÁö) ¹è¿­ ¸¸µé¾î ÀúÀå
+		// ì²˜ìŒë“¤ì–´ì˜¬ë•Œ í™œì„±í™” ë˜ì–´ìˆëŠ” ë©”ë‰´ activeí•¨ìˆ˜ì˜ ë©¤ë²„ë³€ìˆ˜ë¡œ ë³´ë‚´ì¤Œ
+		active($pizz_menu.eq("${param.pizzaSelIdx}"));//í”¼ì ë„ìš°ì„ íƒ êµ¬ë¶„ê°’
+		// ë©”ë‰´ë³„ ì´ë¯¸ì§€(link,on,overì´ë¯¸ì§€) ë°°ì—´ ë§Œë“¤ì–´ ì €ì¥
 		linkURL[i] = "../assets/img/order/ordMenu_pizza"+(i+1)+".gif";
 		overURL[i] = "../assets/img/order/ordMenu_pizza"+(i+1)+"_over.gif";
 		onURL[i]   = "../assets/img/order/ordMenu_pizza"+(i+1)+"_on.gif";
@@ -4168,13 +4088,13 @@
 			$(this).css("background","url("+onURL[i]+") no-repeat");
 		}
 		
-		// ÀÌº¥Æ® ¼±¾ğ
+		// ì´ë²¤íŠ¸ ì„ ì–¸
 		$(this).bind("mouseenter",overMenu);
 		$(this).bind("mouseleave",outMenu);
 		$(this).bind("click",onMenu);
 	});
 
-	// ÇÇÀÚ¸Ş´º ¿À¹öÇßÀ»¶§ : È°¼ºÈ­µÈ ¸Ş´º¸¦ Á¦¿ÜÇÑ ³ª¸ÓÁö ¸Ş´º¿¡ ¿À¹öÀÌÁö·Î ±³Ã¼
+	// í”¼ìë©”ë‰´ ì˜¤ë²„í–ˆì„ë•Œ : í™œì„±í™”ëœ ë©”ë‰´ë¥¼ ì œì™¸í•œ ë‚˜ë¨¸ì§€ ë©”ë‰´ì— ì˜¤ë²„ì´ì§€ë¡œ êµì²´
 	function overMenu()
 	{
 		var num=$(this).parent().index();
@@ -4185,7 +4105,7 @@
 		}
 	}
 	
-	// ÇÇÀÚ¸Ş´º ¾Æ¿ôÇßÀ»¶§ : È°¼ºÈ­µÈ ¸Ş´º¸¦ Á¦¿ÜÇÑ ³ª¸ÓÁö ¸Ş´º¿¡ ¾Æ¿ôÀÌÁö·Î ±³Ã¼
+	// í”¼ìë©”ë‰´ ì•„ì›ƒí–ˆì„ë•Œ : í™œì„±í™”ëœ ë©”ë‰´ë¥¼ ì œì™¸í•œ ë‚˜ë¨¸ì§€ ë©”ë‰´ì— ì•„ì›ƒì´ì§€ë¡œ êµì²´
 	function outMenu()
 	{
 		var num=$(this).parent().index();
@@ -4196,13 +4116,13 @@
 		}
 	}
 	
-	// ÇÇÀÚ¸Ş´º Å¬¸¯ÇßÀ»¶§ : ÀÌÀüÈ°¼ºÈ­µÇ¾îÀÖ´ø ¸Ş´ºÀÇ Å¬·¡½º(active)¸¦¾ø¾ÖÁÖ°í ¸µÅ©ÀÌ¹ÌÁö·Î ±³Ã¼ ÈÄ ÇöÀç¸Ş´º¸¦ activeÇÔ¼ö¸¦ È£Ãâ½ÃÄÑ È°¼ºÈ­ ½ÃÅ´
+	// í”¼ìë©”ë‰´ í´ë¦­í–ˆì„ë•Œ : ì´ì „í™œì„±í™”ë˜ì–´ìˆë˜ ë©”ë‰´ì˜ í´ë˜ìŠ¤(active)ë¥¼ì—†ì• ì£¼ê³  ë§í¬ì´ë¯¸ì§€ë¡œ êµì²´ í›„ í˜„ì¬ë©”ë‰´ë¥¼ activeí•¨ìˆ˜ë¥¼ í˜¸ì¶œì‹œì¼œ í™œì„±í™” ì‹œí‚´
 	function onMenu()
 	{
 		active($(this));
 	}
 	
-	// ÇöÀç Å¬¸¯ÇÑ ¸Ş´º È°¼ºÈ­ ÇÔ¼ö
+	// í˜„ì¬ í´ë¦­í•œ ë©”ë‰´ í™œì„±í™” í•¨ìˆ˜
 	function active($el)
 	{
  		var num=$el.parent().index();
