@@ -203,15 +203,41 @@
     	document.frmOrder.submit();
 	}
     
-	// 장바구니
-	function fnOrderBox(menuid,imagepathorder,price,consist)
+	// 세트메뉴, 파파 플래터 장바구니
+	function fnOrderSet_plater(menuid,imagepathorder,price,consist,name)
     {
-		alert(menuid + '\n' + imagepathorder + '\n'+document.getElementById("cnt_opt").value +'\n'+price+'\n'+consist) ;		
+		var size = $("input:hidden[id=_size]").val();
+				
 		document.frmOrder.onlineGroupCd.value = onlineGroupCd;							// 온라인메뉴그룹
     	document.frmOrder.pizzaSelIdx.value   = pizzaSelIdx;							// 선택피자그룹메뉴
     	document.frmOrder._menuid.value = menuid; 										// 메뉴 id
     	document.frmOrder._imagepathorder.value = imagepathorder; 						// 온라인주문 메뉴 이미지경로
+    	document.frmOrder._name.value = name;											// 제품명
+    	if(menuid == 'pj_2010')
+    		document.frmOrder._size.value = "(BOX)";									// 사이즈
+    	else
+    		document.frmOrder._size.value = "(2-3인용)";									// 사이즈
+    	
     	document.frmOrder._cnt_opt.value = document.getElementById("cnt_opt").value; 	// 수량
+    	document.frmOrder._price.value = price; 										// 가격
+    	document.frmOrder._consist.value = consist; 									// 구성요소
+    	document.frmOrder.action              = "pj_1003Action.action";
+    	document.frmOrder.target              = "_self";
+    	alert("name : "+name+"\nprice : "+price+"\ncont_opt : "+document.getElementById("cnt_opt").value+"\nsize : "+document.frmOrder._size.value) ;
+    	document.frmOrder.submit();
+	}
+	
+	// 사이드 장바구니
+	function fnOrderSide(menuid,imagepathorder,price,consist,name)
+    {
+		alert("name : "+name+"\nprice : "+price+"\ncont_opt : "+document.getElementById("cnt_opt1").value) ;		
+		document.frmOrder.onlineGroupCd.value = onlineGroupCd;							// 온라인메뉴그룹
+    	document.frmOrder.pizzaSelIdx.value   = pizzaSelIdx;							// 선택피자그룹메뉴
+    	document.frmOrder._menuid.value = menuid; 										// 메뉴 id
+    	document.frmOrder._imagepathorder.value = imagepathorder; 						// 온라인주문 메뉴 이미지경로
+    	document.frmOrder._name.value = name;											// 제품명
+    	document.frmOrder._size.value = "원사이즈";										// 사이즈 
+    	document.frmOrder._cnt_opt.value = document.getElementById("cnt_opt1").value; 	// 수량
     	document.frmOrder._price.value = price; 										// 가격
     	document.frmOrder._consist.value = consist; 									// 구성요소
     	document.frmOrder.action              = "pj_1003Action.action";
@@ -220,18 +246,43 @@
 	}
 	
 	// 피자 장바구니 
-	function fnOrderPizza(menuid,imagepathorder,consist)
+	function fnOrderPizza(menuid,imagepathorder,consist,name)
     {
-		var price = $("input[name=pSize_1]:checked").val();
-		alert(menuid + '\n' + imagepathorder + '\n'+ price + '\n' + consist + '\n' ) ;
+		var price = $("input:radio[name=pSize_1]:checked").val();
+		var size = $("input:hidden[id=_size]").val();
+		alert("name : "+name+"\nprice : "+price+"\nsize : "+size ) ;
+		//alert(menuid + '\n' + imagepathorder + '\n'+ price + '\n' + consist + '\n' + name) ;
 		document.frmOrder.onlineGroupCd.value = onlineGroupCd;							// 온라인메뉴그룹
     	document.frmOrder.pizzaSelIdx.value   = pizzaSelIdx;							// 선택피자그룹메뉴
     	document.frmOrder._menuid.value = menuid; 										// 메뉴 id
     	document.frmOrder._imagepathorder.value = imagepathorder; 						// 온라인주문 메뉴 이미지경로
+    	document.frmOrder._name.value = name;											// 제품명
+    	document.frmOrder._cnt_opt.value = "1"; 										// 수량
     	document.frmOrder._price.value = price; 										// 가격
     	document.frmOrder._consist.value = consist; 									// 구성요소
     	document.frmOrder.action              = "pj_1003Action.action";
     	document.frmOrder.target              = "_self";
+    	document.frmOrder.submit();
+	}
+	
+	// 음료 장바구니
+	function fnOrderBever(menuid,imagepathorder,consist,name)
+    {
+		var price = $("input:radio[name=pSize_1]:checked").val();
+		var size = $("input:hidden[id=_size]").val();
+		
+		//alert(menuid + '\n' + imagepathorder + '\n'+ price + '\n' + consist + '\n' + name) ;
+		document.frmOrder.onlineGroupCd.value = onlineGroupCd;							// 온라인메뉴그룹
+    	document.frmOrder.pizzaSelIdx.value   = pizzaSelIdx;							// 선택피자그룹메뉴
+    	document.frmOrder._menuid.value = menuid; 										// 메뉴 id
+    	document.frmOrder._imagepathorder.value = imagepathorder; 						// 온라인주문 메뉴 이미지경로
+    	document.frmOrder._name.value = name;											// 제품명
+    	document.frmOrder._cnt_opt.value = document.getElementById("cnt_opt_bever").value;	// 수량
+    	document.frmOrder._price.value = price; 										// 가격
+    	document.frmOrder._consist.value = consist; 									// 구성요소
+    	document.frmOrder.action              = "pj_1003Action.action";
+    	document.frmOrder.target              = "_self";
+    	alert("name : "+name+"\nprice : "+price+"\nsize : "+size+"\ncnt_opt1 : "+document.frmOrder._cnt_opt.value ) ;
     	document.frmOrder.submit();
 	}
     
@@ -2793,6 +2844,8 @@
 	<!-- 주문  -->
 	<input type="hidden" id="_menuid"         name="_menuid"          value="" />  <!-- 메뉴 id				-->
 	<input type="hidden" id="_imagepathorder" name="_imagepathorder"  value="" />  <!-- 온라인주문 메뉴 이미지 경로	-->
+	<input type="hidden" id="_name" name="_name"  value="" />  					   <!-- 제품명	-->
+	<input type="hidden" id="_size" name="_size"  value="" />  				       <!-- 사이즈	-->
 	<input type="hidden" id="_cnt_opt"        name="_cnt_opt"         value="" />  <!-- 수량					-->
 	<input type="hidden" id="_price"          name="_price"           value="" />  <!-- 금액					-->
 	<input type="hidden" id="_consist"        name="_consist"         value="" />  <!-- 메뉴 구성				-->
@@ -2884,34 +2937,35 @@
 									<img src='${li.imagepathorder}' alt='${li.name}' title='${li.name}' onerror="this.src='/assets/img/order/menu/noImage_ord.png'" />
 								</p> 
 								<p class='name' id='pName_1'>${li.name}</p> 
-								<p><button type='button' id='basket_1' name='basket_1' onclick="fnOrderPizza('${li.menuid}','${li.imagepathorder}','${ li.consist}');">장바구니에담기</button></p> 
+								<p><button type='button' id='basket_1' name='basket_1' onclick="fnOrderPizza('${li.menuid}','${li.imagepathorder}','${ li.consist}','${li.name }');">장바구니에담기</button></p> 
 							</div>
 							<!--// item_left --> 
 							<!--// item_right -->
 							<div class='item_right'>
 								<c:set var="price" value="" />	  
 								<!-- size -->
+								<input type='hidden' id="_size" value="" />
 								<div class='size'>
 									<c:if test="${ li.rprice != null}">
 										<p class='label_radio menu_size_radio' >
 											<c:set var="str" value="${li.rprice}"/>
-											<input type='radio' name='pSize_1' value='${fn:substring(str, 0, fn:length(str)-1)}' />
-											<img src='../assets/img/order/ord_menuList_size_R.png' alt='레귤러' title='Regular'/>
+											<input type='radio' name='pSize_1' value='${fn:substring(str, 0, fn:length(str)-1)}'/>
+											<img src='../assets/img/order/ord_menuList_size_R.png' alt='레귤러' title='Regular' name="레귤러" />
 											<span class='price' >${fn:substring(str, 0, fn:length(str)-1)}</span>
 										</p>
 									</c:if>
 									<c:if test="${ li.lprice != null}">
 										<p class='label_radio menu_size_radio' >
 											<c:set var="str" value="${li.lprice}"/>
-											<input type='radio' name='pSize_1' value='${fn:substring(str, 0, fn:length(str)-1)}' />
-											<img src='../assets/img/order/ord_menuList_size_L.png' alt='라지' title='large'/>
+											<input type='radio' name='pSize_1' value='${fn:substring(str, 0, fn:length(str)-1)}'/>
+											<img src='../assets/img/order/ord_menuList_size_L.png' alt='라지' title='large' name="라지" />
 											<span class='price' >${fn:substring(str, 0, fn:length(str)-1)}</span>   
 										</p>
 									</c:if>
 									<c:if test="${ li.fprice != null}">
 										<p class='label_radio menu_size_radio' >
 											<c:set var="str" value="${li.fprice}"/>
-											<input type='radio' name='pSize_1' value='${fn:substring(str, 0, fn:length(str)-1)}' />
+											<input type='radio' name='pSize_1' value='${fn:substring(str, 0, fn:length(str)-1)}'/>
 											<img src='../assets/img/order/ord_menuList_size_F.png' alt='패밀리' title='family'/>
 											<span class='price' >${fn:substring(str, 0, fn:length(str)-1)}</span>   
 										</p>
@@ -2919,7 +2973,7 @@
 									<c:if test="${ li.pprice != null}">
 										<p class='label_radio menu_size_radio' >
 											<c:set var="str" value="${li.pprice}"/>
-										  	<input type='radio' name='pSize_1' value='${fn:substring(str, 0, fn:length(str)-1)}' />
+										  	<input type='radio' name='pSize_1' value='${fn:substring(str, 0, fn:length(str)-1)}'"/>
 											<img src='../assets/img/order/ord_menuList_size_P.png' alt='파티' title='party'/>
 											<span class='price' >${fn:substring(str, 0, fn:length(str)-1)}</span>   
 										</p>	
@@ -3069,7 +3123,7 @@
 									<img src="${li.imagepathorder }" width="220" height="140" alt="${li.name }" title="${li.name }" id="orderimage">
 								</p>
 								<p class="name" id="setNm"><c:out value="${li.name }" /><span class="size">(2-3인용)</span></p>
-								<p class="btn_cart" onclick="fnOrderBox('${li.menuid}','${li.imagepathorder}','${price}','${ li.consist}');">
+								<p class="btn_cart" onclick="fnOrderSet_plater('${li.menuid}','${li.imagepathorder}','${price}','${ li.consist}','${li.name }');">
 									<button type="button">장바구니에담기</button>
 								</p>
 								<p class="description">
@@ -3098,13 +3152,15 @@
 					<!-- item -->
 					<!-- 사이드 -->
 					<c:if test="${ li.menuid eq 'pj_2012' }">
+						<c:set var="price" value="${li.onesizeprice}"/>
+						<c:set var="price" value="${fn:substring(price,0,fn:length(price)-1) }"/>
 						<div id='menu_${status.count}' class='item'>
 							<!-- 왼쪽 이미지 영역 -->
 							<!-- item_left -->
 							<div class='item_left'>
 								<p class='photo'><img src='${li.imagepathorder}' alt='${li.name}' title='${li.name}' onerror="this.src='/assets/img/order/menu/noImage_ord.png'" /></p>
 								<p class='name' id='pName_1'>${li.name}</p>
-								<p><button type='button' id='basket_1' name='basket_1' onclick="makeSendData('1');fnReset_spcOption_up($(this));">장바구니에담기</button></p>
+								<p><button type='button' id='basket_1' name='basket_1' onclick="fnOrderSide('${li.menuid}','${li.imagepathorder}','${price}','${ li.consist}','${li.name }');">장바구니에담기</button></p>
 							</div>
 							<!--// item_left -->
 							<!--// item_right -->
@@ -3173,11 +3229,13 @@
 					<!-- item -->
 					<!-- 파파플래터 -->
 					<c:if test="${ li.menuid eq 'pj_2010' }">
+						<c:set var="price" value="${li.boxprice}"/>
+						<c:set var="price" value="${fn:substring(price,0,fn:length(price)-1) }"/>
 						<div id="plat_section" class="" style="display: block;">
 							<div class="item has-js" id="menu_50992">
 								<p class="image"><img src="../assets/img/order/menu/11/1019_ord.png" width="220" height="140" alt="수퍼 파파스" title="수퍼 파파스"></p>
 								<p class="name" id="pName_50992">${li.name}<span class="size">(BOX)</span></p>
-								<p class="btn_cart" onclick="fnAddSet($(this), '50992,수퍼 파파스,파파플래터,25900,,10,1019,3023,4001,10', '', '', '', '', '');""="">
+								<p class="btn_cart" onclick="fnOrderSet_plater('${li.menuid}','${li.imagepathorder}','${price}','${ li.consist}','${li.name }');">
 									<button type="button">장바구니에담기</button>
 								</p>
 								<p class="description">
@@ -3190,11 +3248,13 @@
 									<p style="width: 40px; position: absolute; top: 10px; left: 140px;">수량
 										:</p>
 									<p class="selcet_count">
-										<select id="cnt_opt" name="cnt_opt"><option value="1">1</option>
+										<select id="cnt_opt" name="cnt_opt">
+											<option value="1">1</option>
 											<option value="2">2</option>
 											<option value="3">3</option>
 											<option value="4">4</option>
-											<option value="5">5</option></select>
+											<option value="5">5</option>
+										</select>
 									</p>
 								</div>
 							</div>
@@ -3211,7 +3271,7 @@
 							<div class='item_left'>
 								<p class='photo'><img src='${li.imagepathorder}' alt='${li.name}' title='${li.name}' onerror="this.src='/assets/img/order/menu/noImage_ord.png'" /></p>
 								<p class='name' id='pName_1'>${li.name}</p>
-								<p><button type='button' id='basket_1' name='basket_1' onclick="makeSendData('1');fnReset_spcOption_up($(this));">장바구니에담기</button></p>
+								<p><button type='button' id='basket_1' name='basket_1' onclick="fnOrderBever('${li.menuid}','${li.imagepathorder}','${ li.consist}','${li.name }');">장바구니에담기</button></p>
 							</div>
 							<!--// item_left -->
 							<!--// item_right -->
@@ -3221,7 +3281,7 @@
 									<!-- 350ML -->
 									<c:if test="${li.name eq '미닛 메이드 오렌지'}">
 										<p class='label_radio menu_size_radio' >
-											<input type='radio' name='pSize_9' value='${fn:substring(li.rprice, 0, fn:length(li.rprice)-1)}' />
+											<input type='radio' name='pSize_1' value='${fn:substring(li.rprice, 0, fn:length(li.rprice)-1)}' />
 											<img src='../assets/img/order/ord_menuList_size_350ml.png' alt='350ml' title='350ml'/><span class='price' >${fn:substring(li.rprice, 0, fn:length(li.rprice)-1)}</span>
 										</p>	
 									</c:if>
@@ -3235,7 +3295,7 @@
 									<!-- 600ML -->
 									<c:if test="${li.name eq '환타' }">
 										<p class='label_radio menu_size_radio' >
-											<input type='radio' name='pSize_7' value='${fn:substring(li.lprice, 0, fn:length(li.lprice)-1)}' />
+											<input type='radio' name='pSize_1' value='${fn:substring(li.lprice, 0, fn:length(li.lprice)-1)}' />
 											<img src='../assets/img/order/ord_menuList_size_600ml.png' alt='600ml' title='600ml'/><span class='price' >${fn:substring(li.rprice, 0, fn:length(li.rprice)-1)}</span> 
 										</p>
 									</c:if>
@@ -3249,7 +3309,7 @@
 									<!-- 1.25L -->
 									<c:if test="${li.name eq '스프라이트' || li.name eq '코카콜라 제로' || li.name eq '환타' || li.name eq '미닛 메이드 오렌지'}">
 										<p class='label_radio menu_size_radio' >
-											<input type='radio' name='pSize_9' value='${fn:substring(li.lprice, 0, fn:length(li.lprice)-1)}' />
+											<input type='radio' name='pSize_1' value='${fn:substring(li.lprice, 0, fn:length(li.lprice)-1)}' />
 											<img src='../assets/img/order/ord_menuList_size_1.5L.png' alt='1.5L' title='1.5L'/><span class='price' >${fn:substring(li.lprice, 0, fn:length(li.lprice)-1)}</span>
 										</p>
 									</c:if>
@@ -3263,7 +3323,7 @@
 								<!--// size -->
 								<!--// size -->
 								<div class='select_count'>
-									<select id='cnt_opt1' name='cnt_opt'>
+									<select id='cnt_opt_bever' name='cnt_opt'>
 										<option value='1'>1</option>
 										<option value='2'>2</option>
 										<option value='3'>3</option>

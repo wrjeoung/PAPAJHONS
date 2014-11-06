@@ -7,7 +7,14 @@
 		var price          = $this.find("input").attr("value");
 		var $item_rightBox = $this.parent().parent();
 		
+		var $size = $("input[name=_size]");
+		var imgAlt = $this.find("img").attr("alt");
+		$size.attr("value",imgAlt);
 		$item_rightBox.find(".select_price").text(setComma(price));
+		
+//		var size          = $this.find("img").attr("alt");
+//		$item_rightBox.find("#_size").attr("value",size);
+//		$item_rightBox.find(".select_price").text(setComma(price));
 	}
 	
 
