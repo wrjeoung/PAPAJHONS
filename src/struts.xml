@@ -270,7 +270,21 @@
 		    <interceptor-ref name="params"></interceptor-ref>
 		    <interceptor-ref name="servletConfig"/>				
 			<result>/mypage/pj_7003.jsp</result>
+		</action>
+		
+		<action name="modifyProAction" class="papa.member.ModifyAction"> 
+		    <interceptor-ref name="ibatis"></interceptor-ref>
+		    <interceptor-ref name="params"></interceptor-ref>
+		    <interceptor-ref name="servletConfig"/>				
+			<result>/mypage/modifyPro.jsp</result>
 		</action>		
+		
+		<action name="changePasswdProAction" class="papa.member.ModifyAction" method="changePasswdPro">
+		    <interceptor-ref name="ibatis"></interceptor-ref>
+		    <interceptor-ref name="params"></interceptor-ref>
+		    <interceptor-ref name="servletConfig"/>
+			<result>/mypage/changePasswdPro.jsp</result>
+		</action>				
 					
 		<action name="mypageAction" class="papa.member.MemberAction" method="form" >
 			<result>/mypage/main.jsp</result>

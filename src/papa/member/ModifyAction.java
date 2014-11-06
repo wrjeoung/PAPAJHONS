@@ -1,5 +1,6 @@
 package papa.member;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import org.apache.struts2.interceptor.SessionAware;
@@ -14,7 +15,34 @@ public class ModifyAction extends ActionSupport implements IbatisAware,SessionAw
 	private Map sessionMap;
 	private String memId = null;
 	private MemberData data = null;
+	private String oPwd;
+	private String nPwd;
+	private int result = 0;
 	
+	public int getResult() {
+		return result;
+	}
+
+	public void setResult(int result) {
+		this.result = result;
+	}
+
+	public String getoPwd() {
+		return oPwd;
+	}
+
+	public void setoPwd(String oPwd) {
+		this.oPwd = oPwd;
+	}
+
+	public String getnPwd() {
+		return nPwd;
+	}
+
+	public void setnPwd(String nPwd) {
+		this.nPwd = nPwd;
+	}
+
 	public MemberData getData() {
 		return data;
 	}
@@ -30,6 +58,31 @@ public class ModifyAction extends ActionSupport implements IbatisAware,SessionAw
 		
 		return SUCCESS;
 	}
+	
+	public String changePasswdPro() throws Exception {
+		memId = (String) sessionMap.get("memId");
+		
+		HashMap params = new HashMap();
+		
+		params.put("id", memId);
+		params.put("pw", oPwd);
+		
+		data = (MemberData) sqlMapper.queryForObject("memberSQL.loginCheck",params);
+		
+		if(data != null)
+		{
+			params.remove("pw");
+			params.put("pw", nPwd);
+			sqlMapper.update("memberSQL.updatePassword", params);
+			result = 1;
+		}
+		else
+		{
+			result = 0;
+		}
+		
+		return SUCCESS;
+	}	
 	
 	public String execute() throws Exception {
 		//sqlMapper.insert("memberSQL.insertMember", dto);

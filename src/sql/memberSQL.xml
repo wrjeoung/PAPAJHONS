@@ -58,6 +58,12 @@
 			WHERE email = #email#
 			AND activation_key = #activation_key#
    		</update>		
+   		
+		<!-- update 쿼리문 정의 -->
+		<update id="updatePassword">
+    		UPDATE account SET pw = #pw#
+		<include refid="where-id" />
+   		</update>   		
 		
 		<!-- insert 쿼리문 정의 -->
 		<insert id="insertMember" parameterClass="member">
