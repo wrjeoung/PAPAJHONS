@@ -278,13 +278,19 @@
     	document.frmOrder._menuid.value = menuid; 										// 메뉴 id
     	document.frmOrder._imagepathorder.value = imagepathorder; 						// 온라인주문 메뉴 이미지경로
     	document.frmOrder._name.value = name;											// 제품명
-    	document.frmOrder._cnt_opt.value = document.getElementById("cnt_opt_bever").value;	// 수량
+    	//document.frmOrder._cnt_opt.value = document.getElementById("cnt_opt_bever").value;	// 수량
     	document.frmOrder._price.value = price; 										// 가격
     	document.frmOrder._consist.value = consist; 									// 구성요소
     	document.frmOrder.action              = "pj_1003Action.action";
     	document.frmOrder.target              = "_self";
     	alert("name : "+name+"\nprice : "+price+"\nsize : "+size+"\ncnt_opt1 : "+document.frmOrder._cnt_opt.value ) ;
     	document.frmOrder.submit();
+	}
+	
+	function setSelect(value)
+	{
+		// 주문 수량 저장
+		document.frmOrder._cnt_opt.value = value;
 	}
     
     // 세트메뉴, 하프&하프, E쿠폰 화면표시 및 검색
@@ -3136,7 +3142,7 @@
 									<p class="set_price">${price } </p>
 									<p style="width:40px; position:absolute; top:10px; left:140px;">수량 : </p>
 									<p class="selcet_count">
-										<select id="cnt_opt" name="cnt_opt">
+										<select id="cnt_opt" name="cnt_opt" onchange="setSelect(this.value)">
 											<option value="1">1</option>
 											<option value="2">2</option>
 											<option value="3">3</option>
@@ -3184,7 +3190,7 @@
 								</script>
 								<!--// size -->
 								<div class='select_count'>
-									<select id='cnt_opt1' name='cnt_opt'>
+									<select id='cnt_opt1' name='cnt_opt' onchange="setSelect(this.value)">
 										<option value='1'>1</option>
 										<option value='2'>2</option>
 										<option value='3'>3</option>
@@ -3249,7 +3255,7 @@
 									<p style="width: 40px; position: absolute; top: 10px; left: 140px;">수량
 										:</p>
 									<p class="selcet_count">
-										<select id="cnt_opt" name="cnt_opt">
+										<select id="cnt_opt" name="cnt_opt" onchange="setSelect(this.value)">
 											<option value="1">1</option>
 											<option value="2">2</option>
 											<option value="3">3</option>
@@ -3324,8 +3330,8 @@
 								<!--// size -->
 								<!--// size -->
 								<div class='select_count'>
-									<select id='cnt_opt_bever' name='cnt_opt'>
-										<option value='1'>1</option>
+									<select id='cnt_opt_bever' name='cnt_opt_drink' onchange="setSelect(this.value)">
+										<option value='1' selected="selected">1</option>
 										<option value='2'>2</option>
 										<option value='3'>3</option>
 										<option value='4'>4</option>
