@@ -155,7 +155,7 @@
 								<!--오리지널 씬-->
 							</h2>
 							<!-- cont -->
-							<div class="cont" style="min-height: 700px">
+							<div class="cont" style="min-height: 290px">
 								<!-- conf_section -->
 								<div id="conf_section">
 									<!-- 주문내역리스트 시작(conf_ord_list)-->
@@ -358,7 +358,7 @@
 											<button type="button" onclick='fnOrderInfo($(this));'>
 												<img src="../assets/img/btn/btn_order.png" alt="주문하기" />
 											</button>
-											<button type="button" onclick="location.href='/order.jsp?step=step1'">
+											<button type="button" onclick="javascript:history.back()">
 												<img src="../assets/img/btn/btn_pre.png" alt="이전단계" />
 											</button>
 										</span>
