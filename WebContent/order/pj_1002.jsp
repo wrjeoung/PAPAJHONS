@@ -264,6 +264,7 @@
     	document.frmOrder.action              = "pj_1003Action.action";
     	document.frmOrder.target              = "_self";
     	alert("제품명 : " + document.frmOrder._name.value + "  사이즈 : " + size + " 수량 : " + document.frmOrder._cnt_opt.value + " 금액 : " + document.frmOrder._price.value );
+    	
     	document.frmOrder.submit();
 	}
 	

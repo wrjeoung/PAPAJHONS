@@ -229,6 +229,7 @@
 													<span class="size">${param._size }</span>
 													<span class="count">${param._cnt_opt}</span>
 													<span class="unit_price">${param._price}</span>
+													
 													<!-- 할인 전 -->
 													<span class="discount"></span>
 													<!--  할인 금액 -->
