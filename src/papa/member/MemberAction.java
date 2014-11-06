@@ -59,7 +59,7 @@ public class MemberAction extends ActionSupport implements IbatisAware, Preparab
 		//µî·Ï Æû.
 		return SUCCESS;
 	}
-	
+
 	public String checkIdPro() throws Exception {
 		MemberData data = null;
 		

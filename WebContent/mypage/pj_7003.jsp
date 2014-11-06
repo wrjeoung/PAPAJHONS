@@ -38,13 +38,16 @@
 	{
 		if( gb == "sms" )
 		{
-			$("#smsYn").val(val);
+			$("#sms").val(val);
 			if( val == "N" ) 
 			{
+				myPageForm.sms_yes.checked = false; 
 				myPageForm.sms_no.checked = true;
+				
 			}
 			else
 			{
+				myPageForm.sms_no.checked = false;
 				myPageForm.sms_yes.checked = true; 
 			}  
 
@@ -55,7 +58,7 @@
 		}
 		else if( gb == "email" ) 
 		{
-			$("#mailYn").val(val);
+			$("#sendmail").val(val);
 
 			 if( val == "N" ) 
 			{
@@ -73,7 +76,7 @@
 
 	function modifyInfo()
 	{
-		if( $("#pass").val() == "" )
+		if( $("#pw").val() == "" )
 		{
 			alertFrame.find("#alertText p").remove();
 			alertFrame.find("#alertText").append("<p>비밀번호를 입력해 주세요.</p>"); 
@@ -82,7 +85,7 @@
 			autoFocus = $("#pass");
 			return;
 		}
-		if( !isABCNum($("#pass").val()) )
+		if( !isABCNum($("#pw").val()) )
 		{
 			alertFrame.find("#alertText p").remove();
 			alertFrame.find("#alertText").append("<p>비밀번호는 영문 또는 숫자만 가능합니다.</p>"); 
@@ -91,7 +94,7 @@
 			autoFocus = $("#pass");
 			return;
 		}
-		if( $("#pass").val().length < 4 || $("#pass").val().length > 20 )
+		if( $("#pw").val().length < 4 || $("#pw").val().length > 20 )
 		{
 			alertFrame.find("#alertText p").remove();
 			alertFrame.find("#alertText").append("<p>비밀번호는 4자 이상, 20자 이내로 입력하셔야 합니다.</p>"); 
@@ -158,8 +161,13 @@
 		$("#phone").val(phone);
 		$("#mobile").val(mobile);
 		$("#addr").val(addr);		
+		$("#viewLoading").show().fadeIn("500"); 
 		
+		f = document.myPageForm;
+		f.action = 'modifyProAction.action';
+		f.submit();
 
+/*
 		$.ajax(
 		{
 			url      : "/mypage/pj_7003_ok.jsp",
@@ -193,6 +201,7 @@
 
 		$("#pass").val("");
         autoFocus = $("#pass");
+*/        
 	}	
 	
 	//개인정보 폼 업데이트 
@@ -350,6 +359,14 @@
         autoFocus = $("#pass");
 	}
 	
+	function userOut()
+	{
+		if( confirm("정말로 탈퇴 하시겠습니까?") == true )
+		{
+			$("#viewLoading").show().fadeIn("500"); 
+			document.getElementById("ifr_hidden").src = "userOutAction.action";
+		}
+	}
 	
 	//회원 탈퇴 검사
 	function fn_userOut()
@@ -407,17 +424,7 @@
 		$("#sex").val("");
 
 		fnRadioClick('sms', '${data.sms}');
-		if( "N" == 'N' )
-		{
-			myPageForm.sms_no.checked = true;
-		}
-		
 		fnRadioClick('email', '${data.sendmail}');
-		if( "N" == 'Y' )
-		{
-			myPageForm.sendMail_no.checked = true;
-		}
-		
 	}
 	
 	function ChangePassword()
@@ -626,8 +633,8 @@
 	<input type="hidden" id="userId"   name="userId"   value="">        <!-- 아이디       -->
 	<input type="hidden" id="userNo"   name="userNo"   value="">        <!-- 고객번호     -->
 
-	<input type="hidden" id="smsYn"    name="smsYn"    value="">                   <!-- SMS 수신여부 -->
-	<input type="hidden" id="mailYn"   name="mailYn"   value="">                   <!-- 메일수신여부 -->
+	<input type="hidden" id="sms"    name="sms"    value="">                   <!-- SMS 수신여부 -->
+	<input type="hidden" id="sendmail"   name="sendmail"   value="">                   <!-- 메일수신여부 -->
    	<input type="hidden" id="phone"  name="phone" value="">  
 	<input type="hidden" id="mobile"  name="mobile" value="">
 	<input type="hidden" id="addr"  name="addr" value="">
@@ -645,8 +652,8 @@
           			<span>${memId}</span>
         		</p> 
         		<p>
-          			<label class="tit" for="pass"><img src="../assets/img/forms/login_pw.gif" alt="비밀번호" /></label>
-          			<input type="password" id="pass" name="pass" class="base" value="" /> 
+          			<label class="tit" for="pw"><img src="../assets/img/forms/login_pw.gif" alt="비밀번호" /></label>
+          			<input type="password" id="pw" name="pw" class="base" value="" /> 
         			<span class="btn_h23 red"><button type="button" onclick="popup('#change_pw'); $('#change_pw').find('.alertBtn').focus();">비밀번호 변경</button></span>
         			<span class="text_s11">*영문, 숫자만 가능, 4~20 글자 이내</span>
 				</p>
@@ -671,9 +678,9 @@
         		<p style="padding:0 0 0 120px;">
           			<span style="font-weight:bold; background:url(../assets/img/icon/icon_gray1.gif) no-repeat 0 2px; padding-left:10px;" >SMS수신동의 : </span>
           			<label for="sms_yes" class="text_s11">예</label>
-          			<input type="radio" id="sms_yes" name="sms" value="Y" onclick="fnRadioClick('sms', this.value)" checked/>
+          			<input type="radio" id="sms_yes" name="sms_yes" value="Y" onclick="fnRadioClick('sms', this.value)" checked/>
           			<label for="sms_no" class="text_s11">아니오</label>
-          			<input type="radio" id="sms_no" name="sms" value="N" onclick="fnRadioClick('sms', this.value)" />
+          			<input type="radio" id="sms_no" name="sms_no" value="N" onclick="fnRadioClick('sms', this.value)" />
           			<br/>
           			<span class="text_s11">수신 동의하시면, 이벤트 및 할인쿠폰에 대한 파파존스 서비스를 받으실 수 있습니다.</span>
         		</p>
@@ -686,9 +693,9 @@
           			<span class="tit"><img src="../assets/img/forms/label_sendMail.gif" alt="이메일수신여부" /></span>
           			<span class="text_s11">파파존스 정기 메일을 받아보시겠습니까?</span>
           			<label for="sendMail_yes">예</label>
-          			<input type="radio" id="sendMail_yes" name="sendMail" value="Y" onclick="fnRadioClick('email', this.value)" checked/>
+          			<input type="radio" id="sendMail_yes" name="sendMail_yes" value="Y" onclick="fnRadioClick('email', this.value)" checked/>
           			<label for="sendMail_no">아니오</label>
-          			<input type="radio" id="sendMail_no" name="sendMail" value="N" onclick="fnRadioClick('email', this.value)" />
+          			<input type="radio" id="sendMail_no" name="sendMail_no" value="N" onclick="fnRadioClick('email', this.value)" />
         		</p>
         		<p style="border-bottom:none">
           			<span class="tit"><img src="../assets/img/forms/label_address.gif" alt="주소" /></span>
@@ -715,7 +722,7 @@
         		<p>
         			<span class="tit"><img src="../assets/img/forms/label_quit.gif" alt="회원탈퇴" /></span>
          			<span>파파존스 홈페이지 회원탈퇴를 하시겠습니까?</span>
-          			<span class="btn_h23 green"><button type="button" onclick="fn_userOut();">탈퇴</button></span>
+          			<span class="btn_h23 green"><button type="button" onclick="userOut();">탈퇴</button></span>
         		</p>
       		</div>
   		</div> <!-- //join_form -->
