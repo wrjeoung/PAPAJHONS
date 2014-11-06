@@ -7,6 +7,7 @@
 <script type="text/javascript" src="../assets/js/json2.js"></script>
 <script type="text/javascript" src="../assets/js/cart.js"></script>
 <script type="text/javascript" src="../assets/js/topping.js"></script>
+<link type="text/css" rel="stylesheet" href="../assets/css/order.css" />
 <script type="text/javascript">
     var root = ""; 
 	var sessionOrdInfo = null;
@@ -249,9 +250,9 @@
 	function fnOrderPizza(menuid,imagepathorder,consist,name)
     {
 		var price = $("input:radio[name=pSize_1]:checked").val();
-		var size = $("input:hidden[id=_size]").val();
-		alert("name : "+name+"\nprice : "+price+"\nsize : "+size ) ;
-		//alert(menuid + '\n' + imagepathorder + '\n'+ price + '\n' + consist + '\n' + name) ;
+		var bt = $('input:radio[name=pSize_1]').attr("checked",true);
+		var size = $("input:hidden[id=_size]").val();		//alert("name : "+name+"\nprice : "+price+"\nsize : "+size ) ;
+		alert(menuid + '\n' + imagepathorder + '\n'+ price + '\n' + consist + '\n' + bt) ;
 		document.frmOrder.onlineGroupCd.value = onlineGroupCd;							// 온라인메뉴그룹
     	document.frmOrder.pizzaSelIdx.value   = pizzaSelIdx;							// 선택피자그룹메뉴
     	document.frmOrder._menuid.value = menuid; 										// 메뉴 id
