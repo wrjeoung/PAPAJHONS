@@ -23,7 +23,17 @@
 			<result>/order/pj_1002.jsp</result>
 		</action>
 		
+		<action name="pj_1003ActionAddItem" class="order.Pj_1003Action" method="addOrderItem">
+			<interceptor-ref name="ibatis"/>
+			<interceptor-ref name="params"/>
+			<interceptor-ref name="servletConfig" />
+			<result>/order/pj_1003.jsp</result>
+		</action>
+		
 		<action name="pj_1003Action" class="order.Pj_1003Action">
+			<interceptor-ref name="ibatis"/>
+			<interceptor-ref name="params"/>
+			<interceptor-ref name="servletConfig" />
 			<result>/order/pj_1003.jsp</result>
 		</action>
 	</package>
