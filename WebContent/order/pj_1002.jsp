@@ -4063,10 +4063,6 @@
   	
 </div>
 
-<script for=window event=onload>
-document.getElementById("i1").src = "pj_1002Action.action";
-</script>
-
 <script type="text/javascript">	   
 /*  /////////////////////////////////// 피자메뉴부분 Navi ///////////////////////////////////////////////////////// */
 	
@@ -4135,5 +4131,5 @@ document.getElementById("i1").src = "pj_1002Action.action";
 	}
 </script> 
 
-<iframe id=i1 src="" width="0px" height="0px" frameborder="1">아이프레임이지원되는 브라우저에서 확인할수있습니다.</iframe>
+<iframe id=i1 src="pj_1002Action.action" width="0px" height="0px" frameborder="1">아이프레임이지원되는 브라우저에서 확인할수있습니다.</iframe>
 

@@ -31,7 +31,7 @@ public class Pj_1003Action implements Action, SessionAware {
 			sessionMap.put("cartlist", lists);
 		}
 		
-		if((int)sessionMap.get("index") != lists.size() && _name != null)
+		if((int)sessionMap.get("index") != lists.size())
 		{
 			OrderDTO list = new OrderDTO();
 			list.setAmount(_cnt_opt);
