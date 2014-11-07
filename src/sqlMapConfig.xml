@@ -36,22 +36,6 @@
 	<sqlMap resource="/sql/storeSQL.xml"/>
 	<sqlMap resource="/sql/specialeventSQL.xml"/>	
 	<sqlMap resource="/sql/qnaboardSQL.xml"/>
-
-<<<<<<< .mine
-
-<!-- <<<<<<< .mine
-
-=======
-
->>>>>>> .theirs -->
-=======
-
-
-
-
-
-
->>>>>>> .theirs
 	<sqlMap resource="/sql/memCardSQL.xml"/>
 	<sqlMap resource="/sql/creCardSQL.xml"/>
 </sqlMapConfig>
