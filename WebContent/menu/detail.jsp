@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -14,7 +14,7 @@
 	content="Order Papa John's Pizza online for fast pizza delivery or pickup. Get Papa John's Special Offers or use Papa John's promo codes for online pizza orders." />
 <meta http-equiv="Keywords"
 	content="Papa john's, papa johns, papa johns pizza, papa johns online, pizza, papa johns menu, order papa johns, pizza delivery, order pizza online, pizza specials, papa johns coupons, papa johns promo codes, papa johns specials, pizza coupons, fast order, papa's picks, papas picks" />
-<title>ÆÄÆÄÁ¸½º-Better Ingredients.Better Pizza.</title>
+<title>íŒŒíŒŒì¡´ìŠ¤-Better Ingredients.Better Pizza.</title>
 <link type="text/css" rel="stylesheet" href="../assets/css/reset.css" />
 <link type="text/css" rel="stylesheet" href="../assets/css/sub.css" />
 <link type="text/css" rel="stylesheet" href="../assets/css/lib_style.css" />
@@ -113,7 +113,7 @@ input,select,img {
 	font-weight: bold !important;
 }
 
-/* ÇÇÀÚ¸Ş´º (¼Ò½º,Ä¡Áî,±Á±â,ÄÆ )¿É¼Ç ¹öÆ° ¿µ¿ª */
+/* í”¼ìë©”ë‰´ (ì†ŒìŠ¤,ì¹˜ì¦ˆ,êµ½ê¸°,ì»· )ì˜µì…˜ ë²„íŠ¼ ì˜ì—­ */
 .spcInstruction_btn {
 	position: relative;
 	top: 2px;
@@ -124,7 +124,7 @@ input,select,img {
 .spcInstruction_btn img {
 	cursor: pointer;
 }
-/* special Instruction ¿É¼Ç & »ó¼¼Á¤º¸ ¸»Ç³¼± */
+/* special Instruction ì˜µì…˜ & ìƒì„¸ì •ë³´ ë§í’ì„  */
 .spcInstruction_btn .spcInstruction_comment {
 	position: absolute;
 	top: -98px;
@@ -151,7 +151,7 @@ input,select,img {
 	font-size: 12px;
 }
 
-/* (¼Ò½º,Ä¡Áî,±Á±â,ÄÆ )¿É¼Ç¹Ú½º ¼³Á¤ */
+/* (ì†ŒìŠ¤,ì¹˜ì¦ˆ,êµ½ê¸°,ì»· )ì˜µì…˜ë°•ìŠ¤ ì„¤ì • */
 .option_box {
 	background: #eee;
 	position: absolute;
@@ -194,9 +194,9 @@ input,select,img {
 <script type="text/javascript" src="../assets/js/common.min.js"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
-		//ÆäÀÌÁö ½ÃÀÛ ½Ã·Îµù ÀÌ¹ÌÁö ¼û±â±â
+		//í˜ì´ì§€ ì‹œì‘ ì‹œë¡œë”© ì´ë¯¸ì§€ ìˆ¨ê¸°ê¸°
 		$('#viewLoading').hide();
-		// ajax ½ÇÇà ¹× ¿Ï·á½Ã 'Loading ÀÌ¹ÌÁö'ÀÇ µ¿ÀÛ ÄÁÆ®·ÑÇÏ±â
+		// ajax ì‹¤í–‰ ë° ì™„ë£Œì‹œ 'Loading ì´ë¯¸ì§€'ì˜ ë™ì‘ ì»¨íŠ¸ë¡¤í•˜ê¸°
 		$('#viewLoading').ajaxStart(function() {
 			$(this).fadeIn(500);
 		}).ajaxStop(function() {
@@ -206,7 +206,7 @@ input,select,img {
 		$('.menu_opt_radio').click(function() {
 			set_opt_radio($(this));
 		});
-		//¶óµğ¿À ¹öÆ° ÃÊ±â°ª default ¼³Á¤
+		//ë¼ë””ì˜¤ ë²„íŠ¼ ì´ˆê¸°ê°’ default ì„¤ì •
 		$(".option_box .spcInstructions .option").each(function(i) {
 			var $btn = $(this).find(".menu_opt_radio").eq(0);
 			set_opt_radio($btn);
@@ -214,13 +214,13 @@ input,select,img {
 	});
 
 	window.onload = function() {
-		//20130415 °¢ ¸Ş´ºº° µğÅ×ÀÏ ÇÁ·¹ÀÓ Å©±â Á¶Àı!!
+		//20130415 ê° ë©”ë‰´ë³„ ë””í…Œì¼ í”„ë ˆì„ í¬ê¸° ì¡°ì ˆ!!
 		var $ifr = $(parent.document.getElementById("detail_con"));
 		var hei = $('#iframe_detail').css('height');
 		$ifr.find('iframe').css('height', hei);
 	};
 
-	//¶óµğ¿À ¹öÆ° Ã¼Å©°ª º¯°æ
+	//ë¼ë””ì˜¤ ë²„íŠ¼ ì²´í¬ê°’ ë³€ê²½
 	function set_opt_radio(radio_btn) {
 		radio_btn.parent().find('.menu_opt_radio').removeClass("r_on");
 		radio_btn.find('input').removeAttr("checked");
@@ -234,9 +234,9 @@ input,select,img {
 		return value;
 	}
 
-	/* ¹®ÀÚ ¾ÕµÚ °ø¹éÁ¦°Å */
+	/* ë¬¸ì ì•ë’¤ ê³µë°±ì œê±° */
 	function trim(s) {
-		s += ''; // ¼ıÀÚ¶óµµ ¹®ÀÚ¿­·Î º¯È¯
+		s += ''; // ìˆ«ìë¼ë„ ë¬¸ìì—´ë¡œ ë³€í™˜
 		return s.replace(/^\s*|\s*$/g, '');
 	}
 </script>
@@ -245,33 +245,33 @@ input,select,img {
 <body>
 	<div id="iframe_detail">
 	
-		<!-- ÆÄÆÄ ÇÃ·¡ÅÍ & ¼¼Æ® ¸Ş´º-->
+		<!-- íŒŒíŒŒ í”Œë˜í„° & ì„¸íŠ¸ ë©”ë‰´-->
 		<c:if test="${ list.menuid eq 'pj_2010' || list.menuid eq 'pj_2011'}">
 		
 			<script type="text/javascript">
 				var $mainType  = "10";
-				var $doughType = "¿À¸®Áö³Î";
+				var $doughType = "ì˜¤ë¦¬ì§€ë„";
 			</script>
 
 			<div class="db_img"><img src="${list.imagepath2}" alt="${list.name}" title="${list.name}" onerror="this.src='/assets/img/menu/img/detail_noImage.png'"/> </div>
 			  		<div class="comment">
-			  		<!--  0401 Ãß°¡ºÎºĞ ½ÃÀÛ  -->
-			<p class="close"><button type="button"><img src="../assets/img/sub/btn_detail_close.gif" alt="´İ±â" /></button></p>
-			<!-- 0401 Ãß°¡ºÎºĞ ³¡ -->	
+			  		<!--  0401 ì¶”ê°€ë¶€ë¶„ ì‹œì‘  -->
+			<p class="close"><button type="button"><img src="../assets/img/sub/btn_detail_close.gif" alt="ë‹«ê¸°" /></button></p>
+			<!-- 0401 ì¶”ê°€ë¶€ë¶„ ë -->	
 					 
 			<h4>${list.name }</h4>
 			<p class="comm"></p>
 			<div class="detail_comm"> 
 		   			<dl>
-					 	<dt><img src="../assets/img/menu/detail_title_setItems.gif" alt="¸Ş´º ±¸¼º"></dt>
+					 	<dt><img src="../assets/img/menu/detail_title_setItems.gif" alt="ë©”ë‰´ êµ¬ì„±"></dt>
 				   				<dd class="items"> : <c:out value="${list.consist }"/></dd>
 				   		<c:if test="${ list.menuid eq 'pj_2010'}">
-							<dd><img src="../assets/img/order/ord_menuList_size_box.png" alt="¼¼Æ®°¡°İ"> ${list.boxprice }</dd>
-					     			<dd><img src="${list.imagepath3 }" alt="ÇÃ·¡ÅÍ ±¸¼º ÀÌ¹ÌÁö"></dd>
+							<dd><img src="../assets/img/order/ord_menuList_size_box.png" alt="ì„¸íŠ¸ê°€ê²©"> ${list.boxprice }</dd>
+					     			<dd><img src="${list.imagepath3 }" alt="í”Œë˜í„° êµ¬ì„± ì´ë¯¸ì§€"></dd>
 				     	</c:if>
 				     	<c:if test="${ list.menuid eq 'pj_2011'}">
-							<dd><img src="../assets/img/order/ord_menuList_size_set.png" alt="¼¼Æ®°¡°İ"> ${list.boxprice }</dd>
-					     			<dd><img src="${list.imagepath3 }" alt="¼¼Æ® ±¸¼º ÀÌ¹ÌÁö"></dd>
+							<dd><img src="../assets/img/order/ord_menuList_size_set.png" alt="ì„¸íŠ¸ê°€ê²©"> ${list.boxprice }</dd>
+					     			<dd><img src="${list.imagepath3 }" alt="ì„¸íŠ¸ êµ¬ì„± ì´ë¯¸ì§€"></dd>
 				     	</c:if>
 		  			</dl>
 			</div>
@@ -280,7 +280,7 @@ input,select,img {
 			<form action="">
 				<div class="cart_order"> 
 						<c:if test="${ list.menuid eq 'pj_2010'}">
-				  			<label for="select_size" class="hidden">»çÀÌÁî ¼±ÅÃ</label>
+				  			<label for="select_size" class="hidden">ì‚¬ì´ì¦ˆ ì„ íƒ</label>
 				  			<select id="select_size">
 				
 								<option value="50992,10,3023">BOX-${mBoxPrice }</option>
@@ -288,7 +288,7 @@ input,select,img {
 				  			</select>
 				  		</c:if>
 			
-			  			<label for="select_count">¼ö·®</label>
+			  			<label for="select_count">ìˆ˜ëŸ‰</label>
 			  			<select id="select_count">
 			    				<option value="1">1</option>
 			    				<option value="2">2</option>
@@ -297,14 +297,14 @@ input,select,img {
 			    				<option value="5">5</option>
 			  			</select>
 			
-							<button class="cart"  type="button" onclick="fnGetPizzaCnt('11','10','1019','4001','¿À¸®Áö³Î','addCart')"    ><img src="../assets/img/menu/dtaile_btn_cart.gif"  alt="Àå¹Ù±¸´Ï ´ã±â" /></button>
-							<button class="order" type="button" onclick="fnGetPizzaCnt('11','10','1019','4001','¿À¸®Áö³Î','addCartNgo')" ><img src="../assets/img/menu/dtaile_btn_order.gif" alt="¹Ù·Î ÁÖ¹®ÇÏ±â" /></button>
+							<button class="cart"  type="button" onclick="fnGetPizzaCnt('11','10','1019','4001','ì˜¤ë¦¬ì§€ë„','addCart')"    ><img src="../assets/img/menu/dtaile_btn_cart.gif"  alt="ì¥ë°”êµ¬ë‹ˆ ë‹´ê¸°" /></button>
+							<button class="order" type="button" onclick="fnGetPizzaCnt('11','10','1019','4001','ì˜¤ë¦¬ì§€ë„','addCartNgo')" ><img src="../assets/img/menu/dtaile_btn_order.gif" alt="ë°”ë¡œ ì£¼ë¬¸í•˜ê¸°" /></button>
 						</div>
 					</form>
 			</div>
 		</c:if>
 	
-		<!-- »çÀÌµå ¸Ş´º -->
+		<!-- ì‚¬ì´ë“œ ë©”ë‰´ -->
 		<c:if test="${ list.menuid eq 'pj_2012' }">
 		  
 			<script type="text/javascript">
@@ -315,44 +315,44 @@ input,select,img {
 				<img src="${list.imagepath2 }" alt="${list.name }" title="${list.name }" onerror="this.src='/assets/img/menu/img/detail_noImage.png'"/>
 			</div>
 	    		<div class="comment">
-	    		<!--  0401 Ãß°¡ºÎºĞ ½ÃÀÛ  -->
-	    		<p class="close"><button type="button"><img src="../assets/img/sub/btn_detail_close.gif" alt="´İ±â" /></button></p>
-	    		<!-- 0401 Ãß°¡ºÎºĞ ³¡ -->	
+	    		<!--  0401 ì¶”ê°€ë¶€ë¶„ ì‹œì‘  -->
+	    		<p class="close"><button type="button"><img src="../assets/img/sub/btn_detail_close.gif" alt="ë‹«ê¸°" /></button></p>
+	    		<!-- 0401 ì¶”ê°€ë¶€ë¶„ ë -->	
     		
 	    		<h4><c:out value="${list.name }"/></h4>
 	    		<p class="comm"></p>
 
 		    		<div class="detail_comm"> 
 		      			<dl>
-		      				<c:if test="${list.name ne '»ùÇÃ·¯' }">
-			      				<dd><b style = "color:#228a68;">Àç·á</b><br/>
+		      				<c:if test="${list.name ne 'ìƒ˜í”ŒëŸ¬' }">
+			      				<dd><b style = "color:#228a68;">ì¬ë£Œ</b><br/>
 								<c:out value="${list.topping }"/><br/>
-								<b style = "color:#228a68;">ÁõÁ¤¼Ò½º</b><br/>
+								<b style = "color:#228a68;">ì¦ì •ì†ŒìŠ¤</b><br/>
 								<c:out value="${list.presentsauce }"/>
 								</dd>
 							</c:if>
 
 							<dd></dd>
-		       				<dt><img src="../assets/img/menu/detail_title_size.gif" alt="»çÀÌÁîº° °¡°İ"></dt>
+		       				<dt><img src="../assets/img/menu/detail_title_size.gif" alt="ì‚¬ì´ì¦ˆë³„ ê°€ê²©"></dt>
 		       				<dd>
 		       					<ul>
 						
 							 	<li>
-									<span class="size_img"><img src="../assets/img/menu/detail_size_one.gif" alt="¿ø »çÀÌÁî »çÀÌÁî"/></span>
-									<span class="°¡°İ">${list.onesizeprice }</span>
+									<span class="size_img"><img src="../assets/img/menu/detail_size_one.gif" alt="ì› ì‚¬ì´ì¦ˆ ì‚¬ì´ì¦ˆ"/></span>
+									<span class="ê°€ê²©">${list.onesizeprice }</span>
 								</li>
 
           				</ul>
         			</dd>
 
-        			<dt><img src="../assets/img/menu/detail_title_alre.gif" alt="¾Ë·¹¸£±â À½½ÄÇ¥±â"></dt>
+        			<dt><img src="../assets/img/menu/detail_title_alre.gif" alt="ì•Œë ˆë¥´ê¸° ìŒì‹í‘œê¸°"></dt>
         			<dd>${list.allergy }</dd>
-        			<dt class="hidden">¼ººĞÇ¥½Ã</dt>
+        			<dt class="hidden">ì„±ë¶„í‘œì‹œ</dt>
         			<dd>
           				<table>
             				<tr>
-              					<th scope="col">Ä®·Î¸®</th>
-              					<th scope="col">¿µ¾çÁ¤º¸</th>
+              					<th scope="col">ì¹¼ë¡œë¦¬</th>
+              					<th scope="col">ì˜ì–‘ì •ë³´</th>
             				</tr>
             				<tr>
               					<td>${list.calorie }</td>
@@ -367,14 +367,14 @@ input,select,img {
     		<form action="">
     			<div class="cart_order"> 
 	
-        			<label for="select_size" class="hidden">»çÀÌÁî ¼±ÅÃ</label>
+        			<label for="select_size" class="hidden">ì‚¬ì´ì¦ˆ ì„ íƒ</label>
         			<select id="select_size">
  
 						<option value="51036,10,3006">one-${mOnePackPrice }</option>
 
         			</select>
 
-        			<label for="select_count">¼ö·®</label>
+        			<label for="select_count">ìˆ˜ëŸ‰</label>
         			<select id="select_count">
           				<option value="1">1</option>
           				<option value="2">2</option>
@@ -383,14 +383,14 @@ input,select,img {
           				<option value="5">5</option>
         			</select>
 
-      				<button class="cart"  type="button" onclick="fnGetPizzaCnt('70','20','9001','','','addCart')"    ><img src="../assets/img/menu/dtaile_btn_cart.gif"  alt="Àå¹Ù±¸´Ï ´ã±â" /></button>
-      				<button class="order" type="button" onclick="fnGetPizzaCnt('70','20','9001','','','addCartNgo')" ><img src="../assets/img/menu/dtaile_btn_order.gif" alt="¹Ù·Î ÁÖ¹®ÇÏ±â" /></button>
+      				<button class="cart"  type="button" onclick="fnGetPizzaCnt('70','20','9001','','','addCart')"    ><img src="../assets/img/menu/dtaile_btn_cart.gif"  alt="ì¥ë°”êµ¬ë‹ˆ ë‹´ê¸°" /></button>
+      				<button class="order" type="button" onclick="fnGetPizzaCnt('70','20','9001','','','addCartNgo')" ><img src="../assets/img/menu/dtaile_btn_order.gif" alt="ë°”ë¡œ ì£¼ë¬¸í•˜ê¸°" /></button>
     			</div>
     		</form>
   		</div>
 		</c:if>
 		
-		<!-- À½·á -->
+		<!-- ìŒë£Œ -->
 		<c:if test="${ list.menuid eq 'pj_2013' }">
 			<script type="text/javascript">
 				var $mainType = "40";
@@ -403,29 +403,29 @@ input,select,img {
 				onerror="this.src='../assets/img/menu/img/detail_noImage.png'" />
 			</div>
 			<div class="comment">
-				<!--  0401 Ãß°¡ºÎºĞ ½ÃÀÛ  -->
+				<!--  0401 ì¶”ê°€ë¶€ë¶„ ì‹œì‘  -->
 				<p class="close">
 					<button type="button">
-						<img src="../assets/img/sub/btn_detail_close.gif" alt="´İ±â" />
+						<img src="../assets/img/sub/btn_detail_close.gif" alt="ë‹«ê¸°" />
 					</button>
 				</p>
-				<!-- 0401 Ãß°¡ºÎºĞ ³¡ -->
+				<!-- 0401 ì¶”ê°€ë¶€ë¶„ ë -->
 				<h4><c:out value="${list.name }"/></h4>
 				<p class="comm"><c:out value="${list.name }"/></p>
 				<div class="detail_comm">
 					<dl>
 						<dt>
-							<img src="../assets/img/menu/detail_title_size.gif" alt="»çÀÌÁîº° °¡°İ">
+							<img src="../assets/img/menu/detail_title_size.gif" alt="ì‚¬ì´ì¦ˆë³„ ê°€ê²©">
 						</dt>
 						<dd>
 							<ul>
 								<li><span class="size_img"><img
 										src="${mBeverRSizeImgPath }" alt="${mRsizeName }" /></span>
-									<span class="°¡°İ">${list.rprice }</span></li>
+									<span class="ê°€ê²©">${list.rprice }</span></li>
 			
 								<li><span class="size_img"><img
 										src="${mBeverlSizeImgPath }" alt="${mLsizeName }" /></span> <span
-									class="°¡°İ">${list.lprice }</span></li>
+									class="ê°€ê²©">${list.lprice }</span></li>
 							</ul>
 						</dd>
 					</dl>
@@ -433,11 +433,11 @@ input,select,img {
 				<!-- //detail_comm -->
 				<form action="">
 					<div class="cart_order">
-					<label for="select_size" class="hidden">»çÀÌÁî ¼±ÅÃ</label> <select
+					<label for="select_size" class="hidden">ì‚¬ì´ì¦ˆ ì„ íƒ</label> <select
 						id="select_size">
 						<option value="50486,10,3012">${mSizeSelectOpt1 }</option>
 						<option value="50485,10,3014">${mSizeSelectOpt2 }</option>
-					</select> <label for="select_count">¼ö·®</label> <select id="select_count">
+					</select> <label for="select_count">ìˆ˜ëŸ‰</label> <select id="select_count">
 						<option value="1">1</option>
 						<option value="2">2</option>
 						<option value="3">3</option>
@@ -447,77 +447,77 @@ input,select,img {
 			
 					<button class="cart" type="button"
 						onclick="fnGetPizzaCnt('80','40','4010','','','addCart')">
-					<img src="../assets/img/menu/dtaile_btn_cart.gif" alt="Àå¹Ù±¸´Ï ´ã±â" />
+					<img src="../assets/img/menu/dtaile_btn_cart.gif" alt="ì¥ë°”êµ¬ë‹ˆ ë‹´ê¸°" />
 					</button>
 					<button class="order" type="button"
 						onclick="fnGetPizzaCnt('80','40','4010','','','addCartNgo')">
-							<img src="../assets/img/menu/dtaile_btn_order.gif" alt="¹Ù·Î ÁÖ¹®ÇÏ±â" />
+							<img src="../assets/img/menu/dtaile_btn_order.gif" alt="ë°”ë¡œ ì£¼ë¬¸í•˜ê¸°" />
 						</button>
 					</div>
 				</form>
 			</div>
 		</c:if>
 		
-		<%-- ¿À¸®Áö³Î --%>
+		<%-- ì˜¤ë¦¬ì§€ë„ --%>
 		<c:if test="${ list.menuid eq 'pj_2002' || list.menuid eq 'pj_2003' || list.menuid eq 'pj_2004' || list.menuid eq 'pj_2005' 
 			|| list.menuid eq 'pj_2006' || list.menuid eq 'pj_2008' || list.menuid eq 'pj_2009'}">
 			<script type="text/javascript">
 				var $mainType = "10";
-				var $doughType = "¿À¸®Áö³Î";
+				var $doughType = "ì˜¤ë¦¬ì§€ë„";
 			</script>
 			<div class="db_img">
 				<img src="${list.imagepath2 }" alt="${list.name}" title="${list.name}" onerror="this.src='/assets/img/menu/img/detail_noImage.png'" />
 			</div>
 			<div class="comment">
-				<!--  0401 Ãß°¡ºÎºĞ ½ÃÀÛ  -->
+				<!--  0401 ì¶”ê°€ë¶€ë¶„ ì‹œì‘  -->
 				<p class="close">
-					<button type="button"><img src="../assets/img/sub/btn_detail_close.gif" alt="´İ±â" />	</button>
+					<button type="button"><img src="../assets/img/sub/btn_detail_close.gif" alt="ë‹«ê¸°" />	</button>
 				</p>
-				<!-- 0401 Ãß°¡ºÎºĞ ³¡ -->
+				<!-- 0401 ì¶”ê°€ë¶€ë¶„ ë -->
 				<h4>${list.name}</h4>
 				<p class="comm">${list.description}</p>
 				
 				<div class="detail_comm">
 					<dl>
-						<dt><img src="../assets/img/menu/detail_title_topping.gif" alt="ÅäÇÎÀç·á"></dt>
+						<dt><img src="../assets/img/menu/detail_title_topping.gif" alt="í† í•‘ì¬ë£Œ"></dt>
 						<dd>${list.topping}</dd>
-					<dt><img src="../assets/img/menu/detail_title_size.gif" alt="»çÀÌÁîº° °¡°İ"></dt>
+					<dt><img src="../assets/img/menu/detail_title_size.gif" alt="ì‚¬ì´ì¦ˆë³„ ê°€ê²©"></dt>
 					<dd>
 						<ul>
 							<li>
 								<c:if test="${ list.rprice != null}">
-									<span  class="size_img"><img src="../assets/img/menu/detail_size_R.gif" alt="9 ÀÎÄ¡»çÀÌÁî"/></span>
-									<span class="°¡°İ">${list.rprice}</span>
+									<span  class="size_img"><img src="../assets/img/menu/detail_size_R.gif" alt="9 ì¸ì¹˜ì‚¬ì´ì¦ˆ"/></span>
+									<span class="ê°€ê²©">${list.rprice}</span>
 								</c:if>
 							</li>
 							<li>
 								<c:if test="${ list.lprice != null}">
-									<span  class="size_img"><img src="../assets/img/menu/detail_size_L.gif" alt="12 ÀÎÄ¡»çÀÌÁî"/></span>
-									<span class="°¡°İ">${list.lprice}</span>
+									<span  class="size_img"><img src="../assets/img/menu/detail_size_L.gif" alt="12 ì¸ì¹˜ì‚¬ì´ì¦ˆ"/></span>
+									<span class="ê°€ê²©">${list.lprice}</span>
 								</c:if>
 							</li>
 							<li>
 								<c:if test="${ list.fprice != null}">
-									<span  class="size_img"><img src="../assets/img/menu/detail_size_F.gif" alt="14 ÀÎÄ¡»çÀÌÁî"/></span>
-									<span class="°¡°İ">25900¿ø</span>
+									<span  class="size_img"><img src="../assets/img/menu/detail_size_F.gif" alt="14 ì¸ì¹˜ì‚¬ì´ì¦ˆ"/></span>
+									<span class="ê°€ê²©">25900ì›</span>
 								</c:if>
 							</li>
 							<li>
 								<c:if test="${ list.pprice != null}">
-									<span  class="size_img"><img src="../assets/img/menu/detail_size_P.gif" alt="16 ÀÎÄ¡»çÀÌÁî"/></span>
-									<span class="°¡°İ">34500¿ø</span>
+									<span  class="size_img"><img src="../assets/img/menu/detail_size_P.gif" alt="16 ì¸ì¹˜ì‚¬ì´ì¦ˆ"/></span>
+									<span class="ê°€ê²©">34500ì›</span>
 								</c:if>
 							</li>
 						</ul>
 					</dd>
-					<dt><img src="../assets/img/menu/detail_title_alre.gif" alt="¾Ë·¹¸£±â À½½ÄÇ¥±â"></dt>
+					<dt><img src="../assets/img/menu/detail_title_alre.gif" alt="ì•Œë ˆë¥´ê¸° ìŒì‹í‘œê¸°"></dt>
 					<dd>${list.allergy}</dd>
-					<dt class="hidden">¼ººĞÇ¥½Ã</dt>
+					<dt class="hidden">ì„±ë¶„í‘œì‹œ</dt>
 					<dd>
 						<table>
 							<tr>
-								<th scope="col">Ä®·Î¸®</th>
-					        	<th scope="col">¿µ¾çÁ¤º¸</th>									
+								<th scope="col">ì¹¼ë¡œë¦¬</th>
+					        	<th scope="col">ì˜ì–‘ì •ë³´</th>									
 							</tr>
 							<tr>
 								<td>${list.calorie}</td>
@@ -529,7 +529,7 @@ input,select,img {
 			</div><!-- //detail_comm -->
 			<form action="">
 				<div class="cart_order">
-					<label for="select_size" class="hidden">»çÀÌÁî ¼±ÅÃ</label> <select
+					<label for="select_size" class="hidden">ì‚¬ì´ì¦ˆ ì„ íƒ</label> <select
 						id="select_size">
 						<c:if test="${ list.rprice != null}">
 							<option value="50330,10,3001">R-15900</option>
@@ -545,96 +545,96 @@ input,select,img {
 						</c:if>
 					</select>
 					<div class="spcInstruction_btn">
-						<p class="btn"><img src="../assets/img/order/btn_opt_off.gif" alt="¿É¼Çº¯°æ" /></p>
+						<p class="btn"><img src="../assets/img/order/btn_opt_off.gif" alt="ì˜µì…˜ë³€ê²½" /></p>
 						<div class="spcInstruction_comment">
 							<p class="center">
-								<span>special instructions :</span> <br>¹öÆ° Å¬¸¯ ½Ã 
-								<span>sauce, cheese, bake, cut </span><br>»óÅÂ¸¦ Á¶ÀıÇÏ½Ç ¼ö ÀÖ½À´Ï´Ù. 
-								<br>Àå¹Ù±¸´Ï¿¡ ´ãÀº ÈÄ º¯°æÇÏ½Ã·Á¸é ¸Ş´º¸¦ <br>Àå¹Ù±¸´Ï¿¡¼­ »èÁ¦ ÈÄ ´Ù½Ã ´ãÀ¸¼Å¾ß ÇÕ´Ï´Ù!! 
+								<span>special instructions :</span> <br>ë²„íŠ¼ í´ë¦­ ì‹œ 
+								<span>sauce, cheese, bake, cut </span><br>ìƒíƒœë¥¼ ì¡°ì ˆí•˜ì‹¤ ìˆ˜ ìˆìŠµë‹ˆë‹¤. 
+								<br>ì¥ë°”êµ¬ë‹ˆì— ë‹´ì€ í›„ ë³€ê²½í•˜ì‹œë ¤ë©´ ë©”ë‰´ë¥¼ <br>ì¥ë°”êµ¬ë‹ˆì—ì„œ ì‚­ì œ í›„ ë‹¤ì‹œ ë‹´ìœ¼ì…”ì•¼ í•©ë‹ˆë‹¤!! 
 							</p>
 						</div>
-						<!-- ¿É¼Çº¯°æ ¸»Ç³¼± -->
+						<!-- ì˜µì…˜ë³€ê²½ ë§í’ì„  -->
 					</div>
-					<!-- 20131004 ¼Ò½º&Ä¡Áî&Ä¿ÆÃ&º£ÀÌÅ© ¿É¼ÇÁÖ±â -->
+					<!-- 20131004 ì†ŒìŠ¤&ì¹˜ì¦ˆ&ì»¤íŒ…&ë² ì´í¬ ì˜µì…˜ì£¼ê¸° -->
 					<div id="option_box_0" class="option_box">
 						<!--  display: none; -->
 						<ul class="spcInstructions">
 							<li>
-								<p onclick="fnAdjustMenu('0_1',$(this));">¼Ò½º Á¶Àı <span class="imgsp">¡å</span></p>
+								<p onclick="fnAdjustMenu('0_1',$(this));">ì†ŒìŠ¤ ì¡°ì ˆ <span class="imgsp">â–¼</span></p>
 								<div id="0_1" class="option">
 									<p class="menu_opt_radio">
-										<input type="radio" id="0_regularSauce" name="0_sau_radio" value="" /> <label for="0_regular">¼Ò½º º¸Åë(Normal)</label>
+										<input type="radio" id="0_regularSauce" name="0_sau_radio" value="" /> <label for="0_regular">ì†ŒìŠ¤ ë³´í†µ(Normal)</label>
 									</p>
 									<p class="menu_opt_radio">
-										<input type="radio" id="0_lightSauce" name="0_sau_radio" value="20" /> <label for="0_light">¼Ò½º Á¶±İ(LS)</label>
+										<input type="radio" id="0_lightSauce" name="0_sau_radio" value="20" /> <label for="0_light">ì†ŒìŠ¤ ì¡°ê¸ˆ(LS)</label>
 									</p>
 									<p class="menu_opt_radio">
-										<input type="radio" id="0_extraSauce" name="0_sau_radio" value="30" /> <label for="0_extra">¼Ò½º ¸¹ÀÌ(XS)</label>
+										<input type="radio" id="0_extraSauce" name="0_sau_radio" value="30" /> <label for="0_extra">ì†ŒìŠ¤ ë§ì´(XS)</label>
 									</p>
 									<p class="menu_opt_radio">
-										<input type="radio" id="0_noSauce" name="0_sau_radio" value="40" /> <label for="0_no">¼Ò½º Á¦¿Ü(NS)</label>
+										<input type="radio" id="0_noSauce" name="0_sau_radio" value="40" /> <label for="0_no">ì†ŒìŠ¤ ì œì™¸(NS)</label>
 									</p>
 								</div>
 							</li>
 							<li>
-								<p onclick="fnAdjustMenu('0_2',$(this));">Ä¡Áî Á¶Àı <span class="imgsp">¡å</span></p>
+								<p onclick="fnAdjustMenu('0_2',$(this));">ì¹˜ì¦ˆ ì¡°ì ˆ <span class="imgsp">â–¼</span></p>
 								<div id="0_2" class="option">
 									<p class="menu_opt_radio">
-										<input type="radio" id="0_normalCheese" name="0_chee_radio" value="" /> <label for="0_normal">Ä¡Áî º¸Åë(Normal)</label>
+										<input type="radio" id="0_normalCheese" name="0_chee_radio" value="" /> <label for="0_normal">ì¹˜ì¦ˆ ë³´í†µ(Normal)</label>
 									</p>
 									<p class="menu_opt_radio">
-										<input type="radio" id="0_lightCheese" name="0_chee_radio" value="20" /> <label for="0_light">Ä¡Áî Á¶±İ(LC)</label>
+										<input type="radio" id="0_lightCheese" name="0_chee_radio" value="20" /> <label for="0_light">ì¹˜ì¦ˆ ì¡°ê¸ˆ(LC)</label>
 									</p>
 									<p class="menu_opt_radio">
-										<input type="radio" id="0_noCheese" name="0_chee_radio" value="30" /> <label for="0_no">Ä¡Áî Á¦¿Ü(NC)</label>
+										<input type="radio" id="0_noCheese" name="0_chee_radio" value="30" /> <label for="0_no">ì¹˜ì¦ˆ ì œì™¸(NC)</label>
 									</p>
 								</div>
 							</li>
 							<li>
-								<p onclick="fnAdjustMenu('0_3',$(this));">±Á±â Á¶Àı <span class="imgsp">¡å</span></p>
+								<p onclick="fnAdjustMenu('0_3',$(this));">êµ½ê¸° ì¡°ì ˆ <span class="imgsp">â–¼</span></p>
 								<div id="0_3" class="option">
 									<p class="menu_opt_radio">
-										<input type="radio" id="0_normalBake" name="0_bake_radio" value="" /> <label for="0_normal">±âº» ±Á±â(Normal)</label>
+										<input type="radio" id="0_normalBake" name="0_bake_radio" value="" /> <label for="0_normal">ê¸°ë³¸ êµ½ê¸°(Normal)</label>
 									</p>
 									<p class="menu_opt_radio">
-										<input type="radio" id="0_wellDone" name="0_bake_radio" value="20" /> <label for="0_well">¹Ù½Ï ±Á±â(WD)</label>
+										<input type="radio" id="0_wellDone" name="0_bake_radio" value="20" /> <label for="0_well">ë°”ì‹¹ êµ½ê¸°(WD)</label>
 									</p>
 								</div>
 							</li>
 							<li>
-								<p onclick="fnAdjustMenu('0_4',$(this));">Á¶°¢ ÄÆÆÃ <span class="imgsp">¡å</span>
+								<p onclick="fnAdjustMenu('0_4',$(this));">ì¡°ê° ì»·íŒ… <span class="imgsp">â–¼</span>
 								</p>
 								<div id="0_4" class="option">
 									<p class="menu_opt_radio">
 										<input type="radio" id="0_normalCut" name="0_cut_radio" lue="" />
-										<label for="0_normal">±âº»ÄÆÆÃ(Normal)</label>
+										<label for="0_normal">ê¸°ë³¸ì»·íŒ…(Normal)</label>
 									</p>
 									<p class="menu_opt_radio">
 										<input type="radio" id="0_squareCut" name="0_cut_radio" value="60" />
-										<label for="0_square">»ç°¢ÄÆÆÃ(SC)</label>
+										<label for="0_square">ì‚¬ê°ì»·íŒ…(SC)</label>
 									</p>
 									<p class="menu_opt_radio">
 										<input type="radio" id="0_sixCut" name="0_cut_radio" value="20" />
-										<label for="0_sixCut">6Á¶°¢ÄÆÆÃ(6C)</label>
+										<label for="0_sixCut">6ì¡°ê°ì»·íŒ…(6C)</label>
 									</p>
 									<p class="menu_opt_radio">
 										<input type="radio" id="0_eightCut" name="0_cut_radio" value="30" />
-										<label for="0_eightCut">8Á¶°¢ÄÆÆÃ(8C)</label>
+										<label for="0_eightCut">8ì¡°ê°ì»·íŒ…(8C)</label>
 									</p>
 									<p class="menu_opt_radio">
 										<input type="radio" id="0_tenCut" name="0_cut_radio" value="40" />
-										<label for="0_tenCut">10Á¶°¢ÄÆÆÃ(10C)</label>
+										<label for="0_tenCut">10ì¡°ê°ì»·íŒ…(10C)</label>
 									</p>
 								</div>
 							</li>
 						</ul>
 					</div>
 
-					<button class="cart" type="button" onclick="fnGetPizzaCnt('10','10','1018','4001','¿À¸®Áö³Î','addCart')">
-						<img src="../assets/img/menu/dtaile_btn_cart.gif" alt="Àå¹Ù±¸´Ï ´ã±â" />
+					<button class="cart" type="button" onclick="fnGetPizzaCnt('10','10','1018','4001','ì˜¤ë¦¬ì§€ë„','addCart')">
+						<img src="../assets/img/menu/dtaile_btn_cart.gif" alt="ì¥ë°”êµ¬ë‹ˆ ë‹´ê¸°" />
 					</button>
-					<button class="order" type="button" onclick="fnGetPizzaCnt('10','10','1018','4001','¿À¸®Áö³Î','addCartNgo')">
-						<img src="../assets/img/menu/dtaile_btn_order.gif" alt="¹Ù·Î ÁÖ¹®ÇÏ±â" />
+					<button class="order" type="button" onclick="fnGetPizzaCnt('10','10','1018','4001','ì˜¤ë¦¬ì§€ë„','addCartNgo')">
+						<img src="../assets/img/menu/dtaile_btn_order.gif" alt="ë°”ë¡œ ì£¼ë¬¸í•˜ê¸°" />
 					</button>
 				</div>
 			</form>
@@ -644,7 +644,7 @@ input,select,img {
 		
 	</div>
     
-	<!--   0401 Ãß°¡ºÎºĞ ½ÃÀÛ  -->
+	<!--   0401 ì¶”ê°€ë¶€ë¶„ ì‹œì‘  -->
 	<script type="text/javascript" src="../assets/js/cart.js"></script>
 	<script type="text/javascript">
 		var root = "";
@@ -658,7 +658,7 @@ input,select,img {
 		});
 
 		///////////////////////////////////////////////////////////////////////////////////
-		//20131004 ÇÇÀÚ ¿É¼Ç ¼³Á¤	
+		//20131004 í”¼ì ì˜µì…˜ ì„¤ì •	
 		var $btn_instructions = $(".spcInstruction_btn .btn");
 
 		$btn_instructions.bind("mouseenter", menu_detail);
@@ -686,66 +686,66 @@ input,select,img {
 						root + "/assets/img/order/btn_opt_on.gif");
 			} else {
 				box.find("span").each(function() {
-					$(this).text("¡å");
+					$(this).text("â–¼");
 				});
-				$(".option").slideUp(); //¾È¿¡ ÆîÃ³Á®ÀÖ´Â ¿É¼Çµé
+				$(".option").slideUp(); //ì•ˆì— í¼ì²˜ì ¸ìˆëŠ” ì˜µì…˜ë“¤
 				box.stop().slideUp();
 				$(this).find("img").attr("src",
 						root + "/assets/img/order/btn_opt_off.gif");
 			}
 		}
 
-		//¿É¼Ç¹Ú½º¾ÈÀÇ ¿É¼Ç°ª º¯°æ
+		//ì˜µì…˜ë°•ìŠ¤ì•ˆì˜ ì˜µì…˜ê°’ ë³€ê²½
 		var old_sid = "";
 		$(".option").slideUp();
 
 		function swapimg(old_sid, $this) {
-			var prevIndex = parseInt(old_sid.substr(old_sid.length - 1, 1)) - 1; //ÀÌÀü¿¡ Å¬¸¯ÇÑ ¿É¼ÇÀÇ ÀÎµ¦½º ±¸ÇÏ±â
+			var prevIndex = parseInt(old_sid.substr(old_sid.length - 1, 1)) - 1; //ì´ì „ì— í´ë¦­í•œ ì˜µì…˜ì˜ ì¸ë±ìŠ¤ êµ¬í•˜ê¸°
 			$this.parent().parent().find("li").eq(prevIndex).find("span").text(
-					"¡å");
+					"â–¼");
 		}
 
 		function fnAdjustMenu(sid, $this) {
-			// ÀÌÀü ¼±ÅÃ ¿É¼ÇÀÌ Áö±İ ¼±ÅÃ¿É¼Ç°ú ´Ù¸£¸é
+			// ì´ì „ ì„ íƒ ì˜µì…˜ì´ ì§€ê¸ˆ ì„ íƒì˜µì…˜ê³¼ ë‹¤ë¥´ë©´
 			if (old_sid != sid) {
-				// Áö±İ ¼±ÅÃÇÑ ¿É¼ÇÀÌ Ã³À½ ¼±ÅÃÀÌ ¾Æ´Ï¸é
+				// ì§€ê¸ˆ ì„ íƒí•œ ì˜µì…˜ì´ ì²˜ìŒ ì„ íƒì´ ì•„ë‹ˆë©´
 				if (old_sid != "") {
 					$this.parent().parent().find('#' + old_sid).stop()
-							.slideUp(); //ÀÌÀü ¿É¼ÇÀ» ¼û±â°í  
-					swapimg(old_sid, $this); // swapimg ÇÔ¼ö¸¦ È£Ãâ. 
+							.slideUp(); //ì´ì „ ì˜µì…˜ì„ ìˆ¨ê¸°ê³   
+					swapimg(old_sid, $this); // swapimg í•¨ìˆ˜ë¥¼ í˜¸ì¶œ. 
 				}
 
-				$this.parent().parent().find('#' + sid).stop().slideDown(); // ÇöÀç Å¬¸¯ÇÑ ¿É¼ÇÀ» º¸¿©ÁÜ 
-				old_sid = sid; // ¿¹Àü ¿É¼Ç º¯¼ö¿¡ ÇöÀç ¿É¼Ç ¹øÈ£¸¦ ÀúÀå  
-				$this.find("span").text("¡ã");
+				$this.parent().parent().find('#' + sid).stop().slideDown(); // í˜„ì¬ í´ë¦­í•œ ì˜µì…˜ì„ ë³´ì—¬ì¤Œ 
+				old_sid = sid; // ì˜ˆì „ ì˜µì…˜ ë³€ìˆ˜ì— í˜„ì¬ ì˜µì…˜ ë²ˆí˜¸ë¥¼ ì €ì¥  
+				$this.find("span").text("â–²");
 			}
-			// ÀÌÀü Å¬¸¯ÀÌ Áö±İ Å¬¸¯ÇÑ ¿É¼Ç°ú °°À¸¸é
+			// ì´ì „ í´ë¦­ì´ ì§€ê¸ˆ í´ë¦­í•œ ì˜µì…˜ê³¼ ê°™ìœ¼ë©´
 			else {
-				$this.parent().parent().find('#' + sid).stop().slideUp();// ÇöÀç ¿É¼ÇÀ» ¼û±â°í 
+				$this.parent().parent().find('#' + sid).stop().slideUp();// í˜„ì¬ ì˜µì…˜ì„ ìˆ¨ê¸°ê³  
 				old_sid = "";
-				$this.find("span").text("¡å");
+				$this.find("span").text("â–¼");
 			}
 		}
 
 		////////////////////////////////////////////////////////////////////////////////////////////////////////////
-		/////* mainType >> 10:ÇÇÀÚ, 20:»çÀÌµå, 30:¼Ò½º, 40:À½·á, 50:¼ÂÆ®,	55: ÇÏÇÁ, 90:±âÅ¸  *///////// 
+		/////* mainType >> 10:í”¼ì, 20:ì‚¬ì´ë“œ, 30:ì†ŒìŠ¤, 40:ìŒë£Œ, 50:ì…‹íŠ¸,	55: í•˜í”„, 90:ê¸°íƒ€  *///////// 
 
-		//step1 : ¼¼¼Ç¿¡ ÀúÀåµÈ ÇÇÀÚ °³¼ö Ã¼Å© 
+		//step1 : ì„¸ì…˜ì— ì €ì¥ëœ í”¼ì ê°œìˆ˜ ì²´í¬ 
 		function fnGetPizzaCnt(onlineGrpCode, menuLagCode, menuMidCode,
 				menuSubCode, menuDough, actionFlag) {
 			//		console.log("fnGetPizzaCnt : " +onlineGrpCode + " / " +  menuLagCode, actionFlag);
 
-			//ÇÇÀÚ´Â ¼ö·®¿É¼Ç ¾øÀÌ ¹«Á¶°Ç 1°³
+			//í”¼ìëŠ” ìˆ˜ëŸ‰ì˜µì…˜ ì—†ì´ ë¬´ì¡°ê±´ 1ê°œ
 			var orderQty = 1;
 
-			//ÇÇÀÚ°¡ ¾Æ´Ï¸é ¼ö·®¿É¼Ç °ª
-			//20140429 ÆÄÆÄÇÃ·¡ÅÍ ¼ö·® ¿É¼Ç Ãß°¡
+			//í”¼ìê°€ ì•„ë‹ˆë©´ ìˆ˜ëŸ‰ì˜µì…˜ ê°’
+			//20140429 íŒŒíŒŒí”Œë˜í„° ìˆ˜ëŸ‰ ì˜µì…˜ ì¶”ê°€
 			if (menuLagCode != "10" || onlineGrpCode == "11") {
 				orderQty = $("#select_count option:selected").text();
 				//			fnGetCartIndex(menuLagCode, menuMidCode, menuSubCode, menuDough, orderQty, actionFlag);
 			}
 
-			//ÇÇÀÚ ¶Ç´Â ¼¼Æ®¸Ş´º ¼ö·® °Ë»ç (limit 5°³)
+			//í”¼ì ë˜ëŠ” ì„¸íŠ¸ë©”ë‰´ ìˆ˜ëŸ‰ ê²€ì‚¬ (limit 5ê°œ)
 			if (menuLagCode == "10" || menuLagCode == "50") {
 				$
 						.post(
@@ -765,8 +765,8 @@ input,select,img {
 										alertFrame
 												.find("#alertText")
 												.append(
-														"<p>¿Â¶óÀÎ ÁÖ¹®Àº ÇÇÀÚ 5ÆÇ±îÁö¸¸ °¡´ÉÇÕ´Ï´Ù.<br>Àå¹Ù±¸´Ï¸¦ È®ÀÎÇÏ¼¼¿ä~<br>5°³ ÀÌ»ó ´ÜÃ¼ ÁÖ¹®Àº Äİ¼¾ÅÍ¸¦ ÀÌ¿ëÇØÁÖ¼¼¿ä!!</p>");
-										alertFrame.height(172); //text°¡ 3ÁÙÀÎ °æ¿ì
+														"<p>ì˜¨ë¼ì¸ ì£¼ë¬¸ì€ í”¼ì 5íŒê¹Œì§€ë§Œ ê°€ëŠ¥í•©ë‹ˆë‹¤.<br>ì¥ë°”êµ¬ë‹ˆë¥¼ í™•ì¸í•˜ì„¸ìš”~<br>5ê°œ ì´ìƒ ë‹¨ì²´ ì£¼ë¬¸ì€ ì½œì„¼í„°ë¥¼ ì´ìš©í•´ì£¼ì„¸ìš”!!</p>");
+										alertFrame.height(172); //textê°€ 3ì¤„ì¸ ê²½ìš°
 										parent.popAlert(alertFrame);
 									}
 								});
@@ -776,11 +776,11 @@ input,select,img {
 			}
 		}
 
-		//step2 : Àå¹Ù±¸´Ï ¸¶Áö¸· ÀÎµ¦½º ±¸ÇÏ±â 
+		//step2 : ì¥ë°”êµ¬ë‹ˆ ë§ˆì§€ë§‰ ì¸ë±ìŠ¤ êµ¬í•˜ê¸° 
 		function fnGetCartIndex(menuLagCode, menuMidCode, menuSubCode,
 				menuDough, orderQty, actionFlag) {
 			//		alert("fnGetCartIndex()");
-			var cartIndex = 0; // Àå¹Ù±¸´Ï ¼ø¹ø(¸¶Áö¸· ÀÎµ¦½º)
+			var cartIndex = 0; // ì¥ë°”êµ¬ë‹ˆ ìˆœë²ˆ(ë§ˆì§€ë§‰ ì¸ë±ìŠ¤)
 
 			$.ajax({
 				url : root + "/order/newCart.jsp?cartAction=getCartIndex",
@@ -798,85 +798,85 @@ input,select,img {
 			});
 		}
 
-		//step3 : ¼¼¼Ç¿¡ º¸³¾ Sendµ¥ÀÌÅÍ ¸¸µé±â > ÀúÀå
+		//step3 : ì„¸ì…˜ì— ë³´ë‚¼ Sendë°ì´í„° ë§Œë“¤ê¸° > ì €ì¥
 		function fnSendMenu(menuLagCode, menuMidCode, menuSubCode, menuDough,
 				orderQty, cartIndex, actionFlag) {
 			//		alert("fnSendMenu()");
-			var cartSendDataInfo = null; // Àå¹Ù±¸´Ï Àü¼Û ³»¿ª
-			var cartAction = ""; // Àå¹Ù±¸´ÏÃ³¸®
-			var cartMenuType = ""; // ¸Ş´ºÅ¸ÀÔ
-			var cartMenuCode = ""; // ¸Ş´ºÄÚµå
-			var cartMenuName = ""; // ¸Ş´º¸í
-			var cartMenuOrdCode = ""; // ¸Ş´ºÁÖ¹®±¸ºĞÄÚµå(10:Á¤»ó,20:ÇÒÀÎ,30:¼­ºñ½º(¹«·á))
-			var cartMenuDivCode = ""; // ¸Ş´º±¸ºĞÄÚµå(10:´ÜÇ°,20:¼¼Æ®,30:ÇÏÇÁ&ÇÏÇÁ)
-			var cartMenuLagCode = ""; // ¸Ş´º´ëºĞ·ùÄÚµå
-			var cartMenuMidCode = ""; // ¸Ş´ºÁßºĞ·ùÄÚµå
-			var cartMenuSmlCode = ""; // ¸Ş´º¼ÒºĞ·ùÄÚµå
-			var cartMenuSubCode = ""; // ¸Ş´º¼¼ºĞ·ùÄÚµå
-			var cartMenuPrice = ""; // ¸Ş´ºÁÖ¹®´Ü°¡
-			var cartMenuQty = ""; // ¸Ş´ºÁÖ¹®¼ö·®
-			var cartMenuAmt = ""; // ¸Ş´ºÁÖ¹®±İ¾×
-			var cartMenuDisRate = ""; // ¸Ş´ºÇÒÀÎÀ²
-			var cartMenuDisAmt = ""; // ¸Ş´ºÇÒÀÎ±İ¾×
-			var cartMenuCopDisAmt = ""; // ¸Ş´º¼±°áÁ¦ÄíÆùÇÒÀÎ
-			var cartMenuNetSaleAmt = ""; // ¸Ş´º¼ø¸ÅÃâ±İ¾×
-			var cartMenuPayAmt = ""; // ¸Ş´º°áÁ¦±İ¾×
-			var cartMenuBakeCode = ""; // ¸Ş´ºº£ÀÌÅ©ÄÚµå
-			var cartMenuCutCode = ""; // ¸Ş´ºÄÆÄÚµå
-			var cartMenuCheeseCode = ""; // ¸Ş´ºÄ¡ÁîÄÚµå
-			var cartMenuSauceCode = ""; // ¸Ş´º¼Ò½ºÄÚµå
-			var cartMenuMessage = ""; // ¸Ş´ºÀü´Ş¸Ş¼¼Áö
-			var cartMenuSize = ""; // ¸Ş´º»çÀÌÁî
-			var cartMenuDough = ""; // ¸Ş´ºµµ¿ìÁ¾·ù
-			var cartMenuOption = ""; // ¸Ş´º ¿É¼Ç
-			var cartECouponCompany = ""; // EÄíÆùÁ¦ÈŞ»ç
-			var cartECouponCode = ""; // EÄíÆùÄÚµå
-			var cartECouponNumber = ""; // EÄíÆù¹øÈ£
+			var cartSendDataInfo = null; // ì¥ë°”êµ¬ë‹ˆ ì „ì†¡ ë‚´ì—­
+			var cartAction = ""; // ì¥ë°”êµ¬ë‹ˆì²˜ë¦¬
+			var cartMenuType = ""; // ë©”ë‰´íƒ€ì…
+			var cartMenuCode = ""; // ë©”ë‰´ì½”ë“œ
+			var cartMenuName = ""; // ë©”ë‰´ëª…
+			var cartMenuOrdCode = ""; // ë©”ë‰´ì£¼ë¬¸êµ¬ë¶„ì½”ë“œ(10:ì •ìƒ,20:í• ì¸,30:ì„œë¹„ìŠ¤(ë¬´ë£Œ))
+			var cartMenuDivCode = ""; // ë©”ë‰´êµ¬ë¶„ì½”ë“œ(10:ë‹¨í’ˆ,20:ì„¸íŠ¸,30:í•˜í”„&í•˜í”„)
+			var cartMenuLagCode = ""; // ë©”ë‰´ëŒ€ë¶„ë¥˜ì½”ë“œ
+			var cartMenuMidCode = ""; // ë©”ë‰´ì¤‘ë¶„ë¥˜ì½”ë“œ
+			var cartMenuSmlCode = ""; // ë©”ë‰´ì†Œë¶„ë¥˜ì½”ë“œ
+			var cartMenuSubCode = ""; // ë©”ë‰´ì„¸ë¶„ë¥˜ì½”ë“œ
+			var cartMenuPrice = ""; // ë©”ë‰´ì£¼ë¬¸ë‹¨ê°€
+			var cartMenuQty = ""; // ë©”ë‰´ì£¼ë¬¸ìˆ˜ëŸ‰
+			var cartMenuAmt = ""; // ë©”ë‰´ì£¼ë¬¸ê¸ˆì•¡
+			var cartMenuDisRate = ""; // ë©”ë‰´í• ì¸ìœ¨
+			var cartMenuDisAmt = ""; // ë©”ë‰´í• ì¸ê¸ˆì•¡
+			var cartMenuCopDisAmt = ""; // ë©”ë‰´ì„ ê²°ì œì¿ í°í• ì¸
+			var cartMenuNetSaleAmt = ""; // ë©”ë‰´ìˆœë§¤ì¶œê¸ˆì•¡
+			var cartMenuPayAmt = ""; // ë©”ë‰´ê²°ì œê¸ˆì•¡
+			var cartMenuBakeCode = ""; // ë©”ë‰´ë² ì´í¬ì½”ë“œ
+			var cartMenuCutCode = ""; // ë©”ë‰´ì»·ì½”ë“œ
+			var cartMenuCheeseCode = ""; // ë©”ë‰´ì¹˜ì¦ˆì½”ë“œ
+			var cartMenuSauceCode = ""; // ë©”ë‰´ì†ŒìŠ¤ì½”ë“œ
+			var cartMenuMessage = ""; // ë©”ë‰´ì „ë‹¬ë©”ì„¸ì§€
+			var cartMenuSize = ""; // ë©”ë‰´ì‚¬ì´ì¦ˆ
+			var cartMenuDough = ""; // ë©”ë‰´ë„ìš°ì¢…ë¥˜
+			var cartMenuOption = ""; // ë©”ë‰´ ì˜µì…˜
+			var cartECouponCompany = ""; // Eì¿ í°ì œíœ´ì‚¬
+			var cartECouponCode = ""; // Eì¿ í°ì½”ë“œ
+			var cartECouponNumber = ""; // Eì¿ í°ë²ˆí˜¸
 
-			//¼¼Æ®¸Ş´ºÀÎ °æ¿ì
+			//ì„¸íŠ¸ë©”ë‰´ì¸ ê²½ìš°
 			if (menuLagCode == "50") {
 				//    		alert("menuLagCode >>> "+menuLagCode);
 				var jsonSetMenu = $.parseJSON(setMenuInfo);
 				//    		alert("jsonSetMenu >>> "+jsonSetMenu);
 
-				cartAction = "addMenu"; // Àå¹Ù±¸´ÏÃ³¸®
-				cartMenuType = "typeSet"; // ¸Ş´ºÅ¸ÀÔ
-				cartMenuCode = jsonSetMenu.menuCode + "_" + cartIndex; // ¸Ş´ºÄÚµå
-				cartMenuName = jsonSetMenu.menuName; // ¸Ş´º¸í
-				cartMenuOrdCode = "10"; // ¸Ş´ºÁÖ¹®±¸ºĞÄÚµå(10:Á¤»ó,20:ÇÒÀÎ,30:¼­ºñ½º(¹«·á))
-				cartMenuDivCode = jsonSetMenu.menuDivCode; // ¸Ş´º±¸ºĞÄÚµå(10:´ÜÇ°,20:¼¼Æ®,30:ÇÏÇÁ&ÇÏÇÁ)
-				cartMenuLagCode = jsonSetMenu.menuLagCode; // ¸Ş´º´ëºĞ·ùÄÚµå
-				cartMenuMidCode = jsonSetMenu.menuMidCode; // ¸Ş´ºÁßºĞ·ùÄÚµå
-				cartMenuSmlCode = jsonSetMenu.menuSmlCode; // ¸Ş´º¼ÒºĞ·ùÄÚµå
-				cartMenuSubCode = jsonSetMenu.menuSubCode; // ¸Ş´º¼¼ºĞ·ùÄÚµå
-				cartMenuPrice = jsonSetMenu.menuSaleAmt; // ¸Ş´ºÁÖ¹®´Ü°¡
-				cartMenuQty = orderQty; // ¸Ş´ºÁÖ¹®¼ö·®
-				cartMenuAmt = jsonSetMenu.menuSaleAmt; // ¸Ş´ºÁÖ¹®±İ¾×
-				cartMenuDisRate = "0"; // ¸Ş´ºÇÒÀÎÀ²
-				cartMenuDisAmt = "0"; // ¸Ş´ºÇÒÀÎ±İ¾×
-				cartMenuCopDisAmt = "0"; // ¸Ş´º¼±°áÁ¦ÄíÆùÇÒÀÎ
-				cartMenuNetSaleAmt = jsonSetMenu.menuSaleAmt; // ¸Ş´º¼ø¸ÅÃâ±İ¾×
-				cartMenuPayAmt = jsonSetMenu.menuSaleAmt; // ¸Ş´º°áÁ¦±İ¾×
-				cartMenuBakeCode = ""; // ¸Ş´ºº£ÀÌÅ©ÄÚµå
-				cartMenuCutCode = ""; // ¸Ş´ºÄÆÄÚµå
-				cartMenuCheeseCode = ""; // ¸Ş´ºÄ¡ÁîÄÚµå
-				cartMenuSauceCode = ""; // ¸Ş´º¼Ò½ºÄÚµå
-				cartMenuMessage = ""; // ¸Ş´ºÀü´Ş¸Ş¼¼Áö
-				cartMenuSize = jsonSetMenu.menuSize; // ¸Ş´º»çÀÌÁî
-				cartMenuDough = ""; // ¸Ş´ºµµ¿ìÁ¾·ù
-				cartMenuOption = ""; // ¸Ş´º¿É¼Ç
-				cartECouponCompany = ""; // EÄíÆùÁ¦ÈŞ»ç
-				cartECouponCode = ""; // EÄíÆùÄÚµå
-				cartECouponNumber = ""; // EÄíÆù¹øÈ£
+				cartAction = "addMenu"; // ì¥ë°”êµ¬ë‹ˆì²˜ë¦¬
+				cartMenuType = "typeSet"; // ë©”ë‰´íƒ€ì…
+				cartMenuCode = jsonSetMenu.menuCode + "_" + cartIndex; // ë©”ë‰´ì½”ë“œ
+				cartMenuName = jsonSetMenu.menuName; // ë©”ë‰´ëª…
+				cartMenuOrdCode = "10"; // ë©”ë‰´ì£¼ë¬¸êµ¬ë¶„ì½”ë“œ(10:ì •ìƒ,20:í• ì¸,30:ì„œë¹„ìŠ¤(ë¬´ë£Œ))
+				cartMenuDivCode = jsonSetMenu.menuDivCode; // ë©”ë‰´êµ¬ë¶„ì½”ë“œ(10:ë‹¨í’ˆ,20:ì„¸íŠ¸,30:í•˜í”„&í•˜í”„)
+				cartMenuLagCode = jsonSetMenu.menuLagCode; // ë©”ë‰´ëŒ€ë¶„ë¥˜ì½”ë“œ
+				cartMenuMidCode = jsonSetMenu.menuMidCode; // ë©”ë‰´ì¤‘ë¶„ë¥˜ì½”ë“œ
+				cartMenuSmlCode = jsonSetMenu.menuSmlCode; // ë©”ë‰´ì†Œë¶„ë¥˜ì½”ë“œ
+				cartMenuSubCode = jsonSetMenu.menuSubCode; // ë©”ë‰´ì„¸ë¶„ë¥˜ì½”ë“œ
+				cartMenuPrice = jsonSetMenu.menuSaleAmt; // ë©”ë‰´ì£¼ë¬¸ë‹¨ê°€
+				cartMenuQty = orderQty; // ë©”ë‰´ì£¼ë¬¸ìˆ˜ëŸ‰
+				cartMenuAmt = jsonSetMenu.menuSaleAmt; // ë©”ë‰´ì£¼ë¬¸ê¸ˆì•¡
+				cartMenuDisRate = "0"; // ë©”ë‰´í• ì¸ìœ¨
+				cartMenuDisAmt = "0"; // ë©”ë‰´í• ì¸ê¸ˆì•¡
+				cartMenuCopDisAmt = "0"; // ë©”ë‰´ì„ ê²°ì œì¿ í°í• ì¸
+				cartMenuNetSaleAmt = jsonSetMenu.menuSaleAmt; // ë©”ë‰´ìˆœë§¤ì¶œê¸ˆì•¡
+				cartMenuPayAmt = jsonSetMenu.menuSaleAmt; // ë©”ë‰´ê²°ì œê¸ˆì•¡
+				cartMenuBakeCode = ""; // ë©”ë‰´ë² ì´í¬ì½”ë“œ
+				cartMenuCutCode = ""; // ë©”ë‰´ì»·ì½”ë“œ
+				cartMenuCheeseCode = ""; // ë©”ë‰´ì¹˜ì¦ˆì½”ë“œ
+				cartMenuSauceCode = ""; // ë©”ë‰´ì†ŒìŠ¤ì½”ë“œ
+				cartMenuMessage = ""; // ë©”ë‰´ì „ë‹¬ë©”ì„¸ì§€
+				cartMenuSize = jsonSetMenu.menuSize; // ë©”ë‰´ì‚¬ì´ì¦ˆ
+				cartMenuDough = ""; // ë©”ë‰´ë„ìš°ì¢…ë¥˜
+				cartMenuOption = ""; // ë©”ë‰´ì˜µì…˜
+				cartECouponCompany = ""; // Eì¿ í°ì œíœ´ì‚¬
+				cartECouponCode = ""; // Eì¿ í°ì½”ë“œ
+				cartECouponNumber = ""; // Eì¿ í°ë²ˆí˜¸
 				/*
 				var menuAmt = parseInt(cartMenuPrice) * parseInt(cartMenuQty);
-				cartMenuAmt    = String(menuAmt);  // ¸Ş´ºÁÖ¹®±İ¾×
-				cartMenuPayAmt = String(menuAmt);  // ¸Ş´º°áÁ¦±İ¾×
+				cartMenuAmt    = String(menuAmt);  // ë©”ë‰´ì£¼ë¬¸ê¸ˆì•¡
+				cartMenuPayAmt = String(menuAmt);  // ë©”ë‰´ê²°ì œê¸ˆì•¡
 				 */
 
 				//    		alert("cartMenuName >>> "+cartMenuName);
 				var cartSetMenuDetail = [];
-				var setMenuCount = jsonSetMenu.menu.length; // ¼¼Æ®»ó¼¼ ¸Ş´º °³¼ö
+				var setMenuCount = jsonSetMenu.menu.length; // ì„¸íŠ¸ìƒì„¸ ë©”ë‰´ ê°œìˆ˜
 				for (var i = 0; i < setMenuCount; i++) {
 					var setCode = jsonSetMenu.menu[i].setCode + "_" + cartIndex;
 					var setSeqNumber = jsonSetMenu.menu[i].setSeqNumber;
@@ -917,107 +917,107 @@ input,select,img {
 				}
 
 				var objSetMenuInfo = {
-					cartAction : cartAction, // Àå¹Ù±¸´ÏÃ³¸®
-					cartMenuType : cartMenuType, // ¸Ş´ºÅ¸ÀÔ
-					cartMenuCode : cartMenuCode, // ¸Ş´ºÄÚµå
-					cartMenuName : cartMenuName, // ¸Ş´º¸í
-					cartMenuOrdCode : cartMenuOrdCode, // ¸Ş´ºÁÖ¹®±¸ºĞÄÚµå(10:Á¤»ó,20:ÇÒÀÎ,30:¼­ºñ½º(¹«·á))
-					cartMenuDivCode : cartMenuDivCode, // ¸Ş´º±¸ºĞÄÚµå(10:´ÜÇ°,20:¼¼Æ®,30:ÇÏÇÁ&ÇÏÇÁ)
-					cartMenuLagCode : cartMenuLagCode, // ¸Ş´º´ëºĞ·ùÄÚµå
-					cartMenuMidCode : cartMenuMidCode, // ¸Ş´ºÁßºĞ·ùÄÚµå
-					cartMenuSmlCode : cartMenuSmlCode, // ¸Ş´º¼ÒºĞ·ùÄÚµå
-					cartMenuSubCode : cartMenuSubCode, // ¸Ş´º¼¼ºĞ·ùÄÚµå
-					cartMenuPrice : cartMenuPrice, // ¸Ş´ºÁÖ¹®´Ü°¡
-					cartMenuQty : cartMenuQty, // ¸Ş´ºÁÖ¹®¼ö·®
-					cartMenuAmt : cartMenuAmt, // ¸Ş´ºÁÖ¹®±İ¾×
-					cartMenuDisRate : cartMenuDisRate, // ¸Ş´ºÇÒÀÎÀ²
-					cartMenuDisAmt : cartMenuDisAmt, // ¸Ş´ºÇÒÀÎ±İ¾×
-					cartMenuCopDisAmt : cartMenuCopDisAmt, // ¸Ş´º¼±°áÁ¦ÄíÆùÇÒÀÎ
-					cartMenuNetSaleAmt : cartMenuNetSaleAmt, // ¸Ş´º¼ø¸ÅÃâ±İ¾×
-					cartMenuPayAmt : cartMenuPayAmt, // ¸Ş´º°áÁ¦±İ¾×
-					cartMenuBakeCode : cartMenuBakeCode, // ¸Ş´ºº£ÀÌÅ©ÄÚµå
-					cartMenuCutCode : cartMenuCutCode, // ¸Ş´ºÄÆÄÚµå
-					cartMenuCheeseCode : cartMenuCheeseCode, // ¸Ş´ºÄ¡ÁîÄÚµå
-					cartMenuSauceCode : cartMenuSauceCode, // ¸Ş´º¼Ò½ºÄÚµå
-					cartMenuMessage : cartMenuMessage, // ¸Ş´ºÀü´Ş¸Ş¼¼Áö
-					cartMenuSize : cartMenuSize, // ¸Ş´º»çÀÌÁî
-					cartMenuDough : cartMenuDough, // ¸Ş´ºµµ¿ìÁ¾·ù
-					cartMenuOption : cartMenuOption, // ¸Ş´º ¿É¼Ç
-					cartECouponCompany : cartECouponCompany, // EÄíÆùÁ¦ÈŞ»ç
-					cartECouponCode : cartECouponCode, // EÄíÆùÄÚµå
-					cartECouponNumber : cartECouponNumber, // EÄíÆù¹øÈ£
+					cartAction : cartAction, // ì¥ë°”êµ¬ë‹ˆì²˜ë¦¬
+					cartMenuType : cartMenuType, // ë©”ë‰´íƒ€ì…
+					cartMenuCode : cartMenuCode, // ë©”ë‰´ì½”ë“œ
+					cartMenuName : cartMenuName, // ë©”ë‰´ëª…
+					cartMenuOrdCode : cartMenuOrdCode, // ë©”ë‰´ì£¼ë¬¸êµ¬ë¶„ì½”ë“œ(10:ì •ìƒ,20:í• ì¸,30:ì„œë¹„ìŠ¤(ë¬´ë£Œ))
+					cartMenuDivCode : cartMenuDivCode, // ë©”ë‰´êµ¬ë¶„ì½”ë“œ(10:ë‹¨í’ˆ,20:ì„¸íŠ¸,30:í•˜í”„&í•˜í”„)
+					cartMenuLagCode : cartMenuLagCode, // ë©”ë‰´ëŒ€ë¶„ë¥˜ì½”ë“œ
+					cartMenuMidCode : cartMenuMidCode, // ë©”ë‰´ì¤‘ë¶„ë¥˜ì½”ë“œ
+					cartMenuSmlCode : cartMenuSmlCode, // ë©”ë‰´ì†Œë¶„ë¥˜ì½”ë“œ
+					cartMenuSubCode : cartMenuSubCode, // ë©”ë‰´ì„¸ë¶„ë¥˜ì½”ë“œ
+					cartMenuPrice : cartMenuPrice, // ë©”ë‰´ì£¼ë¬¸ë‹¨ê°€
+					cartMenuQty : cartMenuQty, // ë©”ë‰´ì£¼ë¬¸ìˆ˜ëŸ‰
+					cartMenuAmt : cartMenuAmt, // ë©”ë‰´ì£¼ë¬¸ê¸ˆì•¡
+					cartMenuDisRate : cartMenuDisRate, // ë©”ë‰´í• ì¸ìœ¨
+					cartMenuDisAmt : cartMenuDisAmt, // ë©”ë‰´í• ì¸ê¸ˆì•¡
+					cartMenuCopDisAmt : cartMenuCopDisAmt, // ë©”ë‰´ì„ ê²°ì œì¿ í°í• ì¸
+					cartMenuNetSaleAmt : cartMenuNetSaleAmt, // ë©”ë‰´ìˆœë§¤ì¶œê¸ˆì•¡
+					cartMenuPayAmt : cartMenuPayAmt, // ë©”ë‰´ê²°ì œê¸ˆì•¡
+					cartMenuBakeCode : cartMenuBakeCode, // ë©”ë‰´ë² ì´í¬ì½”ë“œ
+					cartMenuCutCode : cartMenuCutCode, // ë©”ë‰´ì»·ì½”ë“œ
+					cartMenuCheeseCode : cartMenuCheeseCode, // ë©”ë‰´ì¹˜ì¦ˆì½”ë“œ
+					cartMenuSauceCode : cartMenuSauceCode, // ë©”ë‰´ì†ŒìŠ¤ì½”ë“œ
+					cartMenuMessage : cartMenuMessage, // ë©”ë‰´ì „ë‹¬ë©”ì„¸ì§€
+					cartMenuSize : cartMenuSize, // ë©”ë‰´ì‚¬ì´ì¦ˆ
+					cartMenuDough : cartMenuDough, // ë©”ë‰´ë„ìš°ì¢…ë¥˜
+					cartMenuOption : cartMenuOption, // ë©”ë‰´ ì˜µì…˜
+					cartECouponCompany : cartECouponCompany, // Eì¿ í°ì œíœ´ì‚¬
+					cartECouponCode : cartECouponCode, // Eì¿ í°ì½”ë“œ
+					cartECouponNumber : cartECouponNumber, // Eì¿ í°ë²ˆí˜¸
 					cartSetMenuDetail : cartSetMenuDetail
-				// ¼¼Æ®¸Ş´º»ó¼¼
+				// ì„¸íŠ¸ë©”ë‰´ìƒì„¸
 				};
 				//    		alert("objSetMenuInfo >>> "+objSetMenuInfo);
 
-				var jsonSetMenuInfo = JSON.stringify(objSetMenuInfo); //json ÇüÅÂ·Î º¯È¯ 
+				var jsonSetMenuInfo = JSON.stringify(objSetMenuInfo); //json í˜•íƒœë¡œ ë³€í™˜ 
 				cartSendDataInfo = {
-					cartAction : cartAction, // Àå¹Ù±¸´ÏÃ³¸®
-					cartMenuType : cartMenuType, // ¸Ş´ºÅ¸ÀÔ
+					cartAction : cartAction, // ì¥ë°”êµ¬ë‹ˆì²˜ë¦¬
+					cartMenuType : cartMenuType, // ë©”ë‰´íƒ€ì…
 					cartSetMenuInfo : jsonSetMenuInfo
-				// ¼¼Æ®¸Ş´º
+				// ì„¸íŠ¸ë©”ë‰´
 				};
 			}
-			//¼¼Æ®¸Ş´º°¡ ¾Æ´Ñ ¸ğµç ¸Ş´º
+			//ì„¸íŠ¸ë©”ë‰´ê°€ ì•„ë‹Œ ëª¨ë“  ë©”ë‰´
 			else {
-				var selected = $("#select_size option:selected"); //¼±ÅÃ¿É¼Ç(»çÀÌÁî&°¡°İ)
+				var selected = $("#select_size option:selected"); //ì„ íƒì˜µì…˜(ì‚¬ì´ì¦ˆ&ê°€ê²©)
 
-				cartAction = "addMenu"; // Àå¹Ù±¸´ÏÃ³¸®
-				cartMenuType = ""; // ¸Ş´ºÅ¸ÀÔ
+				cartAction = "addMenu"; // ì¥ë°”êµ¬ë‹ˆì²˜ë¦¬
+				cartMenuType = ""; // ë©”ë‰´íƒ€ì…
 				cartMenuCode = selected.attr("value").split(",")[0] + "_"
-						+ cartIndex; // ¸Ş´ºÄÚµå
-				cartMenuName = $("h4").text(); // ¸Ş´º¸í
+						+ cartIndex; // ë©”ë‰´ì½”ë“œ
+				cartMenuName = $("h4").text(); // ë©”ë‰´ëª…
 
-				/* 20140428 ÆÄÆÄÇÃ·¡ÅÍ ¸Ş´º¸í ÇÑ±Û¸¸ Ç¥½Ã */
+				/* 20140428 íŒŒíŒŒí”Œë˜í„° ë©”ë‰´ëª… í•œê¸€ë§Œ í‘œì‹œ */
 				if (cartMenuName.indexOf(")") > 0) {
 					cartMenuName = cartMenuName.split("(")[0];
 				}
 
-				cartMenuOrdCode = "10"; // ¸Ş´ºÁÖ¹®±¸ºĞÄÚµå(10:Á¤»ó,20:ÇÒÀÎ,30:¼­ºñ½º(¹«·á))
-				cartMenuDivCode = selected.attr("value").split(",")[1]; // ¸Ş´º±¸ºĞÄÚµå(10:´ÜÇ°,20:¼¼Æ®,30:ÇÏÇÁ&ÇÏÇÁ)
-				cartMenuLagCode = menuLagCode; // ¸Ş´º´ëºĞ·ùÄÚµå
-				cartMenuMidCode = menuMidCode; // ¸Ş´ºÁßºĞ·ùÄÚµå
-				cartMenuSmlCode = selected.attr("value").split(",")[2]; // ¸Ş´º¼ÒºĞ·ùÄÚµå
-				cartMenuSubCode = menuSubCode; // ¸Ş´º¼¼ºĞ·ùÄÚµå
-				cartMenuPrice = selected.text().split("-")[1].replace(",", ""); // ¸Ş´ºÁÖ¹®´Ü°¡
-				cartMenuQty = orderQty; // ¸Ş´ºÁÖ¹®¼ö·®
-				cartMenuAmt = selected.text().split("-")[1].replace(",", ""); // ¸Ş´ºÁÖ¹®±İ¾×
-				cartMenuDisRate = "0"; // ¸Ş´ºÇÒÀÎÀ²
-				cartMenuDisAmt = "0"; // ¸Ş´ºÇÒÀÎ±İ¾×
-				cartMenuCopDisAmt = "0"; // ¸Ş´º¼±°áÁ¦ÄíÆùÇÒÀÎ
+				cartMenuOrdCode = "10"; // ë©”ë‰´ì£¼ë¬¸êµ¬ë¶„ì½”ë“œ(10:ì •ìƒ,20:í• ì¸,30:ì„œë¹„ìŠ¤(ë¬´ë£Œ))
+				cartMenuDivCode = selected.attr("value").split(",")[1]; // ë©”ë‰´êµ¬ë¶„ì½”ë“œ(10:ë‹¨í’ˆ,20:ì„¸íŠ¸,30:í•˜í”„&í•˜í”„)
+				cartMenuLagCode = menuLagCode; // ë©”ë‰´ëŒ€ë¶„ë¥˜ì½”ë“œ
+				cartMenuMidCode = menuMidCode; // ë©”ë‰´ì¤‘ë¶„ë¥˜ì½”ë“œ
+				cartMenuSmlCode = selected.attr("value").split(",")[2]; // ë©”ë‰´ì†Œë¶„ë¥˜ì½”ë“œ
+				cartMenuSubCode = menuSubCode; // ë©”ë‰´ì„¸ë¶„ë¥˜ì½”ë“œ
+				cartMenuPrice = selected.text().split("-")[1].replace(",", ""); // ë©”ë‰´ì£¼ë¬¸ë‹¨ê°€
+				cartMenuQty = orderQty; // ë©”ë‰´ì£¼ë¬¸ìˆ˜ëŸ‰
+				cartMenuAmt = selected.text().split("-")[1].replace(",", ""); // ë©”ë‰´ì£¼ë¬¸ê¸ˆì•¡
+				cartMenuDisRate = "0"; // ë©”ë‰´í• ì¸ìœ¨
+				cartMenuDisAmt = "0"; // ë©”ë‰´í• ì¸ê¸ˆì•¡
+				cartMenuCopDisAmt = "0"; // ë©”ë‰´ì„ ê²°ì œì¿ í°í• ì¸
 				cartMenuNetSaleAmt = selected.text().split("-")[1].replace(",",
-						""); // ¸Ş´º¼ø¸ÅÃâ±İ¾×
-				cartMenuPayAmt = selected.text().split("-")[1].replace(",", ""); // ¸Ş´º°áÁ¦±İ¾×
-				cartMenuBakeCode = ""; // ¸Ş´ºº£ÀÌÅ©ÄÚµå
-				cartMenuCutCode = ""; // ¸Ş´ºÄÆÄÚµå
-				cartMenuCheeseCode = ""; // ¸Ş´ºÄ¡ÁîÄÚµå
-				cartMenuSauceCode = ""; // ¸Ş´º¼Ò½ºÄÚµå
-				cartMenuMessage = ""; // ¸Ş´ºÀü´Ş¸Ş¼¼Áö
-				cartMenuSize = selected.text().split("-")[0]; // ¸Ş´º»çÀÌÁî
-				cartMenuDough = menuDough; // ¸Ş´ºµµ¿ìÁ¾·ù
-				cartMenuOption = ""; // ¸Ş´º¿É¼Ç
-				cartECouponCompany = ""; // EÄíÆùÁ¦ÈŞ»ç
-				cartECouponCode = ""; // EÄíÆùÄÚµå
-				cartECouponNumber = ""; // EÄíÆù¹øÈ£
+						""); // ë©”ë‰´ìˆœë§¤ì¶œê¸ˆì•¡
+				cartMenuPayAmt = selected.text().split("-")[1].replace(",", ""); // ë©”ë‰´ê²°ì œê¸ˆì•¡
+				cartMenuBakeCode = ""; // ë©”ë‰´ë² ì´í¬ì½”ë“œ
+				cartMenuCutCode = ""; // ë©”ë‰´ì»·ì½”ë“œ
+				cartMenuCheeseCode = ""; // ë©”ë‰´ì¹˜ì¦ˆì½”ë“œ
+				cartMenuSauceCode = ""; // ë©”ë‰´ì†ŒìŠ¤ì½”ë“œ
+				cartMenuMessage = ""; // ë©”ë‰´ì „ë‹¬ë©”ì„¸ì§€
+				cartMenuSize = selected.text().split("-")[0]; // ë©”ë‰´ì‚¬ì´ì¦ˆ
+				cartMenuDough = menuDough; // ë©”ë‰´ë„ìš°ì¢…ë¥˜
+				cartMenuOption = ""; // ë©”ë‰´ì˜µì…˜
+				cartECouponCompany = ""; // Eì¿ í°ì œíœ´ì‚¬
+				cartECouponCode = ""; // Eì¿ í°ì½”ë“œ
+				cartECouponNumber = ""; // Eì¿ í°ë²ˆí˜¸
 
-				// ¸Ş´º´ëºĞ·ùÄÚµåº° ¸Ş´ºÅ¸ÀÔ ¼¼ÆÃ
+				// ë©”ë‰´ëŒ€ë¶„ë¥˜ì½”ë“œë³„ ë©”ë‰´íƒ€ì… ì„¸íŒ…
 				if (menuLagCode == "10") {
 					cartMenuType = "typePizza";
-				} // ÇÇÀÚ
+				} // í”¼ì
 				else if (menuLagCode == "20") {
 					cartMenuType = "typeSide";
-				} // »çÀÌµå
+				} // ì‚¬ì´ë“œ
 				else if (menuLagCode == "30") {
 					cartMenuType = "typeSauce";
-				} // ¼Ò½º
+				} // ì†ŒìŠ¤
 				else if (menuLagCode == "40") {
 					cartMenuType = "typeBever";
-				} // À½·á
+				} // ìŒë£Œ
 				/* 
 				var menuAmt = parseInt(cartMenuPrice) * parseInt(cartMenuQty);
-				cartMenuAmt    = String(menuAmt);  // ¸Ş´ºÁÖ¹®±İ¾×
-				cartMenuPayAmt = String(menuAmt);  // ¸Ş´º°áÁ¦±İ¾×
+				cartMenuAmt    = String(menuAmt);  // ë©”ë‰´ì£¼ë¬¸ê¸ˆì•¡
+				cartMenuPayAmt = String(menuAmt);  // ë©”ë‰´ê²°ì œê¸ˆì•¡
 				 */
 				var findMenuOptions = $(".option_box .spcInstructions li");
 				var selMenuOptions = [];
@@ -1026,61 +1026,61 @@ input,select,img {
 							.val();
 					if (i == 0) {
 						cartMenuSauceCode = selMenuOptions[i];
-					} // ¸Ş´º¼Ò½ºÄÚµå 
+					} // ë©”ë‰´ì†ŒìŠ¤ì½”ë“œ 
 					if (i == 1) {
 						cartMenuCheeseCode = selMenuOptions[i];
-					} // ¸Ş´ºÄ¡ÁîÄÚµå 
+					} // ë©”ë‰´ì¹˜ì¦ˆì½”ë“œ 
 					if (i == 2) {
 						cartMenuBakeCode = selMenuOptions[i];
-					} // ¸Ş´ºº£ÀÌÅ©ÄÚµå 
+					} // ë©”ë‰´ë² ì´í¬ì½”ë“œ 
 					if (i == 3) {
 						cartMenuCutCode = selMenuOptions[i];
-					} // ¸Ş´ºÄÆÄÚµå
+					} // ë©”ë‰´ì»·ì½”ë“œ
 				});
-				cartMenuOption = selMenuOptions.join("/"); // ¸Ş´º ¿É¼Ç
+				cartMenuOption = selMenuOptions.join("/"); // ë©”ë‰´ ì˜µì…˜
 
 				cartSendDataInfo = {
-					cartAction : cartAction, // Àå¹Ù±¸´ÏÃ³¸®
-					cartMenuType : cartMenuType, // ¸Ş´ºÅ¸ÀÔ
-					cartMenuCode : cartMenuCode, // ¸Ş´ºÄÚµå
-					cartMenuName : cartMenuName, // ¸Ş´º¸í
-					cartMenuOrdCode : cartMenuOrdCode, // ¸Ş´ºÁÖ¹®±¸ºĞÄÚµå(10:Á¤»ó,20:ÇÒÀÎ,30:¼­ºñ½º(¹«·á))
-					cartMenuDivCode : cartMenuDivCode, // ¸Ş´º±¸ºĞÄÚµå(10:´ÜÇ°,20:¼¼Æ®,30:ÇÏÇÁ&ÇÏÇÁ)
-					cartMenuLagCode : cartMenuLagCode, // ¸Ş´º´ëºĞ·ùÄÚµå
-					cartMenuMidCode : cartMenuMidCode, // ¸Ş´ºÁßºĞ·ùÄÚµå
-					cartMenuSmlCode : cartMenuSmlCode, // ¸Ş´º¼ÒºĞ·ùÄÚµå
-					cartMenuSubCode : cartMenuSubCode, // ¸Ş´º¼¼ºĞ·ùÄÚµå
-					cartMenuPrice : cartMenuPrice, // ¸Ş´ºÁÖ¹®´Ü°¡
-					cartMenuQty : cartMenuQty, // ¸Ş´ºÁÖ¹®¼ö·®
-					cartMenuAmt : cartMenuAmt, // ¸Ş´ºÁÖ¹®±İ¾×
-					cartMenuDisRate : cartMenuDisRate, // ¸Ş´ºÇÒÀÎÀ²
-					cartMenuDisAmt : cartMenuDisAmt, // ¸Ş´ºÇÒÀÎ±İ¾×
-					cartMenuCopDisAmt : cartMenuCopDisAmt, // ¸Ş´º¼±°áÁ¦ÄíÆùÇÒÀÎ
-					cartMenuNetSaleAmt : cartMenuNetSaleAmt, // ¸Ş´º¼ø¸ÅÃâ±İ¾×
-					cartMenuPayAmt : cartMenuPayAmt, // ¸Ş´º°áÁ¦±İ¾×
-					cartMenuBakeCode : cartMenuBakeCode, // ¸Ş´ºº£ÀÌÅ©ÄÚµå
-					cartMenuCutCode : cartMenuCutCode, // ¸Ş´ºÄÆÄÚµå
-					cartMenuCheeseCode : cartMenuCheeseCode, // ¸Ş´ºÄ¡ÁîÄÚµå
-					cartMenuSauceCode : cartMenuSauceCode, // ¸Ş´º¼Ò½ºÄÚµå
-					cartMenuMessage : cartMenuMessage, // ¸Ş´ºÀü´Ş¸Ş¼¼Áö
-					cartMenuSize : cartMenuSize, // ¸Ş´º»çÀÌÁî
-					cartMenuDough : cartMenuDough, // ¸Ş´ºµµ¿ìÁ¾·ù
-					cartMenuOption : cartMenuOption, // ¸Ş´º ¿É¼Ç
-					cartECouponCompany : cartECouponCompany, // EÄíÆùÁ¦ÈŞ»ç
-					cartECouponCode : cartECouponCode, // EÄíÆùÄÚµå
+					cartAction : cartAction, // ì¥ë°”êµ¬ë‹ˆì²˜ë¦¬
+					cartMenuType : cartMenuType, // ë©”ë‰´íƒ€ì…
+					cartMenuCode : cartMenuCode, // ë©”ë‰´ì½”ë“œ
+					cartMenuName : cartMenuName, // ë©”ë‰´ëª…
+					cartMenuOrdCode : cartMenuOrdCode, // ë©”ë‰´ì£¼ë¬¸êµ¬ë¶„ì½”ë“œ(10:ì •ìƒ,20:í• ì¸,30:ì„œë¹„ìŠ¤(ë¬´ë£Œ))
+					cartMenuDivCode : cartMenuDivCode, // ë©”ë‰´êµ¬ë¶„ì½”ë“œ(10:ë‹¨í’ˆ,20:ì„¸íŠ¸,30:í•˜í”„&í•˜í”„)
+					cartMenuLagCode : cartMenuLagCode, // ë©”ë‰´ëŒ€ë¶„ë¥˜ì½”ë“œ
+					cartMenuMidCode : cartMenuMidCode, // ë©”ë‰´ì¤‘ë¶„ë¥˜ì½”ë“œ
+					cartMenuSmlCode : cartMenuSmlCode, // ë©”ë‰´ì†Œë¶„ë¥˜ì½”ë“œ
+					cartMenuSubCode : cartMenuSubCode, // ë©”ë‰´ì„¸ë¶„ë¥˜ì½”ë“œ
+					cartMenuPrice : cartMenuPrice, // ë©”ë‰´ì£¼ë¬¸ë‹¨ê°€
+					cartMenuQty : cartMenuQty, // ë©”ë‰´ì£¼ë¬¸ìˆ˜ëŸ‰
+					cartMenuAmt : cartMenuAmt, // ë©”ë‰´ì£¼ë¬¸ê¸ˆì•¡
+					cartMenuDisRate : cartMenuDisRate, // ë©”ë‰´í• ì¸ìœ¨
+					cartMenuDisAmt : cartMenuDisAmt, // ë©”ë‰´í• ì¸ê¸ˆì•¡
+					cartMenuCopDisAmt : cartMenuCopDisAmt, // ë©”ë‰´ì„ ê²°ì œì¿ í°í• ì¸
+					cartMenuNetSaleAmt : cartMenuNetSaleAmt, // ë©”ë‰´ìˆœë§¤ì¶œê¸ˆì•¡
+					cartMenuPayAmt : cartMenuPayAmt, // ë©”ë‰´ê²°ì œê¸ˆì•¡
+					cartMenuBakeCode : cartMenuBakeCode, // ë©”ë‰´ë² ì´í¬ì½”ë“œ
+					cartMenuCutCode : cartMenuCutCode, // ë©”ë‰´ì»·ì½”ë“œ
+					cartMenuCheeseCode : cartMenuCheeseCode, // ë©”ë‰´ì¹˜ì¦ˆì½”ë“œ
+					cartMenuSauceCode : cartMenuSauceCode, // ë©”ë‰´ì†ŒìŠ¤ì½”ë“œ
+					cartMenuMessage : cartMenuMessage, // ë©”ë‰´ì „ë‹¬ë©”ì„¸ì§€
+					cartMenuSize : cartMenuSize, // ë©”ë‰´ì‚¬ì´ì¦ˆ
+					cartMenuDough : cartMenuDough, // ë©”ë‰´ë„ìš°ì¢…ë¥˜
+					cartMenuOption : cartMenuOption, // ë©”ë‰´ ì˜µì…˜
+					cartECouponCompany : cartECouponCompany, // Eì¿ í°ì œíœ´ì‚¬
+					cartECouponCode : cartECouponCode, // Eì¿ í°ì½”ë“œ
 					cartECouponNumber : cartECouponNumber
-				// EÄíÆù¹øÈ£
+				// Eì¿ í°ë²ˆí˜¸
 				};
 			}
 
-			//¼¼¼Ç¿¡ ÀúÀå
+			//ì„¸ì…˜ì— ì €ì¥
 			$.ajax({
 				url : "/order/newCart.jsp",
 				type : "POST",
 				data : cartSendDataInfo,
 				dataType : "html",
 				complete : function(result) {
-					//¹Ù·Î ÁÖ¹® ¹öÆ°À» ´©¸¥ °æ¿ì ÆäÀÌÁö ÀÌµ¿ 
+					//ë°”ë¡œ ì£¼ë¬¸ ë²„íŠ¼ì„ ëˆ„ë¥¸ ê²½ìš° í˜ì´ì§€ ì´ë™ 
 					if (actionFlag == "addCartNgo") {
 						parent.location.href = root + "/order.jsp";
 					}
@@ -1091,11 +1091,11 @@ input,select,img {
 								.getElementById("notice_caution"));
 						alertFrame.find("#alertText p").remove();
 						alertFrame.find("#alertText").append(
-								"<p>Àå¹Ù±¸´Ï¿¡ ¸Ş´º¸¦ Ãß°¡ÇÏ¿´½À´Ï´Ù!!<br>Àå¹Ù±¸´Ï¸¦ È®ÀÎÇÏ¼¼¿ä~</p>");
-						//alertFrame.height(152);	//text°¡ 2ÁÙÀÎ °æ¿ì
+								"<p>ì¥ë°”êµ¬ë‹ˆì— ë©”ë‰´ë¥¼ ì¶”ê°€í•˜ì˜€ìŠµë‹ˆë‹¤!!<br>ì¥ë°”êµ¬ë‹ˆë¥¼ í™•ì¸í•˜ì„¸ìš”~</p>");
+						//alertFrame.height(152);	//textê°€ 2ì¤„ì¸ ê²½ìš°
 						parent.popAlert(alertFrame);
 					} else {
-						//alert("Àå¹Ù±¸´Ï¿¡ ¸Ş´º¸¦ Ãß°¡ÇÏ½Ç ¼ö ¾ø½À´Ï´Ù!!");
+						//alert("ì¥ë°”êµ¬ë‹ˆì— ë©”ë‰´ë¥¼ ì¶”ê°€í•˜ì‹¤ ìˆ˜ ì—†ìŠµë‹ˆë‹¤!!");
 					}
 				}
 			});
