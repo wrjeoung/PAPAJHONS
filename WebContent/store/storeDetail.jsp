@@ -1,11 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <div id="store_section">
-	<h1 class="title"><img src="../assets/img/customer/openStore_title.gif" alt="½Å±Ô¿ÀÇÂ¸ÅÀå" /></h1>
+	<h1 class="title"><img src="../assets/img/customer/openStore_title.gif" alt="ì‹ ê·œì˜¤í”ˆë§¤ì¥" /></h1>
 	<div id="openStore_section">
-		<!-- ½Å±Ô ¿ÀÇÂ ¸ÅÀå -->
-		<p class="prev" style=""><button type="button"><img src="../assets/img/btn/slideBtn_up.gif" alt="ÀÌÀü¸ÅÀå" /></button></p>
-		<p class="next"><button type="button"><img src="../assets/img/btn/slideBtn_down.gif" alt="´ÙÀ½¸ÅÀå" /></button></p>
+		<!-- ì‹ ê·œ ì˜¤í”ˆ ë§¤ì¥ -->
+		<p class="prev" style=""><button type="button"><img src="../assets/img/btn/slideBtn_up.gif" alt="ì´ì „ë§¤ì¥" /></button></p>
+		<p class="next"><button type="button"><img src="../assets/img/btn/slideBtn_down.gif" alt="ë‹¤ìŒë§¤ì¥" /></button></p>
 		<ul class="list_box">
 			<c:forEach var="li" items="${list}" varStatus="status">
 				<c:if test="${li.newopen eq 'new'}">
@@ -17,13 +17,13 @@
 							</p>
 							<ul class="info">
 								<li>
-									<span class="tit">¸ÅÀå¸í : </span>
+									<span class="tit">ë§¤ì¥ëª… : </span>
 									<span id="new_list_storeNm">${li.storename}</span>
-									<!-- Áöµµº¸±â ¹öÆ° -->
+									<!-- ì§€ë„ë³´ê¸° ë²„íŠ¼ -->
 									<span class="btn_h23 green">
 										<button type="button" onclick="document.location.href
 										='storeMapAction.action?storename=${li.storename}&phone=${li.phone}&address=${li.address}&businesshours=${li.businesshours}&storetype=${li.storetype}&storeparking=${li.storeparking}&imagepath=${li.imagepath}&latitude=${li.latitude}&longitude=${li.longitude}'">
-										Áöµµº¸±â</button>
+										ì§€ë„ë³´ê¸°</button>
 										<%-- 
 										<input type="hidden" id="storeCode" name="storeCode" value="1114">
 										<input type="hidden" id="StoreNm_X" name="StoreNm_X" value="129.0745495">
@@ -31,11 +31,11 @@
 										--%>		
 									</span>
 								</li>
-								<li><span class="tit">ÀüÈ­¹øÈ£ : </span><span>${li.phone}</span></li>
-								<li><span class="tit">¸ÅÀåÁÖ¼Ò : </span><span>${li.address}</span></li>
-								<li><span class="tit">¿µ¾÷½Ã°£ : </span><span>${li.businesshours}</span></li>
-								<li><span class="tit">¸ÅÀåÅ¸ÀÔ : </span><span>${li.storetype}</span></li>
-								<li><span class="tit">ÁÖÂ÷¿©ºÎ : </span><span>${li.storeparking}</span></li>
+								<li><span class="tit">ì „í™”ë²ˆí˜¸ : </span><span>${li.phone}</span></li>
+								<li><span class="tit">ë§¤ì¥ì£¼ì†Œ : </span><span>${li.address}</span></li>
+								<li><span class="tit">ì˜ì—…ì‹œê°„ : </span><span>${li.businesshours}</span></li>
+								<li><span class="tit">ë§¤ì¥íƒ€ì… : </span><span>${li.storetype}</span></li>
+								<li><span class="tit">ì£¼ì°¨ì—¬ë¶€ : </span><span>${li.storeparking}</span></li>
 							</ul>
 						</div>
 						<p class="new"><img src="../assets/img/customer/new.png" alt="new" /></p>
@@ -47,7 +47,7 @@
 
 	<script type="text/javascript">
 		newStore("#openStore_section")
-		//20140219 °Ë»ö¹öÆ° enter key ÀÌº¥Æ® Ã³¸®
+		//20140219 ê²€ìƒ‰ë²„íŠ¼ enter key ì´ë²¤íŠ¸ ì²˜ë¦¬
 		function CheckEnt(val) {
 			if (event.keyCode == 13) {
 				fnSearchStrName();
@@ -55,47 +55,47 @@
 		}
 	</script>
 	<%-- 
-	<!-- ¸ÅÀå °Ë»ö -->
-	<h1 class="title"><img src="../assets/img/customer/storeSearch_title.gif" alt="¸ÅÀå°Ë»ö" /></h1>
+	<!-- ë§¤ì¥ ê²€ìƒ‰ -->
+	<h1 class="title"><img src="../assets/img/customer/storeSearch_title.gif" alt="ë§¤ì¥ê²€ìƒ‰" /></h1>
 	<div id="search_store">
 		<ul class="search_map">
-			<li><img src="../assets/img/map/m0.gif" alt="ÀüÃ¼Áöµµ" usemap="#Map" /></li>
-			<li><img src="../assets/img/map/m1.gif" alt="¼­¿ï" usemap="#Map" /></li>
-			<li><img src="../assets/img/map/m2.gif" alt="°æ±âµµ" usemap="#Map" /></li>
-			<li><img src="../assets/img/map/m3.gif" alt="ÀÎÃµ" usemap="#Map" /></li>
-			<li><img src="../assets/img/map/m4.gif" alt="´ëÀü" usemap="#Map" /></li>
-			<li><img src="../assets/img/map/m5.gif" alt="ÃæÃ»³²µµ" usemap="#Map" /></li>
-			<li><img src="../assets/img/map/m6.gif" alt="ÃæÃ»ºÏµµ" usemap="#Map" /></li>
-			<li><img src="../assets/img/map/m7.gif" alt="Àü¶óºÏµµ" usemap="#Map" /></li>
-			<li><img src="../assets/img/map/m8.gif" alt="Àü¶ó³²µµ" usemap="#Map" /></li>
-			<li><img src="../assets/img/map/m9.gif" alt="±¤ÁÖ" usemap="#Map" /></li>
-			<li><img src="../assets/img/map/m10.gif" alt="°æ»ó³²µµ" usemap="#Map" /></li>
-			<li><img src="../assets/img/map/m11.gif" alt="°æ»óºÏµµ" usemap="#Map" /></li>
-			<li><img src="../assets/img/map/m12.gif" alt="ºÎ»ê" usemap="#Map" /></li>
-			<li><img src="../assets/img/map/m13.gif" alt="¿ï»ê" usemap="#Map" /></li>
-			<li><img src="../assets/img/map/m14.gif" alt="°­¿øµµ" usemap="#Map" /></li>
-			<li><img src="../assets/img/map/m15.gif" alt="´ë±¸" usemap="#Map" /></li>
-			<li><img src="../assets/img/map/m16.gif" alt="Á¦ÁÖµµ" usemap="#Map" /></li>
+			<li><img src="../assets/img/map/m0.gif" alt="ì „ì²´ì§€ë„" usemap="#Map" /></li>
+			<li><img src="../assets/img/map/m1.gif" alt="ì„œìš¸" usemap="#Map" /></li>
+			<li><img src="../assets/img/map/m2.gif" alt="ê²½ê¸°ë„" usemap="#Map" /></li>
+			<li><img src="../assets/img/map/m3.gif" alt="ì¸ì²œ" usemap="#Map" /></li>
+			<li><img src="../assets/img/map/m4.gif" alt="ëŒ€ì „" usemap="#Map" /></li>
+			<li><img src="../assets/img/map/m5.gif" alt="ì¶©ì²­ë‚¨ë„" usemap="#Map" /></li>
+			<li><img src="../assets/img/map/m6.gif" alt="ì¶©ì²­ë¶ë„" usemap="#Map" /></li>
+			<li><img src="../assets/img/map/m7.gif" alt="ì „ë¼ë¶ë„" usemap="#Map" /></li>
+			<li><img src="../assets/img/map/m8.gif" alt="ì „ë¼ë‚¨ë„" usemap="#Map" /></li>
+			<li><img src="../assets/img/map/m9.gif" alt="ê´‘ì£¼" usemap="#Map" /></li>
+			<li><img src="../assets/img/map/m10.gif" alt="ê²½ìƒë‚¨ë„" usemap="#Map" /></li>
+			<li><img src="../assets/img/map/m11.gif" alt="ê²½ìƒë¶ë„" usemap="#Map" /></li>
+			<li><img src="../assets/img/map/m12.gif" alt="ë¶€ì‚°" usemap="#Map" /></li>
+			<li><img src="../assets/img/map/m13.gif" alt="ìš¸ì‚°" usemap="#Map" /></li>
+			<li><img src="../assets/img/map/m14.gif" alt="ê°•ì›ë„" usemap="#Map" /></li>
+			<li><img src="../assets/img/map/m15.gif" alt="ëŒ€êµ¬" usemap="#Map" /></li>
+			<li><img src="../assets/img/map/m16.gif" alt="ì œì£¼ë„" usemap="#Map" /></li>
 		</ul>
 		
 		<map name="Map" id="Map">
-			<area shape="poly" coords="54,66,69,55,76,68,70,79,54,73,51,65" href="JavaScript:;" id="11" alt="¼­¿ï" onclick="search_Address_Map(this.id);" title="#m1" />
+			<area shape="poly" coords="54,66,69,55,76,68,70,79,54,73,51,65" href="JavaScript:;" id="11" alt="ì„œìš¸" onclick="search_Address_Map(this.id);" title="#m1" />
 			<area shape="poly" coords="57,67,50,69,43,57,51,45,58,29,75,25,91,56,101,65,104,88,101,90,85,105,57,106,45,95,51,76,77,74,78,64,67,57,56,76"
-				href="JavaScript:;" id="41" alt="°æ±âµµ" onclick="search_Address_Map(this.id);" title="#m2" />
-			<area shape="poly" coords="52,72,44,67,36,43,23,59,35,76,43,77" href="JavaScript:;" id="28" alt="ÀÎÃµ" onclick="search_Address_Map(this.id);" title="#m3" />
-			<area shape="circle" coords="84,142,11" href="JavaScript:;" id="30" alt="´ëÀü" onclick="search_Address_Map(this.id);" title="#m4" />
-			<area shape="poly" coords="82,119,76,110,30,100,18,125,44,163,63,153,78,157,72,144" href="JavaScript:;" id="44" alt="ÃæÃ»³²µµ" onclick="search_Address_Map(this.id);" title="#m5" />
-			<area shape="poly" coords="83,124,83,108,110,89,132,90,144,98,129,112,108,123,116,153,99,163,98,138" href="JavaScript:;" id="43" alt="ÃæÃ»ºÏµµ" onclick="search_Address_Map(this.id);" title="#m6" />
-			<area shape="circle" coords="46,226,11" href="JavaScript:;" id="29" alt="±¤ÁÖ" onclick="search_Address_Map(this.id);" title="#m9" />
-			<area shape="poly" coords="85,205,63,200,39,202,40,166,67,156,85,162,106,167,96,191,95,198"  href="JavaScript:;" id="45" alt="Àü¶óºÏµµ" onclick="search_Address_Map(this.id);" title="#m7" />
-			<area shape="poly" coords="43,201,16,219,11,254,8,279,105,251,100,225,90,209,46,200" href="JavaScript:;" id="46" alt="Àü¶ó³²µµ" onclick="search_Address_Map(this.id);" title="#m8" />
-			<area shape="poly" coords="112,244,96,199,107,173,141,186,166,202,137,226,144,235,143,252,129,238" href="JavaScript:;" id="48" alt="°æ»ó³²µµ" onclick="search_Address_Map(this.id);" title="#m10" />
-			<area shape="poly" coords="113,164,124,146,112,123,133,113,182,92,190,152,190,179,164,179,154,157" href="JavaScript:;" id="47" alt="°æ»óºÏµµ" onclick="search_Address_Map(this.id);" title="#m11" />
-			<area shape="circle" coords="180,193,12" href="JavaScript:;" id="31" alt="¿ï»ê" onclick="search_Address_Map(this.id);" title="#m13" />
-			<area shape="poly" coords="141,227,170,203,181,208,162,226" href="JavaScript:;" id="26" alt="ºÎ»ê" onclick="search_Address_Map(this.id);" title="#m12" />
-			<area shape="circle" coords="146,175,15" href="JavaScript:;" id="27" alt="´ë±¸" onclick="search_Address_Map(this.id);" title="#m15" />
-			<area shape="poly" coords="74,22,132,13,185,91,156,97,117,89,107,70" href="JavaScript:;" id="42" alt="°­¿øµµ" onclick="search_Address_Map(this.id);" title="#m14" />
-			<area shape="circle" coords="42,298,18" href="JavaScript:;" id="50" alt="Á¦ÁÖµµ" onclick="search_Address_Map(this.id);" title="#m16" />
+				href="JavaScript:;" id="41" alt="ê²½ê¸°ë„" onclick="search_Address_Map(this.id);" title="#m2" />
+			<area shape="poly" coords="52,72,44,67,36,43,23,59,35,76,43,77" href="JavaScript:;" id="28" alt="ì¸ì²œ" onclick="search_Address_Map(this.id);" title="#m3" />
+			<area shape="circle" coords="84,142,11" href="JavaScript:;" id="30" alt="ëŒ€ì „" onclick="search_Address_Map(this.id);" title="#m4" />
+			<area shape="poly" coords="82,119,76,110,30,100,18,125,44,163,63,153,78,157,72,144" href="JavaScript:;" id="44" alt="ì¶©ì²­ë‚¨ë„" onclick="search_Address_Map(this.id);" title="#m5" />
+			<area shape="poly" coords="83,124,83,108,110,89,132,90,144,98,129,112,108,123,116,153,99,163,98,138" href="JavaScript:;" id="43" alt="ì¶©ì²­ë¶ë„" onclick="search_Address_Map(this.id);" title="#m6" />
+			<area shape="circle" coords="46,226,11" href="JavaScript:;" id="29" alt="ê´‘ì£¼" onclick="search_Address_Map(this.id);" title="#m9" />
+			<area shape="poly" coords="85,205,63,200,39,202,40,166,67,156,85,162,106,167,96,191,95,198"  href="JavaScript:;" id="45" alt="ì „ë¼ë¶ë„" onclick="search_Address_Map(this.id);" title="#m7" />
+			<area shape="poly" coords="43,201,16,219,11,254,8,279,105,251,100,225,90,209,46,200" href="JavaScript:;" id="46" alt="ì „ë¼ë‚¨ë„" onclick="search_Address_Map(this.id);" title="#m8" />
+			<area shape="poly" coords="112,244,96,199,107,173,141,186,166,202,137,226,144,235,143,252,129,238" href="JavaScript:;" id="48" alt="ê²½ìƒë‚¨ë„" onclick="search_Address_Map(this.id);" title="#m10" />
+			<area shape="poly" coords="113,164,124,146,112,123,133,113,182,92,190,152,190,179,164,179,154,157" href="JavaScript:;" id="47" alt="ê²½ìƒë¶ë„" onclick="search_Address_Map(this.id);" title="#m11" />
+			<area shape="circle" coords="180,193,12" href="JavaScript:;" id="31" alt="ìš¸ì‚°" onclick="search_Address_Map(this.id);" title="#m13" />
+			<area shape="poly" coords="141,227,170,203,181,208,162,226" href="JavaScript:;" id="26" alt="ë¶€ì‚°" onclick="search_Address_Map(this.id);" title="#m12" />
+			<area shape="circle" coords="146,175,15" href="JavaScript:;" id="27" alt="ëŒ€êµ¬" onclick="search_Address_Map(this.id);" title="#m15" />
+			<area shape="poly" coords="74,22,132,13,185,91,156,97,117,89,107,70" href="JavaScript:;" id="42" alt="ê°•ì›ë„" onclick="search_Address_Map(this.id);" title="#m14" />
+			<area shape="circle" coords="42,298,18" href="JavaScript:;" id="50" alt="ì œì£¼ë„" onclick="search_Address_Map(this.id);" title="#m16" />
 		</map>
 
 		<div class="form" id="store_search_form">
@@ -104,76 +104,76 @@
 				<!--   onsubmit="return false;" -->
 				<input type="hidden" id="actionFlag" name="actionFlag" value="null">
 				<input type="hidden" id="srch_region" name="srch_region" value="null">
-				<!-- Áö¿ª¸í -->
+				<!-- ì§€ì—­ëª… -->
 				<input type="hidden" id="srch_sigungu" name="srch_sigungu" value="null">
-				<!-- ½Ã±º±¸¸í -->
+				<!-- ì‹œêµ°êµ¬ëª… -->
 				<input type="hidden" id="srch_store" name="srch_store" value="null">
-				<!-- ¸ÅÀåÄÚµå -->
+				<!-- ë§¤ì¥ì½”ë“œ -->
 				<input type="hidden" id="srch_word" name="srch_word" value="null">
-				<!-- °Ë»ö¾î -->
+				<!-- ê²€ìƒ‰ì–´ -->
 				<input type="hidden" id="xMap" name="xMap" value="">
-				<!-- Áöµµ xÁÂÇ¥ -->
+				<!-- ì§€ë„ xì¢Œí‘œ -->
 				<input type="hidden" id="yMap" name="yMap" value="">
-				<!-- Áöµµ yÁÂÇ¥ -->
+				<!-- ì§€ë„ yì¢Œí‘œ -->
 				<input type="hidden" id="tab" name="tab" value="">
-				<!-- ÅÇ¹øÈ£ -->
+				<!-- íƒ­ë²ˆí˜¸ -->
 				<input type="hidden" id="storecd" name="storecd" value="">
-				<!-- ¸ÅÀåÄÚµå -->
+				<!-- ë§¤ì¥ì½”ë“œ -->
 				<input type="hidden" id="inCurPage" name="inCurPage" value="1">
-				<!-- ÇöÀç ÆäÀÌÁö -->
+				<!-- í˜„ì¬ í˜ì´ì§€ -->
 				<input type="hidden" id="inCurBlock" name="inCurBlock" value="1">
-				<!-- ÇöÀç ºí·° -->
+				<!-- í˜„ì¬ ë¸”ëŸ­ -->
 				<input type="hidden" id="inRowPerPage" name="inRowPerPage" value="5">
-				<!-- ÇÑ ÆäÀÌÁö´ç Ç¥½ÃÇÒ ·¹ÄÚµå ¼ö -->
+				<!-- í•œ í˜ì´ì§€ë‹¹ í‘œì‹œí•  ë ˆì½”ë“œ ìˆ˜ -->
 				<input type="hidden" id="inPagePerBlock" name="inPagePerBlock" value="3">
-				<!-- ÇÑ ºí·°´ç ÇÒ´çµÈ ÆäÀÌÁö ¼ö -->
+				<!-- í•œ ë¸”ëŸ­ë‹¹ í• ë‹¹ëœ í˜ì´ì§€ ìˆ˜ -->
 				<input type="hidden" id="enterFlag" name="enterFlag" value="">
 
 				<fieldset style="border: 10x solid #f00;">
-					<legend>¸ÅÀå°Ë»ö</legend>
-					<h5><img src="../assets/img/customer/resion_title.gif" alt="Áö¿ª°Ë»ö" /></h5>
+					<legend>ë§¤ì¥ê²€ìƒ‰</legend>
+					<h5><img src="../assets/img/customer/resion_title.gif" alt="ì§€ì—­ê²€ìƒ‰" /></h5>
 					<p>
-						<label for="select_region" style="display: none">Áö¿ª¼±ÅÃ</label>
+						<label for="select_region" style="display: none">ì§€ì—­ì„ íƒ</label>
 						<select id="select_region" name="select_region" style="width: 100px">
-							<option value="">½Ã/µµ ¼±ÅÃ</option>
-							<option value="42">°­¿øµµ</option>
-							<option value="41">°æ±âµµ</option>
-							<option value="48">°æ»ó³²µµ</option>
-							<option value="47">°æ»óºÏµµ</option>
-							<option value="29">±¤ÁÖ±¤¿ª½Ã</option>
-							<option value="27">´ë±¸±¤¿ª½Ã</option>
-							<option value="30">´ëÀü±¤¿ª½Ã</option>
-							<option value="26">ºÎ»ê±¤¿ª½Ã</option>
-							<option value="11">¼­¿ïÆ¯º°½Ã</option>
-							<option value="31">¿ï»ê±¤¿ª½Ã</option>
-							<option value="28">ÀÎÃµ±¤¿ª½Ã</option>
-							<option value="46">Àü¶ó³²µµ</option>
-							<option value="45">Àü¶óºÏµµ</option>
-							<option value="50">Á¦ÁÖÆ¯º°ÀÚÄ¡</option>
-							<option value="44">ÃæÃ»³²µµ</option>
-							<option value="43">ÃæÃ»ºÏµµ</option>
+							<option value="">ì‹œ/ë„ ì„ íƒ</option>
+							<option value="42">ê°•ì›ë„</option>
+							<option value="41">ê²½ê¸°ë„</option>
+							<option value="48">ê²½ìƒë‚¨ë„</option>
+							<option value="47">ê²½ìƒë¶ë„</option>
+							<option value="29">ê´‘ì£¼ê´‘ì—­ì‹œ</option>
+							<option value="27">ëŒ€êµ¬ê´‘ì—­ì‹œ</option>
+							<option value="30">ëŒ€ì „ê´‘ì—­ì‹œ</option>
+							<option value="26">ë¶€ì‚°ê´‘ì—­ì‹œ</option>
+							<option value="11">ì„œìš¸íŠ¹ë³„ì‹œ</option>
+							<option value="31">ìš¸ì‚°ê´‘ì—­ì‹œ</option>
+							<option value="28">ì¸ì²œê´‘ì—­ì‹œ</option>
+							<option value="46">ì „ë¼ë‚¨ë„</option>
+							<option value="45">ì „ë¼ë¶ë„</option>
+							<option value="50">ì œì£¼íŠ¹ë³„ìì¹˜</option>
+							<option value="44">ì¶©ì²­ë‚¨ë„</option>
+							<option value="43">ì¶©ì²­ë¶ë„</option>
 						</select> 
-						<label for="select_gu" style="display: none">±¸/±º¼±ÅÃ</label>
+						<label for="select_gu" style="display: none">êµ¬/êµ°ì„ íƒ</label>
 						<select id="select_gu" name="select_gu" style="width: 120px">
-							<option value="">±¸ ¶Ç´Â ±ºÀ» ¼±ÅÃÇÏ¼¼¿ä.</option>
-							<option value="29200">±¤»ê±¸</option>
-							<option value="29155">³²±¸</option>
-							<option value="29110">µ¿±¸</option>
-							<option value="29170">ºÏ±¸</option>
-							<option value="29140">¼­±¸</option>
+							<option value="">êµ¬ ë˜ëŠ” êµ°ì„ ì„ íƒí•˜ì„¸ìš”.</option>
+							<option value="29200">ê´‘ì‚°êµ¬</option>
+							<option value="29155">ë‚¨êµ¬</option>
+							<option value="29110">ë™êµ¬</option>
+							<option value="29170">ë¶êµ¬</option>
+							<option value="29140">ì„œêµ¬</option>
 						</select>
 						</select>
-						<label for="select_store" style="display: none;">¸ÅÀå¼±ÅÃ</label>
+						<label for="select_store" style="display: none;">ë§¤ì¥ì„ íƒ</label>
 						<select id="select_store" name="select_store" style="width: 170px">
-							<option value="">Áö¿ªÀ» ¸ÕÀú ¼±ÅÃÇØ ÁÖ¼¼¿ä</option>
+							<option value="">ì§€ì—­ì„ ë¨¼ì € ì„ íƒí•´ ì£¼ì„¸ìš”</option>
 						</select>
 					</p>
 					<p>
 						<label for="store_name">
-						<img src="../assets/img/forms/store_name.gif" alt="¸ÅÀå¸í°Ë»ö" /></label>
+						<img src="../assets/img/forms/store_name.gif" alt="ë§¤ì¥ëª…ê²€ìƒ‰" /></label>
 						<input type="text" id="store_name" name="store_name" style="width: 150px" onkeydown="CheckEnt()" />
 						<span class="btn_h23 gray">
-							<button type="button" id="btn_searchAdd" name="btn_searchAdd" onclick="fnSearchStrName();">°Ë»ö</button>
+							<button type="button" id="btn_searchAdd" name="btn_searchAdd" onclick="fnSearchStrName();">ê²€ìƒ‰</button>
 						</span>
 					</p>
 				</fieldset>
@@ -185,29 +185,29 @@
 		searchMap(".search_map");
 	</script>
 	--%>
-	<!-- ¸ÅÀå ¸®½ºÆ® -->
-	<h4 class="title"><img src="../assets/img/customer/listStore_title.gif" alt="¸ÅÀå¸®½ºÆ®" /></h4>
+	<!-- ë§¤ì¥ ë¦¬ìŠ¤íŠ¸ -->
+	<h4 class="title"><img src="../assets/img/customer/listStore_title.gif" alt="ë§¤ì¥ë¦¬ìŠ¤íŠ¸" /></h4>
 	<div id="store_list">
 		<ul class="store">
 			<c:forEach var="li" items="${list}" varStatus="status">
 				<li class="list">	
 					<p class="photo">
-					<img src="${li.imagepath}" alt="${li.storename}»çÁø" width="100px" height="75px"
+					<img src="${li.imagepath}" alt="${li.storename}ì‚¬ì§„" width="100px" height="75px"
 						onerror="this.src=&quot;/assets/img/customer/store_photo/str_img.jpg&quot;">
 					</p>
 					<ul class="info">
-						<li><span class="tit">¸ÅÀå¸í : </span><span>${li.storename}</span></li>
-						<li><span class="tit">ÀüÈ­¹øÈ£ : </span><span>${li.phone}</span></li>
-						<li><span class="tit">¸ÅÀåÁÖ¼Ò : </span><span>${li.address}</span></li>
-						<li><span class="tit">¿µ¾÷½Ã°£ : </span><span>${li.businesshours}</span></li>
-						<li><span class="tit">¸ÅÀåÅ¸ÀÔ : </span><span>${li.storetype}</span></li>
-						<li><span class="tit">ÁÖÂ÷¿©ºÎ : </span><span>${li.storeparking}</span></li>
+						<li><span class="tit">ë§¤ì¥ëª… : </span><span>${li.storename}</span></li>
+						<li><span class="tit">ì „í™”ë²ˆí˜¸ : </span><span>${li.phone}</span></li>
+						<li><span class="tit">ë§¤ì¥ì£¼ì†Œ : </span><span>${li.address}</span></li>
+						<li><span class="tit">ì˜ì—…ì‹œê°„ : </span><span>${li.businesshours}</span></li>
+						<li><span class="tit">ë§¤ì¥íƒ€ì… : </span><span>${li.storetype}</span></li>
+						<li><span class="tit">ì£¼ì°¨ì—¬ë¶€ : </span><span>${li.storeparking}</span></li>
 					</ul>
 					<p class="map">
 						<span class="btn_h23 green">
 							<button type="button" id="${li.storename}" name="${li.storename}" 
 							onclick="document.location.href='storeMapAction.action?storename=${li.storename}&phone=${li.phone}&address=${li.address}&businesshours=${li.businesshours}&storetype=${li.storetype}&storeparking=${li.storeparking}&imagepath=${li.imagepath}&latitude=${li.latitude}&longitude=${li.longitude}'">
-							Áöµµº¸±â</button>
+							ì§€ë„ë³´ê¸°</button>
 							<%-- 
 							<input type="hidden" id="StoreNm_X" name="StoreNm_X" value="127.026339">
 							<input type="hidden" id="StoreNm_Y" name="StoreNm_Y" value="37.501709">
@@ -221,21 +221,21 @@
 		
 		<%-- 
 		<p class="page">
-			<img src="../assets/img/btn/btn_first.gif" alt="Ã³À½ÆäÀÌÁö">
-			<img src="../assets/img/btn/btn_prev.gif" alt="ÀÌÀüÆäÀÌÁö">&nbsp;
+			<img src="../assets/img/btn/btn_first.gif" alt="ì²˜ìŒí˜ì´ì§€">
+			<img src="../assets/img/btn/btn_prev.gif" alt="ì´ì „í˜ì´ì§€">&nbsp;
 			<a href="JavaScript:;">1</a>&nbsp;
 			<a href="JavaScript:goSearchPage('2','1','name');" onfocus="this.blur()">2</a>&nbsp;
 			<a href="JavaScript:goSearchPage('3','1','name');" onfocus="this.blur()">3</a>&nbsp;
 			<a href="JavaScript:goSearchPage('4','2','name');" onfocus="this.blur()">
-			<img src="../assets/img/btn/btn_next.gif" alt="´ÙÀ½ÆäÀÌÁö"></a>
+			<img src="../assets/img/btn/btn_next.gif" alt="ë‹¤ìŒí˜ì´ì§€"></a>
 			<a href="JavaScript:goSearchPage('17','6','name');" onfocus="this.blur()">
-			<img src="../assets/img/btn/btn_last.gif" alt="¸¶Áö¸·ÆäÀÌÁö"></a>
+			<img src="../assets/img/btn/btn_last.gif" alt="ë§ˆì§€ë§‰í˜ì´ì§€"></a>
 		</p>
 		--%>
 	</div>
 </div>
 
-<!--20131212  ¾Ë·µ º¯°æ-->
+<!--20131212  ì•ŒëŸ¿ ë³€ê²½-->
 <div class="notice" id="notice_store"
 	style="display: none; width: 340px; height: auto; min-height: 140px; padding: 1px; position: absolute; top: 0; left: 0; z-index: 1000;">
 	<div class="header">
@@ -243,7 +243,7 @@
 			style="float: left; width: 6px; background: url(../assets/img/usa/modal_header_left.png) top left no-repeat;"></div>
 		<div class="center"
 			style="float: left; width: 328px; height: 40px; background: url(../assets/img/usa/modal_header_center.png) top center repeat-x;">
-			<h2>¾Ë¸²!!</h2>
+			<h2>ì•Œë¦¼!!</h2>
 		</div>
 		<div class="right"
 			style="float: right; width: 6px; height: 40px; background: url(../assets/img/usa/modal_header_right.png) top right no-repeat;"></div>
@@ -257,8 +257,8 @@
 		style="position: absolute; height: 32px; background: #fff;">
 		<div class="button" style="bottom: 20px;">
 			<button class="alertBtn gray" type="button"
-				onclick="del_pop2('#notice_store'); $('#store_name').focus();">È®
-				ÀÎ</button>
+				onclick="del_pop2('#notice_store'); $('#store_name').focus();">í™•
+				ì¸</button>
 		</div>
 		<div class="left"
 			style="float: left; width: 6px; height: 8px; background: url(../assets/img/usa/modal_footer_left.png) bottom left no-repeat;"></div>
@@ -273,9 +273,9 @@
 	var alertFrame = $("#notice_store");
 	$(document).ready(
 			function() {
-				//ÆäÀÌÁö ½ÃÀÛ ½Ã ·Îµù ÀÌ¹ÌÁö ¼û±â±â
+				//í˜ì´ì§€ ì‹œì‘ ì‹œ ë¡œë”© ì´ë¯¸ì§€ ìˆ¨ê¸°ê¸°
 				$('#viewLoading').hide();
-				$('#viewLoading') // ajax ½ÇÇà ¹× ¿Ï·á½Ã 'Loading ÀÌ¹ÌÁö'ÀÇ µ¿ÀÛ ÄÁÆ®·ÑÇÏ±â
+				$('#viewLoading') // ajax ì‹¤í–‰ ë° ì™„ë£Œì‹œ 'Loading ì´ë¯¸ì§€'ì˜ ë™ì‘ ì»¨íŠ¸ë¡¤í•˜ê¸°
 				.ajaxStart(function() {
 					$(this).fadeIn(500);
 				}).ajaxStop(function() {
@@ -289,9 +289,9 @@
 				var sigungu = $("#srch_sigungu").val();
 				var store = $("#srch_store").val();
 
-				//Áö¿ª, ¸ÅÀå ÄŞº¸¸®½ºÆ® »ı¼º
+				//ì§€ì—­, ë§¤ì¥ ì½¤ë³´ë¦¬ìŠ¤íŠ¸ ìƒì„±
 				$.getJSON("customer/combo_region_list.jsp", function(data) {
-					var str = "<option value=''>½Ã/µµ ¼±ÅÃ</option>";
+					var str = "<option value=''>ì‹œ/ë„ ì„ íƒ</option>";
 
 					for (var i = 0; i < data.store.length; i++) {
 						var sto = data.store[i];
@@ -301,9 +301,9 @@
 					}
 
 					$("#select_region").html(str);
-					$("#select_gu").html("<option value=''>±¸/±º¼±ÅÃ</option>");
+					$("#select_gu").html("<option value=''>êµ¬/êµ°ì„ íƒ</option>");
 					$("#select_store").html(
-							"<option vlaue=''>Áö¿ªÀ» ¸ÕÀú ¼±ÅÃÇØ ÁÖ¼¼¿ä</option>");
+							"<option vlaue=''>ì§€ì—­ì„ ë¨¼ì € ì„ íƒí•´ ì£¼ì„¸ìš”</option>");
 				});
 
 				if (actionFlag != "" && actionFlag != "null") {
@@ -312,12 +312,12 @@
 					if ($("#srch_word").val("") == "null") {
 						$("#srch_word").val("");
 					}
-					goSearchPage('1', '1', 'name'); // 20140305 ÃÊ±â ·Îµå½Ã ÀüÃ¼¸ÅÀå °Ë»ö
+					goSearchPage('1', '1', 'name'); // 20140305 ì´ˆê¸° ë¡œë“œì‹œ ì „ì²´ë§¤ì¥ ê²€ìƒ‰
 				}
 
 			});
 
-	//Áö¿ª ¼±ÅÃ½Ã ½Ã±º±¸¸®½ºÆ® »ı¼º
+	//ì§€ì—­ ì„ íƒì‹œ ì‹œêµ°êµ¬ë¦¬ìŠ¤íŠ¸ ìƒì„±
 	$("#select_region").change(
 			function() {
 				var region = $("#select_region option:selected").val();
@@ -339,13 +339,13 @@
 				$("#srch_word").val("");
 
 				$("#select_gu").val("");
-				$("#select_gu").html("<option value=''>±¸/±º¼±ÅÃ</option>");
+				$("#select_gu").html("<option value=''>êµ¬/êµ°ì„ íƒ</option>");
 				$("#select_store").html(
-						"<option value=''>Áö¿ªÀ» ¸ÕÀú ¼±ÅÃÇØ ÁÖ¼¼¿ä</option>");
+						"<option value=''>ì§€ì—­ì„ ë¨¼ì € ì„ íƒí•´ ì£¼ì„¸ìš”</option>");
 
 				$.getJSON("customer/combo_sigungu_list.jsp?addrSiCode="
 						+ region, function(data) {
-					var str = "<option value=''>±¸ ¶Ç´Â ±ºÀ» ¼±ÅÃÇÏ¼¼¿ä.</option>";
+					var str = "<option value=''>êµ¬ ë˜ëŠ” êµ°ì„ ì„ íƒí•˜ì„¸ìš”.</option>";
 
 					for (var i = 0; i < data.store.length; i++) {
 						var sto = data.store[i];
@@ -360,7 +360,7 @@
 
 			});
 
-	//½Ã±º±¸ ¼±ÅÃ½Ã Áö¿ªº° ¸ÅÀåÄŞº¸¸®½ºÆ®¿Í ¸ÅÀå¸®½ºÆ® »ı¼º
+	//ì‹œêµ°êµ¬ ì„ íƒì‹œ ì§€ì—­ë³„ ë§¤ì¥ì½¤ë³´ë¦¬ìŠ¤íŠ¸ì™€ ë§¤ì¥ë¦¬ìŠ¤íŠ¸ ìƒì„±
 	$("#select_gu").change(
 			function() {
 				var region = $("#select_region option:selected").val();
@@ -376,7 +376,7 @@
 
 				$.getJSON("customer/combo_detail_list.jsp?addrGuCode="
 						+ sigungu, function(data) {
-					var str = "<option value=''>¸ÅÀåÀ» ¼±ÅÃÇÏ¼¼¿ä.</option>";
+					var str = "<option value=''>ë§¤ì¥ì„ ì„ íƒí•˜ì„¸ìš”.</option>";
 
 					for (var i = 0; i < data.store.length; i++) {
 						var sto = data.store[i];
@@ -387,7 +387,7 @@
 					$("#select_store").html(str);
 				});
 
-				//½Ã,µµ ÀüÃ¼ °Ë»ö
+				//ì‹œ,ë„ ì „ì²´ ê²€ìƒ‰
 				if ($("#srch_sigungu").val() == "") {
 					goSearchPage('1', '1', 'map');
 				} else {
@@ -396,7 +396,7 @@
 
 			});
 
-	//¼±ÅÃÇÑ ¸ÅÀåÀÇ ¸ÅÀå¸®½ºÆ®
+	//ì„ íƒí•œ ë§¤ì¥ì˜ ë§¤ì¥ë¦¬ìŠ¤íŠ¸
 	$("#select_store").change(function() {
 		var region = $("#select_region option:selected").val();
 		var sigungu = $("#select_gu option:selected").val();
@@ -407,7 +407,7 @@
 		$("#srch_store").val(store);
 		$("#srch_word").val("");
 
-		//if( store == "¸ÅÀåÀ» ¼±ÅÃÇÏ¼¼¿ä." )
+		//if( store == "ë§¤ì¥ì„ ì„ íƒí•˜ì„¸ìš”." )
 		if (store == "") {
 			goSearchPage('1', '1', 'combo');
 		} else {
@@ -424,15 +424,15 @@
 
 		if ($store_name == "") {
 			alertFrame.find("#alertText p").remove();
-			alertFrame.find("#alertText").append("<p>°Ë»öÇÏ½Ç ¸ÅÀå¸íÀ» ÀÔ·ÂÇÏ¼¼¿ä.</p>");
+			alertFrame.find("#alertText").append("<p>ê²€ìƒ‰í•˜ì‹¤ ë§¤ì¥ëª…ì„ ì…ë ¥í•˜ì„¸ìš”.</p>");
 			popAlert(alertFrame);
 			alertFrame.find(".alertBtn").focus();
 			return;
 		}
-		//Áö¿ª, ¸ÅÀå ÄŞº¸¸®½ºÆ® ¸®¼Â
+		//ì§€ì—­, ë§¤ì¥ ì½¤ë³´ë¦¬ìŠ¤íŠ¸ ë¦¬ì…‹
 		$.getJSON("customer/combo_region_list.jsp",
 				function(data) {
-					var str = "<option value=''>½Ã/µµ ¼±ÅÃ</option>";
+					var str = "<option value=''>ì‹œ/ë„ ì„ íƒ</option>";
 
 					for (var i = 0; i < data.store.length; i++) {
 						var sto = data.store[i];
@@ -442,20 +442,20 @@
 					}
 
 					$("#select_region").html(str);
-					$("#select_gu").html("<option value=''>±¸/±º¼±ÅÃ</option>");
+					$("#select_gu").html("<option value=''>êµ¬/êµ°ì„ íƒ</option>");
 					$("#select_store").html(
-							"<option value=''>Áö¿ªÀ» ¸ÕÀú ¼±ÅÃÇØ ÁÖ¼¼¿ä</option>");
+							"<option value=''>ì§€ì—­ì„ ë¨¼ì € ì„ íƒí•´ ì£¼ì„¸ìš”</option>");
 				});
 		goSearchPage('1', '1', 'name');
 		$("input[id=store_name]").focus();
 	}
 
-	//Àü±¹Áöµµ¿¡¼­ ¼±ÅÃ½Ã
+	//ì „êµ­ì§€ë„ì—ì„œ ì„ íƒì‹œ
 	function search_Address_Map(region) {
-		//Áö¿ª, ¸ÅÀå ÄŞº¸¸®½ºÆ® »ı¼º
+		//ì§€ì—­, ë§¤ì¥ ì½¤ë³´ë¦¬ìŠ¤íŠ¸ ìƒì„±
 		$.getJSON("customer/combo_region_list.jsp",
 				function(data) {
-					var str = "<option value=''>½Ã/µµ ¼±ÅÃ</option>";
+					var str = "<option value=''>ì‹œ/ë„ ì„ íƒ</option>";
 
 					for (var i = 0; i < data.store.length; i++) {
 						var sto = data.store[i];
@@ -465,9 +465,9 @@
 					}
 
 					$("#select_region").html(str);
-					$("#select_gu").html("<option value=''>±¸/±º¼±ÅÃ</option>");
+					$("#select_gu").html("<option value=''>êµ¬/êµ°ì„ íƒ</option>");
 					$("#select_store").html(
-							"<option value=''>Áö¿ªÀ» ¸ÕÀú ¼±ÅÃÇØ ÁÖ¼¼¿ä</option>");
+							"<option value=''>ì§€ì—­ì„ ë¨¼ì € ì„ íƒí•´ ì£¼ì„¸ìš”</option>");
 				});
 
 		$("#srch_region").val(region);
@@ -478,7 +478,7 @@
 		goSearchPage('1', '1', 'map');
 	}
 
-	//Áö¿ªÀÌ³ª ¸ÅÀåµîÀ» ¼±ÅÃ½Ã ¸ÅÀå ¸®½ºÆ®¿¡ º¸¿©ÁÙ ¸ÅÀåµéÀ» °Ë»ö
+	//ì§€ì—­ì´ë‚˜ ë§¤ì¥ë“±ì„ ì„ íƒì‹œ ë§¤ì¥ ë¦¬ìŠ¤íŠ¸ì— ë³´ì—¬ì¤„ ë§¤ì¥ë“¤ì„ ê²€ìƒ‰
 	function goSearchPage(page, block, actionFlag) {
 		$("#inCurPage").val(page);
 		$("#inCurBlock").val(block);
@@ -519,9 +519,9 @@
 							if (data.detail.length == 0) {
 								alertFrame.find("#alertText p").remove();
 								alertFrame.find("#alertText").append(
-										"<p>°Ë»ö °á°ú°¡ ¾ø½À´Ï´Ù.</p>");
+										"<p>ê²€ìƒ‰ ê²°ê³¼ê°€ ì—†ìŠµë‹ˆë‹¤.</p>");
 								popAlert(alertFrame);
-								//alert("°Ë»ö¾î¸¦ ÀÔ·ÂÇÏ¼¼¿ä.");
+								//alert("ê²€ìƒ‰ì–´ë¥¼ ì…ë ¥í•˜ì„¸ìš”.");
 								alertFrame.find(".alertBtn").focus();
 							}
 							for (var i = 0; i < data.detail.length; i++) {
@@ -531,9 +531,9 @@
 
 								if (parkCnt == "" || parkCnt == null
 										|| parkCnt == "0") {
-									parkCnt = "ÁÖÂ÷ºÒ°¡";
+									parkCnt = "ì£¼ì°¨ë¶ˆê°€";
 								} else {
-									parkCnt = parkCnt + "´ë ÁÖÂ÷°¡´É";
+									parkCnt = parkCnt + "ëŒ€ ì£¼ì°¨ê°€ëŠ¥";
 								}
 
 								if (sto.phone.length == 9) {
@@ -561,20 +561,20 @@
 								}
 
 								str += "<li class='list'>";
-								/* 				str += "<p class='photo'><img src='assets/img/customer/store_photo/m_87.jpg' alt='" + sto.name + " »çÁø' width='100px'/></p>"; */
-								str += "<p class='photo'><img src='assets/img/customer/store_photo/str_" + sto.code + ".jpg' alt='" + sto.name + " »çÁø' width='100px' height='75px' onerror='this.src=\""+errorSrc+"\"'/></p>";
+								/* 				str += "<p class='photo'><img src='assets/img/customer/store_photo/m_87.jpg' alt='" + sto.name + " ì‚¬ì§„' width='100px'/></p>"; */
+								str += "<p class='photo'><img src='assets/img/customer/store_photo/str_" + sto.code + ".jpg' alt='" + sto.name + " ì‚¬ì§„' width='100px' height='75px' onerror='this.src=\""+errorSrc+"\"'/></p>";
 								str += "<ul class='info'>";
-								str += "<li><span class='tit'>¸ÅÀå¸í : </span><span>"
+								str += "<li><span class='tit'>ë§¤ì¥ëª… : </span><span>"
 										+ sto.name + "</span></li>";
-								str += "<li><span class='tit'>ÀüÈ­¹øÈ£ : </span><span>"
+								str += "<li><span class='tit'>ì „í™”ë²ˆí˜¸ : </span><span>"
 										+ sto.phone + "</span></li>";
-								str += "<li><span class='tit'>¸ÅÀåÁÖ¼Ò : </span><span>"
+								str += "<li><span class='tit'>ë§¤ì¥ì£¼ì†Œ : </span><span>"
 										+ sto.address + "</span></li>";
-								str += "<li><span class='tit'>¿µ¾÷½Ã°£ : </span><span>"
+								str += "<li><span class='tit'>ì˜ì—…ì‹œê°„ : </span><span>"
 										+ sto.time + "</span></li>";
-								str += "<li><span class='tit'>¸ÅÀåÅ¸ÀÔ : </span><span>"
+								str += "<li><span class='tit'>ë§¤ì¥íƒ€ì… : </span><span>"
 										+ sto.stype + "</span></li>";
-								str += "<li><span class='tit'>ÁÖÂ÷¿©ºÎ : </span><span>"
+								str += "<li><span class='tit'>ì£¼ì°¨ì—¬ë¶€ : </span><span>"
 										+ parkCnt + "</span></li>";
 								str += "</ul>";
 								str += "<p class='map'><span class='btn_h23 green'>";
@@ -582,7 +582,7 @@
 										+ sto.name
 										+ "' name='"
 										+ sto.name
-										+ "' onclick='goMap(this.id);'>Áöµµº¸±â</button>";
+										+ "' onclick='goMap(this.id);'>ì§€ë„ë³´ê¸°</button>";
 								str += "<input type='hidden' id='StoreNm_X' name='StoreNm_X' value='" + sto.xMap + "'>";
 								str += "<input type='hidden' id='StoreNm_Y' name='StoreNm_Y' value='" + sto.yMap + "'>";
 								str += "<input type='hidden' id='storeCode' name='storeCode' value='" + sto.code + "'></span></p>";
@@ -604,15 +604,15 @@
 
 							if (inTotalPageCount > 0) {
 								if (inCurBlock == 1) {
-									firstblock += "<img src='../assets/img/btn/btn_first.gif' alt='Ã³À½ÆäÀÌÁö' />";
+									firstblock += "<img src='../assets/img/btn/btn_first.gif' alt='ì²˜ìŒí˜ì´ì§€' />";
 								} else {
 									firstblock += '<a href=\"JavaScript:goSearchPage(\'1\',\'1\',\''
 											+ actionFlag
-											+ '\');\" onFocus=\"this.blur()\"><img src=\"../assets/img/btn/btn_first.gif\" alt=\"Ã³À½ÆäÀÌÁö\" /></a>';
+											+ '\');\" onFocus=\"this.blur()\"><img src=\"../assets/img/btn/btn_first.gif\" alt=\"ì²˜ìŒí˜ì´ì§€\" /></a>';
 								}
 
 								if (inPrevBlock == inCurBlock) {
-									prevblock += "<img src='../assets/img/btn/btn_prev.gif' alt='ÀÌÀüÆäÀÌÁö' />&nbsp;";
+									prevblock += "<img src='../assets/img/btn/btn_prev.gif' alt='ì´ì „í˜ì´ì§€' />&nbsp;";
 								} else {
 									prevblock += '<a href=\"JavaScript:goSearchPage(\''
 											+ inPrevPage
@@ -620,7 +620,7 @@
 											+ inPrevBlock
 											+ '\',\''
 											+ actionFlag
-											+ '\');\" onFocus=\"this.blur()\"><img src=\"../assets/img/btn/btn_prev.gif\" alt=\"ÀÌÀüÆäÀÌÁö\" /></a>&nbsp;';
+											+ '\');\" onFocus=\"this.blur()\"><img src=\"../assets/img/btn/btn_prev.gif\" alt=\"ì´ì „í˜ì´ì§€\" /></a>&nbsp;';
 								}
 
 								var nPageIndex = 0;
@@ -647,7 +647,7 @@
 								}
 
 								if (inNextBlock == inCurBlock) {
-									nextblock += "<img src='../assets/img/btn/btn_next.gif' alt='´ÙÀ½ÆäÀÌÁö' />";
+									nextblock += "<img src='../assets/img/btn/btn_next.gif' alt='ë‹¤ìŒí˜ì´ì§€' />";
 								} else {
 									nextblock += '<a href=\"JavaScript:goSearchPage(\''
 											+ inNextPage
@@ -655,11 +655,11 @@
 											+ inNextBlock
 											+ '\',\''
 											+ actionFlag
-											+ '\');\"  onFocus=\"this.blur()\"><img src=\"../assets/img/btn/btn_next.gif\" alt=\"´ÙÀ½ÆäÀÌÁö\" /></a>';
+											+ '\');\"  onFocus=\"this.blur()\"><img src=\"../assets/img/btn/btn_next.gif\" alt=\"ë‹¤ìŒí˜ì´ì§€\" /></a>';
 								}
 
 								if (inTotalPageBlockCount == inCurBlock) {
-									lastblock += "<img src='../assets/img/btn/btn_last.gif' alt='¸¶Áö¸·ÆäÀÌÁö' />";
+									lastblock += "<img src='../assets/img/btn/btn_last.gif' alt='ë§ˆì§€ë§‰í˜ì´ì§€' />";
 								} else {
 									lastblock += '<a href=\"JavaScript:goSearchPage(\''
 											+ inTotalPageCount
@@ -667,7 +667,7 @@
 											+ inTotalPageBlockCount
 											+ '\',\''
 											+ actionFlag
-											+ '\');\" onFocus=\"this.blur()\"><img src=\"../assets/img/btn/btn_last.gif\" alt=\"¸¶Áö¸·ÆäÀÌÁö\" /></a>';
+											+ '\');\" onFocus=\"this.blur()\"><img src=\"../assets/img/btn/btn_last.gif\" alt=\"ë§ˆì§€ë§‰í˜ì´ì§€\" /></a>';
 								}
 							}
 							$page_area.html(firstblock).append(prevblock)
@@ -676,7 +676,7 @@
 						});
 	}
 
-	//Áöµµº¸±â
+	//ì§€ë„ë³´ê¸°
 	function goMap(storeNm) {
 		var storeName = "#" + storeNm;
 		var x = $(storeName).siblings("input[id=StoreNm_X]").val();
@@ -691,14 +691,14 @@
 		var f = document.searchForm;
 
 		if (isSubmitted == false) {
-			//¿£ÅÍÅ° Æ÷Ä¿½º ¶§¹®¿¡ ÀÚµ¿ submit ¸·Àº ºÎºĞ ÀÏ½Ã ÇØÁ¦ 
+			//ì—”í„°í‚¤ í¬ì»¤ìŠ¤ ë•Œë¬¸ì— ìë™ submit ë§‰ì€ ë¶€ë¶„ ì¼ì‹œ í•´ì œ 
 			$("#searchForm").removeAttr("onsubmit");
 			isSubmitted = true;
 			$("#searchForm").submit();
 		} else {
 			return;
 		}
-		//¿£ÅÍÅ° °Ë»ö¹öÆ°¿¡ Àû¿ëÇØ¾ßÇÏ¹Ç·Î Áöµµ Á¤º¸¸¸ ³Ñ±â°í ´Ù½Ã ÀÚµ¿ submit ¸·À½ 
+		//ì—”í„°í‚¤ ê²€ìƒ‰ë²„íŠ¼ì— ì ìš©í•´ì•¼í•˜ë¯€ë¡œ ì§€ë„ ì •ë³´ë§Œ ë„˜ê¸°ê³  ë‹¤ì‹œ ìë™ submit ë§‰ìŒ 
 		$("#searchForm").attr("onsubmit", "return false");
 	}
 </script>

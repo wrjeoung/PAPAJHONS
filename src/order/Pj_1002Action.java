@@ -2,18 +2,23 @@ package order;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+
+import org.apache.struts2.interceptor.SessionAware;
 
 import com.ibatis.sqlmap.client.SqlMapClient;
 import com.opensymphony.xwork2.Action;
 
 import db.MenuDTO;
 
-public class Pj_1002Action implements Action, IbatisAware {
+public class Pj_1002Action implements Action, IbatisAware, SessionAware {
 
 	public static SqlMapClient sqlMapper;
 	private List<MenuDTO> list = new ArrayList<MenuDTO>();
 	private String menuId;
-	
+	private int _index;
+	Map sessionMap;
+
 	@Override
 	public String execute() throws Exception {
 		// TODO Auto-generated method stub
@@ -25,6 +30,10 @@ public class Pj_1002Action implements Action, IbatisAware {
 			System.out.println(((MenuDTO)a).getName());
 		}
 		
+		ArrayList<OrderDTO> lists = (ArrayList<OrderDTO>) sessionMap.get("cartlist");
+		_index = (lists != null) ? lists.size() + 1 : 1;
+		sessionMap.put("index", _index);
+		System.out.println("_index = "+_index);
 		return SUCCESS;
 	}
 	
@@ -48,5 +57,11 @@ public class Pj_1002Action implements Action, IbatisAware {
 	public void setIbatis(SqlMapClient sqlMapper) {
 		// TODO Auto-generated method stub
 		this.sqlMapper = sqlMapper;
+	}
+
+	@Override
+	public void setSession(Map arg0) {
+		// TODO Auto-generated method stub
+		sessionMap = arg0;
 	}
 }

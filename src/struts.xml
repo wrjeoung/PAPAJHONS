@@ -20,10 +20,21 @@
 		<action name="pj_1002Action" class="order.Pj_1002Action">
 			<interceptor-ref name="ibatis"/>
 			<interceptor-ref name="params"/>
+			<interceptor-ref name="servletConfig" />
 			<result>/order/pj_1002.jsp</result>
 		</action>
 		
+		<action name="pj_1003ActionAddItem" class="order.Pj_1003Action" method="addOrderItem">
+			<interceptor-ref name="ibatis"/>
+			<interceptor-ref name="params"/>
+			<interceptor-ref name="servletConfig" />
+			<result>/order/pj_1003.jsp</result>
+		</action>
+		
 		<action name="pj_1003Action" class="order.Pj_1003Action">
+			<interceptor-ref name="ibatis"/>
+			<interceptor-ref name="params"/>
+			<interceptor-ref name="servletConfig" />
 			<result>/order/pj_1003.jsp</result>
 		</action>
 	</package>
@@ -58,7 +69,7 @@
 		</action>
 	</package>
 	
-	<!-- 프로모션 -->
+	
 	
 	<!-- 커스토머 -->
 	<package name="customer" extends="struts-default">
@@ -66,7 +77,7 @@
 		<interceptor-ref name="params"/>
 			<result>/customer/customer.jsp</result>
 		</action>
-		<action name="CustomerAction2" class="customer.CustomerAction2">
+	<action name="CustomerAction2" class="customer.CustomerAction2">
 		<interceptor-ref name="params"/>
 			<result>/customer/customer2.jsp</result>
 		</action>
@@ -512,11 +523,20 @@
 		</action>
 	</package>
 	
+
+<<<<<<< .mine
 <!-- <<<<<<< .mine
 	
 =======
 
 >>>>>>> .theirs -->
+=======
+
+
+
+
+
+>>>>>>> .theirs
 	<!-- 맴버쉽카드 -->
 	<package name="memcard.board" extends="struts-default">
 	<!-- 글쓰기 -->

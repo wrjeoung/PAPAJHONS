@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>	
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -18,7 +19,7 @@
 <link type="text/css" rel="stylesheet" href="../assets/css/sub.css" />
 <link type="text/css" rel="stylesheet" href="../assets/css/order.css" />
 <link type="text/css" rel="stylesheet" href="../assets/css/lib_style.css" />
-
+<% request.setCharacterEncoding("euc-kr"); %>
 <style type="text/css">
 #con_container {
 	background: none;
@@ -223,27 +224,23 @@
 														}
 													});
 												</script>
-				
-												<li id="pizzaMenu_50332_1" class="item_li">
-													<span class="name product">${param._name}</span>
-													<span class="size">${param._size }</span>
-													<span class="count">${param._cnt_opt}</span>
-													<span class="unit_price">${param._price}</span>
-													
-													<!-- 할인 전 -->
-													<span class="discount"></span>
-													<!--  할인 금액 -->
-													<span class="disc_comm"></span>
-													<!-- 할인된 이유 예) 프로모션 할인 -->
-													<span class="hidden_code" style="display: none;">50332_1</span>
-													<input type="hidden" id="menuSmlCode" name="menuSmlCode" value="3002" /> 
-													<input type="hidden" id="menuCopCode" name="menuCopCode" value="" /> <!-- 20140624 쿠폰코드 -->
-													<input type="hidden" id="menuCopNumber" name="menuCopNumber" value="" />
-													<!-- 20140624 쿠폰번호 -->
-													<input type="hidden" id="menuCopComp" name="menuCopComp" value="" />
-													<input type="hidden" id="menuCopOID" name="menuCopOID" value="" />
-													<ul><li><span class="spc_inst"></span></li></ul>
-												</li>
+												<c:forEach var="li" items="${lists}">
+													<li id="pizzaMenu_50332_1" class="item_li"><span
+														class="name product">${li.name }</span> <span class="size">${li.size}</span>
+														<span class="count">${li.amount}</span> <span class="unit_price">${li.price}</span>
+														<!-- 할인 전 --> <span class="discount"></span>
+														<!--  할인 금액 --> <span class="disc_comm"></span> 
+														<!-- 할인된 이유 예) 프로모션 할인 -->
+														<span class="hidden_code" style="display: none;">50332_1</span>
+														<input type="hidden" id="menuSmlCode" name="menuSmlCode"
+														value="3002" /> <input type="hidden" id="menuCopCode"
+														name="menuCopCode" value="" /> <!-- 20140624 쿠폰코드 --> <input
+														type="hidden" id="menuCopNumber" name="menuCopNumber" value="" />
+														<!-- 20140624 쿠폰번호 --> <input type="hidden" id="menuCopComp"
+														name="menuCopComp" value="" /> <input type="hidden"
+														id="menuCopOID" name="menuCopOID" value="" />
+													</li>
+												</c:forEach>
 													<!-- pizzaMenu 리스트 끝 -->
 													<script type="text/javascript">
 														fnToppingAppend("50332_1", "1", "typePizza") ; 

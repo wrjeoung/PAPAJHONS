@@ -222,7 +222,7 @@
     	document.frmOrder._cnt_opt.value = document.getElementById("cnt_opt").value; 	// 수량
     	document.frmOrder._price.value = price; 										// 가격
     	document.frmOrder._consist.value = consist; 									// 구성요소
-    	document.frmOrder.action              = "pj_1003Action.action";
+    	document.frmOrder.action              = "pj_1003ActionAddItem.action";
     	document.frmOrder.target              = "_self";
     	alert("name : "+name+"\nprice : "+price+"\ncont_opt : "+document.getElementById("cnt_opt").value+"\nsize : "+document.frmOrder._size.value) ;
     	document.frmOrder.submit();
@@ -241,7 +241,7 @@
     	document.frmOrder._cnt_opt.value = document.getElementById("cnt_opt1").value; 	// 수량
     	document.frmOrder._price.value = price; 										// 가격
     	document.frmOrder._consist.value = consist; 									// 구성요소
-    	document.frmOrder.action              = "pj_1003Action.action";
+    	document.frmOrder.action              = "pj_1003ActionAddItem.action";
     	document.frmOrder.target              = "_self";
     	document.frmOrder.submit();
 	}
@@ -261,7 +261,7 @@
     	document.frmOrder._cnt_opt.value = "1"; 										// 수량
     	document.frmOrder._price.value = price; 										// 가격
     	document.frmOrder._consist.value = consist; 									// 구성요소
-    	document.frmOrder.action              = "pj_1003Action.action";
+    	document.frmOrder.action              = "pj_1003ActionAddItem.action";
     	document.frmOrder.target              = "_self";
     	alert("제품명 : " + document.frmOrder._name.value + "  사이즈 : " + size + " 수량 : " + document.frmOrder._cnt_opt.value + " 금액 : " + document.frmOrder._price.value );
     	
@@ -283,7 +283,7 @@
     	//document.frmOrder._cnt_opt.value = document.getElementById("cnt_opt_bever").value;	// 수량
     	document.frmOrder._price.value = price; 										// 가격
     	document.frmOrder._consist.value = consist; 									// 구성요소
-    	document.frmOrder.action              = "pj_1003Action.action";
+    	document.frmOrder.action              = "pj_1003ActionAddItem.action";
     	document.frmOrder.target              = "_self";
     	alert("name : "+name+"\nprice : "+price+"\nsize : "+size+"\ncnt_opt1 : "+document.frmOrder._cnt_opt.value ) ;
     	document.frmOrder.submit();
@@ -2851,14 +2851,13 @@
 	<input type="hidden" id="ecopMenuSaleAmt"     name="ecopMenuSaleAmt"     value="" />  <!-- E쿠폰메뉴판매금액          -->
 	<input type="hidden" id="ecopMenuSize"        name="ecopMenuSize"        value="" />  <!-- E쿠폰메뉴사이즈            -->	
 	<!-- 주문  -->
-	<input type="hidden" id="_menuid"         name="_menuid"          value="" />  <!-- 메뉴 id				-->
-	<input type="hidden" id="_imagepathorder" name="_imagepathorder"  value="" />  <!-- 온라인주문 메뉴 이미지 경로	-->
-	<input type="hidden" id="_name" name="_name"  value="" />  					   <!-- 제품명	-->
-	<input type="hidden" id="_size" name="_size"  value="" />  				       <!-- 사이즈	-->
-	<input type="hidden" id="_cnt_opt"        name="_cnt_opt"         value="" />  <!-- 수량					-->
-	<input type="hidden" id="_price"          name="_price"           value="" />  <!-- 금액					-->
-	<input type="hidden" id="_consist"        name="_consist"         value="" />  <!-- 메뉴 구성				-->
-	
+	<input type="hidden" id="_menuid"         name="_menuid"          value="" />  		 <!-- 메뉴 id				-->
+	<input type="hidden" id="_imagepathorder" name="_imagepathorder"  value="" />  		 <!-- 온라인주문 메뉴 이미지 경로	-->
+	<input type="hidden" id="_name" name="_name"  value="" />  					   	 	 <!-- 제품명	-->
+	<input type="hidden" id="_size" name="_size"  value="" />  				       	 	 <!-- 사이즈	-->
+	<input type="hidden" id="_cnt_opt"        name="_cnt_opt"         value="" />  		 <!-- 수량					-->
+	<input type="hidden" id="_price"          name="_price"           value="" />  		 <!-- 금액					-->
+	<input type="hidden" id="_consist"        name="_consist"         value="" />  		 <!-- 메뉴 구성				-->
 
 	<!-- 메뉴 -->
 	<!-- con_container -->
@@ -4061,7 +4060,12 @@
     	<div class="center" style="float:left; width:308px; height:8px; background:url(/assets/img/usa/modal_footer_center.png) bottom center repeat-x; "></div>
     	<div class="right" style="float:right; width:6px; height:8px; background:url(/assets/img/usa/modal_footer_right.png) bottom right no-repeat; "></div>
   	</div>
+  	
 </div>
+
+<script for=window event=onload>
+document.getElementById("i1").src = "pj_1002Action.action";
+</script>
 
 <script type="text/javascript">	   
 /*  /////////////////////////////////// 피자메뉴부분 Navi ///////////////////////////////////////////////////////// */
@@ -4130,4 +4134,6 @@
 		$actv_menu$ =$el;
 	}
 </script> 
+
+<iframe id=i1 src="" width="0px" height="0px" frameborder="1">아이프레임이지원되는 브라우저에서 확인할수있습니다.</iframe>
 

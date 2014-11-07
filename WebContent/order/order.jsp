@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -29,15 +29,15 @@
 <script type="text/javascript" src="../assets/js/common.min.js"></script>
 	
 <script type="text/javascript">
-	//20140702 ÄÜ¼Ö·Î±× ie ¿À·ù ¸·±â
+	//20140702 ì½˜ì†”ë¡œê·¸ ie ì˜¤ë¥˜ ë§‰ê¸°
 	var console = window.console || {log:function(){}};
 </script>
-<title>ÆÄÆÄÁ¸½º-Better Ingredients.Better Pizza.</title>
+<title>íŒŒíŒŒì¡´ìŠ¤-Better Ingredients.Better Pizza.</title>
 </head>
 
 <body>
 	<div id="skipNavi">
-		<a href="#gnb">¸Þ´º ¹Ù·Î°¡±â</a> <a href="#contents">º»¹®¹Ù·Î°¡±â</a> 
+		<a href="#gnb">ë©”ë‰´ ë°”ë¡œê°€ê¸°</a> <a href="#contents">ë³¸ë¬¸ë°”ë¡œê°€ê¸°</a> 
 	</div>
 	
 	<!-- wrap -->	
@@ -52,14 +52,14 @@
   		<div id="container">    
     		<!-- con_header -->
     		<div class="con_header">
-      			<p><!-- Å¸ÀÌÆ² --></p>
+      			<p><!-- íƒ€ì´í‹€ --></p>
     		</div>
     		<!-- //con_header -->
 
   			<!-- include -->
   			<div id="content_area">
   			
-  				<!-- ÆäÀÌÁö ·Îµù ½Ã ÀÌÀüÈ­¸é »óÅÂ¿¡¼­ ºÒ·¯¿À±â Å×½ºÆ® -->
+  				<!-- íŽ˜ì´ì§€ ë¡œë”© ì‹œ ì´ì „í™”ë©´ ìƒíƒœì—ì„œ ë¶ˆëŸ¬ì˜¤ê¸° í…ŒìŠ¤íŠ¸ -->
   				<div class="testView" style="width:inherit; height:380px; background: #fff;"></div>
   				
   				<script type="text/javascript"> $("#content_area").load('pj_1002Action.action?menuId=${menuId}&pizzaSelIdx=${param.pizzaSelIdx}'); </script>
@@ -77,11 +77,11 @@
 	</div>
 	<!-- //wrap -->	
 
-	<!-- ·Îµù ÀÌ¹ÌÁö -->
+	<!-- ë¡œë”© ì´ë¯¸ì§€ -->
 	<div id="viewLoading">
 		<img src="../assets/img/viewLoading.gif" />
 		<p> Please wait...</p>
 	</div> 
-	<!-- //·Îµù ÀÌ¹ÌÁö -->
+	<!-- //ë¡œë”© ì´ë¯¸ì§€ -->
 </body>
 </html>
