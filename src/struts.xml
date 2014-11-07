@@ -59,13 +59,18 @@
 	</package>
 	
 	<!-- 프로모션 -->
-	<package name="promotion" extends="struts-default">
-		<action name="PromotionAction" class="promotion.PromotionAction">
+	
+	<!-- 커스토머 -->
+	<package name="customer" extends="struts-default">
+		<action name="CustomerAction" class="customer.CustomerAction">
 		<interceptor-ref name="params"/>
-			<result>/promotion/promotion.jsp</result>
+			<result>/customer/customer.jsp</result>
+		</action>
+		<action name="CustomerAction2" class="customer.CustomerAction2">
+		<interceptor-ref name="params"/>
+			<result>/customer/customer2.jsp</result>
 		</action>
 	</package>
-	
 	
 	<package name="main" extends="struts-default">
 		<action name="mainAction" class="main.MainAction">
@@ -507,11 +512,11 @@
 		</action>
 	</package>
 	
-<<<<<<< .mine
+<!-- <<<<<<< .mine
 	
 =======
 
->>>>>>> .theirs
+>>>>>>> .theirs -->
 	<!-- 맴버쉽카드 -->
 	<package name="memcard.board" extends="struts-default">
 	<!-- 글쓰기 -->

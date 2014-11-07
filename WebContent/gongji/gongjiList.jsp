@@ -8,7 +8,6 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>공지사항</title>
-
 </head>
 <body>
 <center><b>공지사항</b>

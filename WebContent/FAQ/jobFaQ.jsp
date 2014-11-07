@@ -43,9 +43,9 @@ $(document).ready(function(){
 	<div>
 		<ul>
 			<li class="q">
-			<a><font size="6">Q:</font>${vo.qcontent }</a>
+			<a><img src="../boardimg/q.PNG">${vo.qcontent }</a>
 			<ul class="a">
-				<li><font size="6">A:</font>${vo.acontent }</li>
+				<li><img src="../boardimg/a.PNG">${vo.acontent }</li>
 			</ul>
 			</li>
 		</ul>

@@ -39,7 +39,6 @@ public class getlistAction extends ActionSupport{
 		if ("subject".equals(searchCondition)) {
 			System.out.println("----------------2");
 			list=sqlMapper.queryForList("gongji.subjectList", getSubject());
-			
 		} else if("content".equals(searchCondition)) {
 			list=sqlMapper.queryForList("gongji.contentList", getContent());
 		}

@@ -18,9 +18,9 @@
 	<tr height="500" align="center">
 		
 		<td align="left" width="100"><pre>${vo.content }</pre>
-		
+		<c:if test="${file_savname != '' }">
 		<img src="../save/${file_savname }">
-		
+		</c:if>
 		</td>
 		
 	</tr>

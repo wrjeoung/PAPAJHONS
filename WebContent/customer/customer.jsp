@@ -1,13 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<!-- <html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>ìŠ¤í˜ì…œ í• ì¸ ì´ë²¤íŠ¸</title>
-</head>
-<body> -->
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -21,14 +15,14 @@
 	<link type="text/css" rel="stylesheet" href="../assets/css/import.css" />
 	<link type="text/css" rel="stylesheet" href="../assets/css/sub.css" />
 	<link type="text/css" rel="stylesheet" href="../assets/css/lib_style.css" />
-	<!-- 0404 ì¶”ê°€ë¶€ë¶„(ë‹¬ë ¥ì¿¼ë¦¬ ìŠ¤íƒ€ì¼) ì‹œì‘ -->
+	<!-- 0404 Ãß°¡ºÎºĞ(´Ş·ÂÄõ¸® ½ºÅ¸ÀÏ) ½ÃÀÛ -->
 	<link type="text/css" rel="stylesheet" href="../assets/css/ui.all.css" />
-	<!-- 0404 ì¶”ê°€ë¶€ë¶„(ë‹¬ë ¥ì¿¼ë¦¬ ìŠ¤íƒ€ì¼)ë-->
-	<title>íŒŒíŒŒì¡´ìŠ¤-Better Ingredients.Better Pizza.</title>
+	<!-- 0404 Ãß°¡ºÎºĞ(´Ş·ÂÄõ¸® ½ºÅ¸ÀÏ)³¡-->
+	<title>ÆÄÆÄÁ¸½º-Better Ingredients.Better Pizza.</title>
 
 
 <style type="text/css">
-/* ë©”ë‰´í™”ë©´ ê³µí†µíŒì—… ìŠ¤íƒ€ì¼ ìˆ˜ì • 20131128*/
+/* ¸Ş´ºÈ­¸é °øÅëÆË¾÷ ½ºÅ¸ÀÏ ¼öÁ¤ 20131128*/
 #notice_caution{display:none; width:340px; height:auto; min-height:140px; padding:1px; position:absolute; top:0; left:0; z-index:1000;}
 #notice_caution .header .left{float:left; width:6px; background:url(../assets/img/usa/modal_header_left.png) top left no-repeat;}
 #notice_caution .header .center{float:left; width:328px; height:40px; background:url(../assets/img/usa/modal_header_center.png) top center repeat-x; }
@@ -48,7 +42,7 @@
 	$(document).ready(function()
 	{	
  		$('#viewLoading').fadeOut();
- 		$('#viewLoading')	// ajax ì‹¤í–‰ ë° ì™„ë£Œì‹œ 'Loading ì´ë¯¸ì§€'ì˜ ë™ì‘ ì»¨íŠ¸ë¡¤í•˜ê¸°
+ 		$('#viewLoading')	// ajax ½ÇÇà ¹× ¿Ï·á½Ã 'Loading ÀÌ¹ÌÁö'ÀÇ µ¿ÀÛ ÄÁÆ®·ÑÇÏ±â
 		.ajaxStart(function()
 		{  
 			$(this).fadeIn(500);
@@ -58,7 +52,7 @@
 			$(this).fadeOut(500);
 		});
 
- 		//20140527 ì—´ë ¤ìˆëŠ” í™”ë©´ ì‚¬ì´ì¦ˆì— ë”°ë¼ ì‘ëª¨ íŒì—… ìœ„ì¹˜ ë³€ê²½
+ 		//20140527 ¿­·ÁÀÖ´Â È­¸é »çÀÌÁî¿¡ µû¶ó ÀÀ¸ğ ÆË¾÷ À§Ä¡ º¯°æ
 // 		var $ev_page = $("#worldCupEvent");
 // 		var top = ($(window).height()/2)-($ev_page.height()/2);
 // 		$ev_page.css("top",top+"px");
@@ -67,7 +61,7 @@
 </head>
 
 <body>
-	<div id="skipNavi"><a href="#gnb">ë©”ë‰´ ë°”ë¡œê°€ê¸°</a> <a href="#contents">ë³¸ë¬¸ë°”ë¡œê°€ê¸°</a></div>
+	<div id="skipNavi"><a href="#gnb">¸Ş´º ¹Ù·Î°¡±â</a> <a href="#contents">º»¹®¹Ù·Î°¡±â</a></div>
 	
   	<!-- wrap -->
 	<div id="wrap">
@@ -83,7 +77,7 @@
     
     		<!-- con_header -->
     		<div class="con_header">
-    			<p >Papa John's PROMOTION<span><img src="../assets/img/sub/conHeader_text_phone.gif" alt="ì˜¨ë¼ì¸ì£¼ë¬¸ê´€ë ¨ ìƒë‹´ë²ˆí˜¸"></span></p>
+    			<p >Papa John's CUSTOMER<span><img src="../assets/img/sub/conHeader_text_phone.gif" alt="¿Â¶óÀÎÁÖ¹®°ü·Ã »ó´ã¹øÈ£"></span></p>
     		</div>
     		<!--// con_header -->
 			<!-- con_container -->  
@@ -91,15 +85,13 @@
     		
       			<!-- snb -->
     			<div class="snb">
-    				<!--  1ë©”ë‰´ ì„œë¸Œ : menuGd=menu -->
-			  		<h2><img alt="í”„ë¡œëª¨ì…˜" src="../assets/img/pro/snb_title_3.gif"></h2>
+    				<!--  1¸Ş´º ¼­ºê : menuGd=menu -->
+			  		<h2><img alt="°í°´¼¾ÅÍ" src="../assets/img/cus/snb_title_5.gif"></h2>
 			  		<dl class="sub" id="snb1">
-			    		<!--  <dt class="dep1 pj_2001"><a href="/sub.jsp?menuGb=menu&menuId=pj_2001"><img src="../assets/img/sub/sub_2_1.gif" alt="ì´ ë‹¬ì˜ í”„ë¡œëª¨ì…˜"></a></dt> -->
-			    		<dt><a href="listAction2.action"><img src="../assets/img/pro/sub_3_1_over.gif" alt="ì§„í–‰ì¤‘ì¸ ì´ë²¤íŠ¸"></a></dt>
-			    		<dt><a href="pastlistAction.action"><img src="../assets/img/pro/sub_3_2_over.gif" alt="ì§€ë‚œ ì´ë²¤íŠ¸"></a></dt>
-			    		<dt><a href="storelistAction.action"><img src="../assets/img/pro/sub_3_3_over.gif" alt="ë§¤ì¥ë³„ ì´ë²¤íŠ¸"></a></dt>
-			    		<dt><a href="speciallistAction.action"><img src="../assets/img/pro/sub_3_4_over.gif" alt="ìŠ¤í˜ì…œ í• ì¸ ì´ë²¤íŠ¸"></a>
-			    		<!--  <dt class="dep1 pj_2014"><a href="subAction.action?menuId=pj_2014"><img src="../assets/img/sub/sub_2_14.gif" alt="ì†ŒìŠ¤&í”¼í´"></a></dt>-->
+			    		<!--  <dt class="dep1 pj_2001"><a href="/sub.jsp?menuGb=menu&menuId=pj_2001"><img src="../assets/img/sub/sub_2_1.gif" alt="ÀÌ ´ŞÀÇ ÇÁ·Î¸ğ¼Ç"></a></dt> -->
+			    		<dt><a href="CustomerAction.action"><img src="../assets/img/cus/sub_5_1_over.gif" alt="°øÁö»çÇ×"></a></dt>
+			    		<dt><a href="CustomerAction2.action"><img src="../assets/img/cus/sub_5_2_over.gif" alt="Q&A"></a></dt>
+			    		<!--  <dt class="dep1 pj_2014"><a href="subAction.action?menuId=pj_2014"><img src="../assets/img/sub/sub_2_14.gif" alt="¼Ò½º&ÇÇÅ¬"></a></dt>-->
 			  		</dl>
     				<%-- 
      				<script type="text/javascript">	$("#con_container .snb").load("../include/snb.jsp?menuGb=menu&menuId=pj_2003&tab=null"); </script>
@@ -110,52 +102,38 @@
 				<!-- contents -->
   				<div id="contents">
       				<div class="top_title">
-      					<c:if test="${menuId == 'pj_2001'}"><h2>ì´ë‹¬ì˜í”„ë¡œëª¨ì…˜</h2>	</c:if>
-      					<c:if test="${menuId == 'pj_2002'}"><h2>ë² ìŠ¤íŠ¸ë©”ë‰´</h2>	</c:if>
-      					<c:if test="${menuId == 'pj_2003'}"><h2>ì˜¤ë¦¬ì§€ë„</h2></c:if>
-      					<c:if test="${menuId == 'pj_2004'}"><h2>ê³¨ë“œë§</h2></c:if>
-      					<c:if test="${menuId == 'pj_2005'}"><h2>ì¹˜ì¦ˆë¡¤í¬ëŸ¬ìŠ¤íŠ¸</h2></c:if>
-      					<c:if test="${menuId == 'pj_2006'}"><h2>ì”¬</h2></c:if>
-      					<c:if test="${menuId == 'pj_2008'}"><h2>ê³¨ë“œë§ì”¬</h2></c:if>
-      					<c:if test="${menuId == 'pj_2001'}"><h2>ìŒë£Œ</h2>	</c:if>
-      					<c:if test="${menuId == 'pj_2009'}"><h2>í•˜íŠ¸ì”¬</h2></c:if>
-      					<c:if test="${menuId == 'pj_2010'}"><h2>íŒŒíŒŒë¥¼ë˜í„°</h2>	</c:if>
-      					<c:if test="${menuId == 'pj_2011'}"><h2>ì„¸íŠ¸ë©”ë‰´</h2></c:if>
-      					<c:if test="${menuId == 'pj_2012'}"><h2>ì‚¬ì´ë“œ</h2></c:if>
-      					<c:if test="${menuId == 'pj_2013'}"><h2>ìŒë£Œ</h2></c:if>
-      					<c:if test="${menuId == 'pj_2014'}"><h2>ì†ŒìŠ¤&í”¼í´</h2></c:if>
+      					<c:if test="${menuId == 'pj_2001'}"><h2>ÀÌ´ŞÀÇÇÁ·Î¸ğ¼Ç</h2>	</c:if>
+      					<c:if test="${menuId == 'pj_2002'}"><h2>º£½ºÆ®¸Ş´º</h2>	</c:if>
+      					<c:if test="${menuId == 'pj_2003'}"><h2>¿À¸®Áö³Î</h2></c:if>
+      					<c:if test="${menuId == 'pj_2004'}"><h2>°ñµå¸µ</h2></c:if>
+      					<c:if test="${menuId == 'pj_2005'}"><h2>Ä¡Áî·ÑÅ©·¯½ºÆ®</h2></c:if>
+      					<c:if test="${menuId == 'pj_2006'}"><h2>¾À</h2></c:if>
+      					<c:if test="${menuId == 'pj_2008'}"><h2>°ñµå¸µ¾À</h2></c:if>
+      					<c:if test="${menuId == 'pj_2001'}"><h2>À½·á</h2>	</c:if>
+      					<c:if test="${menuId == 'pj_2009'}"><h2>ÇÏÆ®¾À</h2></c:if>
+      					<c:if test="${menuId == 'pj_2010'}"><h2>ÆÄÆÄ¸¦·¡ÅÍ</h2>	</c:if>
+      					<c:if test="${menuId == 'pj_2011'}"><h2>¼¼Æ®¸Ş´º</h2></c:if>
+      					<c:if test="${menuId == 'pj_2012'}"><h2>»çÀÌµå</h2></c:if>
+      					<c:if test="${menuId == 'pj_2013'}"><h2>À½·á</h2></c:if>
+      					<c:if test="${menuId == 'pj_2014'}"><h2>¼Ò½º&ÇÇÅ¬</h2></c:if>
       					
-      					<!-- 20140319  í˜ì´ìŠ¤ë¶ ì¢‹ì•„ìš” ë²„íŠ¼ ì¶”ê°€ 
+      					<!-- 20140319  ÆäÀÌ½ººÏ ÁÁ¾Æ¿ä ¹öÆ° Ãß°¡ 
 						<div class="fb-like" data-href="https://www.facebook.com/papajohnskorea" data-layout="standard" data-action="like" data-show-faces="false" data-share="false"></div>
-						 ì¢‹ì•„ìš” ë²„íŠ¼ ë -->
+						 ÁÁ¾Æ¿ä ¹öÆ° ³¡ -->
 						
-						<!-- 20140627 ì´ë²¤íŠ¸ ë²„íŠ¼ ìˆ¨ê¹€(í•œêµ­ ê²½ê¸° ì¢…ë£Œ -->
+						<!-- 20140627 ÀÌº¥Æ® ¹öÆ° ¼û±è(ÇÑ±¹ °æ±â Á¾·á -->
 <!-- 						<div id="myEventBtn" style="display: none;"> -->
-<!-- 							<button class="listBtn_blank red"  type="button" onclick="$('#worldCupEvent').show();">ì´ë²¤íŠ¸ ì‘ëª¨ í™•ì¸</button> -->
+<!-- 							<button class="listBtn_blank red"  type="button" onclick="$('#worldCupEvent').show();">ÀÌº¥Æ® ÀÀ¸ğ È®ÀÎ</button> -->
 <!-- 						</div> -->
 						
 					</div>
       				<!-- cont -->
         			<div class="cont" style="text-align:center">
-<center><b>ìŠ¤í˜ì…œ í• ì¸ ì´ë²¤íŠ¸</b>
-<br/>
-<c:forEach var="vo" items="${list }">
-	<tr height="600">
-		<td width="600">
-			<img src="../save5/${vo.file_savname }"></a><br/>
-			<input type="button" value="ê¸€ìˆ˜ì •" onclick="document.location.href='specialmodifyForm.action?num=${vo.num}&file_savname=${file_savname}'">
-			<input type="button" value="ê¸€ì‚­ì œ" onclick="document.location.href='specialdeleteAction.action?num=${vo.num}'">
-			<br/>
-		</td>
-	</tr>
-	
-</c:forEach>
-<!-- </body> -->
-<p>* ê° í”„ë¡œëª¨ì…˜ì€ ìƒí™©ì— ë”°ë¼ ë³€ê²½ë  ìˆ˜ ìˆìŠµë‹ˆë‹¤.</p>
-<td align="center">
-<input type="button" value="ê¸€ì“°ê¸°" onclick="document.location.href='specialwriteForm.action?currentPage=${currentPage}'">
-</center>
-</div>
+       					<!-- include -->
+       						<script type="text/javascript">
+       						$("#contents .cont").load('listAction.action'); 
+       						</script>
+	      			</div>
       				<!--// cont -->
 				</div>
 				<!--// contents -->
@@ -168,12 +146,11 @@
   
     	<!-- footer -->
   		<div id="footer">
-  			<script type="text/javascript"> $("#footer").load("../include/foot.jsp");
-  			</script>
+  			<script type="text/javascript"> $("#footer").load("../include/foot.jsp"); </script>
   		</div> 
   		<!--// footer --> 
 
-		<!-- 20140520 ì›”ë“œì»µ ì´ë²¤íŠ¸ ë§ˆì´í˜ì´ì§€ í™”ë©´ -->
+		<!-- 20140520 ¿ùµåÄÅ ÀÌº¥Æ® ¸¶ÀÌÆäÀÌÁö È­¸é -->
 <!-- 		<div id="worldCupEvent" style="display: none;"> -->
 <!-- 			<script type="text/javascript">	$("#worldCupEvent").load("include/ev_worldcup.jsp?page=mypage"); </script> -->
 <!-- 		</div> -->
@@ -182,13 +159,13 @@
 	<!--// wrap -->
 
   		
-	<!-- ë¡œë”© ì´ë¯¸ì§€ -->
+	<!-- ·Îµù ÀÌ¹ÌÁö -->
 	<div id="viewLoading">
 		<img src="../assets/img/viewLoading.gif" /> 
  		<p>Loading....</p> 
 	</div>
 
-	<!-- í˜ì´ìŠ¤ë¶ ì¢‹ì•„ìš” ë²„íŠ¼ ìŠ¤í¬ë¦½íŠ¸ start-->
+	<!-- ÆäÀÌ½ººÏ ÁÁ¾Æ¿ä ¹öÆ° ½ºÅ©¸³Æ® start-->
 	<div id="fb-root"></div>
 	<script>(function(d, s, id) {
 	  var js, fjs = d.getElementsByTagName(s)[0];
@@ -197,6 +174,6 @@
 	  js.src = "//connect.facebook.net/ko_KR/all.js#xfbml=1";
 	  fjs.parentNode.insertBefore(js, fjs);
 	}(document, 'script', 'facebook-jssdk'));</script>
-	<!-- í˜ì´ìŠ¤ë¶ ì¢‹ì•„ìš” ë²„íŠ¼ ìŠ¤í¬ë¦½íŠ¸ end-->
+	<!-- ÆäÀÌ½ººÏ ÁÁ¾Æ¿ä ¹öÆ° ½ºÅ©¸³Æ® end-->
 </body>
 </html>
