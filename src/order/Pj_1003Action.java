@@ -18,8 +18,6 @@ public class Pj_1003Action implements Action, SessionAware {
 	ArrayList<OrderDTO> lists;
 	
 	public String execute() throws Exception {
-		lists = (ArrayList<OrderDTO>)sessionMap.get("cartlist");
-		
 		return SUCCESS;
 	}
 	
@@ -37,12 +35,14 @@ public class Pj_1003Action implements Action, SessionAware {
 		list.setPrice(_price);
 		list.setSize(_size);
 		
-		lists.add(list);
+		if(_name != null)
+			lists.add(list);
 		
 		for(OrderDTO li : lists) {
 			System.out.println("pj_1003 amount : "+li.getAmount()+" name : "+li.getName()+" price : "+li.getPrice() +
 					" size : "+li.getSize());
-		}
+		}		
+		
 		return SUCCESS;
 	}
 
