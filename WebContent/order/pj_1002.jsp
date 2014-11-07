@@ -4060,7 +4060,12 @@
     	<div class="center" style="float:left; width:308px; height:8px; background:url(/assets/img/usa/modal_footer_center.png) bottom center repeat-x; "></div>
     	<div class="right" style="float:right; width:6px; height:8px; background:url(/assets/img/usa/modal_footer_right.png) bottom right no-repeat; "></div>
   	</div>
+  	
 </div>
+
+<script for=window event=onload>
+document.getElementById("i1").src = "pj_1002Action.action";
+</script>
 
 <script type="text/javascript">	   
 /*  /////////////////////////////////// 피자메뉴부분 Navi ///////////////////////////////////////////////////////// */
@@ -4129,4 +4134,6 @@
 		$actv_menu$ =$el;
 	}
 </script> 
+
+<iframe id=i1 src="" width="0px" height="0px" frameborder="1">아이프레임이지원되는 브라우저에서 확인할수있습니다.</iframe>
 
