@@ -1,38 +1,43 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>  
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>ÁøÇàÁßÀÎ ÀÌº¥Æ®</title>
+<title>ì§„í–‰ì¤‘ì¸ ì´ë²¤íŠ¸</title>
 </head>
 <body>
-<center><b>ÁøÇàÁßÀÎ ÀÌº¥Æ®</b>
-<br/>
+<center><img src="../boardimg/evname.PNG">
 <c:if test="${totalCount==0 }">
-<table width="1000" border="1" cellpadding="0" cellspacing="0">
+<table width="600" border="1" cellpadding="0" cellspacing="0">
 	<tr>
 		<td align="center">
-		°Ô½ÃÆÇ¿¡ ÀúÀåµÈ ±ÛÀÌ ¾ø½À´Ï´Ù.
+		ê²Œì‹œíŒì— ì €ìž¥ëœ ê¸€ì´ ì—†ìŠµë‹ˆë‹¤.
 		</td>
 	</tr>
 </table>
 </c:if>
-
 <c:if test="${totalCount>0 }">
+<table border="2" width="650" cellpadding="1" cellspacing="1" align="center">
 	<c:forEach var="vo" items="${list }">
-		<tr height="250">
-			<td width="250">
+		<tr height="80">
+			<td width="100" align="center">
 				<a href="viewAction2.action?num=${vo.num }&currentPage=${currentPage}&file_savname=${vo.file_savname}"><img src="../save2/${vo.file_savname }"></a>
-				ÀÌº¥Æ® : ${vo.subject }<br/>
-				±â°£ : ${vo.day }
+				<%-- ì´ë²¤íŠ¸ : ${vo.subject }<br/>
+				ê¸°ê°„ : ${vo.day } --%>
+			</td>
+		
+			<td width="450" align="left" >
+				&nbsp;&nbsp;<img src="../boardimg/ev.PNG"> ${vo.subject }<br/><br/>
+				&nbsp;&nbsp;<img src="../boardimg/day.PNG"> ${vo.day }
 			</td>
 		</tr>
 		<br/>
 	</c:forEach>
+	</table>
 </c:if>
 </body>
-<input type="button" value="±Û¾²±â" onclick="document.location.href='writeForm2.action?currentPage=${currentPage}'">
+<input type="button" value="ê¸€ì“°ê¸°" onclick="document.location.href='writeForm2.action?currentPage=${currentPage}'">
 </html>

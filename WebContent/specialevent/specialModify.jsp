@@ -1,13 +1,13 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>½ºÆä¼È ÇÒÀÎ ÀÌº¥Æ®</title>
+<title>ìŠ¤íŽ˜ì…œ í• ì¸ ì´ë²¤íŠ¸</title>
 </head>
 <body>
-<center><b>½ºÆä¼È ÇÒÀÎ ÀÌº¥Æ®</b>
+<center><b>ìŠ¤íŽ˜ì…œ í• ì¸ ì´ë²¤íŠ¸</b>
 <br/>
 <form method="post" name="specialModify" action="specialmodifyAction.action" enctype="multipart/form-data" onsubmit="return validation();">
 	<input type="hidden" name="num" value="${num }">
@@ -15,14 +15,14 @@
 	
 	<table width="600" border="1" cellspacing="0" cellpadding="0" align="center">
 		<tr>
-			<td width="70" align="center">Ã·ºÎÆÄÀÏ</td>
+			<td width="70" align="center">ì²¨ë¶€íŒŒì¼</td>
 			<td width="530">
 				<input type="file" name="upload"/>
 			</td>
 		</tr>
 		<tr>
 			<td colspan="2" align="right">
-				<input type="submit" value="±Û¼öÁ¤">
+				<input type="submit" value="ê¸€ìˆ˜ì •">
 			</td>
 		</tr>
 	</table>

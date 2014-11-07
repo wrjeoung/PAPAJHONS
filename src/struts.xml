@@ -280,7 +280,30 @@
 		    <interceptor-ref name="params"></interceptor-ref>
 		    <interceptor-ref name="servletConfig"/>				
 			<result>/mypage/pj_7003.jsp</result>
-		</action>		
+		</action>
+		
+		<action name="modifyProAction" class="papa.member.ModifyAction"> 
+		    <interceptor-ref name="prepare" />
+		    <interceptor-ref name="modelDriven" />		
+		    <interceptor-ref name="ibatis"></interceptor-ref>
+		    <interceptor-ref name="params"></interceptor-ref>
+		    <interceptor-ref name="servletConfig"/>				
+			<result>/mypage/modifyPro.jsp</result>
+		</action>
+
+		<action name="userOutAction" class="papa.member.ModifyAction" method="userOut"> 
+		    <interceptor-ref name="ibatis"></interceptor-ref>
+		    <interceptor-ref name="params"></interceptor-ref>
+		    <interceptor-ref name="servletConfig"/>			
+			<result>/mypage/userOutPro.jsp</result>
+		</action>					
+		
+		<action name="changePasswdProAction" class="papa.member.ModifyAction" method="changePasswdPro">
+		    <interceptor-ref name="ibatis"></interceptor-ref>
+		    <interceptor-ref name="params"></interceptor-ref>
+		    <interceptor-ref name="servletConfig"/>
+			<result>/mypage/changePasswdPro.jsp</result>
+		</action>				
 					
 		<action name="mypageAction" class="papa.member.MemberAction" method="form" >
 			<result>/mypage/main.jsp</result>
@@ -454,52 +477,16 @@
 	
 	<package name="qna.board" extends="struts-default">
 		<!-- 글쓰기 -->
-		<!-- <action name="qnawriteForm" class="qna.board.writeAction" method="form">
+		<action name="qnawriteForm" class="qna.board.writeAction" method="form">
 			<result>/QnA/qnaWrite.jsp</result>
 		</action>
 		<action name="qnawriteAction" class="qna.board.writeAction">
 			<result type="redirectAction">
-			<param name="actionName">qnawriteForm</param>
+			<param name="actionName">qnalistAction</param>
 			</result>
-		</action> -->
+		</action>
 		
-		<!-- 리스트 -->
-		<!-- <action name="qnalistAction" class="qna.board.delilistAction">
-		<interceptor-ref name="params"/>
-			<result type="chain">onlinelistAction</result>
-		</action>
-		<action name="onlinelistAction" class="qna.board.onlinelistAction">
-		<interceptor-ref name="params"/>
-			<result>/QnA/qna.jsp</result> 
-		</action> -->
-		<!-- <action name="qnalistAction" class="qna.board.delilistAction">
-		<interceptor-ref name="params"/>
-			<result type="chain">onlinelistAction</result>
-		</action>
-		<action name="onlinelistAction" class="qna.board.onlinelistAction">
-		<interceptor-ref name="params"/>
-			<result type="chain">cardlistAction</result> 
-		</action>
-		<action name="cardlistAction" class="qna.board.cardlistAction">
-		<interceptor-ref name="params"/>	
-			<result type="chain">shoplistAction</result> 
-		</action>
-		<action name="shoplistAction" class="qna.board.shoplistAction">
-		<interceptor-ref name="params"/>
-			<result type="chain">homelistAction</result>
-		</action>
-		<action name="homelistAction" class="qna.board.homelistAction">
-		<interceptor-ref name="params"/>
-			<result type="chain">joblistAction</result>
-		</action>
-		<action name="joblistAction" class="qna.board.joblistAction">
-		<interceptor-ref name="params"/>
-			<result type="chain">storelistAction</result>
-		</action>
-		<action name="storelistAction" class="qna.board.storelistAction">
-			<interceptor-ref name="params"/>
-			<result>/QnA/qna.jsp</result>
-		</action> -->
+		
 		<action name="qnalistAction" class="qna.board.delilistAction">
 		<interceptor-ref name="params"/>
 			<result>/FAQ/FaQ.jsp</result>
@@ -528,5 +515,75 @@
 			<interceptor-ref name="params"/>
 			<result>/FAQ/storeFaQ.jsp</result>
 		</action>
+	</package>
+	
+<<<<<<< .mine
+	
+=======
+
+>>>>>>> .theirs
+	<!-- 맴버쉽카드 -->
+	<package name="memcard.board" extends="struts-default">
+	<!-- 글쓰기 -->
+		<action name="memcardwriteForm" class="memcard.board.writeAction" method="form">
+			<result>/memcard/memWrite.jsp</result>
+		</action>
+		<action name="memcardwriteAction" class="memcard.board.writeAction">
+			<result type="redirectAction">
+			<param name="actionName">memcardlistAction</param>
+			</result> 
+		</action>
+	<!-- 리스트 -->
+		<action name="memcardlistAction" class="memcard.board.listAction">
+			<interceptor-ref name="params"/>
+			<result>/memcard/memList.jsp</result>
+		</action>
+		<!-- 삭제 -->
+		<action name="memcarddeleteAction" class="memcard.board.deleteAction">
+			<result type="redirect-action">
+				<param name="actionName">memcardlistAction</param>
+			</result>
+		</action>		
+		<!-- 글수정하기 -->
+		<action name="memcardmodifyForm" class="memcard.board.modifyAction" method="form">
+			<result>/memcard/memModify.jsp</result>
+		</action>
+		<action name="memcardmodifyAction" class="memcard.board.modifyAction">
+			<result type="redirect-action">
+			<param name="actionName">memcardlistAction</param>
+			</result>
+		</action>
+	</package>
+<!-- 신용카드 -->
+	<package name="crecard.board" extends="struts-default">
+		<!-- 글쓰기 -->
+		<action name="crecardwriteForm" class="crecard.board.writeAction" method="form">
+			<result>/crecard/creWrite.jsp</result>
+		</action>
+		<action name="crecardwriteAction" class="crecard.board.writeAction">
+			<result type="redirectAction">
+			<param name="actionName">crecardlistAction</param>
+			</result> 
+		</action>
+		<!-- 리스트 -->
+		<action name="crecardlistAction" class="crecard.board.listAction">
+			<interceptor-ref name="params"/>
+			<result>/crecard/creList.jsp</result>
+		</action>
+		<!-- 삭제 -->
+		<action name="crecarddeleteAction" class="crecard.board.deleteAction">
+			<result type="redirect-action">
+				<param name="actionName">crecardlistAction</param>
+			</result>
+		</action>
+		<!-- 글수정하기 -->
+		<action name="crecardmodifyForm" class="crecard.board.modifyAction" method="form">
+			<result>/crecard/creModify.jsp</result>
+		</action>
+		<action name="crecardmodifyAction" class="crecard.board.modifyAction">
+			<result type="redirect-action">
+			<param name="actionName">crecardlistAction</param>
+			</result>
+		</action>	
 	</package>
 </struts>

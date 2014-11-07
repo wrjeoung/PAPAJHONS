@@ -58,6 +58,29 @@
 			WHERE email = #email#
 			AND activation_key = #activation_key#
    		</update>		
+   		
+		<!-- update 쿼리문 정의 -->
+		<update id="updatePassword">
+    		UPDATE account SET pw = #pw#
+			<include refid="where-id" />
+   		</update>   	
+   		
+		<update id="updateMember" parameterClass="member">
+    		UPDATE account SET pw = #pw#,
+                     		     phone = #phone#,
+                       		     mobile = #mobile#,
+                       		     sms = #sms#,
+                       		     email = #email#,
+                       		     sendmail = #sendmail#,
+                       		     addr = #addr#
+			<include refid="where-id" />
+   		</update>   
+   		
+		<!-- delete 쿼리문 정의 -->
+  		  <delete id="deleteMember">
+			DELETE FROM account 
+			<include refid="where-id" />
+   		 </delete>   					
 		
 		<!-- insert 쿼리문 정의 -->
 		<insert id="insertMember" parameterClass="member">

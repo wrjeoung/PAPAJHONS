@@ -2,6 +2,7 @@
     pageEncoding="EUC-KR"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="s" uri="/struts-tags"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -47,15 +48,20 @@
 	</c:forEach>
 	</table>
 </c:if>
+<br/>
 <form action="getlistAction.action" method="post">
 			<select name="searchCondition">
-				<option name="subject" value="subject">제목
-				<option name="content" value="content">내용
+				<option name="subject" value="SUBJECT"<c:if test="${searchCondition=='SUBJECT'}">selected</c:if>>제목
+				<option name="content" value="CONTENT"<c:if test="${searchCondition=='CONTENT'}">selected</c:if>>내용
 			</select>
 			<input name="searchKeyword" type="text" value="${searchKeyword }">
 			<input type="submit" value="검색"/>
 
 </form>
+<tr align="center">
+    <td colspan="5"><s:property value="pagingHtml"  escape="false" /></td>
+</tr>
+<br/>
 </body>
 <input type="button" value="글쓰기" onclick="document.location.href='writeForm.action?currentPage=${currentPage}'">
 </html>

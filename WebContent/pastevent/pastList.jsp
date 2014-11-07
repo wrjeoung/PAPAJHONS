@@ -1,19 +1,20 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>Áö³­ ÀÌº¥Æ®</title>
+<title>ì§€ë‚œ ì´ë²¤íŠ¸</title>
 </head>
 <body>
-<center><b>Áö³­ ÀÌº¥Æ®</b>
+<center><b>ì§€ë‚œ ì´ë²¤íŠ¸</b>
 <c:if test="${totalCount==0 }">
 <table width="600" border="1" cellpadding="0" cellspacing="0">
 	<tr>
 		<td align="center">
-			°Ô½ÃÆÇ¿¡ ÀúÀåµÈ ±ÛÀÌ ¾ø½À´Ï´Ù.
+			ê²Œì‹œíŒì— ì €ìž¥ëœ ê¸€ì´ ì—†ìŠµë‹ˆë‹¤.
 		</td>
 	</tr>
 </table>
@@ -21,9 +22,9 @@
 <c:if test="${totalCount>0 }">
 <table border="1" width="600" cellpadding="0" cellspacing="0" align="center">
 	<tr height="30">
-		<td align="center" width="50">¹øÈ£</td>
-		<td align="center" width="400">Á¦¸ñ</td>
-		<td align="center" width="250">±â°£</td>
+		<td align="center" width="50">ë²ˆí˜¸</td>
+		<td align="center" width="400">ì œëª©</td>
+		<td align="center" width="250">ê¸°ê°„</td>
 	</tr>
 	<c:forEach var="vo" items="${list }">
 		<tr height="30">
@@ -41,6 +42,10 @@
 	</c:forEach>
 </table>
 </c:if>
-<input type="button" value="±Û¾²±â" onclick="document.location.href='pastwriteForm.action?currentPage=${currentPage}'">
+<tr align="center">
+    <td colspan="5"><s:property value="pagingHtml"  escape="false" /></td>
+</tr>
+<br/>
+<input type="button" value="ê¸€ì“°ê¸°" onclick="document.location.href='pastwriteForm.action?currentPage=${currentPage}'">
 </body>
 </html>

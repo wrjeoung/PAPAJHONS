@@ -33,9 +33,6 @@ public class viewAction extends ActionSupport{
 		//해당번호의 글을 가져온다.
 		vo=(gongjiVO)sqlMapper.queryForObject("gongji.selectOne", getNum());
 		
-		
-		
-		
 		return SUCCESS;
 	}
 

@@ -59,7 +59,6 @@ public class writeAction extends ActionSupport{
 		
 		if(getUpload()!=null){
 
-			
 			vo=(noweventVO)sqlMapper.queryForObject("nowevent.selectLastNo");
 			
 			//실제서버에 저장될 파일 이름과 확장자 설정
@@ -80,7 +79,6 @@ public class writeAction extends ActionSupport{
 		}
 		if(getUpload2()!=null){
 
-			
 			vo=(noweventVO)sqlMapper.queryForObject("nowevent.selectLastNo");
 			String file_name="file2_"+vo.getNum();
 			System.out.println(file_name);
