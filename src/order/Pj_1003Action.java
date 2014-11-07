@@ -16,8 +16,10 @@ public class Pj_1003Action implements Action, SessionAware {
 	private String _cnt_opt;	// 수량
 	private String _price;		// 가격
 	ArrayList<OrderDTO> lists;
-	
+
 	public String execute() throws Exception {
+		lists = (ArrayList<OrderDTO>)sessionMap.get("cartlist");
+		
 		return SUCCESS;
 	}
 	
@@ -29,20 +31,21 @@ public class Pj_1003Action implements Action, SessionAware {
 			sessionMap.put("cartlist", lists);
 		}
 		
-		OrderDTO list = new OrderDTO();
-		list.setAmount(_cnt_opt);
-		list.setName(_name);
-		list.setPrice(_price);
-		list.setSize(_size);
-		
-		if(_name != null)
+		if((int)sessionMap.get("index") != lists.size() && _name != null)
+		{
+			OrderDTO list = new OrderDTO();
+			list.setAmount(_cnt_opt);
+			list.setName(_name);
+			list.setPrice(_price);
+			list.setSize(_size);
+	
 			lists.add(list);
+		}
 		
 		for(OrderDTO li : lists) {
 			System.out.println("pj_1003 amount : "+li.getAmount()+" name : "+li.getName()+" price : "+li.getPrice() +
 					" size : "+li.getSize());
-		}		
-		
+		}
 		return SUCCESS;
 	}
 

@@ -20,6 +20,7 @@
 		<action name="pj_1002Action" class="order.Pj_1002Action">
 			<interceptor-ref name="ibatis"/>
 			<interceptor-ref name="params"/>
+			<interceptor-ref name="servletConfig" />
 			<result>/order/pj_1002.jsp</result>
 		</action>
 		
