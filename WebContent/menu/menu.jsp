@@ -1,21 +1,21 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<h1 class="hidden">¸Ş´º ¾È³»</h1>
+<h1 class="hidden">ë©”ë‰´ ì•ˆë‚´</h1>
 <form id="f1" name="f1">
 	<div id="menuBoxWrap">
 		<%-- 
-		<c:if test="${ param.menuId eq 'pj_2013' }"> <!-- À½·á -->
+		<c:if test="${ param.menuId eq 'pj_2013' }"> <!-- ìŒë£Œ -->
 			<c:forEach var="li" items="${list}" varStatus="status">
 				<c:if test="${status.count % 3 == 1 }"><div class="menuBox"></c:if>
 						<div class="menu" id="menu_0">
 							<p class="m_list">
 								<img class="img" src="/assets/img/menu/img/10/list_img_1018.png"
-									alt="¸¶°¡¸®Å¸" title="¸¶°¡¸®Å¸" onerror="fnNoImages($(this))" />
+									alt="ë§ˆê°€ë¦¬íƒ€" title="ë§ˆê°€ë¦¬íƒ€" onerror="fnNoImages($(this))" />
 							</p>
 							<p class="b_detail" style="cursor: pointer"
-								onclick="fnMenuInfo('¸¶°¡¸®Å¸,10,1018,4001,,0,,10 ',$(this));">
-								<img src="../assets/img/sub/btn_detail.gif" alt="¸¶°¡¸®Å¸" />
+								onclick="fnMenuInfo('ë§ˆê°€ë¦¬íƒ€,10,1018,4001,,0,,10 ',$(this));">
+								<img src="../assets/img/sub/btn_detail.gif" alt="ë§ˆê°€ë¦¬íƒ€" />
 							</p>
 						</div>
 				<c:if test="${status.count % 3 == 0 }"></div></c:if>
@@ -31,7 +31,7 @@
 					</p>
 					<p class="b_detail" style="cursor: pointer"
 						onclick="fnMenuInfo('${li.name},${li.menulagcode},${li.menumidcode},${li.menusubcode},${li.menudtlimage},${li.menuseq},${li.menucode},${li.ongrpcode}',$(this));">
-						<img src="../assets/img/sub/btn_detail.gif" alt="¸¶°¡¸®Å¸" />
+						<img src="../assets/img/sub/btn_detail.gif" alt="ë§ˆê°€ë¦¬íƒ€" />
 					</p>
 				</div>
 			<c:if test="${status.count % 3 == 0 }"></div></c:if>
@@ -39,13 +39,13 @@
 	</div>
 </form>
 
-<!-- ///////////////////////////// 20131108 ¾Ë¸² ÆË¾÷ Àû¿ë /////////////////////////////-->
-<!-- ///////////////////////////// ¸Ş´ºÃß°¡¾Ë¸², Àå¹Ù±¸´Ï ¼ö·®Á¦ÇÑ ¾Ë¸² /////////////////////////////-->
+<!-- ///////////////////////////// 20131108 ì•Œë¦¼ íŒì—… ì ìš© /////////////////////////////-->
+<!-- ///////////////////////////// ë©”ë‰´ì¶”ê°€ì•Œë¦¼, ì¥ë°”êµ¬ë‹ˆ ìˆ˜ëŸ‰ì œí•œ ì•Œë¦¼ /////////////////////////////-->
 <div class="notice" id="notice_caution">
 	<div class="header">
 		<div class="left"></div>
 		<div class="center">
-			<h2>¾Ë¸²!!</h2>
+			<h2>ì•Œë¦¼!!</h2>
 		</div>
 		<div class="right"></div>
 	</div>
@@ -54,7 +54,7 @@
 	<div class="footer">
 		<div class="button">
 			<button class="alertBtn gray" type="button"
-				onclick="del_pop2('#notice_caution');">È® ÀÎ</button>
+				onclick="del_pop2('#notice_caution');">í™• ì¸</button>
 		</div>
 		<div class="left"></div>
 		<div class="center"></div>
@@ -63,9 +63,9 @@
 </div>
 <script type="text/javascript">
 	$(document).ready(function() {
-		//ÆäÀÌÁö ½ÃÀÛ ½Ã·Îµù ÀÌ¹ÌÁö ¼û±â±â
+		//í˜ì´ì§€ ì‹œì‘ ì‹œë¡œë”© ì´ë¯¸ì§€ ìˆ¨ê¸°ê¸°
 		$('#viewLoading').hide();
-		$('#viewLoading') // ajax ½ÇÇà ¹× ¿Ï·á½Ã 'Loading ÀÌ¹ÌÁö'ÀÇ µ¿ÀÛ ÄÁÆ®·ÑÇÏ±â
+		$('#viewLoading') // ajax ì‹¤í–‰ ë° ì™„ë£Œì‹œ 'Loading ì´ë¯¸ì§€'ì˜ ë™ì‘ ì»¨íŠ¸ë¡¤í•˜ê¸°
 		.ajaxStart(function() {
 			$(this).fadeIn(500);
 		}).ajaxStop(function() {
@@ -119,7 +119,7 @@
 		});
 	}
 
-	/*  0401 ¼öÁ¤ºÎºĞ ½ÃÀÛ  */
+	/*  0401 ìˆ˜ì •ë¶€ë¶„ ì‹œì‘  */
 	function removeActive() {
 		$btn.each(function(i) {
 			if ($btn.eq(i).hasClass("active")) {
@@ -129,7 +129,7 @@
 	}
 
 	$btn.click(function() {
-		//20130415 onclick > fnMenuInfo·Î ´ëÃ¼ÇÔ
+		//20130415 onclick > fnMenuInfoë¡œ ëŒ€ì²´í•¨
 	});
 
 	function fnMenuInfo(menu_info, $this) {
@@ -140,7 +140,7 @@
 			$("#detail_con").remove();
 			var html = '<div id="detail_con" style="width:100%; height:auto; clear:both; border-bottom:dotted 1px #ccc;  border-bottom:dotted 1px #ccc; border-top:dotted 1px #ccc; padding:0 0 5px 0;"><iframe width="100%" src="'
 					+ srcUrl
-					+ '" frameborder=0>¾ÆÀÌÇÁ·¹ÀÓÀÌ Áö¿øÇÏ´Â ºê¶ó¿ìÀú¿¡¼­ È®ÀÎ°¡´ÉÇÕ´Ï´Ù.</iframe></div>';
+					+ '" frameborder=0>ì•„ì´í”„ë ˆì„ì´ ì§€ì›í•˜ëŠ” ë¸Œë¼ìš°ì €ì—ì„œ í™•ì¸ê°€ëŠ¥í•©ë‹ˆë‹¤.</iframe></div>';
 			$this.parent().parent().append(html);
 			removeActive();
 			$this.addClass("active");
@@ -151,17 +151,17 @@
 	function MenuClass(menu_info) {
 		var recieveMenu = menu_info.split(",");
 		console.log(recieveMenu);
-		//		this.menuName     = recieveMenu[0];  // ¸Ş´º¸í
-		this.menuName = recieveMenu[0]; // ¸Ş´º¸í
-		this.menuLagCode = recieveMenu[1]; // ¸Ş´º´ëºĞ·ùÄÚµå
-		this.menuMidCode = recieveMenu[2]; // ¸Ş´ºÁßºĞ·ùÄÚµå
-		this.menuSubCode = recieveMenu[3]; // ¸Ş´º¼¼ºĞ·ùÄÚµå
-		this.menuDtlImage = recieveMenu[4]; // ¿Â¶óÀÎ¸Ş´º»ó¼¼ÀÌ¹ÌÁöÆÄÀÏ
-		this.menuSeq = recieveMenu[5]; // ¸Ş´º¼ø¹ø
-		this.menuCode = recieveMenu[6]; // ¸Ş´ºÄÚµå
-		this.onGrpCode = recieveMenu[7]; // ¿Â¶óÀÎ¸Ş´º±×·ìÄÚµå
+		//		this.menuName     = recieveMenu[0];  // ë©”ë‰´ëª…
+		this.menuName = recieveMenu[0]; // ë©”ë‰´ëª…
+		this.menuLagCode = recieveMenu[1]; // ë©”ë‰´ëŒ€ë¶„ë¥˜ì½”ë“œ
+		this.menuMidCode = recieveMenu[2]; // ë©”ë‰´ì¤‘ë¶„ë¥˜ì½”ë“œ
+		this.menuSubCode = recieveMenu[3]; // ë©”ë‰´ì„¸ë¶„ë¥˜ì½”ë“œ
+		this.menuDtlImage = recieveMenu[4]; // ì˜¨ë¼ì¸ë©”ë‰´ìƒì„¸ì´ë¯¸ì§€íŒŒì¼
+		this.menuSeq = recieveMenu[5]; // ë©”ë‰´ìˆœë²ˆ
+		this.menuCode = recieveMenu[6]; // ë©”ë‰´ì½”ë“œ
+		this.onGrpCode = recieveMenu[7]; // ì˜¨ë¼ì¸ë©”ë‰´ê·¸ë£¹ì½”ë“œ
 
-		// 20140429 º£½ºÆ®¸Ş´º ±¸ºĞ°ª Ãß°¡
+		// 20140429 ë² ìŠ¤íŠ¸ë©”ë‰´ êµ¬ë¶„ê°’ ì¶”ê°€
 		this.srcUrl = function() {
 			return "detailAction.action?menuName=" + this.menuName
 					+ "&menuLagCode=" + this.menuLagCode + "&menuMidCode="
@@ -173,7 +173,7 @@
 		};
 	}
 
-	//image not found Ã³¸® 
+	//image not found ì²˜ë¦¬ 
 	//$this : ".m_list>img"  
 	function fnNoImages($this) {
 		$this.css("display", "none");
