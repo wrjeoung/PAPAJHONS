@@ -517,26 +517,12 @@
 		<interceptor-ref name="params"/>
 			<result>/FAQ/jobFaQ.jsp</result>
 		</action>
-		<action name="stolistAction" class="qna.board.storelistAction">
+		<!-- <action name="stolistAction" class="qna.board.storelistAction">
 			<interceptor-ref name="params"/>
 			<result>/FAQ/storeFaQ.jsp</result>
-		</action>
+		</action> -->
 	</package>
 	
-
-<<<<<<< .mine
-<!-- <<<<<<< .mine
-	
-=======
-
->>>>>>> .theirs -->
-=======
-
-
-
-
-
->>>>>>> .theirs
 	<!-- 맴버쉽카드 -->
 	<package name="memcard.board" extends="struts-default">
 	<!-- 글쓰기 -->

@@ -109,7 +109,8 @@
         			<li><h2><a href="subAction.action?menuId=pj_2013"><img src="../assets/img/common/m2_s13.gif" alt="음료" /></a></h2></li>
       			</ul>
     		</li>
-    		<li class="navItem3" style="width:210px;"> <a href="/sub.jsp?menuGb=event&menuId=pj_3001">프로모션</a>
+    		<!-- <li class="navItem3" style="width:210px;"> <a href="/sub.jsp?menuGb=event&menuId=pj_3001">프로모션</a> -->
+    		<li class="navItem3" style="width:210px;"> <a href="listAction2.action">프로모션</a>
       			<ul class="sub">
         			<li><h2><a href="listAction2.action"><img src="../assets/img/common/m3_s1.gif" alt="진행중인 이벤트" /></a></h2></li>
         			<li><h2><a href="pastlistAction.action"><img src="../assets/img/common/m3_s2.gif" alt="지난 이벤트" /></a></h2></li>
