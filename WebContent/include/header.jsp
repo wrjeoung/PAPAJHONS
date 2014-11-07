@@ -83,9 +83,9 @@
    		</c:if>
 
   		<li><h2><a href="/sub.jsp?menuGb=customer&menuId=pj_5003"><img src="../assets/img/common/topUtil_02.gif" alt="제휴카드안내" /></a></h2></li>
-     	<li><h2><a href="../signup/cont.jsp?menuGb=franch&menuId=pj_6001"><img src="../assets/img/common/topUtil_03.gif" alt="가맹점안내" /></a></h2></li>
+     	<!--   <li><h2><a href="../signup/cont.jsp?menuGb=franch&menuId=pj_6001"><img src="../assets/img/common/topUtil_03.gif" alt="가맹점안내" /></a></h2></li>  -->
       	<li><h2><a href="storeAction.action"><img src="../assets/img/common/topUtil_04.gif" alt="매장안내" /></a></h2></li>
-		<li><h2><a href="../signup/cont.jsp?menuGb=member&menuId=pj_0001&step=step5&orderNumber="+"null"><img src="../assets/img/common/topUtil_05.gif" alt="온라인주문확인" /></a></h2></li>
+		<!--  <li><h2><a href="../signup/cont.jsp?menuGb=member&menuId=pj_0001&step=step5&orderNumber="+"null"><img src="../assets/img/common/topUtil_05.gif" alt="온라인주문확인" /></a></h2></li>  -->
     </ul>
     	
 	<div id="gnb">
@@ -127,7 +127,7 @@
         			<li><h2><a href="/sub.jsp?menuGb=story&menuId=pj_4005&subGb=C"><img src="../assets/img/common/m4_s5.gif" alt="채용공고" /></a></h2></li>
       			</ul>
     		</li>
-    		<li class="navItem5" style="width:210px;"> <a href="/sub.jsp?menuGb=customer&menuId=pj_5001">고객센터</a>
+    		<li class="navItem5" style="width:210px;"> <a href="listAction.action">고객센터</a>
       			<ul class="sub">
         			<!-- <li><h2><a href="/sub.jsp?menuGb=customer&menuId=pj_5001"><img src="../assets/img/common/m5_s1.gif" alt="공지사항" /></a></h2></li> -->
         			<li><h2><a href="listAction.action"><img src="../assets/img/common/m5_s1.gif" alt="공지사항" /></a></h2></li>
