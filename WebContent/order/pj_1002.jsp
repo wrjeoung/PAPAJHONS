@@ -3377,7 +3377,157 @@
 						</div>
 					</c:if>
 					<!-- //item -->
+<<<<<<< Updated upstream
 				</c:forEach>
+=======
+					
+					<!-- item -->
+					<div id='menu_1' class='item'>
+					<!-- ¿ÞÂÊ ÀÌ¹ÌÁö ¿µ¿ª --> 
+					<!-- item_left -->        
+						<div class='item_left'>   
+							<p class='photo'>
+								<img src='/assets/img/order/menu/70/9001_ord.png' alt='»ùÇÃ·¯' title='»ùÇÃ·¯' onerror="this.src='/assets/img/order/menu/noImage_ord.png'" />
+							</p> 
+							<p class='name' id='pName_1'>»ùÇÃ·¯</p> 
+							<p><button type='button' id='basket_1' name='basket_1' onclick="makeSendData('1');fnReset_spcOption_up($(this));">Àå¹Ù±¸´Ï¿¡´ã±â</button></p> 
+							</div>  
+					<!--// item_left --> 
+					<!--// item_right -->   
+					<div class='item_right'> 
+						<!-- size --> 
+						<div class='size'> <input type='hidden' name='pCode_1' value='51036,»ùÇÃ·¯,one,12900,,20,9001,3006,,10' />  
+							<p class='label_radio menu_size_radio' >  	
+								<input type='radio' name='pSize_1' value='12900' />  	
+								<img src='/assets/img/order/ord_menuList_size_one.png' alt='¿ø»çÀÌÁî' title='One Size'/>   	
+								<span class='price' >12,900</span>
+							</p>  
+						</div>  			    
+	
+						<script type="text/javascript">
+							//20140304 ¶óµð¿À¹öÆ° µðÆúÆ® À§Ä¡¸¦ ¶óÁö»çÀÌÁî·Î º¯°æ
+							var firstSize = $("#menu_1 .size img").attr("title");
+							if(firstSize == "Regular"){ra_check($("#menu_1 .size .menu_size_radio").eq(1));}
+							else{ra_check($("#menu_1 .size .menu_size_radio").eq(0));}
+						</script>
+						<!--// size -->
+						<div class='select_count'>                         	
+							<select id='cnt_opt1' name='cnt_opt'>  		
+								<option value='1' >1</option>                  		
+								<option value='2' >2</option>                  		
+								<option value='3' >3</option>                  		
+								<option value='4' >4</option>                  		
+								<option value='5' >5</option>                  		
+								<option value='6' >6</option>                  		
+								<option value='7' >7</option>                  		
+								<option value='8' >8</option>                  		
+								<option value='9' >9</option>                  		
+								<option value='10'>10</option>                	
+							</select>                                         
+						</div>                                             	
+						<!-- detail -->   	
+						<div class='detail'>   		
+							<p class='btn'><img src='/assets/img/order/btn_info.gif' alt='»ó¼¼¼³¸í'/></p>   		
+							<!-- »ó¼¼º¸±â ¸»Ç³¼± -->   		
+							<div class='comment'>   			
+								<p class='top'><img src='/assets/img/order/ord_menuList_detail_commBg_top.png' alt=''></p>   			
+								<p class='bottom'><img src='/assets/img/order/ord_menuList_detail_commBg_bottom.png' alt=''></p>   			
+								<dl>   
+	                  				<dd>
+	                  				</dd>
+	                			</dl>
+	              			</div>
+	              			<!--// »ó¼¼º¸±â ¸»Ç³¼± -->
+	            		</div>
+	            		<!--// detail -->
+	            		<p class="select_price">0</p>
+          			</div>
+					<!--// item_right -->  
+          
+          				<!-- 20130926 ¼Ò½º&Ä¡Áî&Ä¿ÆÃ&º£ÀÌÅ© ¿É¼ÇÁÖ±â -->
+          				<div id ="option_box_1" class="option_box"><!--  display: none; -->
+	          				<ul class="spcInstructions">
+	         					<li>
+	        						<p onclick="fnAdjustMenu('1_1',$(this));">¼Ò½º Á¶Àý <span class="imgsp">¡å</span></p>
+	        						<div id="1_1" class="option">
+										<p class="menu_opt_radio" >
+											<input type="radio" id="1_regularSauce" name="1_sau_radio" value=""/>
+		          							<label for="1_regularSauce">¼Ò½º º¸Åë(Normal)</label>
+	          							</p>
+										<p class="menu_opt_radio" >
+											<input type="radio" id="1_lightSauce" name="1_sau_radio" value="20"/>
+		          							<label for="1_lightSauce">¼Ò½º Á¶±Ý(LS)</label>
+	          							</p>
+										<p class="menu_opt_radio" >
+											<input type="radio" id="1_extraSauce" name="1_sau_radio" value="30"/>
+		          							<label for="1_extraSauce">¼Ò½º ¸¹ÀÌ(XS)</label>
+	          							</p>
+										<p class="menu_opt_radio" >
+											<input type="radio" id="1_noSauce" name="1_sau_radio" value="40"/>
+		          							<label for="1_noSauce">¼Ò½º Á¦¿Ü(NS)</label>
+	          							</p>
+									</div>
+	       						</li>
+	       						<li style=" cursor:pointer;">
+	        						<p onclick="fnAdjustMenu('1_2',$(this));">Ä¡Áî Á¶Àý <span class="imgsp">¡å</span></p>
+	        						<div id="1_2" class="option">
+										<p class="menu_opt_radio" >
+											<input type="radio" id="1_normalCheese" name="1_chee_radio" value="" />
+		          							<label for="1_normalCheese">Ä¡Áî º¸Åë(Normal)</label>
+	          							</p>
+										<p class="menu_opt_radio" >
+											<input type="radio" id="1_lightCheese" name="1_chee_radio" value="20"/>
+		          							<label for="1_lightCheese">Ä¡Áî Á¶±Ý(LC)</label>  
+	          							</p>
+										<p class="menu_opt_radio" >
+											<input type="radio" id="1_noCheese" name="1_chee_radio" value="30"/>
+		          							<label for="1_noCheese">Ä¡Áî Á¦¿Ü(NC)</label>
+	          							</p>
+									</div>
+	       						</li>
+	       						<li>
+	        						<p onclick="fnAdjustMenu('1_3',$(this));">±Á±â Á¶Àý <span class="imgsp">¡å</span></p>
+	        						<div id="1_3" class="option">
+										<p class="menu_opt_radio" >
+											<input type="radio" id="1_normalBake" name="1_bake_radio" value=""/>
+		          							<label for="1_normalBake">±âº» ±Á±â(Normal)</label>
+	          							</p>
+										<p class="menu_opt_radio" >
+											<input type="radio" id="1_wellDone" name="1_bake_radio" value="20"/>
+		          							<label for="1_wellDone">¹Ù½Ï ±Á±â(WD)</label> 
+	          							</p>
+									</div>
+	       						</li>
+	       						<li>
+	        						<p onclick="fnAdjustMenu('1_4',$(this));">Á¶°¢ ÄÆÆÃ <span class="imgsp">¡å</span></p>
+	        						<div id="1_4" class="option">
+										<p class="menu_opt_radio" >
+											<input type="radio" id="1_normalCut" name="1_cut_radio" value=""/>
+		          							<label for="1_normalCut">±âº»ÄÆÆÃ(Normal)</label>
+	          							</p>
+										<p class="menu_opt_radio" >
+											<input type="radio" id="1_squareCut" name="1_cut_radio" value="60"/>
+		          							<label for="1_squareCut">»ç°¢ÄÆÆÃ(SC)</label>
+	          							</p> 
+										<p class="menu_opt_radio" >
+											<input type="radio" id="1_sixCut" name="1_cut_radio" value="20"/>
+		          							<label for="1_sixCut">6Á¶°¢ÄÆÆÃ(6C)</label>
+	          							</p> 
+										<p class="menu_opt_radio" >
+											<input type="radio" id="1_eightCut" name="1_cut_radio" value="30"/>
+		          							<label for="1_eightCut">8Á¶°¢ÄÆÆÃ(8C)</label>
+	          							</p> 
+										<p class="menu_opt_radio" >
+											<input type="radio" id="1_tenCut" name="1_cut_radio" value="40"/>
+		          							<label for="1_tenCut">10Á¶°¢ÄÆÆÃ(10C)</label>
+	          							</p> 
+									</div>
+	       						</li> 
+	          				</ul>
+		  				</div>
+        			</div>
+					<!-- //item -->
+>>>>>>> Stashed changes
 				</div>
       			<!--// menuList_section -->      			
        		<!-- 20140616 í”„ë¡œëª¨ì…˜ ë©”ë‰´ í™”ë©´ ìƒì„± (ìƒ˜í”ŒëŸ¬ ì¶œì‹œ ê¸°ì¤€) -->
