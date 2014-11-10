@@ -101,10 +101,10 @@
 		</action>
 		
 		<!-- 글수정하기 -->
-		<action name="modifyForm" class="gongji.board.modifyAction" method="form">
+		<action name="gongjimodifyForm" class="gongji.board.modifyAction" method="form">
 			<result>/gongji/gongjiModify.jsp</result>
 		</action>
-		<action name="modifyAction" class="gongji.board.modifyAction">
+		<action name="gongjimodifyAction" class="gongji.board.modifyAction">
 			<result type="redirect-action">
 			<param name="actionName">listAction</param>
 			</result>

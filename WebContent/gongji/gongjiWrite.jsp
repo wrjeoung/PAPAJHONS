@@ -63,6 +63,15 @@
 // 		var top = ($(window).height()/2)-($ev_page.height()/2);
 // 		$ev_page.css("top",top+"px");
 	});
+	
+	function validation(){
+		var gongjiWrite=eval("document.gongjiWrite");
+
+		if(!gongjiWrite.subject.value){
+			alert("글제목을 입력하세요.");
+			return false;
+		}
+	}
 </script>
 </head>
 

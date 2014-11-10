@@ -63,6 +63,23 @@
 // 		var top = ($(window).height()/2)-($ev_page.height()/2);
 // 		$ev_page.css("top",top+"px");
 	});
+	
+	function validation(){
+		var storeModify=eval("document.storeModify");
+
+		if(!storeModify.store.value){
+			alert("매장명을 입력하세요.");
+			return false;
+		}
+		if(!storeModify.day.value){
+			alert("기간을 입력하세요.");
+			return false;
+		}
+		if(!storeModify.subject.value){
+			alert("글제목을 입력하세요.");
+			return false;
+		}
+	}
 </script>
 </head>
 

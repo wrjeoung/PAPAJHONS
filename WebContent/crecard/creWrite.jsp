@@ -63,6 +63,24 @@
 // 		var top = ($(window).height()/2)-($ev_page.height()/2);
 // 		$ev_page.css("top",top+"px");
 	});
+	
+	function validation(){
+		var crecardWrite=eval("document.crecardWrite");
+
+		if(!crecardWrite.subject.value){
+			alert("카드명을 입력해주세요.");
+			return false;
+		}
+		if(!crecardWrite.content.value){
+			alert("내용을 입력해주세요.");
+			return false;
+		}
+		if(!crecardWrite.upload.value){
+			alert("첨부파일을 올려주세요.");
+			return false;
+		}
+		
+	}
 </script>
 </head>
 
