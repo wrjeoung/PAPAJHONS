@@ -45,4 +45,13 @@
 		<select id="selectStore" resultMap="qnaRes" parameterClass="int">
 			SELECT * FROM QNA WHERE QMENU='store'
 		</select>
+		
+		<!-- 상세보기 -->
+		<select id="selectOne" resultMap="qnaRes" parameterClass="int">
+			SELECT * FROM QNA WHERE num=#num#
+		</select>
+		<!-- 조회수 증가 -->
+		<update id="updateReadHit" parameterClass="qna">
+			UPDATE QNA SET READHIT=readHit+1 WHERE num=#num#
+		</update>
 </sqlMap>
