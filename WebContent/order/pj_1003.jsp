@@ -226,10 +226,10 @@
 														}
 													});
 												</script>
-												<c:forEach var="li" items="${mapLists}">
+												<c:forEach var="li" items="${lists}">
 													<li id="pizzaMenu_50332_1" class="item_li"><span
-														class="name product">${li.value.name }</span> <span class="size">${li.value.size}</span>
-														<span class="count">${li.value.amount}</span> <span class="unit_price">${li.value.price}</span>
+														class="name product">${li.name }</span> <span class="size">${li.size}</span>
+														<span class="count">${li.amount}</span> <span class="unit_price">${li.price}</span>
 														<!-- 할인 전 --> <span class="discount"></span>
 														<!--  할인 금액 --> <span class="disc_comm"></span> 
 														<!-- 할인된 이유 예) 프로모션 할인 -->
