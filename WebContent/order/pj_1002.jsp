@@ -55,6 +55,7 @@
  		$btn_detail.bind("mouseenter",menu_detail);
  		$btn_detail.bind("mouseleave",menu_detail_out);
  	
+ 		
  		//
  		function menu_detail()
  		{
@@ -226,6 +227,8 @@
     	document.frmOrder._cnt_opt.value = document.getElementById("cnt_opt").value; 	// 수량
     	document.frmOrder._price.value = price; 										// 가격
     	document.frmOrder._consist.value = consist; 									// 구성요소
+//    	document.frmOrder._randomString.value = getRandomString();
+//    	document.frmOrder.action              = "pj_1003ActionAddItem.action";
     	document.frmOrder.action              = "pj_1003ActionAddItem.action?addCount="+sessionStorage.addCount;
     	sessionStorage.addCount++;
     	document.frmOrder.target              = "_self";
@@ -249,12 +252,15 @@
     	document.frmOrder._cnt_opt.value = document.getElementById("cnt_opt1").value; 	// 수량
     	document.frmOrder._price.value = price; 										// 가격
     	document.frmOrder._consist.value = consist; 									// 구성요소
+//    	document.frmOrder._randomString.value = getRandomString();
+//    	document.frmOrder.action              = "pj_1003ActionAddItem.action";
     	document.frmOrder.action              = "pj_1003ActionAddItem.action?addCount="+sessionStorage.addCount;
     	sessionStorage.addCount++;
     	document.frmOrder.target              = "_self";
     	document.frmOrder.submit();
 	}
 	
+
 	// 피자 장바구니	
 	function fnOrderPizza(menuid,imagepathorder,consist,name)
     {
@@ -272,6 +278,8 @@
     	document.frmOrder._cnt_opt.value = "1"; 										// 수량
     	document.frmOrder._price.value = price; 										// 가격
     	document.frmOrder._consist.value = consist; 									// 구성요소
+//    	document.frmOrder._randomString.value = getRandomString();
+//    	document.frmOrder.action              = "pj_1003ActionAddItem.action";
     	document.frmOrder.action              = "pj_1003ActionAddItem.action?addCount="+sessionStorage.addCount;
     	sessionStorage.addCount++;
     	document.frmOrder.target              = "_self";
@@ -296,6 +304,8 @@
     	//document.frmOrder._cnt_opt.value = document.getElementById("cnt_opt_bever").value;	// 수량
     	document.frmOrder._price.value = price; 										// 가격
     	document.frmOrder._consist.value = consist; 									// 구성요소
+//    	document.frmOrder._randomString.value = getRandomString();
+//    	document.frmOrder.action              = "pj_1003ActionAddItem.action";
     	document.frmOrder.action              = "pj_1003ActionAddItem.action?addCount="+sessionStorage.addCount;
     	sessionStorage.addCount++;
     	document.frmOrder.target              = "_self";
@@ -2767,6 +2777,16 @@
 	   	});/* end -- 피자 수량 체크 */
 	   	
 	}/* end -- fnPromotionAddCart */
+	function getRandomString()
+	{
+		var result = ""; 			
+		for(var i=1; i<25; i++)
+		{
+			var ch = String.fromCharCode((Math.random()* 26)+97);
+ 			result += ch;
+		}
+		return result;
+	}
 	
 </script>
 
@@ -2872,7 +2892,8 @@
 	<input type="hidden" id="_cnt_opt"        name="_cnt_opt"         value="" />  		 <!-- 수량					-->
 	<input type="hidden" id="_price"          name="_price"           value="" />  		 <!-- 금액					-->
 	<input type="hidden" id="_consist"        name="_consist"         value="" />  		 <!-- 메뉴 구성				-->
-
+	<input type="hidden" id="_randomString"   name="_randomString"    value="" />
+ 
 	<!-- 메뉴 -->
 	<!-- con_container -->
 	<div id="con_container">
@@ -4077,10 +4098,6 @@
   	
 </div>
 
-<script for=window event=onload>
-document.getElementById("i1").src = "pj_1002Action.action";
-</script>
-
 <script type="text/javascript">	   
 /*  /////////////////////////////////// 피자메뉴부분 Navi ///////////////////////////////////////////////////////// */
 	
@@ -4148,6 +4165,3 @@ document.getElementById("i1").src = "pj_1002Action.action";
 		$actv_menu$ =$el;
 	}
 </script> 
-
-<iframe id=i1 src="" width="0px" height="0px" frameborder="1">아이프레임이지원되는 브라우저에서 확인할수있습니다.</iframe>
-

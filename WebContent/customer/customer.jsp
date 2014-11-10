@@ -89,9 +89,18 @@
 			  		<h2><img alt="고객센터" src="../assets/img/cus/snb_title_5.gif"></h2>
 			  		<dl class="sub" id="snb1">
 			    		<!--  <dt class="dep1 pj_2001"><a href="/sub.jsp?menuGb=menu&menuId=pj_2001"><img src="../assets/img/sub/sub_2_1.gif" alt="이 달의 프로모션"></a></dt> -->
-			    		<dt><a href="CustomerAction.action"><img src="../assets/img/cus/sub_5_1_over.gif" alt="공지사항"></a></dt>
-			    		<dt><a href="CustomerAction2.action"><img src="../assets/img/cus/sub_5_2_over.gif" alt="Q&A"></a></dt>
+			    		<dt><a href="listAction.action"><img src="../assets/img/cus/sub_5_1_over.gif" alt="공지사항"></a></dt>
+			    		<dt><a href="qnalistAction.action"><img src="../assets/img/cus/sub_5_2_over.gif" alt="Q&A"></a></dt>
 			    		<!--  <dt class="dep1 pj_2014"><a href="subAction.action?menuId=pj_2014"><img src="../assets/img/sub/sub_2_14.gif" alt="소스&피클"></a></dt>-->
+			  			<dt><img src="../assets/img/cus/sub_5_3_over.gif" alt="제휴 카드 안내"></a></dt>
+     						<dd class="dep2">
+      							<ul>
+        							<li><a href="memcardlistAction.action">통신사 멤버쉽 카드</a></li>
+        							<li><a href="crecardlistAction.action">신용카드</a></li>
+      							</ul>
+    						</dd>
+			  			<dt class="dep1 pj_5004"><a href="/sub.jsp?menuGb=customer&menuId=pj_5004"><img src="../assets/img/sub/sub_5_4.gif" alt="매장 안내"></a></dt>
+			  		
 			  		</dl>
     				<%-- 
      				<script type="text/javascript">	$("#con_container .snb").load("../include/snb.jsp?menuGb=menu&menuId=pj_2003&tab=null"); </script>

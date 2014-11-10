@@ -64,6 +64,7 @@
 // 		var top = ($(window).height()/2)-($ev_page.height()/2);
 // 		$ev_page.css("top",top+"px");
 	});
+	
 </script>
 </head>
 
@@ -171,6 +172,15 @@
 	</c:forEach>
 </table>
 </c:if>
+<br/>
+<!-- 검색 -->
+<form action="pastgetlistAction.action" method="post">
+	<select name="searchCondition">
+		<option name="subject" value="subject"<c:if test="${searchCondition=='subject'}">selected</c:if>>제목</option>
+	</select>
+	<input name="searchKeyword" type="text" value="${searchKeyword }">
+	<input type="submit" value="검색"/>
+</form>
 <tr align="center">
     <td colspan="5"><s:property value="pagingHtml"  escape="false" /></td>
 </tr>

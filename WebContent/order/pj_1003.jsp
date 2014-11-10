@@ -19,7 +19,7 @@
 <link type="text/css" rel="stylesheet" href="../assets/css/sub.css" />
 <link type="text/css" rel="stylesheet" href="../assets/css/order.css" />
 <link type="text/css" rel="stylesheet" href="../assets/css/lib_style.css" />
-<% request.setCharacterEncoding("euc-kr"); %>
+
 <style type="text/css">
 #con_container {
 	background: none;
@@ -49,6 +49,8 @@
 	{	
  		$('#viewLoading').fadeOut();
  		$('#viewLoading')	// ajax 실행 및 완료시 'Loading 이미지'의 동작 컨트롤하기
+
+ 		
 		.ajaxStart(function()
 		{  
 			$(this).fadeIn(500);

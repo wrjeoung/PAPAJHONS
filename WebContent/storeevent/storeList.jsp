@@ -64,6 +64,8 @@
 // 		var top = ($(window).height()/2)-($ev_page.height()/2);
 // 		$ev_page.css("top",top+"px");
 	});
+	
+	
 </script>
 </head>
 
@@ -154,7 +156,7 @@
 		<td align="center" width="50">번호</td>
 		<td align="center" width="160">매장</td>
 		<td align="center" width="400">제목</td>
-		<td align="center" width="200">기간</td>
+		<td align="center" width="250">기간</td>
 	</tr>
 	<c:forEach var="vo" items="${list }">
 		<tr height="30">
@@ -170,6 +172,14 @@
 	</c:forEach>	
 </table>
 </c:if>
+<br/>
+<form action="storegetlistAction.action" method="post">
+	<select name="searchCondition">
+		<option name="subject" value="subject"<c:if test="${searchCondition=='subject'}">selected</c:if>>제목
+	</select>
+	<input name="searchKeyword" type="text" value="${searchKeyword }">
+	<input type="submit" value="검색"/>
+</form>
 <tr align="center">
     <td colspan="5"><s:property value="pagingHtml"  escape="false" /></td>
 </tr>

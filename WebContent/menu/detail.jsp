@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -239,410 +239,524 @@ input,select,img {
 		s += ''; // 숫자라도 문자열로 변환
 		return s.replace(/^\s*|\s*$/g, '');
 	}
+	
+	function fnOrderGo(value)
+	{
+		var menu;
+		var sel;
+		
+		if( value == 'pj_2002')
+		{
+			menu = "pj_2002";
+			sel = "0";
+		}
+		
+		if( value == 'pj_2003')
+		{
+			menu = "pj_2003";
+			sel = "1";
+		}
+		
+		if( value == 'pj_2004')
+		{
+			menu = "pj_2004";
+			sel = "2";
+		}
+		
+		if( value == 'pj_2005')
+		{
+			menu = "pj_2005";
+			sel = "3";
+		}
+		
+		if( value == 'pj_2006')
+		{
+			menu = "pj_2006";
+			sel = "4";
+		}
+		
+		if( value == 'pj_2008')
+		{
+			menu = "pj_2008";
+			sel = "6";
+		}
+		
+		if( value == 'pj_2009')
+		{
+			menu = "pj_2009";
+			sel = "7";
+		}
+		
+		if( value == 'pj_2010')
+		{
+			menu = "pj_2010";
+		}
+		
+		if( value == 'pj_2011')
+		{
+			menu = "pj_2011";
+		}
+		
+		if( value == 'pj_2012')
+		{
+			menu = "pj_2012";
+		}
+		
+		if( value == 'pj_2013')
+		{
+			menu = "pj_2013";
+		}
+		
+		
+		if(value == 'pj_2010' || value == 'pj_2011' || value == 'pj_2012' || value == 'pj_2013')
+		{
+			parent.location.href = "orderAction.action?menuId="+menu;	
+		}else{
+			parent.location.href = "orderAction.action?menuId="+menu+"&pizzaSelIdx="+sel;	
+		}
+	}
+	
+	
+	function fnOrderPizza(name)
+	{
+		//제품명 , 사이즈 , 수량 , 금액 전달
+		//사이즈 , 가격은 Select Box 선택시 저장  -> setPizzaSize()
+		document.frmOrder._name.value = name;
+		document.frmOrder._cnt_opt.value = "1";
+		document.frmOrder.action = "pj_1003ActionAddItem.action";
+		
+		alert("제품명 : " + document.frmOrder._name.value + " 수량 : " + document.frmOrder._cnt_opt.value);
+		
+		document.frmOrder.submit();
+	}
+	
+	function setPizzaSize(value)
+	{
+		var obj = document.getElementById('select_size');
+		var pizzaPrice = obj.options[obj.selectedIndex].text;
+		
+		document.frmOrder._size.value = value;
+		document.frmOrder._price.value = pizzaPrice;
+		
+		alert("사이즈  : " + document.frmOrder._size.value + " 가격 : " + document.frmOrder._price.value);
+	}
+	
+	
+	
 </script>
 </head>
 
 <body>
-	<div id="iframe_detail">
-	
-		<!-- 파파 플래터 & 세트 메뉴-->
-		<c:if test="${ list.menuid eq 'pj_2010' || list.menuid eq 'pj_2011'}">
+	<form id="frmOrder" name="frmOrder" method="post" onsubmit="return false;">
+		<input type="hidden" id="_name" name="_name"  value="" />        <!-- 제품명 -->
+		<input type="hidden" id="_size" name="_size" value="" />         <!-- 사이즈 -->
+		<input type="hidden" id="_cnt_opt" name="_cnt_opt" value="" />   <!-- 수량 -->
+		<input type="hidden" id="_price" name="_price" value="" />       <!-- 금액 -->
+		<input type="hidden" id="_selMenu" name="_selMenu" value=""/>    <!-- 메뉴 선택 -->
 		
-			<script type="text/javascript">
-				var $mainType  = "10";
-				var $doughType = "오리지널";
-			</script>
-
-			<div class="db_img"><img src="${list.imagepath2}" alt="${list.name}" title="${list.name}" onerror="this.src='/assets/img/menu/img/detail_noImage.png'"/> </div>
-			  		<div class="comment">
-			  		<!--  0401 추가부분 시작  -->
-			<p class="close"><button type="button"><img src="../assets/img/sub/btn_detail_close.gif" alt="닫기" /></button></p>
-			<!-- 0401 추가부분 끝 -->	
-					 
-			<h4>${list.name }</h4>
-			<p class="comm"></p>
-			<div class="detail_comm"> 
-		   			<dl>
-					 	<dt><img src="../assets/img/menu/detail_title_setItems.gif" alt="메뉴 구성"></dt>
-				   				<dd class="items"> : <c:out value="${list.consist }"/></dd>
-				   		<c:if test="${ list.menuid eq 'pj_2010'}">
-							<dd><img src="../assets/img/order/ord_menuList_size_box.png" alt="세트가격"> ${list.boxprice }</dd>
-					     			<dd><img src="${list.imagepath3 }" alt="플래터 구성 이미지"></dd>
-				     	</c:if>
-				     	<c:if test="${ list.menuid eq 'pj_2011'}">
-							<dd><img src="../assets/img/order/ord_menuList_size_set.png" alt="세트가격"> ${list.boxprice }</dd>
-					     			<dd><img src="${list.imagepath3 }" alt="세트 구성 이미지"></dd>
-				     	</c:if>
-		  			</dl>
-			</div>
+		<div id="iframe_detail">
+			<!-- 파파 플래터 & 세트 메뉴-->
+			<c:if test="${ list.menuid eq 'pj_2010' || list.menuid eq 'pj_2011'}">
 			
-					<!-- //detail_comm -->
-			<form action="">
-				<div class="cart_order"> 
-						<c:if test="${ list.menuid eq 'pj_2010'}">
-				  			<label for="select_size" class="hidden">사이즈 선택</label>
-				  			<select id="select_size">
+				<script type="text/javascript">
+					var $mainType  = "10";
+					var $doughType = "오리지널";
+				</script>
+	
+				<div class="db_img"><img src="${list.imagepath2}" alt="${list.name}" title="${list.name}" onerror="this.src='/assets/img/menu/img/detail_noImage.png'"/> </div>
+				  		<div class="comment">
+				  		<!--  0401 추가부분 시작  -->
+				<p class="close"><button type="button"><img src="../assets/img/sub/btn_detail_close.gif" alt="닫기" /></button></p>
+				<!-- 0401 추가부분 끝 -->	
+						 
+				<h4>${list.name }</h4>
+				<p class="comm"></p>
+				<div class="detail_comm"> 
+			   			<dl>
+						 	<dt><img src="../assets/img/menu/detail_title_setItems.gif" alt="메뉴 구성"></dt>
+					   				<dd class="items"> : <c:out value="${list.consist }"/></dd>
+					   		<c:if test="${ list.menuid eq 'pj_2010'}">
+								<dd><img src="../assets/img/order/ord_menuList_size_box.png" alt="세트가격"> ${list.boxprice }</dd>
+						     			<dd><img src="${list.imagepath3 }" alt="플래터 구성 이미지"></dd>
+					     	</c:if>
+					     	<c:if test="${ list.menuid eq 'pj_2011'}">
+								<dd><img src="../assets/img/order/ord_menuList_size_set.png" alt="세트가격"> ${list.boxprice }</dd>
+						     			<dd><img src="${list.imagepath3 }" alt="세트 구성 이미지"></dd>
+					     	</c:if>
+			  			</dl>
+				</div>
 				
-								<option value="50992,10,3023">BOX-${mBoxPrice }</option>
+						<!-- //detail_comm -->
+				<form action="">
+					<div class="cart_order"> 
+							<c:if test="${ list.menuid eq 'pj_2010'}">
+					  			<label for="select_size" class="hidden">사이즈 선택</label>
+					  			<select id="select_size">				
+									<option value="50992,10,3023">BOX-${mBoxPrice }</option>
+					  			</select>
+					  		</c:if>
 				
+				  			<label for="select_count">수량</label>
+				  			<select id="select_count">
+				    				<option value="1">1</option>
+				    				<option value="2">2</option>
+				    				<option value="3">3</option>
+				    				<option value="4">4</option>
+				    				<option value="5">5</option>
 				  			</select>
-				  		</c:if>
+								<!--  <button class="cart"  type="button" onclick="fnGetPizzaCnt('11','10','1019','4001','오리지널','addCart')"    ><img src="../assets/img/menu/dtaile_btn_cart.gif"  alt="장바구니 담기" /></button>  -->
+								<button class="order" type="button" onclick="fnOrderGo('${list.menuid}');" >
+									<img src="../assets/img/menu/dtaile_btn_order.gif" alt="바로 주문하기" />
+								</button>
+							</div>
+						</form>
+				</div>
+			</c:if>
+		
+			<!-- 사이드 메뉴 -->
+			<c:if test="${ list.menuid eq 'pj_2012' }">
+			  
+				<script type="text/javascript">
+					var $mainType  = "20";
+					var $doughType = "";
+				</script>
+				<div class="db_img">
+					<img src="${list.imagepath2 }" alt="${list.name }" title="${list.name }" onerror="this.src='/assets/img/menu/img/detail_noImage.png'"/>
+				</div>
+		    		<div class="comment">
+		    		<!--  0401 추가부분 시작  -->
+		    		<p class="close"><button type="button"><img src="../assets/img/sub/btn_detail_close.gif" alt="닫기" /></button></p>
+		    		<!-- 0401 추가부분 끝 -->	
+	    		
+		    		<h4><c:out value="${list.name }"/></h4>
+		    		<p class="comm"></p>
+	
+			    		<div class="detail_comm"> 
+			      			<dl>
+			      				<c:if test="${list.name ne '샘플러' }">
+				      				<dd><b style = "color:#228a68;">재료</b><br/>
+									<c:out value="${list.topping }"/><br/>
+									<b style = "color:#228a68;">증정소스</b><br/>
+									<c:out value="${list.presentsauce }"/>
+									</dd>
+								</c:if>
+	
+								<dd></dd>
+			       				<dt><img src="../assets/img/menu/detail_title_size.gif" alt="사이즈별 가격"></dt>
+			       				<dd>
+			       					<ul>
+							
+								 	<li>
+										<span class="size_img"><img src="../assets/img/menu/detail_size_one.gif" alt="원 사이즈 사이즈"/></span>
+										<span class="가격">${list.onesizeprice }</span>
+									</li>
+	
+	          				</ul>
+	        			</dd>
+	
+	        			<dt><img src="../assets/img/menu/detail_title_alre.gif" alt="알레르기 음식표기"></dt>
+	        			<dd>${list.allergy }</dd>
+	        			<dt class="hidden">성분표시</dt>
+	        			<dd>
+	          				<table>
+	            				<tr>
+	              					<th scope="col">칼로리</th>
+	              					<th scope="col">영양정보</th>
+	            				</tr>
+	            				<tr>
+	              					<td>${list.calorie }</td>
+	              					<td style="text-align:left">${list.nuturition }</td>
+	            				</tr>
+	          				</table>
+	        			</dd>
+	
+	      			</dl>
+	    		</div>
+	    		<!-- //detail_comm -->
+	    		<form action="">
+	    			<div class="cart_order"> 
+		
+	        			<label for="select_size" class="hidden">사이즈 선택</label>
+	        			<select id="select_size">
+	 
+							<option value="51036,10,3006">one-${mOnePackPrice }</option>
+	
+	        			</select>
+	
+	        			<label for="select_count">수량</label>
+	        			<select id="select_count">
+	          				<option value="1">1</option>
+	          				<option value="2">2</option>
+	          				<option value="3">3</option>
+	          				<option value="4">4</option>
+	          				<option value="5">5</option>
+	        			</select>
+	
+	      			<!--  <button class="cart"  type="button" onclick="fnGetPizzaCnt('70','20','9001','','','addCart')"    ><img src="../assets/img/menu/dtaile_btn_cart.gif"  alt="장바구니 담기" /></button> -->
+	      				<button class="order" type="button" onclick="fnOrderGo('${list.menuid}');" >
+	      					<img src="../assets/img/menu/dtaile_btn_order.gif" alt="바로 주문하기" />
+	      				</button>
+	    			</div>
+	    		</form>
+	  		</div>
+			</c:if>
 			
-			  			<label for="select_count">수량</label>
-			  			<select id="select_count">
-			    				<option value="1">1</option>
-			    				<option value="2">2</option>
-			    				<option value="3">3</option>
-			    				<option value="4">4</option>
-			    				<option value="5">5</option>
-			  			</select>
+			<!-- 음료 -->
+			<c:if test="${ list.menuid eq 'pj_2013' }">
+				<script type="text/javascript">
+					var $mainType = "40";
+					var $doughType = "";
+				</script>
 			
-							<button class="cart"  type="button" onclick="fnGetPizzaCnt('11','10','1019','4001','오리지널','addCart')"    ><img src="../assets/img/menu/dtaile_btn_cart.gif"  alt="장바구니 담기" /></button>
-							<button class="order" type="button" onclick="fnGetPizzaCnt('11','10','1019','4001','오리지널','addCartNgo')" ><img src="../assets/img/menu/dtaile_btn_order.gif" alt="바로 주문하기" /></button>
+				<div class="db_img">
+				<img src="${list.imagepath2 }" alt="${list.name }"
+					title="${list.name }"
+					onerror="this.src='../assets/img/menu/img/detail_noImage.png'" />
+				</div>
+				<div class="comment">
+					<!--  0401 추가부분 시작  -->
+					<p class="close">
+						<button type="button">
+							<img src="../assets/img/sub/btn_detail_close.gif" alt="닫기" />
+						</button>
+					</p>
+					<!-- 0401 추가부분 끝 -->
+					<h4><c:out value="${list.name }"/></h4>
+					<p class="comm"><c:out value="${list.name }"/></p>
+					<div class="detail_comm">
+						<dl>
+							<dt>
+								<img src="../assets/img/menu/detail_title_size.gif" alt="사이즈별 가격">
+							</dt>
+							<dd>
+								<ul>
+									<li><span class="size_img"><img
+											src="${mBeverRSizeImgPath }" alt="${mRsizeName }" /></span>
+										<span class="가격">${list.rprice }</span></li>
+				
+									<li><span class="size_img"><img
+											src="${mBeverlSizeImgPath }" alt="${mLsizeName }" /></span> <span
+										class="가격">${list.lprice }</span></li>
+								</ul>
+							</dd>
+						</dl>
+					</div>
+					<!-- //detail_comm -->
+					<form action="">
+						<div class="cart_order">
+						<label for="select_size" class="hidden">사이즈 선택</label> <select
+							id="select_size">
+							<option value="50486,10,3012">${mSizeSelectOpt1 }</option>
+							<option value="50485,10,3014">${mSizeSelectOpt2 }</option>
+						</select> <label for="select_count">수량</label> <select id="select_count">
+							<option value="1">1</option>
+							<option value="2">2</option>
+							<option value="3">3</option>
+							<option value="4">4</option>
+							<option value="5">5</option>
+						</select>
+				
+						<!--  
+						<button class="cart" type="button"
+							onclick="fnGetPizzaCnt('80','40','4010','','','addCart')">
+						<img src="../assets/img/menu/dtaile_btn_cart.gif" alt="장바구니 담기" />
+						</button>
+						-->
+						<button class="order" type="button"
+							onclick="fnOrderGo('${list.menuid}');">
+								<img src="../assets/img/menu/dtaile_btn_order.gif" alt="바로 주문하기" />
+							</button>
 						</div>
 					</form>
-			</div>
-		</c:if>
-	
-		<!-- 사이드 메뉴 -->
-		<c:if test="${ list.menuid eq 'pj_2012' }">
-		  
-			<script type="text/javascript">
-				var $mainType  = "20";
-				var $doughType = "";
-			</script>
-			<div class="db_img">
-				<img src="${list.imagepath2 }" alt="${list.name }" title="${list.name }" onerror="this.src='/assets/img/menu/img/detail_noImage.png'"/>
-			</div>
-	    		<div class="comment">
-	    		<!--  0401 추가부분 시작  -->
-	    		<p class="close"><button type="button"><img src="../assets/img/sub/btn_detail_close.gif" alt="닫기" /></button></p>
-	    		<!-- 0401 추가부분 끝 -->	
-    		
-	    		<h4><c:out value="${list.name }"/></h4>
-	    		<p class="comm"></p>
-
-		    		<div class="detail_comm"> 
-		      			<dl>
-		      				<c:if test="${list.name ne '샘플러' }">
-			      				<dd><b style = "color:#228a68;">재료</b><br/>
-								<c:out value="${list.topping }"/><br/>
-								<b style = "color:#228a68;">증정소스</b><br/>
-								<c:out value="${list.presentsauce }"/>
-								</dd>
-							</c:if>
-
-							<dd></dd>
-		       				<dt><img src="../assets/img/menu/detail_title_size.gif" alt="사이즈별 가격"></dt>
-		       				<dd>
-		       					<ul>
-						
-							 	<li>
-									<span class="size_img"><img src="../assets/img/menu/detail_size_one.gif" alt="원 사이즈 사이즈"/></span>
-									<span class="가격">${list.onesizeprice }</span>
-								</li>
-
-          				</ul>
-        			</dd>
-
-        			<dt><img src="../assets/img/menu/detail_title_alre.gif" alt="알레르기 음식표기"></dt>
-        			<dd>${list.allergy }</dd>
-        			<dt class="hidden">성분표시</dt>
-        			<dd>
-          				<table>
-            				<tr>
-              					<th scope="col">칼로리</th>
-              					<th scope="col">영양정보</th>
-            				</tr>
-            				<tr>
-              					<td>${list.calorie }</td>
-              					<td style="text-align:left">${list.nuturition }</td>
-            				</tr>
-          				</table>
-        			</dd>
-
-      			</dl>
-    		</div>
-    		<!-- //detail_comm -->
-    		<form action="">
-    			<div class="cart_order"> 
-	
-        			<label for="select_size" class="hidden">사이즈 선택</label>
-        			<select id="select_size">
- 
-						<option value="51036,10,3006">one-${mOnePackPrice }</option>
-
-        			</select>
-
-        			<label for="select_count">수량</label>
-        			<select id="select_count">
-          				<option value="1">1</option>
-          				<option value="2">2</option>
-          				<option value="3">3</option>
-          				<option value="4">4</option>
-          				<option value="5">5</option>
-        			</select>
-
-      				<button class="cart"  type="button" onclick="fnGetPizzaCnt('70','20','9001','','','addCart')"    ><img src="../assets/img/menu/dtaile_btn_cart.gif"  alt="장바구니 담기" /></button>
-      				<button class="order" type="button" onclick="fnGetPizzaCnt('70','20','9001','','','addCartNgo')" ><img src="../assets/img/menu/dtaile_btn_order.gif" alt="바로 주문하기" /></button>
-    			</div>
-    		</form>
-  		</div>
-		</c:if>
-		
-		<!-- 음료 -->
-		<c:if test="${ list.menuid eq 'pj_2013' }">
-			<script type="text/javascript">
-				var $mainType = "40";
-				var $doughType = "";
-			</script>
-		
-			<div class="db_img">
-			<img src="${list.imagepath2 }" alt="${list.name }"
-				title="${list.name }"
-				onerror="this.src='../assets/img/menu/img/detail_noImage.png'" />
-			</div>
-			<div class="comment">
-				<!--  0401 추가부분 시작  -->
-				<p class="close">
-					<button type="button">
-						<img src="../assets/img/sub/btn_detail_close.gif" alt="닫기" />
-					</button>
-				</p>
-				<!-- 0401 추가부분 끝 -->
-				<h4><c:out value="${list.name }"/></h4>
-				<p class="comm"><c:out value="${list.name }"/></p>
-				<div class="detail_comm">
-					<dl>
-						<dt>
-							<img src="../assets/img/menu/detail_title_size.gif" alt="사이즈별 가격">
-						</dt>
+				</div>
+			</c:if>
+			
+			<%-- 오리지널 --%>
+			<c:if test="${ list.menuid eq 'pj_2002' || list.menuid eq 'pj_2003' || list.menuid eq 'pj_2004' || list.menuid eq 'pj_2005' 
+				|| list.menuid eq 'pj_2006' || list.menuid eq 'pj_2008' || list.menuid eq 'pj_2009'}">
+				<script type="text/javascript">
+					var $mainType = "10";
+					var $doughType = "오리지널";
+				</script>
+				<div class="db_img">
+					<img src="${list.imagepath2 }" alt="${list.name}" title="${list.name}" onerror="this.src='/assets/img/menu/img/detail_noImage.png'" />
+				</div>
+				<div class="comment">
+					<!--  0401 추가부분 시작  -->
+					<p class="close">
+						<button type="button"><img src="../assets/img/sub/btn_detail_close.gif" alt="닫기" />	</button>
+					</p>
+					<!-- 0401 추가부분 끝 -->
+					<h4>${list.name}</h4>
+					<p class="comm">${list.description}</p>
+					
+					<div class="detail_comm">
+						<dl>
+							<dt><img src="../assets/img/menu/detail_title_topping.gif" alt="토핑재료"></dt>
+							<dd>${list.topping}</dd>
+						<dt><img src="../assets/img/menu/detail_title_size.gif" alt="사이즈별 가격"></dt>
 						<dd>
 							<ul>
-								<li><span class="size_img"><img
-										src="${mBeverRSizeImgPath }" alt="${mRsizeName }" /></span>
-									<span class="가격">${list.rprice }</span></li>
-			
-								<li><span class="size_img"><img
-										src="${mBeverlSizeImgPath }" alt="${mLsizeName }" /></span> <span
-									class="가격">${list.lprice }</span></li>
+								<li>
+									<c:if test="${ list.rprice != null}">
+										<span  class="size_img"><img src="../assets/img/menu/detail_size_R.gif" alt="9 인치사이즈"/></span>
+										<span class="가격">${list.rprice}</span>
+									</c:if>
+								</li>
+								<li>
+									<c:if test="${ list.lprice != null}">
+										<span  class="size_img"><img src="../assets/img/menu/detail_size_L.gif" alt="12 인치사이즈"/></span>
+										<span class="가격">${list.lprice}</span>
+									</c:if>
+								</li>
+								<li>
+									<c:if test="${ list.fprice != null}">
+										<span  class="size_img"><img src="../assets/img/menu/detail_size_F.gif" alt="14 인치사이즈"/></span>
+										<span class="가격">${list.fprice}</span>
+									</c:if>
+								</li>
+								<li>
+									<c:if test="${ list.pprice != null}">
+										<span  class="size_img"><img src="../assets/img/menu/detail_size_P.gif" alt="16 인치사이즈"/></span>
+										<span class="가격">${list.pprice}</span>
+									</c:if>
+								</li>
 							</ul>
 						</dd>
+						<dt><img src="../assets/img/menu/detail_title_alre.gif" alt="알레르기 음식표기"></dt>
+						<dd>${list.allergy}</dd>
+						<dt class="hidden">성분표시</dt>
+						<dd>
+							<table>
+								<tr>
+									<th scope="col">칼로리</th>
+						        	<th scope="col">영양정보</th>									
+								</tr>
+								<tr>
+									<td>${list.calorie}</td>
+									<td style="text-align:left">${list.nuturition}</td>									
+								</tr>
+							</table>
+						</dd>
 					</dl>
-				</div>
-				<!-- //detail_comm -->
+				</div><!-- //detail_comm -->
 				<form action="">
 					<div class="cart_order">
-					<label for="select_size" class="hidden">사이즈 선택</label> <select
-						id="select_size">
-						<option value="50486,10,3012">${mSizeSelectOpt1 }</option>
-						<option value="50485,10,3014">${mSizeSelectOpt2 }</option>
-					</select> <label for="select_count">수량</label> <select id="select_count">
-						<option value="1">1</option>
-						<option value="2">2</option>
-						<option value="3">3</option>
-						<option value="4">4</option>
-						<option value="5">5</option>
-					</select>
-			
-					<button class="cart" type="button"
-						onclick="fnGetPizzaCnt('80','40','4010','','','addCart')">
-					<img src="../assets/img/menu/dtaile_btn_cart.gif" alt="장바구니 담기" />
-					</button>
-					<button class="order" type="button"
-						onclick="fnGetPizzaCnt('80','40','4010','','','addCartNgo')">
+						<label for="select_size" class="hidden">사이즈 선택</label> 
+							<select id="select_size" name="select_size" onchange="setPizzaSize(this.value)">
+								<c:if test="${ list.rprice != null}">
+									<option value="레귤러">${fn:substring(list.rprice, 0, fn:length(list.rprice)-1)}</option>
+								</c:if>
+								<c:if test="${ list.lprice != null}">
+									<option value="라지">${fn:substring(list.lprice, 0, fn:length(list.lprice)-1)}</option>
+								</c:if>
+								<c:if test="${ list.fprice != null}">
+									<option value="패밀리">${fn:substring(list.fprice, 0, fn:length(list.fprice)-1)}</option>
+								</c:if>
+								<c:if test="${ list.pprice != null}">
+									<option value="파티">${fn:substring(list.pprice, 0, fn:length(list.pprice)-1)}</option>
+								</c:if>
+							</select>
+						<div class="spcInstruction_btn">
+							<p class="btn"><img src="../assets/img/order/btn_opt_off.gif" alt="옵션변경" /></p>
+							<div class="spcInstruction_comment">
+								<p class="center">
+									<span>special instructions :</span> <br>버튼 클릭 시 
+									<span>sauce, cheese, bake, cut </span><br>상태를 조절하실 수 있습니다. 
+									<br>장바구니에 담은 후 변경하시려면 메뉴를 <br>장바구니에서 삭제 후 다시 담으셔야 합니다!! 
+								</p>
+							</div>
+							<!-- 옵션변경 말풍선 -->
+						</div>
+						<!-- 20131004 소스&치즈&커팅&베이크 옵션주기 -->
+						<div id="option_box_0" class="option_box">
+							<!--  display: none; -->
+							<ul class="spcInstructions">
+								<li>
+									<p onclick="fnAdjustMenu('0_1',$(this));">소스 조절 <span class="imgsp">▼</span></p>
+									<div id="0_1" class="option">
+										<p class="menu_opt_radio">
+											<input type="radio" id="0_regularSauce" name="0_sau_radio" value="" /> <label for="0_regular">소스 보통(Normal)</label>
+										</p>
+										<p class="menu_opt_radio">
+											<input type="radio" id="0_lightSauce" name="0_sau_radio" value="20" /> <label for="0_light">소스 조금(LS)</label>
+										</p>
+										<p class="menu_opt_radio">
+											<input type="radio" id="0_extraSauce" name="0_sau_radio" value="30" /> <label for="0_extra">소스 많이(XS)</label>
+										</p>
+										<p class="menu_opt_radio">
+											<input type="radio" id="0_noSauce" name="0_sau_radio" value="40" /> <label for="0_no">소스 제외(NS)</label>
+										</p>
+									</div>
+								</li>
+								<li>
+									<p onclick="fnAdjustMenu('0_2',$(this));">치즈 조절 <span class="imgsp">▼</span></p>
+									<div id="0_2" class="option">
+										<p class="menu_opt_radio">
+											<input type="radio" id="0_normalCheese" name="0_chee_radio" value="" /> <label for="0_normal">치즈 보통(Normal)</label>
+										</p>
+										<p class="menu_opt_radio">
+											<input type="radio" id="0_lightCheese" name="0_chee_radio" value="20" /> <label for="0_light">치즈 조금(LC)</label>
+										</p>
+										<p class="menu_opt_radio">
+											<input type="radio" id="0_noCheese" name="0_chee_radio" value="30" /> <label for="0_no">치즈 제외(NC)</label>
+										</p>
+									</div>
+								</li>
+								<li>
+									<p onclick="fnAdjustMenu('0_3',$(this));">굽기 조절 <span class="imgsp">▼</span></p>
+									<div id="0_3" class="option">
+										<p class="menu_opt_radio">
+											<input type="radio" id="0_normalBake" name="0_bake_radio" value="" /> <label for="0_normal">기본 굽기(Normal)</label>
+										</p>
+										<p class="menu_opt_radio">
+											<input type="radio" id="0_wellDone" name="0_bake_radio" value="20" /> <label for="0_well">바싹 굽기(WD)</label>
+										</p>
+									</div>
+								</li>
+								<li>
+									<p onclick="fnAdjustMenu('0_4',$(this));">조각 컷팅 <span class="imgsp">▼</span>
+									</p>
+									<div id="0_4" class="option">
+										<p class="menu_opt_radio">
+											<input type="radio" id="0_normalCut" name="0_cut_radio" lue="" />
+											<label for="0_normal">기본컷팅(Normal)</label>
+										</p>
+										<p class="menu_opt_radio">
+											<input type="radio" id="0_squareCut" name="0_cut_radio" value="60" />
+											<label for="0_square">사각컷팅(SC)</label>
+										</p>
+										<p class="menu_opt_radio">
+											<input type="radio" id="0_sixCut" name="0_cut_radio" value="20" />
+											<label for="0_sixCut">6조각컷팅(6C)</label>
+										</p>
+										<p class="menu_opt_radio">
+											<input type="radio" id="0_eightCut" name="0_cut_radio" value="30" />
+											<label for="0_eightCut">8조각컷팅(8C)</label>
+										</p>
+										<p class="menu_opt_radio">
+											<input type="radio" id="0_tenCut" name="0_cut_radio" value="40" />
+											<label for="0_tenCut">10조각컷팅(10C)</label>
+										</p>
+									</div>
+								</li>
+							</ul>
+						</div>
+						<!--  
+						<button class="cart" type="button" onclick="fnGetPizzaCnt('10','10','1018','4001','오리지널','addCart')">
+							<img src="../assets/img/menu/dtaile_btn_cart.gif" alt="장바구니 담기" />
+						</button>
+						-->
+						<button class="order" type="button" onclick="fnOrderGo('${list.menuid}');">
 							<img src="../assets/img/menu/dtaile_btn_order.gif" alt="바로 주문하기" />
 						</button>
 					</div>
 				</form>
 			</div>
-		</c:if>
-		
-		<%-- 오리지널 --%>
-		<c:if test="${ list.menuid eq 'pj_2002' || list.menuid eq 'pj_2003' || list.menuid eq 'pj_2004' || list.menuid eq 'pj_2005' 
-			|| list.menuid eq 'pj_2006' || list.menuid eq 'pj_2008' || list.menuid eq 'pj_2009'}">
-			<script type="text/javascript">
-				var $mainType = "10";
-				var $doughType = "오리지널";
-			</script>
-			<div class="db_img">
-				<img src="${list.imagepath2 }" alt="${list.name}" title="${list.name}" onerror="this.src='/assets/img/menu/img/detail_noImage.png'" />
-			</div>
-			<div class="comment">
-				<!--  0401 추가부분 시작  -->
-				<p class="close">
-					<button type="button"><img src="../assets/img/sub/btn_detail_close.gif" alt="닫기" />	</button>
-				</p>
-				<!-- 0401 추가부분 끝 -->
-				<h4>${list.name}</h4>
-				<p class="comm">${list.description}</p>
-				
-				<div class="detail_comm">
-					<dl>
-						<dt><img src="../assets/img/menu/detail_title_topping.gif" alt="토핑재료"></dt>
-						<dd>${list.topping}</dd>
-					<dt><img src="../assets/img/menu/detail_title_size.gif" alt="사이즈별 가격"></dt>
-					<dd>
-						<ul>
-							<li>
-								<c:if test="${ list.rprice != null}">
-									<span  class="size_img"><img src="../assets/img/menu/detail_size_R.gif" alt="9 인치사이즈"/></span>
-									<span class="가격">${list.rprice}</span>
-								</c:if>
-							</li>
-							<li>
-								<c:if test="${ list.lprice != null}">
-									<span  class="size_img"><img src="../assets/img/menu/detail_size_L.gif" alt="12 인치사이즈"/></span>
-									<span class="가격">${list.lprice}</span>
-								</c:if>
-							</li>
-							<li>
-								<c:if test="${ list.fprice != null}">
-									<span  class="size_img"><img src="../assets/img/menu/detail_size_F.gif" alt="14 인치사이즈"/></span>
-									<span class="가격">25900원</span>
-								</c:if>
-							</li>
-							<li>
-								<c:if test="${ list.pprice != null}">
-									<span  class="size_img"><img src="../assets/img/menu/detail_size_P.gif" alt="16 인치사이즈"/></span>
-									<span class="가격">34500원</span>
-								</c:if>
-							</li>
-						</ul>
-					</dd>
-					<dt><img src="../assets/img/menu/detail_title_alre.gif" alt="알레르기 음식표기"></dt>
-					<dd>${list.allergy}</dd>
-					<dt class="hidden">성분표시</dt>
-					<dd>
-						<table>
-							<tr>
-								<th scope="col">칼로리</th>
-					        	<th scope="col">영양정보</th>									
-							</tr>
-							<tr>
-								<td>${list.calorie}</td>
-								<td style="text-align:left">${list.nuturition}</td>									
-							</tr>
-						</table>
-					</dd>
-				</dl>
-			</div><!-- //detail_comm -->
-			<form action="">
-				<div class="cart_order">
-					<label for="select_size" class="hidden">사이즈 선택</label> <select
-						id="select_size">
-						<c:if test="${ list.rprice != null}">
-							<option value="50330,10,3001">R-15900</option>
-						</c:if>
-						<c:if test="${ list.lprice != null}">
-							<option value="50332,10,3002">L-21500</option>
-						</c:if>
-						<c:if test="${ list.fprice != null}">
-							<option value="50329,10,3003">F-25900</option>
-						</c:if>
-						<c:if test="${ list.pprice != null}">
-							<option value="50322,10,3005">P-34500</option>
-						</c:if>
-					</select>
-					<div class="spcInstruction_btn">
-						<p class="btn"><img src="../assets/img/order/btn_opt_off.gif" alt="옵션변경" /></p>
-						<div class="spcInstruction_comment">
-							<p class="center">
-								<span>special instructions :</span> <br>버튼 클릭 시 
-								<span>sauce, cheese, bake, cut </span><br>상태를 조절하실 수 있습니다. 
-								<br>장바구니에 담은 후 변경하시려면 메뉴를 <br>장바구니에서 삭제 후 다시 담으셔야 합니다!! 
-							</p>
-						</div>
-						<!-- 옵션변경 말풍선 -->
-					</div>
-					<!-- 20131004 소스&치즈&커팅&베이크 옵션주기 -->
-					<div id="option_box_0" class="option_box">
-						<!--  display: none; -->
-						<ul class="spcInstructions">
-							<li>
-								<p onclick="fnAdjustMenu('0_1',$(this));">소스 조절 <span class="imgsp">▼</span></p>
-								<div id="0_1" class="option">
-									<p class="menu_opt_radio">
-										<input type="radio" id="0_regularSauce" name="0_sau_radio" value="" /> <label for="0_regular">소스 보통(Normal)</label>
-									</p>
-									<p class="menu_opt_radio">
-										<input type="radio" id="0_lightSauce" name="0_sau_radio" value="20" /> <label for="0_light">소스 조금(LS)</label>
-									</p>
-									<p class="menu_opt_radio">
-										<input type="radio" id="0_extraSauce" name="0_sau_radio" value="30" /> <label for="0_extra">소스 많이(XS)</label>
-									</p>
-									<p class="menu_opt_radio">
-										<input type="radio" id="0_noSauce" name="0_sau_radio" value="40" /> <label for="0_no">소스 제외(NS)</label>
-									</p>
-								</div>
-							</li>
-							<li>
-								<p onclick="fnAdjustMenu('0_2',$(this));">치즈 조절 <span class="imgsp">▼</span></p>
-								<div id="0_2" class="option">
-									<p class="menu_opt_radio">
-										<input type="radio" id="0_normalCheese" name="0_chee_radio" value="" /> <label for="0_normal">치즈 보통(Normal)</label>
-									</p>
-									<p class="menu_opt_radio">
-										<input type="radio" id="0_lightCheese" name="0_chee_radio" value="20" /> <label for="0_light">치즈 조금(LC)</label>
-									</p>
-									<p class="menu_opt_radio">
-										<input type="radio" id="0_noCheese" name="0_chee_radio" value="30" /> <label for="0_no">치즈 제외(NC)</label>
-									</p>
-								</div>
-							</li>
-							<li>
-								<p onclick="fnAdjustMenu('0_3',$(this));">굽기 조절 <span class="imgsp">▼</span></p>
-								<div id="0_3" class="option">
-									<p class="menu_opt_radio">
-										<input type="radio" id="0_normalBake" name="0_bake_radio" value="" /> <label for="0_normal">기본 굽기(Normal)</label>
-									</p>
-									<p class="menu_opt_radio">
-										<input type="radio" id="0_wellDone" name="0_bake_radio" value="20" /> <label for="0_well">바싹 굽기(WD)</label>
-									</p>
-								</div>
-							</li>
-							<li>
-								<p onclick="fnAdjustMenu('0_4',$(this));">조각 컷팅 <span class="imgsp">▼</span>
-								</p>
-								<div id="0_4" class="option">
-									<p class="menu_opt_radio">
-										<input type="radio" id="0_normalCut" name="0_cut_radio" lue="" />
-										<label for="0_normal">기본컷팅(Normal)</label>
-									</p>
-									<p class="menu_opt_radio">
-										<input type="radio" id="0_squareCut" name="0_cut_radio" value="60" />
-										<label for="0_square">사각컷팅(SC)</label>
-									</p>
-									<p class="menu_opt_radio">
-										<input type="radio" id="0_sixCut" name="0_cut_radio" value="20" />
-										<label for="0_sixCut">6조각컷팅(6C)</label>
-									</p>
-									<p class="menu_opt_radio">
-										<input type="radio" id="0_eightCut" name="0_cut_radio" value="30" />
-										<label for="0_eightCut">8조각컷팅(8C)</label>
-									</p>
-									<p class="menu_opt_radio">
-										<input type="radio" id="0_tenCut" name="0_cut_radio" value="40" />
-										<label for="0_tenCut">10조각컷팅(10C)</label>
-									</p>
-								</div>
-							</li>
-						</ul>
-					</div>
-
-					<button class="cart" type="button" onclick="fnGetPizzaCnt('10','10','1018','4001','오리지널','addCart')">
-						<img src="../assets/img/menu/dtaile_btn_cart.gif" alt="장바구니 담기" />
-					</button>
-					<button class="order" type="button" onclick="fnGetPizzaCnt('10','10','1018','4001','오리지널','addCartNgo')">
-						<img src="../assets/img/menu/dtaile_btn_order.gif" alt="바로 주문하기" />
-					</button>
-				</div>
-			</form>
+			</c:if>
 		</div>
-		</c:if>
-		
-		
-	</div>
+    </form>
+    
     
 	<!--   0401 추가부분 시작  -->
 	<script type="text/javascript" src="../assets/js/cart.js"></script>

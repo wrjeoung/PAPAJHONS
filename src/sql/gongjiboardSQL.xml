@@ -66,11 +66,17 @@
 		<include refid="where-no"/>
 	</update>
 	<!-- 검색기능 -->
-	<select id="subjectList" parameterClass="int" resultMap="gongjiRes">
-		SELECT * FROM GONGJI WHERE SUBJECT like '%' || #subject# || '%'
+	<!-- 전체검색 -->
+	<select id="totalList" parameterClass="string" resultMap="gongjiRes">
+		SELECT * FROM GONGJI WHERE SUBJECT like '%' || #subject# || '%' or
+		CONTENT like '%' || #content# || '%' ORDER BY num DESC 
 	</select>
 	
-	<select id="contentList" parameterClass="int" resultMap="gongjiRes">
-		SELECT * FROM GONGJI WHERE CONTENT like '%' || #content# || '%'
+	<select id="subjectList" parameterClass="string" resultMap="gongjiRes">
+		SELECT * FROM GONGJI WHERE SUBJECT like '%' || #subject# || '%' ORDER BY num DESC
+	</select>
+	
+	<select id="contentList" parameterClass="string" resultMap="gongjiRes">
+		SELECT * FROM GONGJI WHERE CONTENT like '%' || #content# || '%' ORDER BY num DESC
 	</select>
 </sqlMap>

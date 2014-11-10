@@ -109,7 +109,8 @@
         			<li><h2><a href="subAction.action?menuId=pj_2013"><img src="../assets/img/common/m2_s13.gif" alt="음료" /></a></h2></li>
       			</ul>
     		</li>
-    		<li class="navItem3" style="width:210px;"> <a href="/sub.jsp?menuGb=event&menuId=pj_3001">프로모션</a>
+    		<!-- <li class="navItem3" style="width:210px;"> <a href="/sub.jsp?menuGb=event&menuId=pj_3001">프로모션</a> -->
+    		<li class="navItem3" style="width:210px;"> <a href="listAction2.action">프로모션</a>
       			<ul class="sub">
         			<li><h2><a href="listAction2.action"><img src="../assets/img/common/m3_s1.gif" alt="진행중인 이벤트" /></a></h2></li>
         			<li><h2><a href="pastlistAction.action"><img src="../assets/img/common/m3_s2.gif" alt="지난 이벤트" /></a></h2></li>
@@ -132,7 +133,7 @@
         			<!-- <li><h2><a href="/sub.jsp?menuGb=customer&menuId=pj_5001"><img src="../assets/img/common/m5_s1.gif" alt="공지사항" /></a></h2></li> -->
         			<li><h2><a href="listAction.action"><img src="../assets/img/common/m5_s1.gif" alt="공지사항" /></a></h2></li>
         			<li><h2><a href="qnalistAction.action"><img src="../assets/img/common/m5_s2.gif" alt="Q&A" /></a></h2></li>
-        			<li><h2><a href="/sub.jsp?menuGb=customer&menuId=pj_5003"><img src="../assets/img/common/m5_s3.gif" alt="제휴카드안내" /></a></h2></li>
+        			<li><h2><a href="memcardlistAction.action"><img src="../assets/img/common/m5_s3.gif" alt="제휴카드안내" /></a></h2></li>
         			<li><h2><a href="storeAction.action"><img src="../assets/img/common/m5_s4.gif" alt="매장안내" /></a></h2></li>
       			</ul>
     		</li>

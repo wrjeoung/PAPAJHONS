@@ -11,13 +11,11 @@ import com.opensymphony.xwork2.Action;
 
 import db.MenuDTO;
 
-public class Pj_1002Action implements Action, IbatisAware, SessionAware {
+public class Pj_1002Action implements Action, IbatisAware {
 
 	public static SqlMapClient sqlMapper;
 	private List<MenuDTO> list = new ArrayList<MenuDTO>();
 	private String menuId;
-	private int _index;
-	Map sessionMap;
 
 	@Override
 	public String execute() throws Exception {
@@ -47,11 +45,5 @@ public class Pj_1002Action implements Action, IbatisAware, SessionAware {
 	public void setIbatis(SqlMapClient sqlMapper) {
 		// TODO Auto-generated method stub
 		this.sqlMapper = sqlMapper;
-	}
-
-	@Override
-	public void setSession(Map arg0) {
-		// TODO Auto-generated method stub
-		sessionMap = arg0;
 	}
 }

@@ -36,6 +36,8 @@
 	<sqlMap resource="/sql/storeSQL.xml"/>
 	<sqlMap resource="/sql/specialeventSQL.xml"/>	
 	<sqlMap resource="/sql/qnaboardSQL.xml"/>
+
+
 	<sqlMap resource="/sql/memCardSQL.xml"/>
 	<sqlMap resource="/sql/creCardSQL.xml"/>
 </sqlMapConfig>

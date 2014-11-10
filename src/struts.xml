@@ -17,10 +17,11 @@
 			</result>
 		</action>
 		
+		
+
 		<action name="pj_1002Action" class="order.Pj_1002Action">
 			<interceptor-ref name="ibatis"/>
 			<interceptor-ref name="params"/>
-			<interceptor-ref name="servletConfig" />
 			<result>/order/pj_1002.jsp</result>
 		</action>
 		
@@ -70,6 +71,7 @@
 	</package>
 	
 	
+	
 	<package name="main" extends="struts-default">
 		<action name="mainAction" class="main.MainAction">
 			<result>
@@ -100,10 +102,10 @@
 		</action>
 		
 		<!-- 글수정하기 -->
-		<action name="modifyForm" class="gongji.board.modifyAction" method="form">
+		<action name="gongjimodifyForm" class="gongji.board.modifyAction" method="form">
 			<result>/gongji/gongjiModify.jsp</result>
 		</action>
-		<action name="modifyAction" class="gongji.board.modifyAction">
+		<action name="gongjimodifyAction" class="gongji.board.modifyAction">
 			<result type="redirect-action">
 			<param name="actionName">listAction</param>
 			</result>
@@ -119,11 +121,10 @@
 				<param name="actionName">listAction</param>
 			</result>
 		</action>	
-		
+		<!-- 검색 -->
 		<action name="getlistAction" class="gongji.board.getlistAction">
-			<result type="redirect-action">
-				<param name="actionName">listAction</param>
-			</result>
+			<interceptor-ref name="params"/>
+			<result>/gongji/gongjiList.jsp</result>
 		</action>
 	</package>
 	
@@ -350,6 +351,12 @@
 			<param name="actionName">storelistAction</param>
 			</result>
 		</action>
+		
+		<!-- 검색 -->
+		<action name="storegetlistAction" class="storeevent.board.getlistAction">
+			<interceptor-ref name="params"/>
+			<result>/storeevent/storeList.jsp</result>
+		</action>
 	</package>
 	
 	<!-- 지난 이벤트 -->
@@ -409,8 +416,12 @@
 			</result>
 		</action>	
 		
+		<!-- 검색 -->
+		<action name="pastgetlistAction" class="pastevent.board.getlistAction">
+			<interceptor-ref name="params"/>
+			<result>/pastevent/pastList.jsp</result>
+		</action>
 	</package>
-	
 	
 	<!-- 매장안내 -->
 	<package name="store" extends="struts-default">
@@ -504,10 +515,7 @@
 		<interceptor-ref name="params"/>
 			<result>/FAQ/jobFaQ.jsp</result>
 		</action>
-		<action name="stolistAction" class="qna.board.storelistAction">
-			<interceptor-ref name="params"/>
-			<result>/FAQ/storeFaQ.jsp</result>
-		</action>
+		
 	</package>
 
 	<!-- 맴버쉽카드 -->
