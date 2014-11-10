@@ -82,7 +82,9 @@ public class Pj_1003Action implements Action, SessionAware {
 		list.setName(_name);
 		list.setPrice(_price);
 		list.setSize(_size);
-		mapLists.put(_randomString, list);
+		
+		if(_randomString != null)
+			mapLists.put(_randomString, list);
 		
 	
 		/*for(OrderDTO li : lists) {
