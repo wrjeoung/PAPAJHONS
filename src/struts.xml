@@ -78,6 +78,10 @@
 				/main/index.jsp
 			</result>
 		</action>
+		
+		<action name="siteMapAction" class="main.SiteMapAction">
+			<result>/main/siteMap.jsp</result>
+		</action>
 	</package>
 	
 	<!-- 공지사항 -->
