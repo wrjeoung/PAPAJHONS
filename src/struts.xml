@@ -423,7 +423,6 @@
 		</action>
 	</package>
 	
-	
 	<!-- 매장안내 -->
 	<package name="store" extends="struts-default">
 		<interceptors>
@@ -518,7 +517,7 @@
 		</action>
 		
 	</package>
-	
+
 	<!-- 맴버쉽카드 -->
 	<package name="memcard.board" extends="struts-default">
 	<!-- 글쓰기 -->

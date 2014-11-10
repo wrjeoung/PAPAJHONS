@@ -17,7 +17,7 @@
 	<link type="text/css" rel="stylesheet" href="../assets/css/lib_style.css" />
 	<!-- 0404 추가부분(달력쿼리 스타일) 시작 -->
 	<link type="text/css" rel="stylesheet" href="../assets/css/ui.all.css" />
-	<!-- 0404 추가부분(달력쿼리 스타일)끝-->
+	<!-- 0404 추가부분(달력쿼리 스타일)끝-->]
 	<title>파파존스-Better Ingredients.Better Pizza.</title>
 
 
@@ -68,7 +68,7 @@
 	
   		<!-- header -->
   		<div id="header" >
-  			<script type="text/javascript">	$("#header").load("../include/header.jsp?menuGb=menu&menuId=pj_2003"); </script> 
+  			<script type="text/javascript">	$("#header").load("../include/header.jsp?menuGb=event&menuId=pj_3001"); </script> 
   		</div>
   		<!--// header --> 
   
@@ -89,10 +89,11 @@
 			  		<h2><img alt="프로모션" src="../assets/img/pro/snb_title_3.gif"></h2>
 			  		<dl class="sub" id="snb1">
 			    		<!--  <dt class="dep1 pj_2001"><a href="/sub.jsp?menuGb=menu&menuId=pj_2001"><img src="../assets/img/sub/sub_2_1.gif" alt="이 달의 프로모션"></a></dt> -->
-			    		<dt class="dep1 ev_2002"><a href="PromotionAction.action"><img src="../assets/img/pro/sub_3_1_over.gif" alt="진행중인 이벤트"></a></dt>
-			    		<dt class="dep1 ev_2003"><a href="PromotionAction.action"><img src="../assets/img/pro/sub_3_2_over.gif" alt="지난 이벤트"></a></dt>
-			    		<dt class="dep1 ev_2004"><a href="PromotionAction.action"><img src="../assets/img/pro/sub_3_3_over.gif" alt="매장별 이벤트"></a></dt>
-			    		<dt class="dep1 ev_2005"><a href="PromotionAction.action"><img src="../assets/img/pro/sub_3_4_over.gif" alt="스페셜 할인 이벤트"></a></dt>
+			    		<dt><a href="PromotionAction.action"><img src="../assets/img/pro/sub_3_1_over.gif" alt="진행중인 이벤트"></a></dt>
+			    		<dt><a href="PromotionAction2.action"><img src="../assets/img/pro/sub_3_2_over.gif" alt="지난 이벤트"></a></dt>
+			    		<dt><a href="PromotionAction3.action"><img src="../assets/img/pro/sub_3_3_over.gif" alt="매장별 이벤트"></a></dt>
+			    		<dt><a href="PromotionAction4.action"><img src="../assets/img/pro/sub_3_4_over.gif" alt="스페셜 할인 이벤트"></a>
+			    		<!--  <dt class="dep1 pj_2014"><a href="subAction.action?menuId=pj_2014"><img src="../assets/img/sub/sub_2_14.gif" alt="소스&피클"></a></dt>-->
 			  		</dl>
     				<%-- 
      				<script type="text/javascript">	$("#con_container .snb").load("../include/snb.jsp?menuGb=menu&menuId=pj_2003&tab=null"); </script>
@@ -103,6 +104,20 @@
 				<!-- contents -->
   				<div id="contents">
       				<div class="top_title">
+      					<c:if test="${menuId == 'pj_2001'}"><h2>이달의프로모션</h2>	</c:if>
+      					<c:if test="${menuId == 'pj_2002'}"><h2>베스트메뉴</h2>	</c:if>
+      					<c:if test="${menuId == 'pj_2003'}"><h2>오리지널</h2></c:if>
+      					<c:if test="${menuId == 'pj_2004'}"><h2>골드링</h2></c:if>
+      					<c:if test="${menuId == 'pj_2005'}"><h2>치즈롤크러스트</h2></c:if>
+      					<c:if test="${menuId == 'pj_2006'}"><h2>씬</h2></c:if>
+      					<c:if test="${menuId == 'pj_2008'}"><h2>골드링씬</h2></c:if>
+      					<c:if test="${menuId == 'pj_2001'}"><h2>음료</h2>	</c:if>
+      					<c:if test="${menuId == 'pj_2009'}"><h2>하트씬</h2></c:if>
+      					<c:if test="${menuId == 'pj_2010'}"><h2>파파를래터</h2>	</c:if>
+      					<c:if test="${menuId == 'pj_2011'}"><h2>세트메뉴</h2></c:if>
+      					<c:if test="${menuId == 'pj_2012'}"><h2>사이드</h2></c:if>
+      					<c:if test="${menuId == 'pj_2013'}"><h2>음료</h2></c:if>
+      					<c:if test="${menuId == 'pj_2014'}"><h2>소스&피클</h2></c:if>
       					
       					<!-- 20140319  페이스북 좋아요 버튼 추가 
 						<div class="fb-like" data-href="https://www.facebook.com/papajohnskorea" data-layout="standard" data-action="like" data-show-faces="false" data-share="false"></div>
@@ -117,10 +132,9 @@
       				<!-- cont -->
         			<div class="cont" style="text-align:center">
        					<!-- include -->
-	      					<script type="text/javascript"> $("#contents .cont").load('listAction2.action');</script>
-	      					<script type="text/javascript"> $("#contents .cont").load('pastlistAction.action');</script>
-	      					<script type="text/javascript"> $("#contents .cont").load('storelistAction.action');</script>
-	      					<script type="text/javascript"> $("#contents .cont").load('speciallistAction.action');</script>
+       						<script type="text/javascript">
+       						$("#contents .cont").load('listAction2.action'); 
+       						</script>
 	      			</div>
       				<!--// cont -->
 				</div>
@@ -128,10 +142,9 @@
 				
 			</div>
 			<!--// con_container -->  
-
-  		</div>
+		</div>
   		<!--// container -->
-  
+  		
     	<!-- footer -->
   		<div id="footer">
   			<script type="text/javascript"> $("#footer").load("../include/foot.jsp"); </script>

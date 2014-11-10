@@ -62,4 +62,9 @@
 		UPDATE STOREEVENT SET STORE=#store#,SUBJECT=#subject#,CONTENT=#content#,DAY=#day#
 		<include refid="where-no"/>
 	</update>
+	<!-- 검색기능 -->
+	<select id="subjectList" parameterClass="string" resultMap="storeRes">
+		SELECT * FROM STOREEVENT WHERE SUBJECT like '%' || #subject# || '%' ORDER BY num DESC
+	</select>
+
 </sqlMap>

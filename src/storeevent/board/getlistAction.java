@@ -1,4 +1,6 @@
-package gongji.board;
+package storeevent.board;
+
+import gongji.board.pagingAction;
 
 import java.io.IOException;
 import java.io.Reader;
@@ -14,11 +16,10 @@ public class getlistAction extends ActionSupport{
 	public static Reader reader;
 	public static SqlMapClient sqlMapper;
 	
-	private List<gongjiVO> list=new ArrayList<>();
-	private gongjiVO vo=new gongjiVO();
+	private List<storeeventVO> list=new ArrayList<>();
+	private storeeventVO vo=new storeeventVO();
 	
 	private String subject;
-	private String content;
 	
 	private String searchCondition;
 	private String searchKeyword;
@@ -36,7 +37,6 @@ public class getlistAction extends ActionSupport{
 		reader.close();
 	}
 	public String execute()throws Exception{
-		vo.setContent(getContent());
 		vo.setSubject(getSubject());
 		
 		vo.setSearchCondition(getSearchCondition());
@@ -48,37 +48,9 @@ public class getlistAction extends ActionSupport{
 		
 		if("subject".equals(searchCondition)){
 			System.out.println("1");
-			list=sqlMapper.queryForList("gongji.subjectList",searchKeyword);
+			list=sqlMapper.queryForList("store.subjectList",searchKeyword);
 			System.out.println("1-1");
 			
-			totalCount=list.size();	//전체 글의 개수
-			page=new pagingAction(currentPage, totalCount, blockCount, blockPage);	//paingAction 객체 생성
-			pagingHtml=page.getPagingHtml().toString();	//페이지 HTML 생성
-			//현재 페이지에서 보여줄 마지막 글의 번호 설정
-			int lastCount=totalCount;
-			//현재 페이지의 마지막 글의 번호가 전체의 마지막 글보다 작으면 lastCount를 +1 번호로 설정
-			if(page.getEndCount()<totalCount)
-				lastCount=page.getEndCount()+1;
-			list=list.subList(page.getStartCount(), lastCount);
-		}else if("content".equals(searchCondition)){
-			System.out.println("2");
-			list=sqlMapper.queryForList("gongji.contentList",searchKeyword);
-			System.out.println("2-2");
-			
-			totalCount=list.size();	//전체 글의 개수
-			page=new pagingAction(currentPage, totalCount, blockCount, blockPage);	//paingAction 객체 생성
-			pagingHtml=page.getPagingHtml().toString();	//페이지 HTML 생성
-			//현재 페이지에서 보여줄 마지막 글의 번호 설정
-			int lastCount=totalCount;
-			//현재 페이지의 마지막 글의 번호가 전체의 마지막 글보다 작으면 lastCount를 +1 번호로 설정
-			if(page.getEndCount()<totalCount)
-				lastCount=page.getEndCount()+1;
-			list=list.subList(page.getStartCount(), lastCount);
-		}else if("total".equals(searchCondition)){
-			System.out.println("3");
-			list=sqlMapper.queryForList("gongji.totalList", searchKeyword);
-			System.out.println("3-3");
-		
 			totalCount=list.size();	//전체 글의 개수
 			page=new pagingAction(currentPage, totalCount, blockCount, blockPage);	//paingAction 객체 생성
 			pagingHtml=page.getPagingHtml().toString();	//페이지 HTML 생성
@@ -103,11 +75,17 @@ public class getlistAction extends ActionSupport{
 	public static void setSqlMapper(SqlMapClient sqlMapper) {
 		getlistAction.sqlMapper = sqlMapper;
 	}
-	public List<gongjiVO> getList() {
+	public List<storeeventVO> getList() {
 		return list;
 	}
-	public void setList(List<gongjiVO> list) {
+	public void setList(List<storeeventVO> list) {
 		this.list = list;
+	}
+	public storeeventVO getVo() {
+		return vo;
+	}
+	public void setVo(storeeventVO vo) {
+		this.vo = vo;
 	}
 	public String getSubject() {
 		return subject;
@@ -115,11 +93,17 @@ public class getlistAction extends ActionSupport{
 	public void setSubject(String subject) {
 		this.subject = subject;
 	}
-	public String getContent() {
-		return content;
+	public String getSearchCondition() {
+		return searchCondition;
 	}
-	public void setContent(String content) {
-		this.content = content;
+	public void setSearchCondition(String searchCondition) {
+		this.searchCondition = searchCondition;
+	}
+	public String getSearchKeyword() {
+		return searchKeyword;
+	}
+	public void setSearchKeyword(String searchKeyword) {
+		this.searchKeyword = searchKeyword;
 	}
 	public int getCurrentPage() {
 		return currentPage;
@@ -156,24 +140,6 @@ public class getlistAction extends ActionSupport{
 	}
 	public void setPage(pagingAction page) {
 		this.page = page;
-	}
-	public String getSearchCondition() {
-		return searchCondition;
-	}
-	public void setSearchCondition(String searchCondition) {
-		this.searchCondition = searchCondition;
-	}
-	public String getSearchKeyword() {
-		return searchKeyword;
-	}
-	public void setSearchKeyword(String searchKeyword) {
-		this.searchKeyword = searchKeyword;
-	}
-	public gongjiVO getVo() {
-		return vo;
-	}
-	public void setVo(gongjiVO vo) {
-		this.vo = vo;
 	}
 	
 }

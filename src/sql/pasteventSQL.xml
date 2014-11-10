@@ -60,4 +60,9 @@
 			UPDATE PASTEVENT SET SUBJECT=#subject#,CONTENT=#content#,DAY=#day#
 			<include refid="where-no"/>
 		</update>
+		<!-- 검색기능 -->
+		<select id="subjectList" parameterClass="string" resultMap="pastRes">
+			SELECT * FROM PASTEVENT WHERE SUBJECT like '%' || #subject# || '%' ORDER BY num DESC
+		</select>
+		
 </sqlMap>
