@@ -148,20 +148,21 @@
 				<div class="snb">
 					<h2><img alt="고객센터" src="../assets/img/sub/snb_title_5.gif"></h2>
 					<dl class="sub" id="snb4">
-						<dt class="dep1 pj_5001"><a href="/sub.jsp?menuGb=customer&menuId=pj_5001"><img src="../assets/img/sub/sub_5_1.gif" alt="공지사항"></a></dt>
-						<dt class="dep1 pj_5002"><a href="/sub.jsp?menuGb=customer&menuId=pj_5002&tab=1"><img src="../assets/img/sub/sub_5_2.gif" alt="Q&A "></a></dt>
+						<dt class="dep1 pj_5001"><a href="listAction.action"><img src="../assets/img/sub/sub_5_1.gif" alt="공지사항"></a></dt>
+						<dt class="dep1 pj_5002"><a href="qnalistAction.action"><img src="../assets/img/sub/sub_5_2.gif" alt="Q&A "></a></dt>
+						<!--  
 						<dd class="dep2">
 							<ul>
 								<li><a href="/sub.jsp?menuGb=customer&menuId=pj_5002&tab=1">FAQ</a></li>
 								<li><a href="/sub.jsp?menuGb=customer&menuId=pj_5002&tab=2">직접문의</a></li>
 							</ul>
 						</dd>
-						<dt class="dep1 pj_5003"><a href="/sub.jsp?menuGb=customer&menuId=pj_5003"><img src="../assets/img/sub/sub_5_3.gif" alt="제휴 카드 안내"></a></dt>
+						-->
+						<dt class="dep1 pj_5003"><a href="memcardlistAction.action"><img src="../assets/img/sub/sub_5_3.gif" alt="제휴 카드 안내"></a></dt>
 						<dd class="dep2">
 							<ul>
-								<li><a href="/sub.jsp?menuGb=customer&menuId=pj_5003&tab=1">통신사 멤버쉽 카드</a></li>
-								<li><a href="/sub.jsp?menuGb=customer&menuId=pj_5003&tab=2">신용카드</a></li>
-								
+								<li><a href="memcardlistAction.action">통신사 멤버쉽 카드</a></li>
+								<li><a href="crecardlistAction.action">신용카드</a></li>								
 							</ul>
 						</dd>
 						<dt class="dep1 pj_5004"><a href="storeAction.action"><img src="../assets/img/sub/sub_5_4.gif" alt="매장 안내"></a></dt>

@@ -16,11 +16,13 @@
 </script>
 
 	<ul class="footerUtil">
+		<!--  
       	<li class="png24"><a href="/cont.jsp?menuGb=member&menuId=pj_0007" onfocus='blur()'><img src="../assets/img/common/footerUtil_01.png" alt="개인정보취급방침" /></a></li>
       	<li class="png24"><a href="/cont.jsp?menuGb=member&menuId=pj_0008" onfocus='blur()'><img src="../assets/img/common/footerUtil_02.png" alt="이용약관" /></a></li>
       	<li class="png24"><a href="/sub.jsp?menuGb=event&menuId=pj_3001" onfocus='blur()'><img src="../assets/img/common/footerUtil_03.png" alt="이벤트안내" /></a></li>
       	<li class="png24"><a href="/sub.jsp?menuGb=story&menuId=pj_4005" onfocus='blur()'><img src="../assets/img/common/footerUtil_04.png" alt="채용안내" /></a></li>
-      	<li class="png24"><a href="/cont.jsp?menuGb=member&menuId=pj_0009" onfocus='blur()'><img src="../assets/img/common/footerUtil_05.png" alt="사이트맵" /></a></li>      	
+      	-->
+      	<li class="png24"><a href="siteMapAction.action" onfocus='blur()'><img src="../assets/img/common/footerUtil_05.png" alt="사이트맵" /></a></li>      	
     </ul>
     
     <ul class="sns">
