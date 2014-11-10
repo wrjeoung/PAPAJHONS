@@ -63,6 +63,15 @@
 // 		var top = ($(window).height()/2)-($ev_page.height()/2);
 // 		$ev_page.css("top",top+"px");
 	});
+	function validation(){
+		var specialWrite=eval("document.specialWrite");
+
+		if(!specialWrite.upload.value){
+			alert("첨부파일을 올려주세요.");
+			return false;
+		}
+		
+	}
 </script>
 </head>
 

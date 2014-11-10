@@ -63,6 +63,28 @@
 // 		var top = ($(window).height()/2)-($ev_page.height()/2);
 // 		$ev_page.css("top",top+"px");
 	});
+	
+	function validation(){
+		var nowModify=eval("document.nowModify");
+
+		if(!nowModify.day.value){
+			alert("기간을 입력하세요.");
+			return false;
+		}
+		if(!nowModify.subject.value){
+			alert("글제목을 입력하세요.");
+			return false;
+		}
+		if(!nowModify.upload.value){
+			alert("첫번째 첨부파일을 올려주세요.");
+			return false;
+		}
+		if(!nowModify.upload2.value){
+			alert("두번째 첨부파일을 올려주세요.");
+			return false;
+		}
+
+	}
 </script>
 </head>
 
@@ -139,7 +161,7 @@
         			<div class="cont" style="text-align:center">
 <center><b>진행중인 이벤트 글쓰기</b></center>
 <br/>
-<form method="post" name="nowModify" action="modifyAction2.action" enctype="multipart/form-data" onsubmit="return validation()">
+<form method="post" name="nowModify" action="modifyAction2.action" enctype="multipart/form-data" onsubmit="return validation();">
 	<input type="hidden" name="num" value="${vo.num}">
 	<input type="hidden" name="currentPage" value="${currentPage }">
 	<input type="hidden" name="old_file" value="${vo.file_savname }">
