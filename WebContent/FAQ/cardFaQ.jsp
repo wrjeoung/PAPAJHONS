@@ -178,7 +178,7 @@ $(document).ready(function(){
 	<div>
 		<ul>
 			<li class="q">
-			<a><img src="../boardimg/q.PNG">${vo.qcontent }</a>
+			<a><img src="../boardimg/q.PNG"><b>${vo.qcontent }</b></a>
 			<ul class="a">
 				<li><img src="../boardimg/a.PNG">${vo.acontent }</li>
 			</ul>

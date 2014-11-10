@@ -133,7 +133,7 @@
         			<!-- <li><h2><a href="/sub.jsp?menuGb=customer&menuId=pj_5001"><img src="../assets/img/common/m5_s1.gif" alt="공지사항" /></a></h2></li> -->
         			<li><h2><a href="listAction.action"><img src="../assets/img/common/m5_s1.gif" alt="공지사항" /></a></h2></li>
         			<li><h2><a href="qnalistAction.action"><img src="../assets/img/common/m5_s2.gif" alt="Q&A" /></a></h2></li>
-        			<li><h2><a href="/sub.jsp?menuGb=customer&menuId=pj_5003"><img src="../assets/img/common/m5_s3.gif" alt="제휴카드안내" /></a></h2></li>
+        			<li><h2><a href="memcardlistAction.action"><img src="../assets/img/common/m5_s3.gif" alt="제휴카드안내" /></a></h2></li>
         			<li><h2><a href="storeAction.action"><img src="../assets/img/common/m5_s4.gif" alt="매장안내" /></a></h2></li>
       			</ul>
     		</li>

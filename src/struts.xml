@@ -120,11 +120,10 @@
 				<param name="actionName">listAction</param>
 			</result>
 		</action>	
-		
+		<!-- 검색 -->
 		<action name="getlistAction" class="gongji.board.getlistAction">
-			<result type="redirect-action">
-				<param name="actionName">listAction</param>
-			</result>
+			<interceptor-ref name="params"/>
+			<result>/gongji/gongjiList.jsp</result>
 		</action>
 	</package>
 	
@@ -351,6 +350,12 @@
 			<param name="actionName">storelistAction</param>
 			</result>
 		</action>
+		
+		<!-- 검색 -->
+		<action name="storegetlistAction" class="storeevent.board.getlistAction">
+			<interceptor-ref name="params"/>
+			<result>/storeevent/storeList.jsp</result>
+		</action>
 	</package>
 	
 	<!-- 지난 이벤트 -->
@@ -410,8 +415,12 @@
 			</result>
 		</action>	
 		
+		<!-- 검색 -->
+		<action name="pastgetlistAction" class="pastevent.board.getlistAction">
+			<interceptor-ref name="params"/>
+			<result>/pastevent/pastList.jsp</result>
+		</action>
 	</package>
-	
 	
 	<!-- 매장안내 -->
 	<package name="store" extends="struts-default">
@@ -506,11 +515,6 @@
 			<result>/FAQ/jobFaQ.jsp</result>
 		</action>
 		
-		<!-- <action name="stolistAction" class="qna.board.storelistAction">
-			<interceptor-ref name="params"/>
-			<result>/FAQ/storeFaQ.jsp</result>
-		
-		</action> -->
 	</package>
 
 	<!-- 맴버쉽카드 -->

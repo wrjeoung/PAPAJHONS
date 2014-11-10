@@ -13,7 +13,22 @@ public class storeeventVO {
 	private String file_savname;
 	private int readhit;
 	
+	//검색용 필드
+	private String searchCondition;
+	private String searchKeyword;
 	
+	public String getSearchCondition() {
+		return searchCondition;
+	}
+	public void setSearchCondition(String searchCondition) {
+		this.searchCondition = searchCondition;
+	}
+	public String getSearchKeyword() {
+		return searchKeyword;
+	}
+	public void setSearchKeyword(String searchKeyword) {
+		this.searchKeyword = searchKeyword;
+	}
 	public int getReadhit() {
 		return readhit;
 	}

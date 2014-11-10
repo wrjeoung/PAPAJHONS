@@ -17,8 +17,6 @@ public class gongjiVO {
 	private String searchCondition;
 	private String searchKeyword;
 	
-	
-	
 	public String getSearchCondition() {
 		return searchCondition;
 	}
