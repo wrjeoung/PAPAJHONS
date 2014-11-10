@@ -1,7 +1,10 @@
 package order;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 import org.apache.struts2.interceptor.SessionAware;
 
@@ -15,41 +18,49 @@ public class Pj_1003Action implements Action, SessionAware {
 	private String _size;		// 사이즈
 	private String _cnt_opt;	// 수량
 	private String _price;		// 가격
-	ArrayList<OrderDTO> lists;
+	private String addCount;
+	
+	Set<OrderDTO> lists;
 
 	public String execute() throws Exception {
-		lists = (ArrayList<OrderDTO>)sessionMap.get("cartlist");
-		
 		return SUCCESS;
 	}
 	
 	public String addOrderItem() {
 		System.out.println("addOrderItem!");
-		lists = (ArrayList<OrderDTO>)sessionMap.get("cartlist");
+		lists = (HashSet<OrderDTO>)sessionMap.get("cartlist");
 		if(lists==null) {
-			lists = new ArrayList<OrderDTO>();
+			lists = new HashSet<OrderDTO>();
 			sessionMap.put("cartlist", lists);
 		}
 		
-		if((int)sessionMap.get("index") != lists.size() && _name != null)
-		{
-			OrderDTO list = new OrderDTO();
-			list.setAmount(_cnt_opt);
-			list.setName(_name);
-			list.setPrice(_price);
-			list.setSize(_size);
-	
-			lists.add(list);
-		}
+		OrderDTO list = new OrderDTO();
+		list.setAmount(_cnt_opt);
+		list.setName(_name);
+		list.setPrice(_price);
+		list.setSize(_size);
+		list.setAddcount(addCount);
+		System.out.println("Pj_1003Action lists.contains(list) : "+lists.contains(list));		
+		lists.add(list);
 		
 		for(OrderDTO li : lists) {
 			System.out.println("pj_1003 amount : "+li.getAmount()+" name : "+li.getName()+" price : "+li.getPrice() +
 					" size : "+li.getSize());
 		}
+		
 		return SUCCESS;
 	}
 
-	public ArrayList<OrderDTO> getLists() {
+	
+	public String getAddCount() {
+		return addCount;
+	}
+
+	public void setAddCount(String addCount) {
+		this.addCount = addCount;
+	}
+
+	public Set<OrderDTO> getLists() {
 		return lists;
 	}
 

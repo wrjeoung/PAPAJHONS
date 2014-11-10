@@ -24,16 +24,6 @@ public class Pj_1002Action implements Action, IbatisAware, SessionAware {
 		// TODO Auto-generated method stub
 		System.out.println("Pj_1002Action menuId : " + menuId);
 		list = sqlMapper.queryForList("menuSQL.selectMenuId",menuId);
-		
-		for(Object a : list)
-		{
-			System.out.println(((MenuDTO)a).getName());
-		}
-		
-		ArrayList<OrderDTO> lists = (ArrayList<OrderDTO>) sessionMap.get("cartlist");
-		_index = (lists != null) ? lists.size() + 1 : 1;
-		sessionMap.put("index", _index);
-		System.out.println("_index = "+_index);
 		return SUCCESS;
 	}
 	
