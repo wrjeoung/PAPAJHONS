@@ -19,7 +19,7 @@
 <link type="text/css" rel="stylesheet" href="../assets/css/sub.css" />
 <link type="text/css" rel="stylesheet" href="../assets/css/order.css" />
 <link type="text/css" rel="stylesheet" href="../assets/css/lib_style.css" />
-<% request.setCharacterEncoding("euc-kr"); %>
+
 <style type="text/css">
 #con_container {
 	background: none;
@@ -49,6 +49,8 @@
 	{	
  		$('#viewLoading').fadeOut();
  		$('#viewLoading')	// ajax 실행 및 완료시 'Loading 이미지'의 동작 컨트롤하기
+
+ 		
 		.ajaxStart(function()
 		{  
 			$(this).fadeIn(500);
@@ -224,10 +226,10 @@
 														}
 													});
 												</script>
-												<c:forEach var="li" items="${lists}">
+												<c:forEach var="li" items="${mapLists}">
 													<li id="pizzaMenu_50332_1" class="item_li"><span
-														class="name product">${li.name }</span> <span class="size">${li.size}</span>
-														<span class="count">${li.amount}</span> <span class="unit_price">${li.price}</span>
+														class="name product">${li.value.name }</span> <span class="size">${li.value.size}</span>
+														<span class="count">${li.value.amount}</span> <span class="unit_price">${li.value.price}</span>
 														<!-- 할인 전 --> <span class="discount"></span>
 														<!--  할인 금액 --> <span class="disc_comm"></span> 
 														<!-- 할인된 이유 예) 프로모션 할인 -->
