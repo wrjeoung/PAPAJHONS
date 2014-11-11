@@ -16,8 +16,19 @@
 			<result>
 				/admin/main.jsp
 			</result>
+<<<<<<< .mine
 		</action>
-		
+=======
+		</action>
+>>>>>>> .theirs
+		<action name="adminMemberAction" class="admin.member.MemberAdminAction">
+			<interceptor-ref name="ibatis"/>
+			<interceptor-ref name="params"/>
+			<result>
+				/admin/member/adminMemberList.jsp
+			</result>
+		</action>
+
 		<action name="menuItemsAction" class="admin.MenuItemsAction">
 			<interceptor-ref name="ibatis"/>
 			<result>
