@@ -1,6 +1,7 @@
 package order;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashSet;
 import java.util.Map;
 
@@ -20,7 +21,7 @@ public class OrderListAction implements Action, IbatisAware, SessionAware {
 		HashSet<OrderDTO> lists;
 		OrderListDTO orderlist = new OrderListDTO();		
 		lists = (HashSet<OrderDTO>)sessionMap.get("cartlist");
-		
+		Calendar today = Calendar.getInstance(); //오늘 날짜 구하기.
 		
 		for(OrderDTO list : lists)
 		{
@@ -30,11 +31,15 @@ public class OrderListAction implements Action, IbatisAware, SessionAware {
 			orderlist.setAmount(list.getAmount());
 			orderlist.setPrice(list.getPrice());
 			orderlist.setDeliveryinfo("배송 정보가 없습니다.");
+			orderlist.setRegdate(today.getTime());
 			sqlMapper.insert("orderListSQL.insertOrderList", orderlist);
 		}
-
+		sessionMap.remove("cartlist");
 		return SUCCESS;
 	}
+	
+	
+	
 
 
 	public void setIbatis(SqlMapClient sqlMapper) {

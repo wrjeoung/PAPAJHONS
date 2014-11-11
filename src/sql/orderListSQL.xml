@@ -12,6 +12,7 @@
 			<result property="amount" column="amount" />
 			<result property="price" column="price" />
 			<result property="deliveryinfo" column="deliveryinfo" />
+			<result property="regdate" column="regdate" />
 		</resultMap>
 		
 		<!-- 공통으로 사용할 select 절 정의 -->
@@ -38,7 +39,8 @@
                          		size_,
                          		amount,
                          		price,
-                         		deliveryinfo
+                         		deliveryinfo,
+                         		regdate
                          )
                 	 VALUES (order_no_seq.NEXTVAL,
                 	            #userid#, 
@@ -46,7 +48,8 @@
                          		#size_#,
                          		#amount#,
                          		#price#,
-                         		#deliveryinfo#
+                         		#deliveryinfo#,
+                         		#regdate#
                          )
 		</insert>
 
