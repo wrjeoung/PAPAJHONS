@@ -51,7 +51,7 @@
     		<!-- content_area -->
     		<div id="content_area">
   				<!-- <script type="text/javascript">$("#content_area").load('../member/pj_0005.jsp?menuId=pj_0005&msg=&step='); </script> -->
-  				<script type="text/javascript">$("#content_area").load('../member/'+'${menuId}'+'.jsp?menuId='+'${menuId}'+'&msg=&step='); </script>
+  				<script type="text/javascript">$("#content_area").load('../member/'+'${menuId}'+'.jsp?menuId='+'${menuId}'); </script>
   			</div>
     		<!--// content_area -->
     		
@@ -72,6 +72,5 @@
 		<img src="../assets/img/viewLoading.gif" /> 
  		<p>Loading....</p> 
 	</div>
-	
 </body>
 </html>

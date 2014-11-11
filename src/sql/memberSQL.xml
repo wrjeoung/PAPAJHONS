@@ -51,7 +51,14 @@
 			<include refid="select-all" />
 			WHERE email = #email#
 			AND activation_key = #activation_key#
-		</select>				
+		</select>
+		
+		<select id="checkInfo" resultMap="memberRes" parameterClass="member">
+			<include refid="select-all" />
+			WHERE name= #name# 
+			AND email = #email#
+			AND mobile = #mobile#
+		</select>						
 		
     	<update id="updateActivationStatus">
     		UPDATE account SET activation_status = 'active'

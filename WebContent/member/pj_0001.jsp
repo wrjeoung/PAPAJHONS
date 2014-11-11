@@ -153,7 +153,7 @@
 	function fn_NextPage(val)
 	{
 		
-		var url = "/cont.jsp?menuGb=member&menuId=pj_0002";
+		var url = "confirmInfoAction.action?menuGb=member&menuId=pj_0002";
 		document.loginForm.action = url;
 		document.loginForm.submit();
 		
