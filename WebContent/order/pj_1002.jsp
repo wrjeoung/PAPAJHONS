@@ -205,11 +205,15 @@
     	document.frmOrder.submit();
 	}
     
+    
 	// 세트메뉴, 파파 플래터 장바구니
+	
 	function fnOrderSet_plater(menuid,imagepathorder,price,consist,name)
     {
 		var size = $("input:hidden[id=_size]").val();
-				
+		if(!sessionStorage.addCount)
+			sessionStorage.addCount=0;
+		
 		document.frmOrder.onlineGroupCd.value = onlineGroupCd;							// 온라인메뉴그룹
     	document.frmOrder.pizzaSelIdx.value   = pizzaSelIdx;							// 선택피자그룹메뉴
     	document.frmOrder._menuid.value = menuid; 										// 메뉴 id
@@ -223,17 +227,22 @@
     	document.frmOrder._cnt_opt.value = document.getElementById("cnt_opt").value; 	// 수량
     	document.frmOrder._price.value = price; 										// 가격
     	document.frmOrder._consist.value = consist; 									// 구성요소
-    	document.frmOrder._randomString.value = getRandomString();
-    	document.frmOrder.action              = "pj_1003ActionAddItem.action";
+//    	document.frmOrder._randomString.value = getRandomString();
+//    	document.frmOrder.action              = "pj_1003ActionAddItem.action";
+    	document.frmOrder.action              = "pj_1003ActionAddItem.action?addCount="+sessionStorage.addCount;
+    	sessionStorage.addCount++;
     	document.frmOrder.target              = "_self";
     	alert("name : "+name+"\nprice : "+price+"\ncont_opt : "+document.getElementById("cnt_opt").value+"\nsize : "+document.frmOrder._size.value) ;
     	document.frmOrder.submit();
+    	
 	}
 	
 	// 사이드 장바구니
 	function fnOrderSide(menuid,imagepathorder,price,consist,name)
     {
-		alert("name : "+name+"\nprice : "+price+"\ncont_opt : "+document.getElementById("cnt_opt1").value) ;		
+		alert("name : "+name+"\nprice : "+price+"\ncont_opt : "+document.getElementById("cnt_opt1").value) ;
+		if(!sessionStorage.addCount)
+			sessionStorage.addCount=0;
 		document.frmOrder.onlineGroupCd.value = onlineGroupCd;							// 온라인메뉴그룹
     	document.frmOrder.pizzaSelIdx.value   = pizzaSelIdx;							// 선택피자그룹메뉴
     	document.frmOrder._menuid.value = menuid; 										// 메뉴 id
@@ -243,18 +252,23 @@
     	document.frmOrder._cnt_opt.value = document.getElementById("cnt_opt1").value; 	// 수량
     	document.frmOrder._price.value = price; 										// 가격
     	document.frmOrder._consist.value = consist; 									// 구성요소
-    	document.frmOrder._randomString.value = getRandomString();
-    	document.frmOrder.action              = "pj_1003ActionAddItem.action";
+//    	document.frmOrder._randomString.value = getRandomString();
+//    	document.frmOrder.action              = "pj_1003ActionAddItem.action";
+    	document.frmOrder.action              = "pj_1003ActionAddItem.action?addCount="+sessionStorage.addCount;
+    	sessionStorage.addCount++;
     	document.frmOrder.target              = "_self";
     	document.frmOrder.submit();
 	}
 	
-	// 피자 장바구니 
+
+	// 피자 장바구니	
 	function fnOrderPizza(menuid,imagepathorder,consist,name)
     {
 		var price = $("input:radio[name=pSize_1]:checked").val();
 		var bt = $('input:radio[name=pSize_1]').attr("checked",true);
 		var size = $("input:hidden[id=_size]").val();		//alert("name : "+name+"\nprice : "+price+"\nsize : "+size ) ;
+		if(!sessionStorage.addCount)
+			sessionStorage.addCount=0;
 		//alert(menuid + '\n' + imagepathorder + '\n'+ price + '\n' + consist + '\n' + bt) ;
 		document.frmOrder.onlineGroupCd.value = onlineGroupCd;							// 온라인메뉴그룹
     	document.frmOrder.pizzaSelIdx.value   = pizzaSelIdx;							// 선택피자그룹메뉴
@@ -264,8 +278,10 @@
     	document.frmOrder._cnt_opt.value = "1"; 										// 수량
     	document.frmOrder._price.value = price; 										// 가격
     	document.frmOrder._consist.value = consist; 									// 구성요소
-    	document.frmOrder._randomString.value = getRandomString();
-    	document.frmOrder.action              = "pj_1003ActionAddItem.action";
+//    	document.frmOrder._randomString.value = getRandomString();
+//    	document.frmOrder.action              = "pj_1003ActionAddItem.action";
+    	document.frmOrder.action              = "pj_1003ActionAddItem.action?addCount="+sessionStorage.addCount;
+    	sessionStorage.addCount++;
     	document.frmOrder.target              = "_self";
     	alert("제품명 : " + document.frmOrder._name.value + "  사이즈 : " + size + " 수량 : " + document.frmOrder._cnt_opt.value + " 금액 : " + document.frmOrder._price.value );
     	
@@ -277,7 +293,8 @@
     {
 		var price = $("input:radio[name=pSize_1]:checked").val();
 		var size = $("input:hidden[id=_size]").val();
-		
+		if(!sessionStorage.addCount)
+			sessionStorage.addCount=0;
 		//alert(menuid + '\n' + imagepathorder + '\n'+ price + '\n' + consist + '\n' + name) ;
 		document.frmOrder.onlineGroupCd.value = onlineGroupCd;							// 온라인메뉴그룹
     	document.frmOrder.pizzaSelIdx.value   = pizzaSelIdx;							// 선택피자그룹메뉴
@@ -287,8 +304,10 @@
     	//document.frmOrder._cnt_opt.value = document.getElementById("cnt_opt_bever").value;	// 수량
     	document.frmOrder._price.value = price; 										// 가격
     	document.frmOrder._consist.value = consist; 									// 구성요소
-    	document.frmOrder._randomString.value = getRandomString();
-    	document.frmOrder.action              = "pj_1003ActionAddItem.action";
+//    	document.frmOrder._randomString.value = getRandomString();
+//    	document.frmOrder.action              = "pj_1003ActionAddItem.action";
+    	document.frmOrder.action              = "pj_1003ActionAddItem.action?addCount="+sessionStorage.addCount;
+    	sessionStorage.addCount++;
     	document.frmOrder.target              = "_self";
     	alert("name : "+name+"\nprice : "+price+"\nsize : "+size+"\ncnt_opt1 : "+document.frmOrder._cnt_opt.value ) ;
     	document.frmOrder.submit();

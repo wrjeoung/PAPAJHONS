@@ -22,12 +22,6 @@ public class Pj_1002Action implements Action, IbatisAware {
 		// TODO Auto-generated method stub
 		System.out.println("Pj_1002Action menuId : " + menuId);
 		list = sqlMapper.queryForList("menuSQL.selectMenuId",menuId);
-		
-		for(Object a : list)
-		{
-			System.out.println(((MenuDTO)a).getName());
-		}
-		
 		return SUCCESS;
 	}
 	

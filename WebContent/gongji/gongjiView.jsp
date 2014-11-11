@@ -105,7 +105,7 @@
         							<li><a href="crecardlistAction.action">신용카드</a></li>
       							</ul>
     						</dd>
-			  			<dt class="dep1 pj_5004"><a href="/sub.jsp?menuGb=customer&menuId=pj_5004"><img src="../assets/img/sub/sub_5_4.gif" alt="매장 안내"></a></dt>
+			  			<dt class="dep1 pj_5004"><a href="storeAction.action"><img src="../assets/img/sub/sub_5_4.gif" alt="매장 안내"></a></dt>
 			  		
 			  		</dl>
     				<%-- 
@@ -172,7 +172,7 @@
 	<tr>
 		<td align="center" colspan="2">
 				
-				<input type="button" value="글수정" onclick="document.location.href='modifyForm.action?num=${vo.num}&currentPage=${currentPage}&file_savname=${file_savname}'">
+				<input type="button" value="글수정" onclick="document.location.href='gongjimodifyForm.action?num=${vo.num}&currentPage=${currentPage}&file_savname=${file_savname}'">
 				<input type="button" value="글삭제" onclick="document.location.href='deleteAction.action?num=${vo.num}&currentPage=${currentPage} '">
 		</td>
 	</tr>

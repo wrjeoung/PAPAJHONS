@@ -63,6 +63,28 @@
 // 		var top = ($(window).height()/2)-($ev_page.height()/2);
 // 		$ev_page.css("top",top+"px");
 	});
+	
+	function validation(){
+		var nowWrite=eval("document.nowWrite");
+
+		if(!nowWrite.day.value){
+			alert("기간을 입력하세요.");
+			return false;
+		}
+		if(!nowWrite.subject.value){
+			alert("글제목을 입력하세요.");
+			return false;
+		}
+		if(!nowWrite.upload.value){
+			alert("첫번째 첨부파일을 올려주세요.");
+			return false;
+		}
+		if(!nowWrite.upload2.value){
+			alert("두번째 첨부파일을 올려주세요.");
+			return false;
+		}
+
+	}
 </script>
 </head>
 

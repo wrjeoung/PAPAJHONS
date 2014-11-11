@@ -63,6 +63,24 @@
 // 		var top = ($(window).height()/2)-($ev_page.height()/2);
 // 		$ev_page.css("top",top+"px");
 	});
+	
+	function validation(){
+		var memcardModify=eval("document.memcardModify");
+
+		if(!memcardModify.subject.value){
+			alert("카드명을 입력해주세요.");
+			return false;
+		}
+		if(!memcardModify.content.value){
+			alert("내용을 입력해주세요.");
+			return false;
+		}
+		if(!memcardModify.upload.value){
+			alert("첨부파일을 올려주세요.");
+			return false;
+		}
+		
+	}
 </script>
 </head>
 
@@ -105,7 +123,7 @@
         							<li><a href="crecardlistAction.action">신용카드</a></li>
       							</ul>
     						</dd>
-			  			<dt class="dep1 pj_5004"><a href="/sub.jsp?menuGb=customer&menuId=pj_5004"><img src="../assets/img/sub/sub_5_4.gif" alt="매장 안내"></a></dt>
+			  			<dt class="dep1 pj_5004"><a href="storeAction.action"><img src="../assets/img/sub/sub_5_4.gif" alt="매장 안내"></a></dt>
 			  		
 			  		</dl>
     				<%-- 
