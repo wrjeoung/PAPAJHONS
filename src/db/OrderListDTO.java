@@ -7,7 +7,7 @@ public class OrderListDTO {
 	private String size_;        // 주문상품 사이즈
 	private String amount;       // 주문상품 수량
 	private String price;        // 주문상품 금액
-	private String deliveryinfo; // 주문자 주소
+	private String deliveryinfo; // 배송 정보
 	
 	public int getNo() {
 		return no;

@@ -19,6 +19,7 @@
 		
 		<action name="orderListAction" class="order.OrderListAction">
 			<interceptor-ref name="ibatis"/>
+			<interceptor-ref name="servletConfig" />
 			<result>
 				/order/orderlist.jsp
 			</result>

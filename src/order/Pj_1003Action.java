@@ -91,10 +91,10 @@ public class Pj_1003Action implements Action, SessionAware {
 		//	mapLists.put(_randomString, list);
 		
 	
-		for(OrderDTO li : lists) {
-			System.out.println("pj_1003 amount : "+li.getAmount()+" name : "+li.getName()+" price : "+li.getPrice() +
-					" size : "+li.getSize());
-		}
+//		for(OrderDTO li : lists) {
+//			System.out.println("pj_1003 amount : "+li.getAmount()+" name : "+li.getName()+" price : "+li.getPrice() +
+//					" size : "+li.getSize());
+//		}
 		
 		return SUCCESS;
 	}
