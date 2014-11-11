@@ -10,7 +10,7 @@
 			
 			<tr>
 				<td bgcolor="#ececec" align="center">회원 관리</td>
-				<td><a href='adminStoreList.jsp'>[ 회원 목록 ]</a>&nbsp;&nbsp;</td>
+				<td><a href='adminMemberAction.action'>[ 회원 목록 ]</a>&nbsp;&nbsp;</td>
 			</tr>
 			
 			<tr>

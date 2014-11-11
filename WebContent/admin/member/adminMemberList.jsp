@@ -11,7 +11,7 @@
 </head>
   
   <body>
-  	<table width="600" border="0" cellspacing="0" cellpadding="2">
+  	<table align="center" width="600" border="0" cellspacing="0" cellpadding="2">
   		<tr>
   			<td align="center"><h2>회원 관리</h2></td>
   		</tr>
@@ -20,55 +20,63 @@
   		</tr>
   	</table>
   	
- <c:if test="${totalCount > 0}"> 
-	<table width="600" border="0" cellspacing="0" cellpadding="2">
-	      <tr align="center" bgcolor="#F3F3F3">
-      		<td width="50"><strong>번호</strong></td>
-		<td width="350"><strong>제목</strong></td>
-        		<td width="70"><strong>글쓴이</strong></td>
-        		<td width="80"><strong>날짜</strong></td>
-		<td width="50"><strong>조회</strong></td>
-      	      </tr>
-      	      <tr bgcolor="#777777">
-        		<td height="1" colspan="5"></td>
-      	      </tr>
-
-
+<c:if test="${totalCount > 0}"> 
+	<table align="center" width="1530" border="0" cellspacing="0" cellpadding="2">
+		<tr align="center" bgcolor="#F3F3F3">
+      		<td width="80"><strong>이름</strong></td>
+        	<td width="80"><strong>아이디</strong></td>
+        	<td width="150"><strong>비밀번호</strong></td>
+			<td width="150"><strong>전화번호</strong></td>
+			<td width="150"><strong>모바일</strong></td>
+			<td width="50"><strong>SMS수신</strong></td>
+			<td width="100"><strong>이메일</strong></td>
+			<td width="70"><strong>이메일수신</strong></td>
+			<td width="100"><strong>계정활성화</strong></td>
+			<td width="200"><strong>계정활성코드</strong></td>
+			<td width="400"><strong>주소</strong></td>
+      	</tr>
+      	
+   	    <tr bgcolor="#777777">
+     		<td height="1" colspan="11"></td>
+   	    </tr>
+   	    
 		<c:forEach var="list" items="${list}">
-			<tr bgcolor="#FFFFFF"  align="center">
-				<td>
-				<c:out value="${list.no}"/>
-				</td>
-				<td align="left"> &nbsp;<a href="/StrutsBoard/viewAction.action?no=${list.no}&currentPage=${currentPage}">${list.subject}</a></td>
-				<td align="center">${list.name}</td>
-				<td align="center"><fmt:formatDate value="${list.regdate}" type="date" dateStyle="short"/></td>
-				<td>${list.readhit}</td>
+			<tr bgcolor="#FFFFFF"  align="center" style="cursor:pointer;" onclick="location.href='http://art-life.tistory.com'">
+			<td>
+				<c:out value="${list.name}"/>
+			</td>
+			<td>${list.id}</td>
+			<td>${list.pw}</td>
+			<td>${list.phone}</td>
+			<td>${list.mobile}</td>
+			<td>${list.sms}</td>
+			<td>${list.email}</td>
+			<td>${list.sendmail}</td>
+			<td>${list.activation_status}</td>
+			<td>${list.activation_key}</td>
+			<td>${list.addr}</td>
 			</tr>
       	    <tr bgcolor="#777777">
-        		<td height="1" colspan="5"></td>
+        		<td height="1" colspan="11"></td>
       	    </tr>			
-		</c:forEach> 
+		</c:forEach>    	    
+		
 </c:if>		
-	      <c:if test="${totalCount <= 0}">
+<c:if test="${totalCount <= 0}">
 				
-	      <tr bgcolor="#FFFFFF"  align="center">
-		<td colspan="5">등록된 게시물이 없습니다.</td>
-                  </tr>						
-	      <tr bgcolor="#777777">
-      		<td height="1" colspan="5"></td>
-    	      </tr>
+	<tr bgcolor="#FFFFFF"  align="center">
+		<td colspan="11">등록된 게시물이 없습니다.</td>
+	</tr>						
+	<tr bgcolor="#777777">
+		<td height="1" colspan="11"></td>
+	</tr>
     		
-	      </c:if>	
+</c:if>	
 	      
-	      <tr align="center">
-    		<td colspan="5">${pagingHtml}</td>
-    	      </tr>
-    	
-    	      <tr align="right">
-    		<td colspan="5">
-    		<input type="button" value="글쓰기" class="inputb" onClick="javascript:location.href='writeForm.action?currentPage=${currentPage}';">
-		</td>
-    	       </tr>	      	
+<tr align="center">
+	<td colspan="11">${pagingHtml}</td>
+</tr>
+	
 	</table>
    </body>
 </html>
