@@ -40,5 +40,6 @@
 
 	<sqlMap resource="/sql/memCardSQL.xml"/>
 	<sqlMap resource="/sql/creCardSQL.xml"/>
+	<sqlMap resource="/sql/orderListSQL.xml"/>
 </sqlMapConfig>
 
