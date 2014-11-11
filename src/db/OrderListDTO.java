@@ -1,5 +1,7 @@
 package db;
 
+import java.util.Date;
+
 public class OrderListDTO {
 	private int no;
 	private String userid;       // 주문자 ID
@@ -8,7 +10,14 @@ public class OrderListDTO {
 	private String amount;       // 주문상품 수량
 	private String price;        // 주문상품 금액
 	private String deliveryinfo; // 배송 정보
+	private Date regdate;        // 주문 시간.
 	
+	public Date getRegdate() {
+		return regdate;
+	}
+	public void setRegdate(Date regdate) {
+		this.regdate = regdate;
+	}
 	public int getNo() {
 		return no;
 	}

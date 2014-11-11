@@ -232,7 +232,7 @@
     	document.frmOrder.action              = "pj_1003ActionAddItem.action?addCount="+sessionStorage.addCount;
     	sessionStorage.addCount++;
     	document.frmOrder.target              = "_self";
-    	alert("name : "+name+"\nprice : "+price+"\ncont_opt : "+document.getElementById("cnt_opt").value+"\nsize : "+document.frmOrder._size.value) ;
+    	//alert("name : "+name+"\nprice : "+price+"\ncont_opt : "+document.getElementById("cnt_opt").value+"\nsize : "+document.frmOrder._size.value) ;
     	document.frmOrder.submit();
     	
 	}
@@ -240,7 +240,7 @@
 	// 사이드 장바구니
 	function fnOrderSide(menuid,imagepathorder,price,consist,name)
     {
-		alert("name : "+name+"\nprice : "+price+"\ncont_opt : "+document.getElementById("cnt_opt1").value) ;
+		//alert("name : "+name+"\nprice : "+price+"\ncont_opt : "+document.getElementById("cnt_opt1").value) ;
 		if(!sessionStorage.addCount)
 			sessionStorage.addCount=0;
 		document.frmOrder.onlineGroupCd.value = onlineGroupCd;							// 온라인메뉴그룹
@@ -283,7 +283,7 @@
     	document.frmOrder.action              = "pj_1003ActionAddItem.action?addCount="+sessionStorage.addCount;
     	sessionStorage.addCount++;
     	document.frmOrder.target              = "_self";
-    	alert("제품명 : " + document.frmOrder._name.value + "  사이즈 : " + size + " 수량 : " + document.frmOrder._cnt_opt.value + " 금액 : " + document.frmOrder._price.value );
+    	//alert("제품명 : " + document.frmOrder._name.value + "  사이즈 : " + size + " 수량 : " + document.frmOrder._cnt_opt.value + " 금액 : " + document.frmOrder._price.value );
     	
     	document.frmOrder.submit();
 	}
@@ -309,7 +309,7 @@
     	document.frmOrder.action              = "pj_1003ActionAddItem.action?addCount="+sessionStorage.addCount;
     	sessionStorage.addCount++;
     	document.frmOrder.target              = "_self";
-    	alert("name : "+name+"\nprice : "+price+"\nsize : "+size+"\ncnt_opt1 : "+document.frmOrder._cnt_opt.value ) ;
+    	//alert("name : "+name+"\nprice : "+price+"\nsize : "+size+"\ncnt_opt1 : "+document.frmOrder._cnt_opt.value ) ;
     	document.frmOrder.submit();
 	}
 	
