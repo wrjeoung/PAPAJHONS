@@ -33,6 +33,15 @@
 				/admin/menuItems/adminMenuItemList.jsp
 			</result>
 		</action>
+		
+		<!-- 매장 관리 -->
+		<action name="adminStoreAction" class="admin.store.AdminStoreAction">
+			<interceptor-ref name="ibatis"/>
+			<interceptor-ref name="params"/>
+			<result>
+				/admin/store/adminStore.jsp
+			</result>
+		</action>
 	</package>	
 		
 	<!-- 주문 -->
