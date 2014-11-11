@@ -1,4 +1,4 @@
-package admin;
+package admin.member;
 
 import java.util.ArrayList;
 import java.util.List;
