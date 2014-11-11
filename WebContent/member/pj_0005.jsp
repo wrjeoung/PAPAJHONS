@@ -324,7 +324,7 @@
 	//
 	function fn_cancel()
 	{
-		document.f1.action = "/index.jsp";
+		document.f1.action = "mainAction.action";
 		document.f1.submit();
 	}
 </script>
