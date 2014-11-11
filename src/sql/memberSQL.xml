@@ -28,7 +28,7 @@
 		<!-- select 쿼리문 정의 -->
 		<select id="selectAll" resultMap="memberRes">
 			<include refid="select-all" />
-			ORDER BY seq DESC
+			ORDER BY seq id
 		</select>
 		
 		<!-- 공통으로 사용할 where-no 절 정의 -->

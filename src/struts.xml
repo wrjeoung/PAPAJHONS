@@ -5,6 +5,20 @@
 <struts>
 	<!--  용량제한 100MB 설정. -->
 	<constant name="struts.multipart.maxSize" value="104857600"/>
+	
+	<!-- 관리자 -->
+	<package name="admin" extends="struts-default">
+		<interceptors>
+			<interceptor name="ibatis" class="admin.IbatisInterceptor"/>
+		</interceptors>
+		
+		<action name="adminMainAction" class="admin.MainAction">
+			<result>
+				/admin/main.jsp
+			</result>
+		</action>			
+	</package>	
+		
 	<!-- 주문 -->
 	<package name="orderT" extends="struts-default">
 		<interceptors>
