@@ -17,9 +17,10 @@
 			</result>
 		</action>
 		
-		<action name="OrderListAction" class="order.OrderListAction">
+		<action name="orderListAction" class="order.OrderListAction">
+			<interceptor-ref name="ibatis"/>
 			<result>
-				/order/order.jsp
+				/order/orderlist.jsp
 			</result>
 		</action>
 		
