@@ -15,7 +15,7 @@
 			
 			<tr>
 				<td bgcolor="#ececec" align="center">물품 관리</td>
-				<td><a href='adminStoreAdd.jsp'>[ 물품 목록 ]</a>&nbsp;&nbsp;</td>
+				<td><a href='menuItemsAction.action'>[ 물품 목록 ]</a>&nbsp;&nbsp;</td>
 			</tr>
 			
 			<tr>

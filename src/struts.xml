@@ -16,7 +16,14 @@
 			<result>
 				/admin/main.jsp
 			</result>
-		</action>			
+		</action>
+		
+		<action name="menuItemsAction" class="admin.MenuItemsAction">
+			<interceptor-ref name="ibatis"/>
+			<result>
+				/admin/menuItems/adminMenuItemList.jsp
+			</result>
+		</action>
 	</package>	
 		
 	<!-- 주문 -->
