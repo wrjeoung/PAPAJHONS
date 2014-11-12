@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC '-//ibatis.apache.org//DTD Sql Map 2.0//EN' 'http://ibatis.apache.org/dtd/sql-map-2.dtd'>
+<sqlMap namespace="orderListSQL">
+	<typeAlias alias="orderList" type="db.OrderListDTO"/>
+	
+		<!-- 리절트 맵 정의 -->
+		<resultMap id="orderListRes" class="orderList">
+			<result property="no" column="no" />
+			<result property="userid" column="userid" />
+			<result property="ordername" column="ordername" />
+			<result property="size_" column="ordername" />
+			<result property="amount" column="amount" />
+			<result property="price" column="price" />
+			<result property="deliveryinfo" column="deliveryinfo" />
+			<result property="regdate" column="regdate" />
+		</resultMap>
+		
+		<!-- 공통으로 사용할 select 절 정의 -->
+		<sql id="select-all">
+			SELECT * FROM orderlist 
+		</sql>
+		
+		<!-- 공통으로 사용할 where-no 절 정의 -->
+		<sql id="where-no">
+			WHERE no = #no#
+		</sql>
+		
+		<!-- select 쿼리문 정의 -->
+		<select id="selectAll" resultMap="orderListRes">
+			<include refid="select-all" />
+			ORDER BY no DESC
+		</select>
+		
+		<!-- insert 쿼리문 정의 -->
+		<insert id="insertOrderList" parameterClass="orderList">
+			INSERT INTO orderlist (no,
+      							userid,
+                         		ordername,
+                         		size_,
+                         		amount,
+                         		price,
+                         		deliveryinfo,
+                         		regdate
+                         )
+                	 VALUES (order_no_seq.NEXTVAL,
+                	            #userid#, 
+                         		#ordername#,
+                         		#size_#,
+                         		#amount#,
+                         		#price#,
+                         		#deliveryinfo#,
+                         		#regdate#
+                         )
+		</insert>
+
+</sqlMap>

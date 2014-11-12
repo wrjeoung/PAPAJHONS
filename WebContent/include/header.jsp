@@ -73,7 +73,7 @@
 	</h1>
    	<h3 class="hidden">유틸리티 메뉴</h3>
    	<ul class="utilityNav">
-		<c:if test="${memId == null}"> 
+   		<c:if test="${memId == null}"> 
    			<li><h2><a href="loginAction.action?menuGb=member&menuId=pj_0001"><img src="../assets/img/common/topUtil_01.gif" alt="로그인" /></a></h2></li>
    			<li><h2><a href="signUpAction.action?menuGb=member&menuId=pj_0005"><img src="../assets/img/common/topUtil_08.gif" alt="회원가입" /></a></h2></li>
    		</c:if>
@@ -82,10 +82,13 @@
    			<li><h2><a href="mypageAction.action?menuGb=mypage&menuId=pj_7001"><img src="../assets/img/common/topUtil_07.gif" alt="마이페이지" /></a></h2></li>
    		</c:if>
 
-  		<li><h2><a href="/sub.jsp?menuGb=customer&menuId=pj_5003"><img src="../assets/img/common/topUtil_02.gif" alt="제휴카드안내" /></a></h2></li>
+  		<li><h2><a href="memcardlistAction.action"><img src="../assets/img/common/topUtil_02.gif" alt="제휴카드안내" /></a></h2></li>
      	<!--   <li><h2><a href="../signup/cont.jsp?menuGb=franch&menuId=pj_6001"><img src="../assets/img/common/topUtil_03.gif" alt="가맹점안내" /></a></h2></li>  -->
       	<li><h2><a href="storeAction.action"><img src="../assets/img/common/topUtil_04.gif" alt="매장안내" /></a></h2></li>
 		<!--  <li><h2><a href="../signup/cont.jsp?menuGb=member&menuId=pj_0001&step=step5&orderNumber="+"null"><img src="../assets/img/common/topUtil_05.gif" alt="온라인주문확인" /></a></h2></li>  -->
+		<c:if test="${memId != null and memId eq 'admin'}">
+   				<li style="padding-top:13px;"><h2><a style="color:#fff;" href="adminMainAction.action">※ 관리자</a></h2></li>
+   		</c:if>
     </ul>
     	
 	<div id="gnb">

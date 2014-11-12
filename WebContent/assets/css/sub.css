@@ -253,7 +253,7 @@ ol.decimal li{list-style-type:decimal; margin:5px 0;}
 #find_idPass_section .btn{width:80px; height:120px; float:left;}
 #find_idPass_section .btn_box{float:left; position:relative; left:160px;}
 #find_idPass_section #custMobile1,#find_idPass_section #custMobile2, #find_idPass_section #custMobile3{width:64px}
-#find_idPass_section #custName, #find_idPass_section #custEmail{width:245px; margin:2px 0;}
+#find_idPass_section #name, #find_idPass_section #email{width:245px; margin:2px 0;}
 
 /* 회원가입 : 실명인증 */
 #join_certify_section{width:600px; position:relative; top:0px; left:0px; margin:30px auto;}

@@ -5,6 +5,45 @@
 <struts>
 	<!--  용량제한 100MB 설정. -->
 	<constant name="struts.multipart.maxSize" value="104857600"/>
+	
+	<!-- 관리자 -->
+	<package name="admin" extends="struts-default">
+		<interceptors>
+			<interceptor name="ibatis" class="admin.IbatisInterceptor"/>
+		</interceptors>
+		
+		<action name="adminMainAction" class="admin.MainAction">
+			<result>
+				/admin/main.jsp
+			</result>
+
+		</action>
+
+		<action name="adminMemberAction" class="admin.member.MemberAdminAction">
+			<interceptor-ref name="ibatis"/>
+			<interceptor-ref name="params"/>
+			<result>
+				/admin/member/adminMemberList.jsp
+			</result>
+		</action>
+
+		<action name="menuItemsAction" class="admin.MenuItemsAction">
+			<interceptor-ref name="ibatis"/>
+			<result>
+				/admin/menuItems/adminMenuItemList.jsp
+			</result>
+		</action>
+		
+		<!-- 매장 관리 -->
+		<action name="adminStoreAction" class="admin.store.AdminStoreAction">
+			<interceptor-ref name="ibatis"/>
+			<interceptor-ref name="params"/>
+			<result>
+				/admin/store/adminStore.jsp
+			</result>
+		</action>
+	</package>	
+		
 	<!-- 주문 -->
 	<package name="orderT" extends="struts-default">
 		<interceptors>
@@ -17,8 +56,14 @@
 			</result>
 		</action>
 		
+		<action name="orderListAction" class="order.OrderListAction">
+			<interceptor-ref name="ibatis"/>
+			<interceptor-ref name="servletConfig" />
+			<result>
+				/order/orderlist.jsp
+			</result>
+		</action>
 		
-
 		<action name="pj_1002Action" class="order.Pj_1002Action">
 			<interceptor-ref name="ibatis"/>
 			<interceptor-ref name="params"/>
@@ -77,6 +122,10 @@
 			<result>
 				/main/index.jsp
 			</result>
+		</action>
+		
+		<action name="siteMapAction" class="main.SiteMapAction">
+			<result>/main/siteMap.jsp</result>
 		</action>
 	</package>
 	
@@ -204,7 +253,7 @@
 	</package>
 	
 	<!-- 회원가입 -->
-	<package name="signup" extends="struts-default">
+	<package name="member" extends="struts-default">
 		<interceptors>
 			<interceptor name="ibatis" class="papa.address.IbatisInterceptor" />
 		</interceptors>
@@ -239,22 +288,34 @@
 		</action>
 		
 		<action name="loginAction" class="papa.member.LogInOutAction" method="form">
-			<result>/signup/cont.jsp</result>
+			<result>/member/cont.jsp</result>
 		</action>	
 				
 		<action name="loginProAction" class="papa.member.LogInOutAction" method="loginPro">
 		    <interceptor-ref name="ibatis"></interceptor-ref>
 		    <interceptor-ref name="params"></interceptor-ref>
 		    <interceptor-ref name="servletConfig" />
-			<result>/signup/cont.jsp</result>
+			<result>/member/cont.jsp</result>
 		</action>
 		
 		<action name="logoutAction" class="papa.member.LogInOutAction" method="logout">
 			<result>/member/logout.jsp</result>
-		</action>							
+		</action>
+		
+		<action name="confirmInfoAction" class="papa.member.MemberAction" method="form">
+			<result>/member/cont.jsp</result>
+		</action>
+		
+		<action name="confirmInfoProAction" class="papa.member.MemberAction" method="confirmInfo">
+		    <interceptor-ref name="prepare" />
+		    <interceptor-ref name="modelDriven" />
+		    <interceptor-ref name="ibatis"></interceptor-ref>
+		    <interceptor-ref name="params"></interceptor-ref>		
+			<result>/member/confirmPro.jsp</result>
+		</action>												
 		
 		<action name="signUpAction" class="papa.member.MemberAction" method="form">
-			<result>/signup/cont.jsp</result>
+			<result>/member/cont.jsp</result>
 		</action>
 		
 		<action name="emailAuthAction" class="papa.member.EmailAuthAction" >
@@ -271,7 +332,7 @@
 		</action>		
 		
 		<action name="signUpAction" class="papa.member.MemberAction" method="form">
-			<result>/signup/cont.jsp</result>
+			<result>/member/cont.jsp</result>
 		</action>
 		
 		<action name="signUpProAction" class="papa.member.MemberAction" >
@@ -279,7 +340,7 @@
 		    <interceptor-ref name="modelDriven" />
 		    <interceptor-ref name="ibatis"></interceptor-ref>
 		    <interceptor-ref name="params"></interceptor-ref>
-			<result>/signup/cont.jsp</result>
+			<result>/member/cont.jsp</result>
 		</action>
 		
 		<action name="modifyAction" class="papa.member.ModifyAction" method="modify">

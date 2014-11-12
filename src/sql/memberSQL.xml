@@ -28,7 +28,7 @@
 		<!-- select 쿼리문 정의 -->
 		<select id="selectAll" resultMap="memberRes">
 			<include refid="select-all" />
-			ORDER BY seq DESC
+			ORDER BY name ASC
 		</select>
 		
 		<!-- 공통으로 사용할 where-no 절 정의 -->
@@ -51,7 +51,14 @@
 			<include refid="select-all" />
 			WHERE email = #email#
 			AND activation_key = #activation_key#
-		</select>				
+		</select>
+		
+		<select id="checkInfo" resultMap="memberRes" parameterClass="member">
+			<include refid="select-all" />
+			WHERE name= #name# 
+			AND email = #email#
+			AND mobile = #mobile#
+		</select>						
 		
     	<update id="updateActivationStatus">
     		UPDATE account SET activation_status = 'active'

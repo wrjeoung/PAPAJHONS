@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <HEAD>
 	<TITLE>로그아웃</TITLE>
@@ -11,14 +14,14 @@
 	<style type="text/css">
 		body{overflow:hidden;padding:0;}
 		#alertLogout{display:none; width:336px; height:136px; min-height:140px;  padding:1px; z-index:2000;}
-		#alertLogout .header .left{float:left; width:6px; height:40px; background:url(/assets/img/usa/modal_header_left.png) left top no-repeat;}
-		#alertLogout .header .center{float:left; width:323px; height:40px; background:url(/assets/img/usa/modal_header_center.png) center top repeat-x; }
-		#alertLogout .header .right{float:left; width:6px; height:40px; background:url(/assets/img/usa/modal_header_right.png) right top no-repeat; }
+		#alertLogout .header .left{float:left; width:6px; height:40px; background:url(../assets/img/usa/modal_header_left.png) left top no-repeat;}
+		#alertLogout .header .center{float:left; width:323px; height:40px; background:url(../assets/img/usa/modal_header_center.png) center top repeat-x; }
+		#alertLogout .header .right{float:left; width:6px; height:40px; background:url(../assets/img/usa/modal_header_right.png) right top no-repeat; }
 		#alertLogout .text_body{float:left; width:335px; height:85px;  line-height: 30px; background:#fff; border: 0px none; padding:4px 0px;}
 
-		#alertLogout .footer .left{float:left; width:6px; height:8px; background:url(/assets/img/usa/modal_footer_left.png) left bottom no-repeat;}
-		#alertLogout .footer .center{float:left; width:323px; height:8px; background:url(/assets/img/usa/modal_footer_center.png) center bottom repeat-x;}
-		#alertLogout .footer .right{float:left; width:6px; height:8px; background:url(/assets/img/usa/modal_footer_right.png) right bottom no-repeat;}
+		#alertLogout .footer .left{float:left; width:6px; height:8px; background:url(../assets/img/usa/modal_footer_left.png) left bottom no-repeat;}
+		#alertLogout .footer .center{float:left; width:323px; height:8px; background:url(../assets/img/usa/modal_footer_center.png) center bottom repeat-x;}
+		#alertLogout .footer .right{float:left; width:6px; height:8px; background:url(../assets/img/usa/modal_footer_right.png) right bottom no-repeat;}
 	
 		#alertLogout .button{width:334px;position:relative; bottom:32px;}
 	</style>
@@ -39,7 +42,7 @@
 	function fnGoToIndex()
 	{
 		del_pop2('#alertLogout');
-		location.href="mainAction.action";
+		location.href="orderAction.action?menuId=pj_2003&pizzaSelIdx=1";
 	}
 </script>
 </HEAD>
@@ -56,7 +59,7 @@
 	    <div class="right"></div>
 	</div>
     <div id="alertText" class="text_body"> 
-    	<p>로그 아웃이 완료되었습니다.<br>이용해 주셔서 감사합니다.</p> 
+    	<p>주문이 완료되었습니다.<br>주문해 주셔서 감사합니다.</p> 
     </div>  
   	<div class="footer">
 		<div class="left" ></div>

@@ -356,7 +356,7 @@
 								<dd>
 									<p class="padd_trbl10">
 										<span>
-											<button type="button" onclick='fnOrderInfo($(this));'>
+											<button type="button" onclick="document.location.href='orderListAction.action'">
 												<img src="../assets/img/btn/btn_order.png" alt="주문하기" />
 											</button>
 											<button type="button" onclick="javascript:history.back()">
