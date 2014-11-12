@@ -8,10 +8,12 @@ import admin.pagingAction;
 
 import com.ibatis.sqlmap.client.SqlMapClient;
 import com.opensymphony.xwork2.ActionSupport;
+import com.opensymphony.xwork2.ModelDriven;
+import com.opensymphony.xwork2.Preparable;
 
 import papa.member.MemberData;
 
-public class MemberAdminAction extends ActionSupport implements IbatisAware {
+public class MemberAdminAction extends ActionSupport implements IbatisAware,Preparable, ModelDriven {
 	public static SqlMapClient sqlMapper;	//SqlMapClient API를 사용하기 위한 sqlMapper 객체.
 	private List<MemberData> list = new ArrayList<MemberData>();
 	private int currentPage = 1;	//현재 페이지
@@ -20,7 +22,21 @@ public class MemberAdminAction extends ActionSupport implements IbatisAware {
 	private int blockPage = 5; 	// 한 화면에 보여줄 페이지 수
 	private String pagingHtml; 	//페이징을 구현한 HTML
 	private pagingAction page; 	// 페이징 클래스
+	private String id;
+	private MemberData data;
 	
+	public MemberData getData() {
+		return data;
+	}
+
+	public void setData(MemberData data) {
+		this.data = data;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
 	public void setCurrentPage(int currentPage) {
 		this.currentPage = currentPage;
 	}
@@ -33,9 +49,16 @@ public class MemberAdminAction extends ActionSupport implements IbatisAware {
 		return list;
 	}
 
-	public String form() throws Exception {
+	public String modify() throws Exception {
+		data = (MemberData) sqlMapper.queryForObject("memberSQL.selectOne",id);
+		
 		return SUCCESS;
 	}
+	
+	public String modifyPro() throws Exception {
+		sqlMapper.update("memberSQL.updateMemberByadmin", data);
+		return SUCCESS;
+	}	
 	
 	public int getTotalCount() {
 		return totalCount;
@@ -64,6 +87,17 @@ public class MemberAdminAction extends ActionSupport implements IbatisAware {
 	public void setIbatis(SqlMapClient sqlMapper) {
 		// TODO Auto-generated method stub
 		this.sqlMapper = sqlMapper;
+	}
+
+	@Override
+	public Object getModel() {
+		
+		return data;
+	}
+
+	@Override
+	public void prepare() throws Exception {
+		data = new MemberData();
 	}
 
 }

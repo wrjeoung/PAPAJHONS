@@ -26,6 +26,24 @@
 				/admin/member/adminMemberList.jsp
 			</result>
 		</action>
+		
+		<action name="adminMemberModifyAction" class="admin.member.MemberAdminAction" method="modify">
+			<interceptor-ref name="ibatis"/>
+			<interceptor-ref name="params"/>		
+			<result>
+				/admin/member/modify.jsp
+			</result>
+		</action>
+		
+		<action name="adminMemberModifyProAction" class="admin.member.MemberAdminAction" method="modifyPro">
+		    <interceptor-ref name="prepare" />
+		    <interceptor-ref name="modelDriven" />		
+		    <interceptor-ref name="ibatis"></interceptor-ref>
+		    <interceptor-ref name="params"></interceptor-ref>	
+			<result>
+				/admin/member/modifyPro.jsp
+			</result>
+		</action>					
 
 		<action name="menuItemsAction" class="admin.MenuItemsAction">
 			<interceptor-ref name="ibatis"/>
