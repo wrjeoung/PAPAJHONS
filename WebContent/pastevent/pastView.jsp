@@ -158,12 +158,12 @@
 			<%-- <input type="button" value="목록" onclick="document.location.href='pastlistAction.action?currentPage=${currentPage}'"> --%>
 		</td>
 	</tr>
-	<tr>
+	<%-- <tr>
 		<td align="center" colspan="2">
 			<input type="button" value="글수정" onclick="document.location.href='pastmodifyForm.action?num=${vo.num}&currentPage=${currentPage }&file_savname=${file_savname }'">
 			<input type="button" value="글삭제" onclick="document.location.href='pastdeleteAction.action?num=${vo.num }&currentPage=${currentPage}'">
 		</td>
-	</tr>
+	</tr> --%>
 </table>
 </form>
 <br/>

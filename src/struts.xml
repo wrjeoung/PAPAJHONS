@@ -115,8 +115,6 @@
 		</action>
 	</package>
 	
-	
-	
 	<package name="main" extends="struts-default">
 		<action name="mainAction" class="main.MainAction">
 			<result>
@@ -131,6 +129,7 @@
 	
 	<!-- 공지사항 -->
 	<package name="gongji.board" extends="struts-default">
+		
 		<!-- <interceptors>
 			<interceptor name="ibatis" class="gongji.board.IbatisInterceptor"/>
 		</interceptors> -->
@@ -150,9 +149,9 @@
 			<!-- <result type="redirect-action">
 			<param name="actionName">listAction</param>
 			</result> -->
-			<result type="redirectAction">
+			<result type="redirect-action">
 			<param name="actionName">listAction</param>
-			</result> 
+			</result>
 		</action>
 		
 		<!-- 글수정하기 -->
@@ -396,7 +395,7 @@
 			<result>/storeevent/storeWrite.jsp</result>
 		</action>
 		<action name="storewriteAction" class="storeevent.board.writeAction">
-			<result type="redirectAction">
+			<result type="redirect-action">
 			<param name="actionName">storelistAction</param>
 			</result> 
 		</action>
@@ -440,7 +439,7 @@
 			<result>/pastevent/pastWrite.jsp</result>
 		</action>
 		<action name="pastwriteAction" class="pastevent.board.writeAction">
-			<result type="redirectAction">
+			<result type="redirect-action">
 			<param name="actionName">pastlistAction</param>
 			</result> 
 		</action>
@@ -525,7 +524,7 @@
 			<result>/specialevent/specialWrite.jsp</result>
 		</action>
 		<action name="specialwriteAction" class="specialevent.board.writeAction">
-			<result type="redirectAction">
+			<result type="redirect-action">
 			<param name="actionName">speciallistAction</param>
 			</result> 
 		</action>
@@ -559,7 +558,7 @@
 			<result>/QnA/qnaWrite.jsp</result>
 		</action>
 		<action name="qnawriteAction" class="qna.board.writeAction">
-			<result type="redirectAction">
+			<result type="redirect-action">
 			<param name="actionName">qnalistAction</param>
 			</result>
 		</action>
@@ -599,7 +598,7 @@
 			<result>/memcard/memWrite.jsp</result>
 		</action>
 		<action name="memcardwriteAction" class="memcard.board.writeAction">
-			<result type="redirectAction">
+			<result type="redirect-action">
 			<param name="actionName">memcardlistAction</param>
 			</result> 
 		</action>
@@ -631,7 +630,7 @@
 			<result>/crecard/creWrite.jsp</result>
 		</action>
 		<action name="crecardwriteAction" class="crecard.board.writeAction">
-			<result type="redirectAction">
+			<result type="redirect-action">
 			<param name="actionName">crecardlistAction</param>
 			</result> 
 		</action>

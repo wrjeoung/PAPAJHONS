@@ -143,8 +143,8 @@
 	<tr height="600">
 		<td width="600">
 			<img src="../save5/${vo.file_savname }"></a><br/>
-			<input type="button" value="글수정" onclick="document.location.href='specialmodifyForm.action?num=${vo.num}&file_savname=${file_savname}'">
-			<input type="button" value="글삭제" onclick="document.location.href='specialdeleteAction.action?num=${vo.num}'">
+			<%-- <input type="button" value="글수정" onclick="document.location.href='specialmodifyForm.action?num=${vo.num}&file_savname=${file_savname}'">
+			<input type="button" value="글삭제" onclick="document.location.href='specialdeleteAction.action?num=${vo.num}'"> --%>
 			<br/>
 		</td>
 	</tr>
@@ -153,7 +153,7 @@
 <!-- </body> -->
 <p>* 각 프로모션은 상황에 따라 변경될 수 있습니다.</p>
 <td align="center">
-<input type="button" value="글쓰기" onclick="document.location.href='specialwriteForm.action?currentPage=${currentPage}'">
+<%-- <input type="button" value="글쓰기" onclick="document.location.href='specialwriteForm.action?currentPage=${currentPage}'"> --%>
 </center>
 </div>
       				<!--// cont -->

@@ -188,7 +188,7 @@ $(document).ready(function(){
 	</div>
 </c:forEach>
 <!-- </body> -->
-<input type="button" value="글쓰기" onclick="document.location.href='qnawriteForm.action'">
+<!-- <input type="button" value="글쓰기" onclick="document.location.href='qnawriteForm.action'"> -->
 </div>
       				<!--// cont -->
 				</div>

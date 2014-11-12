@@ -169,13 +169,13 @@
 			<%-- <input type="button" value="목록" onClick="document.location.href='listAction.action?currentPage=${currentPage}'"> --%>
 		</td>
 	</tr>
-	<tr>
+	<%-- <tr>
 		<td align="center" colspan="2">
 				
 				<input type="button" value="글수정" onclick="document.location.href='gongjimodifyForm.action?num=${vo.num}&currentPage=${currentPage}&file_savname=${file_savname}'">
 				<input type="button" value="글삭제" onclick="document.location.href='deleteAction.action?num=${vo.num}&currentPage=${currentPage} '">
 		</td>
-	</tr>
+	</tr> --%>
 </table>
 </form>
 </center>
