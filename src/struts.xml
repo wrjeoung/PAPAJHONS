@@ -29,8 +29,17 @@
 
 		<action name="menuItemsAction" class="admin.MenuItemsAction">
 			<interceptor-ref name="ibatis"/>
+			<interceptor-ref name="params"/>
 			<result>
-				/admin/menuItems/adminMenuItemList.jsp
+				/admin/menuItems/menuItemList.jsp
+			</result>
+		</action>
+		
+		<action name="menuItemViewAction" class="admin.MenuItemViewAction">
+			<interceptor-ref name="ibatis"/>
+			<interceptor-ref name="params"/>
+			<result>
+				/admin/menuItems/menuItemView.jsp
 			</result>
 		</action>
 	</package>	
