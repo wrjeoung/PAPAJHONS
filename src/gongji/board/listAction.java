@@ -23,8 +23,6 @@ public class listAction extends ActionSupport{
 	private String pagingHtml;	//페이징을 구현한 HTMl
 	private pagingAction page;	//페이징 클래스
 	
-	
-	
 	//생성자
 	public listAction() throws IOException{
 		reader=Resources.getResourceAsReader("sqlMapConfig.xml");
@@ -123,5 +121,11 @@ public class listAction extends ActionSupport{
 	public void setPage(pagingAction page) {
 		this.page = page;
 	}
+
+	/*@Override
+	public void setIbatis(SqlMapClient sqlMapper) {
+		// TODO Auto-generated method stub
+		this.sqlMapper=sqlMapper;
+	}*/
 
 }
