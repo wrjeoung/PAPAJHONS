@@ -81,7 +81,21 @@
                        		     sendmail = #sendmail#,
                        		     addr = #addr#
 			<include refid="where-id" />
-   		</update>   
+   		</update>
+
+		<update id="updateMemberByadmin" parameterClass="member">
+    		UPDATE account SET name = #name#,
+    							 pw = #pw#,
+                     		     phone = #phone#,
+                       		     mobile = #mobile#,
+                       		     sms = #sms#,
+                       		     email = #email#,
+                       		     sendmail = #sendmail#,
+                       		     addr = #addr#,
+                       		     activation_status = #activation_status#,
+                       		     activation_key = #activation_key#
+			<include refid="where-id" />
+   		</update>     		   
    		
 		<!-- delete 쿼리문 정의 -->
   		  <delete id="deleteMember">

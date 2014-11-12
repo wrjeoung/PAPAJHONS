@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -41,7 +40,7 @@
    	    </tr>
    	    
 		<c:forEach var="list" items="${list}">
-			<tr bgcolor="#FFFFFF"  align="center" style="cursor:pointer;" onclick="location.href='http://art-life.tistory.com'">
+			<tr bgcolor="#FFFFFF"  align="center" style="cursor:pointer;" onclick="javascript:location.href='adminMemberModifyAction.action?id=${list.id}';">
 			<td>
 				<c:out value="${list.name}"/>
 			</td>
@@ -60,8 +59,8 @@
         		<td height="1" colspan="11"></td>
       	    </tr>			
 		</c:forEach>    	    
-		
-</c:if>		
+</c:if>	
+
 <c:if test="${totalCount <= 0}">
 				
 	<tr bgcolor="#FFFFFF"  align="center">

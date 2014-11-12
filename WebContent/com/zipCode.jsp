@@ -174,7 +174,8 @@
 	     		<input type='hidden' id='addrSiName'       name='addrSiName'      value="" />
 	     		<input type='hidden' id='addrGuName'       name='addrGuName'      value="" />
 	     		<input type='hidden' id='addrDongName'     name='addrDongName'    value="" />
-	     		<input type='hidden' id='addrBunJi'        name='addrBunJi'       value="" />	     					
+	     		<input type='hidden' id='addrBunJi'        name='addrBunJi'       value="" />
+ 					
 	     		<!--  <input type='hidden' id='addrBuilding'     name='addrBuilding'    value="" />
 	     		<input type='hidden' id='addrStartBeonGi'  name='addrStartBeonGi' value="" />
 	     		<input type='hidden' id='addrEndBeonGi'    name='addrEndBeonGi'   value="" />-->
@@ -291,7 +292,7 @@
 	    if(flag == "mypage" ) 
 	    {
 		    parent.document.myPageForm.zip1.value  = addrZipCode.substring(0, 3);
-		    parent.document.myPageForm.zip2.value  = addrZipCode.substring(3, 6); 
+		    parent.document.myPageForm.zip2.value  = addrZipCode.substring(4); 
 		    parent.document.myPageForm.addr1.value = addrFull; 
 		    parent.document.myPageForm.addr2.value = $("#detail_input").attr("value"); 
 		    parent.document.myPageForm.addrZipCode.value    = addrZipCode;
