@@ -152,6 +152,4 @@ public class modifyAction extends ActionSupport{
 	public void setFile_savname(String file_savname) {
 		this.file_savname = file_savname;
 	}
-	
-	
 }
