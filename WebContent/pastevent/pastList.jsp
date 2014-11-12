@@ -185,7 +185,7 @@
     <td colspan="5"><s:property value="pagingHtml"  escape="false" /></td>
 </tr>
 <br/>
-<input type="button" value="글쓰기" onclick="document.location.href='pastwriteForm.action?currentPage=${currentPage}'">
+<%-- <input type="button" value="글쓰기" onclick="document.location.href='pastwriteForm.action?currentPage=${currentPage}'"> --%>
 </div>
       				<!--// cont -->
 				</div>

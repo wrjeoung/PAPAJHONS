@@ -20,7 +20,7 @@
 			
 			<tr>
 				<td bgcolor="#ececec" align="center">매장 관리</td>
-				<td><a href='adminStoreAdd.jsp'>[ 매장 목록 ]</a>&nbsp;&nbsp;</td>
+				<td><a href='adminStoreAction.action'>[ 매장 목록 ]</a>&nbsp;&nbsp;</td>
 			</tr>	
 			
 			<tr>

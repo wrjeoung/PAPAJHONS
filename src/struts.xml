@@ -26,6 +26,24 @@
 				/admin/member/adminMemberList.jsp
 			</result>
 		</action>
+		
+		<action name="adminMemberModifyAction" class="admin.member.MemberAdminAction" method="modify">
+			<interceptor-ref name="ibatis"/>
+			<interceptor-ref name="params"/>		
+			<result>
+				/admin/member/modify.jsp
+			</result>
+		</action>
+		
+		<action name="adminMemberModifyProAction" class="admin.member.MemberAdminAction" method="modifyPro">
+		    <interceptor-ref name="prepare" />
+		    <interceptor-ref name="modelDriven" />		
+		    <interceptor-ref name="ibatis"></interceptor-ref>
+		    <interceptor-ref name="params"></interceptor-ref>	
+			<result>
+				/admin/member/modifyPro.jsp
+			</result>
+		</action>					
 
 		<action name="menuItemsAction" class="admin.MenuItemsAction">
 			<interceptor-ref name="ibatis"/>
@@ -40,6 +58,15 @@
 			<interceptor-ref name="params"/>
 			<result>
 				/admin/menuItems/menuItemView.jsp
+			</result>
+		</action>
+		
+		<!-- 매장 관리 -->
+		<action name="adminStoreAction" class="admin.store.AdminStoreAction">
+			<interceptor-ref name="ibatis"/>
+			<interceptor-ref name="params"/>
+			<result>
+				/admin/store/adminStore.jsp
 			</result>
 		</action>
 	</package>	
@@ -115,8 +142,6 @@
 		</action>
 	</package>
 	
-	
-	
 	<package name="main" extends="struts-default">
 		<action name="mainAction" class="main.MainAction">
 			<result>
@@ -131,41 +156,55 @@
 	
 	<!-- 공지사항 -->
 	<package name="gongji.board" extends="struts-default">
+		
+		<!-- <interceptors>
+			<interceptor name="ibatis" class="gongji.board.IbatisInterceptor"/>
+		</interceptors> -->
+	
 		<!-- 리스트 -->
 		<action name="listAction" class="gongji.board.listAction">
-			<interceptor-ref name="params"/>
+			<!-- <interceptor-ref name="ibatis"/>
+			<interceptor-ref name="params"/> -->
 			<result>/gongji/gongjiList.jsp</result>
 		</action>
 		
 		<!-- 글쓰기 -->
-		<action name="writeForm" class="gongji.board.writeAction" method="form">
+		<action name="writeForm" class="gongji.board.writeAction" method="form">		
 			<result>/gongji/gongjiWrite.jsp</result>
 		</action>
 		<action name="writeAction" class="gongji.board.writeAction">
 			<!-- <result type="redirect-action">
 			<param name="actionName">listAction</param>
 			</result> -->
-			<result type="redirectAction">
+			<result type="redirect-action">
 			<param name="actionName">listAction</param>
-			</result> 
+			</result>
 		</action>
 		
 		<!-- 글수정하기 -->
 		<action name="gongjimodifyForm" class="gongji.board.modifyAction" method="form">
+			<!-- <interceptor-ref name="ibatis"/>
+			<interceptor-ref name="params"/> -->
 			<result>/gongji/gongjiModify.jsp</result>
 		</action>
 		<action name="gongjimodifyAction" class="gongji.board.modifyAction">
+			<!-- <interceptor-ref name="ibatis"/>
+			<interceptor-ref name="params"/> -->
 			<result type="redirect-action">
 			<param name="actionName">listAction</param>
 			</result>
 		</action>
 		<!-- 상세보기 -->
 		<action name="viewAction" class="gongji.board.viewAction">
+			<!-- <interceptor-ref name="ibatis"/>
+			<interceptor-ref name="params"/> -->
 			<result>/gongji/gongjiView.jsp</result>
 		</action>
 		
 		<!-- 삭제 -->
 		<action name="deleteAction" class="gongji.board.deleteAction">
+			<!-- <interceptor-ref name="ibatis"/>
+			<interceptor-ref name="params"/> -->
 			<result type="redirect-action">
 				<param name="actionName">listAction</param>
 			</result>
@@ -383,7 +422,7 @@
 			<result>/storeevent/storeWrite.jsp</result>
 		</action>
 		<action name="storewriteAction" class="storeevent.board.writeAction">
-			<result type="redirectAction">
+			<result type="redirect-action">
 			<param name="actionName">storelistAction</param>
 			</result> 
 		</action>
@@ -427,7 +466,7 @@
 			<result>/pastevent/pastWrite.jsp</result>
 		</action>
 		<action name="pastwriteAction" class="pastevent.board.writeAction">
-			<result type="redirectAction">
+			<result type="redirect-action">
 			<param name="actionName">pastlistAction</param>
 			</result> 
 		</action>
@@ -512,7 +551,7 @@
 			<result>/specialevent/specialWrite.jsp</result>
 		</action>
 		<action name="specialwriteAction" class="specialevent.board.writeAction">
-			<result type="redirectAction">
+			<result type="redirect-action">
 			<param name="actionName">speciallistAction</param>
 			</result> 
 		</action>
@@ -546,7 +585,7 @@
 			<result>/QnA/qnaWrite.jsp</result>
 		</action>
 		<action name="qnawriteAction" class="qna.board.writeAction">
-			<result type="redirectAction">
+			<result type="redirect-action">
 			<param name="actionName">qnalistAction</param>
 			</result>
 		</action>
@@ -586,7 +625,7 @@
 			<result>/memcard/memWrite.jsp</result>
 		</action>
 		<action name="memcardwriteAction" class="memcard.board.writeAction">
-			<result type="redirectAction">
+			<result type="redirect-action">
 			<param name="actionName">memcardlistAction</param>
 			</result> 
 		</action>
@@ -618,7 +657,7 @@
 			<result>/crecard/creWrite.jsp</result>
 		</action>
 		<action name="crecardwriteAction" class="crecard.board.writeAction">
-			<result type="redirectAction">
+			<result type="redirect-action">
 			<param name="actionName">crecardlistAction</param>
 			</result> 
 		</action>

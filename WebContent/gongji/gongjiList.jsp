@@ -201,7 +201,7 @@
 </tr>
 <br/>
 <!-- </body> -->
-<input type="button" value="글쓰기" onclick="document.location.href='writeForm.action?currentPage=${currentPage}'">
+<%-- <input type="button" value="글쓰기" onclick="document.location.href='writeForm.action?currentPage=${currentPage}'"> --%>
 </div>
       				<!--// cont -->
 				</div>

@@ -171,7 +171,7 @@
 		<tr>
 			<td width="70" align="center">첨부파일</td>
 			<td width="530">
-			<input type="file" name="upload" /></td>
+			<input type="file" name="upload"/></td>
 		</tr>
 		<tr>
 			<td colspan="2" align="right">

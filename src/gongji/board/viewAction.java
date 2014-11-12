@@ -82,7 +82,10 @@ public class viewAction extends ActionSupport{
 	public void setFile_savname(String file_savname) {
 		this.file_savname = file_savname;
 	}
-	
-	
-	
+/*
+	@Override
+	public void setIbatis(SqlMapClient sqlMapper) {
+		// TODO Auto-generated method stub
+		this.sqlMapper=sqlMapper;
+	}*/
 }
