@@ -113,6 +113,13 @@
 				/admin/store/adminDelStore.jsp
 			</result>
 		</action>
+		
+		<!-- 매출 관리 -->
+		<action name="adminSalesAction" class="admin.sales.AdminSalesAction">
+			<result>
+				/admin/sales/adminSales.jsp
+			</result>
+		</action>
 	</package>	
 		
 	<!-- 주문 -->
