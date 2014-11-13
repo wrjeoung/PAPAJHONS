@@ -156,7 +156,7 @@
         			<div class="cont" style="text-align:center">
 <center><b>매장별 이벤트</b>
 	<form method="post" name="storeModify" action="storemodifyAction.action" enctype="multipart/form-data" onsubmit="return validation();">
-		<input type="hidden" name="num" value="${num }">
+		<input type="hidden" name="num" value="${vo.num }">
 		<input type="hidden" name="currentPage" value="${currentPage }">
 		<input type="hidden" name="old_file" value="${vo.file_savname }">
 		<table width="600" border="1" cellpadding="0" cellspacing="0" align="center">

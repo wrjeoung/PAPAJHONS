@@ -42,7 +42,7 @@ public class modifyAction extends ActionSupport{
 	private String upload2ContentType;
 	private String upload2FileName;
 	
-	private String fileUploadPath="D:\\workspace\\papa\\WebContent\\save2\\";
+	private String fileUploadPath="D:\\workspace\\PAPA_Project\\WebContent\\save2\\";
 	
 	public modifyAction()throws IOException{
 		reader=Resources.getResourceAsReader("sqlMapConfig.xml");

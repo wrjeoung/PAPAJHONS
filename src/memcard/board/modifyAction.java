@@ -27,7 +27,7 @@ public class modifyAction extends ActionSupport{
 	private File upload;
 	private String uploadContentType;
 	private String uploadFileName;
-	private String fileUploadPath="D:\\workspace\\papa\\WebContent\\mcfile\\";
+	private String fileUploadPath="D:\\workspace\\PAPA_Project\\WebContent\\mcfile\\";
 	
 	public modifyAction()throws IOException{
 		reader=Resources.getResourceAsReader("sqlMapConfig.xml");

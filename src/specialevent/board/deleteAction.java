@@ -15,7 +15,7 @@ public class deleteAction extends ActionSupport{
 	
 	private specialeventVO vo;
 	
-	private String fileUploadPath="D:\\workspace\\papa\\WebContent\\save5\\";
+	private String fileUploadPath="D:\\workspace\\PAPA_Project\\WebContent\\save5\\";
 	private int num;
 	
 	public deleteAction()throws IOException{

@@ -164,7 +164,7 @@
         			<div class="cont" style="text-align:center">
 <center><b>신용카드</b>
 <form method="post" name="crecardModify" action="crecardmodifyAction.action" enctype="multipart/form-data" onsubmit="return validation();">
-	<input type="hidden" name="num" value="${num }">
+	<input type="hidden" name="num" value="${vo.num }">
 	<input type="hidden" name="oldfile" value="${vo.file_savname }">
 	
 	<table width="600" border="1" cellspacing="0" cellpadding="0" align="center">

@@ -15,7 +15,7 @@ public class deleteAction extends ActionSupport{
 	public static SqlMapClient sqlMapper;
 	
 	private crecardVO vo;
-	private String fileUploadPath="D:\\workspace\\papa\\WebContent\\ccfile\\";
+	private String fileUploadPath="D:\\workspace\\PAPA_Project\\WebContent\\ccfile\\";
 	private int num;
 	
 	public deleteAction()throws IOException{

@@ -14,7 +14,7 @@ public class deleteAction extends ActionSupport{
 	public static SqlMapClient sqlMapper;
 	
 	private memcardVO vo;
-	private String fileUploadPath="D:\\workspace\\papa\\WebContent\\mcfile\\";
+	private String fileUploadPath="D:\\workspace\\PAPA_Project\\WebContent\\mcfile\\";
 	private int num;
 	
 	public deleteAction()throws IOException{

@@ -16,7 +16,7 @@ public class deleteAction extends ActionSupport{
 	private storeeventVO vo;
 	
 	private int currentPage;
-	private String fileUploadPath="D:\\workspace\\papa\\WebContent\\save3\\";
+	private String fileUploadPath="D:\\workspace\\PAPA_Project\\WebContent\\save3\\";
 	
 	private int num;
 	

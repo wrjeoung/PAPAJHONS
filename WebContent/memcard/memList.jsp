@@ -159,7 +159,7 @@
 			</tr>
 			<%-- <tr>
 			<td align="right">
-			<input type="button" value="글수정" onclick="document.location.href='memcardmodifyForm.action?num=${vo.num}&file_savname=${file_savname}'">
+			<input type="button" value="글수정" onclick="document.location.href='memcardmodifyForm.action?num=${vo.num}&file_savname=${vo.file_savname}'">
 			<input type="button" value="글삭제" onclick="document.location.href='memcarddeleteAction.action?num=${vo.num}'">
 			</td>
 			</tr> --%>

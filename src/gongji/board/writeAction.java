@@ -30,7 +30,7 @@ public class writeAction extends ActionSupport{
 	private String uploadFileName;
 	
 
-	private String fileUploadPath="D:\\workspace\\papa\\WebContent\\save\\";
+	private String fileUploadPath="D:\\workspace\\PAPA_Project\\WebContent\\save\\";
 	//»ý¼ºÀÚ
 	public writeAction() throws IOException{
 		reader=Resources.getResourceAsReader("sqlMapConfig.xml");

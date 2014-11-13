@@ -151,8 +151,8 @@
 <center><b>통신사 멤버쉽 카드</b>
 <br/>
 <form method="post" name="memcardModify" action="memcardmodifyAction.action" enctype="multipart/form-data" onsubmit="return validation();">
-	<input type="hidden" name="num" value="${num }">
-	<input type="hidden" name="old_file" value="${file_savname }">
+	<input type="hidden" name="num" value="${vo.num }">
+	<input type="hidden" name="old_file" value="${vo.file_savname }">
 	
 	<table width="600" border="1" cellspacing="0" cellpadding="0" align="center">
 		<tr>
