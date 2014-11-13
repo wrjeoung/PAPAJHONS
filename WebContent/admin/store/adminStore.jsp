@@ -33,7 +33,7 @@
 				<td><c:out value="${store.no}"/></td>
 				<td><c:out value="${store.location}"/></td>
 				<td>
-					<a href="">${store.storename}</a>
+					<a href="adminStoreModifyAction.action?store=${store.storename}&check=modify">${store.storename}</a>
 				</td>
 				<td><c:out value="${store.phone}" /></td>
 				<td><c:out value="${store.address}"/></td>
@@ -60,9 +60,17 @@
 		<tr align="right">
 			<td colspan="6">
 				<input type="button" value="매장추가" class="inputb"
-				onClick="javascript:location.href='writeForm.action?currentPage=${currentPage}';"/>
+				onClick="javascript:location.href='adminStoreAddAction.action?check=add';"/>
 			</td>
 		</tr>
+		
+		<tr align="right">
+			<td colspan="6">
+				<input type="button" value="관리자 홈으로 가기" class="inputb"
+				onClick="javascript:location.href='adminMainAction.action'"/>
+			</td>
+		</tr>
+		
 	</table>
 </body>
 </html>

@@ -69,6 +69,50 @@
 				/admin/store/adminStore.jsp
 			</result>
 		</action>
+		
+		<action name="adminStoreAddAction" class="admin.store.AdminStoreAddAction" method="form">
+			<result>
+				/admin/store/adminAddStore.jsp
+			</result>
+		</action>
+		
+		<action name="adminStoreAddProAction" class="admin.store.AdminStoreAddAction">
+			<interceptor-ref name="ibatis"/>
+			<interceptor-ref name="params"/>
+			<result>
+				/admin/store/adminAddStore.jsp
+			</result>
+		</action>
+		
+		<action name="adminStoreModifyAction" class="admin.store.AdminStoreModifyAction" method="modify">
+			<interceptor-ref name="ibatis"/>
+			<interceptor-ref name="params"/>
+			<result>
+				/admin/store/adminModifyStore.jsp
+			</result>
+		</action>
+		
+		<action name="adminStoreModifyProAction" class="admin.store.AdminStoreModifyAction">
+			<interceptor-ref name="ibatis"/>
+			<interceptor-ref name="params"/>
+			<result>
+				/admin/store/adminModifyStore.jsp
+			</result>
+		</action>
+		
+		<action name="adminStoreDelAction" class="admin.store.AdminStoreDelAction" method="del">
+			<result>
+				/admin/store/adminDelStore.jsp
+			</result>
+		</action>
+		
+		<action name="adminStoreDelProAction" class="admin.store.AdminStoreDelAction">
+			<interceptor-ref name="ibatis"/>
+			<interceptor-ref name="params"/>
+			<result>
+				/admin/store/adminDelStore.jsp
+			</result>
+		</action>
 	</package>	
 		
 	<!-- 주문 -->
