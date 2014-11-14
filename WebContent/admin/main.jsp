@@ -25,7 +25,7 @@
 			
 			<tr>
 				<td bgcolor="#ececec" align="center">공지 관리</td>
-				<td><a href='adminStoreAdd.jsp'>[ 공지 목록 ]</a>&nbsp;&nbsp;</td>
+				<td><a href='adminGongjiAction.action'>[ 공지 목록 ]</a>&nbsp;&nbsp;</td>
 			</tr>
 			
 			<tr>
