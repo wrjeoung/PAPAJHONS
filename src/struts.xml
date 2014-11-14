@@ -13,10 +13,10 @@
 		</interceptors>
 		
 		<action name="adminMainAction" class="admin.MainAction">
+			<interceptor-ref name="servletConfig" />
 			<result>
 				/admin/main.jsp
 			</result>
-
 		</action>
 
 		<action name="adminMemberAction" class="admin.member.MemberAdminAction">
@@ -43,7 +43,34 @@
 			<result>
 				/admin/member/modifyPro.jsp
 			</result>
-		</action>					
+		</action>
+		
+		<action name="adminGongjiAction" class="admin.gongji.GongjiAdminAction">
+			<interceptor-ref name="ibatis"/>
+			<interceptor-ref name="params"/>
+			<result>
+				/admin/gongji/gongjiList.jsp
+			</result>
+		</action>
+		
+		<action name="adminGongjiModifyAction" class="admin.gongji.GongjiAdminAction" method="modify">
+			<interceptor-ref name="ibatis"/>
+			<interceptor-ref name="params"/>
+			<result>
+				/admin/gongji/gongjiModify.jsp
+			</result>
+		</action>										
+		
+		<action name="adminGongjiModifyProAction" class="admin.gongji.GongjiAdminAction" method="modifyPro">
+			<interceptor-ref name="prepare" />
+			<interceptor-ref name="modelDriven" />		
+			<interceptor-ref name="ibatis"/>
+			<interceptor-ref name="fileUpload"/>
+			<interceptor-ref name="params"/>
+			<result>
+				/admin/gongji/gongjiModifyPro.jsp
+			</result>
+		</action>		
 
 		<action name="menuItemsAction" class="admin.MenuItemsAction">
 			<interceptor-ref name="ibatis"/>
@@ -115,9 +142,17 @@
 		</action>
 		
 		<!-- 매출 관리 -->
-		<action name="adminSalesAction" class="admin.sales.AdminSalesAction">
+		<action name="adminSalesAction" class="admin.sales.AdminSalesAction" method="form">
 			<result>
 				/admin/sales/adminSales.jsp
+			</result>
+		</action>
+		
+		<action name="adminSalesProAction" class="admin.sales.AdminSalesAction">
+			<interceptor-ref name="ibatis"/>
+			<interceptor-ref name="params"/>
+			<result>
+				/admin/sales/adminSalesPro.jsp
 			</result>
 		</action>
 	</package>	
