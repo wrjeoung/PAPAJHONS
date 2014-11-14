@@ -142,9 +142,17 @@
 		</action>
 		
 		<!-- 매출 관리 -->
-		<action name="adminSalesAction" class="admin.sales.AdminSalesAction">
+		<action name="adminSalesAction" class="admin.sales.AdminSalesAction" method="form">
 			<result>
 				/admin/sales/adminSales.jsp
+			</result>
+		</action>
+		
+		<action name="adminSalesProAction" class="admin.sales.AdminSalesAction">
+			<interceptor-ref name="ibatis"/>
+			<interceptor-ref name="params"/>
+			<result>
+				/admin/sales/adminSalesPro.jsp
 			</result>
 		</action>
 	</package>	

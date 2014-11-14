@@ -37,6 +37,10 @@
 			WHERE storename = #storename#
 		</sql>
 		
+		<select id="selectBydate" resultMap="storeRes">
+			<include refid="select-all" />
+		</select>
+		
 		<select id="selectStoreName" resultMap="storeRes" parameterClass="String">
 			<include refid="select-all" />
 			WHERE storename = #storename#

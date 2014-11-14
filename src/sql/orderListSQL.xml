@@ -31,6 +31,14 @@
 			ORDER BY no DESC
 		</select>
 		
+		<select id="selectBydate" resultMap="orderListRes">
+			<include refid="select-all" />
+			WHERE
+			regdate > #sdate# OR regdate = #sdate#
+			AND #edate# > regdate OR #edate# = regdate
+			ORDER BY no DESC
+		</select>
+		
 		<!-- insert 쿼리문 정의 -->
 		<insert id="insertOrderList" parameterClass="orderList">
 			INSERT INTO orderlist (no,
