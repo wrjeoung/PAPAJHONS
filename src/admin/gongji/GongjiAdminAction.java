@@ -117,8 +117,6 @@ public class GongjiAdminAction extends ActionSupport implements IbatisAware,Prep
 	
 	public String modifyPro() throws Exception {
 		// 일단 항목만 수정한다.
-		System.out.println("글번호 : "+data.getNum());
-		System.out.println("글내용 : "+data.getContent());
 		sqlMapper.update("gongji.updateBoard", data);
 		// 수정할 파일이 업로드 되었다면 파일을 업로드하고 DB의 file 항목을 수정함.
 		if (getUpload() != null) {

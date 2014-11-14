@@ -108,7 +108,7 @@
 	        <tr>
 	          <td bgcolor="#F4F4F4">  첨부파일 </td>
 	          <td bgcolor="#FFFFFF">
-		          <input type="file" name="upload" id="upload" value="${data.file_orgname}" />
+		          <input type="file" name="upload" id="upload" />
 		          <c:if test="${data.file_orgname !=null}">
 		          &nbsp; * <c:out value="${data.file_orgname}"/> 파일이 등록되어 있습니다. 다시 업로드하면 기존의 파일은 삭제됩니다.
 		          </c:if>
