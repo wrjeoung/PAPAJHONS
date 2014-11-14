@@ -13,10 +13,10 @@
 		</interceptors>
 		
 		<action name="adminMainAction" class="admin.MainAction">
+			<interceptor-ref name="servletConfig" />
 			<result>
 				/admin/main.jsp
 			</result>
-
 		</action>
 
 		<action name="adminMemberAction" class="admin.member.MemberAdminAction">
