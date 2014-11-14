@@ -156,12 +156,12 @@
 				${vo.content }
 			</td>
 			</tr>
-			<tr>
+			<%-- <tr>
 			<td align="right">
 			<input type="button" value="글수정" onclick="document.location.href='crecardmodifyForm.action?num=${vo.num}&file_savname=${vo.file_savname}'">
 			<input type="button" value="글삭제" onclick="document.location.href='crecarddeleteAction.action?num=${vo.num}'">
 			</td>
-			</tr>
+			</tr> --%>
 	</c:forEach>
 <!-- <input type="button" value="글쓰기" onclick="document.location.href='crecardwriteForm.action'"> -->
 </table>

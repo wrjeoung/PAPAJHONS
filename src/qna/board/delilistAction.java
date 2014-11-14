@@ -10,7 +10,7 @@ import com.ibatis.sqlmap.client.SqlMapClient;
 import com.ibatis.sqlmap.client.SqlMapClientBuilder;
 import com.opensymphony.xwork2.ActionSupport;
 
-public class delilistAction extends ActionSupport{
+public class delilistAction extends ActionSupport implements IbatisAware{
 	public static Reader reader;
 	public static SqlMapClient sqlMapper;
 	
@@ -19,11 +19,11 @@ public class delilistAction extends ActionSupport{
 	
 	private List<qnaVO> list=new ArrayList<qnaVO>();
 	
-	public delilistAction()throws IOException{
+	/*public delilistAction()throws IOException{
 		reader=Resources.getResourceAsReader("sqlMapConfig.xml");
 		sqlMapper=SqlMapClientBuilder.buildSqlMapClient(reader);
 		reader.close();
-	}
+	}*/
 	
 	public String execute() throws Exception{
 		System.out.println("======");
@@ -60,6 +60,12 @@ public class delilistAction extends ActionSupport{
 	}
 	public void setQmenu(String qmenu) {
 		this.qmenu = qmenu;
+	}
+
+	@Override
+	public void setIbatis(SqlMapClient sqlMapper) {
+		// TODO Auto-generated method stub
+		this.sqlMapper=sqlMapper;
 	}
 
 }

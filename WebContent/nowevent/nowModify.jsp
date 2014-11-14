@@ -172,7 +172,7 @@
 		<tr>
 			<td width="70" align="center">기간</td>
 			<td width="530">
-				<input type="text" size="70" maxlength="50" name="day" varlue="${vo.day }">
+				<input type="text" size="70" maxlength="50" name="day" value="${vo.day }">
 			</td>
 		</tr>
 		

@@ -208,25 +208,31 @@
 	<!-- 공지사항 -->
 	<package name="gongji.board" extends="struts-default">
 		
-		<!-- <interceptors>
+		<interceptors>
 			<interceptor name="ibatis" class="gongji.board.IbatisInterceptor"/>
-		</interceptors> -->
+		</interceptors>
 	
 		<!-- 리스트 -->
 		<action name="listAction" class="gongji.board.listAction">
-			<!-- <interceptor-ref name="ibatis"/>
-			<interceptor-ref name="params"/> -->
+			<interceptor-ref name="ibatis"/>
+			<interceptor-ref name="params"/>
 			<result>/gongji/gongjiList.jsp</result>
 		</action>
 		
 		<!-- 글쓰기 -->
 		<action name="writeForm" class="gongji.board.writeAction" method="form">		
+			<interceptor-ref name="ibatis"/>
+			<interceptor-ref name="fileUpload"/> 
+			<interceptor-ref name="params"/>
 			<result>/gongji/gongjiWrite.jsp</result>
 		</action>
 		<action name="writeAction" class="gongji.board.writeAction">
 			<!-- <result type="redirect-action">
 			<param name="actionName">listAction</param>
 			</result> -->
+			<interceptor-ref name="ibatis"/>
+			<interceptor-ref name="fileUpload"/> 
+			<interceptor-ref name="params"/>
 			<result type="redirect-action">
 			<param name="actionName">listAction</param>
 			</result>
@@ -234,28 +240,32 @@
 		
 		<!-- 글수정하기 -->
 		<action name="gongjimodifyForm" class="gongji.board.modifyAction" method="form">
-			<!-- <interceptor-ref name="ibatis"/>
-			<interceptor-ref name="params"/> -->
+			<interceptor-ref name="ibatis"/>
+			<interceptor-ref name="fileUpload"/>
+			<interceptor-ref name="params"/>
 			<result>/gongji/gongjiModify.jsp</result>
 		</action>
 		<action name="gongjimodifyAction" class="gongji.board.modifyAction">
-			<!-- <interceptor-ref name="ibatis"/>
-			<interceptor-ref name="params"/> -->
+			<interceptor-ref name="ibatis"/>
+			<interceptor-ref name="fileUpload"/>
+			<interceptor-ref name="params"/>
 			<result type="redirect-action">
 			<param name="actionName">listAction</param>
 			</result>
 		</action>
 		<!-- 상세보기 -->
 		<action name="viewAction" class="gongji.board.viewAction">
-			<!-- <interceptor-ref name="ibatis"/>
-			<interceptor-ref name="params"/> -->
+			<interceptor-ref name="ibatis"/>
+<!-- 			<interceptor-ref name="fileUpload"/> -->
+			<interceptor-ref name="params"/>
 			<result>/gongji/gongjiView.jsp</result>
 		</action>
 		
 		<!-- 삭제 -->
 		<action name="deleteAction" class="gongji.board.deleteAction">
-			<!-- <interceptor-ref name="ibatis"/>
-			<interceptor-ref name="params"/> -->
+			<interceptor-ref name="ibatis"/>
+			<interceptor-ref name="fileUpload"/>
+			<interceptor-ref name="params"/>
 			<result type="redirect-action">
 				<param name="actionName">listAction</param>
 			</result>
@@ -269,17 +279,25 @@
 	
 	<!-- 진행중인 이벤트 -->
 	<package name="nowevent.board" extends="struts-default">
+		<interceptors>
+			<interceptor name="ibatis" class="nowevent.board.IbatisInterceptor"/>
+		</interceptors>
 		<!-- 리스트 -->
 		<action name="listAction2" class="nowevent.board.listAction">
+			<interceptor-ref name="ibatis"/>
 			<interceptor-ref name="params"/>
 			<result>/nowevent/nowList.jsp</result>
 		</action>
 		<!-- 이벤트 글쓰기 -->
 		<!-- 리다이렉트 -->
 		<action name="writeForm2" class="nowevent.board.writeAction" method="form">
+			<interceptor-ref name="ibatis"/>
+			<interceptor-ref name="fileUpload"/>
+			<interceptor-ref name="params"/>
 			<result>/nowevent/nowWrite.jsp</result>
 		</action> 
 		<action name="writeAction2" class="nowevent.board.writeAction">
+			<interceptor-ref name="ibatis"/>
 			<interceptor-ref name="fileUpload"/>
 			<interceptor-ref name="params"/>
 			<result type="redirect-action">
@@ -292,6 +310,8 @@
 			<result>/nowevent/nowView.jsp</result>
 		</action> -->
 		<action name="viewAction2" class="nowevent.board.viewAction">
+			<interceptor-ref name="ibatis"/>
+			<interceptor-ref name="params"/>
 			<result type="chain">relistAction</result>
 		</action>
 		<action name="relistAction" class="nowevent.board.relistAction">
@@ -301,6 +321,9 @@
 		
 		<!-- 삭제하기 -->
 		<action name="deleteAction2" class="nowevent.board.deleteAction">
+			<interceptor-ref name="ibatis"/>
+			<interceptor-ref name="fileUpload"/> 
+			<interceptor-ref name="params"/>
 			<result type="redirect-action">
 				<param name="actionName">listAction2</param>
 			</result>
@@ -308,9 +331,15 @@
 		
 		<!-- 수정하기 -->
 		<action name="modifyForm2" class="nowevent.board.modifyAction" method="form">
+			<interceptor-ref name="ibatis"/>
+			<interceptor-ref name="fileUpload"/> 
+			<interceptor-ref name="params"/>
 			<result>/nowevent/nowModify.jsp</result>
 		</action>
 		<action name="modifyAction2" class="nowevent.board.modifyAction">
+			<interceptor-ref name="ibatis"/>
+			<interceptor-ref name="fileUpload"/> 
+			<interceptor-ref name="params"/>
 			<result type="redirect-action">
 			<param name="actionName">listAction2</param>
 			</result>
@@ -468,26 +497,41 @@
 	</package>
 	<!-- 매장별 이벤트 -->
 	<package name="storeevent.board" extends="struts-default">
+		<interceptors>
+			<interceptor name="ibatis" class="storeevent.board.IbatisInterceptor"/>
+		</interceptors>
 		<!-- 글쓰기 -->
 		<action name="storewriteForm" class="storeevent.board.writeAction" method="form">
+		<interceptor-ref name="ibatis"/>
+		<interceptor-ref name="fileUpload"/> 
+		<interceptor-ref name="params"/>
 			<result>/storeevent/storeWrite.jsp</result>
 		</action>
 		<action name="storewriteAction" class="storeevent.board.writeAction">
+		<interceptor-ref name="ibatis"/>
+		<interceptor-ref name="fileUpload"/> 
+		<interceptor-ref name="params"/>
 			<result type="redirect-action">
 			<param name="actionName">storelistAction</param>
 			</result> 
 		</action>
 		<!-- 리스트 -->
 		<action name="storelistAction" class="storeevent.board.listAction">
+			<interceptor-ref name="ibatis"/>
 			<interceptor-ref name="params"/>
 			<result>/storeevent/storeList.jsp</result>
 		</action>
 		<!-- 상세보기 -->
 		<action name="storeviewAction" class="storeevent.board.viewAction">
+			<interceptor-ref name="ibatis"/>
+			<interceptor-ref name="params"/>
 			<result>/storeevent/storeView.jsp</result>
 		</action>
 		<!-- 삭제하기 -->
 		<action name="storedeleteAction" class="storeevent.board.deleteAction">
+			<interceptor-ref name="ibatis"/>
+			<interceptor-ref name="fileUpload"/> 
+			<interceptor-ref name="params"/>
 			<result type="redirect-action">
 				<param name="actionName">storelistAction</param>
 			</result>
@@ -495,9 +539,15 @@
 		
 		<!-- 글수정하기 -->
 		<action name="storemodifyForm" class="storeevent.board.modifyAction" method="form">
+		<interceptor-ref name="ibatis"/>
+		<interceptor-ref name="fileUpload"/> 
+		<interceptor-ref name="params"/>
 			<result>/storeevent/storeModify.jsp</result>
 		</action>
 		<action name="storemodifyAction" class="storeevent.board.modifyAction">
+		<interceptor-ref name="ibatis"/>
+		<interceptor-ref name="fileUpload"/> 
+		<interceptor-ref name="params"/>
 			<result type="redirect-action">
 			<param name="actionName">storelistAction</param>
 			</result>
@@ -512,17 +562,27 @@
 	
 	<!-- 지난 이벤트 -->
 	<package name="pastevent.board" extends="struts-default">
+		<interceptors>
+			<interceptor name="ibatis" class="pastevent.board.IbatisInterceptor"/>
+		</interceptors>
 	<!-- 글쓰기 -->
 		<action name="pastwriteForm" class="pastevent.board.writeAction" method="form">
+			<interceptor-ref name="ibatis"/>
+			<interceptor-ref name="fileUpload"/> 
+			<interceptor-ref name="params"/>
 			<result>/pastevent/pastWrite.jsp</result>
 		</action>
 		<action name="pastwriteAction" class="pastevent.board.writeAction">
+			<interceptor-ref name="ibatis"/>
+			<interceptor-ref name="fileUpload"/> 
+			<interceptor-ref name="params"/>
 			<result type="redirect-action">
 			<param name="actionName">pastlistAction</param>
 			</result> 
 		</action>
 	<!-- 리스트 -->
 	<action name="pastlistAction" class="pastevent.board.listAction">
+			<interceptor-ref name="ibatis"/>
 			<interceptor-ref name="params"/>
 			<result>/pastevent/pastList.jsp</result>
 	</action>
@@ -532,6 +592,8 @@
 			<result>/pastevent/pastView.jsp</result>
 		</action> -->
 		<action name="pastviewAction" class="pastevent.board.viewAction">
+			<interceptor-ref name="ibatis"/>
+			<interceptor-ref name="params"/>
 			<result type="chain">pastrelistAction</result>
 		</action>
 		<action name="pastrelistAction" class="pastevent.board.relistAction">
@@ -540,6 +602,9 @@
 		
 		<!-- 삭제하기 -->
 		<action name="pastdeleteAction" class="pastevent.board.deleteAction">
+			<interceptor-ref name="ibatis"/>
+			<interceptor-ref name="fileUpload"/> 
+			<interceptor-ref name="params"/>
 			<result type="redirect-action">
 				<param name="actionName">pastlistAction</param>
 			</result>
@@ -548,9 +613,15 @@
 	<!-- 수정하기 -->
 	
 	<action name="pastmodifyForm" class="pastevent.board.modifyAction" method="form">
+			<interceptor-ref name="ibatis"/>
+			<interceptor-ref name="fileUpload"/> 
+			<interceptor-ref name="params"/>
 			<result>/pastevent/pastModify.jsp</result>
 		</action>
 		<action name="pastmodifyAction" class="pastevent.board.modifyAction">
+			<interceptor-ref name="ibatis"/>
+			<interceptor-ref name="fileUpload"/> 
+			<interceptor-ref name="params"/>
 			<result type="redirect-action">
 			<param name="actionName">pastlistAction</param>
 			</result>
@@ -597,11 +668,20 @@
 	
 	<!-- 스페셜이벤트 -->
 	<package name="specialevent.board" extends="struts-default">
+		<interceptors>
+			<interceptor name="ibatis" class="specialevent.board.IbatisInterceptor"/>
+		</interceptors>
 		<!-- 글쓰기 -->
 		<action name="specialwriteForm" class="specialevent.board.writeAction" method="form">
+			<interceptor-ref name="ibatis"/>
+			<interceptor-ref name="fileUpload"/> 
+			<interceptor-ref name="params"/>
 			<result>/specialevent/specialWrite.jsp</result>
 		</action>
 		<action name="specialwriteAction" class="specialevent.board.writeAction">
+			<interceptor-ref name="ibatis"/>
+			<interceptor-ref name="fileUpload"/> 
+			<interceptor-ref name="params"/>
 			<result type="redirect-action">
 			<param name="actionName">speciallistAction</param>
 			</result> 
@@ -609,11 +689,16 @@
 		
 		<!-- 리스트 -->
 		<action name="speciallistAction" class="specialevent.board.listAction">
+			<interceptor-ref name="ibatis"/>
+			<interceptor-ref name="params"/>
 			<result>/specialevent/specialList.jsp</result>
 		</action>
 		
 		<!-- 삭제 -->
 		<action name="specialdeleteAction" class="specialevent.board.deleteAction">
+			<interceptor-ref name="ibatis"/>
+			<interceptor-ref name="fileUpload"/> 
+			<interceptor-ref name="params"/>
 			<result type="redirect-action">
 				<param name="actionName">speciallistAction</param>
 			</result>
@@ -621,9 +706,15 @@
 		
 		<!-- 글수정하기 -->
 		<action name="specialmodifyForm" class="specialevent.board.modifyAction" method="form">
+			<interceptor-ref name="ibatis"/>
+			<interceptor-ref name="fileUpload"/> 
+			<interceptor-ref name="params"/>
 			<result>/specialevent/specialModify.jsp</result>
 		</action>
 		<action name="specialmodifyAction" class="specialevent.board.modifyAction">
+			<interceptor-ref name="ibatis"/>
+			<interceptor-ref name="fileUpload"/> 
+			<interceptor-ref name="params"/>
 			<result type="redirect-action">
 			<param name="actionName">speciallistAction</param>
 			</result>
@@ -631,38 +722,51 @@
 	</package>
 	
 	<package name="qna.board" extends="struts-default">
+		<interceptors>
+			<interceptor name="ibatis" class="qna.board.IbatisInterceptor"/>
+		</interceptors>
 		<!-- 글쓰기 -->
 		<action name="qnawriteForm" class="qna.board.writeAction" method="form">
+		<interceptor-ref name="ibatis"/>
+		<interceptor-ref name="params"/>
 			<result>/QnA/qnaWrite.jsp</result>
 		</action>
 		<action name="qnawriteAction" class="qna.board.writeAction">
+		<interceptor-ref name="ibatis"/>
+		<interceptor-ref name="params"/>
 			<result type="redirect-action">
 			<param name="actionName">qnalistAction</param>
 			</result>
 		</action>
 		
-		
+		<!-- 리스트 -->
 		<action name="qnalistAction" class="qna.board.delilistAction">
+		<interceptor-ref name="ibatis"/>
 		<interceptor-ref name="params"/>
 			<result>/FAQ/FaQ.jsp</result>
 		</action>
 		<action name="onlinelistAction" class="qna.board.onlinelistAction">
+		<interceptor-ref name="ibatis"/>
 		<interceptor-ref name="params"/>
 			<result>/FAQ/onFaQ.jsp</result> 
 		</action> 
 		<action name="cardlistAction" class="qna.board.cardlistAction">
+		<interceptor-ref name="ibatis"/>
 		<interceptor-ref name="params"/>	
 			<result>/FAQ/cardFaQ.jsp</result> 
 		</action>
 		<action name="shoplistAction" class="qna.board.shoplistAction">
+		<interceptor-ref name="ibatis"/>
 		<interceptor-ref name="params"/>
 			<result>/FAQ/shopFaQ.jsp</result>
 		</action>
 		<action name="homelistAction" class="qna.board.homelistAction">
+		<interceptor-ref name="ibatis"/>
 		<interceptor-ref name="params"/>
 			<result>/FAQ/homeFaQ.jsp</result>
 		</action>
 		<action name="joblistAction" class="qna.board.joblistAction">
+		<interceptor-ref name="ibatis"/>
 		<interceptor-ref name="params"/>
 			<result>/FAQ/jobFaQ.jsp</result>
 		</action>
@@ -671,31 +775,50 @@
 
 	<!-- 맴버쉽카드 -->
 	<package name="memcard.board" extends="struts-default">
+		<interceptors>
+			<interceptor name="ibatis" class="memcard.board.IbatisInterceptor"/>
+		</interceptors>
 	<!-- 글쓰기 -->
 		<action name="memcardwriteForm" class="memcard.board.writeAction" method="form">
+			<interceptor-ref name="ibatis"/>
+			<interceptor-ref name="fileUpload"/> 
+			<interceptor-ref name="params"/>
 			<result>/memcard/memWrite.jsp</result>
 		</action>
 		<action name="memcardwriteAction" class="memcard.board.writeAction">
+			<interceptor-ref name="ibatis"/>
+			<interceptor-ref name="fileUpload"/> 
+			<interceptor-ref name="params"/>
 			<result type="redirect-action">
 			<param name="actionName">memcardlistAction</param>
 			</result> 
 		</action>
 	<!-- 리스트 -->
 		<action name="memcardlistAction" class="memcard.board.listAction">
+			<interceptor-ref name="ibatis"/>
 			<interceptor-ref name="params"/>
 			<result>/memcard/memList.jsp</result>
 		</action>
 		<!-- 삭제 -->
 		<action name="memcarddeleteAction" class="memcard.board.deleteAction">
+			<interceptor-ref name="ibatis"/>
+			<interceptor-ref name="fileUpload"/> 
+			<interceptor-ref name="params"/>
 			<result type="redirect-action">
 				<param name="actionName">memcardlistAction</param>
 			</result>
 		</action>		
 		<!-- 글수정하기 -->
 		<action name="memcardmodifyForm" class="memcard.board.modifyAction" method="form">
+			<interceptor-ref name="ibatis"/>
+			<interceptor-ref name="fileUpload"/> 
+			<interceptor-ref name="params"/>
 			<result>/memcard/memModify.jsp</result>
 		</action>
 		<action name="memcardmodifyAction" class="memcard.board.modifyAction">
+			<interceptor-ref name="ibatis"/>
+			<interceptor-ref name="fileUpload"/> 
+			<interceptor-ref name="params"/>
 			<result type="redirect-action">
 			<param name="actionName">memcardlistAction</param>
 			</result>
@@ -703,31 +826,50 @@
 	</package>
 <!-- 신용카드 -->
 	<package name="crecard.board" extends="struts-default">
+		<interceptors>
+			<interceptor name="ibatis" class="crecard.board.IbatisInterceptor"/>
+		</interceptors>
 		<!-- 글쓰기 -->
 		<action name="crecardwriteForm" class="crecard.board.writeAction" method="form">
+			<interceptor-ref name="ibatis"/>
+			<interceptor-ref name="fileUpload"/> 
+			<interceptor-ref name="params"/>
 			<result>/crecard/creWrite.jsp</result>
 		</action>
 		<action name="crecardwriteAction" class="crecard.board.writeAction">
+			<interceptor-ref name="ibatis"/>
+			<interceptor-ref name="fileUpload"/> 
+			<interceptor-ref name="params"/>
 			<result type="redirect-action">
 			<param name="actionName">crecardlistAction</param>
 			</result> 
 		</action>
 		<!-- 리스트 -->
 		<action name="crecardlistAction" class="crecard.board.listAction">
+			<interceptor-ref name="ibatis"/>
 			<interceptor-ref name="params"/>
 			<result>/crecard/creList.jsp</result>
 		</action>
 		<!-- 삭제 -->
 		<action name="crecarddeleteAction" class="crecard.board.deleteAction">
+			<interceptor-ref name="ibatis"/>
+			<interceptor-ref name="fileUpload"/> 
+			<interceptor-ref name="params"/>
 			<result type="redirect-action">
 				<param name="actionName">crecardlistAction</param>
 			</result>
 		</action>
 		<!-- 글수정하기 -->
 		<action name="crecardmodifyForm" class="crecard.board.modifyAction" method="form">
+			<interceptor-ref name="ibatis"/>
+			<interceptor-ref name="fileUpload"/> 
+			<interceptor-ref name="params"/>
 			<result>/crecard/creModify.jsp</result>
 		</action>
 		<action name="crecardmodifyAction" class="crecard.board.modifyAction">
+			<interceptor-ref name="ibatis"/>
+			<interceptor-ref name="fileUpload"/> 
+			<interceptor-ref name="params"/>
 			<result type="redirect-action">
 			<param name="actionName">crecardlistAction</param>
 			</result>

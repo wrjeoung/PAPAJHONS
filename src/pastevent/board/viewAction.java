@@ -8,7 +8,7 @@ import com.ibatis.sqlmap.client.SqlMapClient;
 import com.ibatis.sqlmap.client.SqlMapClientBuilder;
 import com.opensymphony.xwork2.ActionSupport;
 
-public class viewAction extends ActionSupport{
+public class viewAction extends ActionSupport implements IbatisAware{
 	public static Reader reader;
 	public static SqlMapClient sqlMapper;
 	
@@ -18,11 +18,11 @@ public class viewAction extends ActionSupport{
 	private int num;
 	private String file_savname;
 	
-	public viewAction()throws IOException{
+	/*public viewAction()throws IOException{
 		reader=Resources.getResourceAsReader("sqlMapConfig.xml");
 		sqlMapper=SqlMapClientBuilder.buildSqlMapClient(reader);
 		reader.close();
-	}
+	}*/
 	public String execute()throws Exception{
 		vo.setNum(getNum());
 		sqlMapper.update("past.updateReadHit", vo);
@@ -67,6 +67,11 @@ public class viewAction extends ActionSupport{
 	}
 	public void setFile_savname(String file_savname) {
 		this.file_savname = file_savname;
+	}
+	@Override
+	public void setIbatis(SqlMapClient sqlMapper) {
+		// TODO Auto-generated method stub
+		this.sqlMapper=sqlMapper;
 	}
 	
 }

@@ -10,7 +10,7 @@ import com.ibatis.sqlmap.client.SqlMapClient;
 import com.ibatis.sqlmap.client.SqlMapClientBuilder;
 import com.opensymphony.xwork2.ActionSupport;
 
-public class listAction extends ActionSupport{
+public class listAction extends ActionSupport implements IbatisAware{
 	public static Reader reader;
 	public static SqlMapClient sqlMapper;
 	
@@ -23,12 +23,12 @@ public class listAction extends ActionSupport{
 	private String pagingHtml;	//페이징을 구현한 HTMl
 	private pagingAction page;	//페이징 클래스
 	
-	//생성자
+	/*//생성자
 	public listAction() throws IOException{
 		reader=Resources.getResourceAsReader("sqlMapConfig.xml");
 		sqlMapper=SqlMapClientBuilder.buildSqlMapClient(reader);
 		reader.close();
-	}
+	}*/
 	
 	public String execute() throws Exception{
 		
@@ -122,10 +122,9 @@ public class listAction extends ActionSupport{
 		this.page = page;
 	}
 
-	/*@Override
+	@Override
 	public void setIbatis(SqlMapClient sqlMapper) {
 		// TODO Auto-generated method stub
 		this.sqlMapper=sqlMapper;
-	}*/
-
+	}
 }

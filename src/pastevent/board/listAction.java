@@ -10,7 +10,7 @@ import com.ibatis.sqlmap.client.SqlMapClient;
 import com.ibatis.sqlmap.client.SqlMapClientBuilder;
 import com.opensymphony.xwork2.ActionSupport;
 
-public class listAction extends ActionSupport{
+public class listAction extends ActionSupport implements IbatisAware{
 	public static Reader reader;
 	public static SqlMapClient sqlMapper;
 	
@@ -23,11 +23,11 @@ public class listAction extends ActionSupport{
 	private String pagingHtml;
 	private pagingAction page;
 	
-	public listAction()throws IOException{
+	/*public listAction()throws IOException{
 		reader=Resources.getResourceAsReader("sqlMapConfig.xml");
 		sqlMapper=SqlMapClientBuilder.buildSqlMapClient(reader);
 		reader.close();
-	}
+	}*/
 	public String execute()throws Exception{
 		list=sqlMapper.queryForList("past.selectAll");
 		
@@ -98,6 +98,9 @@ public class listAction extends ActionSupport{
 	public void setPage(pagingAction page) {
 		this.page = page;
 	}
-	
-	
+	@Override
+	public void setIbatis(SqlMapClient sqlMapper) {
+		// TODO Auto-generated method stub
+		this.sqlMapper=sqlMapper;
+	}
 }
