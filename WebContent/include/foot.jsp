@@ -26,14 +26,7 @@
     </ul>
     
     <ul class="sns">
-      	<li class="png24"><a href="http://blog.naver.com/papa_mania" target="_blank"><img src="../assets/img/icon/icon_blog.png" alt="파파존스네이버블로그" /></a></li>
-      	<li class="png24"><a href="https://twitter.com/papa_mania" target="_blank"><img src="../assets/img/icon/icon_twitter.png" alt="파파존스트위터" /></a></li>
-      	<li class="png24"><a href="https://www.facebook.com/papajohnskorea" target="_blank"><img src="../assets/img/icon/icon_facebook.png" alt="파파존스페이스북" /></a></li>
     </ul>
-    
-    <p id="footerFranchiseCTA">
-    	<a href="/cont.jsp?menuGb=franch&menuId=pj_6001"><img src="../assets/img/common/footerFranchiseCTA.png" alt="가맹점"/></a>
-    </p>
     
     <address>
     	주소:서울시 강남구 신사동 614-3 융기빌딩 4층 135-894 
