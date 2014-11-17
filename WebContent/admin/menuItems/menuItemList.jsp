@@ -19,7 +19,7 @@
 <body >
 	<table width="900" border="0" cellspacing="0" cellpadding="2" align="center">
 		<tr>
-			<td ><h2>파파존스 메뉴 관리</h2></td>
+			<td align="center"><h2>파파존스 메뉴 관리</h2></td>
 		</tr>
 		<tr>
 			<td height="20"></td>
@@ -48,13 +48,12 @@
 				<c:if test="${list.menuid == 'pj_2013'}"><td><c:out value="${'음료' }" /></td></c:if> <!-- 음료 -->
 				
 				<td align="left">&nbsp; 
-					<a href="menuItemViewAction.action?menuid=${list.menuid }&name=${list.name }&currentPage=${currentPage}" />
+					<a href="menuItemViewAction.action?no=${list.no }&menuid=${list.menuid }&name=${list.name }&currentPage=${currentPage}" />
 					<c:out value="${list.name }"/>
 				</td>
 				<td align="center"><c:out value="${list.description }" /></td>
 			</tr>
 		</c:forEach>
-		</span>
 
 		<c:if test="${totalCount<= 0} ">
 			<tr bgcolor="#FFFFFF" align="center">
@@ -70,8 +69,9 @@
 		</tr>
 
 		<tr align="right">
-			<td colspan="5"><input type="button" value="메뉴 추가" class="inputb"
-				onClick="javascript:location.href='/StrutsBoard/writeForm.action?currentPage=${currentPage}'" />
+			<td bgcolor="#ececec" colspan="5" align="center">
+				<input type="button" value="메뉴 추가" class="inputb"
+				onclick="javascript:location.href='menuItemWriteAction.action'" />
 			</td>
 		</tr>
 	</table>

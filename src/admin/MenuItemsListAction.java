@@ -9,7 +9,7 @@ import com.opensymphony.xwork2.Action;
 
 import db.MenuDTO;
 
-public class MenuItemsAction implements Action, IbatisAware {
+public class MenuItemsListAction implements Action, IbatisAware {
 	public static SqlMapClient sqlMapper;
 	private List<MenuDTO> lists = new ArrayList<MenuDTO>();
 	
@@ -26,7 +26,7 @@ public class MenuItemsAction implements Action, IbatisAware {
 		lists = sqlMapper.queryForList("menuSQL.selectAll");
 		
 		totalCount=lists.size();
-		page = new pagingAction(currentPage, totalCount, blockCount, blockPage,"menuItemsAction"); // pagingAction 객체 생성.
+		page = new pagingAction(currentPage, totalCount, blockCount, blockPage,"menuItemsListAction"); // pagingAction 객체 생성.
 		pagingHtml = page.getPagingHtml().toString(); // 페이지 HTML 생성.
 		
 		// 현재 페이지에서 보여줄 마지막 글의 번호 설정.

@@ -49,6 +49,10 @@
 		<sql id="where-no">
 			WHERE no = #no#
 		</sql>
+		
+		<sql id="where-name">
+			WHERE name = #name#
+		</sql>
 	
 		<!-- select 쿼리문 정의 -->
 		<select id="selectAll" resultMap="menuRes" >
@@ -76,38 +80,97 @@
 			SELECT max(no) as no FROM menuDb 
 		</select>
 		
+		<!-- update 쿼리문 정의 -->
+		<update id="updateMenu" parameterClass="dmenuDTO">
+			UPDATE menuDB SET 
+				menuid=#menuid#,
+				name=#name#,
+				description=#description#,
+				topping=#topping#,
+				rprice=#rprice#,
+				lprice=#lprice#,
+				fprice=#fprice#,
+				pprice=#pprice#,
+				boxprice=#boxprice#,
+				onesizeprice=#onesizeprice#,
+				onepackprice=#onepackprice#,
+				setprice=#setprice#,
+				allergy=#allergy#,
+				consist=#consist#,
+				material=#material#,
+				present=#present#,
+				presentsauce=#presentsauce#,
+				calorie=#calorie#,
+				nuturition=#nuturition#,
+				imagepath1=#imagepath1#,
+				imagepath2=#imagepath2#,
+				imagepath3=#imagepath3#,
+				menulagcode=#menulagcode#,
+				menumidcode=#menumidcode#,
+				menusubcode=#menusubcode#,
+				menudtlimage=#menudtlimage#,
+				menuseq=#menuseq#,
+				menucode=#menucode#,
+				ongrpcode=#ongrpcode#,
+				imagepathorder=#imagepathorder# 
+				<include refid="where-no" />
+		</update>
+		
 		<!-- insert 쿼리문 정의 -->
 		<!-- parameterClass="board" -> board를 입력받아서 ##채워 넣겠다는 의미. -->
 		<insert id="insertMenu" parameterClass="dmenuDTO">
       		INSERT INTO menuDb (NO,
-      							NAME,
-                         		LPRICE,
-                         		RPRICE,
-                         		IMAGEPATH1
+      							menuid,
+                         		name,
+                         		description,
+                         		topping,
+                         		rprice,
+                         		lprice,
+                         		fprice,
+                         		pprice,
+                         		boxprice,
+                         		onesizeprice,
+                         		onepackprice,
+                         		setprice,
+                         		allergy,
+                         		consist,
+                         		presentsauce,
+                         		calorie,
+                         		nuturition,
+                         		imagepath1,
+                         		imagepath2,
+                         		imagepath3,
+                         		imagepathorder
                          )
                 	 VALUES (menuDb_no_seq.NEXTVAL,
-                	 		#name#,
-                         	#lprice#,
+                	 		#menuid#,
+                         	#name#,
+                         	#description#,
+                         	#topping#,
                          	#rprice#,
-                         	#imagepath1#
+                         	#lprice#,
+                         	#fprice#,
+                         	#pprice#,
+                         	#boxprice#,
+                         	#onesizeprice#,
+                         	#onepackprice#,
+                         	#setprice#,
+                         	#allergy#,
+                         	#consist#,
+                         	#presentsauce#,
+                         	#calorie#,
+                         	#nuturition#,
+                         	#imagepath1#,
+                         	#imagepath2#,
+                         	#imagepath3#,
+                         	#imagepathorder#
                          )
 		</insert>
-		
-		
-		<!-- update 쿼리문 정의 -->
-		<update id="updateMenu" parameterClass="dmenuDTO">
-    		UPDATE menuDb SET name = #name#,
-                     		     lprice = #lprice#,
-                       		     rprice = #rprice#,
-                       		     imagepath1 = #imagepath1#
-			<include refid="where-no" />
-   		</update>
 
 		<!-- delete 쿼리문 정의 -->
-  		<delete id="deleteMenu" parameterClass="dmenuDTO">
+		<delete id="deleteMenu" parameterClass="int">
 			DELETE FROM menuDb 
 			<include refid="where-no" />
    		</delete>
-
 </sqlMap>
 
