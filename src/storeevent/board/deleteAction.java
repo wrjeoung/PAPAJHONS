@@ -9,22 +9,22 @@ import com.ibatis.sqlmap.client.SqlMapClient;
 import com.ibatis.sqlmap.client.SqlMapClientBuilder;
 import com.opensymphony.xwork2.ActionSupport;
 
-public class deleteAction extends ActionSupport{
+public class deleteAction extends ActionSupport implements IbatisAware{
 	public static Reader reader;
 	public static SqlMapClient sqlMapper;
 	
 	private storeeventVO vo;
 	
 	private int currentPage;
-	private String fileUploadPath="D:\\workspace\\papa\\WebContent\\save3\\";
+	private String fileUploadPath="D:\\workspace\\PAPA_Project\\WebContent\\save3\\";
 	
 	private int num;
 	
-	public deleteAction()throws IOException{
+	/*public deleteAction()throws IOException{
 		reader=Resources.getResourceAsReader("sqlMapConfig.xml");
 		sqlMapper=SqlMapClientBuilder.buildSqlMapClient(reader);
 		reader.close();
-	}
+	}*/
 	public String execute()throws Exception{
 		vo=new storeeventVO();
 		vo=(storeeventVO)sqlMapper.queryForObject("store.selectOne", getNum());
@@ -77,5 +77,10 @@ public class deleteAction extends ActionSupport{
 	}
 	public void setNum(int num) {
 		this.num = num;
+	}
+	@Override
+	public void setIbatis(SqlMapClient sqlMapper) {
+		// TODO Auto-generated method stub
+		this.sqlMapper=sqlMapper;
 	}
 }

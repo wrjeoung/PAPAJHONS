@@ -11,7 +11,7 @@ import com.ibatis.sqlmap.client.SqlMapClient;
 import com.ibatis.sqlmap.client.SqlMapClientBuilder;
 import com.opensymphony.xwork2.ActionSupport;
 
-public class modifyAction extends ActionSupport{
+public class modifyAction extends ActionSupport implements IbatisAware{
 	public static Reader reader;
 	public static SqlMapClient sqlMapper;
 	
@@ -24,13 +24,13 @@ public class modifyAction extends ActionSupport{
 	private File upload;
 	private String uploadContentType;
 	private String uploadFileName;
-	private String fileUploadPath="D:\\workspace\\papa\\WebContent\\save5\\";
+	private String fileUploadPath="D:\\workspace\\PAPA_Project\\WebContent\\save5\\";
 	
-	public modifyAction()throws IOException{
+	/*public modifyAction()throws IOException{
 		reader=Resources.getResourceAsReader("sqlMapConfig.xml");
 		sqlMapper=SqlMapClientBuilder.buildSqlMapClient(reader);
 		reader.close();
-	}
+	}*/
 	public String form()throws Exception{
 		vo.setNum(getNum());
 		vo=(specialeventVO)sqlMapper.queryForObject("special.selectOne", getNum());
@@ -120,5 +120,9 @@ public class modifyAction extends ActionSupport{
 	public void setFileUploadPath(String fileUploadPath) {
 		this.fileUploadPath = fileUploadPath;
 	}
-	
+	@Override
+	public void setIbatis(SqlMapClient sqlMapper) {
+		// TODO Auto-generated method stub
+		this.sqlMapper=sqlMapper;
+	}
 }

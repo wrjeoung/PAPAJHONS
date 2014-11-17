@@ -150,7 +150,7 @@
 <center><b>스페셜 할인 이벤트</b>
 <br/>
 <form method="post" name="specialModify" action="specialmodifyAction.action" enctype="multipart/form-data" onsubmit="return validation();">
-	<input type="hidden" name="num" value="${num }">
+	<input type="hidden" name="num" value="${vo.num }">
 	<input type="hidden" name="old_file" value="${vo.file_savname }">
 	
 	<table width="600" border="1" cellspacing="0" cellpadding="0" align="center">

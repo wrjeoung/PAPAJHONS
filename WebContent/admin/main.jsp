@@ -5,7 +5,7 @@
 	<form action="" name="admin" method="post">
 		<table align="center" border="1" cellspacing="0" cellpadding="2">
 			<tr bgcolor="ececec" align="center">
-				<th colspan="4">관리 목록</th>
+				<th colspan="5">관리 목록</th>
 			</tr>
 			
 			<tr>
@@ -25,7 +25,12 @@
 			
 			<tr>
 				<td bgcolor="#ececec" align="center">공지 관리</td>
-				<td><a href='adminStoreAdd.jsp'>[ 공지 목록 ]</a>&nbsp;&nbsp;</td>
+				<td><a href='adminGongjiAction.action'>[ 공지 목록 ]</a>&nbsp;&nbsp;</td>
+			</tr>
+			
+			<tr>
+				<td bgcolor="#ececec" align="center">매출 관리</td>
+				<td><a href='adminSalesAction.action'>[ 매출 목록 ]</a>&nbsp;&nbsp;</td>
 			</tr>					
 		</table>
 	</form>

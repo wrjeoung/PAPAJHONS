@@ -11,7 +11,7 @@ import com.ibatis.sqlmap.client.SqlMapClient;
 import com.ibatis.sqlmap.client.SqlMapClientBuilder;
 import com.opensymphony.xwork2.ActionSupport;
 
-public class modifyAction extends ActionSupport{
+public class modifyAction extends ActionSupport implements IbatisAware{
 	public static Reader reader;
 	public static SqlMapClient sqlMapper;
 	
@@ -27,13 +27,13 @@ public class modifyAction extends ActionSupport{
 	private File upload;
 	private String uploadContentType;
 	private String uploadFileName;
-	private String fileUploadPath="D:\\workspace\\papa\\WebContent\\mcfile\\";
+	private String fileUploadPath="D:\\workspace\\PAPA_Project\\WebContent\\mcfile\\";
 	
-	public modifyAction()throws IOException{
+	/*public modifyAction()throws IOException{
 		reader=Resources.getResourceAsReader("sqlMapConfig.xml");
 		sqlMapper=SqlMapClientBuilder.buildSqlMapClient(reader);
 		reader.close();
-	}
+	}*/
 	public String form()throws Exception{
 		vo.setNum(getNum());
 		vo=(memcardVO)sqlMapper.queryForObject("memcard.selectOne", getNum());
@@ -49,6 +49,8 @@ public class modifyAction extends ActionSupport{
 		
 		//파일 수정
 		if(getUpload()!=null){
+			System.out.println("1");
+			
 			String file_name="file_"+getNum();
 			String file_ext = getUploadFileName().substring(getUploadFileName().lastIndexOf('.')+1,getUploadFileName().length());
 					
@@ -64,6 +66,7 @@ public class modifyAction extends ActionSupport{
 			vo.setFile_savname(file_name+"."+file_ext);
 					
 			sqlMapper.update("memcard.updateFile", vo);
+			System.out.println("2");
 		}
 		
 		return SUCCESS;
@@ -139,6 +142,12 @@ public class modifyAction extends ActionSupport{
 	}
 	public void setFileUploadPath(String fileUploadPath) {
 		this.fileUploadPath = fileUploadPath;
+	}
+
+	@Override
+	public void setIbatis(SqlMapClient sqlMapper) {
+		// TODO Auto-generated method stub
+		this.sqlMapper=sqlMapper;
 	}
 }
 

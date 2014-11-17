@@ -31,4 +31,70 @@
 			<include refid="select-all" />
 			ORDER BY no DESC
 		</select>
+		
+		<!-- 공통으로 사용할 where-no 절 정의 -->
+		<sql id="where-storename">
+			WHERE storename = #storename#
+		</sql>
+		
+		<select id="selectBydate" resultMap="storeRes">
+			<include refid="select-all" />
+		</select>
+		
+		<select id="selectStoreName" resultMap="storeRes" parameterClass="String">
+			<include refid="select-all" />
+			WHERE storename = #storename#
+		</select>
+		
+		<update id="updateStore" parameterClass="dstoreDTO">
+			UPDATE storeDb SET location = #location#,
+								storename = #storename#,
+								phone = #phone#,
+								address = #address#,
+								businesshours = #businesshours#,
+								storetype = #storetype#,
+								storeparking = #storeparking#,
+								latitude = #latitude#,
+								longitude = #longitude#,
+								newopen = #newopen#,
+								imagepath = #imagepath#
+			<include refid="where-storename"/>
+		</update>
+		
+		<!-- delete 쿼리문 정의 -->
+		<delete id="deleteStore">
+			DELETE FROM storeDb
+			<include refid="where-storename"/>
+		</delete>
+		
+		<!-- insert 쿼리문 정의 -->
+		<insert id="insertStore" parameterClass="dstoreDTO">
+			INSERT INTO storeDb (no,
+      							location,
+                         		storename,
+                         		phone,
+                         		address,
+                         		businesshours,
+                         		storetype,
+                         		storeparking,
+                         		latitude,
+                         		longitude,
+                         		newopen,
+                         		imagepath
+                         )
+                	 VALUES (storeDb_no_seq.NEXTVAL,
+                	            #location#, 
+                         		#storename#,
+                         		#phone#,
+                         		#address#,
+                         		#businesshours#,
+                         		#storetype#,
+                         		#storeparking#,
+                         		#latitude#,
+                         		#longitude#,
+                         		#newopen#,
+                         		#imagepath#
+                         )
+		</insert>
+		
 </sqlMap>

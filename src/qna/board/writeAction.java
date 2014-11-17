@@ -9,7 +9,7 @@ import com.ibatis.sqlmap.client.SqlMapClient;
 import com.ibatis.sqlmap.client.SqlMapClientBuilder;
 import com.opensymphony.xwork2.ActionSupport;
 
-public class writeAction extends ActionSupport{
+public class writeAction extends ActionSupport implements IbatisAware{
 	public static Reader reader;
 	public static SqlMapClient sqlMapper;
 	
@@ -22,11 +22,11 @@ public class writeAction extends ActionSupport{
 	
 	Calendar today=Calendar.getInstance();
 	
-	public writeAction()throws IOException{
+	/*public writeAction()throws IOException{
 		reader=Resources.getResourceAsReader("sqlMapConfig.xml");
 		sqlMapper=SqlMapClientBuilder.buildSqlMapClient(reader);
 		reader.close();
-	}
+	}*/
 	public String form()throws Exception{
 		return SUCCESS;
 	}
@@ -88,5 +88,9 @@ public class writeAction extends ActionSupport{
 	public void setQmenu(String qmenu) {
 		this.qmenu = qmenu;
 	}
-	
+	@Override
+	public void setIbatis(SqlMapClient sqlMapper) {
+		// TODO Auto-generated method stub
+		this.sqlMapper=sqlMapper;
+	}
 }

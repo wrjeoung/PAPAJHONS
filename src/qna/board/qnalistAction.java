@@ -10,7 +10,7 @@ import com.ibatis.sqlmap.client.SqlMapClient;
 import com.ibatis.sqlmap.client.SqlMapClientBuilder;
 import com.opensymphony.xwork2.ActionSupport;
 
-public class qnalistAction extends ActionSupport{
+public class qnalistAction extends ActionSupport implements IbatisAware{
 	public static Reader reader;
 	public static SqlMapClient sqlMapper;
 	
@@ -20,11 +20,11 @@ public class qnalistAction extends ActionSupport{
 	private List<qnaVO> list=new ArrayList<qnaVO>();
 	private List<qnaVO> list2=new ArrayList<qnaVO>();
 	
-	public qnalistAction()throws IOException{
+	/*public qnalistAction()throws IOException{
 		reader=Resources.getResourceAsReader("sqlMapConfig.xml");
 		sqlMapper=SqlMapClientBuilder.buildSqlMapClient(reader);
 		reader.close();
-	}
+	}*/
 	public String view()throws Exception{
 		
 		
@@ -74,6 +74,11 @@ public class qnalistAction extends ActionSupport{
 	}
 	public void setList2(List<qnaVO> list2) {
 		this.list2 = list2;
+	}
+	@Override
+	public void setIbatis(SqlMapClient sqlMapper) {
+		// TODO Auto-generated method stub
+		this.sqlMapper=sqlMapper;
 	}
 	
 }
