@@ -30,7 +30,7 @@ public class OrderListAction implements Action, IbatisAware, SessionAware {
 			orderlist.setSize_(list.getSize());
 			orderlist.setAmount(list.getAmount());
 			orderlist.setPrice(list.getPrice());
-			orderlist.setDeliveryinfo("배송 정보가 없습니다.");
+			orderlist.setDeliveryinfo("배송 준비중");
 			orderlist.setRegdate(today.getTime());
 			sqlMapper.insert("orderListSQL.insertOrderList", orderlist);
 		}
