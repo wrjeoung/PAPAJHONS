@@ -1,5 +1,6 @@
 package papa.member;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -12,9 +13,11 @@ import papa.address.IbatisAware;
 import com.ibatis.sqlmap.client.SqlMapClient;
 import com.opensymphony.xwork2.ActionSupport;
 
+import db.OrderListDTO;
+
 public class MyOrderAction extends ActionSupport implements IbatisAware,SessionAware {
 	public static SqlMapClient sqlMapper;	//SqlMapClient API를 사용하기 위한 sqlMapper 객체.
-	private List<MyOrderData> list = new ArrayList<MyOrderData>();
+	private List<OrderListDTO> list = new ArrayList<OrderListDTO>();
 	private String sdate;
 	private String edate;
 	private String orderList = null;
@@ -43,13 +46,15 @@ public class MyOrderAction extends ActionSupport implements IbatisAware,SessionA
 	public void setSdate(String sdate) {
 		this.sdate = sdate;
 	}
-
+	
 	public String form() throws Exception {
 		return SUCCESS;
 	}
 	
 	public String execute() throws Exception {
 		HashMap params = new HashMap();
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd a hh:mm");
+		
 		StringBuffer buffer = new StringBuffer();
 		String memId = (String) sessionMap.get("memId");
 		
@@ -57,19 +62,19 @@ public class MyOrderAction extends ActionSupport implements IbatisAware,SessionA
 		params.put("edate", edate);
 		params.put("memId", memId);
 		
-		list = sqlMapper.queryForList("myorderSQL.selectBydate",params);
+		list = sqlMapper.queryForList("orderListSQL.selectByIdAndDate",params);
 		
-		for(MyOrderData data : list)
+		for(OrderListDTO data : list)
 		{
-			String status = data.getStatus();
+			String status = data.getDeliveryinfo();
 			if(status == null) status = "";
 			
 			buffer.append("<tr>");
 			buffer.append("<td>"+data.getNo()+"</td>");
-			buffer.append("<td>"+data.getReg_date().toString()+"</td>");
-			buffer.append("<td>"+data.getNo()+"</td>");
+			buffer.append("<td>"+format.format(data.getRegdate())+"</td>");
+			buffer.append("<td>"+data.getOrdername()+"</td>");
+			buffer.append("<td>"+data.getAmount()+"</td>");
 			buffer.append("<td>"+data.getPrice()+"</td>");
-			buffer.append("<td>"+data.getStore()+"</td>");
 			buffer.append("<td>"+status+"</td>");
 			buffer.append("</tr>");
 		}

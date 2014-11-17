@@ -10,33 +10,6 @@
 
 	<title>공지 관리</title>
 	<SCRIPT type="text/javascript">
-	
-		function validation() {
-		
-			var frm = document.myform(0);
-			
-			if(frm.subject.value == "") {
-				alert("제목을 입력해주세요.");
-				return false;
-			} 
-			
-			else if(frm.name.value == "") {
-				alert("이름을 입력해주세요.");
-				return false;
-			}
-			
-			else if(frm.password.value == "") {
-				alert("비밀번호를 입력해주세요.");
-				return false;
-			}
-			
-			else if(frm.content.value == "") {
-				alert("내용을 입력해주세요.");
-				return false;			
-			} 
-			return true;
-		}
-		
 		function setObjSize(obj){
 			obj.setAttribute("size",obj.value.length+10);
 		}
@@ -45,6 +18,12 @@
 		{
 			var addr1 = document.getElementById("subject");
 			setObjSize(addr1);
+		}
+		
+		function deleteRecord()
+		{
+			alert("삭제되었습니다.");
+			location.href="adminGongjiDeleteAction.action?num=${data.num}";
 		}
 	</SCRIPT>
 </head>
@@ -117,8 +96,9 @@
 			<tr bgcolor="#ececec" align="center">
 				<td colspan="2">
    					<input type="submit" value="수정"/>
+   					<input type="button" value="삭제" onclick="deleteRecord()"/>
    				</td>
-   			</tr> 	         	
+  			</tr> 	         	
 		</table>
    	</form>
 <iframe name="ifr_hidden"  src="" style="width:0;height:0;visibility: hidden;">   	

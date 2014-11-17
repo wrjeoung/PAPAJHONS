@@ -53,6 +53,23 @@
 			</result>
 		</action>
 		
+		<action name="adminGongjiWriteAction" class="admin.gongji.GongjiAdminAction" method="form">
+			<result>
+				/admin/gongji/gongjiWrite.jsp
+			</result>
+		</action>
+		
+		<action name="adminGongjiWriteProAction" class="admin.gongji.GongjiAdminAction" method="write">
+			<interceptor-ref name="prepare" />
+			<interceptor-ref name="modelDriven" />		
+			<interceptor-ref name="ibatis"/>
+			<interceptor-ref name="fileUpload"/>
+			<interceptor-ref name="params"/>
+			<result type="redirect-action">
+				<param name="actionName">adminGongjiAction</param>
+			</result>
+		</action>				
+		
 		<action name="adminGongjiModifyAction" class="admin.gongji.GongjiAdminAction" method="modify">
 			<interceptor-ref name="ibatis"/>
 			<interceptor-ref name="params"/>
@@ -70,9 +87,18 @@
 			<result>
 				/admin/gongji/gongjiModifyPro.jsp
 			</result>
-		</action>		
+		</action>
 
-		<action name="menuItemsAction" class="admin.MenuItemsAction">
+		<action name="adminGongjiDeleteAction" class="admin.gongji.GongjiAdminAction" method="delete">
+			<interceptor-ref name="ibatis"/>
+			<interceptor-ref name="params"/>
+			<result type="redirect-action">
+				<param name="actionName">adminGongjiAction</param>
+			</result>
+		</action>		
+				
+
+		<action name="menuItemsListAction" class="admin.MenuItemsListAction">
 			<interceptor-ref name="ibatis"/>
 			<interceptor-ref name="params"/>
 			<result>
@@ -85,6 +111,51 @@
 			<interceptor-ref name="params"/>
 			<result>
 				/admin/menuItems/menuItemView.jsp
+			</result>
+		</action>
+		
+		<action name="menuItemModifyAction" class="admin.MenuItemModifyAction">
+			<interceptor-ref name="ibatis"/>
+			<interceptor-ref name="params"/>
+			<result>
+				/admin/menuItems/menuItemModify.jsp
+			</result>
+		</action>
+		
+		<action name="menuItemModifyProAction" class="admin.MenuItemModifyProAction">
+			<interceptor-ref name="prepare" />
+		    <interceptor-ref name="modelDriven" />
+			<interceptor-ref name="ibatis"/>
+			<interceptor-ref name="params"/>
+			<result>
+				/admin/menuItems/menuItemModifyPro.jsp
+			</result>
+		</action>
+		
+		<action name="menuItemDeleteAction" class="admin.MenuItemDeleteAction">
+			<interceptor-ref name="ibatis"/>
+			<interceptor-ref name="params"/>
+			<result>
+				/admin/menuItems/menuItemDelete.jsp
+			</result>
+		</action>
+		
+		<action name="menuItemWriteAction" class="admin.MenuItemWriteAction">
+			<result>
+				/admin/menuItems/menuItemWrite.jsp
+			</result>
+		</action>
+		
+		<action name="menuItemWriteProAction" class="admin.MenuItemWriteProAction">
+			<interceptor-ref name="ibatis"/>
+			<interceptor-ref name="prepare" />
+			<interceptor-ref name="modelDriven" />
+			<interceptor-ref name="params"/>
+			<result name="noSelected">
+				/admin/menuItems/noSelected.jsp
+			</result>
+			<result>
+				/admin/menuItems/menuItemWritePro.jsp
 			</result>
 		</action>
 		

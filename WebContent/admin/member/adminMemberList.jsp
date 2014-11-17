@@ -19,7 +19,6 @@
   		</tr>
   	</table>
   	
-<c:if test="${totalCount > 0}"> 
 	<table align="center" width="1530" border="0" cellspacing="0" cellpadding="2">
 		<tr align="center" bgcolor="#F3F3F3">
       		<td width="80"><strong>이름</strong></td>
@@ -59,7 +58,6 @@
         		<td height="1" colspan="11"></td>
       	    </tr>			
 		</c:forEach>    	    
-</c:if>	
 
 <c:if test="${totalCount <= 0}">
 				

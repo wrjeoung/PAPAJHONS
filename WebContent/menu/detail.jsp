@@ -386,7 +386,7 @@ input,select,img {
 			  			</dl>
 				</div>
 				
-						<!-- //detail_comm -->
+				<!-- //detail_comm -->
 				<form action="">
 					<div class="cart_order"> 
 							<c:if test="${ list.menuid eq 'pj_2010'}">

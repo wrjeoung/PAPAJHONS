@@ -8,7 +8,7 @@ import org.apache.struts2.interceptor.SessionAware;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class MainAction extends ActionSupport implements SessionAware {
-	private String command = "net use \\\\192.168.10.67\\ImageUpload /user:user1 open123";
+	private String command = "net use \\\\192.168.10.77\\Imageupload /user:user1 user11";
 	private Map sessionMap;
 	private Boolean alreadySet;
 

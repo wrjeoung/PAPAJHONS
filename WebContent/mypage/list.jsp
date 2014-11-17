@@ -222,23 +222,13 @@
   		</div>
   		<p>
   			<table class="table_list">
-  				<col width="5%" />
-    			<col width="11%"/>
-    			<col width="11%"/>
-    			<col width="11%"/>
-    			<col width="11%"/>
-    			<col width="11%"/>
-    			<col width="11%"/>
-    			<col width="11%"/>
-    			<col width="11%"/>
-    			<!-- <col width="*"/> -->
     			<thead>
     				<tr>
-      					<th>번호</th>
+      					<th>주문번호</th>
         				<th>주문일자</th>
-        				<th>주문번호</th>
+        				<th>상품명</th>
+        				<th>수량</th>
         				<th>금액</th>
-        				<th>주문매장</th>
         				<th>상태</th>
         				<!-- <th>삭제</th> -->
       				</tr>
@@ -263,16 +253,7 @@
     			</tbody>
   			</table>
   		</p>
-  		<p class="page">
-			<a href="JavaScript:void(0);"><img src="../assets/img/btn/btn_prev.gif" alt="이전페이지"></a>
-			<a class="text-point" href="JavaScript:void(0);">1</a>
-			<a href="JavaScript:void(0);"><img src="../assets/img/btn/btn_next.gif" alt="다음페이지" /></a> 
-  		</p>
 	</div>
 </form>
 
 <iframe name=i1 src="" width="0px" height="0px" frameborder="1">아이프레임이지원되는 브라우저에서 확인할수있습니다.</iframe>
-
-<script type="text/javascript">
-table_lastCell_bgNone(".table_list");
-</script>

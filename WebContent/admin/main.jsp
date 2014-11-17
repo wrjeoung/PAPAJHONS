@@ -5,7 +5,7 @@
 	<form action="" name="admin" method="post">
 		<table align="center" border="1" cellspacing="0" cellpadding="2">
 			<tr bgcolor="ececec" align="center">
-				<th colspan="5">관리 목록</th>
+				<th colspan="2">관리 목록</th>
 			</tr>
 			
 			<tr>
@@ -15,7 +15,7 @@
 			
 			<tr>
 				<td bgcolor="#ececec" align="center">물품 관리</td>
-				<td><a href='menuItemsAction.action'>[ 물품 목록 ]</a>&nbsp;&nbsp;</td>
+				<td><a href='menuItemsListAction.action'>[ 물품 목록 ]</a>&nbsp;&nbsp;</td>
 			</tr>
 			
 			<tr>
@@ -31,6 +31,13 @@
 			<tr>
 				<td bgcolor="#ececec" align="center">매출 관리</td>
 				<td><a href='adminSalesAction.action'>[ 매출 목록 ]</a>&nbsp;&nbsp;</td>
+			</tr>
+			
+			<tr>
+				<td colspan="2" align="center">
+					<input type="button" value="홈으로 가기" class="inputb"
+					onClick="javascript:location.href='mainAction.action'"/>
+				</td>
 			</tr>					
 		</table>
 	</form>
