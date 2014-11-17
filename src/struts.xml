@@ -87,7 +87,16 @@
 			<result>
 				/admin/gongji/gongjiModifyPro.jsp
 			</result>
+		</action>
+
+		<action name="adminGongjiDeleteAction" class="admin.gongji.GongjiAdminAction" method="delete">
+			<interceptor-ref name="ibatis"/>
+			<interceptor-ref name="params"/>
+			<result type="redirect-action">
+				<param name="actionName">adminGongjiAction</param>
+			</result>
 		</action>		
+				
 
 		<action name="menuItemsListAction" class="admin.MenuItemsListAction">
 			<interceptor-ref name="ibatis"/>

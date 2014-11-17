@@ -19,6 +19,12 @@
 			var addr1 = document.getElementById("subject");
 			setObjSize(addr1);
 		}
+		
+		function deleteRecord()
+		{
+			alert("삭제되었습니다.");
+			location.href="adminGongjiDeleteAction.action?num=${data.num}";
+		}
 	</SCRIPT>
 </head>
   
@@ -90,8 +96,9 @@
 			<tr bgcolor="#ececec" align="center">
 				<td colspan="2">
    					<input type="submit" value="수정"/>
+   					<input type="button" value="삭제" onclick="deleteRecord()"/>
    				</td>
-   			</tr> 	         	
+  			</tr> 	         	
 		</table>
    	</form>
 <iframe name="ifr_hidden"  src="" style="width:0;height:0;visibility: hidden;">   	

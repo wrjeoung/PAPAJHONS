@@ -46,6 +46,10 @@ public class GongjiAdminAction extends ActionSupport implements IbatisAware,Prep
 	private String old_file;
 	
 
+	public int getNum() {
+		return num;
+	}
+
 	public String getOld_file() {
 		return old_file;
 	}
@@ -171,7 +175,19 @@ public class GongjiAdminAction extends ActionSupport implements IbatisAware,Prep
 		}
 		
 		return SUCCESS;
-	}		
+	}
+	
+	public String delete() throws Exception {
+		data=(gongjiVO)sqlMapper.queryForObject("gongji.selectOne", getNum());
+		
+		//서버파일삭제
+		File deleteFile = new File(fileUploadPath + data.getFile_savname());
+		deleteFile.delete();
+		
+		//삭제 쿼리 수행
+		sqlMapper.update("gongji.deleteBoard", data);
+		return SUCCESS;
+	}
 
 	public List<gongjiVO> getList() {
 		return list;
