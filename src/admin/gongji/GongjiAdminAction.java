@@ -13,6 +13,7 @@ import gongji.board.gongjiVO;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import org.apache.commons.io.FileUtils;
@@ -36,11 +37,12 @@ public class GongjiAdminAction extends ActionSupport implements IbatisAware,Prep
 	private String pagingHtml;	//페이징을 구현한 HTMl
 	private pagingAction page;	//페이징 클래스
 	private int num;
+	Calendar today=Calendar.getInstance();
 	
 	private File upload; //파일 객체
 	private String uploadContentType; //컨텐츠 타입
 	private String uploadFileName; //파일 이름
-	private String fileUploadPath = "\\\\192.168.10.67\\ImageUpload\\"; //업로드 경로.
+	private String fileUploadPath = "\\\\192.168.10.77\\Imageupload\\"; //업로드 경로.
 	private String old_file;
 	
 
@@ -76,6 +78,10 @@ public class GongjiAdminAction extends ActionSupport implements IbatisAware,Prep
 		this.uploadFileName = uploadFileName;
 	}
 
+	public String form() throws Exception {
+		return SUCCESS;
+	}
+	
 	public String execute() throws Exception{
 		
 		list=sqlMapper.queryForList("gongji.selectAll");
@@ -93,6 +99,29 @@ public class GongjiAdminAction extends ActionSupport implements IbatisAware,Prep
 		
 		list=list.subList(page.getStartCount(), lastCount);
 		
+		return SUCCESS;
+	}
+	
+	public String write() throws Exception {
+		data.setReg_date(today.getTime());
+		sqlMapper.insert("gongji.insertGongji", data);
+		
+		if(getUpload()!=null){
+			data=(gongjiVO)sqlMapper.queryForObject("gongji.selectLastNo");
+			
+			//실제서버에 저장될 파일 이름과 확장자 설정
+			String file_name="file_"+data.getNum();
+			String file_ext=getUploadFileName().substring(getUploadFileName().lastIndexOf(".")+1,
+					getUploadFileName().length());
+			//서버에 파일 저장
+			File destFile=new File(fileUploadPath+file_name+"."+file_ext);
+			FileUtils.copyFile(getUpload(), destFile);
+			
+			//파일 정보 파라미터 설정
+			data.setFile_orgname(getUploadFileName());
+			data.setFile_savname(file_name+"."+file_ext);
+			sqlMapper.update("gongji.updateFile", data);
+		}
 		return SUCCESS;
 	}
 	

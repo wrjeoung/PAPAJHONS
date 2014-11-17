@@ -10,33 +10,6 @@
 
 	<title>공지 관리</title>
 	<SCRIPT type="text/javascript">
-	
-		function validation() {
-		
-			var frm = document.myform(0);
-			
-			if(frm.subject.value == "") {
-				alert("제목을 입력해주세요.");
-				return false;
-			} 
-			
-			else if(frm.name.value == "") {
-				alert("이름을 입력해주세요.");
-				return false;
-			}
-			
-			else if(frm.password.value == "") {
-				alert("비밀번호를 입력해주세요.");
-				return false;
-			}
-			
-			else if(frm.content.value == "") {
-				alert("내용을 입력해주세요.");
-				return false;			
-			} 
-			return true;
-		}
-		
 		function setObjSize(obj){
 			obj.setAttribute("size",obj.value.length+10);
 		}
