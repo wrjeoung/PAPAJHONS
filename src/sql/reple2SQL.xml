@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE sqlMap PUBLIC '-//ibatis.apache.org//DTD Sql Map 2.0//EN' 'http://ibatis.apache.org/dtd/sql-map-2.dtd'>
-<sqlMap namespace="reple">
-	
-	<typeAlias alias="reple" type="nowevent.board.reVO"/>
-		<resultMap id="repleRes" class="reple">
+<sqlMap namespace="reple2">
+	<typeAlias alias="reple2" type="pastevent.board.re2VO"/>
+		<resultMap id="reple2Res" class="reple2">
 			<result property="num1" column="num1"/>
 			<result property="content" column="content"/>
 			<result property="reg_date" column="reg_date"/>
@@ -11,18 +10,17 @@
 			<result property="id" column="id"/>
 		</resultMap>
 	
-	
-	<sql id="select-all">
-		SELECT * FROM REPLE
+		<sql id="select-all">
+		SELECT * FROM REPLE2
 	</sql> 
 	<!-- 댓글 쓰기 -->
-	<insert id="insertReple" parameterClass="reple">
-		INSERT INTO REPLE(NUM1,CONTENT,REG_DATE,NUM,ID)
+	<insert id="insertReple2" parameterClass="reple2">
+		INSERT INTO REPLE2(NUM1,CONTENT,REG_DATE,NUM,ID)
 		VALUES(REPLE_NUM1_SEQ.NEXTVAL,#content#,#reg_date#,#num#,#id#)
 	</insert>
 	
 	<!-- 댓글 보기 -->
-	<select id="selectRe" resultMap="repleRes" parameterClass="int">
-		SELECT * FROM REPLE WHERE num=#num#
+	<select id="selectRe2" resultMap="reple2Res" parameterClass="int">
+		SELECT * FROM REPLE2 WHERE num=#num#
 	</select>
 </sqlMap>

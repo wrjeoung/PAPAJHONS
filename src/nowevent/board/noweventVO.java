@@ -27,6 +27,7 @@ public class noweventVO {
 	public void setNum(int num) {
 		this.num = num;
 	}
+	
 	public String getSubject() {
 		return subject;
 	}

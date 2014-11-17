@@ -168,18 +168,35 @@
 </form>
 <br/>
 <table border="1" width="600" cellpadding="0" cellspacing="0" align="center">
-	<c:forEach var="vo2" items="${list3 }">
+	<c:forEach var="re2vo" items="${list3 }">
 		<tr height="30">
-			<td width="100">${vo2.reg_date }</td>
+			<td width="100"><b>${re2vo.id }</b><font style="margin-left: 50px">${re2vo.reg_date }</font></td>
 		</tr>
+		
+		<%-- <tr height="30">
+			<td width="100">${re2vo.reg_date }</td>
+		</tr> --%>
+		<%-- <tr height="50">
+			<td width="100">${re2vo.content }</td>
+		</tr> --%>
+		<c:if test="${memId == re2vo.id }">
 		<tr height="50">
-			<td width="100">${vo2.content }</td>
+			<%-- <c:if test="${memId==id && memId!=null}"> --%>
+			<td width="100">${re2vo.content }</td>
+		<%-- 	</c:if> --%>
 		</tr>
+		</c:if>
+		<c:if test="${memId != re2vo.id || memId==null}">
+			<tr height="50">
+				<td width="100">비밀덧글입니다.</td>
+			</tr>
+		</c:if>
 	</c:forEach>
 </table>
 
 <form action="pastRewriteAction.action" method="post">
 	<input type="hidden" name="num" value="${num }">
+	<input type="text" name="id" value="${memId }">
 	<textarea rows="5" cols="100" name="content"></textarea>
 	<input type="submit" value="댓글쓰기"/>
 </form>

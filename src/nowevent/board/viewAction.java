@@ -18,6 +18,7 @@ public class viewAction extends ActionSupport implements IbatisAware{
 	private int num;
 	private String file_savname;
 	
+	
 	/*public viewAction() throws IOException{
 		reader=Resources.getResourceAsReader("sqlMapConfig.xml");
 		sqlMapper=SqlMapClientBuilder.buildSqlMapClient(reader);
