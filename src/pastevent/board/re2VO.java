@@ -1,23 +1,13 @@
-package nowevent.board;
+package pastevent.board;
 
 import java.util.Date;
 
-public class reVO {
+public class re2VO {
 	private int num1;
 	private String content;
 	private Date reg_date;
 	private int num;
 	private String id;
-	
-	
-	//----¼¼¼Ç
-	public String getId() {
-		return id;
-	}
-	public void setId(String id) {
-		this.id = id;
-	}
-	//----
 	public int getNum1() {
 		return num1;
 	}
@@ -42,6 +32,12 @@ public class reVO {
 	public void setNum(int num) {
 		this.num = num;
 	}
-	
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
+
 	
 }

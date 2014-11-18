@@ -148,7 +148,7 @@
 		<td align="right" width="100">${vo.day }</td>
 	</tr> --%>
 	<tr height="500" align="center">
-		<td align="center" width="100"><img src="../save2/${vo.file_savname2 }"></td>
+		<td align="center" width="100"><a href="orderAction.action"><img src="../save2/${vo.file_savname2 }"></a></td>
 	</tr>
 	<tr>
 		<td align="center" colspan="2">
@@ -165,19 +165,39 @@
 </table>
 </form>
 <br/>
-<table border="1" width="600" cellpadding="0" cellspacing="0" align="center">
-	<c:forEach var="vo" items="${list2 }">
+
+	<c:forEach var="revo" items="${list2 }">
+		<table border="1" width="600" cellpadding="0" cellspacing="0" align="center">
 		<tr height="30">
-			<td width="100">${vo.reg_date }</td>
+			<td width="100"><b>${revo.id }</b><font style="margin-left: 50px">${revo.reg_date }</font></td>
 		</tr>
+		<%-- <tr height="30">
+			<td width="100">${revo.reg_date }</td>
+		</tr> --%>
+		<c:if test="${memId == revo.id }">
 		<tr height="50">
-			<td width="100">${vo.content }</td>
+			<%-- <c:if test="${memId==id && memId!=null}"> --%>
+			<td width="100">${revo.content }</td>
+		<%-- 	</c:if> --%>
 		</tr>
+		</c:if>
+		<c:if test="${memId != revo.id || memId==null}">
+			<tr height="50">
+				<td width="100">비밀덧글입니다.</td>
+			</tr>
+		</c:if>
+		<%-- <c:if test="${memId==null}">
+			<tr height="50">
+				<td width="100">비밀덧글입니다.</td>
+			</tr>
+		</c:if> --%>
+	</table>
 	</c:forEach>
-</table>
+
 
 <form action="RewriteAction.action" method="post">
 	<input type="hidden" name="num" value="${num }">
+	<input type="text" name="id" value="${memId }">
 	<textarea rows="5" cols="100" name="content"></textarea>
 	<input type="submit" value="댓글쓰기"/>
 </form>

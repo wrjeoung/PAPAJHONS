@@ -453,10 +453,12 @@
 		
 		<!-- 댓글쓰기 -->
 		<action name="RewriteForm" class="nowevent.board.rewriteAction" method="form">
+		<interceptor-ref name="servletConfig"/>
 			<result>/nowevent/nowView.jsp</result>
 		</action> 
 		<action name="RewriteAction" class="nowevent.board.rewriteAction">
 			<interceptor-ref name="params"/>
+			<interceptor-ref name="servletConfig"/>	
 			<result type="redirect-action">
 			<param name="actionName">listAction2</param>
 			</result>
@@ -735,10 +737,12 @@
 		
 	<!-- 댓글쓰기 -->
 		<action name="pastRewriteForm" class="pastevent.board.rewriteAction" method="form">
+		<interceptor-ref name="servletConfig"/>	
 			<result>/pastevent/pastView.jsp</result>
 		</action> 
 		<action name="pastRewriteAction" class="pastevent.board.rewriteAction">
 			<interceptor-ref name="params"/>
+			<interceptor-ref name="servletConfig"/>	
 			<result type="redirect-action">
 			<param name="actionName">pastlistAction</param>
 			</result>

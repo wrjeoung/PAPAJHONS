@@ -3,24 +3,30 @@ package pastevent.board;
 import java.io.IOException;
 import java.io.Reader;
 import java.util.Calendar;
+import java.util.Map;
 
-import nowevent.board.reVO;
+import org.apache.struts2.interceptor.SessionAware;
 
 import com.ibatis.common.resources.Resources;
 import com.ibatis.sqlmap.client.SqlMapClient;
 import com.ibatis.sqlmap.client.SqlMapClientBuilder;
 import com.opensymphony.xwork2.ActionSupport;
 
-public class rewriteAction extends ActionSupport{
+public class rewriteAction extends ActionSupport implements SessionAware{
 	public static Reader reader;
 	public static SqlMapClient sqlMapper;
 	
-	private reVO vo2;
+	private re2VO vo;
+	
 	private int num1;
 	private String content;
-	
 	Calendar today=Calendar.getInstance();
 	private int num;
+	
+	//¼¼¼Ç
+	private Map sessionMap;
+	private String memId=null;
+	private String id;
 	
 	public rewriteAction()throws IOException{
 		reader=Resources.getResourceAsReader("sqlMapConfig.xml");
@@ -31,11 +37,14 @@ public class rewriteAction extends ActionSupport{
 		return SUCCESS;
 	}
 	public String execute()throws Exception{
-		vo2=new reVO();
-		vo2.setContent(getContent());
-		vo2.setReg_date(today.getTime());
-		vo2.setNum(getNum());
-		sqlMapper.insert("reple.insertReple", vo2);
+		vo=new re2VO();
+		vo.setContent(getContent());
+		vo.setReg_date(today.getTime());
+		vo.setNum(getNum());
+		
+		vo.setId((String)sessionMap.get("memId"));
+		sqlMapper.insert("reple2.insertReple2",vo);
+		
 		return SUCCESS;
 	}
 	public static Reader getReader() {
@@ -50,11 +59,11 @@ public class rewriteAction extends ActionSupport{
 	public static void setSqlMapper(SqlMapClient sqlMapper) {
 		rewriteAction.sqlMapper = sqlMapper;
 	}
-	public reVO getVo2() {
-		return vo2;
+	public re2VO getVo() {
+		return vo;
 	}
-	public void setVo2(reVO vo2) {
-		this.vo2 = vo2;
+	public void setVo(re2VO vo) {
+		this.vo = vo;
 	}
 	public int getNum1() {
 		return num1;
@@ -80,5 +89,27 @@ public class rewriteAction extends ActionSupport{
 	public void setNum(int num) {
 		this.num = num;
 	}
-	
+	public Map getSessionMap() {
+		return sessionMap;
+	}
+	public void setSessionMap(Map sessionMap) {
+		this.sessionMap = sessionMap;
+	}
+	public String getMemId() {
+		return memId;
+	}
+	public void setMemId(String memId) {
+		this.memId = memId;
+	}
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
+	@Override
+	public void setSession(Map arg0) {
+		// TODO Auto-generated method stub
+		sessionMap = arg0;
+	}
 }
