@@ -7,6 +7,7 @@ import javax.mail.internet.*;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.struts2.interceptor.ServletRequestAware;
+import org.apache.struts2.interceptor.SessionAware;
 
 import papa.address.IbatisAware;
 
@@ -14,13 +15,14 @@ import com.ibatis.sqlmap.client.SqlMapClient;
 import com.opensymphony.xwork2.ActionSupport;
 
 
-public class EmailAuthAction extends ActionSupport implements ServletRequestAware,IbatisAware {
+public class EmailAuthAction extends ActionSupport implements ServletRequestAware,IbatisAware,SessionAware {
 	public static SqlMapClient sqlMapper;	//SqlMapClient API를 사용하기 위한 sqlMapper 객체.
 	private String email;
 	private boolean result = true;
 	private HttpServletRequest request;
 	private String activation_key; 
 	private int verityEmail = -1;
+	Map sessionMap;
 	
 	public int getVerityEmail() {
 		return verityEmail;
@@ -61,11 +63,13 @@ public class EmailAuthAction extends ActionSupport implements ServletRequestAwar
 	public String activation() throws Exception {
 		MemberData data = null;
 		HashMap params = new HashMap();
+		HashMap values = new HashMap();
 		
 		params.put("email", email);
 		params.put("activation_key", activation_key);
-		
-		
+				
+		values = (HashMap)sessionMap.get("auth");
+				
 		System.out.println("email = "+email+"activation_key = "+activation_key);
 		data = (MemberData) sqlMapper.queryForObject("memberSQL.verifyEmailAddress",params);
 		
@@ -81,6 +85,12 @@ public class EmailAuthAction extends ActionSupport implements ServletRequestAwar
 				sqlMapper.update("memberSQL.updateActivationStatus", params);
 			}
 		}
+		else if(values != null && values.get(email).equals(activation_key))
+		{
+			verityEmail = 1;
+		}
+		
+		sessionMap.remove("auth");
 		
 		return SUCCESS;
 	}
@@ -107,9 +117,13 @@ public class EmailAuthAction extends ActionSupport implements ServletRequestAwar
 		String to1 = email;
 		String url = request.getRequestURL().toString();
 		String domain = url.substring(0,url.indexOf("/",8));
+		HashMap values = new HashMap();
 		setActivation_key(gen_ActivationKey()); 
 		
 		String content = "<a href="+"'"+domain+request.getContextPath()+"/member/activationAction.action?email="+email+"&activation_key="+getActivation_key()+"'"+">Activation URL</a>";
+				
+		values.put(email, getActivation_key());
+		sessionMap.put("auth",values);
 		
 		try{
 		Properties props = new Properties();
@@ -158,5 +172,10 @@ public class EmailAuthAction extends ActionSupport implements ServletRequestAwar
 	@Override
 	public void setIbatis(SqlMapClient sqlMapper) {
 		this.sqlMapper = sqlMapper; 
+	}
+
+	@Override
+	public void setSession(Map sessionMap) {
+		this.sessionMap = sessionMap;
 	}
 }
