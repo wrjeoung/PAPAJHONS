@@ -93,6 +93,8 @@ public class MemberAction extends ActionSupport implements IbatisAware, Preparab
 		
 		if(dto.getActivation_key() != null && dto.getActivation_key().length() >=1)
 			dto.setActivation_status("active");
+		else
+			dto.setActivation_status("inactive");
 		
 		sqlMapper.insert("memberSQL.insertMember", dto);
 		return SUCCESS;
