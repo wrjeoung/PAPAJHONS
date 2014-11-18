@@ -8,6 +8,7 @@
 		
 		var alertFrame = $("#notice_caution");
 		var result = parent.document.getElementById("login_result").value;
+		var menuGb = parent.document.getElementById("menuGb").value;
 		
 		if( result == "no" )
 		{	
@@ -19,8 +20,15 @@
 		}
 		else if(result == "yes")
 		{
-			document.loginForm.action = "mainAction.action?msg=ok";
-			document.loginForm.submit();
+			if(menuGb == "order")
+			{
+				document.location.href = "orderAction.action?menuId=pj_2003&pizzaSelIdx=1";
+			}
+			else
+			{
+				document.loginForm.action = "mainAction.action?msg=ok";
+				document.loginForm.submit();
+			}
 		}
 	}
 	
@@ -192,17 +200,11 @@
         	</div>
         	
         	<div class="non_join">
-          		<div class="btn_nonmember">
-            		<p><button type="button" onclick='$("#nonmember").show(); $("#member").hide(); document.nonmemberForm.nonmem_ord_name.focus();'><img src="../assets/img/forms/login_btn_nonmem.gif" alt="비회원주문조회" /></button></p>
-            		<p class="text">아직 회원이 아니시거나 비회원으로 주문 조회를 원하시면 '비회원 주문'을 선택해주세요</p>
-          		</div> 
-          		<div class="btn_join">
-            		<p><a href="signUpAction.action?menuGb=member&menuId=pj_0005"><img src="../assets/img/forms/login_btn_join.gif" alt="회원가입" /></a></p>
-          			<!-- 
-            		<p><a href="/cont.jsp?menuGb=member&menuId=pj_0004"><img src="</%=root%>/assets/img/forms/login_btn_join.gif" alt="회원가입" /></a></p>
-          			-->
-            		<p class="text">회원가입을 하시면 보다 많은 혜택을 누릴수 있습니다.</p>
-          		</div>
+				<p style="margin-top:40px;"></p>
+        		<p align="center"><a href="signUpAction.action?menuGb=member&menuId=pj_0005"><img src="../assets/img/forms/login_btn_join.gif" alt="회원가입" /></a></p>
+         			<!-- 
+           		<p><a href="/cont.jsp?menuGb=member&menuId=pj_0004"><img src="</%=root%>/assets/img/forms/login_btn_join.gif" alt="회원가입" /></a></p>
+         			-->
         	</div>
     	</form>
   	</div>
