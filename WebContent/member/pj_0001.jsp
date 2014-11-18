@@ -7,29 +7,6 @@
 		$(document).ready(function(){$('#viewLoading').hide();});
 		
 		var alertFrame = $("#notice_caution");
-		var result = parent.document.getElementById("login_result").value;
-		var menuGb = parent.document.getElementById("menuGb").value;
-		
-		if( result == "no" )
-		{	
-			alertFrame.find("#alertText p").remove();
-			alertFrame.find("#alertText").append("<p>입력하신 정보가 맞지 않습니다.<br>다시 확인 하시고 로그인 해 주세요.</p>"); 
-			popAlert("#notice_caution");
-			
-			document.loginForm.mem_id.focus();
-		}
-		else if(result == "yes")
-		{
-			if(menuGb == "order")
-			{
-				document.location.href = "orderAction.action?menuId=pj_2003&pizzaSelIdx=1";
-			}
-			else
-			{
-				document.loginForm.action = "mainAction.action?msg=ok";
-				document.loginForm.submit();
-			}
-		}
 	}
 	
 	//20140219 검색버튼 enter key 이벤트 처리
@@ -66,8 +43,10 @@
 		
 		var menuGb = parent.document.getElementById("menuGb").value;
 		var menuId = parent.document.getElementById("menuId").value;
-
+		
+		$('#viewLoading').show().fadeIn('fast');
 		document.loginForm.action = 'loginProAction.action?menuGb='+menuGb+'&menuId='+menuId;
+		document.loginForm.target = "ifr_hidden";
 		document.loginForm.submit();	
 	}
 	
@@ -269,4 +248,6 @@
     	<div class="right" style="float:right; width:6px; height:8px; background:url(../assets/img/usa/modal_footer_right.png) bottom right no-repeat; "></div>
   	</div>
 </div> 
+
+<iframe name="ifr_hidden"  src="" style="width:0;height:0;visibility: hidden;">
 <!-- //login_section -->

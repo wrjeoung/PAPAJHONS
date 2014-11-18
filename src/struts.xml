@@ -509,7 +509,7 @@
 		    <interceptor-ref name="ibatis"></interceptor-ref>
 		    <interceptor-ref name="params"></interceptor-ref>
 		    <interceptor-ref name="servletConfig" />
-			<result>/member/cont.jsp</result>
+			<result>/member/loginpro.jsp</result>
 		</action>
 		
 		<action name="logoutAction" class="papa.member.LogInOutAction" method="logout">
