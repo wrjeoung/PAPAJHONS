@@ -45,7 +45,23 @@
 			AND regdate > #sdate# OR regdate = #sdate#
 			AND #edate# > regdate OR #edate# = regdate
 			ORDER BY no DESC
-		</select>		
+		</select>
+		
+		<select id="selectAdminData" resultMap="orderListRes">
+			<include refid="select-all" />
+			WHERE deliveryinfo = #deliverying# OR deliveryinfo = #completed#
+			ORDER BY no ASC
+		</select>
+		
+		<select id="selectAdminNo" resultMap="orderListRes">
+			<include refid="select-all"/>
+			<include refid="where-no" />
+		</select>
+		
+		<update id="updateAdminDel"> 
+			UPDATE orderlist SET deliveryinfo = #deliveryinfo#
+			<include refid="where-no" />
+		</update>
 		
 		<!-- insert 쿼리문 정의 -->
 		<insert id="insertOrderList" parameterClass="orderList">
