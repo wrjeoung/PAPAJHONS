@@ -96,7 +96,7 @@
   		<ul>
     		<li class="navItem1">
     			<c:if test="${memId == null}"> 
-    				<a href="loginAction.action?menuGb=order&menuId=pj_0001">온라인주문</a>
+    				<a href="loginAction.action?menuGb=order&menuId=pj_0001&fromMenuId=pj_2003&pizzaSelIdx=1">온라인주문</a>
     			</c:if>
     			<c:if test="${memId != null}">
     				<a href="orderAction.action?menuId=pj_2003&pizzaSelIdx=1">온라인주문</a>

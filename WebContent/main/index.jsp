@@ -233,35 +233,11 @@
 									src="../assets/img/btn/go_googleplay.gif" alt="안드로이드 마켓 다운로드" /></a>
 							</div>
 						</li>
-						<li class="item"
-							style="background: url(../assets/img/main/facebook_like_bg.jpg) no-repeat;">
-							<div class="promoContent"
-								style="margin: 15px 0 0 90px; width: 152px;">
-								<h2
-									style="color: #414141; font-size: 1.2em; font-weight: bold; margin: 0 0 5px 0;">파파존스
-									페이스북</h2>
-								<p
-									style="padding: 0; border: 0; font-size: 100%; text-align: left; outline: none;">파파존스의
-									다양한 혜택 정보를 받아 보세요!</p>
-								<a href="https://www.facebook.com/papajohnskorea?fref=ts"
-									target="blank_"
-									style="position: absolute; top: 84px; left: 90px;"> <img
-									src="../assets/img/btn/go_facebook.gif" alt="파파존스 페이스북 좋아요" /></a>
-							</div>
-						</li>
 						<li class="item">
 							<div class="promoContent" style="width: 100%;">
-								<a href="/sub.jsp?menuGb=customer&menuId=pj_5004"
+								<a href="storeAction.action"
 									style="position: absolute; top: 0; left: 0;"> <img
 									src="../assets/img/btn/store_open_thum.png" alt="오픈매장 바로가기"
-									width="245" height="117" /></a>
-							</div>
-						</li>
-						<li class="item">
-							<div class="promoContent" style="width: 100%;">
-								<a href="/order.jsp"
-									style="position: absolute; top: 0; left: 0;"> <img
-									src="../assets/img/btn/go_orderEcoupon.gif" alt="이쿠폰메뉴 주문 바로가기"
 									width="245" height="117" /></a>
 							</div>
 						</li>
@@ -281,41 +257,10 @@
 									src="../assets/img/btn/go_appstore.gif" alt="아이폰 앱스토어 다운로드" /></a>
 							</div>
 						</li>
-						<li class="item"
-							style="background: url(../assets/img/main/ingredients_bg.jpg) no-repeat;">
-							<div class="promoContent"
-								style="margin: 15px 0 0 85px; width: 158px;">
-								<h2
-									style="color: #414141; font-size: 1.2em; font-weight: bold; margin: 0 0 5px 0;">파파존스
-									재료이야기</h2>
-								<p
-									style="padding: 0; border: 0; font-size: 100%; text-align: left; outline: none;">최고
-									품질의 재료가 가장 맛있는 피자를 만들 수 있습니다.</p>
-								<a href="/sub.jsp?menuGb=story&menuId=pj_4002&subGb=0"
-									style="position: absolute; top: 80px; left: 130px;"> <img
-									src="../assets/img/btn/go_ingredients.gif" alt="파파존스 재료이야기 바로가기" /></a>
-							</div>
-						</li>
 						<li class="item">
 							<div class="promoContent" style="width: 100%;">
 								<img src="../assets/img/main/discount_info.gif"
 									alt="온라인주문 상시할인 안내" width="245" height="117" />
-							</div>
-						</li>
-						<li class="item"
-							style="background: url(../assets/img/main/franchiset_info.png) no-repeat;">
-							<div class="promoContent"
-								style="margin: 15px 0 0 96px; width: 147px;">
-								<h2
-									style="color: #414141; font-size: 1.2em; font-weight: bold; margin: 0 0 5px 0;">파파존스
-									가맹점 안내</h2>
-								<p
-									style="padding: 0; border: 0; font-size: 100%; text-align: left; outline: none;">
-									파파존스 가맹점 상담 <br>신청 및 문의 
-								</p>
-								<a href="/cont.jsp?menuGb=franch&menuId=pj_6001"
-									style="position: absolute; top: 85px; left: 165px;"> <img
-									src="../assets/img/btn/go_franchise.gif" alt="가맹점 안내 바로가기" /></a>
 							</div>
 						</li>
 					</ul>
