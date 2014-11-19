@@ -12,7 +12,7 @@
 					<li class="item">
 						<div class="store">
 							<p class="photo">
-								<img src="${li.imagepath}" alt="" width="130px" height="85px"
+								<img src="http://192.168.10.77:8000/ImageServer/Imageupload/${li.imagepath}" alt="" width="130px" height="85px"
 								onerror="this.src='/assets/img/customer/store_photo/str_img.jpg'" />
 							</p>
 							<ul class="info">
@@ -192,7 +192,7 @@
 			<c:forEach var="li" items="${list}" varStatus="status">
 				<li class="list">	
 					<p class="photo">
-					<img src="${li.imagepath}" alt="${li.storename}사진" width="100px" height="75px"
+					<img src="http://192.168.10.77:8000/ImageServer/Imageupload/${li.imagepath}" alt="${li.storename}사진" width="100px" height="75px"
 						onerror="this.src=&quot;/assets/img/customer/store_photo/str_img.jpg&quot;">
 					</p>
 					<ul class="info">

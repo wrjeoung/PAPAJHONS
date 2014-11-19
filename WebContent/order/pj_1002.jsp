@@ -317,7 +317,7 @@
 	{
 		// 주문 수량 저장
 		document.frmOrder._cnt_opt.value = value;
-		alert("cnt_opt : "+document.frmOrder._cnt_opt.value ) ;
+		//alert("cnt_opt : "+document.frmOrder._cnt_opt.value ) ;
 	}
     
     // 세트메뉴, 하프&하프, E쿠폰 화면표시 및 검색
