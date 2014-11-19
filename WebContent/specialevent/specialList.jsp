@@ -142,7 +142,8 @@
 <c:forEach var="vo" items="${list }">
 	<tr height="600">
 		<td width="600">
-			<img src="../save5/${vo.file_savname }"></a><br/>
+			<%-- <img src="../save5/${vo.file_savname }"> --%>
+			<img src="http://192.168.10.77:8000/ImageServer/Imageupload/${vo.file_savname}"><br/>
 			<%-- <input type="button" value="글수정" onclick="document.location.href='specialmodifyForm.action?num=${vo.num}&file_savname=${vo.file_savname}'">
 			<input type="button" value="글삭제" onclick="document.location.href='specialdeleteAction.action?num=${vo.num}'"> --%>
 			<br/>

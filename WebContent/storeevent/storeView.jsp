@@ -150,7 +150,9 @@
 	<tr height="500" align="center">
 		<td align="left" width="100"><pre>${vo.content }</pre>
 		<c:if test="${file_savname != '' }">
-		<img src="../save3/${file_savname }"><!-- </td> -->
+		<%-- <img src="../save3/${file_savname }"> --%>
+		<img src="http://192.168.10.77:8000/ImageServer/Imageupload/${file_savname}">
+		<!-- </td> -->
 		</c:if>
 		</td>
 	</tr>

@@ -8,7 +8,7 @@
 			<result property="no" column="no" />
 			<result property="userid" column="userid" />
 			<result property="ordername" column="ordername" />
-			<result property="size_" column="ordername" />
+			<result property="size_" column="size_" />
 			<result property="amount" column="amount" />
 			<result property="price" column="price" />
 			<result property="deliveryinfo" column="deliveryinfo" />

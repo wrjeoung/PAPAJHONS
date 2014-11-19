@@ -15,7 +15,7 @@ public class deleteAction extends ActionSupport implements IbatisAware{
 	public static SqlMapClient sqlMapper;
 	
 	private crecardVO vo;
-	private String fileUploadPath="D:\\workspace\\PAPA_Project\\WebContent\\ccfile\\";
+	private String fileUploadPath="\\\\192.168.10.77\\Imageupload\\";
 	private int num;
 	
 	/*public deleteAction()throws IOException{
