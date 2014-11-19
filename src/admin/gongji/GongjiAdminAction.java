@@ -1,16 +1,6 @@
 package admin.gongji;
 
 import gongji.board.gongjiVO;
-
-
-
-
-
-
-
-
-
-
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -27,24 +17,25 @@ import admin.IbatisAware;
 import admin.pagingAction;
 
 public class GongjiAdminAction extends ActionSupport implements IbatisAware,Preparable, ModelDriven {
-	public static SqlMapClient sqlMapper;	//SqlMapClient APIï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ï±ï¿½ ï¿½ï¿½ï¿½ï¿½ sqlMapper ï¿½ï¿½Ã¼.
+	public static SqlMapClient sqlMapper;	//SqlMapClient API¸¦ »ç¿ëÇÏ±â À§ÇÑ sqlMapper °´Ã¼.
 	private List<gongjiVO> list=new ArrayList<gongjiVO>();
 	private gongjiVO data;
-	private int currentPage=1;	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
-	private int totalCount;	//ï¿½ï¿½ ï¿½Ô½Ã¹ï¿½ï¿½ï¿½ ï¿½ï¿½
-	private int blockCount=5;	//ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ô½Ã¹ï¿½ï¿½ï¿½ ï¿½ï¿½
-	private int blockPage=5;	//ï¿½ï¿½ È­ï¿½é¿¡ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
-	private String pagingHtml;	//ï¿½ï¿½ï¿½ï¿½Â¡ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ HTMl
-	private pagingAction page;	//ï¿½ï¿½ï¿½ï¿½Â¡ Å¬ï¿½ï¿½ï¿½ï¿½
+	private int currentPage=1;	//ÇöÀçÆäÀÌÁö
+	private int totalCount;	//ÃÑ °Ô½Ã¹°ÀÇ ¼ö
+	private int blockCount=5;	//ÇÑ ÆäÀÌÁöÀÇ °Ô½Ã¹°ÀÇ ¼ö
+	private int blockPage=5;	//ÇÑ È­¸é¿¡ º¸¿©ÁÙ ÆäÀÌÁö ¼ö
+	private String pagingHtml;	//ÆäÀÌÂ¡À» ±¸ÇöÇÑ HTMl
+	private pagingAction page;	//ÆäÀÌÂ¡ Å¬·¡½º
 	private int num;
 	Calendar today=Calendar.getInstance();
 	
-	private File upload; //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ã¼
-	private String uploadContentType; //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Å¸ï¿½ï¿½
-	private String uploadFileName; //ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¸ï¿½
-	private String fileUploadPath = "\\\\192.168.10.77\\Imageupload\\"; //ï¿½ï¿½ï¿½Îµï¿½ ï¿½ï¿½ï¿½.
+	private File upload; //ÆÄÀÏ °´Ã¼
+	private String uploadContentType; //ÄÁÅÙÃ÷ Å¸ÀÔ
+	private String uploadFileName; //ÆÄÀÏ ÀÌ¸§
+	private String fileUploadPath = "\\\\192.168.10.77\\Imageupload\\"; //¾÷·Îµå °æ·Î.
 	private String old_file;
 	
+
 	public int getNum() {
 		return num;
 	}
@@ -89,14 +80,14 @@ public class GongjiAdminAction extends ActionSupport implements IbatisAware,Prep
 		
 		list=sqlMapper.queryForList("gongji.selectAll");
 		
-		totalCount=list.size();	//ï¿½ï¿½Ã¼ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
-		page=new pagingAction(currentPage, totalCount, blockCount, blockPage, "adminGongjiAction");	//paingAction ï¿½ï¿½Ã¼ ï¿½ï¿½
-		pagingHtml=page.getPagingHtml().toString();	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ HTML ï¿½ï¿½
+		totalCount=list.size();	//ÀüÃ¼ ±ÛÀÇ °³¼ö
+		page=new pagingAction(currentPage, totalCount, blockCount, blockPage, "adminGongjiAction");	//paingAction °´Ã¼ »ý¼º
+		pagingHtml=page.getPagingHtml().toString();	//ÆäÀÌÁö HTML »ý¼º
 		
-		//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È£ ï¿½ï¿½ï¿½ï¿½
+		//ÇöÀç ÆäÀÌÁö¿¡¼­ º¸¿©ÁÙ ¸¶Áö¸· ±ÛÀÇ ¹øÈ£ ¼³Á¤
 		int lastCount=totalCount;
 		
-		//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È£ï¿½ï¿½ ï¿½ï¿½Ã¼ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ûºï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ lastCountï¿½ï¿½ +1 ï¿½ï¿½È£ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+		//ÇöÀç ÆäÀÌÁöÀÇ ¸¶Áö¸· ±ÛÀÇ ¹øÈ£°¡ ÀüÃ¼ÀÇ ¸¶Áö¸· ±Ûº¸´Ù ÀÛÀ¸¸é lastCount¸¦ +1 ¹øÈ£·Î ¼³Á¤
 		if(page.getEndCount()<totalCount)
 			lastCount=page.getEndCount()+1;
 		
@@ -112,15 +103,15 @@ public class GongjiAdminAction extends ActionSupport implements IbatisAware,Prep
 		if(getUpload()!=null){
 			data=(gongjiVO)sqlMapper.queryForObject("gongji.selectLastNo");
 			
-			//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¸ï¿½ï¿½ï¿½ È®ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+			//½ÇÁ¦¼­¹ö¿¡ ÀúÀåµÉ ÆÄÀÏ ÀÌ¸§°ú È®ÀåÀÚ ¼³Á¤
 			String file_name="file_"+data.getNum();
 			String file_ext=getUploadFileName().substring(getUploadFileName().lastIndexOf(".")+1,
 					getUploadFileName().length());
-			//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+			//¼­¹ö¿¡ ÆÄÀÏ ÀúÀå
 			File destFile=new File(fileUploadPath+file_name+"."+file_ext);
 			FileUtils.copyFile(getUpload(), destFile);
 			
-			//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ä¶ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+			//ÆÄÀÏ Á¤º¸ ÆÄ¶ó¹ÌÅÍ ¼³Á¤
 			data.setFile_orgname(getUploadFileName());
 			data.setFile_savname(file_name+"."+file_ext);
 			sqlMapper.update("gongji.updateFile", data);
@@ -135,12 +126,12 @@ public class GongjiAdminAction extends ActionSupport implements IbatisAware,Prep
 		{
 			data = new gongjiVO();
 			data.setNum(1);
-			data.setSubject("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½È³ï¿½");
+			data.setSubject("ÆÄÆÄÁ¸½º¸¶Æ÷Á¡ ¸ÅÀå ÀÌÀü¾È³»");
 			data.setReadhit(2);
-			data.setContent("ï¿½?ï¿½ï¿½, ï¿½È³ï¿½ï¿½Ï¼ï¿½ï¿½ï¿½. ï¿½Ñ±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô´Ï´ï¿½.ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 2014ï¿½ï¿½ 10ï¿½ï¿½ 29ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 178-16ï¿½ï¿½ï¿½ï¿½ 2ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¿ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ë·ï¿½ï¿½å¸³ï¿½Ï´ï¿½."
-			+"ï¿½ï¿½ï¿½Ó°ï¿½ Åºï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½É°ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½Å¹ ï¿½å¸³ï¿½Ï´ï¿½."
-			+"ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ú¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Æ·ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½."
-			+"ï¿½ï¿½È­ï¿½ï¿½È£ : 02-3275-0955	ï¿½ï¿½ï¿½ï¿½ï¿½Ö¼ï¿½ : ï¿½ï¿½ï¿½ï¿½Æ¯ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 178-16 ï¿½ï¿½ï¿½ï¿½ï¿½Ã°ï¿½ : ï¿½ï¿½ï¿½ï¿½ 11:00 ~ ï¿½ï¿½ï¿½ï¿½ 10:30 ï¿½ï¿½ï¿½ï¿½Å¸ï¿½ï¿½ : Delivery ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ : ï¿½ï¿½ï¿½ï¿½ï¿½Ò°ï¿½ ï¿½ï¿½ï¿½ï¿½ :11"
+			data.setContent("°í°´´Ô, ¾È³çÇÏ¼¼¿ä. ÇÑ±¹ÆÄÆÄÁ¸½º¢ßÀÔ´Ï´Ù.ÆÄÆÄÁ¸½º¸¶Æ÷Á¡ÀÌ 2014³â 10¿ù 29ÀÏ ¼­¿ï ¸¶Æ÷±¸ ¿°¸®µ¿ 178-16¹øÁö 2ÃþÀ¸·Î ÀÌÀüÇÏ¿´À½À» ¾Ë·Áµå¸³´Ï´Ù."
+			+"»õ·Ó°Ô Åº»ýÇÑ ÆÄÆÄÁ¸½º¸¶Æ÷Á¡¿¡ ¸¹Àº °ü½É°ú »ç¶û ºÎÅ¹ µå¸³´Ï´Ù."
+			+"¸¶Æ÷Á¡¿¡ °üÇÑ ÀÚ¼¼ÇÑ Á¤º¸´Â ¾Æ·¡¿Í °°½À´Ï´Ù."
+			+"ÀüÈ­¹øÈ£ : 02-3275-0955	¸ÅÀåÁÖ¼Ò : ¼­¿ïÆ¯º°½Ã ¸¶Æ÷±¸ ¿°¸®µ¿ 178-16 ¿µ¾÷½Ã°£ : ¿ÀÀü 11:00 ~ ¿ÀÈÄ 10:30 ¸ÅÀåÅ¸ÀÔ : Delivery ÁÖÂ÷¿©ºÎ : ÁÖÂ÷ºÒ°¡ Áöµµ :11"
 			);
 			data.setFile_orgname("test.jpg");
 		}
@@ -148,28 +139,28 @@ public class GongjiAdminAction extends ActionSupport implements IbatisAware,Prep
 	}
 	
 	public String modifyPro() throws Exception {
-		// ï¿½Ï´ï¿½ ï¿½×¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½.
+		// ÀÏ´Ü Ç×¸ñ¸¸ ¼öÁ¤ÇÑ´Ù.
 		sqlMapper.update("gongji.updateBoard", data);
-		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Îµï¿½ ï¿½Ç¾ï¿½Ù¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Îµï¿½ï¿½Ï°ï¿½ DBï¿½ï¿½ file ï¿½×¸ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.
+		// ¼öÁ¤ÇÒ ÆÄÀÏÀÌ ¾÷·Îµå µÇ¾ú´Ù¸é ÆÄÀÏÀ» ¾÷·ÎµåÇÏ°í DBÀÇ file Ç×¸ñÀ» ¼öÁ¤ÇÔ.
 		if (getUpload() != null) {
 			
-			//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¸ï¿½ï¿½ï¿½ È®ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½.
+			//½ÇÁ¦ ¼­¹ö¿¡ ÀúÀåµÉ ÆÄÀÏ ÀÌ¸§°ú È®ÀåÀÚ ¼³Á¤.
 			String file_name = "file_" + data.getNum();
 		           String file_ext = getUploadFileName().substring(getUploadFileName().lastIndexOf('.')+1,getUploadFileName().length());
 			
-			//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+			//ÀÌÀü ÆÄÀÏ »èÁ¦
 			File deleteFile = new File(fileUploadPath + getOld_file());
 			deleteFile.delete();
 			
-			//ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Îµï¿½
+			//»õ ÆÄÀÏ ¾÷·Îµå
 			File destFile = new File(fileUploadPath + file_name + "." + file_ext);
 			FileUtils.copyFile(getUpload(), destFile);
 			
-			//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ä¶ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½.
+			//ÆÄÀÏ Á¤º¸ ÆÄ¶ó¹ÌÅÍ ¼³Á¤.
 			data.setFile_orgname(getUploadFileName());
 			data.setFile_savname(file_name + "." + file_ext);
 			
-			//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®.
+			//ÆÄÀÏ Á¤º¸ ¾÷µ¥ÀÌÆ®.
 			sqlMapper.update("gongji.updateFile", data);
 		}
 		
@@ -179,11 +170,11 @@ public class GongjiAdminAction extends ActionSupport implements IbatisAware,Prep
 	public String delete() throws Exception {
 		data=(gongjiVO)sqlMapper.queryForObject("gongji.selectOne", getNum());
 		
-		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï»ï¿½ï¿½ï¿½
+		//¼­¹öÆÄÀÏ»èÁ¦
 		File deleteFile = new File(fileUploadPath + data.getFile_savname());
 		deleteFile.delete();
 		
-		//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+		//»èÁ¦ Äõ¸® ¼öÇà
 		sqlMapper.update("gongji.deleteBoard", data);
 		return SUCCESS;
 	}
