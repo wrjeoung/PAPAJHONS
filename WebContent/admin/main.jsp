@@ -32,7 +32,7 @@
 				<td bgcolor="#ececec" align="center">매출 관리</td>
 				<td><a href='adminSalesAction.action'>[ 매출 목록 ]</a>&nbsp;&nbsp;</td>
 			</tr>
-			
+
 			<tr>
 				<td bgcolor="#ececec" align="center">주문 관리</td>
 				<td><a href='adminOrderAction.action'>[ 주문 목록 ]</a>&nbsp;&nbsp;</td>

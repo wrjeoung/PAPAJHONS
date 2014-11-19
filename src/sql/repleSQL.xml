@@ -23,6 +23,16 @@
 	
 	<!-- 댓글 보기 -->
 	<select id="selectRe" resultMap="repleRes" parameterClass="int">
-		SELECT * FROM REPLE WHERE num=#num#
+		SELECT * FROM REPLE WHERE num=#num# order by num1 desc
+	</select>
+	
+	<!-- 삭제 -->
+	<delete id="deleteRe" parameterClass="int">
+		DELETE FROM REPLE WHERE num1=#num1#
+	</delete>
+	
+	<!-- 상세보가 -->
+	<select id="selectOne" resultMap="repleRes" parameterClass="int">
+		SELECT * FROM REPLE WHERE num1=#num1#
 	</select>
 </sqlMap>

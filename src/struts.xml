@@ -387,7 +387,7 @@
 		<!-- 상세보기 -->
 		<action name="viewAction" class="gongji.board.viewAction">
 			<interceptor-ref name="ibatis"/>
-<!-- 			<interceptor-ref name="fileUpload"/> -->
+		<!-- <interceptor-ref name="fileUpload"/> -->
 			<interceptor-ref name="params"/>
 			<result>/gongji/gongjiView.jsp</result>
 		</action>
@@ -413,6 +413,7 @@
 		<interceptors>
 			<interceptor name="ibatis" class="nowevent.board.IbatisInterceptor"/>
 		</interceptors>
+	
 		<!-- 리스트 -->
 		<action name="listAction2" class="nowevent.board.listAction">
 			<interceptor-ref name="ibatis"/>
@@ -449,6 +450,11 @@
 			<result>/nowevent/nowView.jsp</result>
 		</action>
 		
+		<!-- 리플 상세정보 -->
+		<!-- <action name="viewAction3" class="nowevent.board.reviewAction">
+			<interceptor-ref name="params"/>
+			<result type="chain">viewAction2</result>
+		</action> -->
 		
 		<!-- 삭제하기 -->
 		<action name="deleteAction2" class="nowevent.board.deleteAction">
@@ -479,15 +485,23 @@
 		<!-- 댓글쓰기 -->
 		<action name="RewriteForm" class="nowevent.board.rewriteAction" method="form">
 		<interceptor-ref name="servletConfig"/>
-			<result>/nowevent/nowView.jsp</result>
+			<result>/nowevent/nowView.jsp</result> 
 		</action> 
 		<action name="RewriteAction" class="nowevent.board.rewriteAction">
 			<interceptor-ref name="params"/>
 			<interceptor-ref name="servletConfig"/>	
 			<result type="redirect-action">
 			<param name="actionName">listAction2</param>
-			</result>
+			</result> 
 		</action>
+		
+		<!-- 댓글삭제 -->
+		<action name="redeleteAction" class="nowevent.board.redeleteAction">
+			<interceptor-ref name="params"/>
+			<result type="redirect-action">
+				<param name="actionName">listAction2</param>
+			</result>
+		</action>	
 		
 	</package>
 	
@@ -771,6 +785,14 @@
 			<interceptor-ref name="servletConfig"/>	
 			<result type="redirect-action">
 			<param name="actionName">pastlistAction</param>
+			</result>
+		</action>	
+		
+		<!-- 댓글삭제 -->
+		<action name="pastredeleteAction" class="pastevent.board.redeleteAction">
+			<interceptor-ref name="params"/>
+			<result type="redirect-action">
+				<param name="actionName">pastlistAction</param>
 			</result>
 		</action>	
 		

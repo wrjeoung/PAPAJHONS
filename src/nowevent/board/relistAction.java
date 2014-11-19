@@ -18,8 +18,10 @@ public class relistAction extends ActionSupport implements SessionAware{
 	public static SqlMapClient sqlMapper;
 	
 	private int num;
+	private int num1;	//Ãß°¡
 	private List<reVO> list2=new ArrayList<reVO>();
 	private reVO revo=new reVO();
+	
 	
 	private Map sessionMap;
 	private String memId=null;
@@ -33,11 +35,19 @@ public class relistAction extends ActionSupport implements SessionAware{
 	public String execute()throws Exception{
 		memId=(String)sessionMap.get("memId");
 		revo.setNum(getNum());
+		revo.setNum1(getNum1());
 		revo.setId(getId());
 		list2=sqlMapper.queryForList("reple.selectRe", getNum());
+		
 		return SUCCESS;
 	}
-	
+
+	public int getNum1() {
+		return num1;
+	}
+	public void setNum1(int num1) {
+		this.num1 = num1;
+	}
 	//--
 	public reVO getRevo() {
 		return revo;

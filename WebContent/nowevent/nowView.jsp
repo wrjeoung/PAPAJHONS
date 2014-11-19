@@ -63,6 +63,19 @@
 // 		var top = ($(window).height()/2)-($ev_page.height()/2);
 // 		$ev_page.css("top",top+"px");
 	});
+	
+	function validation(){
+		var repleWrite=eval("document.repleWrite");
+		
+		if(repleWrite.content.value){
+			alert("댓글을 입력하셧습니다");
+			return true;
+		}
+		if(!repleWrite.content.value){
+			alert("댓글을 입력하세요");
+			return false;
+		}
+	}
 </script>
 </head>
 
@@ -177,7 +190,7 @@
 		<c:if test="${memId == revo.id }">
 		<tr height="50">
 			<%-- <c:if test="${memId==id && memId!=null}"> --%>
-			<td width="100">${revo.content }</td>
+			<td width="100">${revo.content }</td><input type="button" value="댓글삭제" onclick="document.location.href='redeleteAction.action?num1=${revo.num1}'">
 		<%-- 	</c:if> --%>
 		</tr>
 		</c:if>
@@ -193,14 +206,23 @@
 		</c:if> --%>
 	</table>
 	</c:forEach>
-
-
-<form action="RewriteAction.action" method="post">
+		
+<c:if test="${memId!=null}">
+<form action="RewriteAction.action" method="post" name="repleWrite" onsubmit="return validation();">
 	<input type="hidden" name="num" value="${num }">
 	<input type="text" name="id" value="${memId }">
 	<textarea rows="5" cols="100" name="content"></textarea>
 	<input type="submit" value="댓글쓰기"/>
 </form>
+</c:if>
+<table border="1" width="600" cellpadding="0" cellspacing="0" align="center">
+<c:if test="${memId==null}">
+<tr height="30">
+	 로그인 후에 덧글 입력이 가능합니다. 
+</tr>
+</c:if>
+	
+</table>
 </div>
       				<!--// cont -->
 				</div>
@@ -221,7 +243,7 @@
 
 		<!-- 20140520 월드컵 이벤트 마이페이지 화면 -->
 <!-- 		<div id="worldCupEvent" style="display: none;"> -->
-<!-- 			<script type="text/javascript">	$("#worldCupEvent").load("include/ev_worldcup.jsp?page=mypage"); </script> -->
+<!-- 			<script type="text/javascript">	$("#worldCupEvent").load("../include/ev_worldcup.jsp?page=mypage"); </script> -->
 <!-- 		</div> -->
 	
 	</div>
