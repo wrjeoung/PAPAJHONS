@@ -63,6 +63,19 @@
 // 		var top = ($(window).height()/2)-($ev_page.height()/2);
 // 		$ev_page.css("top",top+"px");
 	});
+	
+	function validation(){
+		var repleWrite=eval("document.repleWrite");
+		
+		if(repleWrite.content.value){
+			alert("댓글을 입력하셧습니다");
+			return true;
+		}
+		if(!repleWrite.content.value){
+			alert("댓글을 입력하세요");
+			return false;
+		}
+	}
 </script>
 </head>
 
@@ -147,7 +160,8 @@
 	<tr height="500" align="center">
 		<td align="center" width="100"><pre>${vo.content }</pre>
 		<c:if test="${file_savname != '' }">
-		<img src="../save4/${vo.file_savname }">
+		<a href="orderAction.action"><%-- <img src="../save4/${vo.file_savname }"> --%>
+		<img src="http://192.168.10.77:8000/ImageServer/Imageupload/${file_savname}"></a>
 		</c:if>
 		</td>
 		
@@ -168,21 +182,46 @@
 </form>
 <br/>
 <table border="1" width="600" cellpadding="0" cellspacing="0" align="center">
-	<c:forEach var="vo2" items="${list3 }">
+	<c:forEach var="re2vo" items="${list3 }">
 		<tr height="30">
-			<td width="100">${vo2.reg_date }</td>
+			<td width="100"><b>${re2vo.id }</b><font style="margin-left: 50px">${re2vo.reg_date }</font></td>
 		</tr>
+		
+		<%-- <tr height="30">
+			<td width="100">${re2vo.reg_date }</td>
+		</tr> --%>
+		<%-- <tr height="50">
+			<td width="100">${re2vo.content }</td>
+		</tr> --%>
+		<c:if test="${memId == re2vo.id }">
 		<tr height="50">
-			<td width="100">${vo2.content }</td>
+			<%-- <c:if test="${memId==id && memId!=null}"> --%>
+			<td width="100">${re2vo.content }</td><input type="button" value="댓글삭제" onclick="document.location.href='pastredeleteAction.action?num1=${re2vo.num1}'">
+		<%-- 	</c:if> --%>
 		</tr>
+		</c:if>
+		<c:if test="${memId != re2vo.id || memId==null}">
+			<tr height="50">
+				<td width="100">비밀덧글입니다.</td>
+			</tr>
+		</c:if>
 	</c:forEach>
 </table>
-
-<form action="pastRewriteAction.action" method="post">
+<c:if test="${memId!=null }">
+<form action="pastRewriteAction.action" method="post" name="repleWrite" onsubmit="return validation();">
 	<input type="hidden" name="num" value="${num }">
+	<input type="text" name="id" value="${memId }">
 	<textarea rows="5" cols="100" name="content"></textarea>
 	<input type="submit" value="댓글쓰기"/>
 </form>
+</c:if>
+<table border="1" width="600" cellpadding="0" cellspacing="0" align="center">
+<c:if test="${memId==null }">
+<tr height="30">
+	 로그인 후에 덧글 입력이 가능합니다. 
+</tr>
+</c:if>
+</table>
 </div>
       				<!--// cont -->
 				</div>

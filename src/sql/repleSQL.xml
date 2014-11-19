@@ -8,6 +8,7 @@
 			<result property="content" column="content"/>
 			<result property="reg_date" column="reg_date"/>
 			<result property="num" column="num"/>
+			<result property="id" column="id"/>
 		</resultMap>
 	
 	
@@ -16,12 +17,22 @@
 	</sql> 
 	<!-- 댓글 쓰기 -->
 	<insert id="insertReple" parameterClass="reple">
-		INSERT INTO REPLE(NUM1,CONTENT,REG_DATE,NUM)
-		VALUES(REPLE_NUM1_SEQ.NEXTVAL,#content#,#reg_date#,#num#)
+		INSERT INTO REPLE(NUM1,CONTENT,REG_DATE,NUM,ID)
+		VALUES(REPLE_NUM1_SEQ.NEXTVAL,#content#,#reg_date#,#num#,#id#)
 	</insert>
 	
 	<!-- 댓글 보기 -->
 	<select id="selectRe" resultMap="repleRes" parameterClass="int">
-		SELECT * FROM REPLE WHERE num=#num#
+		SELECT * FROM REPLE WHERE num=#num# order by num1 desc
+	</select>
+	
+	<!-- 삭제 -->
+	<delete id="deleteRe" parameterClass="int">
+		DELETE FROM REPLE WHERE num1=#num1#
+	</delete>
+	
+	<!-- 상세보가 -->
+	<select id="selectOne" resultMap="repleRes" parameterClass="int">
+		SELECT * FROM REPLE WHERE num1=#num1#
 	</select>
 </sqlMap>

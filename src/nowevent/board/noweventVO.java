@@ -13,8 +13,16 @@ public class noweventVO {
 	private String file_savname2;
 	
 	private String day;
+	//--
+	private int readhit;
 	
-	
+	public int getReadhit() {
+		return readhit;
+	}
+	public void setReadhit(int readhit) {
+		this.readhit = readhit;
+	}
+	//--
 	public String getDay() {
 		return day;
 	}
@@ -27,6 +35,7 @@ public class noweventVO {
 	public void setNum(int num) {
 		this.num = num;
 	}
+	
 	public String getSubject() {
 		return subject;
 	}

@@ -32,7 +32,6 @@
 	<sqlMap resource="/sql/storeeventSQL.xml"/>
 	<sqlMap resource="/sql/pasteventSQL.xml"/>
 	<sqlMap resource="/sql/orderSQL.xml"/>
-	<sqlMap resource="/sql/myorderSQL.xml"/>
 	<sqlMap resource="/sql/storeSQL.xml"/>
 	<sqlMap resource="/sql/specialeventSQL.xml"/>	
 	<sqlMap resource="/sql/qnaboardSQL.xml"/>
@@ -41,5 +40,7 @@
 	<sqlMap resource="/sql/memCardSQL.xml"/>
 	<sqlMap resource="/sql/creCardSQL.xml"/>
 	<sqlMap resource="/sql/orderListSQL.xml"/>
+	
+	<sqlMap resource="/sql/reple2SQL.xml"/>
 </sqlMapConfig>
 

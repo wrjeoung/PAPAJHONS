@@ -78,7 +78,6 @@
   			<script type="text/javascript">	$("#header").load("../include/header.jsp?menuGb=event&menuId=pj_3001"); </script> 
   		</div>
   		<!--// header --> 
-  
   		<!-- container -->
   		<div id="container">
     
@@ -153,7 +152,8 @@
 	<c:forEach var="vo" items="${list }">
 		<tr height="80">
 			<td width="100" align="center">
-				<a href="viewAction2.action?num=${vo.num }&currentPage=${currentPage}&file_savname=${vo.file_savname}"><img src="../save2/${vo.file_savname }"></a>
+				<a href="viewAction2.action?num=${vo.num }&currentPage=${currentPage}&file_savname=${vo.file_savname}"><%-- <img src="../save2/${vo.file_savname }"> --%>
+				<img src="http://192.168.10.77:8000/ImageServer/Imageupload/${vo.file_savname}"></a>
 				<%-- 이벤트 : ${vo.subject }<br/>
 				기간 : ${vo.day } --%>
 			</td>
@@ -168,7 +168,7 @@
 	</table>
 </c:if>
 <!-- </body> -->
-<%-- <input type="button" value="글쓰기" onclick="document.location.href='writeForm2.action?currentPage=${currentPage}'"> --%>
+<input type="button" value="글쓰기" onclick="document.location.href='writeForm2.action?currentPage=${currentPage}'">
 </div>
       				<!--// cont -->
 				</div>
@@ -189,7 +189,7 @@
 
 		<!-- 20140520 월드컵 이벤트 마이페이지 화면 -->
 <!-- 		<div id="worldCupEvent" style="display: none;"> -->
-<!-- 			<script type="text/javascript">	$("#worldCupEvent").load("include/ev_worldcup.jsp?page=mypage"); </script> -->
+<!-- 			<script type="text/javascript">	$("#worldCupEvent").load("../include/ev_worldcup.jsp?page=mypage"); </script> -->
 <!-- 		</div> -->
 	
 	</div>

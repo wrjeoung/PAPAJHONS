@@ -33,7 +33,7 @@
 				<td><c:out value="${store.no}"/></td>
 				<td><c:out value="${store.location}"/></td>
 				<td>
-					<a href="adminStoreModifyAction.action?store=${store.storename}&check=modify">${store.storename}</a>
+					<a href="adminStoreModifyAction.action?store=${store.no}&check=modify">${store.storename}</a>
 				</td>
 				<td><c:out value="${store.phone}" /></td>
 				<td><c:out value="${store.address}"/></td>

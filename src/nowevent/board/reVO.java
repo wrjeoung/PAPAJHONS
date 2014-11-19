@@ -7,6 +7,17 @@ public class reVO {
 	private String content;
 	private Date reg_date;
 	private int num;
+	private String id;
+	
+	
+	//----¼¼¼Ç
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
+	//----
 	public int getNum1() {
 		return num1;
 	}

@@ -94,8 +94,9 @@
         	  </td>
          	</tr>
 			<tr bgcolor="#ececec" align="center">
-				<td colspan="2">
+				<td colspan="3">
    					<input type="submit" value="수정"/>
+   					<input type="button" value="목록" onClick="javascript:location.href='adminGongjiAction.action'"/>
    					<input type="button" value="삭제" onclick="deleteRecord()"/>
    				</td>
   			</tr> 	         	

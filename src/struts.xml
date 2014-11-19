@@ -66,7 +66,7 @@
 			<interceptor-ref name="fileUpload"/>
 			<interceptor-ref name="params"/>
 			<result type="redirect-action">
-				<param name="actionName">adminGongjiAction</param>
+				<param name="actionName">main/adminGongjiAction</param>
 			</result>
 		</action>				
 		
@@ -178,6 +178,7 @@
 		
 		<action name="adminStoreAddProAction" class="admin.store.AdminStoreAddAction">
 			<interceptor-ref name="ibatis"/>
+			<interceptor-ref name="fileUpload"/>
 			<interceptor-ref name="params"/>
 			<result>
 				/admin/store/adminAddStore.jsp
@@ -194,6 +195,7 @@
 		
 		<action name="adminStoreModifyProAction" class="admin.store.AdminStoreModifyAction">
 			<interceptor-ref name="ibatis"/>
+			<interceptor-ref name="fileUpload"/>
 			<interceptor-ref name="params"/>
 			<result>
 				/admin/store/adminModifyStore.jsp
@@ -226,6 +228,80 @@
 			<interceptor-ref name="params"/>
 			<result>
 				/admin/sales/adminSalesPro.jsp
+			</result>
+		</action>
+		
+		<!-- 주문 관리 -->
+		<action name="adminOrderAction" class="admin.order.AdminOrderAction">
+			<interceptor-ref name="ibatis"/>
+			<interceptor-ref name="params"/>
+			<result>
+				/admin/order/adminOrder.jsp
+			</result>
+		</action>
+		
+		<action name="adminOrderModifyAction" class="admin.order.AdminOrderModifyAction" method="modify">
+			<interceptor-ref name="ibatis"/>
+			<interceptor-ref name="params"/>
+			<result>
+				/admin/order/adminOrderModify.jsp
+			</result>
+		</action>
+		
+		<action name="adminOrderModifyProAction" class="admin.order.AdminOrderModifyAction">
+			<interceptor-ref name="ibatis"/>
+			<interceptor-ref name="params"/>
+			<result>
+				/admin/order/adminOrderModify.jsp
+			</result>
+		</action>
+		
+		<!-- 진행이벤트관리 -->
+		<action name="adminnowAction" class="admin.nowevent.noweventAdminAction">
+			<interceptor-ref name="params"/>
+			<result>
+				/admin/nowevent/nowList.jsp
+			</result>
+		</action>
+		
+		<!-- 지난이벤트관리 -->
+		<action name="adminpastAction" class="admin.pastevent.pasteventAdminAction">
+			<interceptor-ref name="params"/>
+			<result>
+				/admin/pastevent/pastList.jsp
+			</result>
+		</action>
+		
+		
+		<!-- 매장별이벤트관리 -->
+		<action name="adminstoreeventAction" class="admin.storeevent.storeeventAdminAction">
+				<interceptor-ref name="params"/>
+			<result>
+				/admin/storeevent/storeList.jsp
+			</result>
+		</action>
+		
+		<!-- 스페셜이벤트관리 -->
+		<action name="adminspecialeventAction" class="admin.specialevent.specialeventAdminAction">
+			<interceptor-ref name="params"/>
+			<result>
+				/admin/specialevent/spcialList.jsp
+			</result>
+		</action>
+		
+		<!-- 멤버쉽 -->
+		<action name="adminmemcardAction" class="admin.memcard.memcardAdminAction">
+			<interceptor-ref name="params"/>
+			<result>
+				/admin/memcard/memList.jsp
+			</result>
+		</action>
+		
+		<!-- 신용-->
+		<action name="crecardAdminAction" class="admin.crecard.crecardAdminAction">
+			<interceptor-ref name="params"/>
+			<result>
+				/admin/crecard/creList.jsp
 			</result>
 		</action>
 	</package>	
@@ -364,7 +440,7 @@
 		<!-- 상세보기 -->
 		<action name="viewAction" class="gongji.board.viewAction">
 			<interceptor-ref name="ibatis"/>
-<!-- 			<interceptor-ref name="fileUpload"/> -->
+		<!-- <interceptor-ref name="fileUpload"/> -->
 			<interceptor-ref name="params"/>
 			<result>/gongji/gongjiView.jsp</result>
 		</action>
@@ -390,6 +466,7 @@
 		<interceptors>
 			<interceptor name="ibatis" class="nowevent.board.IbatisInterceptor"/>
 		</interceptors>
+	
 		<!-- 리스트 -->
 		<action name="listAction2" class="nowevent.board.listAction">
 			<interceptor-ref name="ibatis"/>
@@ -409,7 +486,8 @@
 			<interceptor-ref name="fileUpload"/>
 			<interceptor-ref name="params"/>
 			<result type="redirect-action">
-			<param name="actionName">listAction2</param>
+			<!-- <param name="actionName">listAction2</param> -->
+			<param name="actionName">adminnowAction</param>
 			</result>
 		</action>
 		
@@ -426,6 +504,11 @@
 			<result>/nowevent/nowView.jsp</result>
 		</action>
 		
+		<!-- 리플 상세정보 -->
+		<!-- <action name="viewAction3" class="nowevent.board.reviewAction">
+			<interceptor-ref name="params"/>
+			<result type="chain">viewAction2</result>
+		</action> -->
 		
 		<!-- 삭제하기 -->
 		<action name="deleteAction2" class="nowevent.board.deleteAction">
@@ -433,7 +516,8 @@
 			<interceptor-ref name="fileUpload"/> 
 			<interceptor-ref name="params"/>
 			<result type="redirect-action">
-				<param name="actionName">listAction2</param>
+				<!-- <param name="actionName">listAction2</param> -->
+				<param name="actionName">adminnowAction</param>
 			</result>
 		</action>
 		
@@ -449,20 +533,31 @@
 			<interceptor-ref name="fileUpload"/> 
 			<interceptor-ref name="params"/>
 			<result type="redirect-action">
-			<param name="actionName">listAction2</param>
+			<!-- <param name="actionName">listAction2</param> -->
+			<param name="actionName">adminnowAction</param>
 			</result>
 		</action>
 		
 		<!-- 댓글쓰기 -->
 		<action name="RewriteForm" class="nowevent.board.rewriteAction" method="form">
-			<result>/nowevent/nowView.jsp</result>
+		<interceptor-ref name="servletConfig"/>
+			<result>/nowevent/nowView.jsp</result> 
 		</action> 
 		<action name="RewriteAction" class="nowevent.board.rewriteAction">
 			<interceptor-ref name="params"/>
+			<interceptor-ref name="servletConfig"/>	
 			<result type="redirect-action">
 			<param name="actionName">listAction2</param>
-			</result>
+			</result> 
 		</action>
+		
+		<!-- 댓글삭제 -->
+		<action name="redeleteAction" class="nowevent.board.redeleteAction">
+			<interceptor-ref name="params"/>
+			<result type="redirect-action">
+				<param name="actionName">listAction2</param>
+			</result>
+		</action>	
 		
 	</package>
 	
@@ -509,7 +604,7 @@
 		    <interceptor-ref name="ibatis"></interceptor-ref>
 		    <interceptor-ref name="params"></interceptor-ref>
 		    <interceptor-ref name="servletConfig" />
-			<result>/member/cont.jsp</result>
+			<result>/member/loginpro.jsp</result>
 		</action>
 		
 		<action name="logoutAction" class="papa.member.LogInOutAction" method="logout">
@@ -541,7 +636,8 @@
 		
 		<action name="activationAction" class="papa.member.EmailAuthAction" method="activation">
 		    <interceptor-ref name="ibatis"></interceptor-ref>
-		    <interceptor-ref name="params"></interceptor-ref>		
+		    <interceptor-ref name="params"></interceptor-ref>
+		    <interceptor-ref name="servletConfig" />		
 			<result>/member/activation.jsp</result>
 		</action>		
 		
@@ -620,7 +716,8 @@
 		<interceptor-ref name="fileUpload"/> 
 		<interceptor-ref name="params"/>
 			<result type="redirect-action">
-			<param name="actionName">storelistAction</param>
+			<!-- <param name="actionName">storelistAction</param> -->
+			<param name="actionName">adminstoreeventAction</param>
 			</result> 
 		</action>
 		<!-- 리스트 -->
@@ -641,7 +738,8 @@
 			<interceptor-ref name="fileUpload"/> 
 			<interceptor-ref name="params"/>
 			<result type="redirect-action">
-				<param name="actionName">storelistAction</param>
+				<!-- <param name="actionName">storelistAction</param> -->
+				<param name="actionName">adminstoreeventAction</param>
 			</result>
 		</action>
 		
@@ -657,7 +755,8 @@
 		<interceptor-ref name="fileUpload"/> 
 		<interceptor-ref name="params"/>
 			<result type="redirect-action">
-			<param name="actionName">storelistAction</param>
+			<!-- <param name="actionName">storelistAction</param> -->
+			<param name="actionName">adminstoreeventAction</param>
 			</result>
 		</action>
 		
@@ -685,7 +784,8 @@
 			<interceptor-ref name="fileUpload"/> 
 			<interceptor-ref name="params"/>
 			<result type="redirect-action">
-			<param name="actionName">pastlistAction</param>
+			<!-- <param name="actionName">pastlistAction</param> -->
+			<param name="actionName">adminpastAction</param>
 			</result> 
 		</action>
 	<!-- 리스트 -->
@@ -714,7 +814,8 @@
 			<interceptor-ref name="fileUpload"/> 
 			<interceptor-ref name="params"/>
 			<result type="redirect-action">
-				<param name="actionName">pastlistAction</param>
+				<!-- <param name="actionName">pastlistAction</param> -->
+				<param name="actionName">adminpastAction</param>
 			</result>
 		</action>
 	
@@ -731,18 +832,29 @@
 			<interceptor-ref name="fileUpload"/> 
 			<interceptor-ref name="params"/>
 			<result type="redirect-action">
-			<param name="actionName">pastlistAction</param>
+			<!-- <param name="actionName">pastlistAction</param> -->
+			<param name="actionName">adminpastAction</param>
 			</result>
 		</action>
 		
 	<!-- 댓글쓰기 -->
 		<action name="pastRewriteForm" class="pastevent.board.rewriteAction" method="form">
+		<interceptor-ref name="servletConfig"/>	
 			<result>/pastevent/pastView.jsp</result>
 		</action> 
 		<action name="pastRewriteAction" class="pastevent.board.rewriteAction">
 			<interceptor-ref name="params"/>
+			<interceptor-ref name="servletConfig"/>	
 			<result type="redirect-action">
 			<param name="actionName">pastlistAction</param>
+			</result>
+		</action>	
+		
+		<!-- 댓글삭제 -->
+		<action name="pastredeleteAction" class="pastevent.board.redeleteAction">
+			<interceptor-ref name="params"/>
+			<result type="redirect-action">
+				<param name="actionName">pastlistAction</param>
 			</result>
 		</action>	
 		
@@ -791,7 +903,8 @@
 			<interceptor-ref name="fileUpload"/> 
 			<interceptor-ref name="params"/>
 			<result type="redirect-action">
-			<param name="actionName">speciallistAction</param>
+			<!-- <param name="actionName">speciallistAction</param> -->
+			<param name="actionName">adminspecialeventAction</param>
 			</result> 
 		</action>
 		
@@ -808,7 +921,8 @@
 			<interceptor-ref name="fileUpload"/> 
 			<interceptor-ref name="params"/>
 			<result type="redirect-action">
-				<param name="actionName">speciallistAction</param>
+				<!-- <param name="actionName">speciallistAction</param> -->
+				<param name="actionName">adminspecialeventAction</param>
 			</result>
 		</action>	
 		
@@ -824,7 +938,8 @@
 			<interceptor-ref name="fileUpload"/> 
 			<interceptor-ref name="params"/>
 			<result type="redirect-action">
-			<param name="actionName">speciallistAction</param>
+			<!-- <param name="actionName">speciallistAction</param> -->
+			<param name="actionName">adminspecialeventAction</param>
 			</result>
 		</action>
 	</package>
@@ -898,7 +1013,8 @@
 			<interceptor-ref name="fileUpload"/> 
 			<interceptor-ref name="params"/>
 			<result type="redirect-action">
-			<param name="actionName">memcardlistAction</param>
+			<!-- <param name="actionName">memcardlistAction</param> -->
+			<param name="actionName">adminmemcardAction</param>
 			</result> 
 		</action>
 	<!-- 리스트 -->
@@ -913,7 +1029,8 @@
 			<interceptor-ref name="fileUpload"/> 
 			<interceptor-ref name="params"/>
 			<result type="redirect-action">
-				<param name="actionName">memcardlistAction</param>
+				<!-- <param name="actionName">memcardlistAction</param> -->
+				<param name="actionName">adminmemcardAction</param>
 			</result>
 		</action>		
 		<!-- 글수정하기 -->
@@ -928,7 +1045,8 @@
 			<interceptor-ref name="fileUpload"/> 
 			<interceptor-ref name="params"/>
 			<result type="redirect-action">
-			<param name="actionName">memcardlistAction</param>
+			<!-- <param name="actionName">memcardlistAction</param> -->
+			<param name="actionName">adminmemcardAction</param>
 			</result>
 		</action>
 	</package>
@@ -949,7 +1067,8 @@
 			<interceptor-ref name="fileUpload"/> 
 			<interceptor-ref name="params"/>
 			<result type="redirect-action">
-			<param name="actionName">crecardlistAction</param>
+			<!-- <param name="actionName">crecardlistAction</param> -->
+			<param name="actionName">crecardAdminAction</param>
 			</result> 
 		</action>
 		<!-- 리스트 -->
@@ -964,7 +1083,8 @@
 			<interceptor-ref name="fileUpload"/> 
 			<interceptor-ref name="params"/>
 			<result type="redirect-action">
-				<param name="actionName">crecardlistAction</param>
+				<!-- <param name="actionName">crecardlistAction</param> -->
+				<param name="actionName">crecardAdminAction</param>
 			</result>
 		</action>
 		<!-- 글수정하기 -->
@@ -979,7 +1099,8 @@
 			<interceptor-ref name="fileUpload"/> 
 			<interceptor-ref name="params"/>
 			<result type="redirect-action">
-			<param name="actionName">crecardlistAction</param>
+			<!-- <param name="actionName">crecardlistAction</param> -->
+			<param name="actionName">crecardAdminAction</param>
 			</result>
 		</action>	
 	</package>

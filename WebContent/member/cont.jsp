@@ -21,17 +21,18 @@
 	<script type="text/javascript" src="../assets/js/common.min.js"></script>
 	<script type="text/javascript" src="../assets/js/snb.js"></script> 
 </head>
-
+	
 <body>
 	<input type="hidden" id="menuGb" name="menuGb" value="${menuGb}" />
 	<input type="hidden" id="menuId" name="menuId" value="${menuId}" />
-	<input type="hidden" id="login_result" name="login_result" value="${result}" />
+	<input type="hidden" id="fromMenuId" name="fromMenuId" value="${param.fromMenuId}" />
+	<input type="hidden" id="pizzaSelIdx" name="pizzaSelIdx" value="${param.pizzaSelIdx}" />
  	
 	<div id="skipNavi"> <a href="#gnb">메뉴 바로가기</a> <a href="#contents">본문바로가기</a></div>
 	
 	<!-- wrap -->
 	<div id="wrap">
-	
+
   		<!-- header -->
   		<div id="header">
   			<!--  <script type="text/javascript"> $("#header").load("../include/header.jsp?menuGb=member&menuId=pj_0005"); </script>-->

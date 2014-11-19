@@ -13,6 +13,7 @@
 			<result property="file_savname2" column="file_savname2"/>
 			
 			<result property="day" column="day"/>
+			<result property="readhit" column="readhit"/>
 		</resultMap>
 		
 		<sql id="select-all">

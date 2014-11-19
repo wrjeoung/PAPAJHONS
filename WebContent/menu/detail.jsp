@@ -306,13 +306,25 @@ input,select,img {
 		{
 			menu = "pj_2013";
 		}
-		
-		
-		if(value == 'pj_2010' || value == 'pj_2011' || value == 'pj_2012' || value == 'pj_2013')
+			
+		var memId = "${memId}";
+		if(memId == "")
 		{
-			parent.location.href = "orderAction.action?menuId="+menu;	
-		}else{
-			parent.location.href = "orderAction.action?menuId="+menu+"&pizzaSelIdx="+sel;	
+			var url = "loginAction.action?menuGb=order&menuId=pj_0001"+"&fromMenuId="+menu;
+			
+			if(!(value == 'pj_2010' || value == 'pj_2011' || value == 'pj_2012' || value == 'pj_2013'))
+				url += "&pizzaSelIdx="+sel;
+			
+			parent.location.href = url;
+		}
+		else
+		{
+			if(value == 'pj_2010' || value == 'pj_2011' || value == 'pj_2012' || value == 'pj_2013')
+			{
+				parent.location.href = "orderAction.action?menuId="+menu;	
+			}else{
+				parent.location.href = "orderAction.action?menuId="+menu+"&pizzaSelIdx="+sel;	
+			}
 		}
 	}
 	

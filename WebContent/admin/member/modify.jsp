@@ -231,6 +231,7 @@ function fnOnloadWindow()
 				<tr bgcolor="#ececec" align="center">
 					<td colspan="2">
     					<input type="button" value="수정" onclick="modifyInfo()"/>
+    					<input type="button" value="목록" onClick="javascript:location.href='adminMemberAction.action'"/>
     				</td>
 	   			</tr> 				  								  					  					  									   			
 		</table>
