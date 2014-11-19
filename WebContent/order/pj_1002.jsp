@@ -2978,7 +2978,7 @@
 							<!-- item_left -->
 							<div class='item_left'>
 								<p class='photo'>
-									<img src='${li.imagepathorder}' alt='${li.name}' title='${li.name}' onerror="this.src='/assets/img/order/menu/noImage_ord.png'" />
+									<img src='http://192.168.10.77:8000/ImageServer/Imageupload/${li.imagepathorder}' alt='${li.name}' title='${li.name}' onerror="this.src='/assets/img/order/menu/noImage_ord.png'" />
 								</p> 
 								<p class='name' id='pName_1'>${li.name}</p> 
 								<p><button type='button' id='basket_1' name='basket_1' onclick="fnOrderPizza('${li.menuid}','${li.imagepathorder}','${ li.consist}','${li.name }');">장바구니에담기</button></p> 
@@ -3164,7 +3164,7 @@
 						<div id="set_section" class="" style="display: block;">
 							<div class="set_items has-js" id="set_30348"> 
 								<p class="image">
-									<img src="${li.imagepathorder }" width="220" height="140" alt="${li.name }" title="${li.name }" id="orderimage">
+									<img src="http://192.168.10.77:8000/ImageServer/Imageupload/${li.imagepathorder }" width="220" height="140" alt="${li.name }" title="${li.name }" id="orderimage">
 								</p>
 								<p class="name" id="setNm"><c:out value="${li.name }" /><span class="size">(2-3인용)</span></p>
 								<p class="btn_cart" onclick="fnOrderSet_plater('${li.menuid}','${li.imagepathorder}','${price}','${ li.consist}','${li.name }');">
@@ -3202,7 +3202,7 @@
 							<!-- 왼쪽 이미지 영역 -->
 							<!-- item_left -->
 							<div class='item_left'>
-								<p class='photo'><img src='${li.imagepathorder}' alt='${li.name}' title='${li.name}' onerror="this.src='/assets/img/order/menu/noImage_ord.png'" /></p>
+								<p class='photo'><img src=http://192.168.10.77:8000/ImageServer/Imageupload/'${li.imagepathorder}' alt='${li.name}' title='${li.name}' onerror="this.src='/assets/img/order/menu/noImage_ord.png'" /></p>
 								<p class='name' id='pName_1'>${li.name}</p>
 								<p><button type='button' id='basket_1' name='basket_1' onclick="fnOrderSide('${li.menuid}','${li.imagepathorder}','${price}','${ li.consist}','${li.name }');">장바구니에담기</button></p>
 							</div>
@@ -3313,7 +3313,7 @@
 							<!-- 왼쪽 이미지 영역 -->
 							<!-- item_left -->
 							<div class='item_left'>
-								<p class='photo'><img src='${li.imagepathorder}' alt='${li.name}' title='${li.name}' onerror="this.src='/assets/img/order/menu/noImage_ord.png'" /></p>
+								<p class='photo'><img src=http://192.168.10.77:8000/ImageServer/Imageupload/'${li.imagepathorder}' alt='${li.name}' title='${li.name}' onerror="this.src='/assets/img/order/menu/noImage_ord.png'" /></p>
 								<p class='name' id='pName_1'>${li.name}</p>
 								<p><button type='button' id='basket_1' name='basket_1' onclick="fnOrderBever('${li.menuid}','${li.imagepathorder}','${ li.consist}','${li.name }');">장바구니에담기</button></p>
 							</div>

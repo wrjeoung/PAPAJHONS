@@ -38,6 +38,10 @@
 		  	<result property="menucode" column="menucode"/>
 		  	<result property="ongrpcode" column="ongrpcode"/>
 		  	<result property="imagepathorder" column="imagepathorder"/>
+		  	<result property="orgmenufilename" column="orgmenufilename"/>
+		  	<result property="orgdetail1filename" column="orgdetail1filename"/>
+		  	<result property="orgdetail2filename" column="orgdetail2filename"/>
+		  	<result property="orgordername" column="orgordername"/>
 		</resultMap>
 		
 		<!-- 공통으로 사용할 select 절 정의 -->
@@ -116,6 +120,19 @@
 				<include refid="where-no" />
 		</update>
 		
+		<update id="updateFile" parameterClass="dmenuDTO">
+			UPDATE menuDB SET
+				imagepath1=#imagepath1#,
+				imagepath2=#imagepath2#,
+				imagepath3=#imagepath3#,
+				imagepathorder=#imagepathorder#,
+				orgmenufilename=#orgmenufilename#,
+				orgdetail1filename=#orgdetail1filename#,
+				orgdetail2filename=#orgdetail2filename#,
+				orgordername=#orgordername#
+				<include refid="where-no" />
+		</update>
+				
 		<!-- insert 쿼리문 정의 -->
 		<!-- parameterClass="board" -> board를 입력받아서 ##채워 넣겠다는 의미. -->
 		<insert id="insertMenu" parameterClass="dmenuDTO">
