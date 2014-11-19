@@ -8,19 +8,21 @@
 <script type="text/javascript" src="../assets/js/common.min.js"></script>
 
 <title>파파존스 메뉴 관리</title>
-<link rel="stylesheet" href="/StrutsBoard/board/common/css/css.css"
-	type="text/css"/>
+
 
 <script type="text/javascript">
 function selelctedItem(index) {
-	document.getElementById("menuid").selectedIndex = index;
+	var menuidTemp = document.getElementById("menuidTemp");
+	menuidTemp.selectedIndex = index;
+	document.getElementById("menuid").value = menuidTemp.value; 
+	console.log('selelctedItem : '+document.getElementById("menuid").value);
 }
 
 </script>	
 </head>
 
-<body onload="selelctedItem(${param.menuCategory});">
-<form id="formView" name="formView" method="post" action="menuItemModifyProAction.action">
+<body onload="selelctedItem('${param.menuCategory}');">
+<form id="formView" name="formView" method="post" action="menuItemModifyProAction.action" enctype="multipart/form-data">
 	<input type="hidden" id="no" name="no" value="${param.no }"/>
 	<table width="900" border="0" cellspacing="0" cellpadding="2" align="center">
 		<tr>
@@ -32,14 +34,15 @@ function selelctedItem(index) {
 	</table>
 	
 	
-	<table width="900" border="1" cellspacing="0" cellpadding="0" align="center">
+	<table width="900" border="1" cellspacing="0" cellpadding="2" align="center">
 		<tr bgcolor="#ececec" align="center">
 				<th colspan="2">매뉴 수정</th>
 		</tr>
 		<tr>
 			<td bgcolor="#F4F4F4">메뉴카테고리</td>
 			<td bgcolor="#FFFFFF">
-				<select id='menuid' name='menuid' onchange="setSelect(this.value)">
+				<input type="hidden" id="menuid" name="menuid"/>
+				<select id='menuidTemp' name='menuidTemp' disabled="disabled">
 					<option value='pj_2002'>세트메뉴</option>
 					<option value='pj_2003'>오리지날</option>
 					<option value='pj_2004'>골드링</option>
@@ -59,7 +62,7 @@ function selelctedItem(index) {
 			<tr>
 				<td width="100" bgcolor="#F4F4F4">메뉴이름</td>
 				<td bgcolor="#FFFFFF">
-					<input id="name" name="name" size="80" style="width: 500; background-color: #FFFFFF"  value="${param.name }" />
+					<input id="name" name="name" size="80" style="width: 500; background-color: #FFFFFF"  value="${param.name }" required/>
 				</td>
 
 			</tr>
@@ -69,7 +72,7 @@ function selelctedItem(index) {
 			<tr> 
 				<td bgcolor="#F4F4F4">설명</td>
 				<td bgcolor="#FFFFFF">
-					<input id="description" name="description" size="80" style="width: 500; background-color: #FFFFFF"  value="${param.description }" />
+					<input id="description" name="description" size="80" style="width: 500; background-color: #FFFFFF"  value="${param.description }" required/>
 				</td>
 			</tr>
 		</c:if>
@@ -78,7 +81,7 @@ function selelctedItem(index) {
 			<tr>
 				<td bgcolor="#F4F4F4">토핑</td>
 				<td bgcolor="#FFFFFF">
-					<input id="topping" name="topping" size="80" style="width: 500; background-color: #FFFFFF"  value="${param.topping }" />
+					<input id="topping" name="topping" size="80" style="width: 500; background-color: #FFFFFF"  value="${param.topping }" required/>
 				</td>
 			</tr>
 		</c:if>
@@ -87,7 +90,7 @@ function selelctedItem(index) {
 			<tr>
 				<td bgcolor="#F4F4F4">레귤러가격</td>
 				<td bgcolor="#FFFFFF">
-					<input id="rprice" name=""rprice" size="80" style="width: 500; background-color: #FFFFFF"  value="${param.rprice }" />
+					<input id="rprice" name="rprice" size="80" style="width: 500; background-color: #FFFFFF"  value="${param.rprice }" required/>
 				</td>
 			</tr>
 		</c:if>
@@ -96,7 +99,7 @@ function selelctedItem(index) {
 			<tr>
 				<td bgcolor="#F4F4F4">라지가격</td>
 				<td bgcolor="#FFFFFF">
-					<input id="lprice" name="lprice" size="80" style="width: 500; background-color: #FFFFFF"  value="${param.lprice }" />
+					<input id="lprice" name="lprice" size="80" style="width: 500; background-color: #FFFFFF"  value="${param.lprice }" required/>
 				</td>
 			</tr>
 		</c:if>
@@ -105,7 +108,7 @@ function selelctedItem(index) {
 			<tr>
 				<td bgcolor="#F4F4F4">패밀리가격</td>
 				<td bgcolor="#FFFFFF">
-					<input id="fprice" name="fprice" size="80" style="width: 500; background-color: #FFFFFF"  value="${param.fprice }" />
+					<input id="fprice" name="fprice" size="80" style="width: 500; background-color: #FFFFFF"  value="${param.fprice }" required/>
 				</td>
 			</tr>
 		</c:if>
@@ -114,7 +117,7 @@ function selelctedItem(index) {
 			<tr>
 				<td bgcolor="#F4F4F4">파티가격</td>
 				<td bgcolor="#FFFFFF">
-					<input id="pprice" name="pprice" size="80" style="width: 500; background-color: #FFFFFF"  value="${param.pprice }" />
+					<input id="pprice" name="pprice" size="80" style="width: 500; background-color: #FFFFFF"  value="${param.pprice }" required/>
 				</td>
 			</tr>
 		</c:if>
@@ -123,7 +126,7 @@ function selelctedItem(index) {
 			<tr>
 				<td bgcolor="#F4F4F4">박스가격</td>
 				<td bgcolor="#FFFFFF">
-					<input id="boxprice" name="boxprice" size="80" style="width: 500; background-color: #FFFFFF"  value="${param.boxprice }" />
+					<input id="boxprice" name="boxprice" size="80" style="width: 500; background-color: #FFFFFF"  value="${param.boxprice }" required/>
 				</td>
 			</tr>
 		</c:if>
@@ -132,7 +135,7 @@ function selelctedItem(index) {
 			<tr>
 				<td bgcolor="#F4F4F4">원사이즈가격</td>
 				<td bgcolor="#FFFFFF">
-					<input id="onesizeprice" name="onesizeprice" size="80" style="width: 500; background-color: #FFFFFF"  value="${param.onesizeprice }" />
+					<input id="onesizeprice" name="onesizeprice" size="80" style="width: 500; background-color: #FFFFFF"  value="${param.onesizeprice }" required/>
 				</td>
 			</tr>
 		</c:if>
@@ -141,7 +144,7 @@ function selelctedItem(index) {
 			<tr>
 				<td bgcolor="#F4F4F4">원팩가격</td>
 				<td bgcolor="#FFFFFF">
-					<input id="onepackprice" name="onepackprice" size="80" style="width: 500; background-color: #FFFFFF"  value="${param.onepackprice }" />
+					<input id="onepackprice" name="onepackprice" size="80" style="width: 500; background-color: #FFFFFF"  value="${param.onepackprice }" required/>
 				</td>
 			</tr>
 		</c:if>
@@ -150,7 +153,7 @@ function selelctedItem(index) {
 			<tr>
 				<td bgcolor="#F4F4F4">세트메뉴가격</td>
 				<td bgcolor="#FFFFFF">
-					<input id="setprice" name="setprice" size="80" style="width: 500; background-color: #FFFFFF"  value="${param.setprice }" />
+					<input id="setprice" name="setprice" size="80" style="width: 500; background-color: #FFFFFF"  value="${param.setprice }" required/>
 				</td>
 			</tr>
 		</c:if>
@@ -159,7 +162,7 @@ function selelctedItem(index) {
 			<tr>
 				<td bgcolor="#F4F4F4">알레르기</td>
 				<td bgcolor="#FFFFFF">
-					<input id="allergy" name="allergy" size="80" style="width: 500; background-color: #FFFFFF"  value="${param.allergy }" />
+					<input id="allergy" name="allergy" size="80" style="width: 500; background-color: #FFFFFF"  value="${param.allergy }" required/>
 				</td>
 			</tr>
 		</c:if>
@@ -168,7 +171,7 @@ function selelctedItem(index) {
 			<tr>
 				<td bgcolor="#F4F4F4">구성</td>
 				<td bgcolor="#FFFFFF">
-					<input id="consist" name="consist" size="80" style="width: 500; background-color: #FFFFFF"  value="${param.consist }" />
+					<input id="consist" name="consist" size="80" style="width: 500; background-color: #FFFFFF"  value="${param.consist }" required/>
 				</td>
 			</tr>
 		</c:if>
@@ -177,7 +180,7 @@ function selelctedItem(index) {
 			<tr>
 				<td bgcolor="#F4F4F4">증정소스</td>
 				<td bgcolor="#FFFFFF">
-					<input id="presentsauce" name="presentsauce" size="80" style="width: 500; background-color: #FFFFFF"  value="${param.presentsauce }" />
+					<input id="presentsauce" name="presentsauce" size="80" style="width: 500; background-color: #FFFFFF"  value="${param.presentsauce }" required/>
 				</td>
 			</tr>
 		</c:if>
@@ -186,7 +189,7 @@ function selelctedItem(index) {
 			<tr>
 				<td bgcolor="#F4F4F4">칼로리</td>
 				<td bgcolor="#FFFFFF">
-					<input id="calorie" name="calorie" size="80" style="width: 500; background-color: #FFFFFF"  value="${param.calorie }" />
+					<input id="calorie" name="calorie" size="80" style="width: 500; background-color: #FFFFFF"  value="${param.calorie }" required/>
 				</td>
 			</tr>
 		</c:if>
@@ -195,16 +198,16 @@ function selelctedItem(index) {
 			<tr>
 				<td bgcolor="#F4F4F4">영양성분</td>
 				<td bgcolor="#FFFFFF">
-					<input id="nuturition" name="nuturition" size="80" style="width: 500; background-color: #FFFFFF"  value="${param.nuturition }" />
+					<input id="nuturition" name="nuturition" size="80" style="width: 500; background-color: #FFFFFF"  value="${param.nuturition }" required/>
 				</td>
 			</tr>
 		</c:if>
-		
 		<c:if test="${param.imagepath1 != null }">
 			<tr>
-				<td bgcolor="#F4F4F4">메뉴이미지1</td>
+				<td bgcolor="#F4F4F4">메뉴이미지</td>
 				<td bgcolor="#FFFFFF">
-					<input id="imagepath1" name="imagepath1" size="80" style="width: 500; background-color: #FFFFFF"  value="${param.imagepath1 }" />
+					<input type="hidden" id="oldMenuFileName" name="oldMenuFileName" value="${param.imagepath1 }"/>
+					<input type="file" id="menuImg" name="menuImg" size="80" style="width: 500; background-color: #FFFFFF"  value="${param.imagepath1}" required/>
 				</td>
 			</tr>
 		</c:if>
@@ -213,7 +216,8 @@ function selelctedItem(index) {
 			<tr>
 				<td bgcolor="#F4F4F4">상세보기이미지1</td>
 				<td bgcolor="#FFFFFF">
-					<input id="imagepath2" name="imagepath2" size="80" style="width: 500; background-color: #FFFFFF"  value="${param.imagepath2 }" />
+					<input type="hidden" id="oldDetail1FileName" name="oldDetail1FileName" value="${param.imagepath2 }"/>
+					<input type="file" id="detailImg1" name="detailImg1" size="80" style="width: 500; background-color: #FFFFFF"  value="${param.imagepath2 }" required/>
 				</td>
 			</tr>
 		</c:if>
@@ -222,7 +226,8 @@ function selelctedItem(index) {
 			<tr>
 				<td bgcolor="#F4F4F4">상세보기이미지2</td>
 				<td bgcolor="#FFFFFF">
-					<input id="imagepath3" name="imagepath3" size="80" style="width: 500; background-color: #FFFFFF"  value="${param.imagepath3 }" />
+					<input type="hidden" id="oldDetail2FileName" name="oldDetail2FileName" value="${param.imagepath3 }"/>
+					<input type="file" id="detailImg2" name="detailImg2" size="80" style="width: 500; background-color: #FFFFFF"  value="${param.imagepath3 }" required/>
 				</td>
 			</tr>
 		</c:if>
@@ -231,7 +236,8 @@ function selelctedItem(index) {
 			<tr>
 				<td bgcolor="#F4F4F4">온라인주문이미지</td>
 				<td bgcolor="#FFFFFF">
-					<input id="imagepathorder" name="imagepathorder" size="80" style="width: 500; background-color: #FFFFFF"  value="${param.imagepathorder }" />
+					<input type="hidden" id="oldOrderFileName" name="oldOrderFileName" value="${param.imagepathorder }"/>
+					<input type="file" id="orderImg" name="orderImg" size="80" style="width: 500; background-color: #FFFFFF"  value="${param.imagepathorder }" required/>
 				</td>
 			</tr>
 		</c:if>

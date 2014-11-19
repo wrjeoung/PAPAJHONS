@@ -1,5 +1,11 @@
 package admin.store;
 
+import gongji.board.gongjiVO;
+
+import java.io.File;
+
+import org.apache.commons.io.FileUtils;
+
 import admin.IbatisAware;
 
 import com.ibatis.sqlmap.client.SqlMapClient;
@@ -22,8 +28,45 @@ public class AdminStoreAddAction extends ActionSupport implements IbatisAware{
 	private String latitude;
 	private String longitude;
 	private String newopen;
-	private String imagepath;
+	//private String imagepath;
 	
+	private File upload; //파일 객체
+	private String uploadContentType; //컨텐츠 타입
+	private String uploadFileName; //파일 이름
+	private String fileUploadPath = "\\\\192.168.10.77\\Imageupload\\"; //업로드 경로.
+	
+	public File getUpload() {
+		return upload;
+	}
+
+	public void setUpload(File upload) {
+		this.upload = upload;
+	}
+
+	public String getUploadContentType() {
+		return uploadContentType;
+	}
+
+	public void setUploadContentType(String uploadContentType) {
+		this.uploadContentType = uploadContentType;
+	}
+
+	public String getUploadFileName() {
+		return uploadFileName;
+	}
+
+	public void setUploadFileName(String uploadFileName) {
+		this.uploadFileName = uploadFileName;
+	}
+
+	public String getFileUploadPath() {
+		return fileUploadPath;
+	}
+
+	public void setFileUploadPath(String fileUploadPath) {
+		this.fileUploadPath = fileUploadPath;
+	}
+
 	public String execute() throws Exception{
 		StoreDTO dto = new StoreDTO();
 		
@@ -37,10 +80,23 @@ public class AdminStoreAddAction extends ActionSupport implements IbatisAware{
 		dto.setLatitude(getLatitude());
 		dto.setLongitude(getLongitude());
 		dto.setNewopen(getNewopen());
-		dto.setImagepath(getImagepath());
-		
 		sqlMapper.insert("storeSQL.insertStore",dto);
-		
+		if(getUpload()!=null){
+			dto=(StoreDTO)sqlMapper.queryForObject("storeSQL.selectLastNo");
+			
+			//실제서버에 저장될 파일 이름과 확장자 설정
+			String file_name="str_"+dto.getNo();
+			String file_ext=getUploadFileName().substring(getUploadFileName().lastIndexOf(".")+1,
+					getUploadFileName().length());
+			//서버에 파일 저장
+			File destFile=new File(fileUploadPath+file_name+"."+file_ext);
+			FileUtils.copyFile(getUpload(), destFile);
+			
+			//파일 정보 파라미터 설정
+			dto.setImagepath(file_name+"."+file_ext);
+			sqlMapper.update("storeSQL.updateFile", dto);
+		}
+
 		return SUCCESS;
 	}
 	
@@ -144,7 +200,7 @@ public class AdminStoreAddAction extends ActionSupport implements IbatisAware{
 	public void setNewopen(String newopen) {
 		this.newopen = newopen;
 	}
-
+/*
 	public String getImagepath() {
 		return imagepath;
 	}
@@ -152,4 +208,5 @@ public class AdminStoreAddAction extends ActionSupport implements IbatisAware{
 	public void setImagepath(String imagepath) {
 		this.imagepath = imagepath;
 	}
+*/	
 }

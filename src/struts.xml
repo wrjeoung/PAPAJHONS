@@ -106,7 +106,7 @@
 			</result>
 		</action>
 		
-		<action name="menuItemViewAction" class="admin.MenuItemViewAction">
+		<action name="menuItemViewAction" class="admin.MenuItemViewAction" >
 			<interceptor-ref name="ibatis"/>
 			<interceptor-ref name="params"/>
 			<result>
@@ -122,10 +122,11 @@
 			</result>
 		</action>
 		
-		<action name="menuItemModifyProAction" class="admin.MenuItemModifyProAction">
-			<interceptor-ref name="prepare" />
-		    <interceptor-ref name="modelDriven" />
+		<action name="menuItemModifyProAction" class="admin.MenuItemModifyAction" method="modifyPro">
 			<interceptor-ref name="ibatis"/>
+			<interceptor-ref name="prepare" />
+			<interceptor-ref name="modelDriven" />
+			<interceptor-ref name="fileUpload"/>
 			<interceptor-ref name="params"/>
 			<result>
 				/admin/menuItems/menuItemModifyPro.jsp
@@ -150,6 +151,7 @@
 			<interceptor-ref name="ibatis"/>
 			<interceptor-ref name="prepare" />
 			<interceptor-ref name="modelDriven" />
+			<interceptor-ref name="fileUpload"/>
 			<interceptor-ref name="params"/>
 			<result name="noSelected">
 				/admin/menuItems/noSelected.jsp
@@ -176,6 +178,7 @@
 		
 		<action name="adminStoreAddProAction" class="admin.store.AdminStoreAddAction">
 			<interceptor-ref name="ibatis"/>
+			<interceptor-ref name="fileUpload"/>
 			<interceptor-ref name="params"/>
 			<result>
 				/admin/store/adminAddStore.jsp
@@ -192,6 +195,7 @@
 		
 		<action name="adminStoreModifyProAction" class="admin.store.AdminStoreModifyAction">
 			<interceptor-ref name="ibatis"/>
+			<interceptor-ref name="fileUpload"/>
 			<interceptor-ref name="params"/>
 			<result>
 				/admin/store/adminModifyStore.jsp

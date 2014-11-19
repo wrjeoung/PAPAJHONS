@@ -12,7 +12,10 @@
 	<c:choose>
 		<c:when test="${ check eq 'modify'}">
 			<h1 style="text-align:center;">파파존스 지점(매장) 수정</h1>
-			<form action="adminStoreModifyProAction.action" name="storeModify" method="post">
+			<form action="adminStoreModifyProAction.action" name="storeModify" method="post" enctype="multipart/form-data">
+				<input type="hidden" name="old_file" value="${dto.imagepath}">
+				<input type="hidden" name="no" value="${dto.no}">
+				
 				<table align="center" border="1" cellspacing="0" cellpadding="2">
 					<tr bgcolor="#ececec" align="center">
 						<th colspan="2">파파존스 지점(매장) 수정</th>
@@ -69,8 +72,13 @@
 					</tr>
 					
 					<tr>
-						<td bgcolor="#ececec" align="center">이미지패스</td>
-						<td><input type="text" name="imagepath" size="50" maxlength="50" value="${dto.imagepath}"></td>
+						<td bgcolor="#ececec" align="center">첨부파일</td>
+						<td>
+							<input type="file" name="upload" id="upload" />
+						        <c:if test="${dto.imagepath !=null}">
+						        &nbsp; * <c:out value="${dto.imagepath}"/> 파일이 등록되어 있습니다. 다시 업로드하면 기존의 파일은 삭제됩니다.
+						        </c:if>							
+						</td>
 					</tr>
 					
 					<tr>
