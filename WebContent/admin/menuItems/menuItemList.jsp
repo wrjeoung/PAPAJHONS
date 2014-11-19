@@ -72,6 +72,8 @@
 			<td bgcolor="#ececec" colspan="5" align="center">
 				<input type="button" value="메뉴 추가" class="inputb"
 				onclick="javascript:location.href='menuItemWriteAction.action'" />
+								<input type="button" value="관리자 홈" class="inputb"
+				onclick="javascript:location.href='adminMainAction.action'" />
 			</td>
 		</tr>
 	</table>

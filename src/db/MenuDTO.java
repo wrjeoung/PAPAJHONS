@@ -21,18 +21,46 @@ public class MenuDTO {
 	private String presentsauce;      //증정소스
 	private String calorie;           //칼로리         내용이 없으면 '준비중'
 	private String nuturition;        //영양정보      내용이 없으면 '준비중'
-	private String imagepath1;
-	private String imagepath2;
-	private String imagepath3;
-	private String menulagcode;      // 메뉴대분류코드
-	private String menumidcode;      // 메뉴중분류코드
-	private String menusubcode;      // 메뉴세분류코드
-	private String menudtlimage;     // 온라인메뉴상세이미지파일
-	private String menuseq;          // 메뉴순번
-	private String menucode;         // 메뉴코드
-	private String ongrpcode;        // 온라인메뉴그룹코드
-	private String imagepathorder;   // 주문하기 이미지 패스
-		
+	private String menulagcode;       // 메뉴대분류코드
+	private String menumidcode;       // 메뉴중분류코드
+	private String menusubcode;       // 메뉴세분류코드
+	private String menudtlimage;      // 온라인메뉴상세이미지파일
+	private String menuseq;           // 메뉴순번
+	private String menucode;          // 메뉴코드
+	private String ongrpcode;         // 온라인메뉴그룹코드	
+	private String imagepath1;        // 서버에 저장될 메뉴이미지이름
+	private String imagepath2;        // 서버에 저장될 디테일1이미지이름
+	private String imagepath3;        // 서버에 저장될 디테일2이미지이름
+	private String imagepathorder;    //  서버에 저장될 주문이미지이름
+	private String orgmenufilename;   // 실제 메뉴 이미지 이름
+	private String orgdetail1filename; // 실제 디테일1 이미지 이름
+	private String orgdetail2filename; // 실제 디테일2 이미지 이름
+	private String orgordername;       // 실제 주문 이미지 이름
+	
+	public String getOrgmenufilename() {
+		return orgmenufilename;
+	}
+	public void setOrgmenufilename(String orgmenufilename) {
+		this.orgmenufilename = orgmenufilename;
+	}
+	public String getOrgdetail1filename() {
+		return orgdetail1filename;
+	}
+	public void setOrgdetail1filename(String orgdetail1filename) {
+		this.orgdetail1filename = orgdetail1filename;
+	}
+	public String getOrgdetail2filename() {
+		return orgdetail2filename;
+	}
+	public void setOrgdetail2filename(String orgdetail2filename) {
+		this.orgdetail2filename = orgdetail2filename;
+	}
+	public String getOrgordername() {
+		return orgordername;
+	}
+	public void setOrgordername(String orgordername) {
+		this.orgordername = orgordername;
+	}
 	public int getNo() {
 		return no;
 	}
@@ -43,6 +71,7 @@ public class MenuDTO {
 		return menuid;
 	}
 	public void setMenuid(String menuid) {
+		System.out.println("MenuDTO setMenuid : "+menuid);
 		this.menuid = menuid;
 	}
 	public String getName() {

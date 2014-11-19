@@ -224,7 +224,7 @@
     	else
     		document.frmOrder._size.value = "(2-3인용)";									// 사이즈
     	
-    	document.frmOrder._cnt_opt.value = document.getElementById("cnt_opt").value; 	// 수량
+    	//document.frmOrder._cnt_opt.value = document.getElementById("cnt_opt").value; 	// 수량
     	document.frmOrder._price.value = price; 										// 가격
     	document.frmOrder._consist.value = consist; 									// 구성요소
 //    	document.frmOrder._randomString.value = getRandomString();
@@ -249,7 +249,7 @@
     	document.frmOrder._imagepathorder.value = imagepathorder; 						// 온라인주문 메뉴 이미지경로
     	document.frmOrder._name.value = name;											// 제품명
     	document.frmOrder._size.value = "원사이즈";										// 사이즈 
-    	document.frmOrder._cnt_opt.value = document.getElementById("cnt_opt1").value; 	// 수량
+    	//document.frmOrder._cnt_opt.value = document.getElementById("cnt_opt1").value; 	// 수량
     	document.frmOrder._price.value = price; 										// 가격
     	document.frmOrder._consist.value = consist; 									// 구성요소
 //    	document.frmOrder._randomString.value = getRandomString();
@@ -309,7 +309,7 @@
     	document.frmOrder.action              = "pj_1003ActionAddItem.action?addCount="+sessionStorage.addCount;
     	sessionStorage.addCount++;
     	document.frmOrder.target              = "_self";
-    	//alert("name : "+name+"\nprice : "+price+"\nsize : "+size+"\ncnt_opt1 : "+document.frmOrder._cnt_opt.value ) ;
+    	alert("name : "+name+"\nprice : "+price+"\nsize : "+size+"\ncnt_opt1 : "+document.frmOrder._cnt_opt.value ) ;
     	document.frmOrder.submit();
 	}
 	
@@ -317,6 +317,7 @@
 	{
 		// 주문 수량 저장
 		document.frmOrder._cnt_opt.value = value;
+		//alert("cnt_opt : "+document.frmOrder._cnt_opt.value ) ;
 	}
     
     // 세트메뉴, 하프&하프, E쿠폰 화면표시 및 검색
@@ -2977,7 +2978,7 @@
 							<!-- item_left -->
 							<div class='item_left'>
 								<p class='photo'>
-									<img src='${li.imagepathorder}' alt='${li.name}' title='${li.name}' onerror="this.src='/assets/img/order/menu/noImage_ord.png'" />
+									<img src='http://192.168.10.77:8000/ImageServer/Imageupload/${li.imagepathorder}' alt='${li.name}' title='${li.name}' onerror="this.src='/assets/img/order/menu/noImage_ord.png'" />
 								</p> 
 								<p class='name' id='pName_1'>${li.name}</p> 
 								<p><button type='button' id='basket_1' name='basket_1' onclick="fnOrderPizza('${li.menuid}','${li.imagepathorder}','${ li.consist}','${li.name }');">장바구니에담기</button></p> 
@@ -3163,7 +3164,7 @@
 						<div id="set_section" class="" style="display: block;">
 							<div class="set_items has-js" id="set_30348"> 
 								<p class="image">
-									<img src="${li.imagepathorder }" width="220" height="140" alt="${li.name }" title="${li.name }" id="orderimage">
+									<img src="http://192.168.10.77:8000/ImageServer/Imageupload/${li.imagepathorder }" width="220" height="140" alt="${li.name }" title="${li.name }" id="orderimage">
 								</p>
 								<p class="name" id="setNm"><c:out value="${li.name }" /><span class="size">(2-3인용)</span></p>
 								<p class="btn_cart" onclick="fnOrderSet_plater('${li.menuid}','${li.imagepathorder}','${price}','${ li.consist}','${li.name }');">
@@ -3201,7 +3202,7 @@
 							<!-- 왼쪽 이미지 영역 -->
 							<!-- item_left -->
 							<div class='item_left'>
-								<p class='photo'><img src='${li.imagepathorder}' alt='${li.name}' title='${li.name}' onerror="this.src='/assets/img/order/menu/noImage_ord.png'" /></p>
+								<p class='photo'><img src=http://192.168.10.77:8000/ImageServer/Imageupload/'${li.imagepathorder}' alt='${li.name}' title='${li.name}' onerror="this.src='/assets/img/order/menu/noImage_ord.png'" /></p>
 								<p class='name' id='pName_1'>${li.name}</p>
 								<p><button type='button' id='basket_1' name='basket_1' onclick="fnOrderSide('${li.menuid}','${li.imagepathorder}','${price}','${ li.consist}','${li.name }');">장바구니에담기</button></p>
 							</div>
@@ -3312,7 +3313,7 @@
 							<!-- 왼쪽 이미지 영역 -->
 							<!-- item_left -->
 							<div class='item_left'>
-								<p class='photo'><img src='${li.imagepathorder}' alt='${li.name}' title='${li.name}' onerror="this.src='/assets/img/order/menu/noImage_ord.png'" /></p>
+								<p class='photo'><img src=http://192.168.10.77:8000/ImageServer/Imageupload/'${li.imagepathorder}' alt='${li.name}' title='${li.name}' onerror="this.src='/assets/img/order/menu/noImage_ord.png'" /></p>
 								<p class='name' id='pName_1'>${li.name}</p>
 								<p><button type='button' id='basket_1' name='basket_1' onclick="fnOrderBever('${li.menuid}','${li.imagepathorder}','${ li.consist}','${li.name }');">장바구니에담기</button></p>
 							</div>

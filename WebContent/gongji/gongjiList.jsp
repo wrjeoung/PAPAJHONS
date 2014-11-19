@@ -173,13 +173,14 @@
 			<c:out value="${vo.num }"/>
 			<c:set var="num" value="${vo.num-1 }"/>
 			</td>
-			<td width="400">
-		
-			<a href="viewAction.action?num=${vo.num }&currentPage=${currentPage}&file_savname=${vo.file_savname}">
-			${vo.subject }
+			<td width="350" align="center">
+				<a href="viewAction.action?num=${vo.num }&currentPage=${currentPage}&file_savname=${vo.file_savname}">
+				${vo.subject }
 			</a>
 			</td>
-			<td align="center" width="100">${vo.reg_date }</td>
+			<td align="center" width="150">
+				<fmt:formatDate value="${vo.reg_date}" pattern="yyyy-MM-dd"/>
+			</td>
 			<td align="center" width="50">${vo.readhit }</td>
 		</tr>
 	</c:forEach>
