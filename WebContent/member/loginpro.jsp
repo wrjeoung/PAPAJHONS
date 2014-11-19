@@ -10,6 +10,8 @@
 	var result_val = "${result}";
 	var menuGb = parent.document.getElementById("menuGb").value;
 	var alertFrame = $( parent.document.getElementById("notice_caution") );
+	var fromMenuId = parent.document.getElementById("fromMenuId").value;
+	var pizzaSelIdx = parent.document.getElementById("pizzaSelIdx").value;
 	
 	if( result_val == "no" )
 	{	
@@ -23,7 +25,12 @@
 	{
 		if(menuGb == "order")
 		{
-			parent.document.location.href = "orderAction.action?menuId=pj_2003&pizzaSelIdx=1";
+			var url = "orderAction.action?menuId="+fromMenuId;
+			
+			if(pizzaSelIdx != "")
+				url = url + "&pizzaSelIdx="+pizzaSelIdx;
+			
+			parent.document.location.href = url;
 		}
 		else
 		{
