@@ -26,12 +26,12 @@
 			<c:if test="${status.count % 3 == 1 }"><div class="menuBox"></c:if>
 				<div class="menu" id="menu_0">
 					<p class="m_list">
-						<img class="img" src="${li.imagepath1}"
+						<img class="img" src="http://192.168.10.77:8000/ImageServer/Imageupload/${li.imagepath1}"
 							alt="${li.name}" title="${li.name}" onerror="fnNoImages($(this))" />
 					</p>
 					<p class="b_detail" style="cursor: pointer"
 						onclick="fnMenuInfo('${li.name},${li.menulagcode},${li.menumidcode},${li.menusubcode},${li.menudtlimage},${li.menuseq},${li.menucode},${li.ongrpcode}',$(this));">
-						<img src="../assets/img/sub/btn_detail.gif" alt="마가리타" />
+						<img src="../assets/img/sub/btn_detail.gif" alt="${li.name }" />
 					</p>
 				</div>
 			<c:if test="${status.count % 3 == 0 }"></div></c:if>

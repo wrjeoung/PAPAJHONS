@@ -180,35 +180,35 @@
 			</tr>
 		</c:if>
 		
-		<c:if test="${list.imagepath1 != null }">
-			<input type="hidden" id="imagepath1" name="imagepath1" value="${list.imagepath1 }"/>
+		<c:if test="${list.orgmenufilename != null }">
+			<input type="hidden" id="imagepath1" name="imagepath1" value="${list.orgmenufilename }"/>
 			<tr>
-				<td bgcolor="#F4F4F4">이미지경로1</td>
-				<td bgcolor="#FFFFFF">&nbsp;&nbsp;${list.imagepath1 }</td>
+				<td bgcolor="#F4F4F4">메뉴이미지</td>
+				<td bgcolor="#FFFFFF">&nbsp;&nbsp;${list.orgmenufilename }</td>
 			</tr>
 		</c:if>
 		
-		<c:if test="${list.imagepath2 != null }">
-			<input type="hidden" id="imagepath2" name="imagepath2" value="${list.imagepath2 }"/>
+		<c:if test="${list.orgdetail1filename != null }">
+			<input type="hidden" id="imagepath2" name="imagepath2" value="${list.orgdetail1filename }"/>
 			<tr>
-				<td bgcolor="#F4F4F4">이미지경로2</td>
-				<td bgcolor="#FFFFFF">&nbsp;&nbsp;${list.imagepath2 }</td>
+				<td bgcolor="#F4F4F4">상세보기이미지1</td>
+				<td bgcolor="#FFFFFF">&nbsp;&nbsp;${list.orgdetail1filename }</td>
 			</tr>
 		</c:if>
 		
-		<c:if test="${list.imagepath3 != null }">
-			<input type="hidden" id="imagepath3" name="imagepath3" value="${list.imagepath3 }"/>
+		<c:if test="${list.orgdetail2filename != null }">
+			<input type="hidden" id="imagepath3" name="imagepath3" value="${list.orgdetail2filename }"/>
 			<tr>
-				<td bgcolor="#F4F4F4">이미지경로3</td>
-				<td bgcolor="#FFFFFF">&nbsp;&nbsp;${list.imagepath3 }</td>
+				<td bgcolor="#F4F4F4">상세보기이미지2</td>
+				<td bgcolor="#FFFFFF">&nbsp;&nbsp;${list.orgdetail2filename }</td>
 			</tr>
 		</c:if>
 		
-		<c:if test="${list.imagepathorder != null }">
-			<input type="hidden" id="imagepathorder" name="imagepathorder" value="${list.imagepathorder }"/>
+		<c:if test="${list.orgordername != null }">
+			<input type="hidden" id="imagepathorder" name="imagepathorder" value="${list.orgordername }"/>
 			<tr>
-				<td bgcolor="#F4F4F4">주문이미지경로</td>
-				<td bgcolor="#FFFFFF">&nbsp;&nbsp;${list.imagepathorder }</td>
+				<td bgcolor="#F4F4F4">온라인주문이미지</td>
+				<td bgcolor="#FFFFFF">&nbsp;&nbsp;${list.orgordername }</td>
 			</tr>
 		</c:if>
 		

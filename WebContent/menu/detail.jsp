@@ -363,7 +363,7 @@ input,select,img {
 					var $doughType = "오리지널";
 				</script>
 	
-				<div class="db_img"><img src="${list.imagepath2}" alt="${list.name}" title="${list.name}" onerror="this.src='/assets/img/menu/img/detail_noImage.png'"/> </div>
+				<div class="db_img"><img src="http://192.168.10.77:8000/ImageServer/Imageupload/${list.imagepath2}" alt="${list.name}" title="${list.name}" onerror="this.src='/assets/img/menu/img/detail_noImage.png'"/> </div>
 				  		<div class="comment">
 				  		<!--  0401 추가부분 시작  -->
 				<p class="close"><button type="button"><img src="../assets/img/sub/btn_detail_close.gif" alt="닫기" /></button></p>
@@ -377,11 +377,11 @@ input,select,img {
 					   				<dd class="items"> : <c:out value="${list.consist }"/></dd>
 					   		<c:if test="${ list.menuid eq 'pj_2010'}">
 								<dd><img src="../assets/img/order/ord_menuList_size_box.png" alt="세트가격"> ${list.boxprice }</dd>
-						     			<dd><img src="${list.imagepath3 }" alt="플래터 구성 이미지"></dd>
+						     			<dd><img src="http://192.168.10.77:8000/ImageServer/Imageupload/${list.imagepath3 }" alt="플래터 구성 이미지"></dd>
 					     	</c:if>
 					     	<c:if test="${ list.menuid eq 'pj_2011'}">
 								<dd><img src="../assets/img/order/ord_menuList_size_set.png" alt="세트가격"> ${list.boxprice }</dd>
-						     			<dd><img src="${list.imagepath3 }" alt="세트 구성 이미지"></dd>
+						     			<dd><img src="http://192.168.10.77:8000/ImageServer/Imageupload/${list.imagepath3 }" alt="세트 구성 이미지"></dd>
 					     	</c:if>
 			  			</dl>
 				</div>
@@ -421,7 +421,7 @@ input,select,img {
 					var $doughType = "";
 				</script>
 				<div class="db_img">
-					<img src="${list.imagepath2 }" alt="${list.name }" title="${list.name }" onerror="this.src='/assets/img/menu/img/detail_noImage.png'"/>
+					<img src="http://192.168.10.77:8000/ImageServer/Imageupload/${list.imagepath2 }" alt="${list.name }" title="${list.name }" onerror="this.src='/assets/img/menu/img/detail_noImage.png'"/>
 				</div>
 		    		<div class="comment">
 		    		<!--  0401 추가부분 시작  -->
@@ -509,7 +509,7 @@ input,select,img {
 				</script>
 			
 				<div class="db_img">
-				<img src="${list.imagepath2 }" alt="${list.name }"
+				<img src="http://192.168.10.77:8000/ImageServer/Imageupload/${list.imagepath2 }" alt="${list.name }"
 					title="${list.name }"
 					onerror="this.src='../assets/img/menu/img/detail_noImage.png'" />
 				</div>
@@ -579,7 +579,7 @@ input,select,img {
 					var $doughType = "오리지널";
 				</script>
 				<div class="db_img">
-					<img src="${list.imagepath2 }" alt="${list.name}" title="${list.name}" onerror="this.src='/assets/img/menu/img/detail_noImage.png'" />
+					<img src="http://192.168.10.77:8000/ImageServer/Imageupload/${list.imagepath2 }" alt="${list.name}" title="${list.name}" onerror="this.src='/assets/img/menu/img/detail_noImage.png'" />
 				</div>
 				<div class="comment">
 					<!--  0401 추가부분 시작  -->
