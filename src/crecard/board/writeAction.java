@@ -28,7 +28,7 @@ public class writeAction extends ActionSupport implements IbatisAware{
 	private File upload;
 	private String uploadContentType;
 	private String uploadFileName;
-	private String fileUploadPath="D:\\workspace\\PAPA_Project\\WebContent\\ccfile\\";
+	private String fileUploadPath="\\\\192.168.10.77\\Imageupload\\";
 	
 	/*public writeAction()throws IOException{
 		reader=Resources.getResourceAsReader("sqlMapConfig.xml");

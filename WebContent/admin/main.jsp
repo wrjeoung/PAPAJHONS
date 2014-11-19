@@ -39,11 +39,42 @@
 			</tr>
 			
 			<tr>
+				<td bgcolor="#ececec" align="center">진행중인 이벤트 관리</td>
+				<td><a href='adminnowAction.action'>[ 진행중인 이벤트 목록 ]</a>&nbsp;&nbsp;</td>
+			</tr>	
+			
+			<tr>
+				<td bgcolor="#ececec" align="center">지난 이벤트 관리</td>
+				<td><a href='adminpastAction.action'>[ 지난 이벤트 목록 ]</a>&nbsp;&nbsp;</td>
+			</tr>
+			
+			<tr>
+				<td bgcolor="#ececec" align="center">매장별 이벤트 관리</td>
+				<td><a href='adminstoreeventAction.action'>[ 매장별 이벤트 목록 ]</a>&nbsp;&nbsp;</td>
+			</tr>
+			
+			<tr>
+				<td bgcolor="#ececec" align="center">스페셜 할인 이벤트 관리</td>
+				<td><a href='adminspecialeventAction.action'>[ 스페셜 할인 이벤트 목록 ]</a>&nbsp;&nbsp;</td>
+			</tr>
+			
+			<tr>
+				<td bgcolor="#ececec" align="center">멤버쉽 카드 관리</td>
+				<td><a href='adminmemcardAction.action'>[ 멤버쉽 카드 관리 ]</a>&nbsp;&nbsp;</td>
+			</tr>
+					
+			<tr>
+				<td bgcolor="#ececec" align="center">신용 카드 관리</td>
+				<td><a href='crecardAdminAction.action'>[ 신용 카드 관리 ]</a>&nbsp;&nbsp;</td>
+			</tr>		
+			
+			<tr>
 				<td colspan="2" align="center">
 					<input type="button" value="홈으로 가기" class="inputb"
 					onClick="javascript:location.href='mainAction.action'"/>
 				</td>
-			</tr>					
+			</tr>	
+							
 		</table>
 	</form>
 	

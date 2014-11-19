@@ -10,7 +10,7 @@
 <body> -->
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<!-- <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta http-equiv="Cache-Control" content="no-store" />
 	<meta http-equiv="Pragma" content="no-cache" />
@@ -21,9 +21,9 @@
 	<link type="text/css" rel="stylesheet" href="../assets/css/import.css" />
 	<link type="text/css" rel="stylesheet" href="../assets/css/sub.css" />
 	<link type="text/css" rel="stylesheet" href="../assets/css/lib_style.css" />
-	<!-- 0404 추가부분(달력쿼리 스타일) 시작 -->
+	0404 추가부분(달력쿼리 스타일) 시작
 	<link type="text/css" rel="stylesheet" href="../assets/css/ui.all.css" />
-	<!-- 0404 추가부분(달력쿼리 스타일)끝-->
+	0404 추가부분(달력쿼리 스타일)끝
 	<title>파파존스-Better Ingredients.Better Pizza.</title>
 
 
@@ -43,9 +43,9 @@
 	
 <script type="text/javascript" src="../assets/js/jquery-1.8.2.min.js"></script>
 <script type="text/javascript" src="../assets/js/common.min.js"></script>
-<script type="text/javascript" src="../assets/js/snb.js"></script>
+<script type="text/javascript" src="../assets/js/snb.js"></script> -->
 <script type="text/javascript">
-	$(document).ready(function()
+	/* $(document).ready(function()
 	{	
  		$('#viewLoading').fadeOut();
  		$('#viewLoading')	// ajax 실행 및 완료시 'Loading 이미지'의 동작 컨트롤하기
@@ -62,7 +62,7 @@
 // 		var $ev_page = $("#worldCupEvent");
 // 		var top = ($(window).height()/2)-($ev_page.height()/2);
 // 		$ev_page.css("top",top+"px");
-	});
+	}); */
 	function validation(){
 		var specialWrite=eval("document.specialWrite");
 
@@ -76,7 +76,7 @@
 </head>
 
 <body>
-	<div id="skipNavi"><a href="#gnb">메뉴 바로가기</a> <a href="#contents">본문바로가기</a></div>
+	<%-- <div id="skipNavi"><a href="#gnb">메뉴 바로가기</a> <a href="#contents">본문바로가기</a></div>
 	
   	<!-- wrap -->
 	<div id="wrap">
@@ -110,9 +110,9 @@
 			    		<dt><a href="speciallistAction.action"><img src="../assets/img/pro/sub_3_4_over.gif" alt="스페셜 할인 이벤트"></a>
 			    		<!--  <dt class="dep1 pj_2014"><a href="subAction.action?menuId=pj_2014"><img src="../assets/img/sub/sub_2_14.gif" alt="소스&피클"></a></dt>-->
 			  		</dl>
-    				<%-- 
+    				
      				<script type="text/javascript">	$("#con_container .snb").load("../include/snb.jsp?menuGb=menu&menuId=pj_2003&tab=null"); </script>
-     				--%> 
+     				 
       			</div>
       			<!-- //snb -->
  		    
@@ -145,7 +145,7 @@
 						
 					</div>
       				<!-- cont -->
-        			<div class="cont" style="text-align:center">
+        			<div class="cont" style="text-align:center"> --%>
 <center><b>스페셜 할인 이벤트</b>
 <br/>
 <form method="post" name="specialWrite" action="specialwriteAction.action" enctype="multipart/form-data" onsubmit="return validation();">
@@ -164,40 +164,40 @@
 	</table>
 </form>
 <!-- </body> -->
-</div>
-      				<!--// cont -->
+<!-- </div>
+      				// cont
 				</div>
-				<!--// contents -->
+				// contents
 				
 			</div>
-			<!--// con_container -->  
+			// con_container  
 
   		</div>
-  		<!--// container -->
+  		// container
   
-    	<!-- footer -->
+    	footer
   		<div id="footer">
   			<script type="text/javascript"> $("#footer").load("../include/foot.jsp");
   			</script>
   		</div> 
-  		<!--// footer --> 
+  		// footer 
 
-		<!-- 20140520 월드컵 이벤트 마이페이지 화면 -->
-<!-- 		<div id="worldCupEvent" style="display: none;"> -->
-<!-- 			<script type="text/javascript">	$("#worldCupEvent").load("include/ev_worldcup.jsp?page=mypage"); </script> -->
-<!-- 		</div> -->
+		20140520 월드컵 이벤트 마이페이지 화면
+		<div id="worldCupEvent" style="display: none;">
+			<script type="text/javascript">	$("#worldCupEvent").load("include/ev_worldcup.jsp?page=mypage"); </script>
+		</div>
 	
 	</div>
-	<!--// wrap -->
+	// wrap
 
   		
-	<!-- 로딩 이미지 -->
+	로딩 이미지
 	<div id="viewLoading">
 		<img src="../assets/img/viewLoading.gif" /> 
  		<p>Loading....</p> 
 	</div>
 
-	<!-- 페이스북 좋아요 버튼 스크립트 start-->
+	페이스북 좋아요 버튼 스크립트 start
 	<div id="fb-root"></div>
 	<script>(function(d, s, id) {
 	  var js, fjs = d.getElementsByTagName(s)[0];
@@ -206,6 +206,6 @@
 	  js.src = "//connect.facebook.net/ko_KR/all.js#xfbml=1";
 	  fjs.parentNode.insertBefore(js, fjs);
 	}(document, 'script', 'facebook-jssdk'));</script>
-	<!-- 페이스북 좋아요 버튼 스크립트 end-->
+	페이스북 좋아요 버튼 스크립트 end -->
 </body>
 </html>

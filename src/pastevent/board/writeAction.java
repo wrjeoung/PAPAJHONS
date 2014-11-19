@@ -26,7 +26,7 @@ public class writeAction extends ActionSupport implements IbatisAware{
 	private File upload;
 	private String uploadContentType;
 	private String uploadFileName;
-	private String fileUploadPath="D:\\workspace\\PAPA_Project\\WebContent\\save4\\";
+	private String fileUploadPath="\\\\192.168.10.77\\Imageupload\\";
 	
 	/*public writeAction()throws IOException{
 		reader=Resources.getResourceAsReader("sqlMapConfig.xml");
@@ -48,16 +48,16 @@ public class writeAction extends ActionSupport implements IbatisAware{
 		if(getUpload()!=null){
 			vo=(pasteventVO)sqlMapper.queryForObject("past.selectLastNo");
 			
-			//½ÇÁ¦¼­¹ö¿¡ ÀúÀåµÉ ÆÄÀÏ ÀÌ¸§°ú È®ÀåÀÚ ¼³Á¤
+			//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¸ï¿½ï¿½ï¿½ È®ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 			String file_name="file_"+vo.getNum();
 			String file_ext=getUploadFileName().substring(getUploadFileName().lastIndexOf('.')+1,
 					getUploadFileName().length());
 		
-			//¼­¹ö¿¡ ÆÄÀÏ ÀúÀå
+			//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 			File destFile=new File(fileUploadPath+file_name+"."+file_ext);
 			FileUtils.copyFile(getUpload(), destFile);
 			
-			//ÆÄÀÏ Á¤º¸ ÆÄ¶ó¹ÌÅÍ ¼³Á¤
+			//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ä¶ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 			vo.setNum(vo.getNum());
 			vo.setFile_orgname(getUploadFileName());
 			vo.setFile_savname(file_name+"."+file_ext);

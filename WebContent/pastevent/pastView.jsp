@@ -160,7 +160,8 @@
 	<tr height="500" align="center">
 		<td align="center" width="100"><pre>${vo.content }</pre>
 		<c:if test="${file_savname != '' }">
-		<a href="orderAction.action"><img src="../save4/${vo.file_savname }"></a>
+		<a href="orderAction.action"><%-- <img src="../save4/${vo.file_savname }"> --%>
+		<img src="http://192.168.10.77:8000/ImageServer/Imageupload/${file_savname}"></a>
 		</c:if>
 		</td>
 		

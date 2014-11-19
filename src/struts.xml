@@ -251,6 +251,55 @@
 				/admin/order/adminOrderModify.jsp
 			</result>
 		</action>
+		
+		<!-- 진행이벤트관리 -->
+		<action name="adminnowAction" class="admin.nowevent.noweventAdminAction">
+			<interceptor-ref name="params"/>
+			<result>
+				/admin/nowevent/nowList.jsp
+			</result>
+		</action>
+		
+		<!-- 지난이벤트관리 -->
+		<action name="adminpastAction" class="admin.pastevent.pasteventAdminAction">
+			<interceptor-ref name="params"/>
+			<result>
+				/admin/pastevent/pastList.jsp
+			</result>
+		</action>
+		
+		
+		<!-- 매장별이벤트관리 -->
+		<action name="adminstoreeventAction" class="admin.storeevent.storeeventAdminAction">
+				<interceptor-ref name="params"/>
+			<result>
+				/admin/storeevent/storeList.jsp
+			</result>
+		</action>
+		
+		<!-- 스페셜이벤트관리 -->
+		<action name="adminspecialeventAction" class="admin.specialevent.specialeventAdminAction">
+			<interceptor-ref name="params"/>
+			<result>
+				/admin/specialevent/spcialList.jsp
+			</result>
+		</action>
+		
+		<!-- 멤버쉽 -->
+		<action name="adminmemcardAction" class="admin.memcard.memcardAdminAction">
+			<interceptor-ref name="params"/>
+			<result>
+				/admin/memcard/memList.jsp
+			</result>
+		</action>
+		
+		<!-- 신용-->
+		<action name="crecardAdminAction" class="admin.crecard.crecardAdminAction">
+			<interceptor-ref name="params"/>
+			<result>
+				/admin/crecard/creList.jsp
+			</result>
+		</action>
 	</package>	
 		
 	<!-- 주문 -->
@@ -433,7 +482,8 @@
 			<interceptor-ref name="fileUpload"/>
 			<interceptor-ref name="params"/>
 			<result type="redirect-action">
-			<param name="actionName">listAction2</param>
+			<!-- <param name="actionName">listAction2</param> -->
+			<param name="actionName">adminnowAction</param>
 			</result>
 		</action>
 		
@@ -462,7 +512,8 @@
 			<interceptor-ref name="fileUpload"/> 
 			<interceptor-ref name="params"/>
 			<result type="redirect-action">
-				<param name="actionName">listAction2</param>
+				<!-- <param name="actionName">listAction2</param> -->
+				<param name="actionName">adminnowAction</param>
 			</result>
 		</action>
 		
@@ -478,7 +529,8 @@
 			<interceptor-ref name="fileUpload"/> 
 			<interceptor-ref name="params"/>
 			<result type="redirect-action">
-			<param name="actionName">listAction2</param>
+			<!-- <param name="actionName">listAction2</param> -->
+			<param name="actionName">adminnowAction</param>
 			</result>
 		</action>
 		
@@ -660,7 +712,8 @@
 		<interceptor-ref name="fileUpload"/> 
 		<interceptor-ref name="params"/>
 			<result type="redirect-action">
-			<param name="actionName">storelistAction</param>
+			<!-- <param name="actionName">storelistAction</param> -->
+			<param name="actionName">adminstoreeventAction</param>
 			</result> 
 		</action>
 		<!-- 리스트 -->
@@ -681,7 +734,8 @@
 			<interceptor-ref name="fileUpload"/> 
 			<interceptor-ref name="params"/>
 			<result type="redirect-action">
-				<param name="actionName">storelistAction</param>
+				<!-- <param name="actionName">storelistAction</param> -->
+				<param name="actionName">adminstoreeventAction</param>
 			</result>
 		</action>
 		
@@ -697,7 +751,8 @@
 		<interceptor-ref name="fileUpload"/> 
 		<interceptor-ref name="params"/>
 			<result type="redirect-action">
-			<param name="actionName">storelistAction</param>
+			<!-- <param name="actionName">storelistAction</param> -->
+			<param name="actionName">adminstoreeventAction</param>
 			</result>
 		</action>
 		
@@ -725,7 +780,8 @@
 			<interceptor-ref name="fileUpload"/> 
 			<interceptor-ref name="params"/>
 			<result type="redirect-action">
-			<param name="actionName">pastlistAction</param>
+			<!-- <param name="actionName">pastlistAction</param> -->
+			<param name="actionName">adminpastAction</param>
 			</result> 
 		</action>
 	<!-- 리스트 -->
@@ -754,7 +810,8 @@
 			<interceptor-ref name="fileUpload"/> 
 			<interceptor-ref name="params"/>
 			<result type="redirect-action">
-				<param name="actionName">pastlistAction</param>
+				<!-- <param name="actionName">pastlistAction</param> -->
+				<param name="actionName">adminpastAction</param>
 			</result>
 		</action>
 	
@@ -771,7 +828,8 @@
 			<interceptor-ref name="fileUpload"/> 
 			<interceptor-ref name="params"/>
 			<result type="redirect-action">
-			<param name="actionName">pastlistAction</param>
+			<!-- <param name="actionName">pastlistAction</param> -->
+			<param name="actionName">adminpastAction</param>
 			</result>
 		</action>
 		
@@ -841,7 +899,8 @@
 			<interceptor-ref name="fileUpload"/> 
 			<interceptor-ref name="params"/>
 			<result type="redirect-action">
-			<param name="actionName">speciallistAction</param>
+			<!-- <param name="actionName">speciallistAction</param> -->
+			<param name="actionName">adminspecialeventAction</param>
 			</result> 
 		</action>
 		
@@ -858,7 +917,8 @@
 			<interceptor-ref name="fileUpload"/> 
 			<interceptor-ref name="params"/>
 			<result type="redirect-action">
-				<param name="actionName">speciallistAction</param>
+				<!-- <param name="actionName">speciallistAction</param> -->
+				<param name="actionName">adminspecialeventAction</param>
 			</result>
 		</action>	
 		
@@ -874,7 +934,8 @@
 			<interceptor-ref name="fileUpload"/> 
 			<interceptor-ref name="params"/>
 			<result type="redirect-action">
-			<param name="actionName">speciallistAction</param>
+			<!-- <param name="actionName">speciallistAction</param> -->
+			<param name="actionName">adminspecialeventAction</param>
 			</result>
 		</action>
 	</package>
@@ -948,7 +1009,8 @@
 			<interceptor-ref name="fileUpload"/> 
 			<interceptor-ref name="params"/>
 			<result type="redirect-action">
-			<param name="actionName">memcardlistAction</param>
+			<!-- <param name="actionName">memcardlistAction</param> -->
+			<param name="actionName">adminmemcardAction</param>
 			</result> 
 		</action>
 	<!-- 리스트 -->
@@ -963,7 +1025,8 @@
 			<interceptor-ref name="fileUpload"/> 
 			<interceptor-ref name="params"/>
 			<result type="redirect-action">
-				<param name="actionName">memcardlistAction</param>
+				<!-- <param name="actionName">memcardlistAction</param> -->
+				<param name="actionName">adminmemcardAction</param>
 			</result>
 		</action>		
 		<!-- 글수정하기 -->
@@ -978,7 +1041,8 @@
 			<interceptor-ref name="fileUpload"/> 
 			<interceptor-ref name="params"/>
 			<result type="redirect-action">
-			<param name="actionName">memcardlistAction</param>
+			<!-- <param name="actionName">memcardlistAction</param> -->
+			<param name="actionName">adminmemcardAction</param>
 			</result>
 		</action>
 	</package>
@@ -999,7 +1063,8 @@
 			<interceptor-ref name="fileUpload"/> 
 			<interceptor-ref name="params"/>
 			<result type="redirect-action">
-			<param name="actionName">crecardlistAction</param>
+			<!-- <param name="actionName">crecardlistAction</param> -->
+			<param name="actionName">crecardAdminAction</param>
 			</result> 
 		</action>
 		<!-- 리스트 -->
@@ -1014,7 +1079,8 @@
 			<interceptor-ref name="fileUpload"/> 
 			<interceptor-ref name="params"/>
 			<result type="redirect-action">
-				<param name="actionName">crecardlistAction</param>
+				<!-- <param name="actionName">crecardlistAction</param> -->
+				<param name="actionName">crecardAdminAction</param>
 			</result>
 		</action>
 		<!-- 글수정하기 -->
@@ -1029,7 +1095,8 @@
 			<interceptor-ref name="fileUpload"/> 
 			<interceptor-ref name="params"/>
 			<result type="redirect-action">
-			<param name="actionName">crecardlistAction</param>
+			<!-- <param name="actionName">crecardlistAction</param> -->
+			<param name="actionName">crecardAdminAction</param>
 			</result>
 		</action>	
 	</package>

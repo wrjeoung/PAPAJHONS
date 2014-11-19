@@ -161,7 +161,8 @@
 		<td align="right" width="100">${vo.day }</td>
 	</tr> --%>
 	<tr height="500" align="center">
-		<td align="center" width="100"><a href="orderAction.action"><img src="../save2/${vo.file_savname2 }"></a></td>
+		<td align="center" width="100"><a href="orderAction.action"><%-- <img src="../save2/${vo.file_savname2 }"> --%>
+		<img src="http://192.168.10.77:8000/ImageServer/Imageupload/${vo.file_savname2}"></a></td>
 	</tr>
 	<tr>
 		<td align="center" colspan="2">

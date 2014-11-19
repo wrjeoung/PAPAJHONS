@@ -152,7 +152,8 @@
 	<c:forEach var="vo" items="${list }">
 		<tr height="80">
 			<td width="100" align="center">
-				<a href="viewAction2.action?num=${vo.num }&currentPage=${currentPage}&file_savname=${vo.file_savname}"><img src="../save2/${vo.file_savname }"></a>
+				<a href="viewAction2.action?num=${vo.num }&currentPage=${currentPage}&file_savname=${vo.file_savname}"><%-- <img src="../save2/${vo.file_savname }"> --%>
+				<img src="http://192.168.10.77:8000/ImageServer/Imageupload/${vo.file_savname}"></a>
 				<%-- 이벤트 : ${vo.subject }<br/>
 				기간 : ${vo.day } --%>
 			</td>

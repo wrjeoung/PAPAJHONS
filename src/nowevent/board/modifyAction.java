@@ -42,7 +42,7 @@ public class modifyAction extends ActionSupport implements IbatisAware{
 	private String upload2ContentType;
 	private String upload2FileName;
 	
-	private String fileUploadPath="D:\\workspace\\PAPA_Project\\WebContent\\save2\\";
+	private String fileUploadPath="\\\\192.168.10.77\\Imageupload\\";
 	
 /*	public modifyAction()throws IOException{
 		reader=Resources.getResourceAsReader("sqlMapConfig.xml");
@@ -61,7 +61,7 @@ public class modifyAction extends ActionSupport implements IbatisAware{
 		vo.setDay(getDay());
 		sqlMapper.update("nowevent.updateBoard", vo);
 		
-		//ÆÄÀÏ¼öÁ¤
+		//ï¿½ï¿½ï¿½Ï¼ï¿½ï¿½ï¿½
 		if(getUpload()!=null){
 			String file_name="file_"+getNum();
 			String file_ext=getUploadFileName().substring(getUploadFileName().lastIndexOf('.')+1, getUploadFileName().length());
@@ -69,17 +69,17 @@ public class modifyAction extends ActionSupport implements IbatisAware{
 			File deleteFile=new File(fileUploadPath+getOld_file());
 			deleteFile.delete();
 			
-			//»õÆÄÀÏ ¾÷·Îµå
+			//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Îµï¿½
 			File destFile=new File(fileUploadPath+file_name+"."+file_ext);
 			FileUtils.copyFile(getUpload(), destFile);
 			
-			//ÆÄÀÏÁ¤º¸ ÆÄ¶ó¹ÌÅÍ ¼³Á¤
+			//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ä¶ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 			vo.setFile_orgname(getUploadFileName());
 			vo.setFile_savname(file_name+"."+file_ext);
 			
 			sqlMapper.update("nowevent.updateFile", vo);
 		}
-		//ÆÄÀÏ ¼öÁ¤2
+		//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½2
 		if(getUpload2()!=null){
 			String file_name2="file2_"+getNum();
 			String file_ext2=getUpload2FileName().substring(getUpload2FileName().lastIndexOf('.')+1,getUpload2FileName().length());
@@ -87,11 +87,11 @@ public class modifyAction extends ActionSupport implements IbatisAware{
 			File deleteFile2=new File(fileUploadPath+getOld_file2());
 			deleteFile2.delete();
 			
-			//»õÆÄÀÏ ¾÷·Îµå
+			//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Îµï¿½
 			File destFile=new File(fileUploadPath+file_name2+"."+file_ext2);
 			FileUtils.copyFile(getUpload2(), destFile);
 			
-			//ÆÄÀÏÁ¤º¸ ÆÄ¶ó¹ÌÅÍ ¼³Á¤
+			//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ä¶ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 			vo.setFile_orgname2(getUpload2FileName());
 			vo.setFile_savname2(file_name2+"."+file_ext2);
 			

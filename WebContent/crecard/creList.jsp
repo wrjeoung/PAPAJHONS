@@ -150,7 +150,8 @@
 		<tr height="250">
 			<td width="100" align="center">
 				${vo.subject }<br/>
-				<img src="../ccfile/${vo.file_savname }">
+				<%-- <img src="../ccfile/${vo.file_savname }"> --%>
+				<img src="http://192.168.10.77:8000/ImageServer/Imageupload/${vo.file_savname}">
 			</td>
 			<td width="450" align="left">
 				${vo.content }

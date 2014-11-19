@@ -31,7 +31,7 @@ public class modifyAction extends ActionSupport implements IbatisAware{
 	private File upload;
 	private String uploadContentType;
 	private String uploadFileName;
-	private String fileUploadPath="D:\\workspace\\PAPA_Project\\WebContent\\save4\\";
+	private String fileUploadPath="\\\\192.168.10.77\\Imageupload\\";
 	
 	/*public modifyAction()throws IOException{
 		reader=Resources.getResourceAsReader("sqlMapConfig.xml");
@@ -52,7 +52,7 @@ public class modifyAction extends ActionSupport implements IbatisAware{
 		
 		sqlMapper.update("past.updateBoard",vo);
 		
-		//ÆÄÀÏ¼öÁ¤
+		//ï¿½ï¿½ï¿½Ï¼ï¿½ï¿½ï¿½
 		if(getUpload()!=null){
 			String file_name="file_"+getNum();
 			String file_ext=getUploadFileName().substring(getUploadFileName().lastIndexOf('.')+1,getUploadFileName().length());
@@ -60,11 +60,11 @@ public class modifyAction extends ActionSupport implements IbatisAware{
 			File deleteFile=new File(fileUploadPath+getOld_file());
 			deleteFile.delete();
 			
-			//»õÆÄÀÏ ¾÷·Îµå
+			//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Îµï¿½
 			File destFile=new File(fileUploadPath+file_name+"."+file_ext);
 			FileUtils.copyFile(getUpload(), destFile);
 		
-			//ÆÄÀÏÁ¤º¸ ÆÄ¶ó¹ÌÅÍ ¼³Á¤
+			//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ä¶ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 			vo.setFile_orgname(getUploadFileName());
 			vo.setFile_savname(file_name+"."+file_ext);
 			

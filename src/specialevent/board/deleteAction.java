@@ -15,7 +15,7 @@ public class deleteAction extends ActionSupport implements IbatisAware{
 	
 	private specialeventVO vo;
 	
-	private String fileUploadPath="D:\\workspace\\PAPA_Project\\WebContent\\save5\\";
+	private String fileUploadPath="\\\\192.168.10.77\\Imageupload\\";
 	private int num;
 	
 	/*public deleteAction()throws IOException{
@@ -26,11 +26,11 @@ public class deleteAction extends ActionSupport implements IbatisAware{
 	public String execute()throws Exception{
 		vo=new specialeventVO();
 		vo=(specialeventVO)sqlMapper.queryForObject("special.selectOne", getNum());
-		//¼­¹öÆÄÀÏ»èÁ¦
+		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï»ï¿½ï¿½ï¿½
 		File deleteFile=new File(fileUploadPath+vo.getFile_savname());
 		deleteFile.delete();
 		
-		//»èÁ¦ÇÒ Ç×¸ñ ¼³Á¤
+		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½×¸ï¿½ ï¿½ï¿½ï¿½ï¿½
 		vo.setNum(getNum());
 		sqlMapper.update("special.deleteBoard", vo);
 		return SUCCESS;
