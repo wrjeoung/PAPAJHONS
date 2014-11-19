@@ -32,7 +32,7 @@
 				<td bgcolor="#ececec" align="center">매출 관리</td>
 				<td><a href='adminSalesAction.action'>[ 매출 목록 ]</a>&nbsp;&nbsp;</td>
 			</tr>
-			
+
 			<tr>
 				<td colspan="2" align="center">
 					<input type="button" value="홈으로 가기" class="inputb"

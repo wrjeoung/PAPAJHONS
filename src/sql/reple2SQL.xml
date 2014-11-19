@@ -21,6 +21,11 @@
 	
 	<!-- 댓글 보기 -->
 	<select id="selectRe2" resultMap="reple2Res" parameterClass="int">
-		SELECT * FROM REPLE2 WHERE num=#num#
+		SELECT * FROM REPLE2 WHERE num=#num# order by num1 desc
 	</select>
+	
+	<!-- 삭제 -->
+	<delete id="deleteRe2" parameterClass="int">
+		DELETE FROM REPLE2 WHERE num1=#num1#
+	</delete>
 </sqlMap>

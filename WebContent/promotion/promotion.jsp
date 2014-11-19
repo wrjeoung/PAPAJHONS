@@ -89,10 +89,10 @@
 			  		<h2><img alt="프로모션" src="../assets/img/pro/snb_title_3.gif"></h2>
 			  		<dl class="sub" id="snb1">
 			    		<!--  <dt class="dep1 pj_2001"><a href="/sub.jsp?menuGb=menu&menuId=pj_2001"><img src="../assets/img/sub/sub_2_1.gif" alt="이 달의 프로모션"></a></dt> -->
-			    		<dt><a href="PromotionAction.action"><img src="../assets/img/pro/sub_3_1_over.gif" alt="진행중인 이벤트"></a></dt>
-			    		<dt><a href="PromotionAction2.action"><img src="../assets/img/pro/sub_3_2_over.gif" alt="지난 이벤트"></a></dt>
-			    		<dt><a href="PromotionAction3.action"><img src="../assets/img/pro/sub_3_3_over.gif" alt="매장별 이벤트"></a></dt>
-			    		<dt><a href="PromotionAction4.action"><img src="../assets/img/pro/sub_3_4_over.gif" alt="스페셜 할인 이벤트"></a>
+			    		<dt><a href="listAction2.action"><img src="../assets/img/pro/sub_3_1_over.gif" alt="진행중인 이벤트"></a></dt>
+			    		<dt><a href="pastlistAction.action"><img src="../assets/img/pro/sub_3_2_over.gif" alt="지난 이벤트"></a></dt>
+			    		<dt><a href="storelistAction.action"><img src="../assets/img/pro/sub_3_3_over.gif" alt="매장별 이벤트"></a></dt>
+			    		<dt><a href="speciallistAction.action"><img src="../assets/img/pro/sub_3_4_over.gif" alt="스페셜 할인 이벤트"></a>
 			    		<!--  <dt class="dep1 pj_2014"><a href="subAction.action?menuId=pj_2014"><img src="../assets/img/sub/sub_2_14.gif" alt="소스&피클"></a></dt>-->
 			  		</dl>
     				<%-- 
