@@ -66,7 +66,17 @@
 			<tr>
 				<td bgcolor="#ececec" align="center">신용 카드 관리</td>
 				<td><a href='crecardAdminAction.action'>[ 신용 카드 관리 ]</a>&nbsp;&nbsp;</td>
+			</tr>	
+			
+			<tr>
+				<td bgcolor="#ececec" align="center">진행중인 이벤트 댓글 관리</td>
+				<td><a href='repleAdminAction.action'>[ 진행중인 이벤트 댓글 관리 ]</a>&nbsp;&nbsp;</td>
 			</tr>		
+			
+			<tr>
+				<td bgcolor="#ececec" align="center">지난 이벤트 댓글 관리</td>
+				<td><a href='reple2AdminAction.action'>[ 지난 이벤트 댓글 관리 ]</a>&nbsp;&nbsp;</td>
+			</tr>	
 			
 			<tr>
 				<td colspan="2" align="center">

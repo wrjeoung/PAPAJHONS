@@ -191,7 +191,7 @@
 		<c:if test="${memId == revo.id }">
 		<tr height="50">
 			<%-- <c:if test="${memId==id && memId!=null}"> --%>
-			<td width="100">${revo.content }</td><input type="button" value="댓글삭제" onclick="document.location.href='redeleteAction.action?num1=${revo.num1}'">
+			<td width="100">${revo.content }</td><%-- <input type="button" value="댓글삭제" onclick="document.location.href='redeleteAction.action?num1=${revo.num1}'"> --%>
 		<%-- 	</c:if> --%>
 		</tr>
 		</c:if>
@@ -211,7 +211,7 @@
 <c:if test="${memId!=null}">
 <form action="RewriteAction.action" method="post" name="repleWrite" onsubmit="return validation();">
 	<input type="hidden" name="num" value="${num }">
-	<input type="text" name="id" value="${memId }">
+	<input type="hidden" name="id" value="${memId }">
 	<textarea rows="5" cols="100" name="content"></textarea>
 	<input type="submit" value="댓글쓰기"/>
 </form>
