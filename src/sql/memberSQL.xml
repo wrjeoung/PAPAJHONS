@@ -115,6 +115,7 @@
                          		email,
                          		sendmail,
                          		addr,
+                         		activation_status,
                          		activation_key
                          )
                 	 VALUES (#name#,
@@ -126,6 +127,7 @@
                          		#email#,
                          		#sendmail#,
                          		#addr#,
+                         		#activation_status#,
                          		#activation_key#
                          )
 		</insert>		

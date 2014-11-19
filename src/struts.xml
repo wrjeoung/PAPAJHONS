@@ -226,6 +226,31 @@
 				/admin/sales/adminSalesPro.jsp
 			</result>
 		</action>
+		
+		<!-- 주문 관리 -->
+		<action name="adminOrderAction" class="admin.order.AdminOrderAction">
+			<interceptor-ref name="ibatis"/>
+			<interceptor-ref name="params"/>
+			<result>
+				/admin/order/adminOrder.jsp
+			</result>
+		</action>
+		
+		<action name="adminOrderModifyAction" class="admin.order.AdminOrderModifyAction" method="modify">
+			<interceptor-ref name="ibatis"/>
+			<interceptor-ref name="params"/>
+			<result>
+				/admin/order/adminOrderModify.jsp
+			</result>
+		</action>
+		
+		<action name="adminOrderModifyProAction" class="admin.order.AdminOrderModifyAction">
+			<interceptor-ref name="ibatis"/>
+			<interceptor-ref name="params"/>
+			<result>
+				/admin/order/adminOrderModify.jsp
+			</result>
+		</action>
 	</package>	
 		
 	<!-- 주문 -->
@@ -523,7 +548,7 @@
 		    <interceptor-ref name="ibatis"></interceptor-ref>
 		    <interceptor-ref name="params"></interceptor-ref>
 		    <interceptor-ref name="servletConfig" />
-			<result>/member/cont.jsp</result>
+			<result>/member/loginpro.jsp</result>
 		</action>
 		
 		<action name="logoutAction" class="papa.member.LogInOutAction" method="logout">
@@ -555,7 +580,8 @@
 		
 		<action name="activationAction" class="papa.member.EmailAuthAction" method="activation">
 		    <interceptor-ref name="ibatis"></interceptor-ref>
-		    <interceptor-ref name="params"></interceptor-ref>		
+		    <interceptor-ref name="params"></interceptor-ref>
+		    <interceptor-ref name="servletConfig" />		
 			<result>/member/activation.jsp</result>
 		</action>		
 		

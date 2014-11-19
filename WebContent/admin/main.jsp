@@ -34,6 +34,11 @@
 			</tr>
 
 			<tr>
+				<td bgcolor="#ececec" align="center">주문 관리</td>
+				<td><a href='adminOrderAction.action'>[ 주문 목록 ]</a>&nbsp;&nbsp;</td>
+			</tr>
+			
+			<tr>
 				<td colspan="2" align="center">
 					<input type="button" value="홈으로 가기" class="inputb"
 					onClick="javascript:location.href='mainAction.action'"/>

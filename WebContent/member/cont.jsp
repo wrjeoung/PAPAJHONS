@@ -25,8 +25,7 @@
 <body>
 	<input type="hidden" id="menuGb" name="menuGb" value="${menuGb}" />
 	<input type="hidden" id="menuId" name="menuId" value="${menuId}" />
-	<input type="hidden" id="login_result" name="login_result" value="${result}" />
- 	
+	 	
 	<div id="skipNavi"> <a href="#gnb">메뉴 바로가기</a> <a href="#contents">본문바로가기</a></div>
 	
 	<!-- wrap -->

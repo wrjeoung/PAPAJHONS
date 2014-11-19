@@ -69,6 +69,13 @@
 	</tr>
     		
 </c:if>	
+
+		<tr bgcolor="#FFFFFF" align="right">
+			<td colspan="11">
+				<input type="button" value="관리자 홈으로 가기" class="inputb"
+				onClick="javascript:location.href='adminMainAction.action'"/>
+			</td>
+		</tr>
 	      
 <tr align="center">
 	<td colspan="11">${pagingHtml}</td>
