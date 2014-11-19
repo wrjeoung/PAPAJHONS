@@ -32,10 +32,19 @@
 			ORDER BY no DESC
 		</select>
 		
+		<select id="selectLastNo" resultClass="dstoreDTO" parameterClass="int">
+			SELECT max(no) as no FROM storeDb
+		</select>
+		
 		<!-- 공통으로 사용할 where-no 절 정의 -->
+		<sql id="where-no">
+			WHERE no=#no#
+		</sql>			
+		
 		<sql id="where-storename">
 			WHERE storename = #storename#
 		</sql>
+		
 		
 		<select id="selectBydate" resultMap="storeRes">
 			<include refid="select-all" />
@@ -45,6 +54,17 @@
 			<include refid="select-all" />
 			WHERE storename = #storename#
 		</select>
+		
+		<select id="selectStoreNo" resultMap="storeRes" parameterClass="String">
+			<include refid="select-all" />
+			<include refid="where-no"/>
+		</select>		
+		
+		<!-- 파일 -->
+		<update id="updateFile" parameterClass="dstoreDTO">
+			UPDATE storeDb SET imagepath=#imagepath#
+			<include refid="where-no"/>
+		</update>			
 		
 		<update id="updateStore" parameterClass="dstoreDTO">
 			UPDATE storeDb SET location = #location#,
@@ -58,7 +78,7 @@
 								longitude = #longitude#,
 								newopen = #newopen#,
 								imagepath = #imagepath#
-			<include refid="where-storename"/>
+			<include refid="where-no"/>
 		</update>
 		
 		<!-- delete 쿼리문 정의 -->

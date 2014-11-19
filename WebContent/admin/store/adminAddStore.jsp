@@ -12,7 +12,7 @@
 	<c:choose>
 		<c:when test="${ check eq 'add'}">
 			<h1 style="text-align:center;">파파존스 지점(매장) 추가</h1>
-			<form action="adminStoreAddProAction.action" name="storeAdd" method="post">
+			<form action="adminStoreAddProAction.action" name="storeAdd" method="post" enctype="multipart/form-data">
 				<table align="center" border="1" cellspacing="0" cellpadding="2">
 					<tr bgcolor="#ececec" align="center">
 						<th colspan="2">매장 추가</th>
@@ -69,8 +69,8 @@
 					</tr>
 					
 					<tr>
-						<td bgcolor="#ececec" align="center">이미지패스</td>
-						<td><input type="text" name="imagepath" size="50" maxlength="50"></td>
+						<td bgcolor="#ececec" align="center">첨부파일</td>
+						<td><input type="file" name="upload" id="upload"></td>
 					</tr>
 					
 					<tr>

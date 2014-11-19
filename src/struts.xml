@@ -176,6 +176,7 @@
 		
 		<action name="adminStoreAddProAction" class="admin.store.AdminStoreAddAction">
 			<interceptor-ref name="ibatis"/>
+			<interceptor-ref name="fileUpload"/>
 			<interceptor-ref name="params"/>
 			<result>
 				/admin/store/adminAddStore.jsp
@@ -192,6 +193,7 @@
 		
 		<action name="adminStoreModifyProAction" class="admin.store.AdminStoreModifyAction">
 			<interceptor-ref name="ibatis"/>
+			<interceptor-ref name="fileUpload"/>
 			<interceptor-ref name="params"/>
 			<result>
 				/admin/store/adminModifyStore.jsp
