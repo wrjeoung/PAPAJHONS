@@ -93,7 +93,7 @@
 			<interceptor-ref name="ibatis"/>
 			<interceptor-ref name="params"/>
 			<result type="redirect-action">
-				<param name="actionName">adminGongjiAction</param>
+				<param name="actionName">main/adminGongjiAction</param>
 			</result>
 		</action>		
 				
