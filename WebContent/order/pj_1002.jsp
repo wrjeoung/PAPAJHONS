@@ -3202,7 +3202,7 @@
 							<!-- 왼쪽 이미지 영역 -->
 							<!-- item_left -->
 							<div class='item_left'>
-								<p class='photo'><img src=http://192.168.10.77:8000/ImageServer/Imageupload/'${li.imagepathorder}' alt='${li.name}' title='${li.name}' onerror="this.src='/assets/img/order/menu/noImage_ord.png'" /></p>
+								<p class='photo'><img src='http://192.168.10.77:8000/ImageServer/Imageupload/${li.imagepathorder}' alt='${li.name}' title='${li.name}' onerror="this.src='/assets/img/order/menu/noImage_ord.png'" /></p>
 								<p class='name' id='pName_1'>${li.name}</p>
 								<p><button type='button' id='basket_1' name='basket_1' onclick="fnOrderSide('${li.menuid}','${li.imagepathorder}','${price}','${ li.consist}','${li.name }');">장바구니에담기</button></p>
 							</div>
@@ -3313,7 +3313,7 @@
 							<!-- 왼쪽 이미지 영역 -->
 							<!-- item_left -->
 							<div class='item_left'>
-								<p class='photo'><img src=http://192.168.10.77:8000/ImageServer/Imageupload/'${li.imagepathorder}' alt='${li.name}' title='${li.name}' onerror="this.src='/assets/img/order/menu/noImage_ord.png'" /></p>
+								<p class='photo'><img src='http://192.168.10.77:8000/ImageServer/Imageupload/${li.imagepathorder}' alt='${li.name}' title='${li.name}' onerror="this.src='/assets/img/order/menu/noImage_ord.png'" /></p>
 								<p class='name' id='pName_1'>${li.name}</p>
 								<p><button type='button' id='basket_1' name='basket_1' onclick="fnOrderBever('${li.menuid}','${li.imagepathorder}','${ li.consist}','${li.name }');">장바구니에담기</button></p>
 							</div>

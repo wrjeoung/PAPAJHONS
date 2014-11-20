@@ -38,11 +38,7 @@ function removeRequired() {
 function isPizzaMenu(menuid) {
 	if(    menuid == 'pj_2002'  // 베스트 메뉴
 		|| menuid == 'pj_2003'  // 오리지널
-		|| menuid == 'pj_2004'  // 골드링
-		|| menuid == 'pj_2006'  // 씬
-		|| menuid == 'pj_2008'  // 골드링 씬
-		|| menuid == 'pj_2009'  // 하트 씬
-		|| menuid == 'pj_2005') // 치즈롤	
+		)
 		return true;	
 	else
 		return false;
@@ -68,6 +64,34 @@ function setSelect(menuid) {
 		document.getElementById("trnuturition").style.display = 'table-row';
 		document.getElementById("trimagepathorder").style.display = 'table-row';
 	}
+	else if(menuid == 'pj_2004' || menuid == 'pj_2005' )  // 골드링 , 치즈롤
+	{
+		document.getElementById("trname").style.display = 'table-row';
+		document.getElementById("trimagepath1").style.display = 'table-row';
+		document.getElementById("trimagepath2").style.display = 'table-row';
+		document.getElementById("trdescription").style.display = 'table-row';
+		document.getElementById("trtopping").style.display = 'table-row';
+		document.getElementById("trlprice").style.display = 'table-row';
+		document.getElementById("trfprice").style.display = 'table-row';
+		document.getElementById("trpprice").style.display = 'table-row';
+		document.getElementById("trallergy").style.display = 'table-row';
+		document.getElementById("trcalorie").style.display = 'table-row';
+		document.getElementById("trnuturition").style.display = 'table-row';
+		document.getElementById("trimagepathorder").style.display = 'table-row';
+	}
+	else if(menuid == 'pj_2006' || menuid == 'pj_2008' || menuid == 'pj_2009' )  // 씬 , 골드링 씬
+	{
+		document.getElementById("trname").style.display = 'table-row';
+		document.getElementById("trimagepath1").style.display = 'table-row';
+		document.getElementById("trimagepath2").style.display = 'table-row';
+		document.getElementById("trdescription").style.display = 'table-row';
+		document.getElementById("trtopping").style.display = 'table-row';
+		document.getElementById("trfprice").style.display = 'table-row';
+		document.getElementById("trallergy").style.display = 'table-row';
+		document.getElementById("trcalorie").style.display = 'table-row';
+		document.getElementById("trnuturition").style.display = 'table-row';
+		document.getElementById("trimagepathorder").style.display = 'table-row';
+	}
 	else if(menuid == 'pj_2013')  // 음료
 	{
 		document.getElementById("trname").style.display = 'table-row';
@@ -82,7 +106,6 @@ function setSelect(menuid) {
 		document.getElementById("trname").style.display = 'table-row';
 		document.getElementById("trimagepath1").style.display = 'table-row';
 		document.getElementById("trimagepath2").style.display = 'table-row';
-		document.getElementById("trtopping").style.display = 'table-row';
 		document.getElementById("trpresentsauce").style.display = 'table-row';
 		document.getElementById("tronesizeprice").style.display = 'table-row';
 		document.getElementById("trallergy").style.display = 'table-row';
