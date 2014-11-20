@@ -2890,7 +2890,7 @@
 	<input type="hidden" id="_imagepathorder" name="_imagepathorder"  value="" />  		 <!-- 온라인주문 메뉴 이미지 경로	-->
 	<input type="hidden" id="_name" name="_name"  value="" />  					   	 	 <!-- 제품명	-->
 	<input type="hidden" id="_size" name="_size"  value="" />  				       	 	 <!-- 사이즈	-->
-	<input type="hidden" id="_cnt_opt"        name="_cnt_opt"         value="" />  		 <!-- 수량					-->
+	<input type="hidden" id="_cnt_opt"        name="_cnt_opt"         value="1" />  		 <!-- 수량					-->
 	<input type="hidden" id="_price"          name="_price"           value="" />  		 <!-- 금액					-->
 	<input type="hidden" id="_consist"        name="_consist"         value="" />  		 <!-- 메뉴 구성				-->
 	<input type="hidden" id="_randomString"   name="_randomString"    value="" />
