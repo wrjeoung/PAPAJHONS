@@ -206,7 +206,7 @@
 						    			<input type="hidden" id="inCurPage"    name="inCurPage"    value="1"><!-- 현재 페이지 -->
 										<input type="hidden" id="inCurBlock"   name="inCurBlock"   value="1"><!-- 현재 블럭 -->
 										--%>
-										<p class="photo"><img src="${imagepath}" alt="" width="130px" height="85px"/></p>
+										<p class="photo"><img src="http://192.168.10.77:8000/ImageServer/Imageupload/${imagepath}" alt="" width="130px" height="85px"/></p>
 										<ul class="info">
 											<li><span class="tit">매장명 : </span>${storename}<span id="map_store_name"></span></li>
 						        			<li><span class="tit">전화번호 : </span>${phone}<span id="map_store_phone"></span></li>
