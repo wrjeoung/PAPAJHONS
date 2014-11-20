@@ -309,7 +309,7 @@
     	document.frmOrder.action              = "pj_1003ActionAddItem.action?addCount="+sessionStorage.addCount;
     	sessionStorage.addCount++;
     	document.frmOrder.target              = "_self";
-    	alert("name : "+name+"\nprice : "+price+"\nsize : "+size+"\ncnt_opt1 : "+document.frmOrder._cnt_opt.value ) ;
+    	//alert("name : "+name+"\nprice : "+price+"\nsize : "+size+"\ncnt_opt1 : "+document.frmOrder._cnt_opt.value ) ;
     	document.frmOrder.submit();
 	}
 	
