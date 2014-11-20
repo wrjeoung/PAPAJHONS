@@ -3223,9 +3223,11 @@
 								</div>
 								<script type="text/javascript">
 									//20140304 라디오버튼 디폴트 위치를 라지사이즈로 변경
-									var firstSize = $("#menu_1 .size img").attr("title");
-									if(firstSize == "Regular"){ra_check($("#menu_1 .size .menu_size_radio").eq(1));}
-									else{ra_check($("#menu_1 .size .menu_size_radio").eq(0));}
+									var menuId = 'menu_${status.count}';
+									console.log('menuId : '+menuId);
+									var firstSize = $("#"+menuId+" .size img").attr("title");
+									if(firstSize == "Regular"){ra_check($("#"+menuId+" .size .menu_size_radio").eq(1));}
+									else{ra_check($("#"+menuId+" .size .menu_size_radio").eq(0));}
 								</script>
 								<!--// size -->
 								<div class='select_count'>
@@ -3362,9 +3364,11 @@
 								</div>
 								<script type="text/javascript">
 									//20140304 라디오버튼 디폴트 위치를 라지사이즈로 변경
-									var firstSize = $("#menu_1 .size img").attr("title");
-									if(firstSize == "Regular"){ra_check($("#menu_1 .size .menu_size_radio").eq(1));}
-									else{ra_check($("#menu_1 .size .menu_size_radio").eq(0));}
+									var menuId = 'menu_${status.count}';
+									console.log('menuId : '+menuId);
+									var firstSize = $("#"+menuId+" .size img").attr("title");
+									if(firstSize == "Regular"){ra_check($("#"+menuId+" .size .menu_size_radio").eq(1));}
+									else{ra_check($("#"+menuId+" .size .menu_size_radio").eq(0));}
 								</script>
 								<!--// size -->
 								<!--// size -->
