@@ -78,7 +78,7 @@
 	
   		<!-- header -->
   		<div id="header" >
-  			<script type="text/javascript">	$("#header").load("../include/header.jsp?menuGb=event&menuId=pj_3001"); </script> 
+  			<script type="text/javascript">	$("#header").load("../include/header.jsp?menuGb=customer&menuId=pj_5001"); </script> 
   		</div>
   		<!--// header --> 
   
