@@ -122,7 +122,7 @@
 							<div class='eventItem'>
 								<p class='btnOrder4 png24'>
 									<a
-										href='/sub.jsp?menuGb=event&menuId=pj_3001_view&eventcd=1041'><img
+										href='viewAction2.action?num=592&currentPage=1&file_savname=file_592.png'><img
 										src='../assets/img/btn/btn_go_link.png' /></a>
 								</p>
 								<p>
@@ -138,7 +138,7 @@
 							<div class='eventItem'>
 								<p class='btnOrder4 png24'>
 									<a
-										href='/sub.jsp?menuGb=event&menuId=pj_3001_view&eventcd=1121'><img
+										href='pastviewAction.action?num=291&currentPage=1&file_savname=file_291.png'><img
 										src='../assets/img/btn/btn_go_link.png' /></a>
 								</p>
 								<p>
@@ -154,7 +154,7 @@
 							<div class='eventItem'>
 								<p class='btnOrder4 png24'>
 									<a
-										href='/sub.jsp?menuGb=event&menuId=pj_3001_view&eventcd=1122'><img
+										href='pastviewAction.action?num=289&currentPage=1&file_savname=file_289.jpg'><img
 										src='../assets/img/btn/btn_go_link.png' /></a>
 								</p>
 								<p>
@@ -170,7 +170,7 @@
 							<div class='eventItem'>
 								<p class='btnOrder4 png24'>
 									<a
-										href='http://www.pji.co.kr/sub.jsp?menuGb=event&menuId=pj_3001_view&eventcd=454'><img
+										href='viewAction2.action?num=590&currentPage=1&file_savname=file_590.jpg'><img
 										src='../assets/img/btn/btn_go_link.png' /></a>
 								</p>
 								<p>
@@ -186,7 +186,7 @@
 							<div class='eventItem'>
 								<p class='btnOrder4 png24'>
 									<a
-										href='http://www.pji.co.kr/sub.jsp?menuGb=customer&menuId=pj_5004'><img
+										href='storeAction.action'><img
 										src='../assets/img/btn/btn_go_link.png' /></a>
 								</p>
 								<p>
