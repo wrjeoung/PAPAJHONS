@@ -304,6 +304,22 @@
 				/admin/crecard/creList.jsp
 			</result>
 		</action>
+		
+		<!-- 리플 -->
+		<action name="repleAdminAction" class="admin.reple.repleAdminAction">
+			<interceptor-ref name="params"/>
+			<result>
+				/admin/reple/repleList.jsp
+			</result>
+		</action>
+		
+		<!-- 리플2 -->
+		<action name="reple2AdminAction" class="admin.reple2.reple2AdminAction">
+			<interceptor-ref name="params"/>
+			<result>
+				/admin/reple2/reple2List.jsp
+			</result>
+		</action>
 	</package>	
 		
 	<!-- 주문 -->
@@ -487,7 +503,7 @@
 			<interceptor-ref name="params"/>
 			<result type="redirect-action">
 			<!-- <param name="actionName">listAction2</param> -->
-			<param name="actionName">adminnowAction</param>
+			<param name="actionName">main/adminnowAction</param>
 			</result>
 		</action>
 		
@@ -517,7 +533,7 @@
 			<interceptor-ref name="params"/>
 			<result type="redirect-action">
 				<!-- <param name="actionName">listAction2</param> -->
-				<param name="actionName">adminnowAction</param>
+				<param name="actionName">main/adminnowAction</param>
 			</result>
 		</action>
 		
@@ -534,7 +550,7 @@
 			<interceptor-ref name="params"/>
 			<result type="redirect-action">
 			<!-- <param name="actionName">listAction2</param> -->
-			<param name="actionName">adminnowAction</param>
+			<param name="actionName">main/adminnowAction</param>
 			</result>
 		</action>
 		
@@ -547,7 +563,7 @@
 			<interceptor-ref name="params"/>
 			<interceptor-ref name="servletConfig"/>	
 			<result type="redirect-action">
-			<param name="actionName">listAction2</param>
+			<param name="actionName">nowevent/listAction2</param>
 			</result> 
 		</action>
 		
@@ -555,7 +571,8 @@
 		<action name="redeleteAction" class="nowevent.board.redeleteAction">
 			<interceptor-ref name="params"/>
 			<result type="redirect-action">
-				<param name="actionName">listAction2</param>
+				<!-- <param name="actionName">listAction2</param> -->
+				<param name="actionName">main/repleAdminAction</param>
 			</result>
 		</action>	
 		
@@ -717,7 +734,7 @@
 		<interceptor-ref name="params"/>
 			<result type="redirect-action">
 			<!-- <param name="actionName">storelistAction</param> -->
-			<param name="actionName">adminstoreeventAction</param>
+			<param name="actionName">main/adminstoreeventAction</param>
 			</result> 
 		</action>
 		<!-- 리스트 -->
@@ -739,7 +756,7 @@
 			<interceptor-ref name="params"/>
 			<result type="redirect-action">
 				<!-- <param name="actionName">storelistAction</param> -->
-				<param name="actionName">adminstoreeventAction</param>
+				<param name="actionName">main/adminstoreeventAction</param>
 			</result>
 		</action>
 		
@@ -756,7 +773,7 @@
 		<interceptor-ref name="params"/>
 			<result type="redirect-action">
 			<!-- <param name="actionName">storelistAction</param> -->
-			<param name="actionName">adminstoreeventAction</param>
+			<param name="actionName">main/adminstoreeventAction</param>
 			</result>
 		</action>
 		
@@ -785,7 +802,7 @@
 			<interceptor-ref name="params"/>
 			<result type="redirect-action">
 			<!-- <param name="actionName">pastlistAction</param> -->
-			<param name="actionName">adminpastAction</param>
+			<param name="actionName">main/adminpastAction</param>
 			</result> 
 		</action>
 	<!-- 리스트 -->
@@ -815,7 +832,7 @@
 			<interceptor-ref name="params"/>
 			<result type="redirect-action">
 				<!-- <param name="actionName">pastlistAction</param> -->
-				<param name="actionName">adminpastAction</param>
+				<param name="actionName">main/adminpastAction</param>
 			</result>
 		</action>
 	
@@ -833,7 +850,7 @@
 			<interceptor-ref name="params"/>
 			<result type="redirect-action">
 			<!-- <param name="actionName">pastlistAction</param> -->
-			<param name="actionName">adminpastAction</param>
+			<param name="actionName">main/adminpastAction</param>
 			</result>
 		</action>
 		
@@ -846,7 +863,7 @@
 			<interceptor-ref name="params"/>
 			<interceptor-ref name="servletConfig"/>	
 			<result type="redirect-action">
-			<param name="actionName">pastlistAction</param>
+			<param name="actionName">/pastevent/pastlistAction</param>
 			</result>
 		</action>	
 		
@@ -854,7 +871,8 @@
 		<action name="pastredeleteAction" class="pastevent.board.redeleteAction">
 			<interceptor-ref name="params"/>
 			<result type="redirect-action">
-				<param name="actionName">pastlistAction</param>
+				<!-- <param name="actionName">pastlistAction</param> -->
+				<param name="actionName">main/reple2AdminAction</param>
 			</result>
 		</action>	
 		
@@ -904,7 +922,7 @@
 			<interceptor-ref name="params"/>
 			<result type="redirect-action">
 			<!-- <param name="actionName">speciallistAction</param> -->
-			<param name="actionName">adminspecialeventAction</param>
+			<param name="actionName">main/adminspecialeventAction</param>
 			</result> 
 		</action>
 		
@@ -922,7 +940,7 @@
 			<interceptor-ref name="params"/>
 			<result type="redirect-action">
 				<!-- <param name="actionName">speciallistAction</param> -->
-				<param name="actionName">adminspecialeventAction</param>
+				<param name="actionName">main/adminspecialeventAction</param>
 			</result>
 		</action>	
 		
@@ -939,7 +957,7 @@
 			<interceptor-ref name="params"/>
 			<result type="redirect-action">
 			<!-- <param name="actionName">speciallistAction</param> -->
-			<param name="actionName">adminspecialeventAction</param>
+			<param name="actionName">main/adminspecialeventAction</param>
 			</result>
 		</action>
 	</package>
@@ -1014,7 +1032,7 @@
 			<interceptor-ref name="params"/>
 			<result type="redirect-action">
 			<!-- <param name="actionName">memcardlistAction</param> -->
-			<param name="actionName">adminmemcardAction</param>
+			<param name="actionName">/main/adminmemcardAction</param>
 			</result> 
 		</action>
 	<!-- 리스트 -->
@@ -1030,7 +1048,7 @@
 			<interceptor-ref name="params"/>
 			<result type="redirect-action">
 				<!-- <param name="actionName">memcardlistAction</param> -->
-				<param name="actionName">adminmemcardAction</param>
+				<param name="actionName">/main/adminmemcardAction</param>
 			</result>
 		</action>		
 		<!-- 글수정하기 -->
@@ -1046,7 +1064,7 @@
 			<interceptor-ref name="params"/>
 			<result type="redirect-action">
 			<!-- <param name="actionName">memcardlistAction</param> -->
-			<param name="actionName">adminmemcardAction</param>
+			<param name="actionName">/main/adminmemcardAction</param>
 			</result>
 		</action>
 	</package>
@@ -1068,7 +1086,7 @@
 			<interceptor-ref name="params"/>
 			<result type="redirect-action">
 			<!-- <param name="actionName">crecardlistAction</param> -->
-			<param name="actionName">crecardAdminAction</param>
+			<param name="actionName">/main/crecardAdminAction</param>
 			</result> 
 		</action>
 		<!-- 리스트 -->
@@ -1084,7 +1102,7 @@
 			<interceptor-ref name="params"/>
 			<result type="redirect-action">
 				<!-- <param name="actionName">crecardlistAction</param> -->
-				<param name="actionName">crecardAdminAction</param>
+				<param name="actionName">/main/crecardAdminAction</param>
 			</result>
 		</action>
 		<!-- 글수정하기 -->
@@ -1100,7 +1118,7 @@
 			<interceptor-ref name="params"/>
 			<result type="redirect-action">
 			<!-- <param name="actionName">crecardlistAction</param> -->
-			<param name="actionName">crecardAdminAction</param>
+			<param name="actionName">/main/crecardAdminAction</param>
 			</result>
 		</action>	
 	</package>

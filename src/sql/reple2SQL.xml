@@ -28,4 +28,7 @@
 	<delete id="deleteRe2" parameterClass="int">
 		DELETE FROM REPLE2 WHERE num1=#num1#
 	</delete>
+	<select id="selectAll" resultMap="reple2Res" parameterClass="int">
+		SELECT * FROM REPLE2 ORDER BY num1 DESC
+	</select>
 </sqlMap>

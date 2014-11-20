@@ -57,7 +57,6 @@ function setSelect(menuid) {
 		document.getElementById("trname").style.display = 'table-row';
 		document.getElementById("trimagepath1").style.display = 'table-row';
 		document.getElementById("trimagepath2").style.display = 'table-row';
-		document.getElementById("trimagepath3").style.display = 'table-row';
 		document.getElementById("trdescription").style.display = 'table-row';
 		document.getElementById("trtopping").style.display = 'table-row';
 		document.getElementById("trrprice").style.display = 'table-row';

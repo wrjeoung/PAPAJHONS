@@ -35,4 +35,9 @@
 	<select id="selectOne" resultMap="repleRes" parameterClass="int">
 		SELECT * FROM REPLE WHERE num1=#num1#
 	</select>
+	
+	<!-- 리스트 -->
+	<select id="selectAll" resultMap="repleRes" parameterClass="int">
+		SELECT * FROM REPLE ORDER BY num1 DESC
+	</select>
 </sqlMap>
