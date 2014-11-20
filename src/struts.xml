@@ -563,7 +563,7 @@
 			<interceptor-ref name="params"/>
 			<interceptor-ref name="servletConfig"/>	
 			<result type="redirect-action">
-			<param name="actionName">nowevent/listAction2</param>
+			<param name="actionName">/nowevent/listAction2</param>
 			</result> 
 		</action>
 		

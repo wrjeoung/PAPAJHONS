@@ -168,7 +168,7 @@
 	</table>
 </c:if>
 <!-- </body> -->
-<input type="button" value="글쓰기" onclick="document.location.href='writeForm2.action?currentPage=${currentPage}'">
+<%-- <input type="button" value="글쓰기" onclick="document.location.href='writeForm2.action?currentPage=${currentPage}'"> --%>
 </div>
       				<!--// cont -->
 				</div>
