@@ -137,7 +137,7 @@
 					</div>
       				<!-- cont -->
         			<div class="cont" style="text-align:center">
-<center><!-- <img src="../boardimg/evname.PNG"> -->
+<!-- <img src="../boardimg/evname.PNG"> --><p><font size="3" style="font-weight:bolder"><strong>진행중인 이벤트</strong></font></p><br/>
 <c:if test="${totalCount==0 }">
 <table width="600" border="1" cellpadding="0" cellspacing="0">
 	<tr>
@@ -163,7 +163,6 @@
 				&nbsp;&nbsp;<img src="../boardimg/day.PNG"> ${vo.day }<br/><br/>
 			</td>
 		</tr>
-		<br/>
 	</c:forEach>
 	</table>
 </c:if>

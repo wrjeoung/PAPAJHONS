@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <!-- <html>
 <head>
@@ -161,8 +162,8 @@
 		<td align="right" width="100">${vo.day }</td>
 	</tr> --%>
 	<tr height="500" align="center">
-		<td align="center" width="100"><a href="orderAction.action"><%-- <img src="../save2/${vo.file_savname2 }"> --%>
-		<img src="http://192.168.10.77:8000/ImageServer/Imageupload/${vo.file_savname2}"></a></td>
+		<td align="center" width="100"><%-- <a href="orderAction.action"> <img src="../save2/${vo.file_savname2 }"> --%>
+		<img src="http://192.168.10.77:8000/ImageServer/Imageupload/${vo.file_savname2}"></td>
 	</tr>
 	<tr>
 		<td align="center" colspan="2">
@@ -183,7 +184,11 @@
 	<c:forEach var="revo" items="${list2 }">
 		<table border="1" width="600" cellpadding="0" cellspacing="0" align="center">
 		<tr height="30">
-			<td width="100"><b>${revo.id }</b><font style="margin-left: 50px">${revo.reg_date }</font></td>
+			<td width="100"><b>${revo.id }</b>
+				<font style="margin-left: 50px">
+					<fmt:formatDate value="${revo.reg_date}" pattern="yyyy-MM-dd a hh:mm"/>
+				</font>
+			</td>
 		</tr>
 		<%-- <tr height="30">
 			<td width="100">${revo.reg_date }</td>
