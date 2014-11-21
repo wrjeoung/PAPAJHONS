@@ -809,7 +809,7 @@ input,select,img {
 				box.css("display", "block");
 				old_sid = "";
 				$(this).find("img").attr("src",
-						root + "/assets/img/order/btn_opt_on.gif");
+						root + "../assets/img/order/btn_opt_on.gif");
 			} else {
 				box.find("span").each(function() {
 					$(this).text("▼");
@@ -817,7 +817,7 @@ input,select,img {
 				$(".option").slideUp(); //안에 펼처져있는 옵션들
 				box.stop().slideUp();
 				$(this).find("img").attr("src",
-						root + "/assets/img/order/btn_opt_off.gif");
+						root + "../assets/img/order/btn_opt_off.gif");
 			}
 		}
 
