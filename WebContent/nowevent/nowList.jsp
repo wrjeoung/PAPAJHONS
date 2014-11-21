@@ -137,7 +137,7 @@
 					</div>
       				<!-- cont -->
         			<div class="cont" style="text-align:center">
-<center><!-- <img src="../boardimg/evname.PNG"> --><b>진행중인 이벤트</b>
+<center><!-- <img src="../boardimg/evname.PNG"> -->
 <c:if test="${totalCount==0 }">
 <table width="600" border="1" cellpadding="0" cellspacing="0">
 	<tr>
