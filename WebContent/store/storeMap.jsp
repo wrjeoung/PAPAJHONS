@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -16,12 +16,12 @@
 <link type="text/css" rel="stylesheet" href="../assets/css/import.css" />
 <link type="text/css" rel="stylesheet" href="../assets/css/sub.css" />
 <link type="text/css" rel="stylesheet" href="../assets/css/lib_style.css" />
-<!-- 0404 Ãß°¡ºÎºĞ(´Ş·ÂÄõ¸® ½ºÅ¸ÀÏ) ½ÃÀÛ -->
+<!-- 0404 ì¶”ê°€ë¶€ë¶„(ë‹¬ë ¥ì¿¼ë¦¬ ìŠ¤íƒ€ì¼) ì‹œì‘ -->
 <link type="text/css" rel="stylesheet" href="../assets/css/ui.all.css" />
-<!-- 0404 Ãß°¡ºÎºĞ(´Ş·ÂÄõ¸® ½ºÅ¸ÀÏ)³¡-->
-<title>ÆÄÆÄÁ¸½º-Better Ingredients.Better Pizza.</title>
+<!-- 0404 ì¶”ê°€ë¶€ë¶„(ë‹¬ë ¥ì¿¼ë¦¬ ìŠ¤íƒ€ì¼)ë-->
+<title>íŒŒíŒŒì¡´ìŠ¤-Better Ingredients.Better Pizza.</title>
 <style type="text/css">
-/* ¸Ş´ºÈ­¸é °øÅëÆË¾÷ ½ºÅ¸ÀÏ ¼öÁ¤ 20131128*/
+/* ë©”ë‰´í™”ë©´ ê³µí†µíŒì—… ìŠ¤íƒ€ì¼ ìˆ˜ì • 20131128*/
 #notice_caution {
 	display: none;
 	width: 340px;
@@ -107,35 +107,35 @@
 <script type="text/javascript">
 	$(document).ready(function() {
 		$('#viewLoading').fadeOut();
-		$('#viewLoading') // ajax ½ÇÇà ¹× ¿Ï·á½Ã 'Loading ÀÌ¹ÌÁö'ÀÇ µ¿ÀÛ ÄÁÆ®·ÑÇÏ±â
+		$('#viewLoading') // ajax ì‹¤í–‰ ë° ì™„ë£Œì‹œ 'Loading ì´ë¯¸ì§€'ì˜ ë™ì‘ ì»¨íŠ¸ë¡¤í•˜ê¸°
 		.ajaxStart(function() {
 			$(this).fadeIn(500);
 		}).ajaxStop(function() {
 			$(this).fadeOut(500);
 		});
 
-		//20140527 ¿­·ÁÀÖ´Â È­¸é »çÀÌÁî¿¡ µû¶ó ÀÀ¸ğ ÆË¾÷ À§Ä¡ º¯°æ
+		//20140527 ì—´ë ¤ìˆëŠ” í™”ë©´ ì‚¬ì´ì¦ˆì— ë”°ë¼ ì‘ëª¨ íŒì—… ìœ„ì¹˜ ë³€ê²½
 		// 		var $ev_page = $("#worldCupEvent");
 		// 		var top = ($(window).height()/2)-($ev_page.height()/2);
 		// 		$ev_page.css("top",top+"px");
 	});
 </script>
 
-<!-- ³×ÀÌ¹öÁöµµ API START -->
+<!-- ë„¤ì´ë²„ì§€ë„ API START -->
 <script type="text/javascript">
  try {
 	 document.execCommand('BackgroundImageCache', false, true);
  } catch (e) {
  }
 </script>
-<script type="text/javascript" src="http://openapi.map.naver.com/openapi/naverMap.naver?ver=2.0&key=d190d0bf37373c2045fc8f9bddc63839">
+<script type="text/javascript" src="http://openapi.map.naver.com/openapi/naverMap.naver?ver=2.0&key=9f417bdc097950ed4610512fe2a26851">
 </script>
-<!-- ³×ÀÌ¹öÁöµµ API END -->
+<!-- ë„¤ì´ë²„ì§€ë„ API END -->
 
 </head>
 <body>
 	<div id="skipNavi">
-		<a href="#gnb">¸Ş´º ¹Ù·Î°¡±â</a> <a href="#contents">º»¹®¹Ù·Î°¡±â</a>
+		<a href="#gnb">ë©”ë‰´ ë°”ë¡œê°€ê¸°</a> <a href="#contents">ë³¸ë¬¸ë°”ë¡œê°€ê¸°</a>
 	</div>
 	<!-- wrap -->
 	<div id="wrap">
@@ -150,7 +150,7 @@
 		<div id="container">
 			<!-- con_header -->
 			<div class="con_header">
-				<p >Papa John's CUSTOMER<span><img src="../assets/img/sub/conHeader_text_phone.gif" alt="¿Â¶óÀÎÁÖ¹®°ü·Ã »ó´ã¹øÈ£"></span></p>
+				<p >Papa John's CUSTOMER<span><img src="../assets/img/sub/conHeader_text_phone.gif" alt="ì˜¨ë¼ì¸ì£¼ë¬¸ê´€ë ¨ ìƒë‹´ë²ˆí˜¸"></span></p>
 			</div>
 			<!--// con_header -->
 
@@ -158,26 +158,26 @@
 			<div id="con_container">
 				<!-- snb -->
 				<div class="snb">
-					<h2><img alt="°í°´¼¾ÅÍ" src="../assets/img/sub/snb_title_5.gif"></h2>
+					<h2><img alt="ê³ ê°ì„¼í„°" src="../assets/img/sub/snb_title_5.gif"></h2>
 					<dl class="sub" id="snb4">
-						<dt class="dep1 pj_5001"><a href="listAction.action"><img src="../assets/img/sub/sub_5_1.gif" alt="°øÁö»çÇ×"></a></dt>
+						<dt class="dep1 pj_5001"><a href="listAction.action"><img src="../assets/img/sub/sub_5_1.gif" alt="ê³µì§€ì‚¬í•­"></a></dt>
 						<dt class="dep1 pj_5002"><a href="qnalistAction.action"><img src="../assets/img/sub/sub_5_2.gif" alt="Q&A "></a></dt>
 						<!--  
 						<dd class="dep2">
 							<ul>
 								<li><a href="/sub.jsp?menuGb=customer&menuId=pj_5002&tab=1">FAQ</a></li>
-								<li><a href="/sub.jsp?menuGb=customer&menuId=pj_5002&tab=2">Á÷Á¢¹®ÀÇ</a></li>
+								<li><a href="/sub.jsp?menuGb=customer&menuId=pj_5002&tab=2">ì§ì ‘ë¬¸ì˜</a></li>
 							</ul>
 						</dd>
 						-->
-						<dt class="dep1 pj_5003"><a href="memcardlistAction.action"><img src="../assets/img/sub/sub_5_3.gif" alt="Á¦ÈŞ Ä«µå ¾È³»"></a></dt>
+						<dt class="dep1 pj_5003"><a href="memcardlistAction.action"><img src="../assets/img/sub/sub_5_3.gif" alt="ì œíœ´ ì¹´ë“œ ì•ˆë‚´"></a></dt>
 						<dd class="dep2">
 							<ul>
-								<li><a href="memcardlistAction.action">Åë½Å»ç ¸â¹ö½± Ä«µå</a></li>
-								<li><a href="crecardlistAction.action">½Å¿ëÄ«µå</a></li>
+								<li><a href="memcardlistAction.action">í†µì‹ ì‚¬ ë©¤ë²„ì‰½ ì¹´ë“œ</a></li>
+								<li><a href="crecardlistAction.action">ì‹ ìš©ì¹´ë“œ</a></li>
 							</ul>
 						</dd>
-						<dt class="dep1 pj_5004"><a href="storeAction.action"><img src="../assets/img/sub/sub_5_4.gif" alt="¸ÅÀå ¾È³»"></a></dt>
+						<dt class="dep1 pj_5004"><a href="storeAction.action"><img src="../assets/img/sub/sub_5_4.gif" alt="ë§¤ì¥ ì•ˆë‚´"></a></dt>
 					</dl>
 				</div>
 				<!-- //snb -->
@@ -185,88 +185,88 @@
 				<!-- contents -->
 				<div id="contents">
 					<div class="top_title">
-						<h2>¸ÅÀå ¾È³»</h2>
+						<h2>ë§¤ì¥ ì•ˆë‚´</h2>
 					</div>
 					<!-- cont -->
 					<div class="cont" style="text-align: center">
-						<!-- ³×ÀÌ¹ö Áöµµ View -->
+						<!-- ë„¤ì´ë²„ ì§€ë„ View -->
 						<div id="store_section" >
-							<h4 class="title"><img src="../assets/img/customer/storeDetail_title.gif" alt="¼±ÅÃ¸ÅÀå »ó¼¼Á¤º¸" /></h4>
-							<!-- ¼±ÅÃ¸ÅÀå »ó¼¼Á¤º¸ -->
+							<h4 class="title"><img src="../assets/img/customer/storeDetail_title.gif" alt="ì„ íƒë§¤ì¥ ìƒì„¸ì •ë³´" /></h4>
+							<!-- ì„ íƒë§¤ì¥ ìƒì„¸ì •ë³´ -->
 							<div id="store_detail" >
 								<div class="store">
 									<form name="form1" method="post">
 										<%-- 
 										<input type="hidden" id="actionFlag"   name="actionFlag"   value="name">
-										<input type="hidden" id="srch_region"  name="srch_region"  value="null"><!-- Áö¿ª¸í -->
-										<input type="hidden" id="srch_sigungu" name="srch_sigungu" value="null"><!-- ½Ã±º±¸¸í -->
+										<input type="hidden" id="srch_region"  name="srch_region"  value="null"><!-- ì§€ì—­ëª… -->
+										<input type="hidden" id="srch_sigungu" name="srch_sigungu" value="null"><!-- ì‹œêµ°êµ¬ëª… -->
 						    			<input type="hidden" id="srch_store"   name="srch_store"   value="null">
 						    			<input type="hidden" id="srch_word"    name="srch_word"    value="">
 						    			<input type="hidden" id="tab"      	   name="tab"          value="1" >
-						    			<input type="hidden" id="inCurPage"    name="inCurPage"    value="1"><!-- ÇöÀç ÆäÀÌÁö -->
-										<input type="hidden" id="inCurBlock"   name="inCurBlock"   value="1"><!-- ÇöÀç ºí·° -->
+						    			<input type="hidden" id="inCurPage"    name="inCurPage"    value="1"><!-- í˜„ì¬ í˜ì´ì§€ -->
+										<input type="hidden" id="inCurBlock"   name="inCurBlock"   value="1"><!-- í˜„ì¬ ë¸”ëŸ­ -->
 										--%>
 										<p class="photo"><img src="http://192.168.10.77:8000/ImageServer/Imageupload/${imagepath}" alt="" width="130px" height="85px"/></p>
 										<ul class="info">
-											<li><span class="tit">¸ÅÀå¸í : </span>${storename}<span id="map_store_name"></span></li>
-						        			<li><span class="tit">ÀüÈ­¹øÈ£ : </span>${phone}<span id="map_store_phone"></span></li>
-						        			<li><span class="tit">¸ÅÀåÁÖ¼Ò : </span>${address}<span id="map_store_address"></span></li>
-						        			<li><span class="tit">¿µ¾÷½Ã°£ : </span>${businesshours}<span id="map_store_time"></span></li>
-						        			<li><span class="tit">¸ÅÀåÅ¸ÀÔ : </span>${storetype}<span id="map_store_type"></span></li>
-						        			<li><span class="tit">ÁÖÂ÷¿©ºÎ : </span>${storeparking}<span id="map_store_parking"></span></li>
+											<li><span class="tit">ë§¤ì¥ëª… : </span>${storename}<span id="map_store_name"></span></li>
+						        			<li><span class="tit">ì „í™”ë²ˆí˜¸ : </span>${phone}<span id="map_store_phone"></span></li>
+						        			<li><span class="tit">ë§¤ì¥ì£¼ì†Œ : </span>${address}<span id="map_store_address"></span></li>
+						        			<li><span class="tit">ì˜ì—…ì‹œê°„ : </span>${businesshours}<span id="map_store_time"></span></li>
+						        			<li><span class="tit">ë§¤ì¥íƒ€ì… : </span>${storetype}<span id="map_store_type"></span></li>
+						        			<li><span class="tit">ì£¼ì°¨ì—¬ë¶€ : </span>${storeparking}<span id="map_store_parking"></span></li>
 										</ul>
 									</form>
 								</div>
 								<p style="float:right;">
-						      		<%-- <span class="btn_h23 green"><button type="button" onclick='location.href="sub.jsp?menuGb=customer&menuId=pj_5004"'>¸ÅÀåÃ£±â</button></span> --%>
-						      		<span class="btn_h23 red"><button type="button" onclick="document.location.href='storeAction.action'">¸ñ·Ïº¸±â</button></span>
+						      		<%-- <span class="btn_h23 green"><button type="button" onclick='location.href="sub.jsp?menuGb=customer&menuId=pj_5004"'>ë§¤ì¥ì°¾ê¸°</button></span> --%>
+						      		<span class="btn_h23 red"><button type="button" onclick="document.location.href='storeAction.action'">ëª©ë¡ë³´ê¸°</button></span>
    								</p>   
 							</div>
 							<div class="s_map" style=" margin:10px 0 0; text-align:left; border:1px #ccc solid; padding:5px; width:615px">
 					  			<div id="map_iframe_area" style="position:relative;left:10px;">
-					  				<!-- ³×ÀÌ¹ö Áöµµ º¸ÀÌ´Â ºÎºĞ  -->
+					  				<!-- ë„¤ì´ë²„ ì§€ë„ ë³´ì´ëŠ” ë¶€ë¶„  -->
 					  				<script type="text/javascript">
 					  					var c = ${latitude};
 					  					var d = ${longitude};
 					  					
-					  					var oPoint = new nhn.api.map.LatLng(d, c); //LatLng °ªÀÌ y, x ÁÂÇ¥
+					  					var oPoint = new nhn.api.map.LatLng(d, c); //LatLng ê°’ì´ y, x ì¢Œí‘œ
 					  					nhn.api.map.setDefaultPoint('LatLng');
-					  					oMap = new nhn.api.map.Map('map_iframe_area',{//Ç¥½ÃµÉ divÀÇ id ÀÔ´Ï´Ù.
-					  						point : oPoint,  			 //ÁöµµÀÇ ÃÖÃÊ Áß½ÉÁ¡ÀÔ´Ï´Ù. ¾Õ¼­ ¼³Á¤ÇÏ¿´´ø oPoint ¸¦ »ç¿ëÇÕ´Ï´Ù.
-					  						zoom : 11, 					 //±âº» Áöµµ ÁÜ Å©±â
-					  						enableWheelZoom : true,      //¸¶¿ì½º ÈÙÀ» ÀÌ¿ëÇØ ÁÜ ÀÎ/¾Æ¿ôÀ» ÀÌ¿ëÇÒ°ÍÀÎÁö¸¦ ¼±ÅÃÇÕ´Ï´Ù true, false
-					  						enableDragPan : true,        //¸¶¿ì½º·Î µå·¡±×¸¦ È°¼ºÇÏ ÇÒ°ÍÀÎÁö ¼±ÅÃÇÕ´Ï´Ù. true, false
-					  						enableDblClickZoom : false,  //´õºíÅ¬¸¯À¸·Î È®´ë¸¦ ÇÒ°ÍÀÎ°¡ ÀÔ´Ï´Ù. true, false
-					  						mapMode : 0,                 //ÃÖÃÊ ÁöµµÀÇ ¹æ½ÄÀ» ¼±ÅÃÇÕ´Ï´Ù 0: ÀÏ¹İÁöµµ 1:À§¼ºÁöµµ
-					  						activateTrafficMap : false,  //±³Åë»óÈ²À» ¸»ÇÕ´Ï´Ù
-					  						activateBicycleMap : false,  //ÀÚÀü°Å ÁöµµÀÔ´Ï´Ù.
-					  						minMaxLevel : [ 1, 14 ],      //ÃÖ´ë Ãà¼Ò¿Í È®´ë°ªÀ» Á¤ÇÕ´Ï´Ù.
-					  						size : new nhn.api.map.Size(600, 450) //Ç¥½ÃµÉ Áöµµ Å©±â
+					  					oMap = new nhn.api.map.Map('map_iframe_area',{//í‘œì‹œë  divì˜ id ì…ë‹ˆë‹¤.
+					  						point : oPoint,  			 //ì§€ë„ì˜ ìµœì´ˆ ì¤‘ì‹¬ì ì…ë‹ˆë‹¤. ì•ì„œ ì„¤ì •í•˜ì˜€ë˜ oPoint ë¥¼ ì‚¬ìš©í•©ë‹ˆë‹¤.
+					  						zoom : 11, 					 //ê¸°ë³¸ ì§€ë„ ì¤Œ í¬ê¸°
+					  						enableWheelZoom : true,      //ë§ˆìš°ìŠ¤ íœ ì„ ì´ìš©í•´ ì¤Œ ì¸/ì•„ì›ƒì„ ì´ìš©í• ê²ƒì¸ì§€ë¥¼ ì„ íƒí•©ë‹ˆë‹¤ true, false
+					  						enableDragPan : true,        //ë§ˆìš°ìŠ¤ë¡œ ë“œë˜ê·¸ë¥¼ í™œì„±í•˜ í• ê²ƒì¸ì§€ ì„ íƒí•©ë‹ˆë‹¤. true, false
+					  						enableDblClickZoom : false,  //ë”ë¸”í´ë¦­ìœ¼ë¡œ í™•ëŒ€ë¥¼ í• ê²ƒì¸ê°€ ì…ë‹ˆë‹¤. true, false
+					  						mapMode : 0,                 //ìµœì´ˆ ì§€ë„ì˜ ë°©ì‹ì„ ì„ íƒí•©ë‹ˆë‹¤ 0: ì¼ë°˜ì§€ë„ 1:ìœ„ì„±ì§€ë„
+					  						activateTrafficMap : false,  //êµí†µìƒí™©ì„ ë§í•©ë‹ˆë‹¤
+					  						activateBicycleMap : false,  //ìì „ê±° ì§€ë„ì…ë‹ˆë‹¤.
+					  						minMaxLevel : [ 1, 14 ],      //ìµœëŒ€ ì¶•ì†Œì™€ í™•ëŒ€ê°’ì„ ì •í•©ë‹ˆë‹¤.
+					  						size : new nhn.api.map.Size(600, 450) //í‘œì‹œë  ì§€ë„ í¬ê¸°
 					  					});
 					  					
-					  					//¾Æ·¡´Â À§¿¡¼­ ÁöÁ¤ÇÑ ÁÂÇ¥¿¡ ¸¶Ä¿¸¦ Ç¥½ÃÇÏ´Â ¼Ò½º ÀÔ´Ï´Ù.
+					  					//ì•„ë˜ëŠ” ìœ„ì—ì„œ ì§€ì •í•œ ì¢Œí‘œì— ë§ˆì»¤ë¥¼ í‘œì‹œí•˜ëŠ” ì†ŒìŠ¤ ì…ë‹ˆë‹¤.
 					  					var oSize = new nhn.api.map.Size(28, 37);
 					  					var oOffset = new nhn.api.map.Size(14, 37);
 					  					var oIcon = new nhn.api.map.Icon(
 					  							'http://static.naver.com/maps2/icons/pin_spot2.png', oSize, oOffset);
-					  					//icon ÀÌ¹ÌÁö¸¦ ¹Ù²ã¼­ »ç¿ëÇÒ ¼ö ÀÖ½À´Ï´Ù.
+					  					//icon ì´ë¯¸ì§€ë¥¼ ë°”ê¿”ì„œ ì‚¬ìš©í•  ìˆ˜ ìˆìŠµë‹ˆë‹¤.
 					  					var oMarker = new nhn.api.map.Marker(oIcon, {
 					  						title : '${storename}'
 					  					});
 					  					oMarker.setPoint(oPoint);
-					  					// Áöµµ Å¸ÀÌÆ² º¸ÀÌ°Ô ÇÏ±â 
-					  					oLabel = new nhn.api.map.MarkerLabel(); //¸¶Ä¿ ¶óº§ ¼±¾ğ
-					  					oMap.addOverlay(oLabel); //¸¶Ä¿ ¶óº§ Áöµµ¿¡ Ãß°¡, ±âº»Àº º¸ÀÌÁö ¾Ê´Â »óÅÂ·Î Ãß°¡µÊ
-					  					oLabel.setVisible(true, oMarker); //¸¶Ä¿ ¶óº§ º¸ÀÌ±â
+					  					// ì§€ë„ íƒ€ì´í‹€ ë³´ì´ê²Œ í•˜ê¸° 
+					  					oLabel = new nhn.api.map.MarkerLabel(); //ë§ˆì»¤ ë¼ë²¨ ì„ ì–¸
+					  					oMap.addOverlay(oLabel); //ë§ˆì»¤ ë¼ë²¨ ì§€ë„ì— ì¶”ê°€, ê¸°ë³¸ì€ ë³´ì´ì§€ ì•ŠëŠ” ìƒíƒœë¡œ ì¶”ê°€ë¨
+					  					oLabel.setVisible(true, oMarker); //ë§ˆì»¤ ë¼ë²¨ ë³´ì´ê¸°
 					  					
 					  					oMap.addOverlay(oMarker);
-					  					//¾Æ·¡´Â »çÀÌµå¿¡ ÁÜ ÄÁÆ®·ÑÀ» Ãß°¡ÇÏ´Â ¼Ò½º ÀÔ´Ï´Ù.
-					  					var mapZoom = new nhn.api.map.ZoomControl(); // ÁÜ ÄÁÆ®·Ñ ¼±¾ğ
+					  					//ì•„ë˜ëŠ” ì‚¬ì´ë“œì— ì¤Œ ì»¨íŠ¸ë¡¤ì„ ì¶”ê°€í•˜ëŠ” ì†ŒìŠ¤ ì…ë‹ˆë‹¤.
+					  					var mapZoom = new nhn.api.map.ZoomControl(); // ì¤Œ ì»¨íŠ¸ë¡¤ ì„ ì–¸
 					  					mapZoom.setPosition({
 					  						left : 15,
 					  						bottom : 30
-					  					});		// - ÁÜ ÄÁÆ®·Ñ À§Ä¡ ÁöÁ¤
-					  					oMap.addControl(mapZoom); // - ÁÜ ÄÁÆ®·Ñ Ãß°¡.
+					  					});		// - ì¤Œ ì»¨íŠ¸ë¡¤ ìœ„ì¹˜ ì§€ì •
+					  					oMap.addControl(mapZoom); // - ì¤Œ ì»¨íŠ¸ë¡¤ ì¶”ê°€.
 					  				</script>
 					  			</div>
 					  		</div>
@@ -289,7 +289,7 @@
 	</div>
 	<!--// wrap -->
 	
-	<!-- ·Îµù ÀÌ¹ÌÁö -->
+	<!-- ë¡œë”© ì´ë¯¸ì§€ -->
 	<div id="viewLoading">
 		<img src="../assets/img/viewLoading.gif" />
 		<p>Loading....</p>
